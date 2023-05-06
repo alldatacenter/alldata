@@ -1,18 +1,18 @@
 import React from 'react';
-import { Col, Row } from 'antd';
+import {Col, Row} from 'antd';
 import styled from 'styled-components';
-import { useGetGroupQuery } from '../../../graphql/group.generated';
+import {useGetGroupQuery} from '../../../graphql/group.generated';
 import useUserParams from '../../shared/entitySearch/routingUtils/useUserParams';
-import { OriginType, EntityRelationshipsResult, Ownership } from '../../../types.generated';
-import { Message } from '../../shared/Message';
+import {OriginType, EntityRelationshipsResult, Ownership} from '../../../types.generated';
+import {Message} from '../../shared/Message';
 import GroupMembers from './GroupMembers';
-import { decodeUrn } from '../shared/utils';
-import { RoutedTabs } from '../../shared/RoutedTabs';
+import {decodeUrn} from '../shared/utils';
+import {RoutedTabs} from '../../shared/RoutedTabs';
 import GroupInfoSidebar from './GroupInfoSideBar';
-import { GroupAssets } from './GroupAssets';
-import { ErrorSection } from '../../shared/error/ErrorSection';
+import {GroupAssets} from './GroupAssets';
+import {ErrorSection} from '../../shared/error/ErrorSection';
 
-const messageStyle = { marginTop: '10%' };
+const messageStyle = {marginTop: '10%'};
 
 export enum TabType {
     Assets = 'Assets',
@@ -45,9 +45,9 @@ const Content = styled.div`
  * Responsible for reading & writing groups.
  */
 export default function GroupProfile() {
-    const { urn: encodedUrn } = useUserParams();
+    const {urn: encodedUrn} = useUserParams();
     const urn = encodedUrn && decodeUrn(encodedUrn);
-    const { loading, error, data, refetch } = useGetGroupQuery({ variables: { urn, membersCount: MEMBER_PAGE_SIZE } });
+    const {loading, error, data, refetch} = useGetGroupQuery({variables: {urn, membersCount: MEMBER_PAGE_SIZE}});
 
     const groupMemberRelationships = data?.corpGroup?.relationships as EntityRelationshipsResult;
     const isExternalGroup: boolean = data?.corpGroup?.origin?.type === OriginType.External;
@@ -58,7 +58,7 @@ export default function GroupProfile() {
             {
                 name: TabType.Assets,
                 path: TabType.Assets.toLocaleLowerCase(),
-                content: <GroupAssets urn={urn} />,
+                content: <GroupAssets urn={urn}/>,
                 display: {
                     enabled: () => true,
                 },
@@ -112,17 +112,17 @@ export default function GroupProfile() {
 
     return (
         <>
-            {error && <ErrorSection />}
-            {loading && <Message type="loading" content="Loading..." style={messageStyle} />}
+            {error && <ErrorSection/>}
+            {loading && <Message type="loading" content="Loading..." style={messageStyle}/>}
             {data && data?.corpGroup && (
                 <GroupProfileWrapper>
                     <Row>
                         <Col xl={5} lg={5} md={5} sm={24} xs={24}>
-                            <GroupInfoSidebar sideBarData={sideBarData} refetch={refetch} />
+                            <GroupInfoSidebar sideBarData={sideBarData} refetch={refetch}/>
                         </Col>
-                        <Col xl={19} lg={19} md={19} sm={24} xs={24} style={{ borderLeft: '1px solid #E9E9E9' }}>
+                        <Col xl={19} lg={19} md={19} sm={24} xs={24} style={{borderLeft: '1px solid #E9E9E9'}}>
                             <Content>
-                                <RoutedTabs defaultPath={defaultTabPath} tabs={getTabs()} onTabChange={onTabChange} />
+                                <RoutedTabs defaultPath={defaultTabPath} tabs={getTabs()} onTabChange={onTabChange}/>
                             </Content>
                         </Col>
                     </Row>

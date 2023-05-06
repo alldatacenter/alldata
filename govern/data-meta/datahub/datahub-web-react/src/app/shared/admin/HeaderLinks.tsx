@@ -9,13 +9,13 @@ import {
     SolutionOutlined,
     DownOutlined,
 } from '@ant-design/icons';
-import { Link } from 'react-router-dom';
-import { Button, Dropdown, Menu, Tooltip } from 'antd';
-import { useAppConfig } from '../../useAppConfig';
-import { ANTD_GRAY } from '../../entity/shared/constants';
-import { HOME_PAGE_INGESTION_ID } from '../../onboarding/config/HomePageOnboardingConfig';
-import { useUpdateEducationStepIdsAllowlist } from '../../onboarding/useUpdateEducationStepIdsAllowlist';
-import { useUserContext } from '../../context/useUserContext';
+import {Link} from 'react-router-dom';
+import {Button, Dropdown, Menu, Tooltip} from 'antd';
+import {useAppConfig} from '../../useAppConfig';
+import {ANTD_GRAY} from '../../entity/shared/constants';
+import {HOME_PAGE_INGESTION_ID} from '../../onboarding/config/HomePageOnboardingConfig';
+import {useUpdateEducationStepIdsAllowlist} from '../../onboarding/useUpdateEducationStepIdsAllowlist';
+import {useUserContext} from '../../context/useUserContext';
 
 const LinkWrapper = styled.span`
     margin-right: 0px;
@@ -27,8 +27,8 @@ const LinksWrapper = styled.div<{ areLinksHidden?: boolean }>`
     transition: opacity 0.5s;
 
     ${(props) =>
-        props.areLinksHidden &&
-        `
+    props.areLinksHidden &&
+    `
         opacity: 0;
         width: 0;
     `}
@@ -62,9 +62,9 @@ interface Props {
 }
 
 export function HeaderLinks(props: Props) {
-    const { areLinksHidden } = props;
+    const {areLinksHidden} = props;
     const me = useUserContext();
-    const { config } = useAppConfig();
+    const {config} = useAppConfig();
 
     const isAnalyticsEnabled = config?.analyticsConfig.enabled;
     const isIngestionEnabled = config?.managedIngestionConfig.enabled;
@@ -83,10 +83,10 @@ export function HeaderLinks(props: Props) {
                 <LinkWrapper>
                     <Link to="/analytics">
                         <Button type="text">
-                            <Tooltip title="View DataHub usage analytics">
+                            <Tooltip title="查看DataHub使用情况分析">
                                 <NavTitleContainer>
-                                    <BarChartOutlined />
-                                    <NavTitleText>Analytics</NavTitleText>
+                                    <BarChartOutlined/>
+                                    <NavTitleText>分析</NavTitleText>
                                 </NavTitleContainer>
                             </Tooltip>
                         </Button>
@@ -97,10 +97,10 @@ export function HeaderLinks(props: Props) {
                 <LinkWrapper>
                     <Link to="/ingestion">
                         <Button id={HOME_PAGE_INGESTION_ID} type="text">
-                            <Tooltip title="Connect DataHub to your organization's data sources">
+                            <Tooltip title="将DataHub连接到组织的数据源">
                                 <NavTitleContainer>
-                                    <ApiOutlined />
-                                    <NavTitleText>Ingestion</NavTitleText>
+                                    <ApiOutlined/>
+                                    <NavTitleText>添加元数据</NavTitleText>
                                 </NavTitleContainer>
                             </Tooltip>
                         </Button>
@@ -114,20 +114,20 @@ export function HeaderLinks(props: Props) {
                         <MenuItem key="0">
                             <Link to="/glossary">
                                 <NavTitleContainer>
-                                    <BookOutlined style={{ fontSize: '14px', fontWeight: 'bold' }} />
-                                    <NavTitleText>Glossary</NavTitleText>
+                                    <BookOutlined style={{fontSize: '14px', fontWeight: 'bold'}}/>
+                                    <NavTitleText>词汇表</NavTitleText>
                                 </NavTitleContainer>
-                                <NavTitleDescription>View and modify your data dictionary</NavTitleDescription>
+                                <NavTitleDescription>查看和修改数据字典</NavTitleDescription>
                             </Link>
                         </MenuItem>
                         {showDomains && (
                             <MenuItem key="1">
                                 <Link to="/domains">
                                     <NavTitleContainer>
-                                        <FolderOutlined style={{ fontSize: '14px', fontWeight: 'bold' }} />
-                                        <NavTitleText>Domains</NavTitleText>
+                                        <FolderOutlined style={{fontSize: '14px', fontWeight: 'bold'}}/>
+                                        <NavTitleText>领域</NavTitleText>
                                     </NavTitleContainer>
-                                    <NavTitleDescription>Manage related groups of data assets</NavTitleDescription>
+                                    <NavTitleDescription>管理相关组的数据资产</NavTitleDescription>
                                 </Link>
                             </MenuItem>
                         )}
@@ -136,16 +136,16 @@ export function HeaderLinks(props: Props) {
             >
                 <LinkWrapper>
                     <Button type="text">
-                        <SolutionOutlined /> Govern <DownOutlined style={{ fontSize: '6px' }} />
+                        <SolutionOutlined/> 治理 <DownOutlined style={{fontSize: '6px'}}/>
                     </Button>
                 </LinkWrapper>
             </Dropdown>
             {showSettings && (
-                <LinkWrapper style={{ marginRight: 12 }}>
+                <LinkWrapper style={{marginRight: 12}}>
                     <Link to="/settings">
                         <Button type="text">
-                            <Tooltip title="Manage your DataHub settings">
-                                <SettingOutlined />
+                            <Tooltip title="管理您的DataHub设置">
+                                <SettingOutlined/>
                             </Tooltip>
                         </Button>
                     </Link>

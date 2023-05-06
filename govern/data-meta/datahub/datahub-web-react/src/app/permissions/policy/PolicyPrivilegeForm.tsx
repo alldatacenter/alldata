@@ -1,15 +1,15 @@
-import React, { useMemo } from 'react';
-import { Link } from 'react-router-dom';
-import { Form, Select, Tag, Tooltip, Typography } from 'antd';
+import React, {useMemo} from 'react';
+import {Link} from 'react-router-dom';
+import {Form, Select, Tag, Tooltip, Typography} from 'antd';
 import styled from 'styled-components/macro';
 
-import { useEntityRegistry } from '../../useEntityRegistry';
-import { useAppConfig } from '../../useAppConfig';
+import {useEntityRegistry} from '../../useEntityRegistry';
+import {useAppConfig} from '../../useAppConfig';
 import {
     useGetSearchResultsForMultipleLazyQuery,
     useGetSearchResultsLazyQuery,
 } from '../../../graphql/search.generated';
-import { ResourceFilter, PolicyType, EntityType } from '../../../types.generated';
+import {ResourceFilter, PolicyType, EntityType} from '../../../types.generated';
 import {
     convertLegacyResourceFilter,
     createCriterionValue,
@@ -48,17 +48,17 @@ const PrivilegesForm = styled(Form)`
  * access Policy.
  */
 export default function PolicyPrivilegeForm({
-    policyType,
-    resources: maybeResources,
-    setResources,
-    privileges,
-    setPrivileges,
-}: Props) {
+                                                policyType,
+                                                resources: maybeResources,
+                                                setResources,
+                                                privileges,
+                                                setPrivileges,
+                                            }: Props) {
     const entityRegistry = useEntityRegistry();
 
     // Configuration used for displaying options
     const {
-        config: { policiesConfig },
+        config: {policiesConfig},
     } = useAppConfig();
 
     const resources: ResourceFilter = convertLegacyResourceFilter(maybeResources) || EMPTY_POLICY.resources;
@@ -77,7 +77,7 @@ export default function PolicyPrivilegeForm({
         resourceUrnToDisplayName[resourceEntity.value] = getDisplayName(resourceEntity.entity);
     });
     // Search for resources
-    const [searchResources, { data: resourcesSearchData }] = useGetSearchResultsForMultipleLazyQuery();
+    const [searchResources, {data: resourcesSearchData}] = useGetSearchResultsForMultipleLazyQuery();
     const resourceSearchResults = resourcesSearchData?.searchAcrossEntities?.searchResults;
 
     // Same for domains
@@ -87,7 +87,7 @@ export default function PolicyPrivilegeForm({
         domainUrnToDisplayName[domainEntity.value] = getDisplayName(domainEntity.entity);
     });
     // Search for domains
-    const [searchDomains, { data: domainsSearchData }] = useGetSearchResultsLazyQuery();
+    const [searchDomains, {data: domainsSearchData}] = useGetSearchResultsLazyQuery();
     const domainSearchResults = domainsSearchData?.search?.searchResults;
 
     // Whether to show the resource filter inputs including "resource type", "resource", and "domain"
@@ -328,7 +328,7 @@ export default function PolicyPrivilegeForm({
                                 <Tooltip title={tagProps.value.toString()}>
                                     {displayStringWithMaxLength(
                                         resourceUrnToDisplayName[tagProps.value.toString()] ||
-                                            tagProps.value.toString(),
+                                        tagProps.value.toString(),
                                         75,
                                     )}
                                 </Tooltip>
@@ -344,7 +344,8 @@ export default function PolicyPrivilegeForm({
             {showResourceFilterInput && (
                 <Form.Item label={<Typography.Text strong>Domain</Typography.Text>}>
                     <Typography.Paragraph>
-                        Search for domains the policy should apply to. If <b>none</b> is selected, policy is applied to{' '}
+                        Search for domains the policy should apply to. If <b>none</b> is selected, policy is applied
+                        to{' '}
                         <b>all</b> resources in all domains.
                     </Typography.Paragraph>
                     <Select

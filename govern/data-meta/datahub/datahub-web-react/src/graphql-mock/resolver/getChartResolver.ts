@@ -1,5 +1,5 @@
-import { Chart } from '../../types.generated';
-import { findChartByURN } from '../fixtures/searchResult/chartSearchResult';
+import {Chart} from '../../types.generated';
+import {findChartByURN} from '../fixtures/searchResult/chartSearchResult';
 
 type GetChart = {
     data: {
@@ -8,7 +8,7 @@ type GetChart = {
 };
 
 export const getChartResolver = {
-    getChart({ variables: { urn } }): GetChart {
+    getChart({variables: {urn}}): GetChart {
         const chart = findChartByURN(urn) as Chart;
         return {
             data: {

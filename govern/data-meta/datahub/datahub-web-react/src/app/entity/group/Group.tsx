@@ -1,10 +1,10 @@
-import { TeamOutlined } from '@ant-design/icons';
+import {TeamOutlined} from '@ant-design/icons';
 import * as React from 'react';
-import { CorpGroup, EntityType, SearchResult } from '../../../types.generated';
-import { Entity, IconStyleType, PreviewType } from '../Entity';
-import { Preview } from './preview/Preview';
+import {CorpGroup, EntityType, SearchResult} from '../../../types.generated';
+import {Entity, IconStyleType, PreviewType} from '../Entity';
+import {Preview} from './preview/Preview';
 import GroupProfile from './GroupProfile';
-import { getDataForEntityType } from '../shared/containers/profile/utils';
+import {getDataForEntityType} from '../shared/containers/profile/utils';
 
 /**
  * Definition of the DataHub CorpGroup entity.
@@ -15,11 +15,11 @@ export class GroupEntity implements Entity<CorpGroup> {
     // TODO: update icons for UserGroup
     icon = (fontSize: number, styleType: IconStyleType, color?: string) => {
         if (styleType === IconStyleType.TAB_VIEW) {
-            return <TeamOutlined style={{ fontSize, color }} />;
+            return <TeamOutlined style={{fontSize, color}}/>;
         }
 
         if (styleType === IconStyleType.HIGHLIGHT) {
-            return <TeamOutlined style={{ fontSize, color }} />;
+            return <TeamOutlined style={{fontSize, color}}/>;
         }
 
         return (
@@ -46,7 +46,7 @@ export class GroupEntity implements Entity<CorpGroup> {
 
     getCollectionName: () => string = () => 'Groups';
 
-    renderProfile: (urn: string) => JSX.Element = (_) => <GroupProfile />;
+    renderProfile: (urn: string) => JSX.Element = (_) => <GroupProfile/>;
 
     renderPreview = (_: PreviewType, data: CorpGroup) => (
         <Preview
@@ -66,7 +66,7 @@ export class GroupEntity implements Entity<CorpGroup> {
     };
 
     getGenericEntityProperties = (group: CorpGroup) => {
-        return getDataForEntityType({ data: group, entityType: this.type, getOverrideProperties: (data) => data });
+        return getDataForEntityType({data: group, entityType: this.type, getOverrideProperties: (data) => data});
     };
 
     supportedCapabilities = () => {

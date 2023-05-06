@@ -1,6 +1,6 @@
 /* eslint-disable class-methods-use-this */
-import React, { ComponentType } from 'react';
-import { Plugin } from '@remirror/pm/state';
+import React, {ComponentType} from 'react';
+import {Plugin} from '@remirror/pm/state';
 import {
     ApplySchemaAttributes,
     CommandFunction,
@@ -15,13 +15,13 @@ import {
     omitExtraAttributes,
     ProsemirrorAttributes,
 } from '@remirror/core';
-import { NodeViewComponentProps } from '@remirror/react';
+import {NodeViewComponentProps} from '@remirror/react';
 import autocomplete, {
     ActiveAutocompleteState,
     AutocompleteAction,
     pluginKey as acPluginKey,
 } from 'prosemirror-autocomplete';
-import { MentionsNodeView } from './MentionsNodeView';
+import {MentionsNodeView} from './MentionsNodeView';
 
 export const DATAHUB_MENTION_ATTRS = {
     urn: 'data-datahub-mention-urn',
@@ -59,7 +59,7 @@ class DataHubMentionsExtension extends NodeExtension<DataHubMentionsOptions> {
      */
     createExternalPlugins(): Plugin[] {
         return autocomplete({
-            triggers: [{ name: 'mention', trigger: '@', cancelOnFirstSpace: false }],
+            triggers: [{name: 'mention', trigger: '@', cancelOnFirstSpace: false}],
             reducer: (action) => this.options.handleEvents?.(action) || false,
         });
     }
@@ -88,13 +88,13 @@ class DataHubMentionsExtension extends NodeExtension<DataHubMentionsOptions> {
                         const urn = node.getAttribute(DATAHUB_MENTION_ATTRS.urn);
                         const name = node.textContent?.replace(/^@/, '') || urn;
 
-                        return { ...extra.parse(node), urn, name };
+                        return {...extra.parse(node), urn, name};
                     },
                 },
                 ...(override.parseDOM ?? []),
             ],
             toDOM: (node) => {
-                const { name, urn } = omitExtraAttributes(node.attrs, extra) as DataHubAtomNodeAttributes;
+                const {name, urn} = omitExtraAttributes(node.attrs, extra) as DataHubAtomNodeAttributes;
 
                 const attrs = {
                     ...extra.dom(node),
@@ -121,9 +121,9 @@ class DataHubMentionsExtension extends NodeExtension<DataHubMentionsOptions> {
              * @param range - the range of the selection that would be replaced.
              */
             createDataHubMention: (attrs: DataHubAtomNodeAttributes, range?: FromToProps): CommandFunction => {
-                return ({ state, tr, dispatch }) => {
+                return ({state, tr, dispatch}) => {
                     const acState: ActiveAutocompleteState = acPluginKey.getState(state);
-                    const { from = 0, to = 0 } = range ?? acState.range ?? {};
+                    const {from = 0, to = 0} = range ?? acState.range ?? {};
                     tr.replaceRangeWith(from, to, this.type.create(attrs));
                     dispatch?.(tr);
 
@@ -134,5 +134,5 @@ class DataHubMentionsExtension extends NodeExtension<DataHubMentionsOptions> {
     }
 }
 
-const decoratedExt = extension<DataHubMentionsOptions>({ handlerKeys: ['handleEvents'] })(DataHubMentionsExtension);
-export { decoratedExt as DataHubMentionsExtension };
+const decoratedExt = extension<DataHubMentionsOptions>({handlerKeys: ['handleEvents']})(DataHubMentionsExtension);
+export {decoratedExt as DataHubMentionsExtension};

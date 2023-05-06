@@ -1,11 +1,11 @@
 import React from 'react';
-import { EntityType, MlModel } from '../../../../types.generated';
+import {EntityType, MlModel} from '../../../../types.generated';
 import DefaultPreviewCard from '../../../preview/DefaultPreviewCard';
-import { capitalizeFirstLetterOnly } from '../../../shared/textUtil';
-import { useEntityRegistry } from '../../../useEntityRegistry';
-import { IconStyleType } from '../../Entity';
+import {capitalizeFirstLetterOnly} from '../../../shared/textUtil';
+import {useEntityRegistry} from '../../../useEntityRegistry';
+import {IconStyleType} from '../../Entity';
 
-export const Preview = ({ model }: { model: MlModel }): JSX.Element => {
+export const Preview = ({model}: { model: MlModel }): JSX.Element => {
     const entityRegistry = useEntityRegistry();
 
     return (

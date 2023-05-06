@@ -1,5 +1,5 @@
-import { UnionType } from '../utils/constants';
-import { mergeFilterSets } from '../utils/filterUtils';
+import {UnionType} from '../utils/constants';
+import {mergeFilterSets} from '../utils/filterUtils';
 
 describe('filterUtils', () => {
     describe('mergeFilterSets', () => {
@@ -201,7 +201,7 @@ describe('filterUtils', () => {
                 mergeFilterSets(
                     {
                         unionType: UnionType.OR,
-                        filters: [{ field: 'field', values: [] }],
+                        filters: [{field: 'field', values: []}],
                     },
                     null!,
                 ),
@@ -209,7 +209,7 @@ describe('filterUtils', () => {
             expect(
                 mergeFilterSets(null!, {
                     unionType: UnionType.OR,
-                    filters: [{ field: 'field', values: [] }],
+                    filters: [{field: 'field', values: []}],
                 }),
             ).toEqual([]);
             expect(mergeFilterSets(null!, null!)).toEqual([]);

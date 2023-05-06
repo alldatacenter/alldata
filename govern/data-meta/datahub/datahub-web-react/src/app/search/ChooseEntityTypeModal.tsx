@@ -1,6 +1,6 @@
-import { Button, Modal, Select } from 'antd';
-import React, { useState } from 'react';
-import { useEntityRegistry } from '../useEntityRegistry';
+import {Button, Modal, Select} from 'antd';
+import React, {useState} from 'react';
+import {useEntityRegistry} from '../useEntityRegistry';
 
 type Props = {
     onCloseModal: () => void;
@@ -9,9 +9,9 @@ type Props = {
     defaultValues?: string[];
 };
 
-const { Option } = Select;
+const {Option} = Select;
 
-export const ChooseEntityTypeModal = ({ defaultValues, onCloseModal, onOk, title }: Props) => {
+export const ChooseEntityTypeModal = ({defaultValues, onCloseModal, onOk, title}: Props) => {
     const entityRegistry = useEntityRegistry();
     const entityTypes = entityRegistry.getSearchEntityTypes();
 
@@ -44,7 +44,7 @@ export const ChooseEntityTypeModal = ({ defaultValues, onCloseModal, onOk, title
         >
             <Select
                 mode="multiple"
-                style={{ width: '100%' }}
+                style={{width: '100%'}}
                 placeholder="Datasets, Dashboards, Charts, and more..."
                 onSelect={(newValue) => addEntityType(newValue)}
                 onDeselect={(newValue) => removeEntityType(newValue)}

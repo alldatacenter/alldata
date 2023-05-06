@@ -1,4 +1,4 @@
-import { SourceConfig } from '../types';
+import {SourceConfig} from '../types';
 import glueLogo from '../../../../../images/gluelogo.png';
 
 const placeholderRecipe = `\

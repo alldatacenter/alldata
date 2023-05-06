@@ -1,15 +1,15 @@
-import { Button, Form, Switch, Typography } from 'antd';
-import React, { useMemo, useState } from 'react';
-import { Cron } from 'react-js-cron';
+import {Button, Form, Switch, Typography} from 'antd';
+import React, {useMemo, useState} from 'react';
+import {Cron} from 'react-js-cron';
 import 'react-js-cron/dist/styles.css';
 import styled from 'styled-components';
 import cronstrue from 'cronstrue';
-import { CheckCircleOutlined, WarningOutlined } from '@ant-design/icons';
-import { SourceBuilderState, StepProps } from './types';
-import { TimezoneSelect } from './TimezoneSelect';
-import { ANTD_GRAY, REDESIGN_COLORS } from '../../../entity/shared/constants';
-import { lowerFirstLetter } from '../../../shared/textUtil';
-import { IngestionSourceBuilderStep } from './steps';
+import {CheckCircleOutlined, WarningOutlined} from '@ant-design/icons';
+import {SourceBuilderState, StepProps} from './types';
+import {TimezoneSelect} from './TimezoneSelect';
+import {ANTD_GRAY, REDESIGN_COLORS} from '../../../entity/shared/constants';
+import {lowerFirstLetter} from '../../../shared/textUtil';
+import {IngestionSourceBuilderStep} from './steps';
 
 const Section = styled.div`
     display: flex;
@@ -64,8 +64,8 @@ const ItemDescriptionText = styled(Typography.Paragraph)``;
 
 const DAILY_MIDNIGHT_CRON_INTERVAL = '0 0 * * *';
 
-export const CreateScheduleStep = ({ state, updateState, goTo, prev }: StepProps) => {
-    const { schedule } = state;
+export const CreateScheduleStep = ({state, updateState, goTo, prev}: StepProps) => {
+    const {schedule} = state;
     const interval = schedule?.interval?.replaceAll(', ', ' ') || DAILY_MIDNIGHT_CRON_INTERVAL;
     const timezone = schedule?.timezone || Intl.DateTimeFormat().resolvedOptions().timeZone;
 
@@ -128,10 +128,10 @@ export const CreateScheduleStep = ({ state, updateState, goTo, prev }: StepProps
                         </Typography.Text>
                     }
                 >
-                    <Switch checked={scheduleEnabled} onChange={(v) => setScheduleEnabled(v)} />
+                    <Switch checked={scheduleEnabled} onChange={(v) => setScheduleEnabled(v)}/>
                     {!scheduleEnabled && (
                         <WarningContainer>
-                            <StyledWarningOutlined />
+                            <StyledWarningOutlined/>
                             Running ingestion without a schedule may result in out-of-date information.
                         </WarningContainer>
                     )}
@@ -147,13 +147,13 @@ export const CreateScheduleStep = ({ state, updateState, goTo, prev }: StepProps
                     <CronText>
                         {cronAsText.error && <>Invalid cron schedule. Cron must be of UNIX form:</>}
                         {!cronAsText.text && (
-                            <Typography.Paragraph keyboard style={{ marginTop: 4 }}>
+                            <Typography.Paragraph keyboard style={{marginTop: 4}}>
                                 minute, hour, day, month, day of week
                             </Typography.Paragraph>
                         )}
                         {cronAsText.text && (
                             <>
-                                <CronSuccessCheck />
+                                <CronSuccessCheck/>
                                 {cronAsText.text}
                             </>
                         )}
@@ -161,7 +161,7 @@ export const CreateScheduleStep = ({ state, updateState, goTo, prev }: StepProps
                 </StyledFormItem>
                 <Form.Item required label={<Typography.Text strong>Timezone</Typography.Text>}>
                     <ItemDescriptionText>Choose a timezone for the schedule.</ItemDescriptionText>
-                    <TimezoneSelect value={scheduleTimezone} onChange={setScheduleTimezone} />
+                    <TimezoneSelect value={scheduleTimezone} onChange={setScheduleTimezone}/>
                 </Form.Item>
             </Form>
             <ControlsContainer>

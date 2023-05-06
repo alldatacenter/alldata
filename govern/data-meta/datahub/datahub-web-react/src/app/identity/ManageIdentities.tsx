@@ -1,9 +1,9 @@
 import React from 'react';
-import { Typography } from 'antd';
+import {Typography} from 'antd';
 import styled from 'styled-components';
-import { RoutedTabs } from '../shared/RoutedTabs';
-import { GroupList } from './group/GroupList';
-import { UserList } from './user/UserList';
+import {RoutedTabs} from '../shared/RoutedTabs';
+import {GroupList} from './group/GroupList';
+import {UserList} from './user/UserList';
 
 const PageContainer = styled.div`
     padding-top: 20px;
@@ -38,6 +38,7 @@ enum TabType {
     Users = 'Users',
     Groups = 'Groups',
 }
+
 const ENABLED_TAB_TYPES = [TabType.Users, TabType.Groups];
 
 export const ManageIdentities = () => {
@@ -50,7 +51,7 @@ export const ManageIdentities = () => {
             {
                 name: TabType.Users,
                 path: TabType.Users.toLocaleLowerCase(),
-                content: <UserList />,
+                content: <UserList/>,
                 display: {
                     enabled: () => true,
                 },
@@ -58,7 +59,7 @@ export const ManageIdentities = () => {
             {
                 name: TabType.Groups,
                 path: TabType.Groups.toLocaleLowerCase(),
-                content: <GroupList />,
+                content: <GroupList/>,
                 display: {
                     enabled: () => true,
                 },
@@ -78,7 +79,7 @@ export const ManageIdentities = () => {
                 </Typography.Paragraph>
             </PageHeaderContainer>
             <Content>
-                <RoutedTabs defaultPath={defaultTabPath} tabs={getTabs()} onTabChange={onTabChange} />
+                <RoutedTabs defaultPath={defaultTabPath} tabs={getTabs()} onTabChange={onTabChange}/>
             </Content>
         </PageContainer>
     );

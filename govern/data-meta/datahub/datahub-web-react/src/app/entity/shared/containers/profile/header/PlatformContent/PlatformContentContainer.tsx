@@ -1,13 +1,13 @@
 import React from 'react';
-import { useEntityRegistry } from '../../../../../../useEntityRegistry';
-import { IconStyleType } from '../../../../../Entity';
-import { useEntityData } from '../../../../EntityContext';
-import { capitalizeFirstLetterOnly } from '../../../../../../shared/textUtil';
-import { getPlatformName } from '../../../../utils';
+import {useEntityRegistry} from '../../../../../../useEntityRegistry';
+import {IconStyleType} from '../../../../../Entity';
+import {useEntityData} from '../../../../EntityContext';
+import {capitalizeFirstLetterOnly} from '../../../../../../shared/textUtil';
+import {getPlatformName} from '../../../../utils';
 import PlatformContentView from './PlatformContentView';
-import { GenericEntityProperties } from '../../../../types';
+import {GenericEntityProperties} from '../../../../types';
 import EntityRegistry from '../../../../../EntityRegistry';
-import { EntityType } from '../../../../../../../types.generated';
+import {EntityType} from '../../../../../../../types.generated';
 import useContentTruncation from '../../../../../../shared/useContentTruncation';
 
 export function getDisplayedEntityType(
@@ -24,7 +24,7 @@ export function getDisplayedEntityType(
 }
 
 function PlatformContentContainer() {
-    const { entityType, entityData } = useEntityData();
+    const {entityType, entityData} = useEntityData();
     const entityRegistry = useEntityRegistry();
     const platformName = getPlatformName(entityData);
     const platformLogoUrl = entityData?.platform?.properties?.logoUrl;
@@ -33,7 +33,7 @@ function PlatformContentContainer() {
     const displayedEntityType = getDisplayedEntityType(entityData, entityRegistry, entityType);
     const instanceId = entityData?.dataPlatformInstance?.instanceId;
 
-    const { contentRef, isContentTruncated } = useContentTruncation(entityData);
+    const {contentRef, isContentTruncated} = useContentTruncation(entityData);
 
     return (
         <PlatformContentView

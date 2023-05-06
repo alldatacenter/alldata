@@ -1,4 +1,4 @@
-import { ListUsersDocument, ListUsersQuery } from '../../../graphql/user.generated';
+import {ListUsersDocument, ListUsersQuery} from '../../../graphql/user.generated';
 
 export const DEFAULT_USER_LIST_PAGE_SIZE = 25;
 
@@ -37,5 +37,5 @@ export const removeUserFromListUsersCache = (urn, client, page, pageSize) => {
 
 export const clearUserListCache = (client) => {
     // Remove any caching of 'listUsers'
-    client.cache.evict({ id: 'ROOT_QUERY', fieldName: 'listUsers' });
+    client.cache.evict({id: 'ROOT_QUERY', fieldName: 'listUsers'});
 };

@@ -1,8 +1,8 @@
-import { Dashboard, SearchResult, SearchResults } from '../../../types.generated';
-import { EntityBrowsePath } from '../../types';
-import { filterEntityByPath } from '../browsePathHelper';
-import { dashboardEntity } from '../entity/dashboardEntity';
-import { generateData } from './dataGenerator';
+import {Dashboard, SearchResult, SearchResults} from '../../../types.generated';
+import {EntityBrowsePath} from '../../types';
+import {filterEntityByPath} from '../browsePathHelper';
+import {dashboardEntity} from '../entity/dashboardEntity';
+import {generateData} from './dataGenerator';
 
 const searchResult = (tool: string) => (): SearchResult => {
     return {
@@ -12,11 +12,11 @@ const searchResult = (tool: string) => (): SearchResult => {
     };
 };
 
-export const dashboardBrowsePaths: EntityBrowsePath[] = [{ name: 'superset', paths: [], count: 3 }];
+export const dashboardBrowsePaths: EntityBrowsePath[] = [{name: 'superset', paths: [], count: 3}];
 
 const generateSearchResults = (): SearchResult[] => {
-    return dashboardBrowsePaths.flatMap(({ name, count = 0 }) => {
-        return generateData<SearchResult>({ generator: searchResult(name), count });
+    return dashboardBrowsePaths.flatMap(({name, count = 0}) => {
+        return generateData<SearchResult>({generator: searchResult(name), count});
     });
 };
 
@@ -31,7 +31,7 @@ export const dashboardSearchResult: SearchResults = {
         {
             field: 'tool',
             displayName: 'tool',
-            aggregations: [{ value: 'superset', count: 1, __typename: 'AggregationMetadata' }],
+            aggregations: [{value: 'superset', count: 1, __typename: 'AggregationMetadata'}],
             __typename: 'FacetMetadata',
         },
         {
@@ -59,5 +59,5 @@ export const findDashboardByURN = (urn: string): Dashboard => {
 };
 
 export const filterDashboardByPath = (path: string[]): Dashboard[] => {
-    return filterEntityByPath({ term: path.slice(-2).join('.'), searchResults }) as Dashboard[];
+    return filterEntityByPath({term: path.slice(-2).join('.'), searchResults}) as Dashboard[];
 };

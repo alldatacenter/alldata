@@ -1,9 +1,9 @@
-import { Tabs, Typography } from 'antd';
-import React, { useState } from 'react';
+import {Tabs, Typography} from 'antd';
+import React, {useState} from 'react';
 import styled from 'styled-components';
-import { IngestionSourceList } from './source/IngestionSourceList';
-import { SecretsList } from './secret/SecretsList';
-import { OnboardingTour } from '../onboarding/OnboardingTour';
+import {IngestionSourceList} from './source/IngestionSourceList';
+import {SecretsList} from './secret/SecretsList';
+import {OnboardingTour} from '../onboarding/OnboardingTour';
 import {
     INGESTION_CREATE_SOURCE_ID,
     INGESTION_REFRESH_SOURCES_ID,
@@ -56,18 +56,18 @@ export const ManageIngestionPage = () => {
 
     return (
         <PageContainer>
-            <OnboardingTour stepIds={[INGESTION_CREATE_SOURCE_ID, INGESTION_REFRESH_SOURCES_ID]} />
+            <OnboardingTour stepIds={[INGESTION_CREATE_SOURCE_ID, INGESTION_REFRESH_SOURCES_ID]}/>
             <PageHeaderContainer>
-                <PageTitle level={3}>Manage Ingestion</PageTitle>
-                <Typography.Paragraph type="secondary">
-                    Create, schedule, and run DataHub ingestion sources.
-                </Typography.Paragraph>
+                <PageTitle level={3}>管理元数据</PageTitle>
+                <Typography.Paragraph type="secondary">创建、调度和运行DataHub获取源。</Typography.Paragraph>
             </PageHeaderContainer>
             <StyledTabs activeKey={selectedTab} size="large" onTabClick={(tab: string) => onClickTab(tab)}>
-                <Tab key={TabType.Sources} tab={TabType.Sources} />
-                <Tab key={TabType.Secrets} tab={TabType.Secrets} />
+                {/* eslint-disable-next-line eqeqeq */}
+                <Tab key={TabType.Sources} tab={TabType.Sources == 'Sources' ? '元数据' : 'Sources'}/>
+                {/* eslint-disable-next-line eqeqeq */}
+                <Tab key={TabType.Secrets} tab={TabType.Secrets == 'Secrets' ? '秘密' : 'Secrets'}/>
             </StyledTabs>
-            <ListContainer>{selectedTab === TabType.Sources ? <IngestionSourceList /> : <SecretsList />}</ListContainer>
+            <ListContainer>{selectedTab === TabType.Sources ? <IngestionSourceList/> : <SecretsList/>}</ListContainer>
         </PageContainer>
     );
 };

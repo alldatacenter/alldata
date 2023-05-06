@@ -1,11 +1,11 @@
-import { PlusOutlined } from '@ant-design/icons';
-import { Button, Typography } from 'antd';
-import React, { useState } from 'react';
+import {PlusOutlined} from '@ant-design/icons';
+import {Button, Typography} from 'antd';
+import React, {useState} from 'react';
 import styled from 'styled-components';
-import { EntityType, Ownership } from '../../../types.generated';
-import { ExpandedOwner } from '../shared/components/styled/ExpandedOwner/ExpandedOwner';
-import { EditOwnersModal } from '../shared/containers/profile/sidebar/Ownership/EditOwnersModal';
-import { DisplayCount, GroupSectionTitle, GroupSectionHeader } from '../shared/SidebarStyledComponents';
+import {EntityType, Ownership} from '../../../types.generated';
+import {ExpandedOwner} from '../shared/components/styled/ExpandedOwner/ExpandedOwner';
+import {EditOwnersModal} from '../shared/containers/profile/sidebar/Ownership/EditOwnersModal';
+import {DisplayCount, GroupSectionTitle, GroupSectionHeader} from '../shared/SidebarStyledComponents';
 
 const TITLE = 'Owners';
 
@@ -19,7 +19,7 @@ type Props = {
     urn: string;
 };
 
-export default function GroupOwnerSideBarSection({ urn, ownership, refetch }: Props) {
+export default function GroupOwnerSideBarSection({urn, ownership, refetch}: Props) {
     const [showAddModal, setShowAddModal] = useState(false);
     const ownersEmpty = !ownership?.owners?.length;
 
@@ -31,21 +31,21 @@ export default function GroupOwnerSideBarSection({ urn, ownership, refetch }: Pr
             </GroupSectionHeader>
             <SectionWrapper>
                 {ownership &&
-                    ownership?.owners?.map((owner) => (
-                        <ExpandedOwner entityUrn={urn} owner={owner} refetch={refetch} />
-                    ))}
+                ownership?.owners?.map((owner) => (
+                    <ExpandedOwner entityUrn={urn} owner={owner} refetch={refetch}/>
+                ))}
                 {ownersEmpty && (
                     <Typography.Paragraph type="secondary">No group owners added yet.</Typography.Paragraph>
                 )}
                 {ownersEmpty && (
                     <AddOwnerButton onClick={() => setShowAddModal(true)}>
-                        <PlusOutlined />
+                        <PlusOutlined/>
                         Add Owners
                     </AddOwnerButton>
                 )}
                 {!ownersEmpty && (
-                    <AddOwnerButton type="text" style={{ padding: 0 }} onClick={() => setShowAddModal(true)}>
-                        <PlusOutlined />
+                    <AddOwnerButton type="text" style={{padding: 0}} onClick={() => setShowAddModal(true)}>
+                        <PlusOutlined/>
                         Add Owners
                     </AddOwnerButton>
                 )}

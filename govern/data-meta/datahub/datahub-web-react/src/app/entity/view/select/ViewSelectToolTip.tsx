@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Tooltip } from 'antd';
+import {Tooltip} from 'antd';
 
 const HeaderText = styled.div`
     margin-bottom: 8px;
@@ -11,10 +11,10 @@ type Props = {
     visible?: boolean;
 };
 
-export const ViewSelectToolTip = ({ children, visible = true }: Props) => {
+export const ViewSelectToolTip = ({children, visible = true}: Props) => {
     return (
         <Tooltip
-            overlayStyle={{ display: !visible ? 'none' : undefined }}
+            overlayStyle={{display: !visible ? 'none' : undefined}}
             placement="right"
             title={
                 <>

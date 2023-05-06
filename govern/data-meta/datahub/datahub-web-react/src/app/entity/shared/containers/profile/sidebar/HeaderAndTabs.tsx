@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, {useState, useCallback} from 'react';
 import styled from 'styled-components';
 
 let isResizing = false;
@@ -14,7 +14,7 @@ const ResizableDiv = styled.div<{ width }>`
     justify-content: space-between;
 `;
 
-const HeaderAndTabs = ({ children }: Props) => {
+const HeaderAndTabs = ({children}: Props) => {
     const initialWidth = 70 / (100 / document.documentElement.clientWidth);
 
     const [sidebarWidth, setSidebarWidth] = useState(initialWidth);
@@ -58,7 +58,7 @@ const HeaderAndTabs = ({ children }: Props) => {
         <ResizableDiv width={sidebarWidth}>
             {children}
             {/* eslint-disable jsx-a11y/no-static-element-interactions */}
-            <div onMouseDown={handleMousedown} style={{ backgroundColor: 'black', width: '5px', height: '100px' }}>
+            <div onMouseDown={handleMousedown} style={{backgroundColor: 'black', width: '5px', height: '100px'}}>
                 header
             </div>
         </ResizableDiv>

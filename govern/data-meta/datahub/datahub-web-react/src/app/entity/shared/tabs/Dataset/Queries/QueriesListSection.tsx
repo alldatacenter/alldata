@@ -1,12 +1,12 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Pagination, Tooltip, Typography } from 'antd';
-import { InfoCircleOutlined } from '@ant-design/icons';
+import React, {useEffect, useRef, useState} from 'react';
+import {Pagination, Tooltip, Typography} from 'antd';
+import {InfoCircleOutlined} from '@ant-design/icons';
 import styled from 'styled-components';
 import QueriesList from './QueriesList';
-import { Query } from './types';
-import { DEFAULT_PAGE_SIZE } from './utils/constants';
-import { getQueriesForPage } from './utils/getCurrentPage';
-import { ANTD_GRAY } from '../../../constants';
+import {Query} from './types';
+import {DEFAULT_PAGE_SIZE} from './utils/constants';
+import {getQueriesForPage} from './utils/getCurrentPage';
+import {ANTD_GRAY} from '../../../constants';
 
 const QueriesTitleSection = styled.div`
     display: flex;
@@ -48,17 +48,17 @@ type Props = {
 };
 
 export default function QueriesListSection({
-    title,
-    tooltip,
-    queries,
-    initialPage = 1,
-    initialPageSize = DEFAULT_PAGE_SIZE,
-    showDetails,
-    showEdit,
-    showDelete,
-    onDeleted,
-    onEdited,
-}: Props) {
+                                               title,
+                                               tooltip,
+                                               queries,
+                                               initialPage = 1,
+                                               initialPageSize = DEFAULT_PAGE_SIZE,
+                                               showDetails,
+                                               showEdit,
+                                               showDelete,
+                                               onDeleted,
+                                               onEdited,
+                                           }: Props) {
     /**
      * Pagination State
      */
@@ -88,7 +88,7 @@ export default function QueriesListSection({
                 </QueriesTitle>
                 {tooltip && (
                     <Tooltip title={tooltip}>
-                        <StyledInfoOutlined />
+                        <StyledInfoOutlined/>
                     </Tooltip>
                 )}
             </QueriesTitleSection>

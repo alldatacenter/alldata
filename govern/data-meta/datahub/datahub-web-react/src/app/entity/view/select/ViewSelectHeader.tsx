@@ -1,7 +1,7 @@
-import React, { useRef } from 'react';
+import React, {useRef} from 'react';
 import styled from 'styled-components';
-import { Button, Typography } from 'antd';
-import { PlusOutlined } from '@ant-design/icons';
+import {Button, Typography} from 'antd';
+import {PlusOutlined} from '@ant-design/icons';
 
 const ButtonContainer = styled.div`
     display: flex;
@@ -19,7 +19,7 @@ type Props = {
     onClickClear: () => void;
 };
 
-export const ViewSelectHeader = ({ onClickCreateView, onClickClear }: Props) => {
+export const ViewSelectHeader = ({onClickCreateView, onClickClear}: Props) => {
     const clearButtonRef = useRef(null);
 
     const onHandleClickClear = () => {
@@ -30,7 +30,7 @@ export const ViewSelectHeader = ({ onClickCreateView, onClickClear }: Props) => 
     return (
         <ButtonContainer>
             <NoMarginButton data-testid="view-select-create" type="text" onClick={onClickCreateView}>
-                <PlusOutlined />
+                <PlusOutlined/>
                 <Typography.Text strong> Create View</Typography.Text>
             </NoMarginButton>
             <NoMarginButton

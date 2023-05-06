@@ -1,8 +1,8 @@
-import { cloneDeep } from 'lodash';
-import { EntityType } from '../../../../../../types.generated';
-import { useEntityData } from '../../../EntityContext';
-import { useGetDatasetSchemaQuery } from '../../../../../../graphql/dataset.generated';
-import { combineEntityDataWithSiblings, useIsSeparateSiblingsMode } from '../../../siblingUtils';
+import {cloneDeep} from 'lodash';
+import {EntityType} from '../../../../../../types.generated';
+import {useEntityData} from '../../../EntityContext';
+import {useGetDatasetSchemaQuery} from '../../../../../../graphql/dataset.generated';
+import {combineEntityDataWithSiblings, useIsSeparateSiblingsMode} from '../../../siblingUtils';
 
 // Whether to dynamically load the schema from the backend.
 const shouldLoadSchema = (entityType, entityData) => {
@@ -10,7 +10,7 @@ const shouldLoadSchema = (entityType, entityData) => {
 };
 
 export const useGetEntityWithSchema = () => {
-    const { urn, entityData, entityType } = useEntityData();
+    const {urn, entityData, entityType} = useEntityData();
     // Load the dataset schema lazily.
     const {
         data: rawData,

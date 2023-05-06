@@ -1,5 +1,5 @@
-import { FilterOutlined } from '@ant-design/icons';
-import { Button, Tooltip } from 'antd';
+import {FilterOutlined} from '@ant-design/icons';
+import {Button, Tooltip} from 'antd';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -31,7 +31,7 @@ type Props = {
     onClick: () => void;
 };
 
-export const SaveAsViewButton = ({ onClick }: Props) => {
+export const SaveAsViewButton = ({onClick}: Props) => {
     return (
         <Tooltip
             placement="right"
@@ -43,7 +43,7 @@ export const SaveAsViewButton = ({ onClick }: Props) => {
             }
         >
             <StyledButton type="link" onClick={onClick}>
-                <StyledFilterOutlined />
+                <StyledFilterOutlined/>
                 <SaveAsViewText>Save as View</SaveAsViewText>
             </StyledButton>
         </Tooltip>

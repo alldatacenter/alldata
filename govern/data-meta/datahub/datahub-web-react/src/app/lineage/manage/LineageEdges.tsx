@@ -1,10 +1,10 @@
-import { Empty } from 'antd';
+import {Empty} from 'antd';
 import React from 'react';
 import styled from 'styled-components/macro';
-import { CorpUser, Entity, Maybe } from '../../../types.generated';
-import { ANTD_GRAY } from '../../entity/shared/constants';
-import { useEntityRegistry } from '../../useEntityRegistry';
-import { Direction, FetchedEntity } from '../types';
+import {CorpUser, Entity, Maybe} from '../../../types.generated';
+import {ANTD_GRAY} from '../../entity/shared/constants';
+import {useEntityRegistry} from '../../useEntityRegistry';
+import {Direction, FetchedEntity} from '../types';
 import EntityEdge from './EntityEdge';
 
 const LineageEdgesWrapper = styled.div`
@@ -31,13 +31,13 @@ interface Props {
 }
 
 export default function LineageEdges({
-    entity,
-    lineageDirection,
-    entitiesToAdd,
-    entitiesToRemove,
-    setEntitiesToAdd,
-    setEntitiesToRemove,
-}: Props) {
+                                         entity,
+                                         lineageDirection,
+                                         entitiesToAdd,
+                                         entitiesToRemove,
+                                         setEntitiesToAdd,
+                                         setEntitiesToRemove,
+                                     }: Props) {
     const entityRegistry = useEntityRegistry();
 
     let fetchedEntity: FetchedEntity | null | undefined = null;
@@ -68,23 +68,23 @@ export default function LineageEdges({
         <LineageEdgesWrapper>
             {!filteredRelationships?.length && !entitiesToAdd.length && (
                 <EmptyWrapper data-testid="empty-lineage">
-                    <Empty description={`No ${lineageDirection.toLocaleLowerCase()} entities`} />
+                    <Empty description={`No ${lineageDirection.toLocaleLowerCase()} entities`}/>
                 </EmptyWrapper>
             )}
             {filteredRelationships &&
-                filteredRelationships?.map((relationship) =>
-                    relationship.entity ? (
-                        <EntityEdge
-                            key={relationship.entity.urn}
-                            entity={relationship.entity}
-                            removeEntity={removeEntity}
-                            createdActor={relationship.createdActor as CorpUser}
-                            createdOn={relationship.createdOn}
-                        />
-                    ) : null,
-                )}
+            filteredRelationships?.map((relationship) =>
+                relationship.entity ? (
+                    <EntityEdge
+                        key={relationship.entity.urn}
+                        entity={relationship.entity}
+                        removeEntity={removeEntity}
+                        createdActor={relationship.createdActor as CorpUser}
+                        createdOn={relationship.createdOn}
+                    />
+                ) : null,
+            )}
             {entitiesToAdd.map((addedEntity) => (
-                <EntityEdge key={addedEntity.urn} entity={addedEntity} removeEntity={removeEntity} />
+                <EntityEdge key={addedEntity.urn} entity={addedEntity} removeEntity={removeEntity}/>
             ))}
         </LineageEdgesWrapper>
     );

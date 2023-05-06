@@ -1,12 +1,12 @@
-import { Dataset, InstitutionalMemory, InstitutionalMemoryMetadata } from '../../types.generated';
-import { findDatasetByURN } from '../fixtures/searchResult/datasetSearchResult';
+import {Dataset, InstitutionalMemory, InstitutionalMemoryMetadata} from '../../types.generated';
+import {findDatasetByURN} from '../fixtures/searchResult/datasetSearchResult';
 
 type GetDataset = {
     data: { dataset: Dataset };
 };
 
 export const getDatasetResolver = {
-    getDataset({ variables: { urn } }): GetDataset {
+    getDataset({variables: {urn}}): GetDataset {
         const dataset = findDatasetByURN(urn);
 
         if (!dataset.institutionalMemory) {

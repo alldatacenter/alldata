@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { message, Button, Input, Modal, Typography, Form } from 'antd';
-import { useUpdateCorpGroupPropertiesMutation } from '../../../graphql/group.generated';
-import { useEnterKeyListener } from '../../shared/useEnterKeyListener';
+import React, {useEffect, useState} from 'react';
+import {message, Button, Input, Modal, Typography, Form} from 'antd';
+import {useUpdateCorpGroupPropertiesMutation} from '../../../graphql/group.generated';
+import {useEnterKeyListener} from '../../shared/useEnterKeyListener';
 
 type PropsData = {
     email: string | undefined;
@@ -18,7 +18,7 @@ type Props = {
 /** Regex Validations */
 export const USER_NAME_REGEX = new RegExp('^[a-zA-Z ]*$');
 
-export default function GroupEditModal({ visible, onClose, onSave, editModalData }: Props) {
+export default function GroupEditModal({visible, onClose, onSave, editModalData}: Props) {
     const [updateCorpGroupPropertiesMutation] = useUpdateCorpGroupPropertiesMutation();
     const [form] = Form.useForm();
 
@@ -30,7 +30,7 @@ export default function GroupEditModal({ visible, onClose, onSave, editModalData
     });
 
     useEffect(() => {
-        setData({ ...editModalData });
+        setData({...editModalData});
     }, [editModalData]);
 
     // save changes function
@@ -59,7 +59,7 @@ export default function GroupEditModal({ visible, onClose, onSave, editModalData
             })
             .catch((e) => {
                 message.destroy();
-                message.error({ content: `Failed to Save changes!: \n ${e.message || ''}`, duration: 3 });
+                message.error({content: `Failed to Save changes!: \n ${e.message || ''}`, duration: 3});
             });
         onClose();
     };
@@ -87,7 +87,7 @@ export default function GroupEditModal({ visible, onClose, onSave, editModalData
         >
             <Form
                 form={form}
-                initialValues={{ ...editModalData }}
+                initialValues={{...editModalData}}
                 autoComplete="off"
                 layout="vertical"
                 onFieldsChange={() =>
@@ -102,27 +102,27 @@ export default function GroupEditModal({ visible, onClose, onSave, editModalData
                             type: 'email',
                             message: 'Please enter valid email',
                         },
-                        { whitespace: true },
-                        { min: 2, max: 50 },
+                        {whitespace: true},
+                        {min: 2, max: 50},
                     ]}
                     hasFeedback
                 >
                     <Input
                         placeholder="engineering@example.com"
                         value={data.email}
-                        onChange={(event) => setData({ ...data, email: event.target.value })}
+                        onChange={(event) => setData({...data, email: event.target.value})}
                     />
                 </Form.Item>
                 <Form.Item
                     name="slack"
                     label={<Typography.Text strong>Slack Channel</Typography.Text>}
-                    rules={[{ whitespace: true }, { min: 2, max: 50 }]}
+                    rules={[{whitespace: true}, {min: 2, max: 50}]}
                     hasFeedback
                 >
                     <Input
                         placeholder="#engineering"
                         value={data.slack}
-                        onChange={(event) => setData({ ...data, slack: event.target.value })}
+                        onChange={(event) => setData({...data, slack: event.target.value})}
                     />
                 </Form.Item>
             </Form>

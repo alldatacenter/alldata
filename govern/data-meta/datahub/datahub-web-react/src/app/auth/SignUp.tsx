@@ -1,17 +1,17 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import { Input, Button, Form, message, Image, Select } from 'antd';
-import { UserOutlined, LockOutlined } from '@ant-design/icons';
-import { useReactiveVar } from '@apollo/client';
-import styled, { useTheme } from 'styled-components/macro';
-import { useHistory } from 'react-router-dom';
+import React, {useCallback, useEffect, useState} from 'react';
+import {Input, Button, Form, message, Image, Select} from 'antd';
+import {UserOutlined, LockOutlined} from '@ant-design/icons';
+import {useReactiveVar} from '@apollo/client';
+import styled, {useTheme} from 'styled-components/macro';
+import {useHistory} from 'react-router-dom';
 import styles from './login.module.css';
-import { Message } from '../shared/Message';
-import { isLoggedInVar } from './checkAuthStatus';
-import analytics, { EventType } from '../analytics';
-import { useAppConfig } from '../useAppConfig';
-import { PageRoutes } from '../../conf/Global';
+import {Message} from '../shared/Message';
+import {isLoggedInVar} from './checkAuthStatus';
+import analytics, {EventType} from '../analytics';
+import {useAppConfig} from '../useAppConfig';
+import {PageRoutes} from '../../conf/Global';
 import useGetInviteTokenFromUrlParams from './useGetInviteTokenFromUrlParams';
-import { useAcceptRoleMutation } from '../../graphql/mutations.generated';
+import {useAcceptRoleMutation} from '../../graphql/mutations.generated';
 
 type FormValues = {
     fullName: string;
@@ -70,7 +70,7 @@ export const SignUp: React.VFC<SignUpProps> = () => {
     const themeConfig = useTheme();
     const [loading, setLoading] = useState(false);
 
-    const { refreshContext } = useAppConfig();
+    const {refreshContext} = useAppConfig();
 
     const [acceptRoleMutation] = useAcceptRoleMutation();
     const acceptRole = () => {
@@ -81,7 +81,7 @@ export const SignUp: React.VFC<SignUpProps> = () => {
                 },
             },
         })
-            .then(({ errors }) => {
+            .then(({errors}) => {
                 if (!errors) {
                     message.success({
                         content: `Accepted invite!`,
@@ -103,7 +103,7 @@ export const SignUp: React.VFC<SignUpProps> = () => {
             setLoading(true);
             const requestOptions = {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
                     fullName: values.fullName,
                     email: values.email,
@@ -121,7 +121,7 @@ export const SignUp: React.VFC<SignUpProps> = () => {
                     }
                     isLoggedInVar(true);
                     refreshContext();
-                    analytics.event({ type: EventType.SignUpEvent, title: values.title });
+                    analytics.event({type: EventType.SignUpEvent, title: values.title});
                     return Promise.resolve();
                 })
                 .catch((_) => {
@@ -143,31 +143,31 @@ export const SignUp: React.VFC<SignUpProps> = () => {
         <div className={styles.login_page}>
             <div className={styles.login_box}>
                 <div className={styles.login_logo_box}>
-                    <Image wrapperClassName={styles.logo_image} src={themeConfig.assets?.logoUrl} preview={false} />
+                    <Image wrapperClassName={styles.logo_image} src={themeConfig.assets?.logoUrl} preview={false}/>
                 </div>
                 <div className={styles.login_form_box}>
-                    {loading && <Message type="loading" content="Signing up..." />}
+                    {loading && <Message type="loading" content="Signing up..."/>}
                     <Form onFinish={handleSignUp} layout="vertical">
                         <StyledFormItem
-                            rules={[{ required: true, message: 'Please fill in your email' }]}
+                            rules={[{required: true, message: 'Please fill in your email'}]}
                             name="email"
                             // eslint-disable-next-line jsx-a11y/label-has-associated-control
-                            label={<label style={{ color: 'white' }}>Email</label>}
+                            label={<label style={{color: 'white'}}>Email</label>}
                         >
-                            <FormInput prefix={<UserOutlined />} data-testid="email" />
+                            <FormInput prefix={<UserOutlined/>} data-testid="email"/>
                         </StyledFormItem>
                         <StyledFormItem
-                            rules={[{ required: true, message: 'Please fill in your name' }]}
+                            rules={[{required: true, message: 'Please fill in your name'}]}
                             name="fullName"
                             // eslint-disable-next-line jsx-a11y/label-has-associated-control
-                            label={<label style={{ color: 'white' }}>Full Name</label>}
+                            label={<label style={{color: 'white'}}>Full Name</label>}
                         >
-                            <FormInput prefix={<UserOutlined />} data-testid="name" />
+                            <FormInput prefix={<UserOutlined/>} data-testid="name"/>
                         </StyledFormItem>
                         <StyledFormItem
                             rules={[
-                                { required: true, message: 'Please fill in your password' },
-                                ({ getFieldValue }) => ({
+                                {required: true, message: 'Please fill in your password'},
+                                ({getFieldValue}) => ({
                                     validator() {
                                         if (getFieldValue('password').length < 8) {
                                             return Promise.reject(
@@ -180,14 +180,14 @@ export const SignUp: React.VFC<SignUpProps> = () => {
                             ]}
                             name="password"
                             // eslint-disable-next-line jsx-a11y/label-has-associated-control
-                            label={<label style={{ color: 'white' }}>Password</label>}
+                            label={<label style={{color: 'white'}}>Password</label>}
                         >
-                            <FormInput prefix={<LockOutlined />} type="password" data-testid="password" />
+                            <FormInput prefix={<LockOutlined/>} type="password" data-testid="password"/>
                         </StyledFormItem>
                         <StyledFormItem
                             rules={[
-                                { required: true, message: 'Please confirm your password' },
-                                ({ getFieldValue }) => ({
+                                {required: true, message: 'Please confirm your password'},
+                                ({getFieldValue}) => ({
                                     validator() {
                                         if (getFieldValue('confirmPassword') !== getFieldValue('password')) {
                                             return Promise.reject(new Error('Your passwords do not match'));
@@ -198,15 +198,15 @@ export const SignUp: React.VFC<SignUpProps> = () => {
                             ]}
                             name="confirmPassword"
                             // eslint-disable-next-line jsx-a11y/label-has-associated-control
-                            label={<label style={{ color: 'white' }}>Confirm Password</label>}
+                            label={<label style={{color: 'white'}}>Confirm Password</label>}
                         >
-                            <FormInput prefix={<LockOutlined />} type="password" data-testid="confirmPassword" />
+                            <FormInput prefix={<LockOutlined/>} type="password" data-testid="confirmPassword"/>
                         </StyledFormItem>
                         <StyledFormItem
-                            rules={[{ required: true, message: 'Please fill in your title!' }]}
+                            rules={[{required: true, message: 'Please fill in your title!'}]}
                             name="title"
                             // eslint-disable-next-line jsx-a11y/label-has-associated-control
-                            label={<label style={{ color: 'white' }}>Title</label>}
+                            label={<label style={{color: 'white'}}>Title</label>}
                         >
                             <TitleSelector placeholder="Title">
                                 <Select.Option value="Data Analyst">Data Analyst</Select.Option>
@@ -218,9 +218,9 @@ export const SignUp: React.VFC<SignUpProps> = () => {
                                 <Select.Option value="Other">Other</Select.Option>
                             </TitleSelector>
                         </StyledFormItem>
-                        <StyledFormItem style={{ marginBottom: '0px' }} shouldUpdate>
-                            {({ getFieldsValue }) => {
-                                const { fullName, email, password, confirmPassword, title } = getFieldsValue() as {
+                        <StyledFormItem style={{marginBottom: '0px'}} shouldUpdate>
+                            {({getFieldsValue}) => {
+                                const {fullName, email, password, confirmPassword, title} = getFieldsValue() as {
                                     fullName: string;
                                     email: string;
                                     password: string;

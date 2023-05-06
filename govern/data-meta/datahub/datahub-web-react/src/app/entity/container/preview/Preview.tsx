@@ -1,4 +1,4 @@
-import { Typography } from 'antd';
+import {Typography} from 'antd';
 import React from 'react';
 import styled from 'styled-components';
 import {
@@ -14,35 +14,35 @@ import {
     GlossaryTerms,
 } from '../../../../types.generated';
 import DefaultPreviewCard from '../../../preview/DefaultPreviewCard';
-import { capitalizeFirstLetterOnly } from '../../../shared/textUtil';
-import { useEntityRegistry } from '../../../useEntityRegistry';
-import { IconStyleType } from '../../Entity';
-import { ANTD_GRAY } from '../../shared/constants';
+import {capitalizeFirstLetterOnly} from '../../../shared/textUtil';
+import {useEntityRegistry} from '../../../useEntityRegistry';
+import {IconStyleType} from '../../Entity';
+import {ANTD_GRAY} from '../../shared/constants';
 
 const StatText = styled(Typography.Text)`
     color: ${ANTD_GRAY[8]};
 `;
 
 export const Preview = ({
-    urn,
-    name,
-    platformName,
-    platformLogo,
-    platformInstanceId,
-    description,
-    owners,
-    tags,
-    glossaryTerms,
-    insights,
-    subTypes,
-    logoComponent,
-    container,
-    entityCount,
-    domain,
-    parentContainers,
-    externalUrl,
-    deprecation,
-}: {
+                            urn,
+                            name,
+                            platformName,
+                            platformLogo,
+                            platformInstanceId,
+                            description,
+                            owners,
+                            tags,
+                            glossaryTerms,
+                            insights,
+                            subTypes,
+                            logoComponent,
+                            container,
+                            entityCount,
+                            domain,
+                            parentContainers,
+                            externalUrl,
+                            deprecation,
+                        }: {
     urn: string;
     name: string;
     platformName?: string;

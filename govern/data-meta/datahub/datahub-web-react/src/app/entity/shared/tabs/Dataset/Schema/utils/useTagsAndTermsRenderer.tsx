@@ -1,9 +1,9 @@
 import React from 'react';
-import { EditableSchemaMetadata, EntityType, GlobalTags, SchemaField } from '../../../../../../../types.generated';
+import {EditableSchemaMetadata, EntityType, GlobalTags, SchemaField} from '../../../../../../../types.generated';
 import TagTermGroup from '../../../../../../shared/tags/TagTermGroup';
-import { pathMatchesNewPath } from '../../../../../dataset/profile/schema/utils/utils';
-import { useMutationUrn, useRefetch } from '../../../../EntityContext';
-import { useSchemaRefetch } from '../SchemaContext';
+import {pathMatchesNewPath} from '../../../../../dataset/profile/schema/utils/utils';
+import {useMutationUrn, useRefetch} from '../../../../EntityContext';
+import {useSchemaRefetch} from '../SchemaContext';
 
 export default function useTagsAndTermsRenderer(
     editableSchemaMetadata: EditableSchemaMetadata | null | undefined,
@@ -21,7 +21,7 @@ export default function useTagsAndTermsRenderer(
         schemaRefetch?.();
     };
 
-    const tagAndTermRender = (tags: GlobalTags, record: SchemaField, rowIndex: number | undefined) => {
+    const tagAndTermRender = (tags: GlobalTags, record: SchemaField) => {
         const relevantEditableFieldInfo = editableSchemaMetadata?.editableSchemaFieldInfo.find(
             (candidateEditableFieldInfo) => pathMatchesNewPath(candidateEditableFieldInfo.fieldPath, record.fieldPath),
         );
@@ -34,9 +34,9 @@ export default function useTagsAndTermsRenderer(
                     uneditableGlossaryTerms={options.showTerms ? record.glossaryTerms : null}
                     editableGlossaryTerms={options.showTerms ? relevantEditableFieldInfo?.glossaryTerms : null}
                     canRemove
-                    buttonProps={{ size: 'small' }}
-                    canAddTag={tagHoveredIndex === `${record.fieldPath}-${rowIndex}` && options.showTags}
-                    canAddTerm={tagHoveredIndex === `${record.fieldPath}-${rowIndex}` && options.showTerms}
+                    buttonProps={{size: 'small'}}
+                    canAddTag={tagHoveredIndex === record.fieldPath && options.showTags}
+                    canAddTerm={tagHoveredIndex === record.fieldPath && options.showTerms}
                     onOpenModal={() => setTagHoveredIndex(undefined)}
                     entityUrn={urn}
                     entityType={EntityType.Dataset}

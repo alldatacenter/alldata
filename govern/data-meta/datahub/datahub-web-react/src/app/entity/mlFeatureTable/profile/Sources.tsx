@@ -1,12 +1,12 @@
-import { List, Typography } from 'antd';
-import React, { useMemo } from 'react';
+import {List, Typography} from 'antd';
+import React, {useMemo} from 'react';
 import styled from 'styled-components';
-import { GetMlFeatureTableQuery } from '../../../../graphql/mlFeatureTable.generated';
-import { Dataset, EntityType } from '../../../../types.generated';
-import { useEntityRegistry } from '../../../useEntityRegistry';
-import { PreviewType } from '../../Entity';
-import { useBaseEntity } from '../../shared/EntityContext';
-import { notEmpty } from '../../shared/utils';
+import {GetMlFeatureTableQuery} from '../../../../graphql/mlFeatureTable.generated';
+import {Dataset, EntityType} from '../../../../types.generated';
+import {useEntityRegistry} from '../../../useEntityRegistry';
+import {PreviewType} from '../../Entity';
+import {useBaseEntity} from '../../shared/EntityContext';
+import {notEmpty} from '../../shared/utils';
 
 const ViewRawButtonContainer = styled.div`
     display: flex;
@@ -23,9 +23,9 @@ export default function SourcesView() {
             featureTable?.properties &&
             (featureTable?.properties?.mlFeatures || featureTable?.properties?.mlPrimaryKeys)
                 ? [
-                      ...(featureTable?.properties?.mlPrimaryKeys || []),
-                      ...(featureTable?.properties?.mlFeatures || []),
-                  ].filter(notEmpty)
+                    ...(featureTable?.properties?.mlPrimaryKeys || []),
+                    ...(featureTable?.properties?.mlFeatures || []),
+                ].filter(notEmpty)
                 : [],
         [featureTable?.properties],
     );
@@ -66,12 +66,12 @@ export default function SourcesView() {
                 </ViewRawButtonContainer>
             </div>
             <List
-                style={{ marginTop: '24px', padding: '16px 32px' }}
+                style={{marginTop: '24px', padding: '16px 32px'}}
                 bordered
                 dataSource={sources}
                 header={<Typography.Title level={3}>Sources</Typography.Title>}
                 renderItem={(item) => (
-                    <List.Item style={{ paddingTop: '20px' }}>
+                    <List.Item style={{paddingTop: '20px'}}>
                         {entityRegistry.renderPreview(item?.type || EntityType.Dataset, PreviewType.PREVIEW, item)}
                     </List.Item>
                 )}

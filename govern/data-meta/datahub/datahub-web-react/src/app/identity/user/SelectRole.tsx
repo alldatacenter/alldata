@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import { UserOutlined } from '@ant-design/icons';
-import { Select } from 'antd';
-import { useApolloClient } from '@apollo/client';
+import React, {useState} from 'react';
+import {UserOutlined} from '@ant-design/icons';
+import {Select} from 'antd';
+import {useApolloClient} from '@apollo/client';
 import styled from 'styled-components';
-import { CorpUser, DataHubRole } from '../../../types.generated';
+import {CorpUser, DataHubRole} from '../../../types.generated';
 import AssignRoleConfirmation from './AssignRoleConfirmation';
-import { mapRoleIcon } from './UserUtils';
-import { ANTD_GRAY } from '../../entity/shared/constants';
-import { clearRoleListCache } from '../../permissions/roles/cacheUtils';
+import {mapRoleIcon} from './UserUtils';
+import {ANTD_GRAY} from '../../entity/shared/constants';
+import {clearRoleListCache} from '../../permissions/roles/cacheUtils';
 
 const NO_ROLE_TEXT = 'No Role';
 const NO_ROLE_URN = 'urn:li:dataHubRole:NoRole';
@@ -29,13 +29,13 @@ const RoleIcon = styled.span`
     font-size: 12px;
 `;
 
-export default function SelectRole({ user, userRoleUrn, selectRoleOptions, refetch }: Props) {
+export default function SelectRole({user, userRoleUrn, selectRoleOptions, refetch}: Props) {
     const client = useApolloClient();
     const rolesMap: Map<string, DataHubRole> = new Map();
     selectRoleOptions.forEach((role) => {
         rolesMap.set(role.urn, role);
     });
-    const allSelectRoleOptions = [{ urn: NO_ROLE_URN, name: NO_ROLE_TEXT }, ...selectRoleOptions];
+    const allSelectRoleOptions = [{urn: NO_ROLE_URN, name: NO_ROLE_TEXT}, ...selectRoleOptions];
     const selectOptions = allSelectRoleOptions.map((role) => {
         return (
             <Select.Option key={role.urn} value={role.urn}>
@@ -75,7 +75,7 @@ export default function SelectRole({ user, userRoleUrn, selectRoleOptions, refet
             <RoleSelect
                 placeholder={
                     <>
-                        <UserOutlined style={{ marginRight: 6, fontSize: 12 }} />
+                        <UserOutlined style={{marginRight: 6, fontSize: 12}}/>
                         {NO_ROLE_TEXT}
                     </>
                 }

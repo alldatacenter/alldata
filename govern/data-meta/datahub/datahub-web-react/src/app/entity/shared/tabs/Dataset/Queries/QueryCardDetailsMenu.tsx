@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { DeleteOutlined, MoreOutlined } from '@ant-design/icons';
-import { Dropdown, Menu, message, Modal } from 'antd';
-import { useDeleteQueryMutation } from '../../../../../../graphql/query.generated';
+import {DeleteOutlined, MoreOutlined} from '@ant-design/icons';
+import {Dropdown, Menu, message, Modal} from 'antd';
+import {useDeleteQueryMutation} from '../../../../../../graphql/query.generated';
 
 const StyledMoreOutlined = styled(MoreOutlined)`
     font-size: 14px;
@@ -14,12 +14,12 @@ export type Props = {
     index?: number;
 };
 
-export default function QueryCardDetailsMenu({ urn, onDeleted, index }: Props) {
+export default function QueryCardDetailsMenu({urn, onDeleted, index}: Props) {
     const [deleteQueryMutation] = useDeleteQueryMutation();
 
     const deleteQuery = () => {
-        deleteQueryMutation({ variables: { urn } })
-            .then(({ errors }) => {
+        deleteQueryMutation({variables: {urn}})
+            .then(({errors}) => {
                 if (!errors) {
                     message.success({
                         content: `Deleted Query!`,
@@ -30,7 +30,7 @@ export default function QueryCardDetailsMenu({ urn, onDeleted, index }: Props) {
             })
             .catch(() => {
                 message.destroy();
-                message.error({ content: 'Failed to delete Query! An unexpected error occurred' });
+                message.error({content: 'Failed to delete Query! An unexpected error occurred'});
             });
     };
 
@@ -41,7 +41,8 @@ export default function QueryCardDetailsMenu({ urn, onDeleted, index }: Props) {
             onOk() {
                 deleteQuery();
             },
-            onCancel() {},
+            onCancel() {
+            },
             okText: 'Yes',
             maskClosable: true,
             closable: true,
@@ -53,13 +54,13 @@ export default function QueryCardDetailsMenu({ urn, onDeleted, index }: Props) {
             overlay={
                 <Menu>
                     <Menu.Item key="0" onClick={confirmDeleteQuery} data-testid={`query-delete-button-${index}`}>
-                        <DeleteOutlined /> &nbsp; Delete
+                        <DeleteOutlined/> &nbsp; Delete
                     </Menu.Item>
                 </Menu>
             }
             trigger={['click']}
         >
-            <StyledMoreOutlined data-testid={`query-more-button-${index}`} />
+            <StyledMoreOutlined data-testid={`query-more-button-${index}`}/>
         </Dropdown>
     );
 }

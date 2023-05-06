@@ -1,24 +1,24 @@
 import * as React from 'react';
-import { ConsoleSqlOutlined } from '@ant-design/icons';
-import { DataJob, EntityType, OwnershipType, SearchResult } from '../../../types.generated';
-import { Preview } from './preview/Preview';
-import { Entity, EntityCapabilityType, IconStyleType, PreviewType } from '../Entity';
-import { EntityProfile } from '../shared/containers/profile/EntityProfile';
-import { GetDataJobQuery, useGetDataJobQuery, useUpdateDataJobMutation } from '../../../graphql/dataJob.generated';
-import { DocumentationTab } from '../shared/tabs/Documentation/DocumentationTab';
-import { PropertiesTab } from '../shared/tabs/Properties/PropertiesTab';
-import { LineageTab } from '../shared/tabs/Lineage/LineageTab';
-import { SidebarAboutSection } from '../shared/containers/profile/sidebar/AboutSection/SidebarAboutSection';
-import { SidebarTagsSection } from '../shared/containers/profile/sidebar/SidebarTagsSection';
-import { SidebarOwnerSection } from '../shared/containers/profile/sidebar/Ownership/SidebarOwnerSection';
-import { GenericEntityProperties } from '../shared/types';
-import { DataJobFlowTab } from '../shared/tabs/Entity/DataJobFlowTab';
-import { getDataForEntityType } from '../shared/containers/profile/utils';
-import { SidebarDomainSection } from '../shared/containers/profile/sidebar/Domain/SidebarDomainSection';
-import { RunsTab } from './tabs/RunsTab';
-import { EntityMenuItems } from '../shared/EntityDropdown/EntityDropdown';
-import { DataFlowEntity } from '../dataFlow/DataFlowEntity';
-import { capitalizeFirstLetterOnly } from '../../shared/textUtil';
+import {ConsoleSqlOutlined} from '@ant-design/icons';
+import {DataJob, EntityType, OwnershipType, SearchResult} from '../../../types.generated';
+import {Preview} from './preview/Preview';
+import {Entity, EntityCapabilityType, IconStyleType, PreviewType} from '../Entity';
+import {EntityProfile} from '../shared/containers/profile/EntityProfile';
+import {GetDataJobQuery, useGetDataJobQuery, useUpdateDataJobMutation} from '../../../graphql/dataJob.generated';
+import {DocumentationTab} from '../shared/tabs/Documentation/DocumentationTab';
+import {PropertiesTab} from '../shared/tabs/Properties/PropertiesTab';
+import {LineageTab} from '../shared/tabs/Lineage/LineageTab';
+import {SidebarAboutSection} from '../shared/containers/profile/sidebar/AboutSection/SidebarAboutSection';
+import {SidebarTagsSection} from '../shared/containers/profile/sidebar/SidebarTagsSection';
+import {SidebarOwnerSection} from '../shared/containers/profile/sidebar/Ownership/SidebarOwnerSection';
+import {GenericEntityProperties} from '../shared/types';
+import {DataJobFlowTab} from '../shared/tabs/Entity/DataJobFlowTab';
+import {getDataForEntityType} from '../shared/containers/profile/utils';
+import {SidebarDomainSection} from '../shared/containers/profile/sidebar/Domain/SidebarDomainSection';
+import {RunsTab} from './tabs/RunsTab';
+import {EntityMenuItems} from '../shared/EntityDropdown/EntityDropdown';
+import {DataFlowEntity} from '../dataFlow/DataFlowEntity';
+import {capitalizeFirstLetterOnly} from '../../shared/textUtil';
 
 const getDataJobPlatformName = (data?: DataJob): string => {
     return (
@@ -36,11 +36,11 @@ export class DataJobEntity implements Entity<DataJob> {
 
     icon = (fontSize: number, styleType: IconStyleType, color?: string) => {
         if (styleType === IconStyleType.TAB_VIEW) {
-            return <ConsoleSqlOutlined style={{ fontSize, color }} />;
+            return <ConsoleSqlOutlined style={{fontSize, color}}/>;
         }
 
         if (styleType === IconStyleType.HIGHLIGHT) {
-            return <ConsoleSqlOutlined style={{ fontSize, color: color || '#B37FEB' }} />;
+            return <ConsoleSqlOutlined style={{fontSize, color: color || '#B37FEB'}}/>;
         }
 
         return (

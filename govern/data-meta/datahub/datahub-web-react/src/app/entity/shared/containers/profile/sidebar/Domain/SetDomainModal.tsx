@@ -1,15 +1,15 @@
-import React, { useRef, useState } from 'react';
-import { Button, Form, message, Modal, Select, Tag } from 'antd';
+import React, {useRef, useState} from 'react';
+import {Button, Form, message, Modal, Select, Tag} from 'antd';
 import styled from 'styled-components';
 
-import { useGetSearchResultsLazyQuery } from '../../../../../../../graphql/search.generated';
-import { Entity, EntityType } from '../../../../../../../types.generated';
-import { useBatchSetDomainMutation } from '../../../../../../../graphql/mutations.generated';
-import { useEntityRegistry } from '../../../../../../useEntityRegistry';
-import { useEnterKeyListener } from '../../../../../../shared/useEnterKeyListener';
-import { useGetRecommendations } from '../../../../../../shared/recommendation';
-import { DomainLabel } from '../../../../../../shared/DomainLabel';
-import { handleBatchError } from '../../../../utils';
+import {useGetSearchResultsLazyQuery} from '../../../../../../../graphql/search.generated';
+import {Entity, EntityType} from '../../../../../../../types.generated';
+import {useBatchSetDomainMutation} from '../../../../../../../graphql/mutations.generated';
+import {useEntityRegistry} from '../../../../../../useEntityRegistry';
+import {useEnterKeyListener} from '../../../../../../shared/useEnterKeyListener';
+import {useGetRecommendations} from '../../../../../../shared/recommendation';
+import {DomainLabel} from '../../../../../../shared/DomainLabel';
+import {handleBatchError} from '../../../../utils';
 
 type Props = {
     urns: string[];
@@ -34,19 +34,19 @@ const StyleTag = styled(Tag)`
     align-items: center;
 `;
 
-export const SetDomainModal = ({ urns, onCloseModal, refetch, defaultValue, onOkOverride, titleOverride }: Props) => {
+export const SetDomainModal = ({urns, onCloseModal, refetch, defaultValue, onOkOverride, titleOverride}: Props) => {
     const entityRegistry = useEntityRegistry();
     const [inputValue, setInputValue] = useState('');
     const [selectedDomain, setSelectedDomain] = useState<SelectedDomain | undefined>(
         defaultValue
             ? {
-                  displayName: entityRegistry.getDisplayName(EntityType.Domain, defaultValue?.entity),
-                  type: EntityType.Domain,
-                  urn: defaultValue?.urn,
-              }
+                displayName: entityRegistry.getDisplayName(EntityType.Domain, defaultValue?.entity),
+                type: EntityType.Domain,
+                urn: defaultValue?.urn,
+            }
             : undefined,
     );
-    const [domainSearch, { data: domainSearchData }] = useGetSearchResultsLazyQuery();
+    const [domainSearch, {data: domainSearchData}] = useGetSearchResultsLazyQuery();
     const domainSearchResults =
         domainSearchData?.search?.searchResults?.map((searchResult) => searchResult.entity) || [];
     const [batchSetDomainMutation] = useBatchSetDomainMutation();
@@ -77,7 +77,7 @@ export const SetDomainModal = ({ urns, onCloseModal, refetch, defaultValue, onOk
         const displayName = entityRegistry.getDisplayName(entity.type, entity);
         return (
             <Select.Option value={entity.urn} key={entity.urn}>
-                <DomainLabel name={displayName} />
+                <DomainLabel name={displayName}/>
             </Select.Option>
         );
     };
@@ -121,14 +121,14 @@ export const SetDomainModal = ({ urns, onCloseModal, refetch, defaultValue, onOk
         batchSetDomainMutation({
             variables: {
                 input: {
-                    resources: [...urns.map((urn) => ({ resourceUrn: urn }))],
+                    resources: [...urns.map((urn) => ({resourceUrn: urn}))],
                     domainUrn: selectedDomain.urn,
                 },
             },
         })
-            .then(({ errors }) => {
+            .then(({errors}) => {
                 if (!errors) {
-                    message.success({ content: 'Updated Domain!', duration: 2 });
+                    message.success({content: 'Updated Domain!', duration: 2});
                     refetch?.();
                     onModalClose();
                     setSelectedDomain(undefined);
@@ -154,7 +154,7 @@ export const SetDomainModal = ({ urns, onCloseModal, refetch, defaultValue, onOk
 
     const tagRender = (props) => {
         // eslint-disable-next-line react/prop-types
-        const { label, closable, onClose } = props;
+        const {label, closable, onClose} = props;
         const onPreventMouseDown = (event) => {
             event.preventDefault();
             event.stopPropagation();

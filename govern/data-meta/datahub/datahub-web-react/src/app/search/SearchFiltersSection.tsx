@@ -1,17 +1,17 @@
-import { Button } from 'antd';
-import React, { useState } from 'react';
+import {Button} from 'antd';
+import React, {useState} from 'react';
 import styled from 'styled-components/macro';
-import { FacetFilterInput, FacetMetadata } from '../../types.generated';
-import { UnionType } from './utils/constants';
-import { hasAdvancedFilters } from './utils/hasAdvancedFilters';
-import { AdvancedSearchFilters } from './AdvancedSearchFilters';
-import { SimpleSearchFilters } from './SimpleSearchFilters';
-import { SEARCH_RESULTS_ADVANCED_SEARCH_ID } from '../onboarding/config/SearchOnboardingConfig';
-import { ViewBuilder } from '../entity/view/builder/ViewBuilder';
-import { buildInitialViewState, fromUnionType } from '../entity/view/builder/utils';
-import { SaveAsViewButton } from './SaveAsViewButton';
-import { useUserContext } from '../context/useUserContext';
-import { ViewBuilderMode } from '../entity/view/builder/types';
+import {FacetFilterInput, FacetMetadata} from '../../types.generated';
+import {UnionType} from './utils/constants';
+import {hasAdvancedFilters} from './utils/hasAdvancedFilters';
+import {AdvancedSearchFilters} from './AdvancedSearchFilters';
+import {SimpleSearchFilters} from './SimpleSearchFilters';
+import {SEARCH_RESULTS_ADVANCED_SEARCH_ID} from '../onboarding/config/SearchOnboardingConfig';
+import {ViewBuilder} from '../entity/view/builder/ViewBuilder';
+import {buildInitialViewState, fromUnionType} from '../entity/view/builder/utils';
+import {SaveAsViewButton} from './SaveAsViewButton';
+import {useUserContext} from '../context/useUserContext';
+import {ViewBuilderMode} from '../entity/view/builder/types';
 
 type Props = {
     filters?: Array<FacetMetadata> | null;
@@ -77,13 +77,13 @@ const AdvancedSearchFiltersWrapper = styled.div`
 // This component renders the entire filters section that allows toggling
 // between the simplified search experience and advanced search
 export const SearchFiltersSection = ({
-    filters,
-    selectedFilters,
-    unionType,
-    loading,
-    onChangeFilters,
-    onChangeUnionType,
-}: Props) => {
+                                         filters,
+                                         selectedFilters,
+                                         unionType,
+                                         loading,
+                                         onChangeFilters,
+                                         onChangeUnionType,
+                                     }: Props) => {
     const userContext = useUserContext();
     const onlyShowAdvancedFilters = hasAdvancedFilters(selectedFilters, unionType);
     const [showViewBuilder, setShowViewBuilder] = useState(false);
@@ -101,7 +101,7 @@ export const SearchFiltersSection = ({
     return (
         <FiltersContainer>
             <FiltersHeader>
-                <span>Filter</span>
+                <span>过滤</span>
                 <span>
                     <Button
                         disabled={onlyShowAdvancedFilters}
@@ -109,7 +109,7 @@ export const SearchFiltersSection = ({
                         onClick={() => setSeeAdvancedFilters(!seeAdvancedFilters)}
                         id={SEARCH_RESULTS_ADVANCED_SEARCH_ID}
                     >
-                        {seeAdvancedFilters ? 'Basic' : 'Advanced'}
+                        {seeAdvancedFilters ? '基础' : '高级'}
                     </Button>
                 </span>
             </FiltersHeader>
@@ -124,7 +124,7 @@ export const SearchFiltersSection = ({
                             facets={filters || []}
                             loading={loading}
                         />
-                        {showSaveAsView && <SaveAsViewButton onClick={onSaveAsView} />}
+                        {showSaveAsView && <SaveAsViewButton onClick={onSaveAsView}/>}
                         {showViewBuilder && (
                             <ViewBuilder
                                 mode={ViewBuilderMode.EDITOR}

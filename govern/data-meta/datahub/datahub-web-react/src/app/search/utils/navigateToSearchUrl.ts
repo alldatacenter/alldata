@@ -1,18 +1,18 @@
 import * as QueryString from 'query-string';
-import { RouteComponentProps } from 'react-router-dom';
+import {RouteComponentProps} from 'react-router-dom';
 import filtersToQueryStringParams from './filtersToQueryStringParams';
-import { EntityType, FacetFilterInput } from '../../../types.generated';
-import { PageRoutes } from '../../../conf/Global';
-import { UnionType } from './constants';
+import {EntityType, FacetFilterInput} from '../../../types.generated';
+import {PageRoutes} from '../../../conf/Global';
+import {UnionType} from './constants';
 
 export const navigateToSearchUrl = ({
-    type: newType,
-    query: newQuery,
-    page: newPage = 1,
-    filters: newFilters,
-    unionType = UnionType.AND,
-    history,
-}: {
+                                        type: newType,
+                                        query: newQuery,
+                                        page: newPage = 1,
+                                        filters: newFilters,
+                                        unionType = UnionType.AND,
+                                        history,
+                                    }: {
     type?: EntityType;
     query?: string;
     page?: number;
@@ -22,7 +22,7 @@ export const navigateToSearchUrl = ({
 }) => {
     const constructedFilters = newFilters || [];
     if (newType) {
-        constructedFilters.push({ field: 'entity', values: [newType] });
+        constructedFilters.push({field: 'entity', values: [newType]});
     }
 
     const search = QueryString.stringify(
@@ -32,7 +32,7 @@ export const navigateToSearchUrl = ({
             page: newPage,
             unionType,
         },
-        { arrayFormat: 'comma' },
+        {arrayFormat: 'comma'},
     );
 
     history.push({

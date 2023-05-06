@@ -1,6 +1,6 @@
-import { DataJob, SearchResult, SearchResults } from '../../../types.generated';
-import { dataJobEntity } from '../entity/dataJobEntity';
-import { generateData } from './dataGenerator';
+import {DataJob, SearchResult, SearchResults} from '../../../types.generated';
+import {dataJobEntity} from '../entity/dataJobEntity';
+import {generateData} from './dataGenerator';
 
 const searchResult = (): SearchResult => {
     return {
@@ -11,7 +11,7 @@ const searchResult = (): SearchResult => {
 };
 
 const generateSearchResults = (): SearchResult[] => {
-    return generateData<SearchResult>({ generator: searchResult, count: 2 });
+    return generateData<SearchResult>({generator: searchResult, count: 2});
 };
 
 const searchResults = generateSearchResults();

@@ -1,13 +1,13 @@
 import React from 'react';
-import { Checkbox, DatePicker, Form, Input, Select, Tooltip } from 'antd';
+import {Checkbox, DatePicker, Form, Input, Select, Tooltip} from 'antd';
 import styled from 'styled-components/macro';
 import Button from 'antd/lib/button';
-import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
-import { RecipeField, FieldType } from './common';
-import { Secret } from '../../../../../types.generated';
-import SecretField, { StyledFormItem } from './SecretField/SecretField';
-import DictField, { Label, StyledQuestion, ListWrapper, ErrorWrapper } from './DictField';
-import { ANTD_GRAY } from '../../../../entity/shared/constants';
+import {MinusCircleOutlined, PlusOutlined} from '@ant-design/icons';
+import {RecipeField, FieldType} from './common';
+import {Secret} from '../../../../../types.generated';
+import SecretField, {StyledFormItem} from './SecretField/SecretField';
+import DictField, {Label, StyledQuestion, ListWrapper, ErrorWrapper} from './DictField';
+import {ANTD_GRAY} from '../../../../entity/shared/constants';
 
 const StyledButton = styled(Button)`
     color: ${ANTD_GRAY[7]};
@@ -35,26 +35,26 @@ interface CommonFieldProps {
     removeMargin?: boolean;
 }
 
-function ListField({ field, removeMargin }: CommonFieldProps) {
+function ListField({field, removeMargin}: CommonFieldProps) {
     return (
         <Form.List name={field.name} rules={field.rules || undefined}>
-            {(fields, { add, remove }, { errors }) => (
+            {(fields, {add, remove}, {errors}) => (
                 <ListWrapper removeMargin={!!removeMargin}>
                     <Label>
                         {field.label}
                         <Tooltip overlay={field.tooltip}>
-                            <StyledQuestion />
+                            <StyledQuestion/>
                         </Tooltip>
                     </Label>
                     {fields.map((item) => (
-                        <Form.Item key={item.fieldKey} style={{ marginBottom: '10px' }}>
+                        <Form.Item key={item.fieldKey} style={{marginBottom: '10px'}}>
                             <Form.Item {...item} noStyle>
-                                <Input style={{ width: '80%' }} placeholder={field.placeholder} />
+                                <Input style={{width: '80%'}} placeholder={field.placeholder}/>
                             </Form.Item>
-                            <StyledRemoveIcon onClick={() => remove(item.name)} />
+                            <StyledRemoveIcon onClick={() => remove(item.name)}/>
                         </Form.Item>
                     ))}
-                    <StyledButton type="dashed" onClick={() => add()} style={{ width: '80%' }} icon={<PlusOutlined />}>
+                    <StyledButton type="dashed" onClick={() => add()} style={{width: '80%'}} icon={<PlusOutlined/>}>
                         {field.buttonLabel}
                     </StyledButton>
                     <ErrorWrapper>{errors}</ErrorWrapper>
@@ -64,7 +64,7 @@ function ListField({ field, removeMargin }: CommonFieldProps) {
     );
 }
 
-function SelectField({ field, removeMargin }: CommonFieldProps) {
+function SelectField({field, removeMargin}: CommonFieldProps) {
     return (
         <StyledFormItem
             required={field.required}
@@ -85,7 +85,7 @@ function SelectField({ field, removeMargin }: CommonFieldProps) {
     );
 }
 
-function DateField({ field, removeMargin }: CommonFieldProps) {
+function DateField({field, removeMargin}: CommonFieldProps) {
     return (
         <StyledFormItem
             required={field.required}
@@ -95,7 +95,7 @@ function DateField({ field, removeMargin }: CommonFieldProps) {
             removeMargin={!!removeMargin}
             rules={field.rules || undefined}
         >
-            <DatePicker showTime />
+            <DatePicker showTime/>
         </StyledFormItem>
     );
 }
@@ -109,13 +109,13 @@ interface Props {
 }
 
 function FormField(props: Props) {
-    const { field, secrets, refetchSecrets, removeMargin, updateFormValue } = props;
+    const {field, secrets, refetchSecrets, removeMargin, updateFormValue} = props;
 
-    if (field.type === FieldType.LIST) return <ListField field={field} removeMargin={removeMargin} />;
+    if (field.type === FieldType.LIST) return <ListField field={field} removeMargin={removeMargin}/>;
 
-    if (field.type === FieldType.SELECT) return <SelectField field={field} removeMargin={removeMargin} />;
+    if (field.type === FieldType.SELECT) return <SelectField field={field} removeMargin={removeMargin}/>;
 
-    if (field.type === FieldType.DATE) return <DateField field={field} removeMargin={removeMargin} />;
+    if (field.type === FieldType.DATE) return <DateField field={field} removeMargin={removeMargin}/>;
 
     if (field.type === FieldType.SECRET)
         return (
@@ -128,20 +128,20 @@ function FormField(props: Props) {
             />
         );
 
-    if (field.type === FieldType.DICT) return <DictField field={field} />;
+    if (field.type === FieldType.DICT) return <DictField field={field}/>;
 
     const isBoolean = field.type === FieldType.BOOLEAN;
-    let input = <Input placeholder={field.placeholder} />;
-    if (isBoolean) input = <StyledCheckbox />;
+    let input = <Input placeholder={field.placeholder}/>;
+    if (isBoolean) input = <StyledCheckbox/>;
     if (field.type === FieldType.TEXTAREA)
-        input = <Input.TextArea required={field.required} placeholder={field.placeholder} />;
+        input = <Input.TextArea required={field.required} placeholder={field.placeholder}/>;
     const valuePropName = isBoolean ? 'checked' : 'value';
     const getValueFromEvent = isBoolean ? undefined : (e) => (e.target.value === '' ? null : e.target.value);
 
     return (
         <StyledFormItem
             required={field.required}
-            style={isBoolean ? { flexDirection: 'row', alignItems: 'center' } : {}}
+            style={isBoolean ? {flexDirection: 'row', alignItems: 'center'} : {}}
             label={field.label}
             name={field.name}
             tooltip={field.tooltip}

@@ -1,22 +1,22 @@
 import * as React from 'react';
-import { CodeSandboxOutlined } from '@ant-design/icons';
-import { MlModel, EntityType, SearchResult, OwnershipType } from '../../../types.generated';
-import { Preview } from './preview/Preview';
-import { Entity, EntityCapabilityType, IconStyleType, PreviewType } from '../Entity';
-import { getDataForEntityType } from '../shared/containers/profile/utils';
-import { EntityProfile } from '../shared/containers/profile/EntityProfile';
-import { useGetMlModelQuery } from '../../../graphql/mlModel.generated';
-import { GenericEntityProperties } from '../shared/types';
+import {CodeSandboxOutlined} from '@ant-design/icons';
+import {MlModel, EntityType, SearchResult, OwnershipType} from '../../../types.generated';
+import {Preview} from './preview/Preview';
+import {Entity, EntityCapabilityType, IconStyleType, PreviewType} from '../Entity';
+import {getDataForEntityType} from '../shared/containers/profile/utils';
+import {EntityProfile} from '../shared/containers/profile/EntityProfile';
+import {useGetMlModelQuery} from '../../../graphql/mlModel.generated';
+import {GenericEntityProperties} from '../shared/types';
 import MLModelSummary from './profile/MLModelSummary';
 import MLModelGroupsTab from './profile/MLModelGroupsTab';
-import { SidebarTagsSection } from '../shared/containers/profile/sidebar/SidebarTagsSection';
-import { SidebarAboutSection } from '../shared/containers/profile/sidebar/AboutSection/SidebarAboutSection';
-import { SidebarOwnerSection } from '../shared/containers/profile/sidebar/Ownership/SidebarOwnerSection';
-import { SidebarDomainSection } from '../shared/containers/profile/sidebar/Domain/SidebarDomainSection';
-import { PropertiesTab } from '../shared/tabs/Properties/PropertiesTab';
-import { DocumentationTab } from '../shared/tabs/Documentation/DocumentationTab';
+import {SidebarTagsSection} from '../shared/containers/profile/sidebar/SidebarTagsSection';
+import {SidebarAboutSection} from '../shared/containers/profile/sidebar/AboutSection/SidebarAboutSection';
+import {SidebarOwnerSection} from '../shared/containers/profile/sidebar/Ownership/SidebarOwnerSection';
+import {SidebarDomainSection} from '../shared/containers/profile/sidebar/Domain/SidebarDomainSection';
+import {PropertiesTab} from '../shared/tabs/Properties/PropertiesTab';
+import {DocumentationTab} from '../shared/tabs/Documentation/DocumentationTab';
 import MlModelFeaturesTab from './profile/MlModelFeaturesTab';
-import { EntityMenuItems } from '../shared/EntityDropdown/EntityDropdown';
+import {EntityMenuItems} from '../shared/EntityDropdown/EntityDropdown';
 
 /**
  * Definition of the DataHub MlModel entity.
@@ -26,11 +26,11 @@ export class MLModelEntity implements Entity<MlModel> {
 
     icon = (fontSize: number, styleType: IconStyleType, color?: string) => {
         if (styleType === IconStyleType.TAB_VIEW) {
-            return <CodeSandboxOutlined style={{ fontSize, color }} />;
+            return <CodeSandboxOutlined style={{fontSize, color}}/>;
         }
 
         if (styleType === IconStyleType.HIGHLIGHT) {
-            return <CodeSandboxOutlined style={{ fontSize, color: color || '#9633b9' }} />;
+            return <CodeSandboxOutlined style={{fontSize, color: color || '#9633b9'}}/>;
         }
 
         return (
@@ -118,12 +118,12 @@ export class MLModelEntity implements Entity<MlModel> {
     );
 
     renderPreview = (_: PreviewType, data: MlModel) => {
-        return <Preview model={data} />;
+        return <Preview model={data}/>;
     };
 
     renderSearch = (result: SearchResult) => {
         const data = result.entity as MlModel;
-        return <Preview model={data} />;
+        return <Preview model={data}/>;
     };
 
     getLineageVizConfig = (entity: MlModel) => {
@@ -141,7 +141,7 @@ export class MLModelEntity implements Entity<MlModel> {
     };
 
     getGenericEntityProperties = (mlModel: MlModel) => {
-        return getDataForEntityType({ data: mlModel, entityType: this.type, getOverrideProperties: (data) => data });
+        return getDataForEntityType({data: mlModel, entityType: this.type, getOverrideProperties: (data) => data});
     };
 
     supportedCapabilities = () => {

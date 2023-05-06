@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components/macro';
-import { GlossaryNodeFragment } from '../../graphql/fragments.generated';
-import { ChildGlossaryTermFragment } from '../../graphql/glossaryNode.generated';
-import { GlossaryNode, GlossaryTerm } from '../../types.generated';
-import { useEntityRegistry } from '../useEntityRegistry';
+import {GlossaryNodeFragment} from '../../graphql/fragments.generated';
+import {ChildGlossaryTermFragment} from '../../graphql/glossaryNode.generated';
+import {GlossaryNode, GlossaryTerm} from '../../types.generated';
+import {useEntityRegistry} from '../useEntityRegistry';
 import GlossaryEntityItem from './GlossaryEntityItem';
 
 const EntitiesWrapper = styled.div`
@@ -18,7 +18,7 @@ interface Props {
 }
 
 function GlossaryEntitiesList(props: Props) {
-    const { nodes, terms } = props;
+    const {nodes, terms} = props;
     const entityRegistry = useEntityRegistry();
 
     return (

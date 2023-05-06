@@ -1,4 +1,4 @@
-import { SourceConfig } from '../types';
+import {SourceConfig} from '../types';
 import bigqueryLogo from '../../../../../images/bigquerylogo.png';
 
 const placeholderRecipe = `\

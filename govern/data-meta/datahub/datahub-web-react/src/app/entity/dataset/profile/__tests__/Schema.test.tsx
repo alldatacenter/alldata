@@ -1,6 +1,6 @@
 import React from 'react';
-import { fireEvent, render } from '@testing-library/react';
-import { MockedProvider } from '@apollo/client/testing';
+import {fireEvent, render} from '@testing-library/react';
+import {MockedProvider} from '@apollo/client/testing';
 import TestPageContainer from '../../../../../utils/test-utils/TestPageContainer';
 import {
     sampleSchema,
@@ -9,23 +9,23 @@ import {
     sampleSchemaWithPkFk,
     sampleSchemaWithTags,
 } from '../stories/sampleSchema';
-import { mocks } from '../../../../../Mocks';
-import { SchemaTab } from '../../../shared/tabs/Dataset/Schema/SchemaTab';
+import {mocks} from '../../../../../Mocks';
+import {SchemaTab} from '../../../shared/tabs/Dataset/Schema/SchemaTab';
 import EntityContext from '../../../shared/EntityContext';
-import { EntityType, SchemaMetadata } from '../../../../../types.generated';
+import {EntityType, SchemaMetadata} from '../../../../../types.generated';
 
 jest.mock('virtualizedtableforantd4', () => {
     /* eslint-disable-next-line */
-    const { SchemaRow } = require('../../../shared/tabs/Dataset/Schema/components/SchemaRow');
+    const {SchemaRow} = require('../../../shared/tabs/Dataset/Schema/components/SchemaRow');
     return {
         ...jest.requireActual('virtualizedtableforantd4'),
-        useVT: () => [{ body: { row: SchemaRow } }, jest.fn()],
+        useVT: () => [{body: {row: SchemaRow}}, jest.fn()],
     };
 });
 
 describe('Schema', () => {
     it('renders', () => {
-        const { getByText } = render(
+        const {getByText} = render(
             <MockedProvider mocks={mocks} addTypename={false}>
                 <TestPageContainer>
                     <EntityContext.Provider
@@ -42,7 +42,7 @@ describe('Schema', () => {
                             refetch: jest.fn(),
                         }}
                     >
-                        <SchemaTab />
+                        <SchemaTab/>
                     </EntityContext.Provider>
                 </TestPageContainer>
             </MockedProvider>,
@@ -54,7 +54,7 @@ describe('Schema', () => {
     });
 
     it('renders raw', () => {
-        const { getByText, queryAllByTestId } = render(
+        const {getByText, queryAllByTestId} = render(
             <MockedProvider mocks={mocks} addTypename={false}>
                 <TestPageContainer>
                     <EntityContext.Provider
@@ -71,7 +71,7 @@ describe('Schema', () => {
                             refetch: jest.fn(),
                         }}
                     >
-                        <SchemaTab />
+                        <SchemaTab/>
                     </EntityContext.Provider>
                 </TestPageContainer>
             </MockedProvider>,
@@ -91,7 +91,7 @@ describe('Schema', () => {
     });
 
     it('renders tags and terms', () => {
-        const { getByText } = render(
+        const {getByText} = render(
             <MockedProvider mocks={mocks} addTypename={false}>
                 <TestPageContainer>
                     <EntityContext.Provider
@@ -108,7 +108,7 @@ describe('Schema', () => {
                             refetch: jest.fn(),
                         }}
                     >
-                        <SchemaTab />
+                        <SchemaTab/>
                     </EntityContext.Provider>
                 </TestPageContainer>
             </MockedProvider>,
@@ -118,7 +118,7 @@ describe('Schema', () => {
     });
 
     it('renders description', () => {
-        const { getByText } = render(
+        const {getByText} = render(
             <MockedProvider mocks={mocks} addTypename={false}>
                 <TestPageContainer>
                     <EntityContext.Provider
@@ -135,7 +135,7 @@ describe('Schema', () => {
                             refetch: jest.fn(),
                         }}
                     >
-                        <SchemaTab />
+                        <SchemaTab/>
                     </EntityContext.Provider>
                 </TestPageContainer>
             </MockedProvider>,
@@ -144,7 +144,7 @@ describe('Schema', () => {
     });
 
     it('renders field', () => {
-        const { getByText } = render(
+        const {getByText} = render(
             <MockedProvider mocks={mocks} addTypename={false}>
                 <TestPageContainer>
                     <EntityContext.Provider
@@ -161,7 +161,7 @@ describe('Schema', () => {
                             refetch: jest.fn(),
                         }}
                     >
-                        <SchemaTab />
+                        <SchemaTab/>
                     </EntityContext.Provider>
                 </TestPageContainer>
             </MockedProvider>,
@@ -170,7 +170,7 @@ describe('Schema', () => {
     });
 
     it('renders primary keys', () => {
-        const { getByText } = render(
+        const {getByText} = render(
             <MockedProvider mocks={mocks} addTypename={false}>
                 <TestPageContainer>
                     <EntityContext.Provider
@@ -187,7 +187,7 @@ describe('Schema', () => {
                             refetch: jest.fn(),
                         }}
                     >
-                        <SchemaTab />
+                        <SchemaTab/>
                     </EntityContext.Provider>
                 </TestPageContainer>
             </MockedProvider>,
@@ -196,7 +196,7 @@ describe('Schema', () => {
     });
 
     it('renders foreign keys', () => {
-        const { getByText, getAllByText } = render(
+        const {getByText, getAllByText} = render(
             <MockedProvider mocks={mocks} addTypename={false}>
                 <TestPageContainer>
                     <EntityContext.Provider
@@ -213,7 +213,7 @@ describe('Schema', () => {
                             refetch: jest.fn(),
                         }}
                     >
-                        <SchemaTab />
+                        <SchemaTab/>
                     </EntityContext.Provider>
                 </TestPageContainer>
             </MockedProvider>,
@@ -228,7 +228,7 @@ describe('Schema', () => {
     });
 
     it('renders key/value toggle', () => {
-        const { getByText, queryByText } = render(
+        const {getByText, queryByText} = render(
             <MockedProvider mocks={mocks} addTypename={false}>
                 <TestPageContainer>
                     <EntityContext.Provider
@@ -245,7 +245,7 @@ describe('Schema', () => {
                             refetch: jest.fn(),
                         }}
                     >
-                        <SchemaTab />
+                        <SchemaTab/>
                     </EntityContext.Provider>
                 </TestPageContainer>
             </MockedProvider>,
@@ -267,7 +267,7 @@ describe('Schema', () => {
     });
 
     it('does not renders key/value toggle when no schema', () => {
-        const { queryByText } = render(
+        const {queryByText} = render(
             <MockedProvider mocks={mocks} addTypename={false}>
                 <TestPageContainer>
                     <EntityContext.Provider
@@ -284,7 +284,7 @@ describe('Schema', () => {
                             refetch: jest.fn(),
                         }}
                     >
-                        <SchemaTab />
+                        <SchemaTab/>
                     </EntityContext.Provider>
                 </TestPageContainer>
             </MockedProvider>,
@@ -319,7 +319,7 @@ describe('Schema', () => {
             },
         };
 
-        const { queryByText } = render(
+        const {queryByText} = render(
             <MockedProvider mocks={mocks} addTypename={false}>
                 <TestPageContainer>
                     <EntityContext.Provider
@@ -341,7 +341,7 @@ describe('Schema', () => {
                             refetch: jest.fn(),
                         }}
                     >
-                        <SchemaTab />
+                        <SchemaTab/>
                     </EntityContext.Provider>
                 </TestPageContainer>
             </MockedProvider>,

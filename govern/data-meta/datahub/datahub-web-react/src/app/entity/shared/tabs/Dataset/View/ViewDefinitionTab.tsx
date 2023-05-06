@@ -1,11 +1,11 @@
-import { Typography } from 'antd';
+import {Typography} from 'antd';
 import React from 'react';
 import styled from 'styled-components';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { GetDatasetQuery } from '../../../../../../graphql/dataset.generated';
-import { ANTD_GRAY } from '../../../constants';
-import { useBaseEntity } from '../../../EntityContext';
-import { InfoItem } from '../../../components/styled/InfoItem';
+import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter';
+import {GetDatasetQuery} from '../../../../../../graphql/dataset.generated';
+import {ANTD_GRAY} from '../../../constants';
+import {useBaseEntity} from '../../../EntityContext';
+import {InfoItem} from '../../../components/styled/InfoItem';
 
 const InfoSection = styled.div`
     border-bottom: 1px solid ${ANTD_GRAY[4.5]};

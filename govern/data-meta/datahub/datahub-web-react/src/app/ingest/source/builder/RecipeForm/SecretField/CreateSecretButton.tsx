@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { Button, message } from 'antd';
-import { PlusOutlined } from '@ant-design/icons';
-import { blue } from '@ant-design/colors';
+import React, {useState} from 'react';
+import {Button, message} from 'antd';
+import {PlusOutlined} from '@ant-design/icons';
+import {blue} from '@ant-design/colors';
 import styled from 'styled-components/macro';
-import { SecretBuilderModal } from '../../../../secret/SecretBuilderModal';
-import { useCreateSecretMutation } from '../../../../../../graphql/ingestion.generated';
-import { SecretBuilderState } from '../../../../secret/types';
+import {SecretBuilderModal} from '../../../../secret/SecretBuilderModal';
+import {useCreateSecretMutation} from '../../../../../../graphql/ingestion.generated';
+import {SecretBuilderState} from '../../../../secret/types';
 
 const CreateButton = styled(Button)`
     align-items: center;
@@ -29,7 +29,7 @@ interface Props {
     refetchSecrets: () => void;
 }
 
-function CreateSecretButton({ initialState, onSubmit, refetchSecrets }: Props) {
+function CreateSecretButton({initialState, onSubmit, refetchSecrets}: Props) {
     const [isCreateModalVisible, setIsCreateModalVisible] = useState(false);
     const [createSecretMutation] = useCreateSecretMutation();
 
@@ -47,19 +47,19 @@ function CreateSecretButton({ initialState, onSubmit, refetchSecrets }: Props) {
                 onSubmit?.(state);
                 setIsCreateModalVisible(false);
                 resetBuilderState();
-                message.success({ content: `Created secret!` });
+                message.success({content: `Created secret!`});
                 setTimeout(() => refetchSecrets(), 3000);
             })
             .catch((e) => {
                 message.destroy();
-                message.error({ content: `Failed to create secret: \n ${e.message || ''}` });
+                message.error({content: `Failed to create secret: \n ${e.message || ''}`});
             });
     };
 
     return (
         <>
             <CreateButton onClick={() => setIsCreateModalVisible(true)} type="text">
-                <PlusOutlined /> Create Secret
+                <PlusOutlined/> Create Secret
             </CreateButton>
             {isCreateModalVisible && (
                 <SecretBuilderModal

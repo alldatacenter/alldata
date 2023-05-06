@@ -1,13 +1,13 @@
 import React from 'react';
-import { Divider, List, Checkbox } from 'antd';
+import {Divider, List, Checkbox} from 'antd';
 import styled from 'styled-components';
-import { Entity, EntityPath } from '../../../../types.generated';
-import { useEntityRegistry } from '../../../useEntityRegistry';
+import {Entity, EntityPath} from '../../../../types.generated';
+import {useEntityRegistry} from '../../../useEntityRegistry';
 import DefaultPreviewCard from '../../../preview/DefaultPreviewCard';
-import { IconStyleType } from '../../../entity/Entity';
-import { EntityAndType } from '../../../entity/shared/types';
-import { getPlatformName } from '../../../entity/shared/utils';
-import { capitalizeFirstLetterOnly } from '../../../shared/textUtil';
+import {IconStyleType} from '../../../entity/Entity';
+import {EntityAndType} from '../../../entity/shared/types';
+import {getPlatformName} from '../../../entity/shared/utils';
+import {capitalizeFirstLetterOnly} from '../../../shared/textUtil';
 
 const StyledCheckbox = styled(Checkbox)`
     margin-right: 12px;
@@ -78,14 +78,14 @@ type Props = {
 };
 
 export const EntityNameList = ({
-    additionalPropertiesList,
-    entities,
-    onClick,
-    isSelectMode,
-    selectedEntities = [],
-    setSelectedEntities,
-    bordered = true,
-}: Props) => {
+                                   additionalPropertiesList,
+                                   entities,
+                                   onClick,
+                                   isSelectMode,
+                                   selectedEntities = [],
+                                   setSelectedEntities,
+                                   bordered = true,
+                               }: Props) => {
     const entityRegistry = useEntityRegistry();
     const selectedEntityUrns = selectedEntities?.map((entity) => entity.urn) || [];
 
@@ -96,7 +96,7 @@ export const EntityNameList = ({
     ) {
         console.warn(
             'Warning: additionalPropertiesList length provided to EntityNameList does not match entity array length',
-            { additionalPropertiesList, entities },
+            {additionalPropertiesList, entities},
         );
     }
 
@@ -134,7 +134,7 @@ export const EntityNameList = ({
                                 <StyledCheckbox
                                     checked={selectedEntityUrns.indexOf(entity.urn) >= 0}
                                     onChange={(e) =>
-                                        onSelectEntity({ urn: entity.urn, type: entity.type }, e.target.checked)
+                                        onSelectEntity({urn: entity.urn, type: entity.type}, e.target.checked)
                                     }
                                 />
                             )}
@@ -157,7 +157,7 @@ export const EntityNameList = ({
                                 paths={additionalProperties?.paths}
                             />
                         </ListItem>
-                        <ThinDivider />
+                        <ThinDivider/>
                     </>
                 );
             }}

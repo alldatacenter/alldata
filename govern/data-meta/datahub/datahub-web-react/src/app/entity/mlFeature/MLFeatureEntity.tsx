@@ -1,20 +1,20 @@
 import * as React from 'react';
-import { DotChartOutlined } from '@ant-design/icons';
-import { MlFeature, EntityType, SearchResult, OwnershipType } from '../../../types.generated';
-import { Preview } from './preview/Preview';
-import { Entity, EntityCapabilityType, IconStyleType, PreviewType } from '../Entity';
-import { getDataForEntityType } from '../shared/containers/profile/utils';
-import { EntityProfile } from '../shared/containers/profile/EntityProfile';
-import { GenericEntityProperties } from '../shared/types';
-import { useGetMlFeatureQuery } from '../../../graphql/mlFeature.generated';
-import { SidebarAboutSection } from '../shared/containers/profile/sidebar/AboutSection/SidebarAboutSection';
-import { SidebarTagsSection } from '../shared/containers/profile/sidebar/SidebarTagsSection';
-import { SidebarOwnerSection } from '../shared/containers/profile/sidebar/Ownership/SidebarOwnerSection';
-import { SidebarDomainSection } from '../shared/containers/profile/sidebar/Domain/SidebarDomainSection';
-import { DocumentationTab } from '../shared/tabs/Documentation/DocumentationTab';
-import { FeatureTableTab } from '../shared/tabs/ML/MlFeatureFeatureTableTab';
-import { LineageTab } from '../shared/tabs/Lineage/LineageTab';
-import { EntityMenuItems } from '../shared/EntityDropdown/EntityDropdown';
+import {DotChartOutlined} from '@ant-design/icons';
+import {MlFeature, EntityType, SearchResult, OwnershipType} from '../../../types.generated';
+import {Preview} from './preview/Preview';
+import {Entity, EntityCapabilityType, IconStyleType, PreviewType} from '../Entity';
+import {getDataForEntityType} from '../shared/containers/profile/utils';
+import {EntityProfile} from '../shared/containers/profile/EntityProfile';
+import {GenericEntityProperties} from '../shared/types';
+import {useGetMlFeatureQuery} from '../../../graphql/mlFeature.generated';
+import {SidebarAboutSection} from '../shared/containers/profile/sidebar/AboutSection/SidebarAboutSection';
+import {SidebarTagsSection} from '../shared/containers/profile/sidebar/SidebarTagsSection';
+import {SidebarOwnerSection} from '../shared/containers/profile/sidebar/Ownership/SidebarOwnerSection';
+import {SidebarDomainSection} from '../shared/containers/profile/sidebar/Domain/SidebarDomainSection';
+import {DocumentationTab} from '../shared/tabs/Documentation/DocumentationTab';
+import {FeatureTableTab} from '../shared/tabs/ML/MlFeatureFeatureTableTab';
+import {LineageTab} from '../shared/tabs/Lineage/LineageTab';
+import {EntityMenuItems} from '../shared/EntityDropdown/EntityDropdown';
 
 /**
  * Definition of the DataHub MLFeature entity.
@@ -24,11 +24,11 @@ export class MLFeatureEntity implements Entity<MlFeature> {
 
     icon = (fontSize: number, styleType: IconStyleType, color?: string) => {
         if (styleType === IconStyleType.TAB_VIEW) {
-            return <DotChartOutlined style={{ fontSize, color }} />;
+            return <DotChartOutlined style={{fontSize, color}}/>;
         }
 
         if (styleType === IconStyleType.HIGHLIGHT) {
-            return <DotChartOutlined style={{ fontSize, color: color || '#9633b9' }} />;
+            return <DotChartOutlined style={{fontSize, color: color || '#9633b9'}}/>;
         }
 
         return (

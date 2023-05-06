@@ -1,17 +1,17 @@
 import React from 'react';
-import { render } from '@testing-library/react';
-import { MockedProvider } from '@apollo/client/testing';
+import {render} from '@testing-library/react';
+import {MockedProvider} from '@apollo/client/testing';
 import SnapshotStatsView from '../stats/snapshot/SnapshotStatsView';
 import TestPageContainer from '../../../../../utils/test-utils/TestPageContainer';
-import { completeSampleProfile, missingFieldStatsProfile, missingTableStatsProfile } from '../stories/stats';
-import { mocks } from '../../../../../Mocks';
+import {completeSampleProfile, missingFieldStatsProfile, missingTableStatsProfile} from '../stories/stats';
+import {mocks} from '../../../../../Mocks';
 
 describe('SnapshotStatsView', () => {
     it('renders complete profile', () => {
-        const { getByText } = render(
+        const {getByText} = render(
             <MockedProvider mocks={mocks}>
                 <TestPageContainer>
-                    <SnapshotStatsView profile={completeSampleProfile} />
+                    <SnapshotStatsView profile={completeSampleProfile}/>
                 </TestPageContainer>
             </MockedProvider>,
         );
@@ -56,10 +56,10 @@ describe('SnapshotStatsView', () => {
     });
 
     it('renders profile without field stats', () => {
-        const { getByText, queryByText } = render(
+        const {getByText, queryByText} = render(
             <MockedProvider mocks={mocks}>
                 <TestPageContainer>
-                    <SnapshotStatsView profile={missingFieldStatsProfile} />
+                    <SnapshotStatsView profile={missingFieldStatsProfile}/>
                 </TestPageContainer>
             </MockedProvider>,
         );
@@ -104,10 +104,10 @@ describe('SnapshotStatsView', () => {
     });
 
     it('renders profile without table stats', () => {
-        const { getByText, queryByText } = render(
+        const {getByText, queryByText} = render(
             <MockedProvider mocks={mocks}>
                 <TestPageContainer>
-                    <SnapshotStatsView profile={missingTableStatsProfile} />
+                    <SnapshotStatsView profile={missingTableStatsProfile}/>
                 </TestPageContainer>
             </MockedProvider>,
         );

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Menu, Typography, Divider } from 'antd';
+import {Menu, Typography, Divider} from 'antd';
 import {
     BankOutlined,
     SafetyCertificateOutlined,
@@ -7,16 +7,16 @@ import {
     ToolOutlined,
     FilterOutlined,
 } from '@ant-design/icons';
-import { Redirect, Route, useHistory, useLocation, useRouteMatch, Switch } from 'react-router';
+import {Redirect, Route, useHistory, useLocation, useRouteMatch, Switch} from 'react-router';
 import styled from 'styled-components';
-import { ANTD_GRAY } from '../entity/shared/constants';
-import { ManageIdentities } from '../identity/ManageIdentities';
-import { ManagePermissions } from '../permissions/ManagePermissions';
-import { useAppConfig } from '../useAppConfig';
-import { AccessTokens } from './AccessTokens';
-import { Preferences } from './Preferences';
-import { ManageViews } from '../entity/view/ManageViews';
-import { useUserContext } from '../context/useUserContext';
+import {ANTD_GRAY} from '../entity/shared/constants';
+import {ManageIdentities} from '../identity/ManageIdentities';
+import {ManagePermissions} from '../permissions/ManagePermissions';
+import {useAppConfig} from '../useAppConfig';
+import {AccessTokens} from './AccessTokens';
+import {Preferences} from './Preferences';
+import {ManageViews} from '../entity/view/ManageViews';
+import {useUserContext} from '../context/useUserContext';
 
 const PageContainer = styled.div`
     display: flex;
@@ -54,11 +54,11 @@ const ItemTitle = styled.span`
  * URL Paths for each settings page.
  */
 const PATHS = [
-    { path: 'tokens', content: <AccessTokens /> },
-    { path: 'identities', content: <ManageIdentities /> },
-    { path: 'permissions', content: <ManagePermissions /> },
-    { path: 'preferences', content: <Preferences /> },
-    { path: 'views', content: <ManageViews /> },
+    {path: 'tokens', content: <AccessTokens/>},
+    {path: 'identities', content: <ManageIdentities/>},
+    {path: 'permissions', content: <ManagePermissions/>},
+    {path: 'preferences', content: <Preferences/>},
+    {path: 'views', content: <ManageViews/>},
 ];
 
 /**
@@ -67,8 +67,8 @@ const PATHS = [
 const DEFAULT_PATH = PATHS[0];
 
 export const SettingsPage = () => {
-    const { path, url } = useRouteMatch();
-    const { pathname } = useLocation();
+    const {path, url} = useRouteMatch();
+    const {pathname} = useLocation();
     const history = useHistory();
     const subRoutes = PATHS.map((p) => p.path.replace('/', ''));
     const currPathName = pathname.replace(path, '');
@@ -78,7 +78,7 @@ export const SettingsPage = () => {
     const activePath = subRoutes.includes(providedPath) ? providedPath : DEFAULT_PATH.path.replace('/', '');
 
     const me = useUserContext();
-    const { config } = useAppConfig();
+    const {config} = useAppConfig();
 
     const isPoliciesEnabled = config?.policiesConfig.enabled;
     const isIdentityManagementEnabled = config?.identityManagementConfig.enabled;
@@ -92,62 +92,62 @@ export const SettingsPage = () => {
         <PageContainer>
             <SettingsBarContainer>
                 <SettingsBarHeader>
-                    <PageTitle level={3}>Settings</PageTitle>
-                    <Typography.Paragraph type="secondary">Manage your DataHub settings.</Typography.Paragraph>
+                    <PageTitle level={3}>设置</PageTitle>
+                    <Typography.Paragraph type="secondary">管理您的DataHub设置。</Typography.Paragraph>
                 </SettingsBarHeader>
-                <ThinDivider />
+                <ThinDivider/>
                 <Menu
                     selectable={false}
                     mode="inline"
-                    style={{ width: 256, marginTop: 8 }}
+                    style={{width: 256, marginTop: 8}}
                     selectedKeys={[activePath]}
                     onClick={(newPath) => {
                         history.replace(`${url}/${newPath.key}`);
                     }}
                 >
-                    <Menu.ItemGroup title="Developer">
+                    <Menu.ItemGroup title="开发者工具">
                         <Menu.Item key="tokens">
-                            <SafetyCertificateOutlined />
-                            <ItemTitle>Access Tokens</ItemTitle>
+                            <SafetyCertificateOutlined/>
+                            <ItemTitle>访问令牌</ItemTitle>
                         </Menu.Item>
                     </Menu.ItemGroup>
                     {(showPolicies || showUsersGroups) && (
-                        <Menu.ItemGroup title="Access">
+                        <Menu.ItemGroup title="权限控制">
                             {showUsersGroups && (
                                 <Menu.Item key="identities">
-                                    <UsergroupAddOutlined />
-                                    <ItemTitle>Users & Groups</ItemTitle>
+                                    <UsergroupAddOutlined/>
+                                    <ItemTitle>用户 & 组</ItemTitle>
                                 </Menu.Item>
                             )}
                             {showPolicies && (
                                 <Menu.Item key="permissions">
-                                    <BankOutlined />
-                                    <ItemTitle>Permissions</ItemTitle>
+                                    <BankOutlined/>
+                                    <ItemTitle>权限</ItemTitle>
                                 </Menu.Item>
                             )}
                         </Menu.ItemGroup>
                     )}
                     {showViews && (
-                        <Menu.ItemGroup title="Manage">
+                        <Menu.ItemGroup title="管理">
                             <Menu.Item key="views">
-                                <FilterOutlined /> <ItemTitle>My Views</ItemTitle>
+                                <FilterOutlined/> <ItemTitle>我的观点</ItemTitle>
                             </Menu.Item>
                         </Menu.ItemGroup>
                     )}
-                    <Menu.ItemGroup title="Preferences">
+                    <Menu.ItemGroup title="偏好设置">
                         <Menu.Item key="preferences">
-                            <ToolOutlined />
-                            <ItemTitle>Appearance</ItemTitle>
+                            <ToolOutlined/>
+                            <ItemTitle>外观</ItemTitle>
                         </Menu.Item>
                     </Menu.ItemGroup>
                 </Menu>
             </SettingsBarContainer>
             <Switch>
                 <Route exact path={path}>
-                    <Redirect to={`${pathname}${pathname.endsWith('/') ? '' : '/'}${DEFAULT_PATH.path}`} />
+                    <Redirect to={`${pathname}${pathname.endsWith('/') ? '' : '/'}${DEFAULT_PATH.path}`}/>
                 </Route>
                 {PATHS.map((p) => (
-                    <Route path={`${path}/${p.path.replace('/', '')}`} render={() => p.content} key={p.path} />
+                    <Route path={`${path}/${p.path.replace('/', '')}`} render={() => p.content} key={p.path}/>
                 ))}
             </Switch>
         </PageContainer>

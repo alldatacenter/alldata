@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
-import { message, Button, Input, Modal, Typography, Form, Collapse, Tag } from 'antd';
-import { useCreateDomainMutation } from '../../graphql/domain.generated';
-import { useEnterKeyListener } from '../shared/useEnterKeyListener';
-import { validateCustomUrnId } from '../shared/textUtil';
-import analytics, { EventType } from '../analytics';
+import {message, Button, Input, Modal, Typography, Form, Collapse, Tag} from 'antd';
+import {useCreateDomainMutation} from '../../graphql/domain.generated';
+import {useEnterKeyListener} from '../shared/useEnterKeyListener';
+import {validateCustomUrnId} from '../shared/textUtil';
+import analytics, {EventType} from '../analytics';
 
 const SuggestedNamesGroup = styled.div`
     margin-top: 12px;
@@ -27,7 +27,7 @@ const ID_FIELD_NAME = 'id';
 const NAME_FIELD_NAME = 'name';
 const DESCRIPTION_FIELD_NAME = 'description';
 
-export default function CreateDomainModal({ onClose, onCreate }: Props) {
+export default function CreateDomainModal({onClose, onCreate}: Props) {
     const [createDomainMutation] = useCreateDomainMutation();
     const [createButtonEnabled, setCreateButtonEnabled] = useState(false);
     const [form] = Form.useForm();
@@ -42,7 +42,7 @@ export default function CreateDomainModal({ onClose, onCreate }: Props) {
                 },
             },
         })
-            .then(({ data, errors }) => {
+            .then(({data, errors}) => {
                 if (!errors) {
                     analytics.event({
                         type: EventType.CreateDomainEvent,
@@ -62,7 +62,7 @@ export default function CreateDomainModal({ onClose, onCreate }: Props) {
             })
             .catch((e) => {
                 message.destroy();
-                message.error({ content: `Failed to create Domain!: \n ${e.message || ''}`, duration: 3 });
+                message.error({content: `Failed to create Domain!: \n ${e.message || ''}`, duration: 3});
             });
         onClose();
     };
@@ -82,7 +82,12 @@ export default function CreateDomainModal({ onClose, onCreate }: Props) {
                     <Button onClick={onClose} type="text">
                         Cancel
                     </Button>
-                    <Button id="createDomainButton" onClick={onCreateDomain} disabled={!createButtonEnabled}>
+                    <Button
+                        id="createDomainButton"
+                        data-testid="create-domain-button"
+                        onClick={onCreateDomain}
+                        disabled={!createButtonEnabled}
+                    >
                         Create
                     </Button>
                 </>
@@ -105,12 +110,12 @@ export default function CreateDomainModal({ onClose, onCreate }: Props) {
                                 required: true,
                                 message: 'Enter a Domain name.',
                             },
-                            { whitespace: true },
-                            { min: 1, max: 150 },
+                            {whitespace: true},
+                            {min: 1, max: 150},
                         ]}
                         hasFeedback
                     >
-                        <Input placeholder="A name for your domain" />
+                        <Input data-testid="create-domain-name" placeholder="A name for your domain"/>
                     </Form.Item>
                     <SuggestedNamesGroup>
                         {SUGGESTED_DOMAIN_NAMES.map((name) => {
@@ -136,10 +141,10 @@ export default function CreateDomainModal({ onClose, onCreate }: Props) {
                     </Typography.Paragraph>
                     <Form.Item
                         name={DESCRIPTION_FIELD_NAME}
-                        rules={[{ whitespace: true }, { min: 1, max: 500 }]}
+                        rules={[{whitespace: true}, {min: 1, max: 500}]}
                         hasFeedback
                     >
-                        <Input.TextArea placeholder="A description for your domain" />
+                        <Input.TextArea placeholder="A description for your domain"/>
                     </Form.Item>
                 </Form.Item>
                 <Collapse ghost>
@@ -164,7 +169,7 @@ export default function CreateDomainModal({ onClose, onCreate }: Props) {
                                     }),
                                 ]}
                             >
-                                <Input placeholder="engineering" />
+                                <Input data-testid="create-domain-id" placeholder="engineering"/>
                             </Form.Item>
                         </Form.Item>
                     </Collapse.Panel>

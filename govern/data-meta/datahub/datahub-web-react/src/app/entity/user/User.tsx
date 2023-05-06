@@ -1,9 +1,9 @@
-import { UserOutlined } from '@ant-design/icons';
+import {UserOutlined} from '@ant-design/icons';
 import * as React from 'react';
-import { CorpUser, EntityType, SearchResult } from '../../../types.generated';
-import { Entity, EntityCapabilityType, IconStyleType, PreviewType } from '../Entity';
-import { getDataForEntityType } from '../shared/containers/profile/utils';
-import { Preview } from './preview/Preview';
+import {CorpUser, EntityType, SearchResult} from '../../../types.generated';
+import {Entity, EntityCapabilityType, IconStyleType, PreviewType} from '../Entity';
+import {getDataForEntityType} from '../shared/containers/profile/utils';
+import {Preview} from './preview/Preview';
 import UserProfile from './UserProfile';
 
 /**
@@ -14,11 +14,11 @@ export class UserEntity implements Entity<CorpUser> {
 
     icon = (fontSize: number, styleType: IconStyleType, color?: string) => {
         if (styleType === IconStyleType.TAB_VIEW) {
-            return <UserOutlined style={{ fontSize, color }} />;
+            return <UserOutlined style={{fontSize, color}}/>;
         }
 
         if (styleType === IconStyleType.HIGHLIGHT) {
-            return <UserOutlined style={{ fontSize, color }} />;
+            return <UserOutlined style={{fontSize, color}}/>;
         }
 
         return (
@@ -45,7 +45,7 @@ export class UserEntity implements Entity<CorpUser> {
 
     getCollectionName: () => string = () => 'People';
 
-    renderProfile: (urn: string) => JSX.Element = (_) => <UserProfile />;
+    renderProfile: (urn: string) => JSX.Element = (_) => <UserProfile/>;
 
     renderPreview = (_: PreviewType, data: CorpUser) => (
         <Preview
@@ -73,7 +73,7 @@ export class UserEntity implements Entity<CorpUser> {
     };
 
     getGenericEntityProperties = (user: CorpUser) => {
-        return getDataForEntityType({ data: user, entityType: this.type, getOverrideProperties: (data) => data });
+        return getDataForEntityType({data: user, entityType: this.type, getOverrideProperties: (data) => data});
     };
 
     supportedCapabilities = () => {

@@ -16,7 +16,7 @@ tests and causes CI failures due to timeouts. We test the Editor with tests for 
 by itself as well as tests for the specific pieces of functionality it uses.
 */
 export const Editor = (props: EditorProps) => {
-    const { content } = props;
+    const {content} = props;
 
     return <div>{content}</div>;
 };

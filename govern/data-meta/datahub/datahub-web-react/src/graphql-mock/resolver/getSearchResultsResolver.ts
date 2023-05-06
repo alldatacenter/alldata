@@ -33,11 +33,11 @@ type QueryResult = {
     total: number;
 };
 
-const findByQuery = ({ query, searchResults, start, count }: FindByQueryArg): QueryResult => {
+const findByQuery = ({query, searchResults, start, count}: FindByQueryArg): QueryResult => {
     if (query === '*') {
         const results = searchResults.slice(start, start + count);
 
-        return { results, total: results.length };
+        return {results, total: results.length};
     }
 
     if (query.indexOf('owners:') >= 0) {
@@ -48,7 +48,7 @@ const findByQuery = ({ query, searchResults, start, count }: FindByQueryArg): Qu
             }).length;
         });
 
-        return { results, total: results.length };
+        return {results, total: results.length};
     }
 
     if (query.indexOf('tags:') >= 0) {
@@ -59,7 +59,7 @@ const findByQuery = ({ query, searchResults, start, count }: FindByQueryArg): Qu
             }).length;
         });
 
-        return { results, total: results.length };
+        return {results, total: results.length};
     }
 
     const results = [
@@ -74,7 +74,7 @@ const findByQuery = ({ query, searchResults, start, count }: FindByQueryArg): Qu
         }),
     ];
 
-    return { results, total: results.length };
+    return {results, total: results.length};
 };
 
 type GetSearchResults = {
@@ -84,12 +84,12 @@ type GetSearchResults = {
 } | null;
 
 export const getSearchResultsResolver = {
-    getSearchResults({ variables: { input } }): GetSearchResults {
-        const { type, start = 0, count = 10, query }: SearchInput = input;
+    getSearchResults({variables: {input}}): GetSearchResults {
+        const {type, start = 0, count = 10, query}: SearchInput = input;
         const startValue = start as number;
         const countValue = count as number;
         const entitySearchResult: SearchResults = entitySearchResults[type];
-        const { results, total } = findByQuery({
+        const {results, total} = findByQuery({
             query: query.toLowerCase(),
             searchResults: entitySearchResult.searchResults,
             start: startValue,
@@ -98,17 +98,17 @@ export const getSearchResultsResolver = {
 
         return entitySearchResult
             ? {
-                  data: {
-                      search: {
-                          start: startValue,
-                          count: results.length,
-                          total,
-                          searchResults: results,
-                          facets: entitySearchResult.facets,
-                          __typename: entitySearchResult.__typename,
-                      },
-                  },
-              }
+                data: {
+                    search: {
+                        start: startValue,
+                        count: results.length,
+                        total,
+                        searchResults: results,
+                        facets: entitySearchResult.facets,
+                        __typename: entitySearchResult.__typename,
+                    },
+                },
+            }
             : null;
     },
 };

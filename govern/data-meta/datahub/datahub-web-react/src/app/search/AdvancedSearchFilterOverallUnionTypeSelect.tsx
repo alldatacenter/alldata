@@ -1,9 +1,9 @@
-import { Select } from 'antd';
+import {Select} from 'antd';
 import React from 'react';
 import styled from 'styled-components/macro';
 
-import { ANTD_GRAY } from '../entity/shared/constants';
-import { UnionType } from './utils/constants';
+import {ANTD_GRAY} from '../entity/shared/constants';
+import {UnionType} from './utils/constants';
 
 type Props = {
     unionType: UnionType;
@@ -11,7 +11,7 @@ type Props = {
     disabled?: boolean;
 };
 
-const { Option } = Select;
+const {Option} = Select;
 
 const StyledSelect = styled(Select)`
     border-radius: 5px;
@@ -21,7 +21,7 @@ const StyledSelect = styled(Select)`
     }
 `;
 
-export const AdvancedSearchFilterOverallUnionTypeSelect = ({ unionType, onUpdate, disabled = false }: Props) => {
+export const AdvancedSearchFilterOverallUnionTypeSelect = ({unionType, onUpdate, disabled = false}: Props) => {
     return (
         <>
             <StyledSelect

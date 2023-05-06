@@ -1,25 +1,25 @@
-import React, { useEffect, useMemo, useState } from 'react';
-import { Button, Empty, message, Pagination, Tooltip, Typography } from 'antd';
+import React, {useEffect, useMemo, useState} from 'react';
+import {Button, Empty, message, Pagination, Tooltip, Typography} from 'antd';
 import styled from 'styled-components';
 import * as QueryString from 'query-string';
-import { useLocation } from 'react-router';
-import { useListRolesQuery } from '../../../graphql/role.generated';
-import { Message } from '../../shared/Message';
+import {useLocation} from 'react-router';
+import {useListRolesQuery} from '../../../graphql/role.generated';
+import {Message} from '../../shared/Message';
 import TabToolbar from '../../entity/shared/components/styled/TabToolbar';
-import { StyledTable } from '../../entity/shared/components/styled/StyledTable';
+import {StyledTable} from '../../entity/shared/components/styled/StyledTable';
 import AvatarsGroup from '../AvatarsGroup';
-import { useEntityRegistry } from '../../useEntityRegistry';
-import { SearchBar } from '../../search/SearchBar';
-import { SearchSelectModal } from '../../entity/shared/components/styled/search/SearchSelectModal';
-import { EntityCapabilityType } from '../../entity/Entity';
-import { useBatchAssignRoleMutation } from '../../../graphql/mutations.generated';
-import { CorpUser, DataHubRole, DataHubPolicy } from '../../../types.generated';
+import {useEntityRegistry} from '../../useEntityRegistry';
+import {SearchBar} from '../../search/SearchBar';
+import {SearchSelectModal} from '../../entity/shared/components/styled/search/SearchSelectModal';
+import {EntityCapabilityType} from '../../entity/Entity';
+import {useBatchAssignRoleMutation} from '../../../graphql/mutations.generated';
+import {CorpUser, DataHubRole, DataHubPolicy} from '../../../types.generated';
 import RoleDetailsModal from './RoleDetailsModal';
-import analytics, { EventType } from '../../analytics';
-import { ANTD_GRAY } from '../../entity/shared/constants';
-import { OnboardingTour } from '../../onboarding/OnboardingTour';
-import { ROLES_INTRO_ID } from '../../onboarding/config/RolesOnboardingConfig';
-import { clearUserListCache } from '../../identity/user/cacheUtils';
+import analytics, {EventType} from '../../analytics';
+import {ANTD_GRAY} from '../../entity/shared/constants';
+import {OnboardingTour} from '../../onboarding/OnboardingTour';
+import {ROLES_INTRO_ID} from '../../onboarding/config/RolesOnboardingConfig';
+import {clearUserListCache} from '../../identity/user/cacheUtils';
 
 const SourceContainer = styled.div``;
 
@@ -53,7 +53,7 @@ const DEFAULT_PAGE_SIZE = 10;
 export const ManageRoles = () => {
     const entityRegistry = useEntityRegistry();
     const location = useLocation();
-    const params = QueryString.parse(location.search, { arrayFormat: 'comma' });
+    const params = QueryString.parse(location.search, {arrayFormat: 'comma'});
     const paramsQuery = (params?.query as string) || undefined;
     const [query, setQuery] = useState<undefined | string>(undefined);
     const [isBatchAddRolesModalVisible, setIsBatchAddRolesModalVisible] = useState(false);
@@ -94,7 +94,7 @@ export const ManageRoles = () => {
         setFocusRole(undefined);
     };
 
-    const [batchAssignRoleMutation, { client }] = useBatchAssignRoleMutation();
+    const [batchAssignRoleMutation, {client}] = useBatchAssignRoleMutation();
     // eslint-disable-next-line
     const batchAssignRole = (actorUrns: Array<string>) => {
         if (!focusRole || !focusRole.urn) {
@@ -108,7 +108,7 @@ export const ManageRoles = () => {
                 },
             },
         })
-            .then(({ errors }) => {
+            .then(({errors}) => {
                 if (!errors) {
                     analytics.event({
                         type: EventType.BatchSelectUserRoleEvent,
@@ -127,7 +127,7 @@ export const ManageRoles = () => {
             })
             .catch((e) => {
                 message.destroy();
-                message.error({ content: `Failed to assign Role to users: \n ${e.message || ''}`, duration: 3 });
+                message.error({content: `Failed to assign Role to users: \n ${e.message || ''}`, duration: 3});
             })
             .finally(() => {
                 resetRoleState();
@@ -148,7 +148,7 @@ export const ManageRoles = () => {
                     <>
                         <RoleName
                             onClick={() => onViewRole(record.role)}
-                            style={{ color: record?.editable ? '#000000' : ANTD_GRAY[8] }}
+                            style={{color: record?.editable ? '#000000' : ANTD_GRAY[8]}}
                         >
                             {record?.name}
                         </RoleName>
@@ -216,14 +216,14 @@ export const ManageRoles = () => {
 
     return (
         <PageContainer>
-            <OnboardingTour stepIds={[ROLES_INTRO_ID]} />
+            <OnboardingTour stepIds={[ROLES_INTRO_ID]}/>
             {rolesLoading && !rolesData && (
-                <Message type="loading" content="Loading roles..." style={{ marginTop: '10%' }} />
+                <Message type="loading" content="Loading roles..." style={{marginTop: '10%'}}/>
             )}
             {rolesError && message.error('Failed to load roles! An unexpected error occurred.')}
             <SourceContainer>
                 <TabToolbar>
-                    <div />
+                    <div/>
                     <SearchBar
                         initialQuery={query || ''}
                         placeholderText="Search roles..."
@@ -258,14 +258,14 @@ export const ManageRoles = () => {
                     dataSource={tableData}
                     rowKey="urn"
                     locale={{
-                        emptyText: <Empty description="No Roles!" image={Empty.PRESENTED_IMAGE_SIMPLE} />,
+                        emptyText: <Empty description="No Roles!" image={Empty.PRESENTED_IMAGE_SIMPLE}/>,
                     }}
                     pagination={false}
                 />
             </SourceContainer>
             <PaginationContainer>
                 <Pagination
-                    style={{ margin: 40 }}
+                    style={{margin: 40}}
                     current={page}
                     pageSize={pageSize}
                     total={totalRoles}
@@ -274,7 +274,7 @@ export const ManageRoles = () => {
                     showSizeChanger={false}
                 />
             </PaginationContainer>
-            <RoleDetailsModal role={focusRole as DataHubRole} visible={showViewRoleModal} onClose={resetRoleState} />
+            <RoleDetailsModal role={focusRole as DataHubRole} visible={showViewRoleModal} onClose={resetRoleState}/>
         </PageContainer>
     );
 };

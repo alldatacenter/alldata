@@ -1,5 +1,5 @@
-import { addInterval } from '../timeUtils';
-import { DateInterval } from '../../../../types.generated';
+import {addInterval} from '../timeUtils';
+import {DateInterval} from '../../../../types.generated';
 
 describe('timeUtils', () => {
     describe('addInterval', () => {

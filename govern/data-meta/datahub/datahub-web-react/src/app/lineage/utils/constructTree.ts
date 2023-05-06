@@ -1,7 +1,7 @@
-import { Entity } from '../../../types.generated';
+import {Entity} from '../../../types.generated';
 import EntityRegistry from '../../entity/EntityRegistry';
-import { Direction, EntityAndType, FetchedEntities, FetchedEntity, NodeData, UpdatedLineages } from '../types';
-import constructFetchedNode, { shouldIncludeChildEntity } from './constructFetchedNode';
+import {Direction, EntityAndType, FetchedEntities, FetchedEntity, NodeData, UpdatedLineages} from '../types';
+import constructFetchedNode, {shouldIncludeChildEntity} from './constructFetchedNode';
 import extendAsyncEntities from './extendAsyncEntities';
 
 function createEntityAndType(entity: Entity) {
@@ -58,7 +58,7 @@ export default function constructTree(
     entityRegistry: EntityRegistry,
     updatedLineages: UpdatedLineages,
 ): NodeData {
-    if (!entityAndType?.entity) return { name: 'loading...', children: [] };
+    if (!entityAndType?.entity) return {name: 'loading...', children: []};
     const constructedNodes = {};
 
     let updatedFetchedEntities = fetchedEntities;
@@ -101,7 +101,7 @@ export default function constructTree(
         downstreamRelationships: fetchedEntity?.downstreamRelationships || [],
     };
     const lineageConfig = entityRegistry.getLineageVizConfig(entityAndType.type, entityAndType.entity);
-    let updatedLineageConfig = { ...lineageConfig };
+    let updatedLineageConfig = {...lineageConfig};
     if (lineageConfig && lineageConfig.urn in updatedLineages) {
         updatedLineageConfig = updateFetchedEntity(lineageConfig, updatedLineages);
     }

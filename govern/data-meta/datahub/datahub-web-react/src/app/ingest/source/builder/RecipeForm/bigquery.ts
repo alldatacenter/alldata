@@ -1,4 +1,4 @@
-import { RecipeField, FieldType } from './common';
+import {RecipeField, FieldType} from './common';
 
 export const BIGQUERY_PROJECT_ID: RecipeField = {
     name: 'project_id',

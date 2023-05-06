@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import { Form, Input, Modal, Typography } from 'antd';
-import { PictureOutlined } from '@ant-design/icons';
-import { useCommands } from '@remirror/react';
-import { CommandButton } from './CommandButton';
+import React, {useState} from 'react';
+import {Form, Input, Modal, Typography} from 'antd';
+import {PictureOutlined} from '@ant-design/icons';
+import {useCommands} from '@remirror/react';
+import {CommandButton} from './CommandButton';
 
 export const AddImageButton = () => {
     const [isModalVisible, setModalVisible] = useState(false);
     const [form] = Form.useForm();
-    const { insertImage } = useCommands();
+    const {insertImage} = useCommands();
 
     const handleButtonClick = () => {
         setModalVisible(true);
@@ -33,7 +33,7 @@ export const AddImageButton = () => {
         <>
             <CommandButton
                 active={false}
-                icon={<PictureOutlined />}
+                icon={<PictureOutlined/>}
                 commandName="insertImage"
                 onClick={handleButtonClick}
             />
@@ -42,12 +42,12 @@ export const AddImageButton = () => {
                     <Form.Item
                         name="src"
                         label={<Typography.Text strong>Image URL</Typography.Text>}
-                        rules={[{ required: true }]}
+                        rules={[{required: true}]}
                     >
-                        <Input placeholder="http://www.example.com/image.jpg" autoFocus />
+                        <Input placeholder="http://www.example.com/image.jpg" autoFocus/>
                     </Form.Item>
                     <Form.Item name="alt" label={<Typography.Text strong>Alt Text</Typography.Text>}>
-                        <Input />
+                        <Input/>
                     </Form.Item>
                 </Form>
             </Modal>

@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import * as QueryString from 'query-string';
-import { useLocation } from 'react-router';
-import { UserOutlined } from '@ant-design/icons';
-import { Button, message, Modal, Select, Tooltip, Typography } from 'antd';
+import {useLocation} from 'react-router';
+import {UserOutlined} from '@ant-design/icons';
+import {Button, message, Modal, Select, Tooltip, Typography} from 'antd';
 import styled from 'styled-components/macro';
-import { PageRoutes } from '../../../conf/Global';
-import { useGetInviteTokenQuery, useListRolesQuery } from '../../../graphql/role.generated';
-import { DataHubRole } from '../../../types.generated';
-import { mapRoleIcon } from './UserUtils';
-import { useCreateInviteTokenMutation } from '../../../graphql/mutations.generated';
-import { ANTD_GRAY } from '../../entity/shared/constants';
-import analytics, { EventType } from '../../analytics';
+import {PageRoutes} from '../../../conf/Global';
+import {useGetInviteTokenQuery, useListRolesQuery} from '../../../graphql/role.generated';
+import {DataHubRole} from '../../../types.generated';
+import {mapRoleIcon} from './UserUtils';
+import {useCreateInviteTokenMutation} from '../../../graphql/mutations.generated';
+import {ANTD_GRAY} from '../../entity/shared/constants';
+import analytics, {EventType} from '../../analytics';
 
 const ModalSection = styled.div`
     display: flex;
@@ -69,10 +69,10 @@ type Props = {
     onClose: () => void;
 };
 
-export default function ViewInviteTokenModal({ visible, onClose }: Props) {
+export default function ViewInviteTokenModal({visible, onClose}: Props) {
     const baseUrl = window.location.origin;
     const location = useLocation();
-    const params = QueryString.parse(location.search, { arrayFormat: 'comma' });
+    const params = QueryString.parse(location.search, {arrayFormat: 'comma'});
     const paramsQuery = (params?.query as string) || undefined;
     const [query, setQuery] = useState<undefined | string>(undefined);
     useEffect(() => setQuery(paramsQuery), [paramsQuery]);
@@ -81,7 +81,7 @@ export default function ViewInviteTokenModal({ visible, onClose }: Props) {
     // Code related to listing role options and selecting a role
     const noRoleText = 'No Role';
 
-    const { data: rolesData } = useListRolesQuery({
+    const {data: rolesData} = useListRolesQuery({
         fetchPolicy: 'cache-first',
         variables: {
             input: {
@@ -109,9 +109,9 @@ export default function ViewInviteTokenModal({ visible, onClose }: Props) {
         });
 
     // Code related to getting or creating an invite token
-    const { data: getInviteTokenData } = useGetInviteTokenQuery({
+    const {data: getInviteTokenData} = useGetInviteTokenQuery({
         skip: !visible,
-        variables: { input: { roleUrn: selectedRole?.urn } },
+        variables: {input: {roleUrn: selectedRole?.urn}},
     });
 
     const [inviteToken, setInviteToken] = useState<string>(getInviteTokenData?.getInviteToken?.inviteToken || '');
@@ -137,7 +137,7 @@ export default function ViewInviteTokenModal({ visible, onClose }: Props) {
                 },
             },
         })
-            .then(({ data, errors }) => {
+            .then(({data, errors}) => {
                 if (!errors) {
                     analytics.event({
                         type: EventType.CreateInviteLinkEvent,
@@ -175,7 +175,7 @@ export default function ViewInviteTokenModal({ visible, onClose }: Props) {
                     <RoleSelect
                         placeholder={
                             <>
-                                <UserOutlined style={{ marginRight: 6, fontSize: 12 }} />
+                                <UserOutlined style={{marginRight: 6, fontSize: 12}}/>
                                 {noRoleText}
                             </>
                         }

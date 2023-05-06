@@ -1,4 +1,4 @@
-import { Card } from 'antd';
+import {Card} from 'antd';
 import styled from 'styled-components';
 
 export const ChartCard = styled(Card)<{ shouldScroll: boolean }>`

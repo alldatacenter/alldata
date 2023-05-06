@@ -14,38 +14,38 @@ import {
     DatasetStatsSummary,
 } from '../../../../types.generated';
 import DefaultPreviewCard from '../../../preview/DefaultPreviewCard';
-import { useEntityRegistry } from '../../../useEntityRegistry';
-import { capitalizeFirstLetterOnly } from '../../../shared/textUtil';
-import { IconStyleType } from '../../Entity';
-import { DatasetStatsSummary as DatasetStatsSummaryView } from '../shared/DatasetStatsSummary';
+import {useEntityRegistry} from '../../../useEntityRegistry';
+import {capitalizeFirstLetterOnly} from '../../../shared/textUtil';
+import {IconStyleType} from '../../Entity';
+import {DatasetStatsSummary as DatasetStatsSummaryView} from '../shared/DatasetStatsSummary';
 
 export const Preview = ({
-    urn,
-    name,
-    origin,
-    description,
-    platformName,
-    platformLogo,
-    platformNames,
-    platformLogos,
-    platformInstanceId,
-    owners,
-    globalTags,
-    domain,
-    deprecation,
-    snippet,
-    insights,
-    glossaryTerms,
-    subtype,
-    externalUrl,
-    container,
-    parentContainers,
-    rowCount,
-    columnCount,
-    sizeInBytes,
-    statsSummary,
-    lastUpdatedMs,
-}: {
+                            urn,
+                            name,
+                            origin,
+                            description,
+                            platformName,
+                            platformLogo,
+                            platformNames,
+                            platformLogos,
+                            platformInstanceId,
+                            owners,
+                            globalTags,
+                            domain,
+                            deprecation,
+                            snippet,
+                            insights,
+                            glossaryTerms,
+                            subtype,
+                            externalUrl,
+                            container,
+                            parentContainers,
+                            rowCount,
+                            columnCount,
+                            sizeInBytes,
+                            statsSummary,
+                            lastUpdatedMs,
+                        }: {
     urn: string;
     name: string;
     origin: FabricType;

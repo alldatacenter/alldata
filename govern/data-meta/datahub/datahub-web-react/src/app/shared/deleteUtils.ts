@@ -1,10 +1,10 @@
-import { useDeleteAssertionMutation } from '../../graphql/assertion.generated';
-import { useDeleteDomainMutation } from '../../graphql/domain.generated';
-import { useDeleteGlossaryEntityMutation } from '../../graphql/glossary.generated';
-import { useRemoveGroupMutation } from '../../graphql/group.generated';
-import { useDeleteTagMutation } from '../../graphql/tag.generated';
-import { useRemoveUserMutation } from '../../graphql/user.generated';
-import { EntityType } from '../../types.generated';
+import {useDeleteAssertionMutation} from '../../graphql/assertion.generated';
+import {useDeleteDomainMutation} from '../../graphql/domain.generated';
+import {useDeleteGlossaryEntityMutation} from '../../graphql/glossary.generated';
+import {useRemoveGroupMutation} from '../../graphql/group.generated';
+import {useDeleteTagMutation} from '../../graphql/tag.generated';
+import {useRemoveUserMutation} from '../../graphql/user.generated';
+import {EntityType} from '../../types.generated';
 
 /**
  * Returns a relative redirect path which is used after an Entity has been deleted from it's profile page.

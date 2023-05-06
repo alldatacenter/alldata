@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
-import { Dropdown, Menu, message, Tooltip } from 'antd';
+import {Dropdown, Menu, message, Tooltip} from 'antd';
 import {
     DeleteOutlined,
     ExclamationCircleOutlined,
@@ -10,16 +10,16 @@ import {
     MoreOutlined,
     PlusOutlined,
 } from '@ant-design/icons';
-import { Redirect } from 'react-router';
-import { EntityType } from '../../../../types.generated';
+import {Redirect} from 'react-router';
+import {EntityType} from '../../../../types.generated';
 import CreateGlossaryEntityModal from './CreateGlossaryEntityModal';
-import { UpdateDeprecationModal } from './UpdateDeprecationModal';
-import { useUpdateDeprecationMutation } from '../../../../graphql/mutations.generated';
+import {UpdateDeprecationModal} from './UpdateDeprecationModal';
+import {useUpdateDeprecationMutation} from '../../../../graphql/mutations.generated';
 import MoveGlossaryEntityModal from './MoveGlossaryEntityModal';
-import { ANTD_GRAY } from '../constants';
-import { useEntityRegistry } from '../../../useEntityRegistry';
+import {ANTD_GRAY} from '../constants';
+import {useEntityRegistry} from '../../../useEntityRegistry';
 import useDeleteEntity from './useDeleteEntity';
-import { getEntityProfileDeleteRedirectPath } from '../../../shared/deleteUtils';
+import {getEntityProfileDeleteRedirectPath} from '../../../shared/deleteUtils';
 
 export enum EntityMenuItems {
     COPY_URL,
@@ -47,13 +47,13 @@ const MenuItem = styled.div`
 
 const StyledMenuItem = styled(Menu.Item)<{ disabled: boolean }>`
     ${(props) =>
-        props.disabled
-            ? `
+    props.disabled
+        ? `
             ${MenuItem} {
                 color: ${ANTD_GRAY[7]};
             }
     `
-            : ''}
+        : ''}
 `;
 
 interface Options {
@@ -90,7 +90,7 @@ function EntityDropdown(props: Props) {
 
     const entityRegistry = useEntityRegistry();
     const [updateDeprecation] = useUpdateDeprecationMutation();
-    const { onDeleteEntity, hasBeenDeleted } = useDeleteEntity(
+    const {onDeleteEntity, hasBeenDeleted} = useDeleteEntity(
         urn,
         entityType,
         entityData,
@@ -105,7 +105,7 @@ function EntityDropdown(props: Props) {
     const [isMoveModalVisible, setIsMoveModalVisible] = useState(false);
 
     const handleUpdateDeprecation = async (deprecatedStatus: boolean) => {
-        message.loading({ content: 'Updating...' });
+        message.loading({content: 'Updating...'});
         try {
             await updateDeprecation({
                 variables: {
@@ -118,11 +118,11 @@ function EntityDropdown(props: Props) {
                 },
             });
             message.destroy();
-            message.success({ content: 'Deprecation Updated', duration: 2 });
+            message.success({content: 'Deprecation Updated', duration: 2});
         } catch (e: unknown) {
             message.destroy();
             if (e instanceof Error) {
-                message.error({ content: `Failed to update Deprecation: \n ${e.message || ''}`, duration: 2 });
+                message.error({content: `Failed to update Deprecation: \n ${e.message || ''}`, duration: 2});
             }
         }
         refetchForEntity?.();
@@ -153,7 +153,7 @@ function EntityDropdown(props: Props) {
                                         message.info('Copied URL!', 1.2);
                                     }}
                                 >
-                                    <LinkOutlined /> &nbsp; Copy Url
+                                    <LinkOutlined/> &nbsp; Copy Url
                                 </MenuItem>
                             </Menu.Item>
                         )}
@@ -161,11 +161,11 @@ function EntityDropdown(props: Props) {
                             <Menu.Item key="1">
                                 {!entityData?.deprecation?.deprecated ? (
                                     <MenuItem onClick={() => setIsDeprecationModalVisible(true)}>
-                                        <ExclamationCircleOutlined /> &nbsp; Mark as deprecated
+                                        <ExclamationCircleOutlined/> &nbsp; Mark as deprecated
                                     </MenuItem>
                                 ) : (
                                     <MenuItem onClick={() => handleUpdateDeprecation(false)}>
-                                        <ExclamationCircleOutlined /> &nbsp; Mark as un-deprecated
+                                        <ExclamationCircleOutlined/> &nbsp; Mark as un-deprecated
                                     </MenuItem>
                                 )}
                             </Menu.Item>
@@ -177,7 +177,7 @@ function EntityDropdown(props: Props) {
                                 onClick={() => setIsCreateTermModalVisible(true)}
                             >
                                 <MenuItem>
-                                    <PlusOutlined /> &nbsp;Add Term
+                                    <PlusOutlined/> &nbsp;Add Term
                                 </MenuItem>
                             </StyledMenuItem>
                         )}
@@ -188,7 +188,7 @@ function EntityDropdown(props: Props) {
                                 onClick={() => setIsCreateNodeModalVisible(true)}
                             >
                                 <MenuItem>
-                                    <FolderAddOutlined /> &nbsp;Add Term Group
+                                    <FolderAddOutlined/> &nbsp;Add Term Group
                                 </MenuItem>
                             </StyledMenuItem>
                         )}
@@ -199,7 +199,7 @@ function EntityDropdown(props: Props) {
                                 onClick={() => setIsMoveModalVisible(true)}
                             >
                                 <MenuItem>
-                                    <FolderOpenOutlined /> &nbsp;Move
+                                    <FolderOpenOutlined/> &nbsp;Move
                                 </MenuItem>
                             </StyledMenuItem>
                         )}
@@ -214,11 +214,11 @@ function EntityDropdown(props: Props) {
                                         entityType,
                                     )} with child entities.`}
                                     overlayStyle={
-                                        canManageGlossaryEntity && entityHasChildren ? {} : { display: 'none' }
+                                        canManageGlossaryEntity && entityHasChildren ? {} : {display: 'none'}
                                     }
                                 >
                                     <MenuItem>
-                                        <DeleteOutlined /> &nbsp;Delete
+                                        <DeleteOutlined/> &nbsp;Delete
                                     </MenuItem>
                                 </Tooltip>
                             </StyledMenuItem>
@@ -227,7 +227,7 @@ function EntityDropdown(props: Props) {
                 }
                 trigger={['click']}
             >
-                <MenuIcon data-testid="entity-header-dropdown" fontSize={size} />
+                <MenuIcon data-testid="entity-header-dropdown" fontSize={size}/>
             </Dropdown>
             {isCreateTermModalVisible && (
                 <CreateGlossaryEntityModal
@@ -250,8 +250,8 @@ function EntityDropdown(props: Props) {
                     refetch={refetchForEntity}
                 />
             )}
-            {isMoveModalVisible && <MoveGlossaryEntityModal onClose={() => setIsMoveModalVisible(false)} />}
-            {hasBeenDeleted && !onDelete && deleteRedirectPath && <Redirect to={deleteRedirectPath} />}
+            {isMoveModalVisible && <MoveGlossaryEntityModal onClose={() => setIsMoveModalVisible(false)}/>}
+            {hasBeenDeleted && !onDelete && deleteRedirectPath && <Redirect to={deleteRedirectPath}/>}
         </>
     );
 }

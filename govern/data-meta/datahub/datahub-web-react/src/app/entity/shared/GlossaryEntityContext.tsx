@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import { GenericEntityProperties } from './types';
+import React, {useContext} from 'react';
+import {GenericEntityProperties} from './types';
 
 export interface GlossaryEntityContextType {
     isInGlossaryContext: boolean;
@@ -15,13 +15,15 @@ export interface GlossaryEntityContextType {
 export const GlossaryEntityContext = React.createContext<GlossaryEntityContextType>({
     isInGlossaryContext: false,
     entityData: null,
-    setEntityData: () => {},
+    setEntityData: () => {
+    },
     urnsToUpdate: [],
-    setUrnsToUpdate: () => {},
+    setUrnsToUpdate: () => {
+    },
 });
 
 export const useGlossaryEntityData = () => {
-    const { isInGlossaryContext, entityData, setEntityData, urnsToUpdate, setUrnsToUpdate } =
+    const {isInGlossaryContext, entityData, setEntityData, urnsToUpdate, setUrnsToUpdate} =
         useContext(GlossaryEntityContext);
-    return { isInGlossaryContext, entityData, setEntityData, urnsToUpdate, setUrnsToUpdate };
+    return {isInGlossaryContext, entityData, setEntityData, urnsToUpdate, setUrnsToUpdate};
 };

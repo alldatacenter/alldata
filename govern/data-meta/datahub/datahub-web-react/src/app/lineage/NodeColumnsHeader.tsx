@@ -1,13 +1,13 @@
-import React, { useContext, useState } from 'react';
-import { Button, Input } from 'antd';
-import { Group } from '@vx/group';
+import React, {useContext, useState} from 'react';
+import {Button, Input} from 'antd';
+import {Group} from '@vx/group';
 import styled from 'styled-components';
-import { DownOutlined, SearchOutlined, UpOutlined } from '@ant-design/icons';
-import { blue } from '@ant-design/colors';
-import { NodeData } from './types';
-import { getTitleHeight } from './utils/titleUtils';
-import { LineageExplorerContext } from './utils/LineageExplorerContext';
-import { centerY, EXPAND_COLLAPSE_COLUMNS_TOGGLE_HEIGHT, iconX, width } from './constants';
+import {DownOutlined, SearchOutlined, UpOutlined} from '@ant-design/icons';
+import {blue} from '@ant-design/colors';
+import {NodeData} from './types';
+import {getTitleHeight} from './utils/titleUtils';
+import {LineageExplorerContext} from './utils/LineageExplorerContext';
+import {centerY, EXPAND_COLLAPSE_COLUMNS_TOGGLE_HEIGHT, iconX, width} from './constants';
 
 const HeaderWrapper = styled.div`
     align-items: center;
@@ -46,14 +46,14 @@ interface Props {
     setFilterText: (text: string) => void;
 }
 
-export default function NodeColumnsHeader({ node, filterText, setFilterText }: Props) {
+export default function NodeColumnsHeader({node, filterText, setFilterText}: Props) {
     const [isSearchBarVisible, setIsSearchBarVisible] = useState(false);
-    const { expandTitles, collapsedColumnsNodes, setCollapsedColumnsNodes } = useContext(LineageExplorerContext);
+    const {expandTitles, collapsedColumnsNodes, setCollapsedColumnsNodes} = useContext(LineageExplorerContext);
     const areColumnsCollapsed = !!collapsedColumnsNodes[node?.data?.urn || 'noop'];
     const titleHeight = getTitleHeight(expandTitles ? node.data.expandedName || node.data.name : undefined);
 
     function expandColumns(e: React.MouseEvent<HTMLSpanElement, MouseEvent>) {
-        const newCollapsedNodes = { ...collapsedColumnsNodes };
+        const newCollapsedNodes = {...collapsedColumnsNodes};
         delete newCollapsedNodes[node.data.urn || 'noop'];
         setCollapsedColumnsNodes(newCollapsedNodes);
         e.stopPropagation();
@@ -85,11 +85,11 @@ export default function NodeColumnsHeader({ node, filterText, setFilterText }: P
                 <HeaderWrapper>
                     {areColumnsCollapsed ? (
                         <ExpandCollapseText onClick={expandColumns}>
-                            Show&nbsp; <DownOutlined />
+                            Show&nbsp; <DownOutlined/>
                         </ExpandCollapseText>
                     ) : (
                         <ExpandCollapseText onClick={collapseColumns}>
-                            Hide&nbsp; <UpOutlined />
+                            Hide&nbsp; <UpOutlined/>
                         </ExpandCollapseText>
                     )}
                     {!areColumnsCollapsed && (
@@ -106,7 +106,7 @@ export default function NodeColumnsHeader({ node, filterText, setFilterText }: P
                             )}
                             {!isSearchBarVisible && (
                                 <Button type="text" size="small" onClick={() => setIsSearchBarVisible(true)}>
-                                    <SearchOutlined />
+                                    <SearchOutlined/>
                                 </Button>
                             )}
                         </foreignObject>

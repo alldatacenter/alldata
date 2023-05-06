@@ -1,10 +1,10 @@
-import { ProvidedZoom, TransformMatrix } from '@vx/zoom/lib/types';
-import React, { SVGProps, useEffect, useMemo, useState } from 'react';
+import {ProvidedZoom, TransformMatrix} from '@vx/zoom/lib/types';
+import React, {SVGProps, useEffect, useMemo, useState} from 'react';
 import styled from 'styled-components/macro';
 
-import { useEntityRegistry } from '../useEntityRegistry';
+import {useEntityRegistry} from '../useEntityRegistry';
 import LineageTree from './LineageTree';
-import { EntityAndType, FetchedEntity, EntitySelectParams, Direction, UpdatedLineages } from './types';
+import {EntityAndType, FetchedEntity, EntitySelectParams, Direction, UpdatedLineages} from './types';
 import constructTree from './utils/constructTree';
 
 type Props = {
@@ -41,17 +41,17 @@ const RootSvg = styled.svg<{ isDragging: boolean } & SVGProps<SVGSVGElement>>`
 `;
 
 export default function LineageVizRootSvg({
-    zoom,
-    margin,
-    entityAndType,
-    fetchedEntities,
-    onEntityClick,
-    onEntityCenter,
-    onLineageExpand,
-    selectedEntity,
-    width,
-    height,
-}: Props) {
+                                              zoom,
+                                              margin,
+                                              entityAndType,
+                                              fetchedEntities,
+                                              onEntityClick,
+                                              onEntityCenter,
+                                              onLineageExpand,
+                                              selectedEntity,
+                                              width,
+                                              height,
+                                          }: Props) {
     const [draggedNodes, setDraggedNodes] = useState<Record<string, { x: number; y: number }>>({});
     const [hoveredEntity, setHoveredEntity] = useState<EntitySelectParams | undefined>(undefined);
     const [isDraggingNode, setIsDraggingNode] = useState(false);
@@ -107,7 +107,7 @@ export default function LineageVizRootSvg({
                         markerHeight="10"
                         orient="auto"
                     >
-                        <path d="M 0 0 L 10 5 L 0 10 z" fill="#BFBFBF" />
+                        <path d="M 0 0 L 10 5 L 0 10 z" fill="#BFBFBF"/>
                     </marker>
                     <marker
                         id="triangle-upstream"
@@ -119,7 +119,7 @@ export default function LineageVizRootSvg({
                         markerHeight="10"
                         orient="auto"
                     >
-                        <path d="M 0 5 L 10 10 L 10 0 L 0 5 z" fill="#BFBFBF" />
+                        <path d="M 0 5 L 10 10 L 10 0 L 0 5 z" fill="#BFBFBF"/>
                     </marker>
                     <marker
                         id="triangle-downstream-highlighted"
@@ -131,7 +131,7 @@ export default function LineageVizRootSvg({
                         markerHeight="10"
                         orient="auto"
                     >
-                        <path d="M 0 0 L 10 5 L 0 10 z" fill="#1890FF" />
+                        <path d="M 0 0 L 10 5 L 0 10 z" fill="#1890FF"/>
                     </marker>
                     <marker
                         id="triangle-upstream-highlighted"
@@ -143,15 +143,15 @@ export default function LineageVizRootSvg({
                         markerHeight="10"
                         orient="auto"
                     >
-                        <path d="M 0 5 L 10 10 L 10 0 L 0 5 z" fill="#1890FF" />
+                        <path d="M 0 5 L 10 10 L 10 0 L 0 5 z" fill="#1890FF"/>
                     </marker>
                     <linearGradient id="gradient-Downstream" x1="1" x2="0" y1="0" y2="0">
-                        <stop offset="0%" stopColor="#1890FF" />
-                        <stop offset="100%" stopColor="#1890FF" stopOpacity="0" />
+                        <stop offset="0%" stopColor="#1890FF"/>
+                        <stop offset="100%" stopColor="#1890FF" stopOpacity="0"/>
                     </linearGradient>
                     <linearGradient id="gradient-Upstream" x1="0" x2="1" y1="0" y2="0">
-                        <stop offset="0%" stopColor="#1890FF" />
-                        <stop offset="100%" stopColor="#1890FF" stopOpacity="0" />
+                        <stop offset="0%" stopColor="#1890FF"/>
+                        <stop offset="100%" stopColor="#1890FF" stopOpacity="0"/>
                     </linearGradient>
                     <filter id="shadow1">
                         <feDropShadow
@@ -172,7 +172,7 @@ export default function LineageVizRootSvg({
                         />
                     </filter>
                 </defs>
-                <rect width={width} height={height} fill="#fafafa" />
+                <rect width={width} height={height} fill="#fafafa"/>
                 <LineageTree
                     upstreamData={upstreamData}
                     downstreamData={downstreamData}

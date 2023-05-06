@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
-import { Alert, Divider, Input, Select } from 'antd';
-import { SearchOutlined } from '@ant-design/icons';
-import { ChartGroup } from './ChartGroup';
-import { useGetAnalyticsChartsQuery, useGetMetadataAnalyticsChartsQuery } from '../../../graphql/analytics.generated';
-import { useGetHighlightsQuery } from '../../../graphql/highlights.generated';
-import { Highlight } from './Highlight';
-import { Message } from '../../shared/Message';
-import { useListDomainsQuery } from '../../../graphql/domain.generated';
+import {Alert, Divider, Input, Select} from 'antd';
+import {SearchOutlined} from '@ant-design/icons';
+import {ChartGroup} from './ChartGroup';
+import {useGetAnalyticsChartsQuery, useGetMetadataAnalyticsChartsQuery} from '../../../graphql/analytics.generated';
+import {useGetHighlightsQuery} from '../../../graphql/highlights.generated';
+import {Highlight} from './Highlight';
+import {Message} from '../../shared/Message';
+import {useListDomainsQuery} from '../../../graphql/domain.generated';
 import filterSearchQuery from '../../search/utils/filterSearchQuery';
-import { ANTD_GRAY } from '../../entity/shared/constants';
-import { useUserContext } from '../../context/useUserContext';
+import {ANTD_GRAY} from '../../entity/shared/constants';
+import {useUserContext} from '../../context/useUserContext';
 
 const HighlightGroup = styled.div`
     display: flex;
@@ -49,8 +49,8 @@ const StyledSearchBar = styled(Input)`
 export const AnalyticsPage = () => {
     const me = useUserContext();
     const canManageDomains = me?.platformPrivileges?.createDomains;
-    const { data: chartData, loading: chartLoading, error: chartError } = useGetAnalyticsChartsQuery();
-    const { data: highlightData, loading: highlightLoading, error: highlightError } = useGetHighlightsQuery();
+    const {data: chartData, loading: chartLoading, error: chartError} = useGetAnalyticsChartsQuery();
+    const {data: highlightData, loading: highlightLoading, error: highlightError} = useGetHighlightsQuery();
     const {
         loading: domainLoading,
         error: domainError,
@@ -89,32 +89,32 @@ export const AnalyticsPage = () => {
     const isLoading = highlightLoading || chartLoading || domainLoading || metadataAnalyticsLoading;
     return (
         <>
-            {isLoading && <Message type="loading" content="Loading..." style={{ marginTop: '10%' }} />}
+            {isLoading && <Message type="loading" content="Loading..." style={{marginTop: '10%'}}/>}
             <HighlightGroup>
                 {highlightError && (
-                    <Alert type="error" message={highlightError?.message || 'Highlights failed to load'} />
+                    <Alert type="error" message={highlightError?.message || 'Highlights failed to load'}/>
                 )}
                 {highlightData?.getHighlights?.map((highlight) => (
-                    <Highlight highlight={highlight} shortenValue />
+                    <Highlight highlight={highlight} shortenValue/>
                 ))}
             </HighlightGroup>
             <>
                 {chartError && (
-                    <Alert type="error" message={metadataAnalyticsError?.message || 'Charts failed to load'} />
+                    <Alert type="error" message={metadataAnalyticsError?.message || 'Charts failed to load'}/>
                 )}
                 {chartData?.getAnalyticsCharts
                     ?.filter((chartGroup) => chartGroup.groupId === 'GlobalMetadataAnalytics')
                     .map((chartGroup) => (
-                        <ChartGroup chartGroup={chartGroup} />
+                        <ChartGroup chartGroup={chartGroup}/>
                     ))}
             </>
             <>
                 {domainError && (
-                    <Alert type="error" message={metadataAnalyticsError?.message || 'Domains failed to load'} />
+                    <Alert type="error" message={metadataAnalyticsError?.message || 'Domains failed to load'}/>
                 )}
                 {!chartLoading && (
                     <>
-                        <Divider />
+                        <Divider/>
                         <MetadataAnalyticsInput>
                             <DomainSelect
                                 showSearch
@@ -141,7 +141,7 @@ export const AnalyticsPage = () => {
                                 onChange={(e) => onStagedQueryChange(e.target.value)}
                                 data-testid="analytics-search-input"
                                 prefix={
-                                    <SearchOutlined onClick={() => setQuery(filterSearchQuery(stagedQuery || ''))} />
+                                    <SearchOutlined onClick={() => setQuery(filterSearchQuery(stagedQuery || ''))}/>
                                 }
                             />
                         </MetadataAnalyticsInput>
@@ -150,29 +150,29 @@ export const AnalyticsPage = () => {
             </>
             <>
                 {metadataAnalyticsError && (
-                    <Alert type="error" message={metadataAnalyticsError?.message || 'Charts failed to load'} />
+                    <Alert type="error" message={metadataAnalyticsError?.message || 'Charts failed to load'}/>
                 )}
                 {domain === '' && query === ''
                     ? !chartLoading && (
-                          <MetadataAnalyticsPlaceholder>
-                              Please specify domain or query to get granular results
-                          </MetadataAnalyticsPlaceholder>
-                      )
+                    <MetadataAnalyticsPlaceholder>
+                        Please specify domain or query to get granular results
+                    </MetadataAnalyticsPlaceholder>
+                )
                     : metadataAnalyticsData?.getMetadataAnalyticsCharts?.map((chartGroup) => (
-                          <ChartGroup chartGroup={chartGroup} />
-                      ))}
+                        <ChartGroup chartGroup={chartGroup}/>
+                    ))}
             </>
             <>
-                {chartError && <Alert type="error" message={chartError?.message || 'Charts failed to load'} />}
+                {chartError && <Alert type="error" message={chartError?.message || 'Charts failed to load'}/>}
                 {!chartLoading &&
-                    chartData?.getAnalyticsCharts
-                        ?.filter((chartGroup) => chartGroup.groupId === 'DataHubUsageAnalytics')
-                        .map((chartGroup) => (
-                            <>
-                                <Divider />
-                                <ChartGroup chartGroup={chartGroup} />
-                            </>
-                        ))}
+                chartData?.getAnalyticsCharts
+                    ?.filter((chartGroup) => chartGroup.groupId === 'DataHubUsageAnalytics')
+                    .map((chartGroup) => (
+                        <>
+                            <Divider/>
+                            <ChartGroup chartGroup={chartGroup}/>
+                        </>
+                    ))}
             </>
         </>
     );

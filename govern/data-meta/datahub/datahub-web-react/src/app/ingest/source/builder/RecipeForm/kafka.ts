@@ -1,4 +1,4 @@
-import { RecipeField, FieldType, setListValuesOnRecipe } from './common';
+import {RecipeField, FieldType, setListValuesOnRecipe} from './common';
 
 // TODO: Currently platform_instance is required to be present for stateful ingestion to work
 // We need to solve this prior to enabling by default here.
@@ -79,10 +79,10 @@ export const KAFKA_SECURITY_PROTOCOL: RecipeField = {
     fieldPath: securityProtocolFieldPath,
     rules: null,
     options: [
-        { label: 'PLAINTEXT', value: 'PLAINTEXT' },
-        { label: 'SASL_SSL', value: 'SASL_SSL' },
-        { label: 'SASL_PLAINTEXT', value: 'SASL_PLAINTEXT' },
-        { label: 'SSL', value: 'SSL' },
+        {label: 'PLAINTEXT', value: 'PLAINTEXT'},
+        {label: 'SASL_SSL', value: 'SASL_SSL'},
+        {label: 'SASL_PLAINTEXT', value: 'SASL_PLAINTEXT'},
+        {label: 'SSL', value: 'SSL'},
     ],
 };
 
@@ -97,9 +97,9 @@ export const KAFKA_SASL_MECHANISM: RecipeField = {
     placeholder: 'None',
     rules: null,
     options: [
-        { label: 'PLAIN', value: 'PLAIN' },
-        { label: 'SCRAM-SHA-256', value: 'SCRAM-SHA-256' },
-        { label: 'SCRAM-SHA-512', value: 'SCRAM-SHA-512' },
+        {label: 'PLAIN', value: 'PLAIN'},
+        {label: 'SCRAM-SHA-256', value: 'SCRAM-SHA-256'},
+        {label: 'SCRAM-SHA-512', value: 'SCRAM-SHA-512'},
     ],
 };
 

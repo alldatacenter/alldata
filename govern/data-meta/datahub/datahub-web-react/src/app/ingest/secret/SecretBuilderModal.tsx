@@ -1,7 +1,7 @@
-import { Button, Form, Input, Modal, Typography } from 'antd';
-import React, { useState } from 'react';
-import { useEnterKeyListener } from '../../shared/useEnterKeyListener';
-import { SecretBuilderState } from './types';
+import {Button, Form, Input, Modal, Typography} from 'antd';
+import React, {useState} from 'react';
+import {useEnterKeyListener} from '../../shared/useEnterKeyListener';
+import {SecretBuilderState} from './types';
 
 const NAME_FIELD_NAME = 'name';
 const DESCRIPTION_FIELD_NAME = 'description';
@@ -14,7 +14,7 @@ type Props = {
     onCancel?: () => void;
 };
 
-export const SecretBuilderModal = ({ initialState, visible, onSubmit, onCancel }: Props) => {
+export const SecretBuilderModal = ({initialState, visible, onSubmit, onCancel}: Props) => {
     const [createButtonEnabled, setCreateButtonEnabled] = useState(false);
     const [form] = Form.useForm();
 
@@ -77,13 +77,13 @@ export const SecretBuilderModal = ({ initialState, visible, onSubmit, onCancel }
                                 required: true,
                                 message: 'Enter a name.',
                             },
-                            { whitespace: false },
-                            { min: 1, max: 50 },
-                            { pattern: /^[^\s\t${}\\,'"]+$/, message: 'This secret name is not allowed.' },
+                            {whitespace: false},
+                            {min: 1, max: 50},
+                            {pattern: /^[^\s\t${}\\,'"]+$/, message: 'This secret name is not allowed.'},
                         ]}
                         hasFeedback
                     >
-                        <Input placeholder="A name for your secret" />
+                        <Input placeholder="A name for your secret"/>
                     </Form.Item>
                 </Form.Item>
                 <Form.Item label={<Typography.Text strong>Value</Typography.Text>}>
@@ -98,11 +98,11 @@ export const SecretBuilderModal = ({ initialState, visible, onSubmit, onCancel }
                                 message: 'Enter a value.',
                             },
                             // { whitespace: true },
-                            { min: 1 },
+                            {min: 1},
                         ]}
                         hasFeedback
                     >
-                        <Input.TextArea placeholder="The value of your secret" autoComplete="false" />
+                        <Input.TextArea placeholder="The value of your secret" autoComplete="false"/>
                     </Form.Item>
                 </Form.Item>
                 <Form.Item label={<Typography.Text strong>Description</Typography.Text>}>
@@ -111,10 +111,10 @@ export const SecretBuilderModal = ({ initialState, visible, onSubmit, onCancel }
                     </Typography.Paragraph>
                     <Form.Item
                         name={DESCRIPTION_FIELD_NAME}
-                        rules={[{ whitespace: true }, { min: 1, max: 500 }]}
+                        rules={[{whitespace: true}, {min: 1, max: 500}]}
                         hasFeedback
                     >
-                        <Input.TextArea placeholder="A description for your secret" />
+                        <Input.TextArea placeholder="A description for your secret"/>
                     </Form.Item>
                 </Form.Item>
             </Form>

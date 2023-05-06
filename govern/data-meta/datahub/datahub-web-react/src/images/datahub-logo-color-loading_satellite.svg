@@ -1,11 +1,13 @@
-<svg id="datahub-logo-color-loading_satellite" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-    viewBox="0 0 180 180" shape-rendering="geometricPrecision" text-rendering="geometricPrecision">
+<svg id="datahub-logo-color-loading_satellite" xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     viewBox="0 0 180 180" shape-rendering="geometricPrecision" text-rendering="geometricPrecision">
     <defs>
         <linearGradient id="red_gradient" x1="83.06" y1="68.88" x2="98.74" y2="40.67" gradientUnits="userSpaceOnUse">
             <stop offset="0" stop-color="#dd3163"/>
             <stop offset="1" stop-color="#ff5663"/>
         </linearGradient>
-        <linearGradient id="yellow_gradient" x1="91.08" y1="126.64" x2="35.79" y2="50.66" gradientUnits="userSpaceOnUse">
+        <linearGradient id="yellow_gradient" x1="91.08" y1="126.64" x2="35.79" y2="50.66"
+                        gradientUnits="userSpaceOnUse">
             <stop offset="0" stop-color="#efab00"/>
             <stop offset="1" stop-color="#efb700"/>
         </linearGradient>
@@ -47,7 +49,7 @@
         <g id="red" fill="url(#red_gradient)">
             <circle id="red_arc" r="34" mask="url(#red_mask)"/>
             <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="1s"
-                              repeatCount="indefinite" />
+                              repeatCount="indefinite"/>
         </g>
 
         <g id="yellow" fill="url(#yellow_gradient)">
@@ -55,9 +57,9 @@
             <circle id="yellow_arc" r="49" mask="url(#yellow_mask)"/>
             <circle cy="80" r="4" transform="rotate(57)"/>
             <circle id="yellow_satellite" cy="80" r="10" transform="rotate(57)">
-                <animateTransform attributeName="transform" type="rotate" dur="4s" fill="freeze" 
-                                  values="417;417; 57" keyTimes="0; 0.1; 1" calcMode="spline" 
-                                  keySplines="0.25 0.1 0.25 1.0; 0.25 0.1 0.25 1.0" repeatCount="indefinite" />
+                <animateTransform attributeName="transform" type="rotate" dur="4s" fill="freeze"
+                                  values="417;417; 57" keyTimes="0; 0.1; 1" calcMode="spline"
+                                  keySplines="0.25 0.1 0.25 1.0; 0.25 0.1 0.25 1.0" repeatCount="indefinite"/>
             </circle>
         </g>
 
@@ -66,9 +68,10 @@
             <circle id="blue_arc" r="64" mask="url(#blue_mask)"/>
             <circle cy="-80" r="4" transform="rotate(57)"/>
             <circle id="blue_satellite" cy="-80" r="10" transform="rotate(57)">
-                <animateTransform attributeName="transform" type="rotate" dur="4s" fill="freeze" 
-                                  values="57;57; 777" keyTimes="0; 0.1; 1" 
-                                  calcMode="spline" keySplines="0.25 0.1 0.25 1.0; 0.25 0.1 0.25 1.0" repeatCount="indefinite" />
+                <animateTransform attributeName="transform" type="rotate" dur="4s" fill="freeze"
+                                  values="57;57; 777" keyTimes="0; 0.1; 1"
+                                  calcMode="spline" keySplines="0.25 0.1 0.25 1.0; 0.25 0.1 0.25 1.0"
+                                  repeatCount="indefinite"/>
             </circle>
         </g>
     </g>

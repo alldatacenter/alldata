@@ -1,13 +1,13 @@
-import { CloseOutlined } from '@ant-design/icons';
-import React, { useState } from 'react';
+import {CloseOutlined} from '@ant-design/icons';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 
-import { FacetFilterInput, FacetMetadata } from '../../types.generated';
-import { ANTD_GRAY } from '../entity/shared/constants';
-import { AdvancedSearchFilterConditionSelect } from './AdvancedSearchFilterConditionSelect';
-import { AdvancedFilterSelectValueModal } from './AdvancedFilterSelectValueModal';
-import { FIELD_TO_LABEL } from './utils/constants';
-import { AdvancedSearchFilterValuesSection } from './AdvancedSearchFilterValuesSection';
+import {FacetFilterInput, FacetMetadata} from '../../types.generated';
+import {ANTD_GRAY} from '../entity/shared/constants';
+import {AdvancedSearchFilterConditionSelect} from './AdvancedSearchFilterConditionSelect';
+import {AdvancedFilterSelectValueModal} from './AdvancedFilterSelectValueModal';
+import {FIELD_TO_LABEL} from './utils/constants';
+import {AdvancedSearchFilterValuesSection} from './AdvancedSearchFilterValuesSection';
 
 type Props = {
     facet: FacetMetadata;
@@ -52,7 +52,7 @@ const FilterFieldLabel = styled.span`
     margin-right: 2px;
 `;
 
-export const AdvancedSearchFilter = ({ facet, filter, onClose, onUpdate, loading, disabled = false }: Props) => {
+export const AdvancedSearchFilter = ({facet, filter, onClose, onUpdate, loading, disabled = false}: Props) => {
     const [isEditing, setIsEditing] = useState(false);
     return (
         <>
@@ -64,7 +64,7 @@ export const AdvancedSearchFilter = ({ facet, filter, onClose, onUpdate, loading
                 <FieldFilterSection>
                     <FieldFilterSelect>
                         <FilterFieldLabel>{FIELD_TO_LABEL[filter.field]} </FilterFieldLabel>
-                        <AdvancedSearchFilterConditionSelect filter={filter} onUpdate={onUpdate} />
+                        <AdvancedSearchFilterConditionSelect filter={filter} onUpdate={onUpdate}/>
                     </FieldFilterSelect>
                     {!disabled && (
                         <CloseSpan
@@ -77,11 +77,11 @@ export const AdvancedSearchFilter = ({ facet, filter, onClose, onUpdate, loading
                             tabIndex={0}
                             onKeyPress={onClose}
                         >
-                            <CloseOutlined />
+                            <CloseOutlined/>
                         </CloseSpan>
                     )}
                 </FieldFilterSection>
-                {!loading && <AdvancedSearchFilterValuesSection filter={filter} facet={facet} />}
+                {!loading && <AdvancedSearchFilterValuesSection filter={filter} facet={facet}/>}
             </FilterContainer>
             {!disabled && isEditing && (
                 <AdvancedFilterSelectValueModal

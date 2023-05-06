@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Empty, Typography } from 'antd';
-import { EMPTY_MESSAGES } from '../../constants';
+import {Empty, Typography} from 'antd';
+import {EMPTY_MESSAGES} from '../../constants';
 
 const StyledEmpty = styled(Empty)`
     padding: 40px;
@@ -26,7 +26,7 @@ type Props = {
     children?: React.ReactNode;
 };
 
-export const EmptyTab = ({ tab, children }: Props) => {
+export const EmptyTab = ({tab, children}: Props) => {
     return (
         <StyledEmpty
             description={

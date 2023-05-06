@@ -1,16 +1,16 @@
-import { Col, Row } from 'antd';
+import {Col, Row} from 'antd';
 import React from 'react';
 import styled from 'styled-components';
 import useUserParams from '../../shared/entitySearch/routingUtils/useUserParams';
-import { useGetUserQuery } from '../../../graphql/user.generated';
-import { EntityRelationship, EntityType } from '../../../types.generated';
+import {useGetUserQuery} from '../../../graphql/user.generated';
+import {EntityRelationship, EntityType} from '../../../types.generated';
 import UserGroups from './UserGroups';
-import { RoutedTabs } from '../../shared/RoutedTabs';
-import { UserAssets } from './UserAssets';
-import { decodeUrn } from '../shared/utils';
+import {RoutedTabs} from '../../shared/RoutedTabs';
+import {UserAssets} from './UserAssets';
+import {decodeUrn} from '../shared/utils';
 import UserInfoSideBar from './UserInfoSideBar';
-import { useEntityRegistry } from '../../useEntityRegistry';
-import { ErrorSection } from '../../shared/error/ErrorSection';
+import {useEntityRegistry} from '../../useEntityRegistry';
+import {ErrorSection} from '../../shared/error/ErrorSection';
 
 export interface Props {
     onTabChange: (selectedTab: string) => void;
@@ -20,6 +20,7 @@ export enum TabType {
     Assets = 'Assets',
     Groups = 'Groups',
 }
+
 const ENABLED_TAB_TYPES = [TabType.Assets, TabType.Groups];
 
 const GROUP_PAGE_SIZE = 20;
@@ -55,11 +56,11 @@ export const EmptyValue = styled.div`
  * Responsible for reading & writing users.
  */
 export default function UserProfile() {
-    const { urn: encodedUrn } = useUserParams();
+    const {urn: encodedUrn} = useUserParams();
     const urn = decodeUrn(encodedUrn);
     const entityRegistry = useEntityRegistry();
 
-    const { error, data, refetch } = useGetUserQuery({ variables: { urn, groupsCount: GROUP_PAGE_SIZE } });
+    const {error, data, refetch} = useGetUserQuery({variables: {urn, groupsCount: GROUP_PAGE_SIZE}});
 
     const castedCorpUser = data?.corpUser as any;
 
@@ -74,7 +75,7 @@ export default function UserProfile() {
             {
                 name: TabType.Assets,
                 path: TabType.Assets.toLocaleLowerCase(),
-                content: <UserAssets urn={urn} />,
+                content: <UserAssets urn={urn}/>,
                 display: {
                     enabled: () => true,
                 },
@@ -82,7 +83,7 @@ export default function UserProfile() {
             {
                 name: TabType.Groups,
                 path: TabType.Groups.toLocaleLowerCase(),
-                content: <UserGroups urn={urn} initialRelationships={userGroups} pageSize={GROUP_PAGE_SIZE} />,
+                content: <UserGroups urn={urn} initialRelationships={userGroups} pageSize={GROUP_PAGE_SIZE}/>,
                 display: {
                     enabled: () => userGroups?.length > 0,
                 },
@@ -116,15 +117,15 @@ export default function UserProfile() {
     };
     return (
         <>
-            {error && <ErrorSection />}
+            {error && <ErrorSection/>}
             <UserProfileWrapper>
                 <Row>
                     <Col xl={5} lg={5} md={5} sm={24} xs={24}>
-                        <UserInfoSideBar sideBarData={sideBarData} refetch={refetch} />
+                        <UserInfoSideBar sideBarData={sideBarData} refetch={refetch}/>
                     </Col>
-                    <Col xl={19} lg={19} md={19} sm={24} xs={24} style={{ borderLeft: '1px solid #E9E9E9' }}>
+                    <Col xl={19} lg={19} md={19} sm={24} xs={24} style={{borderLeft: '1px solid #E9E9E9'}}>
                         <Content>
-                            <RoutedTabs defaultPath={defaultTabPath} tabs={getTabs()} onTabChange={onTabChange} />
+                            <RoutedTabs defaultPath={defaultTabPath} tabs={getTabs()} onTabChange={onTabChange}/>
                         </Content>
                     </Col>
                 </Row>

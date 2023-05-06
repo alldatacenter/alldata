@@ -1,14 +1,14 @@
-import { LockOutlined } from '@ant-design/icons';
+import {LockOutlined} from '@ant-design/icons';
 import React from 'react';
 import styled from 'styled-components';
-import { List, Tag, Tooltip, Typography } from 'antd';
-import { Link } from 'react-router-dom';
-import { CorpGroup, EntityType, OriginType } from '../../../types.generated';
+import {List, Tag, Tooltip, Typography} from 'antd';
+import {Link} from 'react-router-dom';
+import {CorpGroup, EntityType, OriginType} from '../../../types.generated';
 import CustomAvatar from '../../shared/avatar/CustomAvatar';
-import { useEntityRegistry } from '../../useEntityRegistry';
+import {useEntityRegistry} from '../../useEntityRegistry';
 import EntityDropdown from '../../entity/shared/EntityDropdown';
-import { EntityMenuItems } from '../../entity/shared/EntityDropdown/EntityDropdown';
-import { getElasticCappedTotalValueText } from '../../entity/shared/constants';
+import {EntityMenuItems} from '../../entity/shared/EntityDropdown/EntityDropdown';
+import {getElasticCappedTotalValueText} from '../../entity/shared/constants';
 
 type Props = {
     group: CorpGroup;
@@ -35,7 +35,7 @@ const GroupItemButtonGroup = styled.div`
     align-items: center;
 `;
 
-export default function GroupListItem({ group, onDelete }: Props) {
+export default function GroupListItem({group, onDelete}: Props) {
     const entityRegistry = useEntityRegistry();
     const displayName = entityRegistry.getDisplayName(EntityType.CorpGroup, group);
     const isExternalGroup: boolean = group.origin?.type === OriginType.External;
@@ -46,8 +46,8 @@ export default function GroupListItem({ group, onDelete }: Props) {
             <GroupItemContainer>
                 <Link to={`${entityRegistry.getEntityUrl(EntityType.CorpGroup, group.urn)}`}>
                     <GroupHeaderContainer>
-                        <CustomAvatar size={32} name={displayName} />
-                        <div style={{ marginLeft: 16, marginRight: 16 }}>
+                        <CustomAvatar size={32} name={displayName}/>
+                        <div style={{marginLeft: 16, marginRight: 16}}>
                             <div>
                                 <Typography.Text>{displayName}</Typography.Text>
                             </div>
@@ -63,7 +63,7 @@ export default function GroupListItem({ group, onDelete }: Props) {
                         <Tooltip
                             title={`Membership for this group cannot be edited as it is synced from ${externalGroupType}.`}
                         >
-                            <LockOutlined />
+                            <LockOutlined/>
                         </Tooltip>
                     )}
                     <EntityDropdown
@@ -73,7 +73,7 @@ export default function GroupListItem({ group, onDelete }: Props) {
                         menuItems={new Set([EntityMenuItems.DELETE])}
                         size={20}
                         onDeleteEntity={onDelete}
-                        options={{ hideDeleteMessage: false, skipDeleteWait: true }}
+                        options={{hideDeleteMessage: false, skipDeleteWait: true}}
                     />
                 </GroupItemButtonGroup>
             </GroupItemContainer>

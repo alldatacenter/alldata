@@ -1,5 +1,5 @@
-import { dataset3 } from '../../../../../Mocks';
-import { EntityType, Schema, SchemaMetadata, SchemaField, SchemaFieldDataType } from '../../../../../types.generated';
+import {dataset3} from '../../../../../Mocks';
+import {EntityType, Schema, SchemaMetadata, SchemaField, SchemaFieldDataType} from '../../../../../types.generated';
 
 // Extending the schema type with an option for tags
 export type TaggedSchemaField = {
@@ -205,7 +205,7 @@ export const sampleSchemaWithPkFk: SchemaMetadata = {
                 {
                     urn: 'datasetUrn',
                     type: EntityType.Dataset,
-                    parent: { urn: 'test', type: EntityType.Dataset },
+                    parent: {urn: 'test', type: EntityType.Dataset},
                     fieldPath: 'shipping_address',
                 },
             ],
@@ -213,7 +213,7 @@ export const sampleSchemaWithPkFk: SchemaMetadata = {
                 {
                     urn: dataset3.urn,
                     type: EntityType.Dataset,
-                    parent: { urn: dataset3.name, type: EntityType.Dataset },
+                    parent: {urn: dataset3.name, type: EntityType.Dataset},
                     fieldPath: 'address',
                 },
             ],

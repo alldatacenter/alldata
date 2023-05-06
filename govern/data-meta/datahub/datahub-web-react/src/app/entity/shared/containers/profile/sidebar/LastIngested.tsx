@@ -1,15 +1,15 @@
-import { green, orange, red } from '@ant-design/colors';
-import { Image, Popover } from 'antd';
+import {green, orange, red} from '@ant-design/colors';
+import {Image, Popover} from 'antd';
 import styled from 'styled-components/macro';
 import moment from 'moment-timezone';
 import React from 'react';
-import { QuestionCircleOutlined } from '@ant-design/icons';
-import { toLocalDateTimeString, toRelativeTimeString } from '../../../../../shared/time/timeUtils';
-import { ANTD_GRAY } from '../../../constants';
-import { useEntityData } from '../../../EntityContext';
-import { useEntityRegistry } from '../../../../../useEntityRegistry';
-import { getPlatformName } from '../../../utils';
-import { getDisplayedEntityType } from '../header/PlatformContent/PlatformContentContainer';
+import {QuestionCircleOutlined} from '@ant-design/icons';
+import {toLocalDateTimeString, toRelativeTimeString} from '../../../../../shared/time/timeUtils';
+import {ANTD_GRAY} from '../../../constants';
+import {useEntityData} from '../../../EntityContext';
+import {useEntityRegistry} from '../../../../../useEntityRegistry';
+import {getPlatformName} from '../../../utils';
+import {getDisplayedEntityType} from '../header/PlatformContent/PlatformContentContainer';
 
 const StyledDot = styled.div<{ color: string }>`
     border: 1px solid ${ANTD_GRAY[5]};
@@ -87,13 +87,13 @@ function TooltipContent() {
     return (
         <div>
             <TooltipSection>
-                <StyledDot color={green[5]} /> Synchronized in the&nbsp;<b>past week</b>
+                <StyledDot color={green[5]}/> Synchronized in the&nbsp;<b>past week</b>
             </TooltipSection>
             <TooltipSection>
-                <StyledDot color={orange[5]} /> Synchronized in the&nbsp;<b>past month</b>
+                <StyledDot color={orange[5]}/> Synchronized in the&nbsp;<b>past month</b>
             </TooltipSection>
             <TooltipSection>
-                <StyledDot color={red[5]} /> Synchronized&nbsp;<b>more than a month ago</b>
+                <StyledDot color={red[5]}/> Synchronized&nbsp;<b>more than a month ago</b>
             </TooltipSection>
         </div>
     );
@@ -114,8 +114,8 @@ interface Props {
     lastIngested: number;
 }
 
-function LastIngested({ lastIngested }: Props) {
-    const { entityData, entityType } = useEntityData();
+function LastIngested({lastIngested}: Props) {
+    const {entityData, entityType} = useEntityData();
     const entityRegistry = useEntityRegistry();
     const displayedEntityType = getDisplayedEntityType(entityData, entityRegistry, entityType);
     const lastIngestedColor = getLastIngestedColor(lastIngested);
@@ -129,7 +129,7 @@ function LastIngested({ lastIngested }: Props) {
                 content={
                     <PopoverContentWrapper>
                         <Title>
-                            <StyledDot color={lastIngestedColor} />
+                            <StyledDot color={lastIngestedColor}/>
                             Last Synchronized
                         </Title>
                         <RelativeDescription>
@@ -141,7 +141,7 @@ function LastIngested({ lastIngested }: Props) {
                 }
             >
                 <MainContent>
-                    <StyledDot color={lastIngestedColor} />
+                    <StyledDot color={lastIngestedColor}/>
                     Last synchronized&nbsp;
                     <b>{toRelativeTimeString(lastIngested)}</b>
                 </MainContent>
@@ -154,7 +154,7 @@ function LastIngested({ lastIngested }: Props) {
                             <strong>
                                 {platformLogoUrl && (
                                     <>
-                                        <PreviewImage preview={false} src={platformLogoUrl} alt={platformName} />
+                                        <PreviewImage preview={false} src={platformLogoUrl} alt={platformName}/>
                                         &nbsp;
                                     </>
                                 )}
@@ -168,7 +168,7 @@ function LastIngested({ lastIngested }: Props) {
                 content={TooltipContent}
                 placement="bottom"
             >
-                <HelpIcon />
+                <HelpIcon/>
             </Popover>
         </LastIngestedWrapper>
     );

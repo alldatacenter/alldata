@@ -1,4 +1,4 @@
-import { Modal, Button } from 'antd';
+import {Modal, Button} from 'antd';
 import React from 'react';
 import Query from '../Queries/Query';
 
@@ -15,10 +15,10 @@ type Props = {
     onClose: () => void;
 };
 
-export const DatasetAssertionLogicModal = ({ logic, visible, onClose }: Props) => {
+export const DatasetAssertionLogicModal = ({logic, visible, onClose}: Props) => {
     return (
         <Modal visible={visible} onCancel={onClose} footer={<Button onClick={onClose}>Close</Button>}>
-            <Query query={logic} />
+            <Query query={logic}/>
         </Modal>
     );
 };

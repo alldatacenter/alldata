@@ -1,14 +1,14 @@
-import { FolderOutlined, RightOutlined, DownOutlined, LoadingOutlined } from '@ant-design/icons';
+import {FolderOutlined, RightOutlined, DownOutlined, LoadingOutlined} from '@ant-design/icons';
 import styled from 'styled-components/macro';
-import React, { useState, useEffect } from 'react';
-import { ANTD_GRAY } from '../../entity/shared/constants';
-import { EntityType, GlossaryNode, GlossaryTerm } from '../../../types.generated';
-import { useEntityRegistry } from '../../useEntityRegistry';
-import { useGetGlossaryNodeQuery } from '../../../graphql/glossaryNode.generated';
-import TermItem, { TermLink as NodeLink, NameWrapper } from './TermItem';
-import { sortGlossaryNodes } from '../../entity/glossaryNode/utils';
-import { sortGlossaryTerms } from '../../entity/glossaryTerm/utils';
-import { useGlossaryEntityData } from '../../entity/shared/GlossaryEntityContext';
+import React, {useState, useEffect} from 'react';
+import {ANTD_GRAY} from '../../entity/shared/constants';
+import {EntityType, GlossaryNode, GlossaryTerm} from '../../../types.generated';
+import {useEntityRegistry} from '../../useEntityRegistry';
+import {useGetGlossaryNodeQuery} from '../../../graphql/glossaryNode.generated';
+import TermItem, {TermLink as NodeLink, NameWrapper} from './TermItem';
+import {sortGlossaryNodes} from '../../entity/glossaryNode/utils';
+import {sortGlossaryTerms} from '../../entity/glossaryTerm/utils';
+import {useGlossaryEntityData} from '../../entity/shared/GlossaryEntityContext';
 
 const ItemWrapper = styled.div`
     display: flex;
@@ -68,14 +68,14 @@ interface Props {
 }
 
 function NodeItem(props: Props) {
-    const { node, isSelecting, hideTerms, openToEntity, refreshBrowser, nodeUrnToHide, selectTerm, selectNode } = props;
+    const {node, isSelecting, hideTerms, openToEntity, refreshBrowser, nodeUrnToHide, selectTerm, selectNode} = props;
     const shouldHideNode = nodeUrnToHide === node.urn;
 
     const [areChildrenVisible, setAreChildrenVisible] = useState(false);
     const entityRegistry = useEntityRegistry();
-    const { entityData, urnsToUpdate, setUrnsToUpdate } = useGlossaryEntityData();
-    const { data, loading, refetch } = useGetGlossaryNodeQuery({
-        variables: { urn: node.urn },
+    const {entityData, urnsToUpdate, setUrnsToUpdate} = useGlossaryEntityData();
+    const {data, loading, refetch} = useGetGlossaryNodeQuery({
+        variables: {urn: node.urn},
         skip: !areChildrenVisible || shouldHideNode,
     });
 
@@ -126,20 +126,20 @@ function NodeItem(props: Props) {
     return (
         <ItemWrapper>
             <NodeWrapper>
-                {!areChildrenVisible && <StyledRightOutlined onClick={() => setAreChildrenVisible(true)} />}
-                {areChildrenVisible && <StyledDownOutlined onClick={() => setAreChildrenVisible(false)} />}
+                {!areChildrenVisible && <StyledRightOutlined onClick={() => setAreChildrenVisible(true)}/>}
+                {areChildrenVisible && <StyledDownOutlined onClick={() => setAreChildrenVisible(false)}/>}
                 {!isSelecting && (
                     <NodeLink
                         to={`${entityRegistry.getEntityUrl(node.type, node.urn)}`}
                         isSelected={entityData?.urn === node.urn}
                     >
-                        <StyledFolderOutlined />
+                        <StyledFolderOutlined/>
                         {entityRegistry.getDisplayName(node.type, isOnEntityPage ? entityData : node)}
                     </NodeLink>
                 )}
                 {isSelecting && (
                     <NameWrapper showSelectStyles={!!selectNode} onClick={handleSelectNode}>
-                        <StyledFolderOutlined />
+                        <StyledFolderOutlined/>
                         {entityRegistry.getDisplayName(node.type, isOnEntityPage ? entityData : node)}
                     </NameWrapper>
                 )}
@@ -148,7 +148,7 @@ function NodeItem(props: Props) {
                 <>
                     {!data && loading && (
                         <LoadingWrapper>
-                            <LoadingOutlined />
+                            <LoadingOutlined/>
                         </LoadingWrapper>
                     )}
                     {data && data.glossaryNode && (
@@ -165,9 +165,9 @@ function NodeItem(props: Props) {
                                 />
                             ))}
                             {!hideTerms &&
-                                (childTerms as GlossaryTerm[]).map((child) => (
-                                    <TermItem term={child} isSelecting={isSelecting} selectTerm={selectTerm} />
-                                ))}
+                            (childTerms as GlossaryTerm[]).map((child) => (
+                                <TermItem term={child} isSelecting={isSelecting} selectTerm={selectTerm}/>
+                            ))}
                         </ChildrenWrapper>
                     )}
                 </>

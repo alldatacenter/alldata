@@ -1,4 +1,4 @@
-import { Avatar } from 'antd';
+import {Avatar} from 'antd';
 import styled from 'styled-components';
 
 export const SpacedAvatarGroup = styled(Avatar.Group)`

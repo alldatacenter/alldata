@@ -1,19 +1,19 @@
-import { RouteComponentProps } from 'react-router';
+import {RouteComponentProps} from 'react-router';
 import * as QueryString from 'query-string';
-import { EntityType, FacetFilterInput } from '../../../../../../types.generated';
+import {EntityType, FacetFilterInput} from '../../../../../../types.generated';
 import filtersToQueryStringParams from '../../../../../search/utils/filtersToQueryStringParams';
-import { UnionType } from '../../../../../search/utils/constants';
+import {UnionType} from '../../../../../search/utils/constants';
 
 export const navigateToEntitySearchUrl = ({
-    baseUrl,
-    baseParams,
-    type: newType,
-    query: newQuery,
-    page: newPage = 1,
-    filters: newFilters,
-    history,
-    unionType,
-}: {
+                                              baseUrl,
+                                              baseParams,
+                                              type: newType,
+                                              query: newQuery,
+                                              page: newPage = 1,
+                                              filters: newFilters,
+                                              history,
+                                              unionType,
+                                          }: {
     baseUrl: string;
     baseParams: Record<string, string | boolean>;
     type?: EntityType;
@@ -25,7 +25,7 @@ export const navigateToEntitySearchUrl = ({
 }) => {
     const constructedFilters = newFilters || [];
     if (newType) {
-        constructedFilters.push({ field: 'entity', values: [newType] });
+        constructedFilters.push({field: 'entity', values: [newType]});
     }
 
     const search = QueryString.stringify(
@@ -36,7 +36,7 @@ export const navigateToEntitySearchUrl = ({
             page: newPage,
             unionType,
         },
-        { arrayFormat: 'comma' },
+        {arrayFormat: 'comma'},
     );
 
     history.replace({

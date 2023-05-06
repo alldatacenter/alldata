@@ -1,11 +1,11 @@
-import { PlusOutlined } from '@ant-design/icons';
-import { Button, Typography } from 'antd';
-import React, { useState } from 'react';
+import {PlusOutlined} from '@ant-design/icons';
+import {Button, Typography} from 'antd';
+import React, {useState} from 'react';
 import styled from 'styled-components/macro';
-import { TermRelationshipType } from '../../../../types.generated';
-import { Message } from '../../../shared/Message';
-import { EmptyTab } from '../../shared/components/styled/EmptyTab';
-import { ANTD_GRAY } from '../../shared/constants';
+import {TermRelationshipType} from '../../../../types.generated';
+import {Message} from '../../../shared/Message';
+import {EmptyTab} from '../../shared/components/styled/EmptyTab';
+import {ANTD_GRAY} from '../../shared/constants';
 import AddRelatedTermsModal from './AddRelatedTermsModal';
 import RelatedTerm from './RelatedTerm';
 
@@ -34,9 +34,9 @@ const TitleContainer = styled.div`
     margin-bottom: 30px;
 `;
 
-const messageStyle = { marginTop: '10%' };
+const messageStyle = {marginTop: '10%'};
 
-export default function GlossaryRelatedTermsResult({ glossaryRelatedTermType, glossaryRelatedTermResult }: Props) {
+export default function GlossaryRelatedTermsResult({glossaryRelatedTermType, glossaryRelatedTermResult}: Props) {
     const [isShowingAddModal, setIsShowingAddModal] = useState(false);
     const glossaryRelatedTermUrns: Array<string> = [];
     glossaryRelatedTermResult.forEach((item: any) => {
@@ -55,16 +55,16 @@ export default function GlossaryRelatedTermsResult({ glossaryRelatedTermType, gl
     return (
         <>
             {contentLoading ? (
-                <Message type="loading" content="Loading..." style={messageStyle} />
+                <Message type="loading" content="Loading..." style={messageStyle}/>
             ) : (
                 <ListContainer>
                     <TitleContainer>
-                        <Typography.Title style={{ margin: '0' }} level={3}>
+                        <Typography.Title style={{margin: '0'}} level={3}>
                             {glossaryRelatedTermType}
                         </Typography.Title>
                         {canEditRelatedTerms && (
                             <Button type="text" onClick={() => setIsShowingAddModal(true)}>
-                                <PlusOutlined /> Add Terms
+                                <PlusOutlined/> Add Terms
                             </Button>
                         )}
                     </TitleContainer>
@@ -77,12 +77,12 @@ export default function GlossaryRelatedTermsResult({ glossaryRelatedTermType, gl
                         />
                     ))}
                     {glossaryRelatedTermUrns.length === 0 && (
-                        <EmptyTab tab={glossaryRelatedTermType.toLocaleLowerCase()} />
+                        <EmptyTab tab={glossaryRelatedTermType.toLocaleLowerCase()}/>
                     )}
                 </ListContainer>
             )}
             {isShowingAddModal && (
-                <AddRelatedTermsModal onClose={() => setIsShowingAddModal(false)} relationshipType={relationshipType} />
+                <AddRelatedTermsModal onClose={() => setIsShowingAddModal(false)} relationshipType={relationshipType}/>
             )}
         </>
     );

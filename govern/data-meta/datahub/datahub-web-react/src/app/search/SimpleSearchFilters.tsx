@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { useEffect, useState } from 'react';
-import { FacetFilterInput, FacetMetadata } from '../../types.generated';
-import { SimpleSearchFilter } from './SimpleSearchFilter';
+import {useEffect, useState} from 'react';
+import {FacetFilterInput, FacetMetadata} from '../../types.generated';
+import {SimpleSearchFilter} from './SimpleSearchFilter';
 
 const TOP_FILTERS = ['degree', 'entity', 'platform', 'tags', 'glossaryTerms', 'domains', 'owners'];
 
@@ -12,7 +12,7 @@ interface Props {
     loading: boolean;
 }
 
-export const SimpleSearchFilters = ({ facets, selectedFilters, onFilterSelect, loading }: Props) => {
+export const SimpleSearchFilters = ({facets, selectedFilters, onFilterSelect, loading}: Props) => {
     const [cachedProps, setCachedProps] = useState<{
         facets: Array<FacetMetadata>;
         selectedFilters: Array<FacetFilterInput>;
@@ -24,21 +24,21 @@ export const SimpleSearchFilters = ({ facets, selectedFilters, onFilterSelect, l
     // we want to persist the selected filters through the loading jitter
     useEffect(() => {
         if (!loading) {
-            setCachedProps({ facets, selectedFilters });
+            setCachedProps({facets, selectedFilters});
         }
     }, [facets, selectedFilters, loading]);
 
     const onFilterSelectAndSetCache = (selected: boolean, field: string, value: string) => {
         const newFilters = selected
-            ? [...selectedFilters, { field, values: [value] }]
+            ? [...selectedFilters, {field, values: [value]}]
             : selectedFilters
-                  .map((filter) =>
-                      filter.field === field
-                          ? { ...filter, values: filter.values?.filter((val) => val !== value) }
-                          : filter,
-                  )
-                  .filter((filter) => filter.field !== field || !(filter.values?.length === 0));
-        setCachedProps({ ...cachedProps, selectedFilters: newFilters });
+                .map((filter) =>
+                    filter.field === field
+                        ? {...filter, values: filter.values?.filter((val) => val !== value)}
+                        : filter,
+                )
+                .filter((filter) => filter.field !== field || !(filter.values?.length === 0));
+        setCachedProps({...cachedProps, selectedFilters: newFilters});
         onFilterSelect(newFilters);
     };
 

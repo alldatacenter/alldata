@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useEntityRegistry } from '../../../useEntityRegistry';
-import { IconStyleType } from '../../Entity';
+import {useEntityRegistry} from '../../../useEntityRegistry';
+import {IconStyleType} from '../../Entity';
 
 type Props = {
     entity: any;
@@ -18,7 +18,7 @@ const IconContainer = styled.div`
     margin-right: 8px;
 `;
 
-export const EntitySearchInputResult = ({ entity }: Props) => {
+export const EntitySearchInputResult = ({entity}: Props) => {
     const entityRegistry = useEntityRegistry();
     return (
         <Container>

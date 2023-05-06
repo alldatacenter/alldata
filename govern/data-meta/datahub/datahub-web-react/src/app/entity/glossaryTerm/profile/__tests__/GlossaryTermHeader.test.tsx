@@ -1,7 +1,7 @@
-import { MockedProvider } from '@apollo/client/testing';
-import { render } from '@testing-library/react';
+import {MockedProvider} from '@apollo/client/testing';
+import {render} from '@testing-library/react';
 import React from 'react';
-import { mocks } from '../../../../../Mocks';
+import {mocks} from '../../../../../Mocks';
 import TestPageContainer from '../../../../../utils/test-utils/TestPageContainer';
 import GlossaryTermHeader from '../GlossaryTermHeader';
 
@@ -14,7 +14,7 @@ const glossaryTermHeaderData = {
 
 describe('Glossary Term Header', () => {
     it('renders', () => {
-        const { getByText } = render(
+        const {getByText} = render(
             <MockedProvider mocks={mocks}>
                 <TestPageContainer>
                     <GlossaryTermHeader

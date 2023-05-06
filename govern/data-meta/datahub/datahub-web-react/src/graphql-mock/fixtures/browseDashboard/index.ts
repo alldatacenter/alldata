@@ -1,6 +1,6 @@
-import { EntityType } from '../../../types.generated';
-import { BrowsePathResolver } from '../browsePathHelper';
-import { dashboardBrowsePaths, filterDashboardByPath } from '../searchResult/dashboardSearchResult';
+import {EntityType} from '../../../types.generated';
+import {BrowsePathResolver} from '../browsePathHelper';
+import {dashboardBrowsePaths, filterDashboardByPath} from '../searchResult/dashboardSearchResult';
 
 const browsePathResolver = new BrowsePathResolver({
     entityType: EntityType.Dashboard,

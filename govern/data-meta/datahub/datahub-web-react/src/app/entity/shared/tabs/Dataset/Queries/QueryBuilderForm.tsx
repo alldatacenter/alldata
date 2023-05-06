@@ -1,10 +1,10 @@
 import React from 'react';
 import Editor from '@monaco-editor/react';
 import styled from 'styled-components';
-import { Form, Input, Typography } from 'antd';
-import { ANTD_GRAY } from '../../../constants';
-import { QueryBuilderState } from './types';
-import { Editor as MarkdownEditor } from '../../Documentation/components/editor/Editor';
+import {Form, Input, Typography} from 'antd';
+import {ANTD_GRAY} from '../../../constants';
+import {QueryBuilderState} from './types';
+import {Editor as MarkdownEditor} from '../../Documentation/components/editor/Editor';
 
 const EditorWrapper = styled.div`
     border: 1px solid ${ANTD_GRAY[5]};
@@ -19,7 +19,7 @@ const StyledEditor = styled(MarkdownEditor)`
 const QUERY_EDITOR_HEIGHT = '240px';
 
 const QUERY_EDITOR_OPTIONS = {
-    minimap: { enabled: false },
+    minimap: {enabled: false},
     scrollbar: {
         vertical: 'hidden',
         horizontal: 'hidden',
@@ -31,7 +31,7 @@ type Props = {
     updateState: (newState: QueryBuilderState) => void;
 };
 
-export default function QueryBuilderForm({ state, updateState }: Props) {
+export default function QueryBuilderForm({state, updateState}: Props) {
     const updateQuery = (query) => {
         updateState({
             ...state,
@@ -68,7 +68,7 @@ export default function QueryBuilderForm({ state, updateState }: Props) {
                 </EditorWrapper>
             </Form.Item>
             <Form.Item
-                rules={[{ min: 1, max: 500 }]}
+                rules={[{min: 1, max: 500}]}
                 hasFeedback
                 label={<Typography.Text strong>Title</Typography.Text>}
             >

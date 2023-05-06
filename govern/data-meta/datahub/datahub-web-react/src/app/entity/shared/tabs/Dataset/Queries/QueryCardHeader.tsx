@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ExpandOutlined } from '@ant-design/icons';
-import { Button } from 'antd';
+import {ExpandOutlined} from '@ant-design/icons';
+import {Button} from 'antd';
 import CopyQuery from './CopyQuery';
 
 const Header = styled.div`
@@ -27,13 +27,13 @@ export type Props = {
     onClickExpand?: (newQuery) => void;
 };
 
-export default function QueryCardHeader({ query, focused, onClickExpand }: Props) {
+export default function QueryCardHeader({query, focused, onClickExpand}: Props) {
     return (
         <Header>
             <Actions opacity={(!focused && 0.3) || 1.0}>
-                <CopyQuery query={query} />
+                <CopyQuery query={query}/>
                 <ExpandButton onClick={onClickExpand}>
-                    <ExpandOutlined />
+                    <ExpandOutlined/>
                 </ExpandButton>
             </Actions>
         </Header>

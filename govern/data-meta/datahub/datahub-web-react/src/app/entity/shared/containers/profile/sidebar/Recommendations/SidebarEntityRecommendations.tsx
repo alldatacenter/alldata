@@ -1,14 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useListRecommendationsQuery } from '../../../../../../../graphql/recommendations.generated';
+import {useListRecommendationsQuery} from '../../../../../../../graphql/recommendations.generated';
 import {
     EntityType,
     ScenarioType,
     RecommendationModule as RecommendationModuleType,
 } from '../../../../../../../types.generated';
-import { RecommendationModule } from '../../../../../../recommendations/RecommendationModule';
-import { RecommendationDisplayType } from '../../../../../../recommendations/types';
-import { SidebarHeader } from '../SidebarHeader';
+import {RecommendationModule} from '../../../../../../recommendations/RecommendationModule';
+import {RecommendationDisplayType} from '../../../../../../recommendations/types';
+import {SidebarHeader} from '../SidebarHeader';
 
 const RecommendationsContainer = styled.div``;
 
@@ -17,16 +17,16 @@ const RecommendationContainer = styled.div`
 `;
 
 export const SidebarEntityRecommendations = ({
-    userUrn,
-    entityUrn,
-    entityType,
-}: {
+                                                 userUrn,
+                                                 entityUrn,
+                                                 entityType,
+                                             }: {
     userUrn: string;
     entityUrn: string;
     entityType: EntityType;
 }) => {
     const scenario = ScenarioType.EntityProfile;
-    const { data } = useListRecommendationsQuery({
+    const {data} = useListRecommendationsQuery({
         variables: {
             input: {
                 userUrn,
@@ -45,18 +45,18 @@ export const SidebarEntityRecommendations = ({
     return (
         <RecommendationsContainer>
             {recommendationModules &&
-                recommendationModules.map((module) => (
-                    <RecommendationContainer>
-                        <SidebarHeader title={module.title} />
-                        <RecommendationModule
-                            key={module.moduleId}
-                            module={module as RecommendationModuleType}
-                            scenarioType={scenario}
-                            showTitle={false}
-                            displayType={RecommendationDisplayType.COMPACT}
-                        />
-                    </RecommendationContainer>
-                ))}
+            recommendationModules.map((module) => (
+                <RecommendationContainer>
+                    <SidebarHeader title={module.title}/>
+                    <RecommendationModule
+                        key={module.moduleId}
+                        module={module as RecommendationModuleType}
+                        scenarioType={scenario}
+                        showTitle={false}
+                        displayType={RecommendationDisplayType.COMPACT}
+                    />
+                </RecommendationContainer>
+            ))}
         </RecommendationsContainer>
     );
 };

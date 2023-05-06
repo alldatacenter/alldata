@@ -1,10 +1,10 @@
-import { Card, Typography } from 'antd';
-import React, { useMemo } from 'react';
+import {Card, Typography} from 'antd';
+import React, {useMemo} from 'react';
 import styled from 'styled-components';
-import { DateInterval, DateRange } from '../../../../../../../../types.generated';
-import { ChartContainer } from '../../../../../../../analyticsDashboard/components/ChartContainer';
-import { TimeSeriesChart } from '../../../../../../../analyticsDashboard/components/TimeSeriesChart';
-import { ANTD_GRAY } from '../../../../../constants';
+import {DateInterval, DateRange} from '../../../../../../../../types.generated';
+import {ChartContainer} from '../../../../../../../analyticsDashboard/components/ChartContainer';
+import {TimeSeriesChart} from '../../../../../../../analyticsDashboard/components/TimeSeriesChart';
+import {ANTD_GRAY} from '../../../../../constants';
 
 const ChartTitle = styled(Typography.Text)`
     && {
@@ -41,7 +41,7 @@ const DEFAULT_AXIS_WIDTH = 2;
 /**
  * Time Series Chart with a single line.
  */
-export default function StatChart({ title, values, tickInterval: interval, dateRange }: Props) {
+export default function StatChart({title, values, tickInterval: interval, dateRange}: Props) {
     const timeSeriesData = useMemo(
         () =>
             values

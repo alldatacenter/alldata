@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { CheckOutlined, CopyOutlined } from '@ant-design/icons';
-import { Button, Tooltip } from 'antd';
+import React, {useState} from 'react';
+import {CheckOutlined, CopyOutlined} from '@ant-design/icons';
+import {Button, Tooltip} from 'antd';
 
 export type Props = {
     query: string;
@@ -8,7 +8,7 @@ export type Props = {
     style?: any;
 };
 
-export default function CopyQuery({ query, showCopyText = false, style }: Props) {
+export default function CopyQuery({query, showCopyText = false, style}: Props) {
     const [queryCopied, setQueryCopied] = useState(false);
 
     const copyQuery = () => {
@@ -20,7 +20,7 @@ export default function CopyQuery({ query, showCopyText = false, style }: Props)
         <Tooltip title="Copy the query">
             <Button onClick={copyQuery} style={style}>
                 {showCopyText && ((queryCopied && 'Copied') || 'Copy')}
-                {(queryCopied && <CheckOutlined />) || <CopyOutlined />}
+                {(queryCopied && <CheckOutlined/>) || <CopyOutlined/>}
             </Button>
         </Tooltip>
     );

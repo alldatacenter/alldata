@@ -1,16 +1,16 @@
-import { LoadingOutlined } from '@ant-design/icons';
-import { Button, message, Modal } from 'antd';
-import React, { useState } from 'react';
+import {LoadingOutlined} from '@ant-design/icons';
+import {Button, message, Modal} from 'antd';
+import React, {useState} from 'react';
 import styled from 'styled-components/macro';
-import { useGetEntityLineageQuery } from '../../../graphql/lineage.generated';
-import { Direction, UpdatedLineages } from '../types';
+import {useGetEntityLineageQuery} from '../../../graphql/lineage.generated';
+import {Direction, UpdatedLineages} from '../types';
 import AddEntityEdge from './AddEntityEdge';
 import LineageEntityView from './LineageEntityView';
 import LineageEdges from './LineageEdges';
-import { Entity, EntityType } from '../../../types.generated';
-import { useUpdateLineageMutation } from '../../../graphql/mutations.generated';
-import { useEntityRegistry } from '../../useEntityRegistry';
-import { buildUpdateLineagePayload, recordAnalyticsEvents } from '../utils/manageLineageUtils';
+import {Entity, EntityType} from '../../../types.generated';
+import {useUpdateLineageMutation} from '../../../graphql/mutations.generated';
+import {useEntityRegistry} from '../../useEntityRegistry';
+import {buildUpdateLineagePayload, recordAnalyticsEvents} from '../utils/manageLineageUtils';
 
 const ModalFooter = styled.div`
     display: flex;
@@ -47,21 +47,21 @@ interface Props {
 }
 
 export default function ManageLineageModal({
-    entityUrn,
-    lineageDirection,
-    closeModal,
-    refetchEntity,
-    setUpdatedLineages,
-    showLoading,
-    entityType,
-    entityPlatform,
-}: Props) {
+                                               entityUrn,
+                                               lineageDirection,
+                                               closeModal,
+                                               refetchEntity,
+                                               setUpdatedLineages,
+                                               showLoading,
+                                               entityType,
+                                               entityPlatform,
+                                           }: Props) {
     const entityRegistry = useEntityRegistry();
     const [entitiesToAdd, setEntitiesToAdd] = useState<Entity[]>([]);
     const [entitiesToRemove, setEntitiesToRemove] = useState<Entity[]>([]);
     const [updateLineage] = useUpdateLineageMutation();
 
-    const { data, loading } = useGetEntityLineageQuery({
+    const {data, loading} = useGetEntityLineageQuery({
         variables: {
             urn: entityUrn,
             showColumns: false,
@@ -72,7 +72,7 @@ export default function ManageLineageModal({
 
     function saveLineageChanges() {
         const payload = buildUpdateLineagePayload(lineageDirection, entitiesToAdd, entitiesToRemove, entityUrn);
-        updateLineage({ variables: { input: payload } })
+        updateLineage({variables: {input: payload}})
             .then((res) => {
                 if (res.data?.updateLineage) {
                     closeModal();
@@ -133,12 +133,12 @@ export default function ManageLineageModal({
         >
             {loading && (
                 <LoadingWrapper>
-                    <LoadingOutlined />
+                    <LoadingOutlined/>
                 </LoadingWrapper>
             )}
             {!loading && (
                 <>
-                    {data?.entity && <LineageEntityView entity={data.entity} />}
+                    {data?.entity && <LineageEntityView entity={data.entity}/>}
                     <AddEntityEdge
                         lineageDirection={lineageDirection}
                         setEntitiesToAdd={setEntitiesToAdd}

@@ -1,10 +1,10 @@
 import React from 'react';
-import { useEntityData } from '../shared/EntityContext';
-import { EmbeddedListSearchSection } from '../shared/components/styled/search/EmbeddedListSearchSection';
-import { UnionType } from '../../search/utils/constants';
+import {useEntityData} from '../shared/EntityContext';
+import {EmbeddedListSearchSection} from '../shared/components/styled/search/EmbeddedListSearchSection';
+import {UnionType} from '../../search/utils/constants';
 
 export const ContainerEntitiesTab = () => {
-    const { urn } = useEntityData();
+    const {urn} = useEntityData();
 
     const fixedFilter = {
         field: 'container',

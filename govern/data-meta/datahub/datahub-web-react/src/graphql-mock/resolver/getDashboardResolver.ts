@@ -1,12 +1,12 @@
-import { Dashboard } from '../../types.generated';
-import { findDashboardByURN } from '../fixtures/searchResult/dashboardSearchResult';
+import {Dashboard} from '../../types.generated';
+import {findDashboardByURN} from '../fixtures/searchResult/dashboardSearchResult';
 
 type GetDashboard = {
     data: { dashboard: Dashboard };
 };
 
 export const getDashboardResolver = {
-    getDashboard({ variables: { urn } }): GetDashboard {
+    getDashboard({variables: {urn}}): GetDashboard {
         const dashboard = findDashboardByURN(urn) as Dashboard;
         return {
             data: {

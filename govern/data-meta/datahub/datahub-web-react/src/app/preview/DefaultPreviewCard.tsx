@@ -1,6 +1,6 @@
-import React, { ReactNode, useState } from 'react';
-import { Divider, Tooltip, Typography } from 'antd';
-import { Link } from 'react-router-dom';
+import React, {ReactNode, useState} from 'react';
+import {Divider, Tooltip, Typography} from 'antd';
+import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 
 import {
@@ -18,16 +18,16 @@ import {
     EntityPath,
 } from '../../types.generated';
 import TagTermGroup from '../shared/tags/TagTermGroup';
-import { ANTD_GRAY } from '../entity/shared/constants';
+import {ANTD_GRAY} from '../entity/shared/constants';
 import NoMarkdownViewer from '../entity/shared/components/styled/StripMarkdownText';
-import { getNumberWithOrdinal } from '../entity/shared/utils';
-import { useEntityData } from '../entity/shared/EntityContext';
+import {getNumberWithOrdinal} from '../entity/shared/utils';
+import {useEntityData} from '../entity/shared/EntityContext';
 import PlatformContentView from '../entity/shared/containers/profile/header/PlatformContent/PlatformContentView';
 import useContentTruncation from '../shared/useContentTruncation';
 import EntityCount from '../entity/shared/containers/profile/header/EntityCount';
-import { ExpandedActorGroup } from '../entity/shared/components/styled/ExpandedActorGroup';
-import { DeprecationPill } from '../entity/shared/components/styled/DeprecationPill';
-import { PreviewType } from '../entity/Entity';
+import {ExpandedActorGroup} from '../entity/shared/components/styled/ExpandedActorGroup';
+import {DeprecationPill} from '../entity/shared/components/styled/DeprecationPill';
+import {PreviewType} from '../entity/Entity';
 import ExternalUrlButton from '../entity/shared/ExternalUrlButton';
 import EntityPaths from './EntityPaths/EntityPaths';
 
@@ -188,45 +188,45 @@ interface Props {
 }
 
 export default function DefaultPreviewCard({
-    name,
-    urn,
-    logoUrl,
-    logoComponent,
-    url,
-    description,
-    type,
-    typeIcon,
-    platform,
-    platformInstanceId,
-    // TODO(Gabe): support qualifier in the new preview card
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    qualifier,
-    tags,
-    owners,
-    topUsers,
-    subHeader,
-    snippet,
-    insights,
-    glossaryTerms,
-    domain,
-    container,
-    deprecation,
-    entityCount,
-    titleSizePx,
-    dataTestID,
-    externalUrl,
-    onClick,
-    degree,
-    parentContainers,
-    parentNodes,
-    platforms,
-    logoUrls,
-    previewType,
-    paths,
-}: Props) {
+                                               name,
+                                               urn,
+                                               logoUrl,
+                                               logoComponent,
+                                               url,
+                                               description,
+                                               type,
+                                               typeIcon,
+                                               platform,
+                                               platformInstanceId,
+                                               // TODO(Gabe): support qualifier in the new preview card
+                                               // eslint-disable-next-line @typescript-eslint/no-unused-vars
+                                               qualifier,
+                                               tags,
+                                               owners,
+                                               topUsers,
+                                               subHeader,
+                                               snippet,
+                                               insights,
+                                               glossaryTerms,
+                                               domain,
+                                               container,
+                                               deprecation,
+                                               entityCount,
+                                               titleSizePx,
+                                               dataTestID,
+                                               externalUrl,
+                                               onClick,
+                                               degree,
+                                               parentContainers,
+                                               parentNodes,
+                                               platforms,
+                                               logoUrls,
+                                               previewType,
+                                               paths,
+                                           }: Props) {
     // sometimes these lists will be rendered inside an entity container (for example, in the case of impact analysis)
     // in those cases, we may want to enrich the preview w/ context about the container entity
-    const { entityData } = useEntityData();
+    const {entityData} = useEntityData();
     const insightViews: Array<ReactNode> = [
         ...(insights?.map((insight) => (
             <>
@@ -242,7 +242,7 @@ export default function DefaultPreviewCard({
     }
     const [descriptionExpanded, setDescriptionExpanded] = useState(false);
 
-    const { contentRef, isContentTruncated } = useContentTruncation(container);
+    const {contentRef, isContentTruncated} = useContentTruncation(container);
 
     const onPreventMouseDown = (event) => {
         event.preventDefault();
@@ -282,7 +282,7 @@ export default function DefaultPreviewCard({
                             )}
                         </Link>
                         {deprecation?.deprecated && (
-                            <DeprecationPill deprecation={deprecation} urn="" showUndeprecate={false} preview />
+                            <DeprecationPill deprecation={deprecation} urn="" showUndeprecate={false} preview/>
                         )}
                         {externalUrl && (
                             <ExternalUrlButton
@@ -303,10 +303,10 @@ export default function DefaultPreviewCard({
                             <PlatformText>{getNumberWithOrdinal(degree)}</PlatformText>
                         </Tooltip>
                     )}
-                    {!!degree && entityCount && <PlatformDivider />}
-                    <EntityCount entityCount={entityCount} />
+                    {!!degree && entityCount && <PlatformDivider/>}
+                    <EntityCount entityCount={entityCount}/>
                 </TitleContainer>
-                {paths && paths.length > 0 && <EntityPaths paths={paths} resultEntityUrn={urn || ''} />}
+                {paths && paths.length > 0 && <EntityPaths paths={paths} resultEntityUrn={urn || ''}/>}
                 {description && description.length > 0 && (
                     <DescriptionContainer>
                         <NoMarkdownViewer
@@ -331,11 +331,11 @@ export default function DefaultPreviewCard({
                 )}
                 {(domain || hasGlossaryTerms || hasTags) && (
                     <TagContainer>
-                        {domain && <TagTermGroup domain={domain} maxShow={3} />}
-                        {domain && hasGlossaryTerms && <TagSeparator />}
-                        {hasGlossaryTerms && <TagTermGroup uneditableGlossaryTerms={glossaryTerms} maxShow={3} />}
-                        {((hasGlossaryTerms && hasTags) || (domain && hasTags)) && <TagSeparator />}
-                        {hasTags && <TagTermGroup uneditableTags={tags} maxShow={3} />}
+                        {domain && <TagTermGroup domain={domain} maxShow={3}/>}
+                        {domain && hasGlossaryTerms && <TagSeparator/>}
+                        {hasGlossaryTerms && <TagTermGroup uneditableGlossaryTerms={glossaryTerms} maxShow={3}/>}
+                        {((hasGlossaryTerms && hasTags) || (domain && hasTags)) && <TagSeparator/>}
+                        {hasTags && <TagTermGroup uneditableTags={tags} maxShow={3}/>}
                     </TagContainer>
                 )}
                 {subHeader}
@@ -344,7 +344,7 @@ export default function DefaultPreviewCard({
                         {insightViews.map((insightView, index) => (
                             <span>
                                 {insightView}
-                                {index < insightViews.length - 1 && <PlatformDivider />}
+                                {index < insightViews.length - 1 && <PlatformDivider/>}
                             </span>
                         ))}
                     </InsightContainer>
@@ -357,17 +357,17 @@ export default function DefaultPreviewCard({
                             <UserListContainer>
                                 <UserListTitle strong>Top Users</UserListTitle>
                                 <div>
-                                    <ExpandedActorGroup actors={topUsers} max={2} />
+                                    <ExpandedActorGroup actors={topUsers} max={2}/>
                                 </div>
                             </UserListContainer>
                         </>
                     )}
-                    {(topUsers?.length || 0) > 0 && (owners?.length || 0) > 0 && <UserListDivider type="vertical" />}
+                    {(topUsers?.length || 0) > 0 && (owners?.length || 0) > 0 && <UserListDivider type="vertical"/>}
                     {owners && owners?.length > 0 && (
                         <UserListContainer>
                             <UserListTitle strong>Owners</UserListTitle>
                             <div>
-                                <ExpandedActorGroup actors={owners.map((owner) => owner.owner)} max={2} />
+                                <ExpandedActorGroup actors={owners.map((owner) => owner.owner)} max={2}/>
                             </div>
                         </UserListContainer>
                     )}

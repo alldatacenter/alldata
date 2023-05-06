@@ -1,14 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Divider, Typography } from 'antd';
+import {Divider, Typography} from 'antd';
 import {
     FacetFilterInput,
     RecommendationModule as RecommendationModuleType,
     ScenarioType,
 } from '../../types.generated';
-import { useListRecommendationsQuery } from '../../graphql/recommendations.generated';
-import { RecommendationModule } from '../recommendations/RecommendationModule';
-import { ANTD_GRAY } from '../entity/shared/constants';
+import {useListRecommendationsQuery} from '../../graphql/recommendations.generated';
+import {RecommendationModule} from '../recommendations/RecommendationModule';
+import {ANTD_GRAY} from '../entity/shared/constants';
 
 const RecommendationsContainer = styled.div`
     margin-left: 40px;
@@ -34,9 +34,9 @@ type Props = {
     filters: Array<FacetFilterInput>;
 };
 
-export const SearchResultsRecommendations = ({ userUrn, query, filters }: Props) => {
+export const SearchResultsRecommendations = ({userUrn, query, filters}: Props) => {
     const scenario = ScenarioType.SearchResults;
-    const { data } = useListRecommendationsQuery({
+    const {data} = useListRecommendationsQuery({
         variables: {
             input: {
                 userUrn,
@@ -58,17 +58,17 @@ export const SearchResultsRecommendations = ({ userUrn, query, filters }: Props)
                 <RecommendationsContainer>
                     <RecommendationTitle level={3}>More you may be interested in</RecommendationTitle>
                     {recommendationModules &&
-                        recommendationModules.map((module) => (
-                            <RecommendationContainer>
-                                <RecommendationTitle level={5}>{module.title}</RecommendationTitle>
-                                <ThinDivider />
-                                <RecommendationModule
-                                    module={module as RecommendationModuleType}
-                                    scenarioType={scenario}
-                                    showTitle={false}
-                                />
-                            </RecommendationContainer>
-                        ))}
+                    recommendationModules.map((module) => (
+                        <RecommendationContainer>
+                            <RecommendationTitle level={5}>{module.title}</RecommendationTitle>
+                            <ThinDivider/>
+                            <RecommendationModule
+                                module={module as RecommendationModuleType}
+                                scenarioType={scenario}
+                                showTitle={false}
+                            />
+                        </RecommendationContainer>
+                    ))}
                 </RecommendationsContainer>
             )}
         </>

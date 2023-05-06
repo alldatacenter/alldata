@@ -8,7 +8,7 @@ import {
     SearchAcrossEntitiesInput,
     SearchInsight,
 } from '../../../../../../types.generated';
-import { UnionType } from '../../../../../search/utils/constants';
+import {UnionType} from '../../../../../search/utils/constants';
 
 export type GetSearchResultsParams = {
     variables: {

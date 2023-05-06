@@ -1,8 +1,8 @@
-import React, { useRef } from 'react';
+import React, {useRef} from 'react';
 import styled from 'styled-components';
-import { Button } from 'antd';
-import { RightOutlined } from '@ant-design/icons';
-import { ANTD_GRAY } from '../../shared/constants';
+import {Button} from 'antd';
+import {RightOutlined} from '@ant-design/icons';
+import {ANTD_GRAY} from '../../shared/constants';
 
 const ButtonContainer = styled.div`
     display: flex;
@@ -27,7 +27,7 @@ type Props = {
     onClickManageViews: () => void;
 };
 
-export const ViewSelectFooter = ({ onClickManageViews }: Props) => {
+export const ViewSelectFooter = ({onClickManageViews}: Props) => {
     const manageViewsButtonRef = useRef(null);
 
     const onHandleClickManageViews = () => {
@@ -39,7 +39,7 @@ export const ViewSelectFooter = ({ onClickManageViews }: Props) => {
         <ButtonContainer>
             <ManageViewsButton type="text" ref={manageViewsButtonRef} onClick={onHandleClickManageViews}>
                 Manage Views
-                <StyledRightOutlined />
+                <StyledRightOutlined/>
             </ManageViewsButton>
         </ButtonContainer>
     );

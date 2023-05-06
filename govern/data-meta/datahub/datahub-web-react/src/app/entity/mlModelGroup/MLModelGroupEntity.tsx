@@ -1,19 +1,19 @@
 import * as React from 'react';
-import { CodeSandboxOutlined } from '@ant-design/icons';
-import { MlModelGroup, EntityType, SearchResult, OwnershipType } from '../../../types.generated';
-import { Preview } from './preview/Preview';
-import { Entity, EntityCapabilityType, IconStyleType, PreviewType } from '../Entity';
-import { getDataForEntityType } from '../shared/containers/profile/utils';
-import { GenericEntityProperties } from '../shared/types';
-import { EntityProfile } from '../shared/containers/profile/EntityProfile';
-import { SidebarDomainSection } from '../shared/containers/profile/sidebar/Domain/SidebarDomainSection';
-import { SidebarOwnerSection } from '../shared/containers/profile/sidebar/Ownership/SidebarOwnerSection';
-import { SidebarAboutSection } from '../shared/containers/profile/sidebar/AboutSection/SidebarAboutSection';
-import { SidebarTagsSection } from '../shared/containers/profile/sidebar/SidebarTagsSection';
-import { useGetMlModelGroupQuery } from '../../../graphql/mlModelGroup.generated';
+import {CodeSandboxOutlined} from '@ant-design/icons';
+import {MlModelGroup, EntityType, SearchResult, OwnershipType} from '../../../types.generated';
+import {Preview} from './preview/Preview';
+import {Entity, EntityCapabilityType, IconStyleType, PreviewType} from '../Entity';
+import {getDataForEntityType} from '../shared/containers/profile/utils';
+import {GenericEntityProperties} from '../shared/types';
+import {EntityProfile} from '../shared/containers/profile/EntityProfile';
+import {SidebarDomainSection} from '../shared/containers/profile/sidebar/Domain/SidebarDomainSection';
+import {SidebarOwnerSection} from '../shared/containers/profile/sidebar/Ownership/SidebarOwnerSection';
+import {SidebarAboutSection} from '../shared/containers/profile/sidebar/AboutSection/SidebarAboutSection';
+import {SidebarTagsSection} from '../shared/containers/profile/sidebar/SidebarTagsSection';
+import {useGetMlModelGroupQuery} from '../../../graphql/mlModelGroup.generated';
 import ModelGroupModels from './profile/ModelGroupModels';
-import { DocumentationTab } from '../shared/tabs/Documentation/DocumentationTab';
-import { EntityMenuItems } from '../shared/EntityDropdown/EntityDropdown';
+import {DocumentationTab} from '../shared/tabs/Documentation/DocumentationTab';
+import {EntityMenuItems} from '../shared/EntityDropdown/EntityDropdown';
 
 /**
  * Definition of the DataHub MlModelGroup entity.
@@ -23,11 +23,11 @@ export class MLModelGroupEntity implements Entity<MlModelGroup> {
 
     icon = (fontSize: number, styleType: IconStyleType, color?: string) => {
         if (styleType === IconStyleType.TAB_VIEW) {
-            return <CodeSandboxOutlined style={{ fontSize, color }} />;
+            return <CodeSandboxOutlined style={{fontSize, color}}/>;
         }
 
         if (styleType === IconStyleType.HIGHLIGHT) {
-            return <CodeSandboxOutlined style={{ fontSize, color: color || '#9633b9' }} />;
+            return <CodeSandboxOutlined style={{fontSize, color: color || '#9633b9'}}/>;
         }
 
         return (
@@ -101,12 +101,12 @@ export class MLModelGroupEntity implements Entity<MlModelGroup> {
     );
 
     renderPreview = (_: PreviewType, data: MlModelGroup) => {
-        return <Preview group={data} />;
+        return <Preview group={data}/>;
     };
 
     renderSearch = (result: SearchResult) => {
         const data = result.entity as MlModelGroup;
-        return <Preview group={data} />;
+        return <Preview group={data}/>;
     };
 
     getLineageVizConfig = (entity: MlModelGroup) => {

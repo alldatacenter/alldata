@@ -1,16 +1,16 @@
 import React from 'react';
-import { Button, Checkbox, Divider, Empty, List, ListProps } from 'antd';
+import {Button, Checkbox, Divider, Empty, List, ListProps} from 'antd';
 import styled from 'styled-components';
-import { useHistory } from 'react-router';
-import { RocketOutlined } from '@ant-design/icons';
-import { navigateToSearchUrl } from './utils/navigateToSearchUrl';
-import { ANTD_GRAY } from '../entity/shared/constants';
-import { CombinedSearchResult, SEPARATE_SIBLINGS_URL_PARAM } from '../entity/shared/siblingUtils';
-import { CompactEntityNameList } from '../recommendations/renderer/component/CompactEntityNameList';
-import { useEntityRegistry } from '../useEntityRegistry';
-import { SearchResult } from '../../types.generated';
-import analytics, { EventType } from '../analytics';
-import { EntityAndType } from '../entity/shared/types';
+import {useHistory} from 'react-router';
+import {RocketOutlined} from '@ant-design/icons';
+import {navigateToSearchUrl} from './utils/navigateToSearchUrl';
+import {ANTD_GRAY} from '../entity/shared/constants';
+import {CombinedSearchResult, SEPARATE_SIBLINGS_URL_PARAM} from '../entity/shared/siblingUtils';
+import {CompactEntityNameList} from '../recommendations/renderer/component/CompactEntityNameList';
+import {useEntityRegistry} from '../useEntityRegistry';
+import {SearchResult} from '../../types.generated';
+import analytics, {EventType} from '../analytics';
+import {EntityAndType} from '../entity/shared/types';
 
 const ResultList = styled(List)`
     &&& {
@@ -58,13 +58,13 @@ type Props = {
 };
 
 export const SearchResultList = ({
-    query,
-    searchResults,
-    totalResultCount,
-    isSelectMode,
-    selectedEntities,
-    setSelectedEntities,
-}: Props) => {
+                                     query,
+                                     searchResults,
+                                     totalResultCount,
+                                     isSelectMode,
+                                     selectedEntities,
+                                     setSelectedEntities,
+                                 }: Props) => {
     const history = useHistory();
     const entityRegistry = useEntityRegistry();
     const selectedEntityUrns = selectedEntities.map((entity) => entity.urn);
@@ -101,11 +101,11 @@ export const SearchResultList = ({
                     emptyText: (
                         <NoDataContainer>
                             <Empty
-                                style={{ fontSize: 18, color: ANTD_GRAY[8] }}
+                                style={{fontSize: 18, color: ANTD_GRAY[8]}}
                                 description={`No results found for "${query}"`}
                             />
-                            <Button onClick={() => navigateToSearchUrl({ query: '*', page: 0, history })}>
-                                <RocketOutlined /> Explore all
+                            <Button onClick={() => navigateToSearchUrl({query: '*', page: 0, history})}>
+                                <RocketOutlined/> Explore all
                             </Button>
                         </NoDataContainer>
                     ),
@@ -123,7 +123,7 @@ export const SearchResultList = ({
                                     checked={selectedEntityUrns.indexOf(item.entity.urn) >= 0}
                                     onChange={(e) =>
                                         onSelectEntity(
-                                            { urn: item.entity.urn, type: item.entity.type },
+                                            {urn: item.entity.urn, type: item.entity.type},
                                             e.target.checked,
                                         )
                                     }
@@ -134,12 +134,12 @@ export const SearchResultList = ({
                         {item.matchedEntities && item.matchedEntities.length > 0 && (
                             <SiblingResultContainer className="test-search-result-sibling-section">
                                 <CompactEntityNameList
-                                    linkUrlParams={{ [SEPARATE_SIBLINGS_URL_PARAM]: true }}
+                                    linkUrlParams={{[SEPARATE_SIBLINGS_URL_PARAM]: true}}
                                     entities={item.matchedEntities}
                                 />
                             </SiblingResultContainer>
                         )}
-                        <ThinDivider />
+                        <ThinDivider/>
                     </>
                 )}
             />

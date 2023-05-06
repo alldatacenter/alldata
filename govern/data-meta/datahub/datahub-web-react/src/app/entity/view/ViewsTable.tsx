@@ -1,8 +1,8 @@
 import React from 'react';
-import { Empty } from 'antd';
-import { StyledTable } from '../shared/components/styled/StyledTable';
-import { ActionsColumn, DescriptionColumn, NameColumn, ViewTypeColumn } from './select/ViewsTableColumns';
-import { DataHubView } from '../../../types.generated';
+import {Empty} from 'antd';
+import {StyledTable} from '../shared/components/styled/StyledTable';
+import {ActionsColumn, DescriptionColumn, NameColumn, ViewTypeColumn} from './select/ViewsTableColumns';
+import {DataHubView} from '../../../types.generated';
 
 type ViewsTableProps = {
     views: DataHubView[];
@@ -12,31 +12,31 @@ type ViewsTableProps = {
 /**
  * This component renders a table of Views.
  */
-export const ViewsTable = ({ views, onEditView }: ViewsTableProps) => {
+export const ViewsTable = ({views, onEditView}: ViewsTableProps) => {
     const tableColumns = [
         {
             title: 'Name',
             dataIndex: 'name',
             key: 'name',
-            render: (name, record) => <NameColumn name={name} record={record} onEditView={onEditView} />,
+            render: (name, record) => <NameColumn name={name} record={record} onEditView={onEditView}/>,
         },
         {
             title: 'Description',
             dataIndex: 'description',
             key: 'description',
-            render: (description) => <DescriptionColumn description={description} />,
+            render: (description) => <DescriptionColumn description={description}/>,
         },
         {
             title: 'Type',
             dataIndex: 'viewType',
             key: 'viewType',
-            render: (viewType) => <ViewTypeColumn viewType={viewType} />,
+            render: (viewType) => <ViewTypeColumn viewType={viewType}/>,
         },
         {
             title: '',
             dataIndex: '',
             key: 'x',
-            render: (record) => <ActionsColumn record={record} />,
+            render: (record) => <ActionsColumn record={record}/>,
         },
     ];
 
@@ -53,7 +53,7 @@ export const ViewsTable = ({ views, onEditView }: ViewsTableProps) => {
             dataSource={tableData}
             rowKey="urn"
             locale={{
-                emptyText: <Empty description="No Views found!" image={Empty.PRESENTED_IMAGE_SIMPLE} />,
+                emptyText: <Empty description="No Views found!" image={Empty.PRESENTED_IMAGE_SIMPLE}/>,
             }}
             pagination={false}
         />

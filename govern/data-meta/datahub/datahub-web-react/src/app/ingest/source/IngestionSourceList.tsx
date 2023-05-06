@@ -1,8 +1,8 @@
-import { PlusOutlined, RedoOutlined } from '@ant-design/icons';
-import React, { useCallback, useEffect, useState } from 'react';
+import {PlusOutlined, RedoOutlined} from '@ant-design/icons';
+import React, {useCallback, useEffect, useState} from 'react';
 import * as QueryString from 'query-string';
-import { useLocation } from 'react-router';
-import { Button, message, Modal, Pagination, Select } from 'antd';
+import {useLocation} from 'react-router';
+import {Button, message, Modal, Pagination, Select} from 'antd';
 import styled from 'styled-components';
 import {
     useCreateIngestionExecutionRequestMutation,
@@ -11,21 +11,21 @@ import {
     useListIngestionSourcesQuery,
     useUpdateIngestionSourceMutation,
 } from '../../../graphql/ingestion.generated';
-import { Message } from '../../shared/Message';
+import {Message} from '../../shared/Message';
 import TabToolbar from '../../entity/shared/components/styled/TabToolbar';
-import { IngestionSourceBuilderModal } from './builder/IngestionSourceBuilderModal';
-import { addToListIngestionSourcesCache, CLI_EXECUTOR_ID, removeFromListIngestionSourcesCache } from './utils';
-import { DEFAULT_EXECUTOR_ID, SourceBuilderState } from './builder/types';
-import { IngestionSource, UpdateIngestionSourceInput } from '../../../types.generated';
-import { SearchBar } from '../../search/SearchBar';
-import { useEntityRegistry } from '../../useEntityRegistry';
-import { ExecutionDetailsModal } from './executions/ExecutionRequestDetailsModal';
+import {IngestionSourceBuilderModal} from './builder/IngestionSourceBuilderModal';
+import {addToListIngestionSourcesCache, CLI_EXECUTOR_ID, removeFromListIngestionSourcesCache} from './utils';
+import {DEFAULT_EXECUTOR_ID, SourceBuilderState} from './builder/types';
+import {IngestionSource, UpdateIngestionSourceInput} from '../../../types.generated';
+import {SearchBar} from '../../search/SearchBar';
+import {useEntityRegistry} from '../../useEntityRegistry';
+import {ExecutionDetailsModal} from './executions/ExecutionRequestDetailsModal';
 import RecipeViewerModal from './RecipeViewerModal';
 import IngestionSourceTable from './IngestionSourceTable';
-import { scrollToTop } from '../../shared/searchUtils';
+import {scrollToTop} from '../../shared/searchUtils';
 import useRefreshIngestionData from './executions/useRefreshIngestionData';
-import { isExecutionRequestActive } from './executions/IngestionSourceExecutionList';
-import analytics, { EventType } from '../../analytics';
+import {isExecutionRequestActive} from './executions/IngestionSourceExecutionList';
+import analytics, {EventType} from '../../analytics';
 import {
     INGESTION_CREATE_SOURCE_ID,
     INGESTION_REFRESH_SOURCES_ID,
@@ -82,7 +82,7 @@ const removeExecutionsFromIngestionSource = (source) => {
 export const IngestionSourceList = () => {
     const entityRegistry = useEntityRegistry();
     const location = useLocation();
-    const params = QueryString.parse(location.search, { arrayFormat: 'comma' });
+    const params = QueryString.parse(location.search, {arrayFormat: 'comma'});
     const paramsQuery = (params?.query as string) || undefined;
     const [query, setQuery] = useState<undefined | string>(undefined);
     useEffect(() => setQuery(paramsQuery), [paramsQuery]);
@@ -102,7 +102,7 @@ export const IngestionSourceList = () => {
     const [sourceFilter, setSourceFilter] = useState(IngestionSourceType.ALL);
 
     // Ingestion Source Queries
-    const { loading, error, data, client, refetch } = useListIngestionSourcesQuery({
+    const {loading, error, data, client, refetch} = useListIngestionSourcesQuery({
         variables: {
             input: {
                 start,
@@ -138,6 +138,7 @@ export const IngestionSourceList = () => {
             source.executions?.executionRequests.find((request) => isExecutionRequestActive(request)),
         );
     }
+
     useRefreshIngestionData(onRefresh, hasActiveExecution);
 
     const executeIngestionSource = (urn: string) => {
@@ -180,7 +181,7 @@ export const IngestionSourceList = () => {
     ) => {
         if (focusSourceUrn) {
             // Update:
-            updateIngestionSource({ variables: { urn: focusSourceUrn as string, input } })
+            updateIngestionSource({variables: {urn: focusSourceUrn as string, input}})
                 .then(() => {
                     analytics.event({
                         type: EventType.UpdateIngestionSourceEvent,
@@ -204,9 +205,9 @@ export const IngestionSourceList = () => {
                 });
         } else {
             // Create
-            createIngestionSource({ variables: { input } })
+            createIngestionSource({variables: {input}})
                 .then((result) => {
-                    message.loading({ content: 'Loading...', duration: 2 });
+                    message.loading({content: 'Loading...', duration: 2});
                     const newSource = {
                         urn: result?.data?.createIngestionSource || PLACEHOLDER_URN,
                         name: input.name,
@@ -257,13 +258,13 @@ export const IngestionSourceList = () => {
     const deleteIngestionSource = async (urn: string) => {
         removeFromListIngestionSourcesCache(client, urn, page, pageSize, query);
         removeIngestionSourceMutation({
-            variables: { urn },
+            variables: {urn},
         })
             .then(() => {
                 analytics.event({
                     type: EventType.DeleteIngestionSourceEvent,
                 });
-                message.success({ content: 'Removed ingestion source.', duration: 2 });
+                message.success({content: 'Removed ingestion source.', duration: 2});
                 const newRemovedUrns = [...removedUrns, urn];
                 setRemovedUrns(newRemovedUrns);
                 setTimeout(() => {
@@ -273,7 +274,7 @@ export const IngestionSourceList = () => {
             .catch((e: unknown) => {
                 message.destroy();
                 if (e instanceof Error) {
-                    message.error({ content: `Failed to remove ingestion source: \n ${e.message || ''}`, duration: 3 });
+                    message.error({content: `Failed to remove ingestion source: \n ${e.message || ''}`, duration: 3});
                 }
             });
     };
@@ -322,7 +323,8 @@ export const IngestionSourceList = () => {
             onOk() {
                 executeIngestionSource(urn);
             },
-            onCancel() {},
+            onCancel() {
+            },
             okText: 'Execute',
             maskClosable: true,
             closable: true,
@@ -336,7 +338,8 @@ export const IngestionSourceList = () => {
             onOk() {
                 deleteIngestionSource(urn);
             },
-            onCancel() {},
+            onCancel() {
+            },
             okText: 'Yes',
             maskClosable: true,
             closable: true,
@@ -351,18 +354,18 @@ export const IngestionSourceList = () => {
 
     return (
         <>
-            {!data && loading && <Message type="loading" content="Loading ingestion sources..." />}
+            {!data && loading && <Message type="loading" content="加载元数据..."/>}
             {error && (
-                <Message type="error" content="Failed to load ingestion sources! An unexpected error occurred." />
+                <Message type="error" content="Failed to load ingestion sources! An unexpected error occurred."/>
             )}
             <SourceContainer>
                 <TabToolbar>
                     <div>
                         <Button id={INGESTION_CREATE_SOURCE_ID} type="text" onClick={() => setIsBuildingSource(true)}>
-                            <PlusOutlined /> Create new source
+                            <PlusOutlined/> 创建新的元数据
                         </Button>
                         <Button id={INGESTION_REFRESH_SOURCES_ID} type="text" onClick={onRefresh}>
-                            <RedoOutlined /> Refresh
+                            <RedoOutlined/> 刷新
                         </Button>
                     </div>
                     <FilterWrapper>
@@ -377,7 +380,7 @@ export const IngestionSourceList = () => {
 
                         <SearchBar
                             initialQuery={query || ''}
-                            placeholderText="Search sources..."
+                            placeholderText="查询数据源..."
                             suggestions={[]}
                             style={{
                                 maxWidth: 220,
@@ -406,7 +409,7 @@ export const IngestionSourceList = () => {
                 />
                 <SourcePaginationContainer>
                     <Pagination
-                        style={{ margin: 40 }}
+                        style={{margin: 40}}
                         current={page}
                         pageSize={pageSize}
                         total={totalSources}
@@ -422,7 +425,7 @@ export const IngestionSourceList = () => {
                 onSubmit={onSubmit}
                 onCancel={onCancel}
             />
-            {isViewingRecipe && <RecipeViewerModal recipe={focusSource?.config.recipe} onCancel={onCancel} />}
+            {isViewingRecipe && <RecipeViewerModal recipe={focusSource?.config.recipe} onCancel={onCancel}/>}
             {focusExecutionUrn && (
                 <ExecutionDetailsModal
                     urn={focusExecutionUrn}

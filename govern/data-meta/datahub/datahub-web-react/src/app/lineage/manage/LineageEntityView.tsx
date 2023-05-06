@@ -1,11 +1,11 @@
-import { Divider } from 'antd';
+import {Divider} from 'antd';
 import React from 'react';
 import styled from 'styled-components/macro';
-import { Entity } from '../../../types.generated';
-import { ANTD_GRAY } from '../../entity/shared/constants';
-import { getPlatformName } from '../../entity/shared/utils';
-import { capitalizeFirstLetterOnly } from '../../shared/textUtil';
-import { useEntityRegistry } from '../../useEntityRegistry';
+import {Entity} from '../../../types.generated';
+import {ANTD_GRAY} from '../../entity/shared/constants';
+import {getPlatformName} from '../../entity/shared/utils';
+import {capitalizeFirstLetterOnly} from '../../shared/textUtil';
+import {useEntityRegistry} from '../../useEntityRegistry';
 
 const EntityWrapper = styled.div<{ shrinkPadding?: boolean }>`
     border-bottom: 1px solid ${ANTD_GRAY[4]};
@@ -39,7 +39,7 @@ interface Props {
     displaySearchResult?: boolean;
 }
 
-export default function LineageEntityView({ entity, displaySearchResult }: Props) {
+export default function LineageEntityView({entity, displaySearchResult}: Props) {
     const entityRegistry = useEntityRegistry();
     const genericProps = entityRegistry.getGenericEntityProperties(entity.type, entity);
 
@@ -50,13 +50,13 @@ export default function LineageEntityView({ entity, displaySearchResult }: Props
         <EntityWrapper shrinkPadding={displaySearchResult}>
             <PlatformContent removeMargin={displaySearchResult}>
                 {platformLogoUrl && (
-                    <PlatformLogo src={platformLogoUrl} alt="platform logo" data-testid="platform-logo" />
+                    <PlatformLogo src={platformLogoUrl} alt="platform logo" data-testid="platform-logo"/>
                 )}
                 <span>{platformName}</span>
-                {platformName && <StyledDivider type="vertical" data-testid="divider" />}
+                {platformName && <StyledDivider type="vertical" data-testid="divider"/>}
                 <span>
                     {capitalizeFirstLetterOnly(genericProps?.subTypes?.typeNames?.[0]) ||
-                        entityRegistry.getEntityName(entity.type)}
+                    entityRegistry.getEntityName(entity.type)}
                 </span>
             </PlatformContent>
             <EntityName shrinkSize={displaySearchResult}>

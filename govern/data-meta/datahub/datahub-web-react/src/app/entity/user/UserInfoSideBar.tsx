@@ -1,8 +1,8 @@
-import { Divider, message, Space, Button, Typography, Tag } from 'antd';
-import React, { useState } from 'react';
-import { EditOutlined, MailOutlined, PhoneOutlined, SlackOutlined } from '@ant-design/icons';
-import { useUpdateCorpUserPropertiesMutation } from '../../../graphql/user.generated';
-import { EntityRelationship, DataHubRole } from '../../../types.generated';
+import {Divider, message, Space, Button, Typography, Tag} from 'antd';
+import React, {useState} from 'react';
+import {EditOutlined, MailOutlined, PhoneOutlined, SlackOutlined} from '@ant-design/icons';
+import {useUpdateCorpUserPropertiesMutation} from '../../../graphql/user.generated';
+import {EntityRelationship, DataHubRole} from '../../../types.generated';
 import UserEditProfileModal from './UserEditProfileModal';
 import CustomAvatar from '../../shared/avatar/CustomAvatar';
 import {
@@ -19,10 +19,10 @@ import {
     Team,
 } from '../shared/SidebarStyledComponents';
 import EntityGroups from '../shared/EntityGroups';
-import { mapRoleIcon } from '../../identity/user/UserUtils';
-import { useUserContext } from '../../context/useUserContext';
+import {mapRoleIcon} from '../../identity/user/UserUtils';
+import {useUserContext} from '../../context/useUserContext';
 
-const { Paragraph } = Typography;
+const {Paragraph} = Typography;
 
 type SideBarData = {
     photoUrl: string | undefined;
@@ -44,13 +44,13 @@ type Props = {
     refetch: () => void;
 };
 
-const AVATAR_STYLE = { marginTop: '14px' };
+const AVATAR_STYLE = {marginTop: '14px'};
 
 /**
  * UserInfoSideBar- Sidebar section for users profiles.
  */
-export default function UserInfoSideBar({ sideBarData, refetch }: Props) {
-    const { name, aboutText, avatarName, email, groupsDetails, phone, photoUrl, role, slack, team, dataHubRoles, urn } =
+export default function UserInfoSideBar({sideBarData, refetch}: Props) {
+    const {name, aboutText, avatarName, email, groupsDetails, phone, photoUrl, role, slack, team, dataHubRoles, urn} =
         sideBarData;
 
     const [updateCorpUserPropertiesMutation] = useUpdateCorpUserPropertiesMutation();
@@ -91,7 +91,7 @@ export default function UserInfoSideBar({ sideBarData, refetch }: Props) {
             })
             .catch((e) => {
                 message.destroy();
-                message.error({ content: `Failed to Save changes!: \n ${e.message || ''}`, duration: 3 });
+                message.error({content: `Failed to Save changes!: \n ${e.message || ''}`, duration: 3});
             });
     };
     const dataHubRoleName = dataHubRoles && dataHubRoles.length > 0 && (dataHubRoles[0]?.entity as DataHubRole).name;
@@ -100,43 +100,43 @@ export default function UserInfoSideBar({ sideBarData, refetch }: Props) {
         <>
             <SideBar>
                 <SideBarSubSection className={isProfileOwner ? '' : 'fullView'}>
-                    <CustomAvatar size={160} photoUrl={photoUrl} name={avatarName} style={AVATAR_STYLE} />
-                    <Name>{name || <EmptyValue />}</Name>
+                    <CustomAvatar size={160} photoUrl={photoUrl} name={avatarName} style={AVATAR_STYLE}/>
+                    <Name>{name || <EmptyValue/>}</Name>
                     {role && <TitleRole>{role}</TitleRole>}
                     {team && <Team>{team}</Team>}
                     {dataHubRoleName && <Tag icon={mapRoleIcon(dataHubRoleName)}>{dataHubRoleName}</Tag>}
-                    <Divider className="divider-infoSection" />
+                    <Divider className="divider-infoSection"/>
                     <SocialDetails>
                         <Space>
-                            <MailOutlined />
-                            {email || <EmptyValue />}
+                            <MailOutlined/>
+                            {email || <EmptyValue/>}
                         </Space>
                     </SocialDetails>
                     <SocialDetails>
                         <Space>
-                            <SlackOutlined />
-                            {slack || <EmptyValue />}
+                            <SlackOutlined/>
+                            {slack || <EmptyValue/>}
                         </Space>
                     </SocialDetails>
                     <SocialDetails>
                         <Space>
-                            <PhoneOutlined />
-                            {phone || <EmptyValue />}
+                            <PhoneOutlined/>
+                            {phone || <EmptyValue/>}
                         </Space>
                     </SocialDetails>
-                    <Divider className="divider-aboutSection" />
+                    <Divider className="divider-aboutSection"/>
                     <AboutSection>
                         About
                         <AboutSectionText>
                             <Paragraph
-                                editable={isProfileOwner ? { onChange: onSaveAboutMe } : false}
-                                ellipsis={{ rows: 2, expandable: true, symbol: 'Read more' }}
+                                editable={isProfileOwner ? {onChange: onSaveAboutMe} : false}
+                                ellipsis={{rows: 2, expandable: true, symbol: 'Read more'}}
                             >
-                                {aboutText || <EmptyValue />}
+                                {aboutText || <EmptyValue/>}
                             </Paragraph>
                         </AboutSectionText>
                     </AboutSection>
-                    <Divider className="divider-groupsSection" />
+                    <Divider className="divider-groupsSection"/>
                     <GroupsSection>
                         Groups
                         <EntityGroups
@@ -148,7 +148,7 @@ export default function UserInfoSideBar({ sideBarData, refetch }: Props) {
                 </SideBarSubSection>
                 {isProfileOwner && (
                     <EditButton>
-                        <Button icon={<EditOutlined />} onClick={() => showEditProfileModal(true)}>
+                        <Button icon={<EditOutlined/>} onClick={() => showEditProfileModal(true)}>
                             Edit Profile
                         </Button>
                     </EditButton>

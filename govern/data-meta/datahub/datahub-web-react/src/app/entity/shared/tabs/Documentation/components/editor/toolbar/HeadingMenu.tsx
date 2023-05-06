@@ -1,17 +1,17 @@
-import React, { MouseEventHandler, useCallback } from 'react';
-import { Select } from 'antd';
+import React, {MouseEventHandler, useCallback} from 'react';
+import {Select} from 'antd';
 import styled from 'styled-components';
-import { useActive, useCommands } from '@remirror/react';
+import {useActive, useCommands} from '@remirror/react';
 
-const { Option } = Select;
+const {Option} = Select;
 
 const OPTIONS = [
-    { tag: 'h1', label: 'Heading 1', value: 1 },
-    { tag: 'h2', label: 'Heading 2', value: 2 },
-    { tag: 'h3', label: 'Heading 3', value: 3 },
-    { tag: 'h4', label: 'Heading 4', value: 4 },
-    { tag: 'h5', label: 'Heading 5', value: 5 },
-    { tag: 'p', label: 'Normal', value: 0 },
+    {tag: 'h1', label: 'Heading 1', value: 1},
+    {tag: 'h2', label: 'Heading 2', value: 2},
+    {tag: 'h3', label: 'Heading 3', value: 3},
+    {tag: 'h4', label: 'Heading 4', value: 4},
+    {tag: 'h5', label: 'Heading 5', value: 5},
+    {tag: 'p', label: 'Normal', value: 0},
 ];
 
 /* To mitigate overrides of the Select's width when using it in modals */
@@ -26,10 +26,10 @@ const StyledSelect = styled(Select)`
 `;
 
 export const HeadingMenu = () => {
-    const { toggleHeading } = useCommands();
+    const {toggleHeading} = useCommands();
     const active = useActive(true);
 
-    const activeHeading = OPTIONS.map(({ value }) => value).filter((level) => active.heading({ level }))?.[0] || 0;
+    const activeHeading = OPTIONS.map(({value}) => value).filter((level) => active.heading({level}))?.[0] || 0;
 
     const handleMouseDown: MouseEventHandler<HTMLDivElement> = useCallback((e) => {
         e.preventDefault();
@@ -46,7 +46,7 @@ export const HeadingMenu = () => {
                 onChange={(value) => {
                     const level = +`${value}`;
                     if (level) {
-                        toggleHeading({ level });
+                        toggleHeading({level});
                     } else {
                         toggleHeading();
                     }

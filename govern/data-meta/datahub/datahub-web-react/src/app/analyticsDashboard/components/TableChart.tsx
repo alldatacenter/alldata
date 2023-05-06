@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { Button, Table } from 'antd';
+import {Button, Table} from 'antd';
 import styled from 'styled-components';
-import { useHistory } from 'react-router';
+import {useHistory} from 'react-router';
 
-import { Cell, EntityType, FacetFilterInput, TableChart as TableChartType } from '../../../types.generated';
-import { navigateToSearchUrl } from '../../search/utils/navigateToSearchUrl';
-import { useEntityRegistry } from '../../useEntityRegistry';
+import {Cell, EntityType, FacetFilterInput, TableChart as TableChartType} from '../../../types.generated';
+import {navigateToSearchUrl} from '../../search/utils/navigateToSearchUrl';
+import {useEntityRegistry} from '../../useEntityRegistry';
 
 type Props = {
     chartData: TableChartType;
@@ -30,7 +30,7 @@ const TableLink = styled(Button)`
     }
 `;
 
-const TableCell = ({ cell }: TableCellProps) => {
+const TableCell = ({cell}: TableCellProps) => {
     const history = useHistory();
     const entityRegistry = useEntityRegistry();
     const onClickQuery = (query: string, types: Array<EntityType>, filters: Array<FacetFilterInput>) => {
@@ -74,15 +74,15 @@ const TableCell = ({ cell }: TableCellProps) => {
     return <span>{cell.value}</span>;
 };
 
-export const TableChart = ({ chartData }: Props) => {
+export const TableChart = ({chartData}: Props) => {
     const columns = chartData.columns.map((column) => ({
         title: column,
         key: column,
         dataIndex: column,
-        render: (cell) => <TableCell cell={cell} />,
+        render: (cell) => <TableCell cell={cell}/>,
     }));
     const tableData = chartData.rows.map(
-        (row) => row.cells?.reduce((acc, cell, i) => ({ ...acc, [chartData.columns[i]]: cell }), {}) || {},
+        (row) => row.cells?.reduce((acc, cell, i) => ({...acc, [chartData.columns[i]]: cell}), {}) || {},
     );
-    return <StyledTable columns={columns} dataSource={tableData} pagination={false} size="small" />;
+    return <StyledTable columns={columns} dataSource={tableData} pagination={false} size="small"/>;
 };

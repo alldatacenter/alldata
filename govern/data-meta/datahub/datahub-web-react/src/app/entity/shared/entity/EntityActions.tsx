@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { Button, message } from 'antd';
-import { LinkOutlined } from '@ant-design/icons';
-import { SearchSelectModal } from '../components/styled/search/SearchSelectModal';
-import { useEntityRegistry } from '../../../useEntityRegistry';
-import { EntityCapabilityType } from '../../Entity';
-import { useBatchAddTermsMutation, useBatchSetDomainMutation } from '../../../../graphql/mutations.generated';
-import { handleBatchError } from '../utils';
+import React, {useState} from 'react';
+import {Button, message} from 'antd';
+import {LinkOutlined} from '@ant-design/icons';
+import {SearchSelectModal} from '../components/styled/search/SearchSelectModal';
+import {useEntityRegistry} from '../../../useEntityRegistry';
+import {EntityCapabilityType} from '../../Entity';
+import {useBatchAddTermsMutation, useBatchSetDomainMutation} from '../../../../graphql/mutations.generated';
+import {handleBatchError} from '../utils';
 
 export enum EntityActionItem {
     /**
@@ -27,7 +27,7 @@ interface Props {
 function EntityActions(props: Props) {
     // eslint ignore react/no-unused-prop-types
     const entityRegistry = useEntityRegistry();
-    const { urn, actionItems, refetchForEntity } = props;
+    const {urn, actionItems, refetchForEntity} = props;
     const [isBatchAddGlossaryTermModalVisible, setIsBatchAddGlossaryTermModalVisible] = useState(false);
     const [isBatchSetDomainModalVisible, setIsBatchSetDomainModalVisible] = useState(false);
     const [batchAddTermsMutation] = useBatchAddTermsMutation();
@@ -45,10 +45,10 @@ function EntityActions(props: Props) {
                 },
             },
         })
-            .then(({ errors }) => {
+            .then(({errors}) => {
                 if (!errors) {
                     setIsBatchAddGlossaryTermModalVisible(false);
-                    message.loading({ content: 'Updating...', duration: 3 });
+                    message.loading({content: 'Updating...', duration: 3});
                     setTimeout(() => {
                         message.success({
                             content: `Added Glossary Term to entities!`,
@@ -81,10 +81,10 @@ function EntityActions(props: Props) {
                 },
             },
         })
-            .then(({ errors }) => {
+            .then(({errors}) => {
                 if (!errors) {
                     setIsBatchSetDomainModalVisible(false);
-                    message.loading({ content: 'Updating...', duration: 3 });
+                    message.loading({content: 'Updating...', duration: 3});
                     setTimeout(() => {
                         message.success({
                             content: `Added assets to Domain!`,
@@ -107,15 +107,15 @@ function EntityActions(props: Props) {
 
     return (
         <>
-            <div style={{ marginRight: 12 }}>
+            <div style={{marginRight: 12}}>
                 {actionItems.has(EntityActionItem.BATCH_ADD_GLOSSARY_TERM) && (
                     <Button onClick={() => setIsBatchAddGlossaryTermModalVisible(true)}>
-                        <LinkOutlined /> Add to assets
+                        <LinkOutlined/> Add to assets
                     </Button>
                 )}
                 {actionItems.has(EntityActionItem.BATCH_ADD_DOMAIN) && (
                     <Button onClick={() => setIsBatchSetDomainModalVisible(true)}>
-                        <LinkOutlined /> Add assets
+                        <LinkOutlined/> Add assets
                     </Button>
                 )}
             </div>

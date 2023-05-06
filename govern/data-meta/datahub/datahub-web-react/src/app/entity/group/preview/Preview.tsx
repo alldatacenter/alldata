@@ -1,12 +1,12 @@
 import React from 'react';
-import { Tag, Typography } from 'antd';
-import { Link } from 'react-router-dom';
+import {Tag, Typography} from 'antd';
+import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 
-import { EntityType } from '../../../../types.generated';
-import { useEntityRegistry } from '../../../useEntityRegistry';
-import { ANTD_GRAY } from '../../shared/constants';
-import { IconStyleType } from '../../Entity';
+import {EntityType} from '../../../../types.generated';
+import {useEntityRegistry} from '../../../useEntityRegistry';
+import {ANTD_GRAY} from '../../shared/constants';
+import {IconStyleType} from '../../Entity';
 import NoMarkdownViewer from '../../shared/components/styled/StripMarkdownText';
 
 const PreviewContainer = styled.div`
@@ -62,11 +62,11 @@ const MemberCountContainer = styled.span`
 `;
 
 export const Preview = ({
-    urn,
-    name,
-    description,
-    membersCount,
-}: {
+                            urn,
+                            name,
+                            description,
+                            membersCount,
+                        }: {
     urn: string;
     name: string;
     description?: string | null;

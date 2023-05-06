@@ -1,7 +1,7 @@
 import React from 'react';
-import { Select, Typography } from 'antd';
+import {Select, Typography} from 'antd';
 import styled from 'styled-components';
-import { ANTD_GRAY } from '../../../../../constants';
+import {ANTD_GRAY} from '../../../../../constants';
 
 type Props = {
     prefixText: string;
@@ -19,7 +19,7 @@ const EmbeddedSelect = styled(Select)`
     padding-left: 8px;
 `;
 
-export default function PrefixedSelect({ prefixText, values, value, setValue }: Props): JSX.Element {
+export default function PrefixedSelect({prefixText, values, value, setValue}: Props): JSX.Element {
     return (
         <span>
             <SubHeaderText>{prefixText}</SubHeaderText>

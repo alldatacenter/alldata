@@ -1,13 +1,13 @@
-import { useEffect } from 'react';
-import { useLocation } from 'react-router';
+import {useEffect} from 'react';
+import {useLocation} from 'react-router';
 import queryString from 'query-string';
-import { isEqual } from 'lodash';
-import { EntityType } from '../../../../../types.generated';
+import {isEqual} from 'lodash';
+import {EntityType} from '../../../../../types.generated';
 import useIsLineageMode from '../../../../lineage/utils/useIsLineageMode';
-import { useEntityRegistry } from '../../../../useEntityRegistry';
+import {useEntityRegistry} from '../../../../useEntityRegistry';
 import EntityRegistry from '../../../EntityRegistry';
-import { EntityTab, GenericEntityProperties } from '../../types';
-import { useIsSeparateSiblingsMode, SEPARATE_SIBLINGS_URL_PARAM } from '../../siblingUtils';
+import {EntityTab, GenericEntityProperties} from '../../types';
+import {useIsSeparateSiblingsMode, SEPARATE_SIBLINGS_URL_PARAM} from '../../siblingUtils';
 import {
     ENTITY_PROFILE_DOCUMENTATION_ID,
     ENTITY_PROFILE_DOMAINS_ID,
@@ -19,15 +19,15 @@ import {
     ENTITY_PROFILE_SCHEMA_ID,
     ENTITY_PROFILE_TAGS_ID,
 } from '../../../../onboarding/config/EntityProfileOnboardingConfig';
-import { useGlossaryEntityData } from '../../GlossaryEntityContext';
+import {useGlossaryEntityData} from '../../GlossaryEntityContext';
 import usePrevious from '../../../../shared/usePrevious';
-import { GLOSSARY_ENTITY_TYPES } from '../../constants';
+import {GLOSSARY_ENTITY_TYPES} from '../../constants';
 
 export function getDataForEntityType<T>({
-    data: entityData,
-    getOverrideProperties,
-    isHideSiblingMode,
-}: {
+                                            data: entityData,
+                                            getOverrideProperties,
+                                            isHideSiblingMode,
+                                        }: {
     data: T;
     entityType?: EntityType;
     getOverrideProperties: (T) => GenericEntityProperties;
@@ -55,7 +55,7 @@ export function getDataForEntityType<T>({
 
     if (anyEntityData?.siblings?.siblings?.length > 0 && !isHideSiblingMode) {
         const genericSiblingProperties: GenericEntityProperties[] = anyEntityData?.siblings?.siblings?.map((sibling) =>
-            getDataForEntityType({ data: sibling, getOverrideProperties: () => ({}) }),
+            getDataForEntityType({data: sibling, getOverrideProperties: () => ({})}),
         );
 
         const allPlatforms = anyEntityData.siblings.isPrimary
@@ -101,7 +101,7 @@ export function useEntityPath(entityType: EntityType, urn: string, tabName?: str
 }
 
 export function useRoutedTab(tabs: EntityTab[]): EntityTab | undefined {
-    const { pathname } = useLocation();
+    const {pathname} = useLocation();
     const trimmedPathName = pathname.endsWith('/') ? pathname.slice(0, pathname.length - 1) : pathname;
     const splitPathName = trimmedPathName.split('/');
     const lastTokenInPath = splitPathName[splitPathName.length - 1];
@@ -110,7 +110,7 @@ export function useRoutedTab(tabs: EntityTab[]): EntityTab | undefined {
 }
 
 export function useIsOnTab(tabName: string): boolean {
-    const { pathname } = useLocation();
+    const {pathname} = useLocation();
     const trimmedPathName = pathname.endsWith('/') ? pathname.slice(0, pathname.length - 1) : pathname;
     const splitPathName = trimmedPathName.split('/');
     const lastTokenInPath = splitPathName[splitPathName.length - 1];
@@ -136,7 +136,7 @@ export function useUpdateGlossaryEntityDataOnChange(
     entityData: GenericEntityProperties | null,
     entityType: EntityType,
 ) {
-    const { setEntityData } = useGlossaryEntityData();
+    const {setEntityData} = useGlossaryEntityData();
     const previousEntityData = usePrevious(entityData);
 
     useEffect(() => {

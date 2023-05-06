@@ -1,29 +1,29 @@
 import React from 'react';
-import { fireEvent, render, waitFor } from '@testing-library/react';
-import { MockedProvider } from '@apollo/client/testing';
+import {fireEvent, render, waitFor} from '@testing-library/react';
+import {MockedProvider} from '@apollo/client/testing';
 import TestPageContainer from '../../../../../../utils/test-utils/TestPageContainer';
-import { mocks } from '../../../../../../Mocks';
-import { EntityProfile } from '../EntityProfile';
+import {mocks} from '../../../../../../Mocks';
+import {EntityProfile} from '../EntityProfile';
 import {
     useGetDatasetQuery,
     useUpdateDatasetMutation,
     GetDatasetQuery,
 } from '../../../../../../graphql/dataset.generated';
-import { EntityType } from '../../../../../../types.generated';
+import {EntityType} from '../../../../../../types.generated';
 import QueriesTab from '../../../tabs/Dataset/Queries/QueriesTab';
-import { SchemaTab } from '../../../tabs/Dataset/Schema/SchemaTab';
+import {SchemaTab} from '../../../tabs/Dataset/Schema/SchemaTab';
 import StatsTab from '../../../tabs/Dataset/Stats/StatsTab';
-import { DocumentationTab } from '../../../tabs/Documentation/DocumentationTab';
-import { LineageTab } from '../../../tabs/Lineage/LineageTab';
-import { PropertiesTab } from '../../../tabs/Properties/PropertiesTab';
-import { SidebarStatsSection } from '../sidebar/Dataset/StatsSidebarSection';
-import { SidebarOwnerSection } from '../sidebar/Ownership/SidebarOwnerSection';
-import { SidebarAboutSection } from '../sidebar/AboutSection/SidebarAboutSection';
-import { SidebarTagsSection } from '../sidebar/SidebarTagsSection';
+import {DocumentationTab} from '../../../tabs/Documentation/DocumentationTab';
+import {LineageTab} from '../../../tabs/Lineage/LineageTab';
+import {PropertiesTab} from '../../../tabs/Properties/PropertiesTab';
+import {SidebarStatsSection} from '../sidebar/Dataset/StatsSidebarSection';
+import {SidebarOwnerSection} from '../sidebar/Ownership/SidebarOwnerSection';
+import {SidebarAboutSection} from '../sidebar/AboutSection/SidebarAboutSection';
+import {SidebarTagsSection} from '../sidebar/SidebarTagsSection';
 
 describe('EntityProfile', () => {
     it('renders dataset page', async () => {
-        const { getByText } = render(
+        const {getByText} = render(
             <MockedProvider mocks={mocks} addTypename={false}>
                 <TestPageContainer initialEntries={['/dataset/urn:li:dataset:3']}>
                     <EntityProfile
@@ -108,7 +108,7 @@ describe('EntityProfile', () => {
     });
 
     it('renders tab content', async () => {
-        const { getByText } = render(
+        const {getByText} = render(
             <MockedProvider mocks={mocks} addTypename={false}>
                 <TestPageContainer initialEntries={['/dataset/urn:li:dataset:3']}>
                     <EntityProfile
@@ -192,7 +192,7 @@ describe('EntityProfile', () => {
     });
 
     it('switches tab content', async () => {
-        const { getByText, queryByText } = render(
+        const {getByText, queryByText} = render(
             <MockedProvider mocks={mocks} addTypename={false}>
                 <TestPageContainer initialEntries={['/dataset/urn:li:dataset:3']}>
                     <EntityProfile
@@ -289,7 +289,7 @@ describe('EntityProfile', () => {
     });
 
     it('renders sidebar content', async () => {
-        const { getByText } = render(
+        const {getByText} = render(
             <MockedProvider mocks={mocks} addTypename={false}>
                 <TestPageContainer initialEntries={['/dataset/urn:li:dataset:3']}>
                     <EntityProfile
@@ -373,7 +373,7 @@ describe('EntityProfile', () => {
     });
 
     it('renders autorender aspects', async () => {
-        const { getByText } = render(
+        const {getByText} = render(
             <MockedProvider mocks={mocks} addTypename={false}>
                 <TestPageContainer initialEntries={['/dataset/urn:li:dataset:3']}>
                     <EntityProfile

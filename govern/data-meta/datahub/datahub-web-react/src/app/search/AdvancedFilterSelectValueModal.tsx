@@ -1,12 +1,12 @@
 import React from 'react';
-import { FacetMetadata, EntityType } from '../../types.generated';
-import { ContainerSelectModal } from '../entity/shared/containers/profile/sidebar/Container/ContainerSelectModal';
-import { SetDomainModal } from '../entity/shared/containers/profile/sidebar/Domain/SetDomainModal';
-import { EditOwnersModal } from '../entity/shared/containers/profile/sidebar/Ownership/EditOwnersModal';
-import { SelectPlatformModal } from '../entity/shared/containers/profile/sidebar/Platform/SelectPlatformModal';
+import {FacetMetadata, EntityType} from '../../types.generated';
+import {ContainerSelectModal} from '../entity/shared/containers/profile/sidebar/Container/ContainerSelectModal';
+import {SetDomainModal} from '../entity/shared/containers/profile/sidebar/Domain/SetDomainModal';
+import {EditOwnersModal} from '../entity/shared/containers/profile/sidebar/Ownership/EditOwnersModal';
+import {SelectPlatformModal} from '../entity/shared/containers/profile/sidebar/Platform/SelectPlatformModal';
 import EditTagTermsModal from '../shared/tags/AddTagsTermsModal';
-import { ChooseEntityTypeModal } from './ChooseEntityTypeModal';
-import { EditTextModal } from './EditTextModal';
+import {ChooseEntityTypeModal} from './ChooseEntityTypeModal';
+import {EditTextModal} from './EditTextModal';
 import {
     CONTAINER_FILTER_NAME,
     DESCRIPTION_FILTER_NAME,
@@ -34,12 +34,12 @@ type Props = {
 };
 
 export const AdvancedFilterSelectValueModal = ({
-    filterField,
-    onSelect,
-    onCloseModal,
-    initialValues,
-    facet,
-}: Props) => {
+                                                   filterField,
+                                                   onSelect,
+                                                   onCloseModal,
+                                                   initialValues,
+                                                   facet,
+                                               }: Props) => {
     if (filterField === OWNERS_FILTER_NAME) {
         return (
             <EditOwnersModal

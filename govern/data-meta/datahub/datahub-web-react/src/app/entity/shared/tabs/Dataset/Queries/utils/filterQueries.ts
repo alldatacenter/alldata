@@ -1,4 +1,4 @@
-import { Query } from '../types';
+import {Query} from '../types';
 
 /**
  * Filter queries by a search string. Compares name, description, and query statement.

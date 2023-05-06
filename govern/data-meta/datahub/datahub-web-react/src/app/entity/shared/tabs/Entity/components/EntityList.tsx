@@ -1,9 +1,9 @@
 import React from 'react';
-import { List } from 'antd';
+import {List} from 'antd';
 import styled from 'styled-components';
-import { useEntityRegistry } from '../../../../../useEntityRegistry';
-import { PreviewType } from '../../../../Entity';
-import { EntityType } from '../../../../../../types.generated';
+import {useEntityRegistry} from '../../../../../useEntityRegistry';
+import {PreviewType} from '../../../../Entity';
+import {EntityType} from '../../../../../../types.generated';
 
 const StyledList = styled(List)`
     padding-left: 40px;
@@ -35,7 +35,7 @@ type EntityListProps = {
     title?: string;
 };
 
-export const EntityList = ({ type, entities, title }: EntityListProps) => {
+export const EntityList = ({type, entities, title}: EntityListProps) => {
     const entityRegistry = useEntityRegistry();
     return (
         <StyledList

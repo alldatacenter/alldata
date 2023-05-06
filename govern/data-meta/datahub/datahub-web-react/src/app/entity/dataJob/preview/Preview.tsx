@@ -1,35 +1,35 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Typography } from 'antd';
-import { ClockCircleOutlined } from '@ant-design/icons';
+import {Typography} from 'antd';
+import {ClockCircleOutlined} from '@ant-design/icons';
 
-import { Deprecation, Domain, EntityType, GlobalTags, Owner, SearchInsight } from '../../../../types.generated';
+import {Deprecation, Domain, EntityType, GlobalTags, Owner, SearchInsight} from '../../../../types.generated';
 import DefaultPreviewCard from '../../../preview/DefaultPreviewCard';
-import { useEntityRegistry } from '../../../useEntityRegistry';
-import { IconStyleType } from '../../Entity';
-import { ANTD_GRAY } from '../../shared/constants';
-import { toRelativeTimeString } from '../../../shared/time/timeUtils';
+import {useEntityRegistry} from '../../../useEntityRegistry';
+import {IconStyleType} from '../../Entity';
+import {ANTD_GRAY} from '../../shared/constants';
+import {toRelativeTimeString} from '../../../shared/time/timeUtils';
 
 const StatText = styled(Typography.Text)`
     color: ${ANTD_GRAY[8]};
 `;
 
 export const Preview = ({
-    urn,
-    name,
-    description,
-    platformName,
-    platformLogo,
-    platformInstanceId,
-    owners,
-    domain,
-    deprecation,
-    globalTags,
-    snippet,
-    insights,
-    lastRunTimeMs,
-    externalUrl,
-}: {
+                            urn,
+                            name,
+                            description,
+                            platformName,
+                            platformLogo,
+                            platformInstanceId,
+                            owners,
+                            domain,
+                            deprecation,
+                            globalTags,
+                            snippet,
+                            insights,
+                            lastRunTimeMs,
+                            externalUrl,
+                        }: {
     urn: string;
     name: string;
     description?: string | null;
@@ -68,7 +68,7 @@ export const Preview = ({
             subHeader={
                 (lastRunTimeMs && [
                     <StatText>
-                        <ClockCircleOutlined style={{ paddingRight: 8 }} />
+                        <ClockCircleOutlined style={{paddingRight: 8}}/>
                         Last run {toRelativeTimeString(lastRunTimeMs)}
                     </StatText>,
                 ]) ||

@@ -1,32 +1,32 @@
 import * as React from 'react';
-import { DatabaseFilled, DatabaseOutlined } from '@ant-design/icons';
-import { Dataset, DatasetProperties, EntityType, OwnershipType, SearchResult } from '../../../types.generated';
-import { Entity, EntityCapabilityType, IconStyleType, PreviewType } from '../Entity';
-import { Preview } from './preview/Preview';
-import { EntityProfile } from '../shared/containers/profile/EntityProfile';
-import { GetDatasetQuery, useGetDatasetQuery, useUpdateDatasetMutation } from '../../../graphql/dataset.generated';
-import { GenericEntityProperties } from '../shared/types';
-import { PropertiesTab } from '../shared/tabs/Properties/PropertiesTab';
-import { DocumentationTab } from '../shared/tabs/Documentation/DocumentationTab';
-import { SchemaTab } from '../shared/tabs/Dataset/Schema/SchemaTab';
+import {DatabaseFilled, DatabaseOutlined} from '@ant-design/icons';
+import {Dataset, DatasetProperties, EntityType, OwnershipType, SearchResult} from '../../../types.generated';
+import {Entity, EntityCapabilityType, IconStyleType, PreviewType} from '../Entity';
+import {Preview} from './preview/Preview';
+import {EntityProfile} from '../shared/containers/profile/EntityProfile';
+import {GetDatasetQuery, useGetDatasetQuery, useUpdateDatasetMutation} from '../../../graphql/dataset.generated';
+import {GenericEntityProperties} from '../shared/types';
+import {PropertiesTab} from '../shared/tabs/Properties/PropertiesTab';
+import {DocumentationTab} from '../shared/tabs/Documentation/DocumentationTab';
+import {SchemaTab} from '../shared/tabs/Dataset/Schema/SchemaTab';
 import QueriesTab from '../shared/tabs/Dataset/Queries/QueriesTab';
-import { SidebarAboutSection } from '../shared/containers/profile/sidebar/AboutSection/SidebarAboutSection';
-import { SidebarOwnerSection } from '../shared/containers/profile/sidebar/Ownership/SidebarOwnerSection';
-import { SidebarTagsSection } from '../shared/containers/profile/sidebar/SidebarTagsSection';
+import {SidebarAboutSection} from '../shared/containers/profile/sidebar/AboutSection/SidebarAboutSection';
+import {SidebarOwnerSection} from '../shared/containers/profile/sidebar/Ownership/SidebarOwnerSection';
+import {SidebarTagsSection} from '../shared/containers/profile/sidebar/SidebarTagsSection';
 import StatsTab from '../shared/tabs/Dataset/Stats/StatsTab';
-import { LineageTab } from '../shared/tabs/Lineage/LineageTab';
-import { capitalizeFirstLetterOnly } from '../../shared/textUtil';
+import {LineageTab} from '../shared/tabs/Lineage/LineageTab';
+import {capitalizeFirstLetterOnly} from '../../shared/textUtil';
 import ViewDefinitionTab from '../shared/tabs/Dataset/View/ViewDefinitionTab';
-import { SidebarViewDefinitionSection } from '../shared/containers/profile/sidebar/Dataset/View/SidebarViewDefinitionSection';
-import { getDataForEntityType } from '../shared/containers/profile/utils';
-import { SidebarDomainSection } from '../shared/containers/profile/sidebar/Domain/SidebarDomainSection';
-import { ValidationsTab } from '../shared/tabs/Dataset/Validations/ValidationsTab';
-import { OperationsTab } from './profile/OperationsTab';
-import { EntityMenuItems } from '../shared/EntityDropdown/EntityDropdown';
-import { SidebarSiblingsSection } from '../shared/containers/profile/sidebar/SidebarSiblingsSection';
-import { DatasetStatsSummarySubHeader } from './profile/stats/stats/DatasetStatsSummarySubHeader';
-import { DatasetSearchSnippet } from './DatasetSearchSnippet';
-import { EmbedTab } from '../shared/tabs/Embed/EmbedTab';
+import {SidebarViewDefinitionSection} from '../shared/containers/profile/sidebar/Dataset/View/SidebarViewDefinitionSection';
+import {getDataForEntityType} from '../shared/containers/profile/utils';
+import {SidebarDomainSection} from '../shared/containers/profile/sidebar/Domain/SidebarDomainSection';
+import {ValidationsTab} from '../shared/tabs/Dataset/Validations/ValidationsTab';
+import {OperationsTab} from './profile/OperationsTab';
+import {EntityMenuItems} from '../shared/EntityDropdown/EntityDropdown';
+import {SidebarSiblingsSection} from '../shared/containers/profile/sidebar/SidebarSiblingsSection';
+import {DatasetStatsSummarySubHeader} from './profile/stats/stats/DatasetStatsSummarySubHeader';
+import {DatasetSearchSnippet} from './DatasetSearchSnippet';
+import {EmbedTab} from '../shared/tabs/Embed/EmbedTab';
 import EmbeddedProfile from '../shared/embed/EmbeddedProfile';
 
 const SUBTYPES = {
@@ -41,16 +41,17 @@ export class DatasetEntity implements Entity<Dataset> {
 
     icon = (fontSize: number, styleType: IconStyleType, color?: string) => {
         if (styleType === IconStyleType.TAB_VIEW) {
-            return <DatabaseOutlined style={{ fontSize, color }} />;
+            return <DatabaseOutlined style={{fontSize, color}}/>;
         }
 
         if (styleType === IconStyleType.HIGHLIGHT) {
-            return <DatabaseFilled style={{ fontSize, color: color || '#B37FEB' }} />;
+            return <DatabaseFilled style={{fontSize, color: color || '#B37FEB'}}/>;
         }
 
         if (styleType === IconStyleType.SVG) {
             return (
-                <path d="M832 64H192c-17.7 0-32 14.3-32 32v832c0 17.7 14.3 32 32 32h640c17.7 0 32-14.3 32-32V96c0-17.7-14.3-32-32-32zm-600 72h560v208H232V136zm560 480H232V408h560v208zm0 272H232V680h560v208zM304 240a40 40 0 1080 0 40 40 0 10-80 0zm0 272a40 40 0 1080 0 40 40 0 10-80 0zm0 272a40 40 0 1080 0 40 40 0 10-80 0z" />
+                <path
+                    d="M832 64H192c-17.7 0-32 14.3-32 32v832c0 17.7 14.3 32 32 32h640c17.7 0 32-14.3 32-32V96c0-17.7-14.3-32-32-32zm-600 72h560v208H232V136zm560 480H232V408h560v208zm0 272H232V680h560v208zM304 240a40 40 0 1080 0 40 40 0 10-80 0zm0 272a40 40 0 1080 0 40 40 0 10-80 0zm0 272a40 40 0 1080 0 40 40 0 10-80 0z"/>
             );
         }
 
@@ -91,11 +92,11 @@ export class DatasetEntity implements Entity<Dataset> {
             }}
             tabs={[
                 {
-                    name: 'Schema',
+                    name: '结构',
                     component: SchemaTab,
                 },
                 {
-                    name: 'View Definition',
+                    name: '定义的视图',
                     component: ViewDefinitionTab,
                     display: {
                         visible: (_, dataset: GetDatasetQuery) =>
@@ -107,11 +108,11 @@ export class DatasetEntity implements Entity<Dataset> {
                     },
                 },
                 {
-                    name: 'Documentation',
+                    name: 'Documentation', // 这里不可以修改全局影响太大
                     component: DocumentationTab,
                 },
                 {
-                    name: 'Preview',
+                    name: '预览',
                     component: EmbedTab,
                     display: {
                         visible: (_, dataset: GetDatasetQuery) => !!dataset?.dataset?.embed?.renderUrl,
@@ -119,7 +120,7 @@ export class DatasetEntity implements Entity<Dataset> {
                     },
                 },
                 {
-                    name: 'Lineage',
+                    name: '血缘',
                     component: LineageTab,
                 },
                 {
@@ -127,7 +128,7 @@ export class DatasetEntity implements Entity<Dataset> {
                     component: PropertiesTab,
                 },
                 {
-                    name: 'Queries',
+                    name: '常用查询',
                     component: QueriesTab,
                     display: {
                         visible: (_, _1) => true,
@@ -135,7 +136,7 @@ export class DatasetEntity implements Entity<Dataset> {
                     },
                 },
                 {
-                    name: 'Stats',
+                    name: '统计表',
                     component: StatsTab,
                     display: {
                         visible: (_, _1) => true,
@@ -146,7 +147,7 @@ export class DatasetEntity implements Entity<Dataset> {
                     },
                 },
                 {
-                    name: 'Validation',
+                    name: '验证',
                     component: ValidationsTab,
                     display: {
                         visible: (_, _1) => true,
@@ -281,7 +282,7 @@ export class DatasetEntity implements Entity<Dataset> {
                 subtype={data.subTypes?.typeNames?.[0]}
                 container={data.container}
                 parentContainers={data.parentContainers}
-                snippet={<DatasetSearchSnippet matchedFields={result.matchedFields} />}
+                snippet={<DatasetSearchSnippet matchedFields={result.matchedFields}/>}
                 insights={result.insights}
                 externalUrl={data.properties?.externalUrl}
                 statsSummary={data.statsSummary}

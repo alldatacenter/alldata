@@ -1,4 +1,4 @@
-import { EntityType, FabricType, PlatformNativeType } from '../../../../../types.generated';
+import {EntityType, FabricType, PlatformNativeType} from '../../../../../types.generated';
 
 export const sampleUpstreamEntities = [
     {
@@ -89,13 +89,13 @@ export const sampleDownstreamEntities = [
 export const sampleRelationship = {
     entities: sampleUpstreamEntities.map((entity) => ({
         entity,
-        created: { time: 0 },
+        created: {time: 0},
     })),
 };
 
 export const sampleDownstreamRelationship = {
     entities: sampleDownstreamEntities.map((entity) => ({
         entity,
-        created: { time: 0 },
+        created: {time: 0},
     })),
 };

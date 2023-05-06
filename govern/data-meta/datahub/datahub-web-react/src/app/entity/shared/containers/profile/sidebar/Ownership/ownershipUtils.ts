@@ -1,4 +1,4 @@
-import { OwnershipType } from '../../../../../../../types.generated';
+import {OwnershipType} from '../../../../../../../types.generated';
 
 /**
  * A mapping from OwnershipType to it's display name & description. In the future,

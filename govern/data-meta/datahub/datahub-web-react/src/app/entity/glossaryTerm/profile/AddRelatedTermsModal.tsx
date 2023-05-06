@@ -1,15 +1,15 @@
-import { message, Button, Modal, Select, Tag } from 'antd';
-import React, { useState } from 'react';
+import {message, Button, Modal, Select, Tag} from 'antd';
+import React, {useState} from 'react';
 import styled from 'styled-components/macro';
-import { useAddRelatedTermsMutation } from '../../../../graphql/glossaryTerm.generated';
-import { useGetSearchResultsLazyQuery } from '../../../../graphql/search.generated';
-import { EntityType, SearchResult, TermRelationshipType } from '../../../../types.generated';
+import {useAddRelatedTermsMutation} from '../../../../graphql/glossaryTerm.generated';
+import {useGetSearchResultsLazyQuery} from '../../../../graphql/search.generated';
+import {EntityType, SearchResult, TermRelationshipType} from '../../../../types.generated';
 import GlossaryBrowser from '../../../glossary/GlossaryBrowser/GlossaryBrowser';
 import ClickOutside from '../../../shared/ClickOutside';
-import { BrowserWrapper } from '../../../shared/tags/AddTagsTermsModal';
+import {BrowserWrapper} from '../../../shared/tags/AddTagsTermsModal';
 import TermLabel from '../../../shared/TermLabel';
-import { useEntityRegistry } from '../../../useEntityRegistry';
-import { useEntityData, useRefetch } from '../../shared/EntityContext';
+import {useEntityRegistry} from '../../../useEntityRegistry';
+import {useEntityData, useRefetch} from '../../shared/EntityContext';
 
 const StyledSelect = styled(Select)`
     width: 480px;
@@ -21,14 +21,14 @@ interface Props {
 }
 
 function AddRelatedTermsModal(props: Props) {
-    const { onClose, relationshipType } = props;
+    const {onClose, relationshipType} = props;
 
     const [inputValue, setInputValue] = useState('');
     const [selectedUrns, setSelectedUrns] = useState<any[]>([]);
     const [selectedTerms, setSelectedTerms] = useState<any[]>([]);
     const [isFocusedOnInput, setIsFocusedOnInput] = useState(false);
     const entityRegistry = useEntityRegistry();
-    const { urn: entityDataUrn } = useEntityData();
+    const {urn: entityDataUrn} = useEntityData();
     const refetch = useRefetch();
 
     const [AddRelatedTerms] = useAddRelatedTermsMutation();
@@ -45,10 +45,10 @@ function AddRelatedTermsModal(props: Props) {
         })
             .catch((e) => {
                 message.destroy();
-                message.error({ content: `Failed to move: \n ${e.message || ''}`, duration: 3 });
+                message.error({content: `Failed to move: \n ${e.message || ''}`, duration: 3});
             })
             .finally(() => {
-                message.loading({ content: 'Adding...', duration: 2 });
+                message.loading({content: 'Adding...', duration: 2});
                 setTimeout(() => {
                     message.success({
                         content: 'Added Related Terms!',
@@ -60,7 +60,7 @@ function AddRelatedTermsModal(props: Props) {
         onClose();
     }
 
-    const [termSearch, { data: termSearchData }] = useGetSearchResultsLazyQuery();
+    const [termSearch, {data: termSearchData}] = useGetSearchResultsLazyQuery();
     const termSearchResults = termSearchData?.search?.searchResults || [];
 
     const tagSearchOptions = termSearchResults.map((result: SearchResult) => {
@@ -68,7 +68,7 @@ function AddRelatedTermsModal(props: Props) {
 
         return (
             <Select.Option value={result.entity.urn} key={result.entity.urn} name={displayName}>
-                <TermLabel name={displayName} />
+                <TermLabel name={displayName}/>
             </Select.Option>
         );
     });
@@ -93,7 +93,7 @@ function AddRelatedTermsModal(props: Props) {
         const newUrns = [...selectedUrns, urn];
         setSelectedUrns(newUrns);
         const selectedSearchOption = tagSearchOptions.find((option) => option.props.value === urn);
-        setSelectedTerms([...selectedTerms, { urn, component: <TermLabel name={selectedSearchOption?.props.name} /> }]);
+        setSelectedTerms([...selectedTerms, {urn, component: <TermLabel name={selectedSearchOption?.props.name}/>}]);
     };
 
     // When a Tag or term search result is deselected, remove the urn from the Owners
@@ -109,7 +109,7 @@ function AddRelatedTermsModal(props: Props) {
         setIsFocusedOnInput(false);
         const newUrns = [...selectedUrns, urn];
         setSelectedUrns(newUrns);
-        setSelectedTerms([...selectedTerms, { urn, component: <TermLabel name={displayName} /> }]);
+        setSelectedTerms([...selectedTerms, {urn, component: <TermLabel name={displayName}/>}]);
     }
 
     function clearInput() {
@@ -123,7 +123,7 @@ function AddRelatedTermsModal(props: Props) {
 
     const tagRender = (properties) => {
         // eslint-disable-next-line react/prop-types
-        const { closable, onClose: close, value } = properties;
+        const {closable, onClose: close, value} = properties;
         const onPreventMouseDown = (event) => {
             event.preventDefault();
             event.stopPropagation();
@@ -190,12 +190,12 @@ function AddRelatedTermsModal(props: Props) {
                     onClear={clearInput}
                     onFocus={() => setIsFocusedOnInput(true)}
                     onBlur={handleBlur}
-                    dropdownStyle={isShowingGlossaryBrowser || !inputValue ? { display: 'none' } : {}}
+                    dropdownStyle={isShowingGlossaryBrowser || !inputValue ? {display: 'none'} : {}}
                 >
                     {tagSearchOptions}
                 </StyledSelect>
                 <BrowserWrapper isHidden={!isShowingGlossaryBrowser}>
-                    <GlossaryBrowser isSelecting selectTerm={selectTermFromBrowser} />
+                    <GlossaryBrowser isSelecting selectTerm={selectTermFromBrowser}/>
                 </BrowserWrapper>
             </ClickOutside>
         </Modal>

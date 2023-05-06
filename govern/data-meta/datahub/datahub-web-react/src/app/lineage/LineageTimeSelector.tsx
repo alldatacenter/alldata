@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import moment from 'moment';
 import styled from 'styled-components/macro';
-import { DatePicker, Tooltip } from 'antd';
-import { CalendarOutlined, CaretDownOutlined } from '@ant-design/icons';
+import {DatePicker, Tooltip} from 'antd';
+import {CalendarOutlined, CaretDownOutlined} from '@ant-design/icons';
 import ClickOutside from '../shared/ClickOutside';
-import { getTimeRangeDescription } from '../shared/time/timeUtils';
-import { ANTD_GRAY } from '../entity/shared/constants';
+import {getTimeRangeDescription} from '../shared/time/timeUtils';
+import {ANTD_GRAY} from '../entity/shared/constants';
 
 const RangePickerWrapper = styled.div`
     transition: color 0s;
@@ -27,14 +27,14 @@ const Header = styled.div`
     align-items: center;
 `;
 
-const { RangePicker } = DatePicker;
+const {RangePicker} = DatePicker;
 
 type Props = {
     onChange: (dates, _dateStrings) => void;
     initialDates: [moment.Moment | null, moment.Moment | null];
 };
 
-export default function LineageTimeSelector({ onChange, initialDates }: Props) {
+export default function LineageTimeSelector({onChange, initialDates}: Props) {
     const [isOpen, setIsOpen] = useState(false);
     const [headerText, setHeaderText] = useState('No time range selected');
     const [startDate, setStartDate] = useState<moment.Moment | null>(initialDates[0]);
@@ -50,9 +50,9 @@ export default function LineageTimeSelector({ onChange, initialDates }: Props) {
             <RangePickerWrapper>
                 <ClickOutside onClickOutside={() => setIsOpen(false)}>
                     <Header onClick={() => setIsOpen(!isOpen)}>
-                        <CalendarOutlined style={{ marginRight: '4px' }} />
+                        <CalendarOutlined style={{marginRight: '4px'}}/>
                         <b>{headerText}</b> &nbsp;
-                        <CaretDownOutlined style={{ fontSize: '10px' }} />
+                        <CaretDownOutlined style={{fontSize: '10px'}}/>
                     </Header>
                     <RangePicker
                         allowClear

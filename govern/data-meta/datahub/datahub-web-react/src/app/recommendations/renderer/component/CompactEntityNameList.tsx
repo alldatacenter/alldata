@@ -1,13 +1,13 @@
-import { ArrowRightOutlined } from '@ant-design/icons';
+import {ArrowRightOutlined} from '@ant-design/icons';
 import React from 'react';
 import styled from 'styled-components/macro';
-import { useHistory } from 'react-router';
-import { Entity, EntityType, SchemaFieldEntity } from '../../../../types.generated';
-import { IconStyleType } from '../../../entity/Entity';
-import { useEntityRegistry } from '../../../useEntityRegistry';
-import { EntityPreviewTag } from './EntityPreviewTag';
-import { HoverEntityTooltip } from './HoverEntityTooltip';
-import { ANTD_GRAY } from '../../../entity/shared/constants';
+import {useHistory} from 'react-router';
+import {Entity, EntityType, SchemaFieldEntity} from '../../../../types.generated';
+import {IconStyleType} from '../../../entity/Entity';
+import {useEntityRegistry} from '../../../useEntityRegistry';
+import {EntityPreviewTag} from './EntityPreviewTag';
+import {HoverEntityTooltip} from './HoverEntityTooltip';
+import {ANTD_GRAY} from '../../../entity/shared/constants';
 
 const NameWrapper = styled.span<{ addMargin }>`
     display: inline-flex;
@@ -27,7 +27,7 @@ type Props = {
     showTooltips?: boolean;
     showArrows?: boolean;
 };
-export const CompactEntityNameList = ({ entities, onClick, linkUrlParams, showTooltips = true, showArrows }: Props) => {
+export const CompactEntityNameList = ({entities, onClick, linkUrlParams, showTooltips = true, showArrows}: Props) => {
     const entityRegistry = useEntityRegistry();
     const history = useHistory();
 
@@ -38,7 +38,7 @@ export const CompactEntityNameList = ({ entities, onClick, linkUrlParams, showTo
                 let entity = mappedEntity;
                 let columnName;
                 if (entity.type === EntityType.SchemaField) {
-                    const { parent, fieldPath } = entity as SchemaFieldEntity;
+                    const {parent, fieldPath} = entity as SchemaFieldEntity;
                     entity = parent;
                     columnName = fieldPath;
                 }
@@ -75,7 +75,7 @@ export const CompactEntityNameList = ({ entities, onClick, linkUrlParams, showTo
                                 </span>
                             </HoverEntityTooltip>
                         </span>
-                        {showArrow && <StyledArrow />}
+                        {showArrow && <StyledArrow/>}
                     </NameWrapper>
                 );
             })}

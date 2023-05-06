@@ -13,32 +13,32 @@ import {
     ChartStatsSummary,
 } from '../../../../types.generated';
 import DefaultPreviewCard from '../../../preview/DefaultPreviewCard';
-import { useEntityRegistry } from '../../../useEntityRegistry';
-import { IconStyleType } from '../../Entity';
-import { ChartStatsSummary as ChartStatsSummaryView } from '../shared/ChartStatsSummary';
+import {useEntityRegistry} from '../../../useEntityRegistry';
+import {IconStyleType} from '../../Entity';
+import {ChartStatsSummary as ChartStatsSummaryView} from '../shared/ChartStatsSummary';
 
 export const ChartPreview = ({
-    urn,
-    name,
-    description,
-    platform,
-    platformInstanceId,
-    access,
-    owners,
-    tags,
-    glossaryTerms,
-    domain,
-    container,
-    insights,
-    logoUrl,
-    deprecation,
-    statsSummary,
-    lastUpdatedMs,
-    createdMs,
-    externalUrl,
-    parentContainers,
-    snippet,
-}: {
+                                 urn,
+                                 name,
+                                 description,
+                                 platform,
+                                 platformInstanceId,
+                                 access,
+                                 owners,
+                                 tags,
+                                 glossaryTerms,
+                                 domain,
+                                 container,
+                                 insights,
+                                 logoUrl,
+                                 deprecation,
+                                 statsSummary,
+                                 lastUpdatedMs,
+                                 createdMs,
+                                 externalUrl,
+                                 parentContainers,
+                                 snippet,
+                             }: {
     urn: string;
     platform?: string;
     platformInstanceId?: string;

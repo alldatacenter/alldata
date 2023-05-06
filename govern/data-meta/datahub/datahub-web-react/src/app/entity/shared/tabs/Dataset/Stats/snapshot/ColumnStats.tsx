@@ -1,10 +1,10 @@
-import { Typography } from 'antd';
-import { ColumnsType, ColumnType } from 'antd/lib/table';
-import React, { useMemo } from 'react';
+import {Typography} from 'antd';
+import {ColumnsType, ColumnType} from 'antd/lib/table';
+import React, {useMemo} from 'react';
 import styled from 'styled-components';
-import { DatasetFieldProfile } from '../../../../../../../types.generated';
-import { StyledTable } from '../../../../components/styled/StyledTable';
-import { ANTD_GRAY } from '../../../../constants';
+import {DatasetFieldProfile} from '../../../../../../../types.generated';
+import {StyledTable} from '../../../../components/styled/StyledTable';
+import {ANTD_GRAY} from '../../../../constants';
 import SampleValueTag from './SampleValueTag';
 
 type Props = {
@@ -31,7 +31,7 @@ const decimalToPercentStr = (decimal: number, precision: number): string => {
     return `${(decimal * 100).toFixed(precision)}%`;
 };
 
-export default function ColumnStats({ columnStats }: Props) {
+export default function ColumnStats({columnStats}: Props) {
     const columnStatsTableData = useMemo(
         () =>
             columnStats.map((doc) => ({
@@ -54,7 +54,7 @@ export default function ColumnStats({ columnStats }: Props) {
      * Returns a placeholder value to show in the column data table when data is null.
      */
     const unknownValue = () => {
-        return <Typography.Text style={{ color: '#B8B8B8' }}>unknown</Typography.Text>;
+        return <Typography.Text style={{color: '#B8B8B8'}}>unknown</Typography.Text>;
     };
 
     /**
@@ -129,7 +129,7 @@ export default function ColumnStats({ columnStats }: Props) {
                         (sampleValues &&
                             sampleValues
                                 .slice(0, sampleValues.length < 3 ? sampleValues?.length : 3)
-                                .map((value) => <SampleValueTag value={value} />)) ||
+                                .map((value) => <SampleValueTag value={value}/>)) ||
                         unknownValue()
                     );
                 },
@@ -162,7 +162,7 @@ export default function ColumnStats({ columnStats }: Props) {
     return (
         <StatSection>
             <Typography.Title level={5}>Column Stats</Typography.Title>
-            <StyledTable pagination={false} columns={columnStatsColumns} dataSource={columnStatsTableData} />
+            <StyledTable pagination={false} columns={columnStatsColumns} dataSource={columnStatsTableData}/>
         </StatSection>
     );
 }

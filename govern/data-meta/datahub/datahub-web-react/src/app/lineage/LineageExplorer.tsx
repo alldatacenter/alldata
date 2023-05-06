@@ -1,22 +1,22 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { useHistory } from 'react-router';
-import { Button, Drawer } from 'antd';
-import { InfoCircleOutlined } from '@ant-design/icons';
+import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
+import {useHistory} from 'react-router';
+import {Button, Drawer} from 'antd';
+import {InfoCircleOutlined} from '@ant-design/icons';
 import styled from 'styled-components';
-import { Message } from '../shared/Message';
-import { useEntityRegistry } from '../useEntityRegistry';
+import {Message} from '../shared/Message';
+import {useEntityRegistry} from '../useEntityRegistry';
 import CompactContext from '../shared/CompactContext';
-import { EntityAndType, EntitySelectParams, FetchedEntities } from './types';
+import {EntityAndType, EntitySelectParams, FetchedEntities} from './types';
 import LineageViz from './LineageViz';
 import extendAsyncEntities from './utils/extendAsyncEntities';
-import { EntityType } from '../../types.generated';
-import { ANTD_GRAY } from '../entity/shared/constants';
-import { GetEntityLineageQuery, useGetEntityLineageQuery } from '../../graphql/lineage.generated';
-import { useIsSeparateSiblingsMode } from '../entity/shared/siblingUtils';
-import { SHOW_COLUMNS_URL_PARAMS, useIsShowColumnsMode } from './utils/useIsShowColumnsMode';
-import { ErrorSection } from '../shared/error/ErrorSection';
+import {EntityType} from '../../types.generated';
+import {ANTD_GRAY} from '../entity/shared/constants';
+import {GetEntityLineageQuery, useGetEntityLineageQuery} from '../../graphql/lineage.generated';
+import {useIsSeparateSiblingsMode} from '../entity/shared/siblingUtils';
+import {SHOW_COLUMNS_URL_PARAMS, useIsShowColumnsMode} from './utils/useIsShowColumnsMode';
+import {ErrorSection} from '../shared/error/ErrorSection';
 import usePrevious from '../shared/usePrevious';
-import { useGetLineageTimeParams } from './utils/useGetLineageTimeParams';
+import {useGetLineageTimeParams} from './utils/useGetLineageTimeParams';
 
 const DEFAULT_DISTANCE_FROM_TOP = 106;
 
@@ -43,7 +43,7 @@ export function getEntityAndType(lineageData?: GetEntityLineageQuery) {
     if (lineageData && lineageData.entity) {
         return {
             type: lineageData.entity.type,
-            entity: { ...lineageData.entity },
+            entity: {...lineageData.entity},
         } as EntityAndType;
     }
     return null;
@@ -54,17 +54,17 @@ type Props = {
     type: EntityType;
 };
 
-export default function LineageExplorer({ urn, type }: Props) {
+export default function LineageExplorer({urn, type}: Props) {
     const previousUrn = usePrevious(urn);
     const history = useHistory();
-    const [fineGrainedMap] = useState<any>({ forward: {}, reverse: {} });
+    const [fineGrainedMap] = useState<any>({forward: {}, reverse: {}});
 
     const entityRegistry = useEntityRegistry();
     const isHideSiblingMode = useIsSeparateSiblingsMode();
     const showColumns = useIsShowColumnsMode();
-    const { startTimeMillis, endTimeMillis } = useGetLineageTimeParams();
+    const {startTimeMillis, endTimeMillis} = useGetLineageTimeParams();
 
-    const { loading, error, data, refetch } = useGetEntityLineageQuery({
+    const {loading, error, data, refetch} = useGetEntityLineageQuery({
         variables: {
             urn,
             separateSiblings: isHideSiblingMode,
@@ -135,7 +135,7 @@ export default function LineageExplorer({ urn, type }: Props) {
     function resetAsyncEntity(entityUrn: string) {
         setAsyncEntities({
             ...asyncEntities,
-            [entityUrn]: { ...asyncEntities[entityUrn], fullyFetched: false },
+            [entityUrn]: {...asyncEntities[entityUrn], fullyFetched: false},
         });
     }
 
@@ -155,8 +155,8 @@ export default function LineageExplorer({ urn, type }: Props) {
 
     return (
         <>
-            {error && <ErrorSection />}
-            {loading && <LoadingMessage type="loading" content="Loading..." />}
+            {error && <ErrorSection/>}
+            {loading && <LoadingMessage type="loading" content="Loading..."/>}
             {!!data && (
                 <div>
                     <LineageViz
@@ -188,7 +188,7 @@ export default function LineageExplorer({ urn, type }: Props) {
                     />
                 </div>
             )}
-            <div ref={drawerRef} />
+            <div ref={drawerRef}/>
             <EntityDrawer
                 distanceFromTop={drawerDistanceFromTop}
                 placement="left"
@@ -196,7 +196,7 @@ export default function LineageExplorer({ urn, type }: Props) {
                 onClose={handleClose}
                 visible={isDrawerVisible}
                 width={490}
-                bodyStyle={{ overflowX: 'hidden' }}
+                bodyStyle={{overflowX: 'hidden'}}
                 mask={false}
                 footer={
                     selectedEntity && (
@@ -205,7 +205,7 @@ export default function LineageExplorer({ urn, type }: Props) {
                                 Close
                             </Button>
                             <Button href={entityRegistry.getEntityUrl(selectedEntity.type, selectedEntity.urn)}>
-                                <InfoCircleOutlined /> {entityRegistry.getEntityName(selectedEntity.type)} Details
+                                <InfoCircleOutlined/> {entityRegistry.getEntityName(selectedEntity.type)} Details
                             </Button>
                         </FooterButtonGroup>
                     )

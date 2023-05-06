@@ -1,12 +1,12 @@
 import React from 'react';
-import { Typography } from 'antd';
+import {Typography} from 'antd';
 import styled from 'styled-components';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter';
 
-import { ANTD_GRAY } from '../../../constants';
+import {ANTD_GRAY} from '../../../constants';
 import DynamicTabularTab from './DynamicTabularTab';
 import DynamicPropertiesTab from './DynamicPropertiesTab';
-import { AspectRenderSpec } from '../../../../../../types.generated';
+import {AspectRenderSpec} from '../../../../../../types.generated';
 
 type Props = {
     payload: string | undefined | null;
@@ -29,12 +29,12 @@ const NestedSyntax = styled(SyntaxHighlighter)`
     border: none !important;
 `;
 
-export default function DynamicTab({ renderSpec, payload, type }: Props) {
+export default function DynamicTab({renderSpec, payload, type}: Props) {
     if (type === 'tabular') {
-        return <DynamicTabularTab payload={payload} tableKey={renderSpec?.key} />;
+        return <DynamicTabularTab payload={payload} tableKey={renderSpec?.key}/>;
     }
     if (type === 'properties') {
-        return <DynamicPropertiesTab payload={payload} />;
+        return <DynamicPropertiesTab payload={payload}/>;
     }
 
     // Default fallback behavior

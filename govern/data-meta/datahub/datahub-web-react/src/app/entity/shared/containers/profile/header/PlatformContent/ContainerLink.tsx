@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import { Typography } from 'antd';
-import { FolderOpenOutlined } from '@ant-design/icons';
-import { Maybe } from 'graphql/jsutils/Maybe';
-import { Container, EntityType } from '../../../../../../../types.generated';
-import { ANTD_GRAY } from '../../../../constants';
-import { useEntityRegistry } from '../../../../../../useEntityRegistry';
+import {Link} from 'react-router-dom';
+import {Typography} from 'antd';
+import {FolderOpenOutlined} from '@ant-design/icons';
+import {Maybe} from 'graphql/jsutils/Maybe';
+import {Container, EntityType} from '../../../../../../../types.generated';
+import {ANTD_GRAY} from '../../../../constants';
+import {useEntityRegistry} from '../../../../../../useEntityRegistry';
 
 const ContainerText = styled(Typography.Text)`
     font-size: 12px;
@@ -32,7 +32,7 @@ interface Props {
 }
 
 function ContainerLink(props: Props) {
-    const { container } = props;
+    const {container} = props;
     const entityRegistry = useEntityRegistry();
 
     if (!container) return null;
@@ -42,7 +42,7 @@ function ContainerLink(props: Props) {
 
     return (
         <StyledLink to={containerUrl} data-testid="container">
-            <ContainerIcon />
+            <ContainerIcon/>
             <ContainerText>{containerName}</ContainerText>
         </StyledLink>
     );

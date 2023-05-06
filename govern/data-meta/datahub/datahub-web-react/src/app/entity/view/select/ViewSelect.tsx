@@ -1,16 +1,16 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { useHistory } from 'react-router';
-import { Select } from 'antd';
-import { useListMyViewsQuery, useListGlobalViewsQuery } from '../../../../graphql/view.generated';
-import { useUserContext } from '../../../context/useUserContext';
-import { DataHubView, DataHubViewType } from '../../../../types.generated';
-import { ViewBuilder } from '../builder/ViewBuilder';
-import { DEFAULT_LIST_VIEWS_PAGE_SIZE } from '../utils';
-import { PageRoutes } from '../../../../conf/Global';
-import { ViewSelectToolTip } from './ViewSelectToolTip';
-import { ViewBuilderMode } from '../builder/types';
-import { ViewSelectDropdown } from './ViewSelectDropdown';
-import { renderViewOptionGroup } from './renderViewOptionGroup';
+import React, {useEffect, useRef, useState} from 'react';
+import {useHistory} from 'react-router';
+import {Select} from 'antd';
+import {useListMyViewsQuery, useListGlobalViewsQuery} from '../../../../graphql/view.generated';
+import {useUserContext} from '../../../context/useUserContext';
+import {DataHubView, DataHubViewType} from '../../../../types.generated';
+import {ViewBuilder} from '../builder/ViewBuilder';
+import {DEFAULT_LIST_VIEWS_PAGE_SIZE} from '../utils';
+import {PageRoutes} from '../../../../conf/Global';
+import {ViewSelectToolTip} from './ViewSelectToolTip';
+import {ViewBuilderMode} from '../builder/types';
+import {ViewSelectDropdown} from './ViewSelectDropdown';
+import {renderViewOptionGroup} from './renderViewOptionGroup';
 
 const selectStyle = {
     width: 240,
@@ -63,7 +63,7 @@ export const ViewSelect = () => {
      * along with all public views.
      */
 
-    const { data: privateViewsData } = useListMyViewsQuery({
+    const {data: privateViewsData} = useListMyViewsQuery({
         variables: {
             start: 0,
             count: DEFAULT_LIST_VIEWS_PAGE_SIZE,
@@ -73,7 +73,7 @@ export const ViewSelect = () => {
     });
 
     // Fetch Public Views
-    const { data: publicViewsData } = useListGlobalViewsQuery({
+    const {data: publicViewsData} = useListGlobalViewsQuery({
         variables: {
             start: 0,
             count: DEFAULT_LIST_VIEWS_PAGE_SIZE,
@@ -179,26 +179,26 @@ export const ViewSelect = () => {
                     )}
                 >
                     {privateViewCount > 0 &&
-                        renderViewOptionGroup({
-                            views: privateViews,
-                            label: 'Private',
-                            isOwnedByUser: true,
-                            userContext,
-                            hoverViewUrn,
-                            setHoverViewUrn,
-                            onClickEditView,
-                            onClickPreviewView,
-                        })}
+                    renderViewOptionGroup({
+                        views: privateViews,
+                        label: 'Private',
+                        isOwnedByUser: true,
+                        userContext,
+                        hoverViewUrn,
+                        setHoverViewUrn,
+                        onClickEditView,
+                        onClickPreviewView,
+                    })}
                     {publicViewCount > 0 &&
-                        renderViewOptionGroup({
-                            views: publicViews,
-                            label: 'Public',
-                            userContext,
-                            hoverViewUrn,
-                            setHoverViewUrn,
-                            onClickEditView,
-                            onClickPreviewView,
-                        })}
+                    renderViewOptionGroup({
+                        views: publicViews,
+                        label: 'Public',
+                        userContext,
+                        hoverViewUrn,
+                        setHoverViewUrn,
+                        onClickEditView,
+                        onClickPreviewView,
+                    })}
                 </Select>
             </ViewSelectToolTip>
             {viewBuilderDisplayState.visible && (

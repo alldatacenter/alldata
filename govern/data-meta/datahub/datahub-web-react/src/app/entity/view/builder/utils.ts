@@ -6,7 +6,7 @@ import {
     FacetFilterInput,
     LogicalOperator,
 } from '../../../../types.generated';
-import { ENTITY_FILTER_NAME, UnionType } from '../../../search/utils/constants';
+import {ENTITY_FILTER_NAME, UnionType} from '../../../search/utils/constants';
 
 /**
  * Extract the special "Entity Type" filter values from a list

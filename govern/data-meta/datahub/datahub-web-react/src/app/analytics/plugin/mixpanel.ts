@@ -7,5 +7,5 @@ const token = isEnabled ? mixpanelConfigs.token : undefined;
 
 export default {
     isEnabled,
-    plugin: isEnabled && mixpanel({ token }),
+    plugin: isEnabled && mixpanel({token}),
 };

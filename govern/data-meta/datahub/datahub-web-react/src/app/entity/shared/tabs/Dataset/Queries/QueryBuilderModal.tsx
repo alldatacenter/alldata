@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
-import { Button, message, Modal, Typography } from 'antd';
-import { useCreateQueryMutation, useUpdateQueryMutation } from '../../../../../../graphql/query.generated';
-import { QueryLanguage } from '../../../../../../types.generated';
-import { QueryBuilderState } from './types';
+import {Button, message, Modal, Typography} from 'antd';
+import {useCreateQueryMutation, useUpdateQueryMutation} from '../../../../../../graphql/query.generated';
+import {QueryLanguage} from '../../../../../../types.generated';
+import {QueryBuilderState} from './types';
 import ClickOutside from '../../../../../shared/ClickOutside';
 import QueryBuilderForm from './QueryBuilderForm';
-import analytics, { EventType } from '../../../../../analytics';
+import analytics, {EventType} from '../../../../../analytics';
 
 const StyledModal = styled(Modal)`
     top: 4vh;
@@ -36,7 +36,7 @@ type Props = {
     onSubmit?: (newQuery: any) => void;
 };
 
-export default function QueryBuilderModal({ initialState, datasetUrn, onClose, onSubmit }: Props) {
+export default function QueryBuilderModal({initialState, datasetUrn, onClose, onSubmit}: Props) {
     const isUpdating = initialState?.urn !== undefined;
 
     const [builderState, setBuilderState] = useState<QueryBuilderState>(initialState || DEFAULT_STATE);
@@ -56,11 +56,11 @@ export default function QueryBuilderModal({ initialState, datasetUrn, onClose, o
                                 language: QueryLanguage.Sql,
                             },
                         },
-                        subjects: [{ datasetUrn }],
+                        subjects: [{datasetUrn}],
                     },
                 },
             })
-                .then(({ data, errors }) => {
+                .then(({data, errors}) => {
                     if (!errors) {
                         analytics.event({
                             type: EventType.CreateQueryEvent,
@@ -75,7 +75,7 @@ export default function QueryBuilderModal({ initialState, datasetUrn, onClose, o
                 })
                 .catch(() => {
                     message.destroy();
-                    message.error({ content: 'Failed to create Query! An unexpected error occurred' });
+                    message.error({content: 'Failed to create Query! An unexpected error occurred'});
                 });
         }
     };
@@ -97,7 +97,7 @@ export default function QueryBuilderModal({ initialState, datasetUrn, onClose, o
                     },
                 },
             })
-                .then(({ data, errors }) => {
+                .then(({data, errors}) => {
                     if (!errors) {
                         analytics.event({
                             type: EventType.UpdateQueryEvent,
@@ -112,7 +112,7 @@ export default function QueryBuilderModal({ initialState, datasetUrn, onClose, o
                 })
                 .catch(() => {
                     message.destroy();
-                    message.error({ content: 'Failed to edit Query! An unexpected error occurred' });
+                    message.error({content: 'Failed to edit Query! An unexpected error occurred'});
                 });
         }
     };
@@ -133,7 +133,8 @@ export default function QueryBuilderModal({ initialState, datasetUrn, onClose, o
                 setBuilderState(DEFAULT_STATE);
                 onClose?.();
             },
-            onCancel() {},
+            onCancel() {
+            },
             okText: 'Yes',
             maskClosable: true,
             closable: true,
@@ -166,7 +167,7 @@ export default function QueryBuilderModal({ initialState, datasetUrn, onClose, o
                 }
                 data-testid="query-builder-modal"
             >
-                <QueryBuilderForm state={builderState} updateState={setBuilderState} />
+                <QueryBuilderForm state={builderState} updateState={setBuilderState}/>
             </StyledModal>
         </ClickOutside>
     );

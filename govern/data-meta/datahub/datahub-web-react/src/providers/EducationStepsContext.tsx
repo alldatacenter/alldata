@@ -1,5 +1,5 @@
 import React from 'react';
-import { StepStateResult } from '../types.generated';
+import {StepStateResult} from '../types.generated';
 
 export const EducationStepsContext = React.createContext<{
     educationSteps: StepStateResult[] | null;
@@ -8,7 +8,9 @@ export const EducationStepsContext = React.createContext<{
     setEducationStepIdsAllowlist: React.Dispatch<React.SetStateAction<Set<string>>>;
 }>({
     educationSteps: [],
-    setEducationSteps: () => {},
+    setEducationSteps: () => {
+    },
     educationStepIdsAllowlist: new Set(),
-    setEducationStepIdsAllowlist: () => {},
+    setEducationStepIdsAllowlist: () => {
+    },
 });

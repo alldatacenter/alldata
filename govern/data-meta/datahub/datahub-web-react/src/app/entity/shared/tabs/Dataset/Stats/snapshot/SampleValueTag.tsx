@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Tag, Tooltip } from 'antd';
+import React, {useState} from 'react';
+import {Tag, Tooltip} from 'antd';
 import styled from 'styled-components';
 
 const StyledTag = styled(Tag)`
@@ -18,7 +18,7 @@ type Props = {
     value: string;
 };
 
-export default function SampleValueTag({ value }: Props) {
+export default function SampleValueTag({value}: Props) {
     const [copied, setCopied] = useState(false);
 
     const onClick = () => {

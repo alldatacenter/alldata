@@ -1,4 +1,4 @@
-import { RecipeField, FieldType } from './common';
+import {RecipeField, FieldType} from './common';
 
 export const REDSHIFT_HOST_PORT: RecipeField = {
     name: 'host_port',

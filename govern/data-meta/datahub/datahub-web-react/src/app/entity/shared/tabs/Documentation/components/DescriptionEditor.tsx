@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { message } from 'antd';
+import React, {useState, useEffect} from 'react';
+import {message} from 'antd';
 import styled from 'styled-components';
-import analytics, { EventType, EntityActionType } from '../../../../../analytics';
-import { GenericEntityUpdate } from '../../../types';
-import { useEntityData, useEntityUpdate, useMutationUrn, useRefetch } from '../../../EntityContext';
-import { useUpdateDescriptionMutation } from '../../../../../../graphql/mutations.generated';
-import { DiscardDescriptionModal } from './DiscardDescriptionModal';
-import { EDITED_DESCRIPTIONS_CACHE_NAME } from '../../../utils';
-import { DescriptionEditorToolbar } from './DescriptionEditorToolbar';
-import { Editor } from './editor/Editor';
+import analytics, {EventType, EntityActionType} from '../../../../../analytics';
+import {GenericEntityUpdate} from '../../../types';
+import {useEntityData, useEntityUpdate, useMutationUrn, useRefetch} from '../../../EntityContext';
+import {useUpdateDescriptionMutation} from '../../../../../../graphql/mutations.generated';
+import {DiscardDescriptionModal} from './DiscardDescriptionModal';
+import {EDITED_DESCRIPTIONS_CACHE_NAME} from '../../../utils';
+import {DescriptionEditorToolbar} from './DescriptionEditorToolbar';
+import {Editor} from './editor/Editor';
 
 const EditorContainer = styled.div`
     overflow: auto;
@@ -19,9 +19,9 @@ type DescriptionEditorProps = {
     onComplete?: () => void;
 };
 
-export const DescriptionEditor = ({ onComplete }: DescriptionEditorProps) => {
+export const DescriptionEditor = ({onComplete}: DescriptionEditorProps) => {
     const mutationUrn = useMutationUrn();
-    const { entityType, entityData } = useEntityData();
+    const {entityType, entityData} = useEntityData();
     const refetch = useRefetch();
     const updateEntity = useEntityUpdate<GenericEntityUpdate>();
     const [updateDescriptionMutation] = useUpdateDescriptionMutation();
@@ -54,7 +54,7 @@ export const DescriptionEditor = ({ onComplete }: DescriptionEditorProps) => {
 
     const updateDescriptionLegacy = () => {
         return updateEntity?.({
-            variables: { urn: mutationUrn, input: { editableProperties: { description: updatedDescription || '' } } },
+            variables: {urn: mutationUrn, input: {editableProperties: {description: updatedDescription || ''}}},
         });
     };
 
@@ -70,7 +70,7 @@ export const DescriptionEditor = ({ onComplete }: DescriptionEditorProps) => {
     };
 
     const handleSave = async () => {
-        message.loading({ content: 'Saving...' });
+        message.loading({content: 'Saving...'});
         try {
             if (updateEntity) {
                 // Use the legacy update description path.
@@ -86,7 +86,7 @@ export const DescriptionEditor = ({ onComplete }: DescriptionEditorProps) => {
                 entityType,
                 entityUrn: mutationUrn,
             });
-            message.success({ content: 'Description Updated', duration: 2 });
+            message.success({content: 'Description Updated', duration: 2});
             // Updating the localStorage after save
             delete editedDescriptions[mutationUrn];
             if (Object.keys(editedDescriptions).length === 0) {
@@ -98,7 +98,7 @@ export const DescriptionEditor = ({ onComplete }: DescriptionEditorProps) => {
         } catch (e: unknown) {
             message.destroy();
             if (e instanceof Error) {
-                message.error({ content: `Failed to update description: \n ${e.message || ''}`, duration: 2 });
+                message.error({content: `Failed to update description: \n ${e.message || ''}`, duration: 2});
             }
         }
         refetch?.();
@@ -139,7 +139,7 @@ export const DescriptionEditor = ({ onComplete }: DescriptionEditorProps) => {
                 disableSave={!isDescriptionUpdated}
             />
             <EditorContainer>
-                <Editor content={updatedDescription} onChange={handleEditorChange} />
+                <Editor content={updatedDescription} onChange={handleEditorChange}/>
             </EditorContainer>
             {confirmCloseModalVisible && (
                 <DiscardDescriptionModal

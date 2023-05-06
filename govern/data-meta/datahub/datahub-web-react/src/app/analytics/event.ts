@@ -1,5 +1,5 @@
-import { DataHubViewType, EntityType, RecommendationRenderType, ScenarioType } from '../../types.generated';
-import { Direction } from '../lineage/types';
+import {DataHubViewType, EntityType, RecommendationRenderType, ScenarioType} from '../../types.generated';
+import {Direction} from '../lineage/types';
 
 /**
  * Valid event types.
@@ -61,6 +61,9 @@ export enum EventType {
     CreateQueryEvent,
     UpdateQueryEvent,
     DeleteQueryEvent,
+    SelectAutoCompleteOption,
+    SelectQuickFilterEvent,
+    DeselectQuickFilterEvent,
 }
 
 /**
@@ -127,6 +130,8 @@ export interface SearchEvent extends BaseEvent {
     entityTypeFilter?: EntityType;
     pageNumber: number;
     originPath: string;
+    selectedQuickFilterValues?: string[];
+    selectedQuickFilterTypes?: string[];
 }
 
 /**
@@ -137,6 +142,8 @@ export interface HomePageSearchEvent extends BaseEvent {
     query: string;
     entityTypeFilter?: EntityType;
     pageNumber: number;
+    selectedQuickFilterValues?: string[];
+    selectedQuickFilterTypes?: string[];
 }
 
 /**
@@ -218,6 +225,7 @@ export const EntityActionType = {
     UpdateSchemaTerms: 'UpdateSchemaTerms',
     ClickExternalUrl: 'ClickExternalUrl',
 };
+
 export interface EntityActionEvent extends BaseEvent {
     type: EventType.EntityActionEvent;
     actionType: string;
@@ -264,6 +272,7 @@ export interface SearchAcrossLineageEvent extends BaseEvent {
     pageNumber: number;
     originPath: string;
 }
+
 export interface SearchAcrossLineageResultsViewEvent extends BaseEvent {
     type: EventType.SearchAcrossLineageResultsViewEvent;
     query: string;
@@ -293,6 +302,7 @@ export interface RevokeAccessTokenEvent extends BaseEvent {
 export interface CreateGroupEvent extends BaseEvent {
     type: EventType.CreateGroupEvent;
 }
+
 export interface CreateInviteLinkEvent extends BaseEvent {
     type: EventType.CreateInviteLinkEvent;
     roleUrn?: string;
@@ -469,6 +479,25 @@ export interface DeleteQueryEvent extends BaseEvent {
     type: EventType.DeleteQueryEvent;
 }
 
+export interface SelectAutoCompleteOption extends BaseEvent {
+    type: EventType.SelectAutoCompleteOption;
+    optionType: string;
+    entityType?: EntityType;
+    entityUrn?: string;
+}
+
+export interface SelectQuickFilterEvent extends BaseEvent {
+    type: EventType.SelectQuickFilterEvent;
+    quickFilterType: string;
+    quickFilterValue: string;
+}
+
+export interface DeselectQuickFilterEvent extends BaseEvent {
+    type: EventType.DeselectQuickFilterEvent;
+    quickFilterType: string;
+    quickFilterValue: string;
+}
+
 /**
  * Event consisting of a union of specific event types.
  */
@@ -528,4 +557,7 @@ export type Event =
     | LineageTabTimeRangeSelectionEvent
     | CreateQueryEvent
     | UpdateQueryEvent
-    | DeleteQueryEvent;
+    | DeleteQueryEvent
+    | SelectAutoCompleteOption
+    | SelectQuickFilterEvent
+    | DeselectQuickFilterEvent;

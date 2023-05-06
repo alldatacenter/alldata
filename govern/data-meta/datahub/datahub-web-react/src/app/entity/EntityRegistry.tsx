@@ -1,9 +1,9 @@
-import { Entity as EntityInterface, EntityType, SearchResult } from '../../types.generated';
-import { FetchedEntity } from '../lineage/types';
-import { Entity, EntityCapabilityType, IconStyleType, PreviewType } from './Entity';
-import { GLOSSARY_ENTITY_TYPES } from './shared/constants';
-import { GenericEntityProperties } from './shared/types';
-import { dictToQueryStringParams, urlEncodeUrn } from './shared/utils';
+import {Entity as EntityInterface, EntityType, SearchResult} from '../../types.generated';
+import {FetchedEntity} from '../lineage/types';
+import {Entity, EntityCapabilityType, IconStyleType, PreviewType} from './Entity';
+import {GLOSSARY_ENTITY_TYPES} from './shared/constants';
+import {GenericEntityProperties} from './shared/types';
+import {dictToQueryStringParams, urlEncodeUrn} from './shared/utils';
 
 function validatedGet<K, V>(key: K, map: Map<K, V>): V {
     if (map.has(key)) {

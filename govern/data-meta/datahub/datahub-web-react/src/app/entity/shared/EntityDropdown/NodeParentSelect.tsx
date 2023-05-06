@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { Select } from 'antd';
-import { useGetSearchResultsLazyQuery } from '../../../../graphql/search.generated';
-import { EntityType, GlossaryNode } from '../../../../types.generated';
-import { useEntityRegistry } from '../../../useEntityRegistry';
-import { useEntityData } from '../EntityContext';
+import React, {useState, useEffect} from 'react';
+import {Select} from 'antd';
+import {useGetSearchResultsLazyQuery} from '../../../../graphql/search.generated';
+import {EntityType, GlossaryNode} from '../../../../types.generated';
+import {useEntityRegistry} from '../../../useEntityRegistry';
+import {useEntityData} from '../EntityContext';
 import ClickOutside from '../../../shared/ClickOutside';
 import GlossaryBrowser from '../../../glossary/GlossaryBrowser/GlossaryBrowser';
-import { BrowserWrapper } from '../../../shared/tags/AddTagsTermsModal';
+import {BrowserWrapper} from '../../../shared/tags/AddTagsTermsModal';
 
 // filter out entity itself and its children
 export function filterResultsForMove(entity: GlossaryNode, entityUrn: string) {
@@ -24,14 +24,14 @@ interface Props {
 }
 
 function NodeParentSelect(props: Props) {
-    const { selectedParentUrn, setSelectedParentUrn, isMoving } = props;
+    const {selectedParentUrn, setSelectedParentUrn, isMoving} = props;
     const [selectedParentName, setSelectedParentName] = useState('');
     const [isFocusedOnInput, setIsFocusedOnInput] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
     const entityRegistry = useEntityRegistry();
-    const { entityData, urn: entityDataUrn, entityType } = useEntityData();
+    const {entityData, urn: entityDataUrn, entityType} = useEntityData();
 
-    const [nodeSearch, { data: nodeData }] = useGetSearchResultsLazyQuery();
+    const [nodeSearch, {data: nodeData}] = useGetSearchResultsLazyQuery();
     let nodeSearchResults = nodeData?.search?.searchResults || [];
     if (isMoving) {
         nodeSearchResults = nodeSearchResults.filter((r) =>
@@ -95,7 +95,7 @@ function NodeParentSelect(props: Props) {
                 onSearch={handleSearch}
                 onClear={clearSelectedParent}
                 onFocus={() => setIsFocusedOnInput(true)}
-                dropdownStyle={isShowingGlossaryBrowser || !searchQuery ? { display: 'none' } : {}}
+                dropdownStyle={isShowingGlossaryBrowser || !searchQuery ? {display: 'none'} : {}}
             >
                 {nodeSearchResults?.map((result) => (
                     <Select.Option key={result?.entity?.urn} value={result.entity.urn}>

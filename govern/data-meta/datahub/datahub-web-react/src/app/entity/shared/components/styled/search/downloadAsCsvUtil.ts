@@ -1,8 +1,8 @@
-import { CorpGroup, CorpUser, EntityType } from '../../../../../../types.generated';
-import { capitalizeFirstLetterOnly } from '../../../../../shared/textUtil';
+import {CorpGroup, CorpUser, EntityType} from '../../../../../../types.generated';
+import {capitalizeFirstLetterOnly} from '../../../../../shared/textUtil';
 import EntityRegistry from '../../../../EntityRegistry';
-import { GenericEntityProperties } from '../../../types';
-import { SearchResultInterface } from './types';
+import {GenericEntityProperties} from '../../../types';
+import {SearchResultInterface} from './types';
 
 const searchCsvDownloadHeader = [
     'urn',

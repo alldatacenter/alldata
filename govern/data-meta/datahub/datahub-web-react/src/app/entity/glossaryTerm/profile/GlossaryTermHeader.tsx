@@ -1,7 +1,7 @@
-import { Divider, Space, Typography } from 'antd';
+import {Divider, Space, Typography} from 'antd';
 import React from 'react';
-import { useEntityRegistry } from '../../../useEntityRegistry';
-import { AvatarsGroup } from '../../../shared/avatar';
+import {useEntityRegistry} from '../../../useEntityRegistry';
+import {AvatarsGroup} from '../../../shared/avatar';
 
 type Props = {
     definition: string;
@@ -9,13 +9,13 @@ type Props = {
     sourceUrl: string;
     ownership?: any;
 };
-export default function GlossaryTermHeader({ definition, sourceRef, sourceUrl, ownership }: Props) {
+export default function GlossaryTermHeader({definition, sourceRef, sourceUrl, ownership}: Props) {
     const entityRegistry = useEntityRegistry();
     return (
         <>
-            <Space direction="vertical" size="middle" style={{ marginBottom: '15px' }}>
+            <Space direction="vertical" size="middle" style={{marginBottom: '15px'}}>
                 <Typography.Paragraph>{definition}</Typography.Paragraph>
-                <Space split={<Divider type="vertical" />}>
+                <Space split={<Divider type="vertical"/>}>
                     <Typography.Text>Source</Typography.Text>
                     <Typography.Text strong>{sourceRef}</Typography.Text>
                     {sourceUrl && (
@@ -24,7 +24,7 @@ export default function GlossaryTermHeader({ definition, sourceRef, sourceUrl, o
                         </a>
                     )}
                 </Space>
-                <AvatarsGroup owners={ownership?.owners} entityRegistry={entityRegistry} />
+                <AvatarsGroup owners={ownership?.owners} entityRegistry={entityRegistry}/>
             </Space>
         </>
     );

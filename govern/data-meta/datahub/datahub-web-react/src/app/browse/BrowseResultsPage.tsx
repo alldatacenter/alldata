@@ -1,16 +1,16 @@
 import React from 'react';
-import { Redirect, useHistory, useLocation, useParams } from 'react-router';
+import {Redirect, useHistory, useLocation, useParams} from 'react-router';
 import * as QueryString from 'query-string';
-import { Affix } from 'antd';
-import { BrowseCfg } from '../../conf';
-import { BrowseResults } from './BrowseResults';
-import { useGetBrowseResultsQuery } from '../../graphql/browse.generated';
-import { LegacyBrowsePath } from './LegacyBrowsePath';
-import { PageRoutes } from '../../conf/Global';
-import { useEntityRegistry } from '../useEntityRegistry';
-import { Message } from '../shared/Message';
-import { scrollToTop } from '../shared/searchUtils';
-import { ErrorSection } from '../shared/error/ErrorSection';
+import {Affix} from 'antd';
+import {BrowseCfg} from '../../conf';
+import {BrowseResults} from './BrowseResults';
+import {useGetBrowseResultsQuery} from '../../graphql/browse.generated';
+import {LegacyBrowsePath} from './LegacyBrowsePath';
+import {PageRoutes} from '../../conf/Global';
+import {useEntityRegistry} from '../useEntityRegistry';
+import {Message} from '../shared/Message';
+import {scrollToTop} from '../shared/searchUtils';
+import {ErrorSection} from '../shared/error/ErrorSection';
 
 type BrowseResultsPageParams = {
     type: string;
@@ -19,7 +19,7 @@ type BrowseResultsPageParams = {
 export const BrowseResultsPage = () => {
     const location = useLocation();
     const history = useHistory();
-    const { type } = useParams<BrowseResultsPageParams>();
+    const {type} = useParams<BrowseResultsPageParams>();
 
     const entityRegistry = useEntityRegistry();
 
@@ -29,7 +29,7 @@ export const BrowseResultsPage = () => {
     const path = rootPath.split('/').slice(3);
     const page: number = params.page && Number(params.page as string) > 0 ? Number(params.page as string) : 1;
 
-    const { data, loading, error } = useGetBrowseResultsQuery({
+    const {data, loading, error} = useGetBrowseResultsQuery({
         variables: {
             input: {
                 type: entityType,
@@ -51,16 +51,16 @@ export const BrowseResultsPage = () => {
     };
 
     if (page < 0 || page === undefined || Number.isNaN(page)) {
-        return <Redirect to={`${PageRoutes.BROWSE}`} />;
+        return <Redirect to={`${PageRoutes.BROWSE}`}/>;
     }
 
     return (
         <>
             <Affix offsetTop={60}>
-                <LegacyBrowsePath type={entityType} path={path} isBrowsable />
+                <LegacyBrowsePath type={entityType} path={path} isBrowsable/>
             </Affix>
-            {error && <ErrorSection />}
-            {loading && <Message type="loading" content="Loading..." style={{ marginTop: '10%' }} />}
+            {error && <ErrorSection/>}
+            {loading && <Message type="loading" content="Loading..." style={{marginTop: '10%'}}/>}
             {data && data.browse && !loading && (
                 <BrowseResults
                     type={entityType}

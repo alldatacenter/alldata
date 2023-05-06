@@ -1,15 +1,15 @@
-import { green } from '@ant-design/colors';
-import { CheckCircleFilled, LoadingOutlined } from '@ant-design/icons';
+import {green} from '@ant-design/colors';
+import {CheckCircleFilled, LoadingOutlined} from '@ant-design/icons';
 import Icon from '@ant-design/icons/lib/components/Icon';
 import React from 'react';
 import styled from 'styled-components';
-import { useSearchAcrossLineageQuery } from '../../../../../graphql/search.generated';
-import { Entity, EntityType, FilterOperator, LineageDirection } from '../../../../../types.generated';
-import { ANTD_GRAY } from '../../constants';
-import { useEntityData } from '../../EntityContext';
-import { extractUpstreamSummary } from './utils';
+import {useSearchAcrossLineageQuery} from '../../../../../graphql/search.generated';
+import {Entity, EntityType, FilterOperator, LineageDirection} from '../../../../../types.generated';
+import {ANTD_GRAY} from '../../constants';
+import {useEntityData} from '../../EntityContext';
+import {extractUpstreamSummary} from './utils';
 import FailingInputs from './FailingInputs';
-import { ReactComponent as SubtractIcon } from '../../../../../images/subtractIcon.svg';
+import {ReactComponent as SubtractIcon} from '../../../../../images/subtractIcon.svg';
 
 const LoadingWrapper = styled.div`
     display: flex;
@@ -40,8 +40,8 @@ const StyledCheck = styled(CheckCircleFilled)`
 `;
 
 export default function UpstreamHealth() {
-    const { entityData } = useEntityData();
-    const { data, loading } = useSearchAcrossLineageQuery({
+    const {entityData} = useEntityData();
+    const {data, loading} = useSearchAcrossLineageQuery({
         variables: {
             input: {
                 urn: entityData?.urn || '',
@@ -50,7 +50,7 @@ export default function UpstreamHealth() {
                 start: 0,
                 count: 1000,
                 direction: LineageDirection.Upstream,
-                orFilters: [{ and: [{ field: 'degree', condition: FilterOperator.Equal, values: ['1', '2', '3+'] }] }],
+                orFilters: [{and: [{field: 'degree', condition: FilterOperator.Equal, values: ['1', '2', '3+']}]}],
             },
             includeAssertions: true,
         },
@@ -58,12 +58,12 @@ export default function UpstreamHealth() {
 
     const upstreams: Entity[] | undefined = data?.searchAcrossLineage?.searchResults?.map((result) => result.entity);
     const upstreamSummary = extractUpstreamSummary(upstreams || []);
-    const { passingUpstreams, failingUpstreams } = upstreamSummary;
+    const {passingUpstreams, failingUpstreams} = upstreamSummary;
 
     if (loading) {
         return (
             <LoadingWrapper>
-                <LoadingOutlined />
+                <LoadingOutlined/>
             </LoadingWrapper>
         );
     }
@@ -71,13 +71,13 @@ export default function UpstreamHealth() {
     if (!data) return null;
 
     if (failingUpstreams > 0) {
-        return <FailingInputs upstreamSummary={upstreamSummary} />;
+        return <FailingInputs upstreamSummary={upstreamSummary}/>;
     }
 
     if (passingUpstreams > 0) {
         return (
             <div>
-                <StyledCheck />
+                <StyledCheck/>
                 <TextWrapper>All data inputs are healthy</TextWrapper>
             </div>
         );
@@ -85,7 +85,7 @@ export default function UpstreamHealth() {
 
     return (
         <div>
-            <StyledIcon component={SubtractIcon} />
+            <StyledIcon component={SubtractIcon}/>
             <UnknownText>Unknown data input health</UnknownText>
         </div>
     );

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
-import { ANTD_GRAY } from '../../../constants';
+import {ANTD_GRAY} from '../../../constants';
 import QueryCardHeader from './QueryCardHeader';
 import QueryCardQuery from './QueryCardQuery';
 import QueryCardDetails from './QueryCardDetails';
@@ -32,25 +32,25 @@ export type Props = {
 };
 
 export default function QueryCard({
-    urn,
-    query,
-    title,
-    description,
-    createdAtMs,
-    showDelete,
-    showEdit,
-    showDetails = true,
-    onDeleted,
-    onClickExpand,
-    onClickEdit,
-    index,
-}: Props) {
+                                      urn,
+                                      query,
+                                      title,
+                                      description,
+                                      createdAtMs,
+                                      showDelete,
+                                      showEdit,
+                                      showDetails = true,
+                                      onDeleted,
+                                      onClickExpand,
+                                      onClickEdit,
+                                      index,
+                                  }: Props) {
     const [focused, setFocused] = useState(false);
 
     return (
         <Card onMouseEnter={() => setFocused(true)} onMouseLeave={() => setFocused(false)}>
-            <QueryCardHeader query={query} focused={focused} onClickExpand={onClickExpand} />
-            <QueryCardQuery query={query} showDetails={showDetails} onClickExpand={onClickExpand} index={index} />
+            <QueryCardHeader query={query} focused={focused} onClickExpand={onClickExpand}/>
+            <QueryCardQuery query={query} showDetails={showDetails} onClickExpand={onClickExpand} index={index}/>
             {showDetails && (
                 <QueryCardDetails
                     urn={urn}

@@ -1,19 +1,19 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Button, Form, message, Modal, Select, Tag, Typography } from 'antd';
+import React, {useEffect, useRef, useState} from 'react';
+import {Button, Form, message, Modal, Select, Tag, Typography} from 'antd';
 import styled from 'styled-components';
 
-import { CorpUser, Entity, EntityType, OwnerEntityType, OwnershipType } from '../../../../../../../types.generated';
-import { useEntityRegistry } from '../../../../../../useEntityRegistry';
-import analytics, { EventType, EntityActionType } from '../../../../../../analytics';
-import { OWNERSHIP_DISPLAY_TYPES } from './ownershipUtils';
+import {CorpUser, Entity, EntityType, OwnerEntityType, OwnershipType} from '../../../../../../../types.generated';
+import {useEntityRegistry} from '../../../../../../useEntityRegistry';
+import analytics, {EventType, EntityActionType} from '../../../../../../analytics';
+import {OWNERSHIP_DISPLAY_TYPES} from './ownershipUtils';
 import {
     useBatchAddOwnersMutation,
     useBatchRemoveOwnersMutation,
 } from '../../../../../../../graphql/mutations.generated';
-import { useGetSearchResultsLazyQuery } from '../../../../../../../graphql/search.generated';
-import { useGetRecommendations } from '../../../../../../shared/recommendation';
-import { OwnerLabel } from '../../../../../../shared/OwnerLabel';
-import { handleBatchError } from '../../../../utils';
+import {useGetSearchResultsLazyQuery} from '../../../../../../../graphql/search.generated';
+import {useGetRecommendations} from '../../../../../../shared/recommendation';
+import {OwnerLabel} from '../../../../../../shared/OwnerLabel';
+import {handleBatchError} from '../../../../utils';
 
 const SelectInput = styled(Select)`
     width: 480px;
@@ -55,17 +55,17 @@ type SelectedOwner = {
 };
 
 export const EditOwnersModal = ({
-    urns,
-    hideOwnerType,
-    defaultOwnerType,
-    operationType = OperationType.ADD,
-    onCloseModal,
-    refetch,
-    entityType,
-    onOkOverride,
-    title,
-    defaultValues,
-}: Props) => {
+                                    urns,
+                                    hideOwnerType,
+                                    defaultOwnerType,
+                                    operationType = OperationType.ADD,
+                                    onCloseModal,
+                                    refetch,
+                                    entityType,
+                                    onOkOverride,
+                                    title,
+                                    defaultValues,
+                                }: Props) => {
     const entityRegistry = useEntityRegistry();
 
     // Renders a search result in the select dropdown.
@@ -75,7 +75,7 @@ export const EditOwnersModal = ({
         const displayName = entityRegistry.getDisplayName(entity.type, entity);
         return (
             <Select.Option value={entity.urn} key={entity.urn}>
-                <OwnerLabel name={displayName} avatarUrl={avatarUrl} type={entity.type} />
+                <OwnerLabel name={displayName} avatarUrl={avatarUrl} type={entity.type}/>
             </Select.Option>
         );
     };
@@ -86,7 +86,7 @@ export const EditOwnersModal = ({
                 ? (entity as CorpUser).editableProperties?.pictureLink || undefined
                 : undefined;
         const displayName = entityRegistry.getDisplayName(entity.type, entity);
-        return <OwnerLabel name={displayName} avatarUrl={avatarUrl} type={entity.type} />;
+        return <OwnerLabel name={displayName} avatarUrl={avatarUrl} type={entity.type}/>;
     };
 
     const defaultValuesToSelectedOwners = (vals: { urn: string; entity?: Entity | null }[]): SelectedOwner[] => {
@@ -109,8 +109,8 @@ export const EditOwnersModal = ({
     const [selectedOwnerType, setSelectedOwnerType] = useState<OwnershipType>(defaultOwnerType || OwnershipType.None);
 
     // User and group dropdown search results!
-    const [userSearch, { data: userSearchData }] = useGetSearchResultsLazyQuery();
-    const [groupSearch, { data: groupSearchData }] = useGetSearchResultsLazyQuery();
+    const [userSearch, {data: userSearchData}] = useGetSearchResultsLazyQuery();
+    const [groupSearch, {data: groupSearchData}] = useGetSearchResultsLazyQuery();
     const userSearchResults = userSearchData?.search?.searchResults?.map((searchResult) => searchResult.entity) || [];
     const groupSearchResults = groupSearchData?.search?.searchResults?.map((searchResult) => searchResult.entity) || [];
     const combinedSearchResults = [...userSearchResults, ...groupSearchResults];
@@ -201,7 +201,7 @@ export const EditOwnersModal = ({
 
     const tagRender = (props) => {
         // eslint-disable-next-line react/prop-types
-        const { label, closable, onClose } = props;
+        const {label, closable, onClose} = props;
         const onPreventMouseDown = (event) => {
             event.preventDefault();
             event.stopPropagation();
@@ -236,11 +236,11 @@ export const EditOwnersModal = ({
                 variables: {
                     input: {
                         owners: inputs,
-                        resources: urns.map((urn) => ({ resourceUrn: urn })),
+                        resources: urns.map((urn) => ({resourceUrn: urn})),
                     },
                 },
             });
-            message.success({ content: 'Owners Added', duration: 2 });
+            message.success({content: 'Owners Added', duration: 2});
             emitAnalytics();
         } catch (e: unknown) {
             message.destroy();
@@ -264,11 +264,11 @@ export const EditOwnersModal = ({
                 variables: {
                     input: {
                         ownerUrns: inputs.map((input) => input.ownerUrn),
-                        resources: urns.map((urn) => ({ resourceUrn: urn })),
+                        resources: urns.map((urn) => ({resourceUrn: urn})),
                     },
                 },
             });
-            message.success({ content: 'Owners Removed', duration: 2 });
+            message.success({content: 'Owners Removed', duration: 2});
             emitAnalytics();
         } catch (e: unknown) {
             message.destroy();
@@ -382,7 +382,7 @@ export const EditOwnersModal = ({
                                     <Select.Option key={ownerType.type} value={ownerType.type}>
                                         <Typography.Text>{ownerType.name}</Typography.Text>
                                         <div>
-                                            <Typography.Paragraph style={{ wordBreak: 'break-all' }} type="secondary">
+                                            <Typography.Paragraph style={{wordBreak: 'break-all'}} type="secondary">
                                                 {ownerType.description}
                                             </Typography.Paragraph>
                                         </div>

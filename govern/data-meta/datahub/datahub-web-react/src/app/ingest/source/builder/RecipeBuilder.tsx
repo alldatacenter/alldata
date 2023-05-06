@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { Button, message, Typography } from 'antd';
+import React, {useState} from 'react';
+import {Button, message, Typography} from 'antd';
 import YAML from 'yamljs';
-import { CodeOutlined, FormOutlined } from '@ant-design/icons';
+import {CodeOutlined, FormOutlined} from '@ant-design/icons';
 import styled from 'styled-components/macro';
-import { ANTD_GRAY } from '../../../entity/shared/constants';
-import { YamlEditor } from './YamlEditor';
+import {ANTD_GRAY} from '../../../entity/shared/constants';
+import {YamlEditor} from './YamlEditor';
 import RecipeForm from './RecipeForm/RecipeForm';
-import { SourceBuilderState, SourceConfig } from './types';
-import { LOOKER, LOOK_ML } from './constants';
-import { LookerWarning } from './LookerWarning';
+import {SourceBuilderState, SourceConfig} from './types';
+import {LOOKER, LOOK_ML} from './constants';
+import {LookerWarning} from './LookerWarning';
 
 export const ControlsContainer = styled.div`
     display: flex;
@@ -25,8 +25,8 @@ const BorderedSection = styled.div`
 
 const StyledButton = styled(Button)<{ isSelected: boolean }>`
     ${(props) =>
-        props.isSelected &&
-        `
+    props.isSelected &&
+    `
         color: #1890ff;
         &:focus {
             color: #1890ff;
@@ -62,8 +62,8 @@ interface Props {
 }
 
 function RecipeBuilder(props: Props) {
-    const { state, isEditing, displayRecipe, sourceConfigs, setStagedRecipe, onClickNext, goToPrevious } = props;
-    const { type } = state;
+    const {state, isEditing, displayRecipe, sourceConfigs, setStagedRecipe, onClickNext, goToPrevious} = props;
+    const {type} = state;
     const [isViewingForm, setIsViewingForm] = useState(true);
 
     function switchViews(isFormView: boolean) {
@@ -80,17 +80,17 @@ function RecipeBuilder(props: Props) {
 
     return (
         <div>
-            {(type === LOOKER || type === LOOK_ML) && <LookerWarning type={type} />}
+            {(type === LOOKER || type === LOOK_ML) && <LookerWarning type={type}/>}
             <HeaderContainer>
-                <Title style={{ marginBottom: 0 }} level={5}>
+                <Title style={{marginBottom: 0}} level={5}>
                     {sourceConfigs?.displayName} Recipe
                 </Title>
                 <ButtonsWrapper>
                     <StyledButton type="text" isSelected={isViewingForm} onClick={() => switchViews(true)}>
-                        <FormOutlined /> Form
+                        <FormOutlined/> 表单
                     </StyledButton>
                     <StyledButton type="text" isSelected={!isViewingForm} onClick={() => switchViews(false)}>
-                        <CodeOutlined /> YAML
+                        <CodeOutlined/> YAML
                     </StyledButton>
                 </ButtonsWrapper>
             </HeaderContainer>
@@ -108,7 +108,7 @@ function RecipeBuilder(props: Props) {
             {!isViewingForm && (
                 <>
                     <BorderedSection>
-                        <YamlEditor initialText={displayRecipe} onChange={setStagedRecipe} />
+                        <YamlEditor initialText={displayRecipe} onChange={setStagedRecipe}/>
                     </BorderedSection>
                     <ControlsContainer>
                         <Button disabled={isEditing} onClick={goToPrevious}>

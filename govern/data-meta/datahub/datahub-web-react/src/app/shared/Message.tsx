@@ -1,5 +1,5 @@
-import React, { ReactNode, useEffect, useMemo } from 'react';
-import { message } from 'antd';
+import React, {ReactNode, useEffect, useMemo} from 'react';
+import {message} from 'antd';
 
 type MessageType = 'loading' | 'info' | 'error' | 'warning' | 'success';
 export type MessageProps = {
@@ -8,7 +8,7 @@ export type MessageProps = {
     style?: React.CSSProperties;
 };
 
-export const Message = ({ type, content, style }: MessageProps): JSX.Element => {
+export const Message = ({type, content, style}: MessageProps): JSX.Element => {
     const key = useMemo(() => {
         // We don't actually care about cryptographic security, but instead
         // just want something unique. That's why it's OK to use Math.random

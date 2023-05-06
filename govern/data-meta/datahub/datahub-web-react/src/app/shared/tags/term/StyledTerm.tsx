@@ -1,9 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import styled from 'styled-components';
-import { EntityType, GlossaryTermAssociation } from '../../../../types.generated';
-import { HoverEntityTooltip } from '../../../recommendations/renderer/component/HoverEntityTooltip';
-import { useEntityRegistry } from '../../../useEntityRegistry';
+import {EntityType, GlossaryTermAssociation} from '../../../../types.generated';
+import {HoverEntityTooltip} from '../../../recommendations/renderer/component/HoverEntityTooltip';
+import {useEntityRegistry} from '../../../useEntityRegistry';
 import TermContent from './TermContent';
 
 const TermLink = styled(Link)`
@@ -28,7 +28,7 @@ interface Props {
 }
 
 export default function StyledTerm(props: Props) {
-    const { term, readOnly } = props;
+    const {term, readOnly} = props;
     const entityRegistry = useEntityRegistry();
 
     if (readOnly) {

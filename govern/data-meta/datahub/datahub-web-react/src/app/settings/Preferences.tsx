@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Divider, Typography, Switch, Card, message } from 'antd';
+import {Divider, Typography, Switch, Card, message} from 'antd';
 
-import { useUpdateUserSettingMutation } from '../../graphql/me.generated';
-import { UserSetting } from '../../types.generated';
-import { ANTD_GRAY } from '../entity/shared/constants';
-import analytics, { EventType } from '../analytics';
-import { useUserContext } from '../context/useUserContext';
+import {useUpdateUserSettingMutation} from '../../graphql/me.generated';
+import {UserSetting} from '../../types.generated';
+import {ANTD_GRAY} from '../entity/shared/constants';
+import analytics, {EventType} from '../analytics';
+import {useUserContext} from '../context/useUserContext';
 
 const Page = styled.div`
     width: 100%;
@@ -53,7 +53,7 @@ const SettingText = styled(Typography.Text)`
 
 export const Preferences = () => {
     // Current User Urn
-    const { user, refetchUser } = useUserContext();
+    const {user, refetchUser} = useUserContext();
 
     const showSimplifiedHomepage = !!user?.settings?.appearance?.showSimplifiedHomepage;
     const [updateUserSettingMutation] = useUpdateUserSettingMutation();
@@ -67,7 +67,7 @@ export const Preferences = () => {
                         <Typography.Paragraph type="secondary">Manage your appearance settings.</Typography.Paragraph>
                     </TokensHeaderContainer>
                 </TokensContainer>
-                <Divider />
+                <Divider/>
                 <Card>
                     <UserSettingRow>
                         <span>
@@ -95,7 +95,7 @@ export const Preferences = () => {
                                         ? EventType.ShowStandardHomepageEvent
                                         : EventType.ShowSimplifiedHomepageEvent,
                                 });
-                                message.success({ content: 'Setting updated!', duration: 2 });
+                                message.success({content: 'Setting updated!', duration: 2});
                                 refetchUser?.();
                             }}
                         />

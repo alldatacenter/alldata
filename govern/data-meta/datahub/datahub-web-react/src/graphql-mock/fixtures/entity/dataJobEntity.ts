@@ -3,8 +3,8 @@ import kafkaLogo from '../../../images/kafkalogo.png';
 import s3Logo from '../../../images/s3.png';
 import snowflakeLogo from '../../../images/snowflakelogo.png';
 import bigqueryLogo from '../../../images/bigquerylogo.png';
-import { DataJob, DataPlatform, EntityType, OwnershipType, PlatformType } from '../../../types.generated';
-import { findUserByUsername } from '../searchResult/userSearchResult';
+import {DataJob, DataPlatform, EntityType, OwnershipType, PlatformType} from '../../../types.generated';
+import {findUserByUsername} from '../searchResult/userSearchResult';
 
 export const platformLogo = {
     kafka: kafkaLogo,
@@ -13,7 +13,7 @@ export const platformLogo = {
     bigquery: bigqueryLogo,
 };
 
-export const generatePlatform = ({ platform, urn }): DataPlatform => {
+export const generatePlatform = ({platform, urn}): DataPlatform => {
     return {
         urn,
         type: EntityType.Dataset,
@@ -38,7 +38,7 @@ export const dataJobEntity = (): DataJob => {
     const kafkaUser = findUserByUsername('kafka');
     const platform = 'kafka';
     const platformURN = `urn:li:dataPlatform:kafka`;
-    const dataPlatform = generatePlatform({ platform, urn: platformURN });
+    const dataPlatform = generatePlatform({platform, urn: platformURN});
 
     return {
         urn: `urn:li:dataJob:${dataFlowURN},${jobId})`,
@@ -181,7 +181,7 @@ export const dataJobEntity = (): DataJob => {
             editableProperties: null,
             ownership: {
                 owners: [],
-                lastModified: { time: 1620224528712, __typename: 'AuditStamp' },
+                lastModified: {time: 1620224528712, __typename: 'AuditStamp'},
                 __typename: 'Ownership',
             },
             platform: dataPlatform,
@@ -197,7 +197,7 @@ export const dataJobEntity = (): DataJob => {
                     associatedUrn: `urn:li:dataJob:${dataFlowURN},${jobId})`,
                 },
             ],
-            lastModified: { time: 1620079975489, __typename: 'AuditStamp' },
+            lastModified: {time: 1620079975489, __typename: 'AuditStamp'},
             __typename: 'Ownership',
         },
         inputOutput: {
@@ -206,8 +206,8 @@ export const dataJobEntity = (): DataJob => {
             __typename: 'DataJobInputOutput',
         },
         editableProperties: null,
-        info: { name: jobId, description: null, __typename: 'DataJobInfo' },
-        globalTags: { tags: [], __typename: 'GlobalTags' },
+        info: {name: jobId, description: null, __typename: 'DataJobInfo'},
+        globalTags: {tags: [], __typename: 'GlobalTags'},
         __typename: 'DataJob',
     };
 };

@@ -1,11 +1,11 @@
-import { Divider, message, Space, Button, Typography, Row, Col, Tooltip } from 'antd';
-import React, { useEffect, useState } from 'react';
+import {Divider, message, Space, Button, Typography, Row, Col, Tooltip} from 'antd';
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
-import { EditOutlined, LockOutlined, MailOutlined, SlackOutlined } from '@ant-design/icons';
-import { useHistory, useRouteMatch } from 'react-router-dom';
-import { useUpdateCorpGroupPropertiesMutation } from '../../../graphql/group.generated';
-import { EntityRelationshipsResult, Ownership } from '../../../types.generated';
-import { useUpdateNameMutation } from '../../../graphql/mutations.generated';
+import {EditOutlined, LockOutlined, MailOutlined, SlackOutlined} from '@ant-design/icons';
+import {useHistory, useRouteMatch} from 'react-router-dom';
+import {useUpdateCorpGroupPropertiesMutation} from '../../../graphql/group.generated';
+import {EntityRelationshipsResult, Ownership} from '../../../types.generated';
+import {useUpdateNameMutation} from '../../../graphql/mutations.generated';
 
 import GroupEditModal from './GroupEditModal';
 import CustomAvatar from '../../shared/avatar/CustomAvatar';
@@ -21,9 +21,9 @@ import {
     GroupsSection,
 } from '../shared/SidebarStyledComponents';
 import GroupMembersSideBarSection from './GroupMembersSideBarSection';
-import { useUserContext } from '../../context/useUserContext';
+import {useUserContext} from '../../context/useUserContext';
 
-const { Paragraph } = Typography;
+const {Paragraph} = Typography;
 
 type SideBarData = {
     photoUrl: string | undefined;
@@ -44,7 +44,7 @@ type Props = {
     refetch: () => Promise<any>;
 };
 
-const AVATAR_STYLE = { margin: '3px 5px 3px 0px' };
+const AVATAR_STYLE = {margin: '3px 5px 3px 0px'};
 
 const TITLES = {
     about: 'About',
@@ -83,7 +83,7 @@ const GroupTitle = styled(Typography.Title)`
 /**
  * Responsible for reading & writing users.
  */
-export default function GroupInfoSidebar({ sideBarData, refetch }: Props) {
+export default function GroupInfoSidebar({sideBarData, refetch}: Props) {
     const {
         avatarName,
         name,
@@ -98,7 +98,7 @@ export default function GroupInfoSidebar({ sideBarData, refetch }: Props) {
         groupOwnerShip: ownership,
     } = sideBarData;
     const [updateCorpGroupPropertiesMutation] = useUpdateCorpGroupPropertiesMutation();
-    const { url } = useRouteMatch();
+    const {url} = useRouteMatch();
     const history = useHistory();
 
     /* eslint-disable @typescript-eslint/no-unused-vars */
@@ -116,15 +116,15 @@ export default function GroupInfoSidebar({ sideBarData, refetch }: Props) {
     // eslint-disable-next-line @typescript-eslint/no-shadow
     const handleTitleUpdate = async (name: string) => {
         setGroupTitle(name);
-        await updateName({ variables: { input: { name, urn } } })
+        await updateName({variables: {input: {name, urn}}})
             .then(() => {
-                message.success({ content: 'Name Updated', duration: 2 });
+                message.success({content: 'Name Updated', duration: 2});
                 refetch();
             })
             .catch((e: unknown) => {
                 message.destroy();
                 if (e instanceof Error) {
-                    message.error({ content: `Failed to update name: \n ${e.message || ''}`, duration: 3 });
+                    message.error({content: `Failed to update name: \n ${e.message || ''}`, duration: 3});
                 }
             });
     };
@@ -154,7 +154,7 @@ export default function GroupInfoSidebar({ sideBarData, refetch }: Props) {
             })
             .catch((e) => {
                 message.destroy();
-                message.error({ content: `Failed to Save changes!: \n ${e.message || ''}`, duration: 3 });
+                message.error({content: `Failed to Save changes!: \n ${e.message || ''}`, duration: 3});
             });
     };
     return (
@@ -172,7 +172,7 @@ export default function GroupInfoSidebar({ sideBarData, refetch }: Props) {
                             />
                         </Col>
                         <Col>
-                            <GroupTitle level={3} editable={canEditGroup ? { onChange: handleTitleUpdate } : false}>
+                            <GroupTitle level={3} editable={canEditGroup ? {onChange: handleTitleUpdate} : false}>
                                 {groupTitle}
                             </GroupTitle>
                         </Col>
@@ -181,41 +181,41 @@ export default function GroupInfoSidebar({ sideBarData, refetch }: Props) {
                                 <Tooltip
                                     title={`Membership for this group cannot be edited in DataHub as it originates from ${externalGroupType}.`}
                                 >
-                                    <LockOutlined />
+                                    <LockOutlined/>
                                 </Tooltip>
                             )}
                         </Col>
                     </GroupNameHeader>
-                    <Divider className="divider-infoSection" />
+                    <Divider className="divider-infoSection"/>
                     <SocialDetails>
                         <Space>
-                            <MailOutlined />
-                            {email || <EmptyValue />}
+                            <MailOutlined/>
+                            {email || <EmptyValue/>}
                         </Space>
                     </SocialDetails>
                     <SocialDetails>
                         <Space>
-                            <SlackOutlined />
-                            {slack || <EmptyValue />}
+                            <SlackOutlined/>
+                            {slack || <EmptyValue/>}
                         </Space>
                     </SocialDetails>
-                    <Divider className="divider-aboutSection" />
+                    <Divider className="divider-aboutSection"/>
                     <AboutSection>
                         {TITLES.about}
                         <AboutSectionText>
                             <Paragraph
-                                editable={canEditGroup ? { onChange: onSaveAboutMe } : false}
-                                ellipsis={{ rows: 2, expandable: true, symbol: 'Read more' }}
+                                editable={canEditGroup ? {onChange: onSaveAboutMe} : false}
+                                ellipsis={{rows: 2, expandable: true, symbol: 'Read more'}}
                             >
-                                {aboutText || <EmptyValue />}
+                                {aboutText || <EmptyValue/>}
                             </Paragraph>
                         </AboutSectionText>
                     </AboutSection>
-                    <Divider className="divider-groupsSection" />
+                    <Divider className="divider-groupsSection"/>
                     <GroupsSection>
-                        <GroupOwnerSideBarSection ownership={ownership} urn={urn || ''} refetch={refetch} />
+                        <GroupOwnerSideBarSection ownership={ownership} urn={urn || ''} refetch={refetch}/>
                     </GroupsSection>
-                    <Divider className="divider-groupsSection" />
+                    <Divider className="divider-groupsSection"/>
                     <GroupsSection>
                         <GroupMembersSideBarSection
                             total={groupMemberRelationships?.total || 0}
@@ -226,7 +226,7 @@ export default function GroupInfoSidebar({ sideBarData, refetch }: Props) {
                 </SideBarSubSection>
                 {canEditGroup && (
                     <EditButton>
-                        <Button icon={<EditOutlined />} onClick={() => showEditGroupModal(true)}>
+                        <Button icon={<EditOutlined/>} onClick={() => showEditGroupModal(true)}>
                             {TITLES.editGroup}
                         </Button>
                     </EditButton>

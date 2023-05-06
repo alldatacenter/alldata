@@ -1,15 +1,15 @@
 import React from 'react';
-import { RecommendationRenderProps } from '../types';
-import { recommendationClickEvent } from '../util/recommendationClickEvent';
-import { DomainSearchList } from './component/DomainSearchList';
+import {RecommendationRenderProps} from '../types';
+import {recommendationClickEvent} from '../util/recommendationClickEvent';
+import {DomainSearchList} from './component/DomainSearchList';
 
 export const DomainSearchListRenderer = ({
-    renderId,
-    moduleId,
-    scenarioType,
-    renderType,
-    content,
-}: RecommendationRenderProps) => {
+                                             renderId,
+                                             moduleId,
+                                             scenarioType,
+                                             renderType,
+                                             content,
+                                         }: RecommendationRenderProps) => {
     return (
         <DomainSearchList
             onClick={(index) =>

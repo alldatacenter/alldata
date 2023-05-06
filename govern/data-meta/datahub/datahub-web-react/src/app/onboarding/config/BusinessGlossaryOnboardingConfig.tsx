@@ -1,6 +1,6 @@
 import React from 'react';
-import { Typography } from 'antd';
-import { OnboardingStep } from '../OnboardingStep';
+import {Typography} from 'antd';
+import {OnboardingStep} from '../OnboardingStep';
 
 export const BUSINESS_GLOSSARY_INTRO_ID = 'business-glossary-intro';
 export const BUSINESS_GLOSSARY_CREATE_TERM_ID = 'business-glossary-create-term';

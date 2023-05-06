@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { Button, Modal } from 'antd';
+import React, {useState} from 'react';
+import {Button, Modal} from 'antd';
 import styled from 'styled-components';
-import { FacetFilterInput } from '../../../../../../types.generated';
-import { EmbeddedListSearch } from './EmbeddedListSearch';
-import { UnionType } from '../../../../../search/utils/constants';
-import { FilterSet } from './types';
+import {FacetFilterInput} from '../../../../../../types.generated';
+import {EmbeddedListSearch} from './EmbeddedListSearch';
+import {UnionType} from '../../../../../search/utils/constants';
+import {FilterSet} from './types';
 
 const SearchContainer = styled.div`
     height: 500px;
@@ -30,16 +30,16 @@ type Props = {
 };
 
 export const EmbeddedListSearchModal = ({
-    emptySearchQuery,
-    fixedFilters,
-    fixedQuery,
-    placeholderText,
-    defaultShowFilters,
-    defaultFilters,
-    onClose,
-    searchBarStyle,
-    searchBarInputStyle,
-}: Props) => {
+                                            emptySearchQuery,
+                                            fixedFilters,
+                                            fixedQuery,
+                                            placeholderText,
+                                            defaultShowFilters,
+                                            defaultFilters,
+                                            onClose,
+                                            searchBarStyle,
+                                            searchBarInputStyle,
+                                        }: Props) => {
     // Component state
     const [query, setQuery] = useState<string>('');
     const [page, setPage] = useState(1);

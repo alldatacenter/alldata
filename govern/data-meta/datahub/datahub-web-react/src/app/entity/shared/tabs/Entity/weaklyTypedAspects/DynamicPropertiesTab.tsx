@@ -1,9 +1,9 @@
 import React from 'react';
-import { Typography } from 'antd';
+import {Typography} from 'antd';
 import styled from 'styled-components';
 
-import { StyledTable } from '../../../components/styled/StyledTable';
-import { ANTD_GRAY } from '../../../constants';
+import {StyledTable} from '../../../components/styled/StyledTable';
+import {ANTD_GRAY} from '../../../constants';
 import TableValueElement from './TableValueElement';
 
 type Props = {
@@ -16,9 +16,9 @@ const NameText = styled(Typography.Text)`
     color: ${ANTD_GRAY[9]};
 `;
 
-export default function DynamicTabularTab({ payload: rawPayload }: Props) {
+export default function DynamicTabularTab({payload: rawPayload}: Props) {
     const aspectData = JSON.parse(rawPayload || '{}');
-    const transformedRowData = Object.keys(aspectData).map((key) => ({ key, value: aspectData[key] }));
+    const transformedRowData = Object.keys(aspectData).map((key) => ({key, value: aspectData[key]}));
 
     const propertyTableColumns = [
         {
@@ -32,7 +32,7 @@ export default function DynamicTabularTab({ payload: rawPayload }: Props) {
         {
             title: 'Value',
             dataIndex: 'value',
-            render: (value: string) => <TableValueElement value={value} />,
+            render: (value: string) => <TableValueElement value={value}/>,
         },
     ];
 

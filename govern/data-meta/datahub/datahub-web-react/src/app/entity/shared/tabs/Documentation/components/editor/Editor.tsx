@@ -1,4 +1,4 @@
-import React, { forwardRef, useEffect, useImperativeHandle } from 'react';
+import React, {forwardRef, useEffect, useImperativeHandle} from 'react';
 import DOMPurify from 'dompurify';
 import {
     BlockquoteExtension,
@@ -21,18 +21,18 @@ import {
     TableExtension,
     UnderlineExtension,
 } from 'remirror/extensions';
-import { EditorComponent, Remirror, useRemirror, ThemeProvider, TableComponents } from '@remirror/react';
-import { useMount } from 'react-use';
-import { EditorContainer, EditorTheme } from './EditorTheme';
-import { htmlToMarkdown } from './extensions/htmlToMarkdown';
-import { markdownToHtml } from './extensions/markdownToHtml';
-import { CodeBlockToolbar } from './toolbar/CodeBlockToolbar';
-import { FloatingToolbar } from './toolbar/FloatingToolbar';
-import { Toolbar } from './toolbar/Toolbar';
-import { OnChangeMarkdown } from './OnChangeMarkdown';
-import { TableCellMenu } from './toolbar/TableCellMenu';
-import { DataHubMentionsExtension } from './extensions/mentions/DataHubMentionsExtension';
-import { MentionsComponent } from './extensions/mentions/MentionsComponent';
+import {EditorComponent, Remirror, useRemirror, ThemeProvider, TableComponents} from '@remirror/react';
+import {useMount} from 'react-use';
+import {EditorContainer, EditorTheme} from './EditorTheme';
+import {htmlToMarkdown} from './extensions/htmlToMarkdown';
+import {markdownToHtml} from './extensions/markdownToHtml';
+import {CodeBlockToolbar} from './toolbar/CodeBlockToolbar';
+import {FloatingToolbar} from './toolbar/FloatingToolbar';
+import {Toolbar} from './toolbar/Toolbar';
+import {OnChangeMarkdown} from './OnChangeMarkdown';
+import {TableCellMenu} from './toolbar/TableCellMenu';
+import {DataHubMentionsExtension} from './extensions/mentions/DataHubMentionsExtension';
+import {MentionsComponent} from './extensions/mentions/MentionsComponent';
 
 type EditorProps = {
     readOnly?: boolean;
@@ -43,13 +43,13 @@ type EditorProps = {
 };
 
 export const Editor = forwardRef((props: EditorProps, ref) => {
-    const { content, readOnly, onChange, className } = props;
-    const { manager, state, getContext } = useRemirror({
+    const {content, readOnly, onChange, className} = props;
+    const {manager, state, getContext} = useRemirror({
         extensions: () => [
             new BlockquoteExtension(),
             new BoldExtension(),
             new BulletListExtension(),
-            new CodeBlockExtension({ syntaxTheme: 'base16_ateliersulphurpool_light' }),
+            new CodeBlockExtension({syntaxTheme: 'base16_ateliersulphurpool_light'}),
             new CodeExtension(),
             new DataHubMentionsExtension(),
             new DropCursorExtension(),
@@ -57,15 +57,15 @@ export const Editor = forwardRef((props: EditorProps, ref) => {
             new HeadingExtension(),
             new HistoryExtension(),
             new HorizontalRuleExtension(),
-            new ImageExtension({ enableResizing: !readOnly }),
+            new ImageExtension({enableResizing: !readOnly}),
             new ItalicExtension(),
-            new LinkExtension({ autoLink: true, defaultTarget: '_blank' }),
+            new LinkExtension({autoLink: true, defaultTarget: '_blank'}),
             new ListItemExtension(),
-            new MarkdownExtension({ htmlSanitizer: DOMPurify.sanitize, htmlToMarkdown, markdownToHtml }),
+            new MarkdownExtension({htmlSanitizer: DOMPurify.sanitize, htmlToMarkdown, markdownToHtml}),
             new OrderedListExtension(),
             new UnderlineExtension(),
             new StrikeExtension(),
-            new TableExtension({ resizable: false }),
+            new TableExtension({resizable: false}),
             ...(readOnly ? [] : [new HistoryExtension()]),
         ],
         content,
@@ -92,15 +92,15 @@ export const Editor = forwardRef((props: EditorProps, ref) => {
                 <Remirror classNames={['ant-typography']} editable={!readOnly} manager={manager} initialContent={state}>
                     {!readOnly && (
                         <>
-                            <Toolbar />
-                            <CodeBlockToolbar />
-                            <FloatingToolbar />
-                            <TableComponents tableCellMenuProps={{ Component: TableCellMenu }} />
-                            <MentionsComponent />
-                            {onChange && <OnChangeMarkdown onChange={onChange} />}
+                            <Toolbar/>
+                            <CodeBlockToolbar/>
+                            <FloatingToolbar/>
+                            <TableComponents tableCellMenuProps={{Component: TableCellMenu}}/>
+                            <MentionsComponent/>
+                            {onChange && <OnChangeMarkdown onChange={onChange}/>}
                         </>
                     )}
-                    <EditorComponent />
+                    <EditorComponent/>
                 </Remirror>
             </ThemeProvider>
         </EditorContainer>

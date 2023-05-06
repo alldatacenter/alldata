@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { FacetFilterInput, FacetMetadata } from '../../types.generated';
-import { SearchFilterLabel } from './SearchFilterLabel';
+import {FacetFilterInput, FacetMetadata} from '../../types.generated';
+import {SearchFilterLabel} from './SearchFilterLabel';
 
 type Props = {
     facet: FacetMetadata;
@@ -20,7 +20,7 @@ const StyledSearchFilterLabel = styled.div`
     margin: 4px;
 `;
 
-export const AdvancedSearchFilterValuesSection = ({ facet, filter }: Props) => {
+export const AdvancedSearchFilterValuesSection = ({facet, filter}: Props) => {
     return (
         <ValueFilterSection>
             {filter?.values?.map((value) => {

@@ -1,19 +1,19 @@
 import * as React from 'react';
-import { DotChartOutlined } from '@ant-design/icons';
-import { MlPrimaryKey, EntityType, SearchResult, OwnershipType } from '../../../types.generated';
-import { Preview } from './preview/Preview';
-import { Entity, EntityCapabilityType, IconStyleType, PreviewType } from '../Entity';
-import { getDataForEntityType } from '../shared/containers/profile/utils';
-import { GenericEntityProperties } from '../shared/types';
-import { useGetMlPrimaryKeyQuery } from '../../../graphql/mlPrimaryKey.generated';
-import { EntityProfile } from '../shared/containers/profile/EntityProfile';
-import { FeatureTableTab } from '../shared/tabs/ML/MlPrimaryKeyFeatureTableTab';
-import { DocumentationTab } from '../shared/tabs/Documentation/DocumentationTab';
-import { SidebarTagsSection } from '../shared/containers/profile/sidebar/SidebarTagsSection';
-import { SidebarAboutSection } from '../shared/containers/profile/sidebar/AboutSection/SidebarAboutSection';
-import { SidebarDomainSection } from '../shared/containers/profile/sidebar/Domain/SidebarDomainSection';
-import { SidebarOwnerSection } from '../shared/containers/profile/sidebar/Ownership/SidebarOwnerSection';
-import { LineageTab } from '../shared/tabs/Lineage/LineageTab';
+import {DotChartOutlined} from '@ant-design/icons';
+import {MlPrimaryKey, EntityType, SearchResult, OwnershipType} from '../../../types.generated';
+import {Preview} from './preview/Preview';
+import {Entity, EntityCapabilityType, IconStyleType, PreviewType} from '../Entity';
+import {getDataForEntityType} from '../shared/containers/profile/utils';
+import {GenericEntityProperties} from '../shared/types';
+import {useGetMlPrimaryKeyQuery} from '../../../graphql/mlPrimaryKey.generated';
+import {EntityProfile} from '../shared/containers/profile/EntityProfile';
+import {FeatureTableTab} from '../shared/tabs/ML/MlPrimaryKeyFeatureTableTab';
+import {DocumentationTab} from '../shared/tabs/Documentation/DocumentationTab';
+import {SidebarTagsSection} from '../shared/containers/profile/sidebar/SidebarTagsSection';
+import {SidebarAboutSection} from '../shared/containers/profile/sidebar/AboutSection/SidebarAboutSection';
+import {SidebarDomainSection} from '../shared/containers/profile/sidebar/Domain/SidebarDomainSection';
+import {SidebarOwnerSection} from '../shared/containers/profile/sidebar/Ownership/SidebarOwnerSection';
+import {LineageTab} from '../shared/tabs/Lineage/LineageTab';
 
 /**
  * Definition of the DataHub MLPrimaryKey entity.
@@ -23,11 +23,11 @@ export class MLPrimaryKeyEntity implements Entity<MlPrimaryKey> {
 
     icon = (fontSize: number, styleType: IconStyleType, color?: string) => {
         if (styleType === IconStyleType.TAB_VIEW) {
-            return <DotChartOutlined style={{ fontSize, color }} />;
+            return <DotChartOutlined style={{fontSize, color}}/>;
         }
 
         if (styleType === IconStyleType.HIGHLIGHT) {
-            return <DotChartOutlined style={{ fontSize, color: color || '#9633b9' }} />;
+            return <DotChartOutlined style={{fontSize, color: color || '#9633b9'}}/>;
         }
 
         return (

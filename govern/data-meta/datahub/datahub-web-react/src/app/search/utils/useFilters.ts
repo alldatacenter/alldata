@@ -1,10 +1,10 @@
-import { useMemo } from 'react';
+import {useMemo} from 'react';
 import * as QueryString from 'query-string';
 
-import { FILTER_URL_PREFIX } from './constants';
-import { FacetFilterInput, FilterOperator } from '../../../types.generated';
-import { decodeComma } from '../../entity/shared/utils';
-import { URL_PARAM_SEPARATOR } from './filtersToQueryStringParams';
+import {FILTER_URL_PREFIX} from './constants';
+import {FacetFilterInput, FilterOperator} from '../../../types.generated';
+import {decodeComma} from '../../entity/shared/utils';
+import {URL_PARAM_SEPARATOR} from './filtersToQueryStringParams';
 
 export default function useFilters(params: QueryString.ParsedQuery<string>): Array<FacetFilterInput> {
     return useMemo(() => {
@@ -30,7 +30,7 @@ export default function useFilters(params: QueryString.ParsedQuery<string>): Arr
                             values: value.map((distinctValue) => decodeComma(distinctValue)),
                         };
                     }
-                    return { field, condition, values: [decodeComma(value)], negated };
+                    return {field, condition, values: [decodeComma(value)], negated};
                 })
                 .filter((val) => !!val) as Array<FacetFilterInput>
         );

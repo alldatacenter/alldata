@@ -1,13 +1,13 @@
-import { DownOutlined, UpOutlined } from '@ant-design/icons';
-import { Button, Checkbox } from 'antd';
-import { CheckboxChangeEvent } from 'antd/lib/checkbox';
+import {DownOutlined, UpOutlined} from '@ant-design/icons';
+import {Button, Checkbox} from 'antd';
+import {CheckboxChangeEvent} from 'antd/lib/checkbox';
 import * as React from 'react';
-import { useState, useEffect } from 'react';
+import {useState, useEffect} from 'react';
 import styled from 'styled-components';
 
-import { FacetFilterInput, FacetMetadata } from '../../types.generated';
-import { SearchFilterLabel } from './SearchFilterLabel';
-import { TRUNCATED_FILTER_LENGTH } from './utils/constants';
+import {FacetFilterInput, FacetMetadata} from '../../types.generated';
+import {SearchFilterLabel} from './SearchFilterLabel';
+import {TRUNCATED_FILTER_LENGTH} from './utils/constants';
 
 const GRAPH_DEGREE_FILTER_FIELD = 'degree';
 
@@ -54,7 +54,7 @@ const StyledDownOutlined = styled(DownOutlined)`
     font-size: 10px;
 `;
 
-export const SimpleSearchFilter = ({ facet, selectedFilters, onFilterSelect, defaultDisplayFilters }: Props) => {
+export const SimpleSearchFilter = ({facet, selectedFilters, onFilterSelect, defaultDisplayFilters}: Props) => {
     const [areFiltersVisible, setAreFiltersVisible] = useState(defaultDisplayFilters);
     const [expanded, setExpanded] = useState(false);
 
@@ -82,9 +82,9 @@ export const SimpleSearchFilter = ({ facet, selectedFilters, onFilterSelect, def
             <Title onClick={() => setAreFiltersVisible((prevState) => !prevState)}>
                 {facet?.displayName}
                 {areFiltersVisible ? (
-                    <StyledUpOutlined />
+                    <StyledUpOutlined/>
                 ) : (
-                    <StyledDownOutlined data-testid={`expand-facet-${facet.field}`} />
+                    <StyledDownOutlined data-testid={`expand-facet-${facet.field}`}/>
                 )}
             </Title>
             {areFiltersVisible && (
@@ -116,7 +116,7 @@ export const SimpleSearchFilter = ({ facet, selectedFilters, onFilterSelect, def
                                             entity={aggregation.entity}
                                         />
                                     </CheckBox>
-                                    <br />
+                                    <br/>
                                 </span>
                             );
                         })}

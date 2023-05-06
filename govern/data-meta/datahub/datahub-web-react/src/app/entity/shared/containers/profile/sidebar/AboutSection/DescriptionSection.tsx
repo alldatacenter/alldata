@@ -1,11 +1,11 @@
-import { Typography } from 'antd';
-import React, { useState } from 'react';
+import {Typography} from 'antd';
+import React, {useState} from 'react';
 import styled from 'styled-components/macro';
 import CompactContext from '../../../../../../shared/CompactContext';
-import MarkdownViewer, { MarkdownView } from '../../../../components/legacy/MarkdownViewer';
-import NoMarkdownViewer, { removeMarkdown } from '../../../../components/styled/StripMarkdownText';
-import { useRouteToTab } from '../../../../EntityContext';
-import { useIsOnTab } from '../../utils';
+import MarkdownViewer, {MarkdownView} from '../../../../components/legacy/MarkdownViewer';
+import NoMarkdownViewer, {removeMarkdown} from '../../../../components/styled/StripMarkdownText';
+import {useRouteToTab} from '../../../../EntityContext';
+import {useIsOnTab} from '../../utils';
 
 const ABBREVIATED_LIMIT = 150;
 
@@ -21,7 +21,7 @@ interface Props {
     description: string;
 }
 
-export default function DescriptionSection({ description }: Props) {
+export default function DescriptionSection({description}: Props) {
     const isOverLimit = description && removeMarkdown(description).length > ABBREVIATED_LIMIT;
     const [isExpanded, setIsExpanded] = useState(!isOverLimit);
     const routeToTab = useRouteToTab();
@@ -33,7 +33,7 @@ export default function DescriptionSection({ description }: Props) {
         if (isCompact) {
             setIsExpanded(true);
         } else {
-            routeToTab({ tabName: 'Documentation' });
+            routeToTab({tabName: 'Documentation'});
         }
     }
 
@@ -41,7 +41,7 @@ export default function DescriptionSection({ description }: Props) {
         <ContentWrapper>
             {isExpanded && (
                 <>
-                    <MarkdownViewer source={description} ignoreLimit />
+                    <MarkdownViewer source={description} ignoreLimit/>
                     {isOverLimit && <Typography.Link onClick={() => setIsExpanded(false)}>Read Less</Typography.Link>}
                 </>
             )}

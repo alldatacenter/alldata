@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { Typography } from 'antd';
-import { InputFields, MatchedField, Maybe } from '../../../types.generated';
+import {Typography} from 'antd';
+import {InputFields, MatchedField, Maybe} from '../../../types.generated';
 import TagTermGroup from '../../shared/tags/TagTermGroup';
-import { FIELDS_TO_HIGHLIGHT } from '../dataset/search/highlights';
-import { getMatchPrioritizingPrimary } from '../shared/utils';
+import {FIELDS_TO_HIGHLIGHT} from '../dataset/search/highlights';
+import {getMatchPrioritizingPrimary} from '../shared/utils';
 
 type Props = {
     matchedFields: MatchedField[];
@@ -15,7 +15,7 @@ type Props = {
 const LABEL_INDEX_NAME = 'fieldLabels';
 const TYPE_PROPERTY_KEY_NAME = 'type';
 
-export const ChartSnippet = ({ matchedFields, inputFields, isMatchingDashboard = false }: Props) => {
+export const ChartSnippet = ({matchedFields, inputFields, isMatchingDashboard = false}: Props) => {
     const matchedField = getMatchPrioritizingPrimary(matchedFields, 'fieldLabels');
 
     if (matchedField?.name === LABEL_INDEX_NAME) {
@@ -37,7 +37,7 @@ export const ChartSnippet = ({ matchedFields, inputFields, isMatchingDashboard =
 
             return (
                 <Typography.Text>
-                    Matches {termType} <TagTermGroup uneditableGlossaryTerms={{ terms: [matchedGlossaryTerm] }} />{' '}
+                    Matches {termType} <TagTermGroup uneditableGlossaryTerms={{terms: [matchedGlossaryTerm]}}/>{' '}
                     {isMatchingDashboard && 'on a contained Chart'}
                 </Typography.Text>
             );

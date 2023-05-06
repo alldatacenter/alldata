@@ -1,13 +1,13 @@
-import React, { useEffect } from 'react';
+import React, {useEffect} from 'react';
 import styled from 'styled-components';
-import { Form, Input, Select, Typography } from 'antd';
-import { ViewBuilderState } from '../types';
-import { DataHubViewType } from '../../../../types.generated';
-import { ViewTypeLabel } from '../ViewTypeLabel';
-import { ViewDefinitionBuilder } from './ViewDefinitionBuilder';
-import { ANTD_GRAY } from '../../shared/constants';
-import { useUserContext } from '../../../context/useUserContext';
-import { ViewBuilderMode } from './types';
+import {Form, Input, Select, Typography} from 'antd';
+import {ViewBuilderState} from '../types';
+import {DataHubViewType} from '../../../../types.generated';
+import {ViewTypeLabel} from '../ViewTypeLabel';
+import {ViewDefinitionBuilder} from './ViewDefinitionBuilder';
+import {ANTD_GRAY} from '../../shared/constants';
+import {useUserContext} from '../../../context/useUserContext';
+import {ViewBuilderMode} from './types';
 
 const StyledFormItem = styled(Form.Item)`
     margin-bottom: 8px;
@@ -20,7 +20,7 @@ type Props = {
     updateState: (newState: ViewBuilderState) => void;
 };
 
-export const ViewBuilderForm = ({ urn, mode, state, updateState }: Props) => {
+export const ViewBuilderForm = ({urn, mode, state, updateState}: Props) => {
     const userContext = useUserContext();
     const [form] = Form.useForm();
 
@@ -64,8 +64,8 @@ export const ViewBuilderForm = ({ urn, mode, state, updateState }: Props) => {
                                 required: true,
                                 message: 'Please enter a name for your View.',
                             },
-                            { whitespace: true },
-                            { min: 1, max: 50 },
+                            {whitespace: true},
+                            {min: 1, max: 50},
                         ]}
                         hasFeedback
                     >
@@ -79,7 +79,7 @@ export const ViewBuilderForm = ({ urn, mode, state, updateState }: Props) => {
                 </StyledFormItem>
                 <StyledFormItem label={<Typography.Text strong>Description</Typography.Text>}>
                     <Typography.Paragraph>Write a description for your View.</Typography.Paragraph>
-                    <Form.Item name="description" rules={[{ whitespace: true }, { min: 1, max: 500 }]} hasFeedback>
+                    <Form.Item name="description" rules={[{whitespace: true}, {min: 1, max: 500}]} hasFeedback>
                         <Input.TextArea
                             data-testid="view-description-input"
                             placeholder="This View is useful for Data Analysts"
@@ -96,22 +96,22 @@ export const ViewBuilderForm = ({ urn, mode, state, updateState }: Props) => {
                             disabled={!canManageGlobalViews || isEditing || mode === ViewBuilderMode.PREVIEW}
                         >
                             <Select.Option value={DataHubViewType.Personal}>
-                                <ViewTypeLabel type={DataHubViewType.Personal} color={ANTD_GRAY[9]} />
+                                <ViewTypeLabel type={DataHubViewType.Personal} color={ANTD_GRAY[9]}/>
                             </Select.Option>
                             <Select.Option value={DataHubViewType.Global}>
-                                <ViewTypeLabel type={DataHubViewType.Global} color={ANTD_GRAY[9]} />
+                                <ViewTypeLabel type={DataHubViewType.Global} color={ANTD_GRAY[9]}/>
                             </Select.Option>
                         </Select>
                     </Form.Item>
                 </StyledFormItem>
-                <StyledFormItem label={<Typography.Text strong>Filters</Typography.Text>} style={{ marginBottom: 8 }}>
+                <StyledFormItem label={<Typography.Text strong>Filters</Typography.Text>} style={{marginBottom: 8}}>
                     <Typography.Paragraph>
                         Select the filters that are applied when this View is selected. Assets that match these filters
                         will be shown when the View is applied.
                     </Typography.Paragraph>
                 </StyledFormItem>
             </Form>
-            <ViewDefinitionBuilder mode={mode} state={state} updateState={updateState} />
+            <ViewDefinitionBuilder mode={mode} state={state} updateState={updateState}/>
         </>
     );
 };

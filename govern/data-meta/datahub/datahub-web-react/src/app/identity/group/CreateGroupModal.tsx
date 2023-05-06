@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
-import { message, Button, Input, Modal, Typography, Form, Collapse } from 'antd';
-import { useCreateGroupMutation } from '../../../graphql/group.generated';
-import { useEnterKeyListener } from '../../shared/useEnterKeyListener';
-import { validateCustomUrnId } from '../../shared/textUtil';
-import analytics, { EventType } from '../../analytics';
-import { CorpGroup, EntityType } from '../../../types.generated';
+import React, {useState} from 'react';
+import {message, Button, Input, Modal, Typography, Form, Collapse} from 'antd';
+import {useCreateGroupMutation} from '../../../graphql/group.generated';
+import {useEnterKeyListener} from '../../shared/useEnterKeyListener';
+import {validateCustomUrnId} from '../../shared/textUtil';
+import analytics, {EventType} from '../../analytics';
+import {CorpGroup, EntityType} from '../../../types.generated';
 
 type Props = {
     onClose: () => void;
     onCreate: (group: CorpGroup) => void;
 };
 
-export default function CreateGroupModal({ onClose, onCreate }: Props) {
+export default function CreateGroupModal({onClose, onCreate}: Props) {
     const [stagedName, setStagedName] = useState('');
     const [stagedDescription, setStagedDescription] = useState('');
     const [stagedId, setStagedId] = useState<string | undefined>(undefined);
@@ -29,7 +29,7 @@ export default function CreateGroupModal({ onClose, onCreate }: Props) {
                 },
             },
         })
-            .then(({ data, errors }) => {
+            .then(({data, errors}) => {
                 if (!errors) {
                     analytics.event({
                         type: EventType.CreateGroupEvent,
@@ -51,7 +51,7 @@ export default function CreateGroupModal({ onClose, onCreate }: Props) {
             })
             .catch((e) => {
                 message.destroy();
-                message.error({ content: `Failed to create group!: \n ${e.message || ''}`, duration: 3 });
+                message.error({content: `Failed to create group!: \n ${e.message || ''}`, duration: 3});
             })
             .finally(() => {
                 setStagedName('');
@@ -98,8 +98,8 @@ export default function CreateGroupModal({ onClose, onCreate }: Props) {
                                 required: true,
                                 message: 'Enter a Group name.',
                             },
-                            { whitespace: true },
-                            { min: 1, max: 50 },
+                            {whitespace: true},
+                            {min: 1, max: 50},
                         ]}
                         hasFeedback
                     >
@@ -112,7 +112,7 @@ export default function CreateGroupModal({ onClose, onCreate }: Props) {
                 </Form.Item>
                 <Form.Item label={<Typography.Text strong>Description</Typography.Text>}>
                     <Typography.Paragraph>An optional description for your new group.</Typography.Paragraph>
-                    <Form.Item name="description" rules={[{ whitespace: true }, { min: 1, max: 500 }]} hasFeedback>
+                    <Form.Item name="description" rules={[{whitespace: true}, {min: 1, max: 500}]} hasFeedback>
                         <Input
                             placeholder="A description for your group"
                             value={stagedDescription}

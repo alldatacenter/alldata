@@ -1,22 +1,22 @@
 import * as React from 'react';
-import { BookFilled, BookOutlined } from '@ant-design/icons';
-import { EntityType, GlossaryTerm, SearchResult } from '../../../types.generated';
-import { Entity, EntityCapabilityType, IconStyleType, PreviewType } from '../Entity';
-import { Preview } from './preview/Preview';
-import { getDataForEntityType } from '../shared/containers/profile/utils';
-import { EntityProfile } from '../shared/containers/profile/EntityProfile';
-import { GetGlossaryTermQuery, useGetGlossaryTermQuery } from '../../../graphql/glossaryTerm.generated';
-import { GenericEntityProperties } from '../shared/types';
-import { SchemaTab } from '../shared/tabs/Dataset/Schema/SchemaTab';
+import {BookFilled, BookOutlined} from '@ant-design/icons';
+import {EntityType, GlossaryTerm, SearchResult} from '../../../types.generated';
+import {Entity, EntityCapabilityType, IconStyleType, PreviewType} from '../Entity';
+import {Preview} from './preview/Preview';
+import {getDataForEntityType} from '../shared/containers/profile/utils';
+import {EntityProfile} from '../shared/containers/profile/EntityProfile';
+import {GetGlossaryTermQuery, useGetGlossaryTermQuery} from '../../../graphql/glossaryTerm.generated';
+import {GenericEntityProperties} from '../shared/types';
+import {SchemaTab} from '../shared/tabs/Dataset/Schema/SchemaTab';
 import GlossaryRelatedEntity from './profile/GlossaryRelatedEntity';
 import GlossayRelatedTerms from './profile/GlossaryRelatedTerms';
-import { SidebarOwnerSection } from '../shared/containers/profile/sidebar/Ownership/SidebarOwnerSection';
-import { PropertiesTab } from '../shared/tabs/Properties/PropertiesTab';
-import { DocumentationTab } from '../shared/tabs/Documentation/DocumentationTab';
-import { SidebarAboutSection } from '../shared/containers/profile/sidebar/AboutSection/SidebarAboutSection';
-import { EntityMenuItems } from '../shared/EntityDropdown/EntityDropdown';
-import { EntityActionItem } from '../shared/entity/EntityActions';
-import { SidebarDomainSection } from '../shared/containers/profile/sidebar/Domain/SidebarDomainSection';
+import {SidebarOwnerSection} from '../shared/containers/profile/sidebar/Ownership/SidebarOwnerSection';
+import {PropertiesTab} from '../shared/tabs/Properties/PropertiesTab';
+import {DocumentationTab} from '../shared/tabs/Documentation/DocumentationTab';
+import {SidebarAboutSection} from '../shared/containers/profile/sidebar/AboutSection/SidebarAboutSection';
+import {EntityMenuItems} from '../shared/EntityDropdown/EntityDropdown';
+import {EntityActionItem} from '../shared/entity/EntityActions';
+import {SidebarDomainSection} from '../shared/containers/profile/sidebar/Domain/SidebarDomainSection';
 
 /**
  * Definition of the DataHub Dataset entity.
@@ -26,11 +26,11 @@ export class GlossaryTermEntity implements Entity<GlossaryTerm> {
 
     icon = (fontSize: number, styleType: IconStyleType, color?: string) => {
         if (styleType === IconStyleType.TAB_VIEW) {
-            return <BookOutlined style={{ fontSize, color }} />;
+            return <BookOutlined style={{fontSize, color}}/>;
         }
 
         if (styleType === IconStyleType.HIGHLIGHT) {
-            return <BookFilled style={{ fontSize, color: color || '#B37FEB' }} />;
+            return <BookFilled style={{fontSize, color: color || '#B37FEB'}}/>;
         }
 
         return (

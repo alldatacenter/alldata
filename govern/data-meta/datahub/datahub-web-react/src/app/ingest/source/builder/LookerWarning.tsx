@@ -1,6 +1,6 @@
 import React from 'react';
-import { Alert } from 'antd';
-import { LOOKER, LOOK_ML } from './constants';
+import {Alert} from 'antd';
+import {LOOKER, LOOK_ML} from './constants';
 
 const LOOKML_DOC_LINK = 'https://datahubproject.io/docs/generated/ingestion/sources/looker#module-lookml';
 const LOOKER_DOC_LINK = 'https://datahubproject.io/docs/generated/ingestion/sources/looker#module-looker';
@@ -9,7 +9,7 @@ interface Props {
     type: string;
 }
 
-export const LookerWarning = ({ type }: Props) => {
+export const LookerWarning = ({type}: Props) => {
     let link: React.ReactNode;
     if (type === LOOKER) {
         link = (
@@ -27,7 +27,7 @@ export const LookerWarning = ({ type }: Props) => {
 
     return (
         <Alert
-            style={{ marginBottom: '10px' }}
+            style={{marginBottom: '10px'}}
             type="warning"
             banner
             message={

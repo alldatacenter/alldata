@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
-import { Divider, Typography } from 'antd';
+import {Divider, Typography} from 'antd';
 import ProfilingRunsChart from './charts/ProfilingRunsChart';
 import StatChart from './charts/StatChart';
-import { DatasetProfile, DateInterval } from '../../../../../../../types.generated';
-import { getFixedLookbackWindow, TimeWindowSize } from '../../../../../../shared/time/timeUtils';
-import { useGetDataProfilesLazyQuery } from '../../../../../../../graphql/dataset.generated';
-import { Message } from '../../../../../../shared/Message';
-import { LookbackWindow } from '../lookbackWindows';
-import { ANTD_GRAY } from '../../../../constants';
+import {DatasetProfile, DateInterval} from '../../../../../../../types.generated';
+import {getFixedLookbackWindow, TimeWindowSize} from '../../../../../../shared/time/timeUtils';
+import {useGetDataProfilesLazyQuery} from '../../../../../../../graphql/dataset.generated';
+import {Message} from '../../../../../../shared/Message';
+import {LookbackWindow} from '../lookbackWindows';
+import {ANTD_GRAY} from '../../../../constants';
 import PrefixedSelect from './shared/PrefixedSelect';
 
 // TODO: Reuse stat sections.
@@ -112,15 +112,15 @@ export type Props = {
     lookbackWindow: LookbackWindow;
 };
 
-export default function HistoricalStats({ urn, lookbackWindow }: Props) {
-    const [getDataProfiles, { data: profilesData, loading: profilesLoading }] = useGetDataProfilesLazyQuery();
+export default function HistoricalStats({urn, lookbackWindow}: Props) {
+    const [getDataProfiles, {data: profilesData, loading: profilesLoading}] = useGetDataProfilesLazyQuery();
 
     /**
      * Perform initial fetch of default lookback window stats.
      */
     useEffect(() => {
         getDataProfiles({
-            variables: { urn, ...getFixedLookbackWindow(getLookbackWindowSize(lookbackWindow)) },
+            variables: {urn, ...getFixedLookbackWindow(getLookbackWindowSize(lookbackWindow))},
         });
     }, [urn, lookbackWindow, getDataProfiles]);
 
@@ -194,10 +194,10 @@ export default function HistoricalStats({ urn, lookbackWindow }: Props) {
 
     return (
         <>
-            {profilesLoading && <Message type="loading" content="Loading..." style={{ marginTop: '10%' }} />}
+            {profilesLoading && <Message type="loading" content="Loading..." style={{marginTop: '10%'}}/>}
             <StatSection>
                 <Typography.Title level={5}>Profiling Runs</Typography.Title>
-                <ProfilingRunsChart profiles={profiles} />
+                <ProfilingRunsChart profiles={profiles}/>
             </StatSection>
             <StatSection>
                 <Typography.Title level={5}>Table Stats</Typography.Title>
@@ -208,7 +208,7 @@ export default function HistoricalStats({ urn, lookbackWindow }: Props) {
                         dateRange={graphDateRange}
                         values={rowCountChartValues}
                     />
-                    <ChartDivider type="vertical" height={360} width={1} />
+                    <ChartDivider type="vertical" height={360} width={1}/>
                     <StatChart
                         title="Column Count Over Time"
                         tickInterval={graphTickInterval}
@@ -229,7 +229,7 @@ export default function HistoricalStats({ urn, lookbackWindow }: Props) {
                         dateRange={graphDateRange}
                         values={nullCountChartValues}
                     />
-                    <ChartDivider type="vertical" height={360} width={1} />
+                    <ChartDivider type="vertical" height={360} width={1}/>
                     <StatChart
                         title="Null Percentage Over Time"
                         tickInterval={graphTickInterval}
@@ -237,7 +237,7 @@ export default function HistoricalStats({ urn, lookbackWindow }: Props) {
                         values={nullPercentageChartValues}
                     />
                 </ChartRow>
-                <ChartDivider type="horizontal" height={1} width={400} />
+                <ChartDivider type="horizontal" height={1} width={400}/>
                 <ChartRow>
                     <StatChart
                         title="Distinct Count Over Time"
@@ -245,7 +245,7 @@ export default function HistoricalStats({ urn, lookbackWindow }: Props) {
                         dateRange={graphDateRange}
                         values={distinctCountChartValues}
                     />
-                    <ChartDivider type="vertical" height={360} width={1} />
+                    <ChartDivider type="vertical" height={360} width={1}/>
                     <StatChart
                         title="Distinct Percentage Over Time"
                         tickInterval={graphTickInterval}

@@ -1,4 +1,4 @@
-import { getMatchPrioritizingPrimary } from '../utils';
+import {getMatchPrioritizingPrimary} from '../utils';
 
 const MOCK_MATCHED_FIELDS = [
     {

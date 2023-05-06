@@ -1,13 +1,13 @@
 import React from 'react';
-import { InfoCircleOutlined } from '@ant-design/icons';
-import { Divider, message, Modal, Popover, Tooltip, Typography } from 'antd';
-import { blue } from '@ant-design/colors';
+import {InfoCircleOutlined} from '@ant-design/icons';
+import {Divider, message, Modal, Popover, Tooltip, Typography} from 'antd';
+import {blue} from '@ant-design/colors';
 import styled from 'styled-components';
 import moment from 'moment';
-import { Deprecation } from '../../../../../types.generated';
-import { getLocaleTimezone } from '../../../../shared/time/timeUtils';
-import { ANTD_GRAY } from '../../constants';
-import { useBatchUpdateDeprecationMutation } from '../../../../../graphql/mutations.generated';
+import {Deprecation} from '../../../../../types.generated';
+import {getLocaleTimezone} from '../../../../shared/time/timeUtils';
+import {ANTD_GRAY} from '../../constants';
+import {useBatchUpdateDeprecationMutation} from '../../../../../graphql/mutations.generated';
 
 const DeprecatedContainer = styled.div`
     width: 104px;
@@ -79,7 +79,7 @@ type Props = {
     showUndeprecate: boolean | null;
 };
 
-export const DeprecationPill = ({ deprecation, preview, urn, refetch, showUndeprecate }: Props) => {
+export const DeprecationPill = ({deprecation, preview, urn, refetch, showUndeprecate}: Props) => {
     const [batchUpdateDeprecationMutation] = useBatchUpdateDeprecationMutation();
     /**
      * Deprecation Decommission Timestamp
@@ -102,14 +102,14 @@ export const DeprecationPill = ({ deprecation, preview, urn, refetch, showUndepr
         batchUpdateDeprecationMutation({
             variables: {
                 input: {
-                    resources: [{ resourceUrn: urn }],
+                    resources: [{resourceUrn: urn}],
                     deprecated: false,
                 },
             },
         })
-            .then(({ errors }) => {
+            .then(({errors}) => {
                 if (!errors) {
-                    message.success({ content: 'Marked assets as un-deprecated!', duration: 2 });
+                    message.success({content: 'Marked assets as un-deprecated!', duration: 2});
                     refetch?.();
                 }
             })
@@ -124,13 +124,13 @@ export const DeprecationPill = ({ deprecation, preview, urn, refetch, showUndepr
 
     return (
         <Popover
-            overlayStyle={{ maxWidth: 240 }}
+            overlayStyle={{maxWidth: 240}}
             placement="right"
             content={
                 hasDetails ? (
                     <>
                         {deprecation?.note !== '' && <DeprecatedTitle>Deprecation note</DeprecatedTitle>}
-                        {isDividerNeeded && <ThinDivider />}
+                        {isDividerNeeded && <ThinDivider/>}
                         {deprecation?.note !== '' && <DeprecatedSubTitle>{deprecation.note}</DeprecatedSubTitle>}
                         {deprecation?.decommissionTime !== null && (
                             <Typography.Text type="secondary">
@@ -139,7 +139,7 @@ export const DeprecationPill = ({ deprecation, preview, urn, refetch, showUndepr
                                 </Tooltip>
                             </Typography.Text>
                         )}
-                        {isDividerNeeded && <ThinDivider />}
+                        {isDividerNeeded && <ThinDivider/>}
                         {showUndeprecate && (
                             <IconGroup
                                 onClick={() =>
@@ -149,14 +149,15 @@ export const DeprecationPill = ({ deprecation, preview, urn, refetch, showUndepr
                                         onOk() {
                                             batchUndeprecate();
                                         },
-                                        onCancel() {},
+                                        onCancel() {
+                                        },
                                         okText: 'Yes',
                                         maskClosable: true,
                                         closable: true,
                                     })
                                 }
                             >
-                                <UndeprecatedIcon />
+                                <UndeprecatedIcon/>
                                 Mark as un-deprecated
                             </IconGroup>
                         )}
@@ -166,9 +167,9 @@ export const DeprecationPill = ({ deprecation, preview, urn, refetch, showUndepr
                 )
             }
         >
-            {(preview && <StyledInfoCircleOutlined />) || (
+            {(preview && <StyledInfoCircleOutlined/>) || (
                 <DeprecatedContainer>
-                    <StyledInfoCircleOutlined />
+                    <StyledInfoCircleOutlined/>
                     <DeprecatedText>Deprecated</DeprecatedText>
                 </DeprecatedContainer>
             )}

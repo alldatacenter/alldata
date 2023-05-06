@@ -1,19 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import { useHistory, useLocation } from 'react-router';
+import React, {useEffect, useState} from 'react';
+import {useHistory, useLocation} from 'react-router';
 import * as QueryString from 'query-string';
-import { useTheme } from 'styled-components';
-import { SearchHeader } from './SearchHeader';
-import { useEntityRegistry } from '../useEntityRegistry';
-import { EntityType, FacetFilterInput } from '../../types.generated';
+import {useTheme} from 'styled-components';
+import {SearchHeader} from './SearchHeader';
+import {useEntityRegistry} from '../useEntityRegistry';
+import {EntityType, FacetFilterInput} from '../../types.generated';
 import {
     GetAutoCompleteMultipleResultsQuery,
     useGetAutoCompleteMultipleResultsLazyQuery,
 } from '../../graphql/search.generated';
-import { navigateToSearchUrl } from './utils/navigateToSearchUrl';
-import analytics, { EventType } from '../analytics';
+import {navigateToSearchUrl} from './utils/navigateToSearchUrl';
+import analytics, {EventType} from '../analytics';
 import useFilters from './utils/useFilters';
-import { PageRoutes } from '../../conf/Global';
-import { useUserContext } from '../context/useUserContext';
+import {PageRoutes} from '../../conf/Global';
+import {getAutoCompleteInputFromQuickFilter} from './utils/filterUtils';
+import {useQuickFiltersContext} from '../../providers/QuickFiltersContext';
+import {useUserContext} from '../context/useUserContext';
 
 const styles = {
     children: {
@@ -42,9 +44,9 @@ const isSearchResultPage = (path: string) => {
 /**
  * A page that includes a sticky search header (nav bar)
  */
-export const SearchablePage = ({ onSearch, onAutoComplete, children }: Props) => {
+export const SearchablePage = ({onSearch, onAutoComplete, children}: Props) => {
     const location = useLocation();
-    const params = QueryString.parse(location.search, { arrayFormat: 'comma' });
+    const params = QueryString.parse(location.search, {arrayFormat: 'comma'});
     const paramFilters: Array<FacetFilterInput> = useFilters(params);
     const filters = isSearchResultPage(location.pathname) ? paramFilters : [];
     const currentQuery: string = isSearchResultPage(location.pathname)
@@ -54,10 +56,13 @@ export const SearchablePage = ({ onSearch, onAutoComplete, children }: Props) =>
     const history = useHistory();
     const entityRegistry = useEntityRegistry();
     const themeConfig = useTheme();
+    const {selectedQuickFilter} = useQuickFiltersContext();
 
-    const [getAutoCompleteResults, { data: suggestionsData }] = useGetAutoCompleteMultipleResultsLazyQuery();
-    const user = useUserContext()?.user;
+    const [getAutoCompleteResults, {data: suggestionsData}] = useGetAutoCompleteMultipleResultsLazyQuery();
+    const userContext = useUserContext();
     const [newSuggestionData, setNewSuggestionData] = useState<GetAutoCompleteMultipleResultsQuery | undefined>();
+    const {user} = userContext;
+    const viewUrn = userContext.localState?.selectedViewUrn;
 
     useEffect(() => {
         if (suggestionsData !== undefined) {
@@ -65,7 +70,7 @@ export const SearchablePage = ({ onSearch, onAutoComplete, children }: Props) =>
         }
     }, [suggestionsData]);
 
-    const search = (query: string, type?: EntityType) => {
+    const search = (query: string, type?: EntityType, quickFilters?: FacetFilterInput[]) => {
         if (!query || query.trim().length === 0) {
             return;
         }
@@ -74,12 +79,16 @@ export const SearchablePage = ({ onSearch, onAutoComplete, children }: Props) =>
             query,
             pageNumber: 1,
             originPath: window.location.pathname,
+            selectedQuickFilterTypes: selectedQuickFilter ? [selectedQuickFilter.field] : undefined,
+            selectedQuickFilterValues: selectedQuickFilter ? [selectedQuickFilter.value] : undefined,
         });
+
+        const appliedFilters = quickFilters && quickFilters?.length > 0 ? quickFilters : filters;
 
         navigateToSearchUrl({
             type,
             query,
-            filters,
+            filters: appliedFilters,
             history,
         });
     };
@@ -90,6 +99,8 @@ export const SearchablePage = ({ onSearch, onAutoComplete, children }: Props) =>
                 variables: {
                     input: {
                         query,
+                        viewUrn,
+                        ...getAutoCompleteInputFromQuickFilter(selectedQuickFilter),
                     },
                 },
             });
@@ -103,11 +114,12 @@ export const SearchablePage = ({ onSearch, onAutoComplete, children }: Props) =>
                 variables: {
                     input: {
                         query: currentQuery,
+                        viewUrn,
                     },
                 },
             });
         }
-    }, [currentQuery, getAutoCompleteResults]);
+    }, [currentQuery, getAutoCompleteResults, viewUrn]);
 
     return (
         <>

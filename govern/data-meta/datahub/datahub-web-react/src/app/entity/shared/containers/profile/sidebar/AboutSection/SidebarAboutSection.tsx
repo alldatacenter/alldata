@@ -1,8 +1,8 @@
-import { Button } from 'antd';
-import { EditOutlined } from '@ant-design/icons';
+import {Button} from 'antd';
+import {EditOutlined} from '@ant-design/icons';
 import React from 'react';
-import { useEntityData, useRouteToTab } from '../../../../EntityContext';
-import { SidebarHeader } from '../SidebarHeader';
+import {useEntityData, useRouteToTab} from '../../../../EntityContext';
+import {SidebarHeader} from '../SidebarHeader';
 import DescriptionSection from './DescriptionSection';
 import LinksSection from './LinksSection';
 import SourceRefSection from './SourceRefSection';
@@ -17,9 +17,9 @@ interface Props {
     readOnly?: boolean;
 }
 
-export const SidebarAboutSection = ({ properties, readOnly }: Props) => {
+export const SidebarAboutSection = ({properties, readOnly}: Props) => {
     const hideLinksButton = properties?.hideLinksButton;
-    const { entityData } = useEntityData();
+    const {entityData} = useEntityData();
     const routeToTab = useRouteToTab();
 
     const originalDescription = entityData?.properties?.description;
@@ -32,24 +32,24 @@ export const SidebarAboutSection = ({ properties, readOnly }: Props) => {
     return (
         <div>
             <SidebarHeader
-                title="About"
+                title="关于"
                 actions={
                     hasContent &&
                     !readOnly && (
                         <Button
-                            onClick={() => routeToTab({ tabName: 'Documentation', tabParams: { editing: true } })}
+                            onClick={() => routeToTab({tabName: 'Documentation', tabParams: {editing: true}})}
                             type="text"
                             shape="circle"
                         >
-                            <EditOutlined />
+                            <EditOutlined/>
                         </Button>
                     )
                 }
             />
-            {description && <DescriptionSection description={description} />}
-            {!hasContent && <EmptyContentSection hideLinksButton={hideLinksButton} readOnly={readOnly} />}
-            {hasContent && <LinksSection hideLinksButton={hideLinksButton} readOnly={readOnly} />}
-            <SourceRefSection />
+            {description && <DescriptionSection description={description}/>}
+            {!hasContent && <EmptyContentSection hideLinksButton={hideLinksButton} readOnly={readOnly}/>}
+            {hasContent && <LinksSection hideLinksButton={hideLinksButton} readOnly={readOnly}/>}
+            <SourceRefSection/>
         </div>
     );
 };

@@ -1,9 +1,9 @@
-import { Button, Form, Modal, Select, Tag, Tooltip } from 'antd';
-import React, { ReactNode, useRef, useState } from 'react';
+import {Button, Form, Modal, Select, Tag, Tooltip} from 'antd';
+import React, {ReactNode, useRef, useState} from 'react';
 import styled from 'styled-components/macro';
-import { useGetSearchResultsLazyQuery } from '../../../../../../../graphql/search.generated';
-import { DataPlatform, Entity, EntityType } from '../../../../../../../types.generated';
-import { useEnterKeyListener } from '../../../../../../shared/useEnterKeyListener';
+import {useGetSearchResultsLazyQuery} from '../../../../../../../graphql/search.generated';
+import {DataPlatform, Entity, EntityType} from '../../../../../../../types.generated';
+import {useEnterKeyListener} from '../../../../../../shared/useEnterKeyListener';
 
 type Props = {
     onCloseModal: () => void;
@@ -33,8 +33,8 @@ const PreviewImage = styled.img`
     margin-right: 4px;
 `;
 
-export const SelectPlatformModal = ({ onCloseModal, defaultValues, onOk, titleOverride }: Props) => {
-    const [platformSearch, { data: platforSearchData }] = useGetSearchResultsLazyQuery();
+export const SelectPlatformModal = ({onCloseModal, defaultValues, onOk, titleOverride}: Props) => {
+    const [platformSearch, {data: platforSearchData}] = useGetSearchResultsLazyQuery();
     const platformSearchResults =
         platforSearchData?.search?.searchResults?.map((searchResult) => searchResult.entity) || [];
 
@@ -65,7 +65,7 @@ export const SelectPlatformModal = ({ onCloseModal, defaultValues, onOk, titleOv
         const truncatedDisplayName = displayName.length > 25 ? `${displayName.slice(0, 25)}...` : displayName;
         return (
             <Tooltip title={displayName}>
-                {!!entity.properties?.logoUrl && <PreviewImage src={entity?.properties?.logoUrl} alt={entity?.name} />}
+                {!!entity.properties?.logoUrl && <PreviewImage src={entity?.properties?.logoUrl} alt={entity?.name}/>}
                 <span>{truncatedDisplayName}</span>
             </Tooltip>
         );
@@ -122,7 +122,7 @@ export const SelectPlatformModal = ({ onCloseModal, defaultValues, onOk, titleOv
 
     const tagRender = (props) => {
         // eslint-disable-next-line react/prop-types
-        const { label, closable, onClose } = props;
+        const {label, closable, onClose} = props;
         const onPreventMouseDown = (event) => {
             event.preventDefault();
             event.stopPropagation();

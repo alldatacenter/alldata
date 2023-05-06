@@ -1,5 +1,5 @@
 import React from 'react';
-import { LineageDirection } from '../../../../../types.generated';
+import {LineageDirection} from '../../../../../types.generated';
 
 export const LineageTabContext = React.createContext<LineageTabContextType>({
     isColumnLevelLineage: false,

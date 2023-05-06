@@ -1,8 +1,8 @@
-import { Empty } from 'antd';
+import {Empty} from 'antd';
 import React from 'react';
 import styled from 'styled-components';
-import { ANTD_GRAY } from '../../constants';
-import { useEntityData } from '../../EntityContext';
+import {ANTD_GRAY} from '../../constants';
+import {useEntityData} from '../../EntityContext';
 
 const EmbedContainer = styled.div`
     width: 100%;
@@ -21,12 +21,12 @@ const StyledEmpty = styled(Empty)`
 `;
 
 export const EmbedTab = () => {
-    const { entityData } = useEntityData();
+    const {entityData} = useEntityData();
     const embedRenderUrl = entityData?.embed?.renderUrl;
     return (
         <EmbedContainer>
-            {(embedRenderUrl && <StyledIframe src={embedRenderUrl} title={entityData?.urn} frameBorder={0} />) || (
-                <StyledEmpty description="No preview was found." />
+            {(embedRenderUrl && <StyledIframe src={embedRenderUrl} title={entityData?.urn} frameBorder={0}/>) || (
+                <StyledEmpty description="No preview was found."/>
             )}
         </EmbedContainer>
     );

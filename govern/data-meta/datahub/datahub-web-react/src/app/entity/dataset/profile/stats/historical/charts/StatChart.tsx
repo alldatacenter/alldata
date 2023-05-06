@@ -1,11 +1,11 @@
-import { Col, Divider, Typography } from 'antd';
-import React, { useMemo } from 'react';
+import {Col, Divider, Typography} from 'antd';
+import React, {useMemo} from 'react';
 import styled from 'styled-components';
 
-import { DateInterval, DateRange } from '../../../../../../../types.generated';
-import { ChartCard } from '../../../../../../analyticsDashboard/components/ChartCard';
-import { ChartContainer } from '../../../../../../analyticsDashboard/components/ChartContainer';
-import { TimeSeriesChart } from '../../../../../../analyticsDashboard/components/TimeSeriesChart';
+import {DateInterval, DateRange} from '../../../../../../../types.generated';
+import {ChartCard} from '../../../../../../analyticsDashboard/components/ChartCard';
+import {ChartContainer} from '../../../../../../analyticsDashboard/components/ChartContainer';
+import {TimeSeriesChart} from '../../../../../../analyticsDashboard/components/TimeSeriesChart';
 
 const ChartTitle = styled(Typography.Title)`
     && {
@@ -43,7 +43,7 @@ const DEFAULT_AXIS_WIDTH = 2;
 /**
  * Time Series Chart with a single line.
  */
-export default function StatChart({ title, values, tickInterval: interval, dateRange }: Props) {
+export default function StatChart({title, values, tickInterval: interval, dateRange}: Props) {
     const timeSeriesData = useMemo(
         () =>
             values
@@ -76,7 +76,7 @@ export default function StatChart({ title, values, tickInterval: interval, dateR
                 <ChartCard shouldScroll={false}>
                     <ChartContainer>
                         <ChartTitle level={5}>{chartData.title}</ChartTitle>
-                        <ThinDivider />
+                        <ThinDivider/>
                         <TimeSeriesChart
                             style={{
                                 lineColor: DEFAULT_LINE_COLOR,

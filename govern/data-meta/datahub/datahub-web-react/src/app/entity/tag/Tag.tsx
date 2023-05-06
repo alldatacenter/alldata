@@ -1,11 +1,11 @@
-import { TagOutlined, TagFilled } from '@ant-design/icons';
+import {TagOutlined, TagFilled} from '@ant-design/icons';
 import * as React from 'react';
 import styled from 'styled-components';
-import { Tag, EntityType, SearchResult } from '../../../types.generated';
+import {Tag, EntityType, SearchResult} from '../../../types.generated';
 import DefaultPreviewCard from '../../preview/DefaultPreviewCard';
-import { Entity, EntityCapabilityType, IconStyleType, PreviewType } from '../Entity';
-import { getDataForEntityType } from '../shared/containers/profile/utils';
-import { urlEncodeUrn } from '../shared/utils';
+import {Entity, EntityCapabilityType, IconStyleType, PreviewType} from '../Entity';
+import {getDataForEntityType} from '../shared/containers/profile/utils';
+import {urlEncodeUrn} from '../shared/utils';
 import TagProfile from './TagProfile';
 
 const PreviewTagIcon = styled(TagOutlined)`
@@ -20,11 +20,11 @@ export class TagEntity implements Entity<Tag> {
 
     icon = (fontSize: number, styleType: IconStyleType, color?: string) => {
         if (styleType === IconStyleType.TAB_VIEW) {
-            return <TagFilled style={{ fontSize, color }} />;
+            return <TagFilled style={{fontSize, color}}/>;
         }
 
         if (styleType === IconStyleType.HIGHLIGHT) {
-            return <TagFilled style={{ fontSize, color: color || '#B37FEB' }} />;
+            return <TagFilled style={{fontSize, color: color || '#B37FEB'}}/>;
         }
 
         return (
@@ -51,15 +51,15 @@ export class TagEntity implements Entity<Tag> {
 
     getEntityName: () => string = () => 'Tag';
 
-    renderProfile: (urn: string) => JSX.Element = (_) => <TagProfile />;
+    renderProfile: (urn: string) => JSX.Element = (_) => <TagProfile/>;
 
     renderPreview = (_: PreviewType, data: Tag) => (
         <DefaultPreviewCard
             description={data.description || ''}
-            name={data.name}
+            name={this.displayName(data)}
             urn={data.urn}
             url={`/${this.getPathName()}/${urlEncodeUrn(data.urn)}`}
-            logoComponent={<PreviewTagIcon />}
+            logoComponent={<PreviewTagIcon/>}
             type="Tag"
             typeIcon={this.icon(14, IconStyleType.ACCENT)}
         />
@@ -74,7 +74,7 @@ export class TagEntity implements Entity<Tag> {
     };
 
     getGenericEntityProperties = (tag: Tag) => {
-        return getDataForEntityType({ data: tag, entityType: this.type, getOverrideProperties: (data) => data });
+        return getDataForEntityType({data: tag, entityType: this.type, getOverrideProperties: (data) => data});
     };
 
     supportedCapabilities = () => {

@@ -1,20 +1,20 @@
-import { DeliveredProcedureOutlined } from '@ant-design/icons';
-import { Pagination, Table, Tooltip, Typography } from 'antd';
-import React, { useState } from 'react';
+import {DeliveredProcedureOutlined} from '@ant-design/icons';
+import {Pagination, Table, Tooltip, Typography} from 'antd';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 
-import { useGetDataJobRunsQuery } from '../../../../graphql/dataJob.generated';
-import { DataProcessInstanceRunResultType, DataProcessRunStatus } from '../../../../types.generated';
+import {useGetDataJobRunsQuery} from '../../../../graphql/dataJob.generated';
+import {DataProcessInstanceRunResultType, DataProcessRunStatus} from '../../../../types.generated';
 import {
     getExecutionRequestStatusDisplayColor,
     getExecutionRequestStatusDisplayText,
     getExecutionRequestStatusIcon,
 } from '../../../ingest/source/utils';
-import { CompactEntityNameList } from '../../../recommendations/renderer/component/CompactEntityNameList';
-import { ANTD_GRAY } from '../../shared/constants';
-import { useEntityData } from '../../shared/EntityContext';
-import { ReactComponent as LoadingSvg } from '../../../../images/datahub-logo-color-loading_pendulum.svg';
-import { scrollToTop } from '../../../shared/searchUtils';
+import {CompactEntityNameList} from '../../../recommendations/renderer/component/CompactEntityNameList';
+import {ANTD_GRAY} from '../../shared/constants';
+import {useEntityData} from '../../shared/EntityContext';
+import {ReactComponent as LoadingSvg} from '../../../../images/datahub-logo-color-loading_pendulum.svg';
+import {scrollToTop} from '../../../shared/searchUtils';
 
 const ExternalUrlLink = styled.a`
     font-size: 16px;
@@ -74,9 +74,9 @@ const columns = [
             const color = getExecutionRequestStatusDisplayColor(statusForStyling);
             return (
                 <>
-                    <div style={{ display: 'flex', justifyContent: 'left', alignItems: 'center' }}>
-                        {Icon && <Icon style={{ color }} />}
-                        <Typography.Text strong style={{ color, marginLeft: 8 }}>
+                    <div style={{display: 'flex', justifyContent: 'left', alignItems: 'center'}}>
+                        {Icon && <Icon style={{color}}/>}
+                        <Typography.Text strong style={{color, marginLeft: 8}}>
                             {text || 'N/A'}
                         </Typography.Text>
                     </div>
@@ -88,13 +88,13 @@ const columns = [
         title: 'Inputs',
         dataIndex: 'inputs',
         key: 'inputs',
-        render: (inputs) => <CompactEntityNameList entities={inputs} />,
+        render: (inputs) => <CompactEntityNameList entities={inputs}/>,
     },
     {
         title: 'Outputs',
         dataIndex: 'outputs',
         key: 'outputs',
-        render: (outputs) => <CompactEntityNameList entities={outputs} />,
+        render: (outputs) => <CompactEntityNameList entities={outputs}/>,
     },
     {
         title: '',
@@ -104,7 +104,7 @@ const columns = [
             externalUrl && (
                 <Tooltip title="View task run details">
                     <ExternalUrlLink href={externalUrl}>
-                        <DeliveredProcedureOutlined />
+                        <DeliveredProcedureOutlined/>
                     </ExternalUrlLink>
                 </Tooltip>
             ),
@@ -114,11 +114,11 @@ const columns = [
 const PAGE_SIZE = 20;
 
 export const RunsTab = () => {
-    const { urn } = useEntityData();
+    const {urn} = useEntityData();
     const [page, setPage] = useState(1);
 
-    const { loading, data } = useGetDataJobRunsQuery({
-        variables: { urn, start: (page - 1) * PAGE_SIZE, count: PAGE_SIZE },
+    const {loading, data} = useGetDataJobRunsQuery({
+        variables: {urn, start: (page - 1) * PAGE_SIZE, count: PAGE_SIZE},
     });
     const runs = data && data?.dataJob?.runs?.runs;
 
@@ -136,7 +136,7 @@ export const RunsTab = () => {
     if (loading) {
         return (
             <LoadingContainer>
-                <LoadingSvg height={80} width={80} />
+                <LoadingSvg height={80} width={80}/>
                 <LoadingText>Fetching runs...</LoadingText>
             </LoadingContainer>
         );
@@ -149,7 +149,7 @@ export const RunsTab = () => {
 
     return (
         <>
-            <Table dataSource={tableData} columns={columns} pagination={false} />
+            <Table dataSource={tableData} columns={columns} pagination={false}/>
             <PaginationControlContainer>
                 <Pagination
                     current={page}

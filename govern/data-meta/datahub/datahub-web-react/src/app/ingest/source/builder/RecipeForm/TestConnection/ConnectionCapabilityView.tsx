@@ -1,9 +1,9 @@
-import { CheckOutlined, CloseOutlined, QuestionCircleOutlined } from '@ant-design/icons';
-import { Tooltip } from 'antd';
+import {CheckOutlined, CloseOutlined, QuestionCircleOutlined} from '@ant-design/icons';
+import {Tooltip} from 'antd';
 import React from 'react';
-import { green, red } from '@ant-design/colors';
+import {green, red} from '@ant-design/colors';
 import styled from 'styled-components/macro';
-import { ANTD_GRAY } from '../../../../../entity/shared/constants';
+import {ANTD_GRAY} from '../../../../../entity/shared/constants';
 
 const CapabilityWrapper = styled.div`
     align-items: center;
@@ -51,11 +51,11 @@ interface Props {
     number?: number;
 }
 
-function ConnectionCapabilityView({ success, capability, displayMessage, tooltipMessage, number }: Props) {
+function ConnectionCapabilityView({success, capability, displayMessage, tooltipMessage, number}: Props) {
     return (
         <CapabilityWrapper>
             <CapabilityName>
-                {success ? <StyledCheck /> : <StyledClose />}
+                {success ? <StyledCheck/> : <StyledClose/>}
                 {number ? <NumberWrapper>{number}.</NumberWrapper> : ''}
                 {capability}
             </CapabilityName>
@@ -63,7 +63,7 @@ function ConnectionCapabilityView({ success, capability, displayMessage, tooltip
                 {displayMessage}
                 {tooltipMessage && (
                     <Tooltip overlay={tooltipMessage}>
-                        <StyledQuestion />
+                        <StyledQuestion/>
                     </Tooltip>
                 )}
             </CapabilityMessage>

@@ -7,5 +7,5 @@ const apiKey = isEnabled ? amplitudeConfigs.apiKey : undefined;
 
 export default {
     isEnabled,
-    plugin: apiKey && amplitude({ apiKey, options: {} }),
+    plugin: apiKey && amplitude({apiKey, options: {}}),
 };

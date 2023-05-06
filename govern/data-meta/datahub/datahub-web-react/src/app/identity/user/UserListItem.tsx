@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components/macro';
-import { Dropdown, List, Menu, Tag, Tooltip, Typography } from 'antd';
-import { Link } from 'react-router-dom';
-import { DeleteOutlined, MoreOutlined, UnlockOutlined } from '@ant-design/icons';
-import { CorpUser, CorpUserStatus, EntityType, DataHubRole } from '../../../types.generated';
+import {Dropdown, List, Menu, Tag, Tooltip, Typography} from 'antd';
+import {Link} from 'react-router-dom';
+import {DeleteOutlined, MoreOutlined, UnlockOutlined} from '@ant-design/icons';
+import {CorpUser, CorpUserStatus, EntityType, DataHubRole} from '../../../types.generated';
 import CustomAvatar from '../../shared/avatar/CustomAvatar';
-import { useEntityRegistry } from '../../useEntityRegistry';
-import { ANTD_GRAY, REDESIGN_COLORS } from '../../entity/shared/constants';
+import {useEntityRegistry} from '../../useEntityRegistry';
+import {ANTD_GRAY, REDESIGN_COLORS} from '../../entity/shared/constants';
 import ViewResetTokenModal from './ViewResetTokenModal';
 import useDeleteEntity from '../../entity/shared/EntityDropdown/useDeleteEntity';
 import SelectRole from './SelectRole';
-import { USERS_ASSIGN_ROLE_ID } from '../../onboarding/config/UsersOnboardingConfig';
+import {USERS_ASSIGN_ROLE_ID} from '../../onboarding/config/UsersOnboardingConfig';
 
 type Props = {
     user: CorpUser;
@@ -49,7 +49,7 @@ const MenuIcon = styled(MoreOutlined)<{ fontSize?: number }>`
     margin-left: 5px;
 `;
 
-export default function UserListItem({ user, canManageUserCredentials, selectRoleOptions, onDelete, refetch }: Props) {
+export default function UserListItem({user, canManageUserCredentials, selectRoleOptions, onDelete, refetch}: Props) {
     const entityRegistry = useEntityRegistry();
     const [isViewingResetToken, setIsViewingResetToken] = useState(false);
     const displayName = entityRegistry.getDisplayName(EntityType.CorpUser, user);
@@ -60,7 +60,7 @@ export default function UserListItem({ user, canManageUserCredentials, selectRol
     const userRole = userRelationships && userRelationships.length > 0 && (userRelationships[0]?.entity as DataHubRole);
     const userRoleUrn = userRole && userRole.urn;
 
-    const { onDeleteEntity } = useDeleteEntity(user.urn, EntityType.CorpUser, user, onDelete, false, true);
+    const {onDeleteEntity} = useDeleteEntity(user.urn, EntityType.CorpUser, user, onDelete, false, true);
 
     const getUserStatusToolTip = (userStatus: CorpUserStatus) => {
         switch (userStatus) {
@@ -94,7 +94,7 @@ export default function UserListItem({ user, canManageUserCredentials, selectRol
                             name={displayName}
                             photoUrl={user.editableProperties?.pictureLink || undefined}
                         />
-                        <div style={{ marginLeft: 16, marginRight: 20 }}>
+                        <div style={{marginLeft: 16, marginRight: 20}}>
                             <div>
                                 <Typography.Text>{displayName}</Typography.Text>
                             </div>
@@ -122,15 +122,15 @@ export default function UserListItem({ user, canManageUserCredentials, selectRol
                     overlay={
                         <Menu>
                             <Menu.Item disabled={!shouldShowPasswordReset} onClick={() => setIsViewingResetToken(true)}>
-                                <UnlockOutlined /> &nbsp; Reset user password
+                                <UnlockOutlined/> &nbsp; Reset user password
                             </Menu.Item>
                             <Menu.Item onClick={onDeleteEntity}>
-                                <DeleteOutlined /> &nbsp;Delete
+                                <DeleteOutlined/> &nbsp;Delete
                             </Menu.Item>
                         </Menu>
                     }
                 >
-                    <MenuIcon fontSize={20} />
+                    <MenuIcon fontSize={20}/>
                 </Dropdown>
             </ButtonGroup>
             <ViewResetTokenModal

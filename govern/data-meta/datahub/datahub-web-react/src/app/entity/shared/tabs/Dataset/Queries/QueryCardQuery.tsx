@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { ANTD_GRAY } from '../../../constants';
+import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter';
+import {ANTD_GRAY} from '../../../constants';
 
 const Statement = styled.div<{ fullHeight?: boolean }>`
     background-color: ${ANTD_GRAY[2]};
@@ -31,7 +31,7 @@ export type Props = {
     index?: number;
 };
 
-export default function QueryCardQuery({ query, showDetails, onClickExpand, index }: Props) {
+export default function QueryCardQuery({query, showDetails, onClickExpand, index}: Props) {
     return (
         <Statement fullHeight={!showDetails} onClick={onClickExpand} data-testid={`query-content-${index}`}>
             <NestedSyntax showLineNumbers language="sql">

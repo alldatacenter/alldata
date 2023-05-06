@@ -1,12 +1,12 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { Group } from '@vx/group';
-import { Pagination } from 'antd';
+import React, {useContext, useEffect, useState} from 'react';
+import {Group} from '@vx/group';
+import {Pagination} from 'antd';
 import styled from 'styled-components';
-import { NodeData, EntitySelectParams } from './types';
-import { ANTD_GRAY } from '../entity/shared/constants';
-import { getTitleHeight } from './utils/titleUtils';
-import { LineageExplorerContext } from './utils/LineageExplorerContext';
-import { centerY, EXPAND_COLLAPSE_COLUMNS_TOGGLE_HEIGHT, iconX, NUM_COLUMNS_PER_PAGE, width } from './constants';
+import {NodeData, EntitySelectParams} from './types';
+import {ANTD_GRAY} from '../entity/shared/constants';
+import {getTitleHeight} from './utils/titleUtils';
+import {LineageExplorerContext} from './utils/LineageExplorerContext';
+import {centerY, EXPAND_COLLAPSE_COLUMNS_TOGGLE_HEIGHT, iconX, NUM_COLUMNS_PER_PAGE, width} from './constants';
 import ColumnNode from './ColumnNode';
 import NodeColumnsHeader from './NodeColumnsHeader';
 import usePrevious from '../shared/usePrevious';
@@ -15,7 +15,7 @@ import {
     filterColumns,
     haveDisplayedFieldsChanged,
 } from './utils/columnLineageUtils';
-import { useResetPageIndexAfterSelect } from './utils/useResetPageIndexAfterSelect';
+import {useResetPageIndexAfterSelect} from './utils/useResetPageIndexAfterSelect';
 
 const StyledPagination = styled(Pagination)`
     display: flex;
@@ -27,8 +27,8 @@ interface Props {
     onHover: (params?: EntitySelectParams) => void;
 }
 
-export default function LineageEntityColumns({ node, onHover }: Props) {
-    const { expandTitles, collapsedColumnsNodes, setVisibleColumnsByUrn, columnsByUrn, setColumnsByUrn } =
+export default function LineageEntityColumns({node, onHover}: Props) {
+    const {expandTitles, collapsedColumnsNodes, setVisibleColumnsByUrn, columnsByUrn, setColumnsByUrn} =
         useContext(LineageExplorerContext);
     const [pageIndex, setPageIndex] = useState(0);
     const [filterText, setFilterText] = useState('');
@@ -72,12 +72,12 @@ export default function LineageEntityColumns({ node, onHover }: Props) {
 
     return (
         <>
-            <rect x={iconX - 21} y={centerY + 55 + titleHeight} width={width - 2} height="0.25" stroke={ANTD_GRAY[6]} />
-            <NodeColumnsHeader node={node} filterText={filterText} setFilterText={setFilterText} />
+            <rect x={iconX - 21} y={centerY + 55 + titleHeight} width={width - 2} height="0.25" stroke={ANTD_GRAY[6]}/>
+            <NodeColumnsHeader node={node} filterText={filterText} setFilterText={setFilterText}/>
             {!areColumnsCollapsed && (
                 <Group>
                     {displayedFields?.map((field, idx) => (
-                        <ColumnNode field={field} index={idx} node={node} titleHeight={titleHeight} onHover={onHover} />
+                        <ColumnNode field={field} index={idx} node={node} titleHeight={titleHeight} onHover={onHover}/>
                     ))}
                     {hasColumnPagination && (
                         <foreignObject

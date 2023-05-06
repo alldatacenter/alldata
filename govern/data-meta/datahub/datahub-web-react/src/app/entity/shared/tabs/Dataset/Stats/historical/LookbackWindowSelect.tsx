@@ -1,6 +1,6 @@
 import React from 'react';
-import { SelectValue } from 'antd/lib/select';
-import { LookbackWindow, LOOKBACK_WINDOWS } from '../lookbackWindows';
+import {SelectValue} from 'antd/lib/select';
+import {LookbackWindow, LOOKBACK_WINDOWS} from '../lookbackWindows';
 import PrefixedSelect from './shared/PrefixedSelect';
 
 type Props = {
@@ -8,7 +8,7 @@ type Props = {
     setLookbackWindow: (window: LookbackWindow) => void;
 };
 
-export default function LookbackWindowSelect({ lookbackWindow, setLookbackWindow }: Props) {
+export default function LookbackWindowSelect({lookbackWindow, setLookbackWindow}: Props) {
     const onChangeLookbackWindow = (value: SelectValue) => {
         const newLookbackWindow = Object.values(LOOKBACK_WINDOWS).filter((window) => window.text === value?.valueOf());
         setLookbackWindow(newLookbackWindow[0]);

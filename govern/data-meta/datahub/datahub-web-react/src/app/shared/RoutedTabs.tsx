@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { Route, Switch, useRouteMatch, useLocation } from 'react-router-dom';
-import { Redirect, useHistory } from 'react-router';
-import { Tabs } from 'antd';
-import { TabsProps } from 'antd/lib/tabs';
+import {Route, Switch, useRouteMatch, useLocation} from 'react-router-dom';
+import {Redirect, useHistory} from 'react-router';
+import {Tabs} from 'antd';
+import {TabsProps} from 'antd/lib/tabs';
 
-const { TabPane } = Tabs;
+const {TabPane} = Tabs;
 
 interface Props extends TabsProps {
     defaultPath: string;
@@ -23,9 +23,9 @@ interface Props extends TabsProps {
  * A tab view where each tab is associated with a route mounted on top of the current path.
  * This permits direct navigation to a particular tab via URL.
  */
-export const RoutedTabs = ({ defaultPath, tabs, onTabChange, ...props }: Props) => {
-    const { path, url } = useRouteMatch();
-    const { pathname } = useLocation();
+export const RoutedTabs = ({defaultPath, tabs, onTabChange, ...props}: Props) => {
+    const {path, url} = useRouteMatch();
+    const {pathname} = useLocation();
     const history = useHistory();
     const subRoutes = tabs.map((tab) => tab.path.replace('/', ''));
     const trimmedPathName = pathname.endsWith('/') ? pathname.slice(0, pathname.length - 1) : pathname;
@@ -44,13 +44,13 @@ export const RoutedTabs = ({ defaultPath, tabs, onTabChange, ...props }: Props) 
             >
                 {tabs.map((tab) => {
                     return (
-                        <TabPane tab={tab.name} key={tab.path.replace('/', '')} disabled={!tab.display?.enabled()} />
+                        <TabPane tab={tab.name} key={tab.path.replace('/', '')} disabled={!tab.display?.enabled()}/>
                     );
                 })}
             </Tabs>
             <Switch>
                 <Route exact path={path}>
-                    <Redirect to={`${pathname}${pathname.endsWith('/') ? '' : '/'}${defaultPath}`} />
+                    <Redirect to={`${pathname}${pathname.endsWith('/') ? '' : '/'}${defaultPath}`}/>
                 </Route>
 
                 {tabs.map((tab) => (

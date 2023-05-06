@@ -1,9 +1,9 @@
-import Analytics, { PageData } from 'analytics';
+import Analytics, {PageData} from 'analytics';
 import Cookies from 'js-cookie';
 import plugins from './plugin';
-import { Event, EventType } from './event';
-import { CLIENT_AUTH_COOKIE } from '../../conf/Global';
-import { getBrowserId } from '../browserId';
+import {Event, EventType} from './event';
+import {CLIENT_AUTH_COOKIE} from '../../conf/Global';
+import {getBrowserId} from '../browserId';
 
 const appName = 'datahub-react';
 
@@ -14,7 +14,7 @@ const analytics = Analytics({
     plugins: plugins.filter((plugin) => plugin.isEnabled).map((plugin) => plugin.plugin),
 });
 
-const { NODE_ENV } = process.env;
+const {NODE_ENV} = process.env;
 
 export function getMergedTrackingOptions(options?: any) {
     const isThirdPartyLoggingEnabled = JSON.parse(localStorage.getItem(THIRD_PARTY_LOGGING_KEY) || 'false');

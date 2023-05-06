@@ -1,15 +1,15 @@
-import { CheckCircleOutlined } from '@ant-design/icons';
-import { Button, message } from 'antd';
-import React, { useEffect, useState } from 'react';
-import { green } from '@ant-design/colors';
+import {CheckCircleOutlined} from '@ant-design/icons';
+import {Button, message} from 'antd';
+import React, {useEffect, useState} from 'react';
+import {green} from '@ant-design/colors';
 import {
     useCreateTestConnectionRequestMutation,
     useGetIngestionExecutionRequestLazyQuery,
 } from '../../../../../../graphql/ingestion.generated';
-import { FAILURE, RUNNING, yamlToJson } from '../../../utils';
-import { TestConnectionResult } from './types';
+import {FAILURE, RUNNING, yamlToJson} from '../../../utils';
+import {TestConnectionResult} from './types';
 import TestConnectionModal from './TestConnectionModal';
-import { SourceConfig } from '../../types';
+import {SourceConfig} from '../../types';
 
 export function getRecipeJson(recipeYaml: string) {
     // Convert the recipe into it's json representation, and catch + report exceptions while we do it.
@@ -33,20 +33,20 @@ interface Props {
 }
 
 function TestConnectionButton(props: Props) {
-    const { recipe, sourceConfigs, version } = props;
+    const {recipe, sourceConfigs, version} = props;
     const [isLoading, setIsLoading] = useState(false);
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [pollingInterval, setPollingInterval] = useState<null | NodeJS.Timeout>(null);
     const [testConnectionResult, setTestConnectionResult] = useState<null | TestConnectionResult>(null);
-    const [createTestConnectionRequest, { data: requestData }] = useCreateTestConnectionRequestMutation();
-    const [getIngestionExecutionRequest, { data: resultData, loading }] = useGetIngestionExecutionRequestLazyQuery();
+    const [createTestConnectionRequest, {data: requestData}] = useCreateTestConnectionRequestMutation();
+    const [getIngestionExecutionRequest, {data: resultData, loading}] = useGetIngestionExecutionRequestLazyQuery();
 
     useEffect(() => {
         if (requestData && requestData.createTestConnectionRequest) {
             const interval = setInterval(
                 () =>
                     getIngestionExecutionRequest({
-                        variables: { urn: requestData.createTestConnectionRequest as string },
+                        variables: {urn: requestData.createTestConnectionRequest as string},
                     }),
                 2000,
             );
@@ -85,10 +85,10 @@ function TestConnectionButton(props: Props) {
     function testConnection() {
         const recipeJson = getRecipeJson(recipe);
         if (recipeJson) {
-            createTestConnectionRequest({ variables: { input: { recipe: recipeJson, version } } })
+            createTestConnectionRequest({variables: {input: {recipe: recipeJson, version}}})
                 .then((res) =>
                     getIngestionExecutionRequest({
-                        variables: { urn: res.data?.createTestConnectionRequest as string },
+                        variables: {urn: res.data?.createTestConnectionRequest as string},
                     }),
                 )
                 .catch(() => {
@@ -109,7 +109,7 @@ function TestConnectionButton(props: Props) {
     return (
         <>
             <Button onClick={testConnection}>
-                <CheckCircleOutlined style={{ color: green[5] }} />
+                <CheckCircleOutlined style={{color: green[5]}}/>
                 Test Connection
             </Button>
             {isModalVisible && (

@@ -1,7 +1,7 @@
 /* eslint-disable prefer-object-spread */
-import { CorpUser, SearchResult, SearchResults } from '../../../types.generated';
-import { userEntity, UserEntityArg } from '../entity/userEntity';
-import { generateData } from './dataGenerator';
+import {CorpUser, SearchResult, SearchResults} from '../../../types.generated';
+import {userEntity, UserEntityArg} from '../entity/userEntity';
+import {generateData} from './dataGenerator';
 
 // login with one of these usernames
 const usernames = ['kafka', 'looker', 'datahub'];
@@ -18,10 +18,10 @@ const searchResult = (option?: SearchResultArg) => (): SearchResult => {
 
 const generateSearchResults = (): SearchResult[] => {
     const loginUsers = usernames.map((username) => {
-        return searchResult({ username })();
+        return searchResult({username})();
     });
 
-    return [...loginUsers, ...generateData<SearchResult>({ generator: searchResult(), count: 25 })];
+    return [...loginUsers, ...generateData<SearchResult>({generator: searchResult(), count: 25})];
 };
 
 const searchResults = generateSearchResults();

@@ -1,5 +1,5 @@
-import { defaultRemirrorTheme } from '@remirror/theme';
-import type { RemirrorThemeType } from '@remirror/theme';
+import {defaultRemirrorTheme} from '@remirror/theme';
+import type {RemirrorThemeType} from '@remirror/theme';
 import styled from 'styled-components';
 
 import {
@@ -16,7 +16,7 @@ import {
     extensionTablesStyledCss,
 } from '@remirror/styles/styled-components';
 
-import { ANTD_GRAY } from '../../../../constants';
+import {ANTD_GRAY} from '../../../../constants';
 
 export const EditorTheme: RemirrorThemeType = {
     ...defaultRemirrorTheme,

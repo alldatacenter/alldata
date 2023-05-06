@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { Form, Input, Modal, Typography } from 'antd';
-import { FromToProps } from '@remirror/core-types';
-import { useAttrs, useCommands, useEditorState, useHelpers } from '@remirror/react';
-import { getMarkRange } from '@remirror/core-utils';
+import React, {useEffect, useState} from 'react';
+import {Form, Input, Modal, Typography} from 'antd';
+import {FromToProps} from '@remirror/core-types';
+import {useAttrs, useCommands, useEditorState, useHelpers} from '@remirror/react';
+import {getMarkRange} from '@remirror/core-utils';
 
 type LinkModalProps = {
     visible: boolean;
@@ -10,9 +10,9 @@ type LinkModalProps = {
 };
 
 export const LinkModal = (props: LinkModalProps) => {
-    const { visible, handleClose } = props;
+    const {visible, handleClose} = props;
 
-    const [trPos, setTrPos] = useState<FromToProps>({ from: 0, to: 0 });
+    const [trPos, setTrPos] = useState<FromToProps>({from: 0, to: 0});
     const [form] = Form.useForm();
 
     const commands = useCommands();
@@ -23,8 +23,8 @@ export const LinkModal = (props: LinkModalProps) => {
 
     useEffect(() => {
         if (visible) {
-            const { from, to } = editorState.selection;
-            const pos = getMarkRange(editorState.doc.resolve(from), 'link') || { from, to };
+            const {from, to} = editorState.selection;
+            const pos = getMarkRange(editorState.doc.resolve(from), 'link') || {from, to};
 
             form.setFieldsValue({
                 href,
@@ -69,12 +69,12 @@ export const LinkModal = (props: LinkModalProps) => {
                 <Form.Item
                     name="href"
                     label={<Typography.Text strong>Link URL</Typography.Text>}
-                    rules={[{ required: true }]}
+                    rules={[{required: true}]}
                 >
-                    <Input placeholder="https://www.google.com" autoFocus />
+                    <Input placeholder="https://www.google.com" autoFocus/>
                 </Form.Item>
                 <Form.Item name="text" label={<Typography.Text strong>Text</Typography.Text>}>
-                    <Input />
+                    <Input/>
                 </Form.Item>
             </Form>
         </Modal>

@@ -1,7 +1,7 @@
-import { Button, Col, Modal, Table, Typography } from 'antd';
-import React, { useState } from 'react';
+import {Button, Col, Modal, Table, Typography} from 'antd';
+import React, {useState} from 'react';
 import styled from 'styled-components';
-import { DatasetProfile } from '../../../../../../../types.generated';
+import {DatasetProfile} from '../../../../../../../types.generated';
 import DataProfileView from '../../snapshot/SnapshotStatsView';
 
 export const ChartTable = styled(Table)`
@@ -13,7 +13,7 @@ export type Props = {
     profiles: Array<DatasetProfile>;
 };
 
-export default function ProfilingRunsChart({ profiles }: Props) {
+export default function ProfilingRunsChart({profiles}: Props) {
     const [showModal, setShowModal] = useState(false);
     const [selectedProfileIndex, setSelectedProfileIndex] = useState(-1);
 
@@ -72,14 +72,14 @@ export default function ProfilingRunsChart({ profiles }: Props) {
         <>
             {selectedProfile && (
                 <Modal width="100%" footer={null} title={profileModalTitle} visible={showModal} onCancel={onClose}>
-                    <DataProfileView profile={selectedProfile} />
+                    <DataProfileView profile={selectedProfile}/>
                 </Modal>
             )}
             <Col sm={24} md={24} lg={12} xl={12}>
                 <ChartTable
-                    scroll={{ y: 400 }}
+                    scroll={{y: 400}}
                     bordered
-                    style={{ width: '100%', maxHeight: 440 }}
+                    style={{width: '100%', maxHeight: 440}}
                     columns={tableColumns}
                     dataSource={tableData}
                     pagination={false}

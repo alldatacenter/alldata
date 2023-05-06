@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, Button } from 'antd';
+import {Modal, Button} from 'antd';
 
 type Props = {
     cancelModalVisible?: boolean;
@@ -7,7 +7,7 @@ type Props = {
     onCancel?: () => void;
 };
 
-export const DiscardDescriptionModal = ({ cancelModalVisible, onDiscard, onCancel }: Props) => {
+export const DiscardDescriptionModal = ({cancelModalVisible, onDiscard, onCancel}: Props) => {
     return (
         <>
             <Modal

@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { message, Button, Input, Modal, Space } from 'antd';
+import React, {useState} from 'react';
+import {message, Button, Input, Modal, Space} from 'antd';
 import styled from 'styled-components';
-import { useBatchAddTagsMutation } from '../../../graphql/mutations.generated';
-import { useCreateTagMutation } from '../../../graphql/tag.generated';
-import { ResourceRefInput } from '../../../types.generated';
-import { useEnterKeyListener } from '../useEnterKeyListener';
-import { handleBatchError } from '../../entity/shared/utils';
+import {useBatchAddTagsMutation} from '../../../graphql/mutations.generated';
+import {useCreateTagMutation} from '../../../graphql/tag.generated';
+import {ResourceRefInput} from '../../../types.generated';
+import {useEnterKeyListener} from '../useEnterKeyListener';
+import {handleBatchError} from '../../entity/shared/utils';
 
 type CreateTagModalProps = {
     visible: boolean;
@@ -19,7 +19,7 @@ const FullWidthSpace = styled(Space)`
     width: 100%;
 `;
 
-export default function CreateTagModal({ onClose, onBack, visible, tagName, resources }: CreateTagModalProps) {
+export default function CreateTagModal({onClose, onBack, visible, tagName, resources}: CreateTagModalProps) {
     const [stagedDescription, setStagedDescription] = useState('');
     const [batchAddTagsMutation] = useBatchAddTagsMutation();
 
@@ -67,7 +67,7 @@ export default function CreateTagModal({ onClose, onBack, visible, tagName, reso
             })
             .catch((e) => {
                 message.destroy();
-                message.error({ content: `Failed to create tag: \n ${e.message || ''}`, duration: 3 });
+                message.error({content: `Failed to create tag: \n ${e.message || ''}`, duration: 3});
                 onClose();
             });
     };

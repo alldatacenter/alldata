@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { LinkOutlined } from '@ant-design/icons';
-import { useActive } from '@remirror/react';
+import React, {useState} from 'react';
+import {LinkOutlined} from '@ant-design/icons';
+import {useActive} from '@remirror/react';
 
-import { CommandButton } from './CommandButton';
-import { LinkModal } from './LinkModal';
+import {CommandButton} from './CommandButton';
+import {LinkModal} from './LinkModal';
 
 export const AddLinkButton = () => {
     const [isModalVisible, setModalVisible] = useState(false);
@@ -20,11 +20,11 @@ export const AddLinkButton = () => {
         <>
             <CommandButton
                 active={active}
-                icon={<LinkOutlined />}
+                icon={<LinkOutlined/>}
                 commandName="insertLink"
                 onClick={handleButtonClick}
             />
-            <LinkModal visible={isModalVisible} handleClose={handleClose} />
+            <LinkModal visible={isModalVisible} handleClose={handleClose}/>
         </>
     );
 };

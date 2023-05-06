@@ -1,11 +1,11 @@
-import React, { useContext } from 'react';
-import { Badge } from 'antd';
+import React, {useContext} from 'react';
+import {Badge} from 'antd';
 import styled from 'styled-components';
-import { green } from '@ant-design/colors';
+import {green} from '@ant-design/colors';
 
-import { ANTD_GRAY } from '../../../../constants';
-import { ForeignKeyConstraint } from '../../../../../../../types.generated';
-import { FkContext } from '../utils/selectedFkContext';
+import {ANTD_GRAY} from '../../../../constants';
+import {ForeignKeyConstraint} from '../../../../../../../types.generated';
+import {FkContext} from '../utils/selectedFkContext';
 
 const ForeignKeyBadge = styled(Badge)<{ $highlight: boolean }>`
     margin-left: 4px;
@@ -29,19 +29,19 @@ type Props = {
 };
 
 export default function ForeignKeyLabel({
-    fieldPath,
-    constraint,
-    highlight,
-    setHighlightedConstraint,
-    onClick,
-}: Props) {
+                                            fieldPath,
+                                            constraint,
+                                            highlight,
+                                            setHighlightedConstraint,
+                                            onClick,
+                                        }: Props) {
     const selectedFk = useContext(FkContext);
 
     const onOpenFk = () => {
         if (selectedFk?.fieldPath.trim() === fieldPath.trim() && selectedFk?.constraint?.name === constraint?.name) {
             onClick(null);
         } else {
-            onClick({ fieldPath, constraint });
+            onClick({fieldPath, constraint});
         }
     };
 
@@ -55,7 +55,7 @@ export default function ForeignKeyLabel({
                 onMouseEnter={() => setHighlightedConstraint(constraint?.name || null)}
                 onMouseLeave={() => setHighlightedConstraint(null)}
             >
-                <ForeignKeyBadge $highlight={highlight || selectedFk?.fieldPath === fieldPath} count="Foreign Key" />
+                <ForeignKeyBadge $highlight={highlight || selectedFk?.fieldPath === fieldPath} count="Foreign Key"/>
             </span>
         </>
     );

@@ -1,11 +1,11 @@
-import { Empty } from 'antd';
-import React, { useMemo } from 'react';
+import {Empty} from 'antd';
+import React, {useMemo} from 'react';
 import styled from 'styled-components';
-import { SchemaField } from '../../../../../types.generated';
+import {SchemaField} from '../../../../../types.generated';
 import SchemaEditableContext from '../../../../shared/SchemaEditableContext';
-import { groupByFieldPath } from '../../../dataset/profile/schema/utils/utils';
-import { ANTD_GRAY } from '../../constants';
-import { useEntityData } from '../../EntityContext';
+import {groupByFieldPath} from '../../../dataset/profile/schema/utils/utils';
+import {ANTD_GRAY} from '../../constants';
+import {useEntityData} from '../../EntityContext';
 import SchemaTable from '../Dataset/Schema/SchemaTable';
 
 const NoSchema = styled(Empty)`
@@ -18,12 +18,12 @@ const SchemaTableContainer = styled.div`
     height: 100%;
 `;
 export const InputFieldsTab = () => {
-    const { entityData } = useEntityData();
+    const {entityData} = useEntityData();
     const inputFields = entityData?.inputFields || undefined;
     const ungroupedRows = inputFields?.fields?.map((field) => field?.schemaField) as SchemaField[];
 
     const rows = useMemo(() => {
-        return groupByFieldPath(ungroupedRows, { showKeySchema: false });
+        return groupByFieldPath(ungroupedRows, {showKeySchema: false});
     }, [ungroupedRows]);
 
     return (
@@ -44,7 +44,7 @@ export const InputFieldsTab = () => {
                         </SchemaEditableContext.Provider>
                     </>
                 ) : (
-                    <NoSchema />
+                    <NoSchema/>
                 )}
             </SchemaTableContainer>
         </>

@@ -1,5 +1,5 @@
-import { dataset3WithLineage, dataset3WithSchema, dataset4WithLineage } from '../../../../Mocks';
-import { EntityType, SchemaFieldDataType } from '../../../../types.generated';
+import {dataset3WithLineage, dataset3WithSchema, dataset4WithLineage} from '../../../../Mocks';
+import {EntityType, SchemaFieldDataType} from '../../../../types.generated';
 import {
     combineEntityDataWithSiblings,
     combineSiblingsInSearchResults,
@@ -516,7 +516,7 @@ const searchResultWithSiblings = [
 describe('siblingUtils', () => {
     describe('combineEntityDataWithSiblings', () => {
         it('combines my metadata with my siblings as primary', () => {
-            const baseEntity = { dataset: datasetPrimaryWithSiblings };
+            const baseEntity = {dataset: datasetPrimaryWithSiblings};
             expect(baseEntity.dataset.usageStats).toBeNull();
             const combinedData = combineEntityDataWithSiblings(baseEntity);
             // will merge properties only one entity has
@@ -545,7 +545,7 @@ describe('siblingUtils', () => {
         });
 
         it('combines my metadata with my siblings as secondary', () => {
-            const baseEntity = { dataset: datasetUnprimaryWithPrimarySiblings };
+            const baseEntity = {dataset: datasetUnprimaryWithPrimarySiblings};
             const combinedData = combineEntityDataWithSiblings(baseEntity);
 
             // will stay secondary

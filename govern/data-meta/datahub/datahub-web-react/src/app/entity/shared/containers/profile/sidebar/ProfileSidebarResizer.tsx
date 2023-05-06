@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ANTD_GRAY } from '../../../constants';
+import {ANTD_GRAY} from '../../../constants';
 
 type Props = {
     setSidePanelWidth: (width: number) => void;
@@ -13,7 +13,7 @@ const ResizerBar = styled.div`
     border: 1px solid ${ANTD_GRAY[4]};
     cursor: col-resize;
 `;
-export const ProfileSidebarResizer = ({ setSidePanelWidth, initialSize, isSidebarOnLeft }: Props) => {
+export const ProfileSidebarResizer = ({setSidePanelWidth, initialSize, isSidebarOnLeft}: Props) => {
     let dragState: { initialX: number; initialSize: number } | undefined;
 
     const dragContinue = (event: MouseEvent) => {
@@ -34,8 +34,8 @@ export const ProfileSidebarResizer = ({ setSidePanelWidth, initialSize, isSideba
     };
 
     const onDrag = (event: React.MouseEvent) => {
-        const { clientX } = event;
-        dragState = { initialX: clientX, initialSize };
+        const {clientX} = event;
+        dragState = {initialX: clientX, initialSize};
 
         window.addEventListener('mousemove', dragContinue, false);
         window.addEventListener('mouseup', stopDragging, false);

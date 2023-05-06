@@ -1,7 +1,7 @@
 import React from 'react';
-import { Pagination, Typography } from 'antd';
+import {Pagination, Typography} from 'antd';
 import styled from 'styled-components';
-import { Message } from '../shared/Message';
+import {Message} from '../shared/Message';
 import {
     Entity,
     EntityType,
@@ -11,21 +11,21 @@ import {
     ScrollResults,
     ScrollAcrossEntitiesInput,
 } from '../../types.generated';
-import { SearchCfg } from '../../conf';
-import { SearchResultsRecommendations } from './SearchResultsRecommendations';
+import {SearchCfg} from '../../conf';
+import {SearchResultsRecommendations} from './SearchResultsRecommendations';
 import SearchExtendedMenu from '../entity/shared/components/styled/search/SearchExtendedMenu';
-import { combineSiblingsInSearchResults } from '../entity/shared/siblingUtils';
-import { SearchSelectBar } from '../entity/shared/components/styled/search/SearchSelectBar';
-import { SearchResultList } from './SearchResultList';
-import { isListSubset } from '../entity/shared/utils';
+import {combineSiblingsInSearchResults} from '../entity/shared/siblingUtils';
+import {SearchSelectBar} from '../entity/shared/components/styled/search/SearchSelectBar';
+import {SearchResultList} from './SearchResultList';
+import {isListSubset} from '../entity/shared/utils';
 import TabToolbar from '../entity/shared/components/styled/TabToolbar';
-import { EntityAndType } from '../entity/shared/types';
-import { ErrorSection } from '../shared/error/ErrorSection';
-import { UnionType } from './utils/constants';
-import { SearchFiltersSection } from './SearchFiltersSection';
-import { generateOrFilters } from './utils/generateOrFilters';
-import { SEARCH_RESULTS_FILTERS_ID } from '../onboarding/config/SearchOnboardingConfig';
-import { useUserContext } from '../context/useUserContext';
+import {EntityAndType} from '../entity/shared/types';
+import {ErrorSection} from '../shared/error/ErrorSection';
+import {UnionType} from './utils/constants';
+import {SearchFiltersSection} from './SearchFiltersSection';
+import {generateOrFilters} from './utils/generateOrFilters';
+import {SEARCH_RESULTS_FILTERS_ID} from '../onboarding/config/SearchOnboardingConfig';
+import {useUserContext} from '../context/useUserContext';
 
 const SearchBody = styled.div`
     display: flex;
@@ -104,30 +104,30 @@ interface Props {
 }
 
 export const SearchResults = ({
-    unionType = UnionType.AND,
-    query,
-    viewUrn,
-    page,
-    searchResponse,
-    filters,
-    selectedFilters,
-    loading,
-    error,
-    onChangeUnionType,
-    onChangeFilters,
-    onChangePage,
-    callSearchOnVariables,
-    entityFilters,
-    filtersWithoutEntities,
-    numResultsPerPage,
-    setNumResultsPerPage,
-    isSelectMode,
-    selectedEntities,
-    setIsSelectMode,
-    setSelectedEntities,
-    onChangeSelectAll,
-    refetch,
-}: Props) => {
+                                  unionType = UnionType.AND,
+                                  query,
+                                  viewUrn,
+                                  page,
+                                  searchResponse,
+                                  filters,
+                                  selectedFilters,
+                                  loading,
+                                  error,
+                                  onChangeUnionType,
+                                  onChangeFilters,
+                                  onChangePage,
+                                  callSearchOnVariables,
+                                  entityFilters,
+                                  filtersWithoutEntities,
+                                  numResultsPerPage,
+                                  setNumResultsPerPage,
+                                  isSelectMode,
+                                  selectedEntities,
+                                  setIsSelectMode,
+                                  setSelectedEntities,
+                                  onChangeSelectAll,
+                                  refetch,
+                              }: Props) => {
     const pageStart = searchResponse?.start || 0;
     const pageSize = searchResponse?.count || 0;
     const totalResults = searchResponse?.total || 0;
@@ -140,7 +140,7 @@ export const SearchResults = ({
 
     return (
         <>
-            {loading && <Message type="loading" content="Loading..." style={{ marginTop: '10%' }} />}
+            {loading && <Message type="loading" content="Loading..." style={{marginTop: '10%'}}/>}
             <div>
                 <SearchBody>
                     <div id={SEARCH_RESULTS_FILTERS_ID}>
@@ -157,11 +157,11 @@ export const SearchResults = ({
                         <PaginationInfoContainer>
                             <>
                                 <Typography.Text>
-                                    Showing{' '}
+                                    显示{' '}
                                     <b>
                                         {lastResultIndex > 0 ? (page - 1) * pageSize + 1 : 0} - {lastResultIndex}
                                     </b>{' '}
-                                    of <b>{totalResults}</b> results
+                                    of <b>{totalResults}</b> 结果
                                 </Typography.Text>
                                 <SearchMenuContainer>
                                     <SearchExtendedMenu
@@ -189,40 +189,40 @@ export const SearchResults = ({
                                 />
                             </StyledTabToolbar>
                         )}
-                        {(error && <ErrorSection />) ||
-                            (!loading && (
-                                <>
-                                    <SearchResultList
-                                        query={query}
-                                        searchResults={combinedSiblingSearchResults}
-                                        totalResultCount={totalResults}
-                                        isSelectMode={isSelectMode}
-                                        selectedEntities={selectedEntities}
-                                        setSelectedEntities={setSelectedEntities}
+                        {(error && <ErrorSection/>) ||
+                        (!loading && (
+                            <>
+                                <SearchResultList
+                                    query={query}
+                                    searchResults={combinedSiblingSearchResults}
+                                    totalResultCount={totalResults}
+                                    isSelectMode={isSelectMode}
+                                    selectedEntities={selectedEntities}
+                                    setSelectedEntities={setSelectedEntities}
+                                />
+                                <PaginationControlContainer id="search-pagination">
+                                    <Pagination
+                                        current={page}
+                                        pageSize={numResultsPerPage}
+                                        total={totalResults}
+                                        showLessItems
+                                        onChange={onChangePage}
+                                        showSizeChanger={totalResults > SearchCfg.RESULTS_PER_PAGE}
+                                        onShowSizeChange={(_currNum, newNum) => setNumResultsPerPage(newNum)}
+                                        pageSizeOptions={['10', '20', '50', '100']}
                                     />
-                                    <PaginationControlContainer id="search-pagination">
-                                        <Pagination
-                                            current={page}
-                                            pageSize={numResultsPerPage}
-                                            total={totalResults}
-                                            showLessItems
-                                            onChange={onChangePage}
-                                            showSizeChanger={totalResults > SearchCfg.RESULTS_PER_PAGE}
-                                            onShowSizeChange={(_currNum, newNum) => setNumResultsPerPage(newNum)}
-                                            pageSizeOptions={['10', '20', '50', '100']}
+                                </PaginationControlContainer>
+                                {authenticatedUserUrn && (
+                                    <SearchResultsRecommendationsContainer>
+                                        <SearchResultsRecommendations
+                                            userUrn={authenticatedUserUrn}
+                                            query={query}
+                                            filters={selectedFilters}
                                         />
-                                    </PaginationControlContainer>
-                                    {authenticatedUserUrn && (
-                                        <SearchResultsRecommendationsContainer>
-                                            <SearchResultsRecommendations
-                                                userUrn={authenticatedUserUrn}
-                                                query={query}
-                                                filters={selectedFilters}
-                                            />
-                                        </SearchResultsRecommendationsContainer>
-                                    )}
-                                </>
-                            ))}
+                                    </SearchResultsRecommendationsContainer>
+                                )}
+                            </>
+                        ))}
                     </ResultContainer>
                 </SearchBody>
             </div>

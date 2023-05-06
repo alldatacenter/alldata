@@ -1,4 +1,4 @@
-import { SourceConfig } from '../types';
+import {SourceConfig} from '../types';
 import lookerLogo from '../../../../../images/lookerlogo.png';
 
 const placeholderRecipe = `\

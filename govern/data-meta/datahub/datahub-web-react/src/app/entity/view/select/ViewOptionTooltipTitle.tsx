@@ -10,7 +10,7 @@ type Props = {
     description?: string | null;
 };
 
-export const ViewOptionTooltipTitle = ({ name, description }: Props) => {
+export const ViewOptionTooltipTitle = ({name, description}: Props) => {
     return (
         <>
             <NameContainer>

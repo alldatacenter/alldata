@@ -1,8 +1,8 @@
 import React from 'react';
-import { useBaseEntity } from '../../EntityContext';
-import { EntityType } from '../../../../../types.generated';
-import { EntityList } from './components/EntityList';
-import { useEntityRegistry } from '../../../../useEntityRegistry';
+import {useBaseEntity} from '../../EntityContext';
+import {EntityType} from '../../../../../types.generated';
+import {EntityList} from './components/EntityList';
+import {useEntityRegistry} from '../../../../useEntityRegistry';
 
 export const DashboardChartsTab = () => {
     const entity = useBaseEntity() as any;
@@ -15,5 +15,5 @@ export const DashboardChartsTab = () => {
             ? entityRegistry.getEntityName(EntityType.Chart)
             : entityRegistry.getCollectionName(EntityType.Chart)
     }`;
-    return <EntityList title={title} type={EntityType.Chart} entities={charts || []} />;
+    return <EntityList title={title} type={EntityType.Chart} entities={charts || []}/>;
 };

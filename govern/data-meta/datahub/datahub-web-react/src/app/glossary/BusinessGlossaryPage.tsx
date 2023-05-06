@@ -1,25 +1,25 @@
-import React, { useEffect, useState } from 'react';
-import { Button, Typography } from 'antd';
-import { PlusOutlined } from '@ant-design/icons';
+import React, {useEffect, useState} from 'react';
+import {Button, Typography} from 'antd';
+import {PlusOutlined} from '@ant-design/icons';
 import styled from 'styled-components/macro';
-import { useGetRootGlossaryNodesQuery, useGetRootGlossaryTermsQuery } from '../../graphql/glossary.generated';
+import {useGetRootGlossaryNodesQuery, useGetRootGlossaryTermsQuery} from '../../graphql/glossary.generated';
 import TabToolbar from '../entity/shared/components/styled/TabToolbar';
 import GlossaryEntitiesList from './GlossaryEntitiesList';
 import EmptyGlossarySection from './EmptyGlossarySection';
 import CreateGlossaryEntityModal from '../entity/shared/EntityDropdown/CreateGlossaryEntityModal';
-import { EntityType } from '../../types.generated';
-import { Message } from '../shared/Message';
-import { sortGlossaryTerms } from '../entity/glossaryTerm/utils';
-import { useEntityRegistry } from '../useEntityRegistry';
-import { sortGlossaryNodes } from '../entity/glossaryNode/utils';
+import {EntityType} from '../../types.generated';
+import {Message} from '../shared/Message';
+import {sortGlossaryTerms} from '../entity/glossaryTerm/utils';
+import {useEntityRegistry} from '../useEntityRegistry';
+import {sortGlossaryNodes} from '../entity/glossaryNode/utils';
 import {
     BUSINESS_GLOSSARY_INTRO_ID,
     BUSINESS_GLOSSARY_CREATE_TERM_ID,
     BUSINESS_GLOSSARY_CREATE_TERM_GROUP_ID,
 } from '../onboarding/config/BusinessGlossaryOnboardingConfig';
-import { OnboardingTour } from '../onboarding/OnboardingTour';
-import { useGlossaryEntityData } from '../entity/shared/GlossaryEntityContext';
-import { useUserContext } from '../context/useUserContext';
+import {OnboardingTour} from '../onboarding/OnboardingTour';
+import {useGlossaryEntityData} from '../entity/shared/GlossaryEntityContext';
+import {useUserContext} from '../context/useUserContext';
 
 export const HeaderWrapper = styled(TabToolbar)`
     padding: 15px 45px 10px 24px;
@@ -61,7 +61,7 @@ function BusinessGlossaryPage() {
         error: nodesError,
     } = useGetRootGlossaryNodesQuery();
     const entityRegistry = useEntityRegistry();
-    const { setEntityData } = useGlossaryEntityData();
+    const {setEntityData} = useGlossaryEntityData();
 
     useEffect(() => {
         setEntityData(null);
@@ -93,10 +93,10 @@ function BusinessGlossaryPage() {
             />
             <GlossaryWrapper>
                 {(termsLoading || nodesLoading) && (
-                    <Message type="loading" content="Loading Glossary..." style={{ marginTop: '10%' }} />
+                    <Message type="loading" content="Loading Glossary..." style={{marginTop: '10%'}}/>
                 )}
                 {(termsError || nodesError) && (
-                    <Message type="error" content="Failed to load glossary! An unexpected error occurred." />
+                    <Message type="error" content="Failed to load glossary! An unexpected error occurred."/>
                 )}
                 <MainContentWrapper>
                     <HeaderWrapper>
@@ -108,7 +108,7 @@ function BusinessGlossaryPage() {
                                 type="text"
                                 onClick={() => setIsCreateTermModalVisible(true)}
                             >
-                                <PlusOutlined /> Add Term
+                                <PlusOutlined/> Add Term
                             </Button>
                             <Button
                                 id={BUSINESS_GLOSSARY_CREATE_TERM_GROUP_ID}
@@ -116,11 +116,11 @@ function BusinessGlossaryPage() {
                                 type="text"
                                 onClick={() => setIsCreateNodeModalVisible(true)}
                             >
-                                <PlusOutlined /> Add Term Group
+                                <PlusOutlined/> Add Term Group
                             </Button>
                         </div>
                     </HeaderWrapper>
-                    {hasTermsOrNodes && <GlossaryEntitiesList nodes={nodes || []} terms={terms || []} />}
+                    {hasTermsOrNodes && <GlossaryEntitiesList nodes={nodes || []} terms={terms || []}/>}
                     {!(termsLoading || nodesLoading) && !hasTermsOrNodes && (
                         <EmptyGlossarySection
                             title="Empty Glossary"

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { EditOutlined } from '@ant-design/icons';
-import { Button } from 'antd';
+import {EditOutlined} from '@ant-design/icons';
+import {Button} from 'antd';
 
 const EditQueryActionButton = styled(Button)`
     && {
@@ -15,10 +15,10 @@ export type Props = {
     index?: number;
 };
 
-export default function QueryCardEditButton({ onClickEdit, index }: Props) {
+export default function QueryCardEditButton({onClickEdit, index}: Props) {
     return (
         <EditQueryActionButton type="text" onClick={onClickEdit} data-testid={`query-edit-button-${index}`}>
-            <EditOutlined />
+            <EditOutlined/>
         </EditQueryActionButton>
     );
 }

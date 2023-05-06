@@ -1,8 +1,8 @@
-import { message, Modal } from 'antd';
+import {message, Modal} from 'antd';
 import React from 'react';
-import { useBatchUpdateSoftDeletedMutation } from '../../../../../../../graphql/mutations.generated';
+import {useBatchUpdateSoftDeletedMutation} from '../../../../../../../graphql/mutations.generated';
 import ActionDropdown from './ActionDropdown';
-import { handleBatchError } from '../../../../utils';
+import {handleBatchError} from '../../../../utils';
 
 type Props = {
     urns: Array<string>;
@@ -11,7 +11,7 @@ type Props = {
 };
 
 // eslint-disable-next-line
-export default function DeleteDropdown({ urns, disabled = false, refetch }: Props) {
+export default function DeleteDropdown({urns, disabled = false, refetch}: Props) {
     const [batchUpdateSoftDeletedMutation] = useBatchUpdateSoftDeletedMutation();
 
     const batchSoftDelete = () => {
@@ -23,9 +23,9 @@ export default function DeleteDropdown({ urns, disabled = false, refetch }: Prop
                 },
             },
         })
-            .then(({ errors }) => {
+            .then(({errors}) => {
                 if (!errors) {
-                    message.success({ content: 'Deleted assets!', duration: 2 });
+                    message.success({content: 'Deleted assets!', duration: 2});
                     setTimeout(() => refetch?.(), 3000);
                 }
             })
@@ -55,7 +55,8 @@ export default function DeleteDropdown({ urns, disabled = false, refetch }: Prop
                                 onOk() {
                                     batchSoftDelete();
                                 },
-                                onCancel() {},
+                                onCancel() {
+                                },
                                 okText: 'Yes',
                                 maskClosable: true,
                                 closable: true,

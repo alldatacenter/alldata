@@ -1,6 +1,6 @@
 import analyticsConfig from '../../../conf/analytics';
 
-const { datahub } = analyticsConfig;
+const {datahub} = analyticsConfig;
 const isEnabled: boolean = (datahub && datahub.enabled) || false;
 
 const track = (payload) => {
@@ -20,15 +20,17 @@ const datahubPlugin = () => {
     return {
         /* All plugins require a name */
         name: 'datahub',
-        initialize: () => {},
-        identify: () => {},
+        initialize: () => {
+        },
+        identify: () => {
+        },
         loaded: () => {
             return true;
         },
-        page: ({ payload }) => {
+        page: ({payload}) => {
             track(payload.properties);
         },
-        track: ({ payload }) => {
+        track: ({payload}) => {
             track(payload.properties);
         },
     };

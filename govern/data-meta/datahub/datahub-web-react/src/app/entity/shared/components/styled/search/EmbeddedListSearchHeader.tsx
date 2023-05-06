@@ -1,10 +1,10 @@
 import React from 'react';
-import { Button, Typography } from 'antd';
-import { FilterOutlined } from '@ant-design/icons';
+import {Button, Typography} from 'antd';
+import {FilterOutlined} from '@ant-design/icons';
 import styled from 'styled-components';
 import TabToolbar from '../TabToolbar';
-import { SearchBar } from '../../../../../search/SearchBar';
-import { useEntityRegistry } from '../../../../../useEntityRegistry';
+import {SearchBar} from '../../../../../search/SearchBar';
+import {useEntityRegistry} from '../../../../../useEntityRegistry';
 import {
     EntityType,
     AndFilterInput,
@@ -12,8 +12,8 @@ import {
     ScrollResults,
 } from '../../../../../../types.generated';
 import SearchExtendedMenu from './SearchExtendedMenu';
-import { SearchSelectBar } from './SearchSelectBar';
-import { EntityAndType } from '../../../types';
+import {SearchSelectBar} from './SearchSelectBar';
+import {EntityAndType} from '../../../types';
 
 const HeaderContainer = styled.div`
     display: flex;
@@ -53,22 +53,22 @@ type Props = {
 };
 
 export default function EmbeddedListSearchHeader({
-    onSearch,
-    onToggleFilters,
-    placeholderText,
-    callSearchOnVariables,
-    entityFilters,
-    filters,
-    query,
-    isSelectMode,
-    isSelectAll,
-    selectedEntities,
-    setIsSelectMode,
-    onChangeSelectAll,
-    refetch,
-    searchBarStyle,
-    searchBarInputStyle,
-}: Props) {
+                                                     onSearch,
+                                                     onToggleFilters,
+                                                     placeholderText,
+                                                     callSearchOnVariables,
+                                                     entityFilters,
+                                                     filters,
+                                                     query,
+                                                     isSelectMode,
+                                                     isSelectAll,
+                                                     selectedEntities,
+                                                     setIsSelectMode,
+                                                     onChangeSelectAll,
+                                                     refetch,
+                                                     searchBarStyle,
+                                                     searchBarInputStyle,
+                                                 }: Props) {
     const entityRegistry = useEntityRegistry();
 
     return (
@@ -76,7 +76,7 @@ export default function EmbeddedListSearchHeader({
             <TabToolbar>
                 <HeaderContainer>
                     <Button type="text" onClick={onToggleFilters}>
-                        <FilterOutlined />
+                        <FilterOutlined/>
                         <Typography.Text>Filters</Typography.Text>
                     </Button>
                     <SearchAndDownloadContainer>

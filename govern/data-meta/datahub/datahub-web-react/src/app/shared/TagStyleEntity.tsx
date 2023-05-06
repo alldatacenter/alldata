@@ -1,33 +1,33 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { grey } from '@ant-design/colors';
-import { Button, Divider, message, Typography } from 'antd';
-import { useHistory } from 'react-router';
-import { ApolloError } from '@apollo/client';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
+import {grey} from '@ant-design/colors';
+import {Button, Divider, message, Typography} from 'antd';
+import {useHistory} from 'react-router';
+import {ApolloError} from '@apollo/client';
 import styled from 'styled-components';
-import { ChromePicker } from 'react-color';
+import {ChromePicker} from 'react-color';
 import ColorHash from 'color-hash';
-import { PlusOutlined } from '@ant-design/icons';
-import { useGetTagQuery } from '../../graphql/tag.generated';
-import { EntityType, FacetMetadata, Maybe, Scalars } from '../../types.generated';
-import { ExpandedOwner } from '../entity/shared/components/styled/ExpandedOwner/ExpandedOwner';
-import { EMPTY_MESSAGES } from '../entity/shared/constants';
-import { navigateToSearchUrl } from '../search/utils/navigateToSearchUrl';
-import { useEntityRegistry } from '../useEntityRegistry';
-import { useUpdateDescriptionMutation, useSetTagColorMutation } from '../../graphql/mutations.generated';
-import { useGetSearchResultsForMultipleQuery } from '../../graphql/search.generated';
-import analytics, { EventType, EntityActionType } from '../analytics';
-import { GetSearchResultsParams, SearchResultInterface } from '../entity/shared/components/styled/search/types';
-import { EditOwnersModal } from '../entity/shared/containers/profile/sidebar/Ownership/EditOwnersModal';
+import {PlusOutlined} from '@ant-design/icons';
+import {useGetTagQuery} from '../../graphql/tag.generated';
+import {EntityType, FacetMetadata, Maybe, Scalars} from '../../types.generated';
+import {ExpandedOwner} from '../entity/shared/components/styled/ExpandedOwner/ExpandedOwner';
+import {EMPTY_MESSAGES} from '../entity/shared/constants';
+import {navigateToSearchUrl} from '../search/utils/navigateToSearchUrl';
+import {useEntityRegistry} from '../useEntityRegistry';
+import {useUpdateDescriptionMutation, useSetTagColorMutation} from '../../graphql/mutations.generated';
+import {useGetSearchResultsForMultipleQuery} from '../../graphql/search.generated';
+import analytics, {EventType, EntityActionType} from '../analytics';
+import {GetSearchResultsParams, SearchResultInterface} from '../entity/shared/components/styled/search/types';
+import {EditOwnersModal} from '../entity/shared/containers/profile/sidebar/Ownership/EditOwnersModal';
 import CopyUrn from './CopyUrn';
 import EntityDropdown from '../entity/shared/EntityDropdown';
-import { EntityMenuItems } from '../entity/shared/EntityDropdown/EntityDropdown';
-import { ErrorSection } from './error/ErrorSection';
-import { generateOrFilters } from '../search/utils/generateOrFilters';
-import { UnionType } from '../search/utils/constants';
+import {EntityMenuItems} from '../entity/shared/EntityDropdown/EntityDropdown';
+import {ErrorSection} from './error/ErrorSection';
+import {generateOrFilters} from '../search/utils/generateOrFilters';
+import {UnionType} from '../search/utils/constants';
 
 function useWrappedSearchResults(params: GetSearchResultsParams) {
-    const { data, loading, error } = useGetSearchResultsForMultipleQuery(params);
-    return { data: data?.searchAcrossEntities, loading, error };
+    const {data, loading, error} = useGetSearchResultsForMultipleQuery(params);
+    return {data: data?.searchAcrossEntities, loading, error};
 }
 
 type SearchResultsInterface = {
@@ -162,7 +162,7 @@ const TagHeader = styled.div`
     align-items: top;
 `;
 
-const { Paragraph } = Typography;
+const {Paragraph} = Typography;
 
 type Props = {
     urn: string;
@@ -180,10 +180,10 @@ const generateColor = new ColorHash({
 /**
  * Responsible for displaying metadata about a tag
  */
-export default function TagStyleEntity({ urn, useGetSearchResults = useWrappedSearchResults }: Props) {
+export default function TagStyleEntity({urn, useGetSearchResults = useWrappedSearchResults}: Props) {
     const history = useHistory();
     const entityRegistry = useEntityRegistry();
-    const { error, data, refetch } = useGetTagQuery({ variables: { urn } });
+    const {error, data, refetch} = useGetTagQuery({variables: {urn}});
     const [updateDescription] = useUpdateDescriptionMutation();
     const [setTagColorMutation] = useSetTagColorMutation();
     const entityUrn = data?.tag?.urn;
@@ -222,7 +222,7 @@ export default function TagStyleEntity({ urn, useGetSearchResults = useWrappedSe
         setColorValue(hexColor);
     }, [hexColor]);
 
-    const { data: facetData, loading: facetLoading } = useGetSearchResults({
+    const {data: facetData, loading: facetLoading} = useGetSearchResults({
         variables: {
             input: {
                 query: '*',
@@ -247,12 +247,12 @@ export default function TagStyleEntity({ urn, useGetSearchResults = useWrappedSe
                     },
                 });
                 message.destroy();
-                message.success({ content: 'Color Saved!', duration: 2 });
+                message.success({content: 'Color Saved!', duration: 2});
                 setDisplayColorPicker(false);
             } catch (e: unknown) {
                 message.destroy();
                 if (e instanceof Error) {
-                    message.error({ content: `Failed to save tag color: \n ${e.message || ''}`, duration: 2 });
+                    message.error({content: `Failed to save tag color: \n ${e.message || ''}`, duration: 2});
                 }
             }
             refetch?.();
@@ -267,7 +267,7 @@ export default function TagStyleEntity({ urn, useGetSearchResults = useWrappedSe
          */
         function handleClickOutsideColorPicker(event) {
             if (displayColorPicker) {
-                const { current }: any = colorPickerRef;
+                const {current}: any = colorPickerRef;
                 if (current) {
                     if (!current.contains(event.target)) {
                         setDisplayColorPicker(false);
@@ -276,6 +276,7 @@ export default function TagStyleEntity({ urn, useGetSearchResults = useWrappedSe
                 }
             }
         }
+
         // Bind the event listener
         document.addEventListener('mousedown', handleClickOutsideColorPicker);
         return () => {
@@ -308,11 +309,11 @@ export default function TagStyleEntity({ urn, useGetSearchResults = useWrappedSe
 
     // Save the description
     const handleSaveDescription = async (desc: string) => {
-        message.loading({ content: 'Saving...' });
+        message.loading({content: 'Saving...'});
         try {
             await updateDescriptionValue(desc);
             message.destroy();
-            message.success({ content: 'Description Updated', duration: 2 });
+            message.success({content: 'Description Updated', duration: 2});
             analytics.event({
                 type: EventType.EntityActionEvent,
                 actionType: EntityActionType.UpdateDescription,
@@ -322,7 +323,7 @@ export default function TagStyleEntity({ urn, useGetSearchResults = useWrappedSe
         } catch (e: unknown) {
             message.destroy();
             if (e instanceof Error) {
-                message.error({ content: `Failed to update description: \n ${e.message || ''}`, duration: 2 });
+                message.error({content: `Failed to update description: \n ${e.message || ''}`, duration: 2});
             }
         }
         refetch?.();
@@ -330,14 +331,14 @@ export default function TagStyleEntity({ urn, useGetSearchResults = useWrappedSe
 
     return (
         <>
-            {error && <ErrorSection />}
+            {error && <ErrorSection/>}
             {/* Tag Title */}
             <TagHeader>
                 <div>
                     <TitleLabel>Tag</TitleLabel>
                     <TagName>
                         <ColorPicker>
-                            <ColorPickerButton style={{ backgroundColor: colorValue }} onClick={handlePickerClick} />
+                            <ColorPickerButton style={{backgroundColor: colorValue}} onClick={handlePickerClick}/>
                         </ColorPicker>
                         <TitleText>
                             {(data?.tag && entityRegistry.getDisplayName(EntityType.Tag, data?.tag)) || ''}
@@ -345,7 +346,7 @@ export default function TagStyleEntity({ urn, useGetSearchResults = useWrappedSe
                     </TagName>
                 </div>
                 <ActionButtons>
-                    <CopyUrn urn={urn} isActive={copiedUrn} onClick={() => setCopiedUrn(true)} />
+                    <CopyUrn urn={urn} isActive={copiedUrn} onClick={() => setCopiedUrn(true)}/>
                     <EntityDropdown
                         urn={urn}
                         entityType={EntityType.Tag}
@@ -355,21 +356,21 @@ export default function TagStyleEntity({ urn, useGetSearchResults = useWrappedSe
                 </ActionButtons>
                 {displayColorPicker && (
                     <ColorPickerPopOver ref={colorPickerRef}>
-                        <ChromePicker color={colorValue} onChange={handleColorChange} />
+                        <ChromePicker color={colorValue} onChange={handleColorChange}/>
                     </ColorPickerPopOver>
                 )}
             </TagHeader>
-            <Divider />
+            <Divider/>
             {/* Tag Description */}
             <DescriptionLabel>About</DescriptionLabel>
             <Paragraph
-                style={{ fontSize: '12px', lineHeight: '15px', padding: '5px 0px' }}
-                editable={{ onChange: handleSaveDescription }}
-                ellipsis={{ rows: 2, expandable: true, symbol: 'Read more' }}
+                style={{fontSize: '12px', lineHeight: '15px', padding: '5px 0px'}}
+                editable={{onChange: handleSaveDescription}}
+                ellipsis={{rows: 2, expandable: true, symbol: 'Read more'}}
             >
-                {updatedDescription || <EmptyValue />}
+                {updatedDescription || <EmptyValue/>}
             </Paragraph>
-            <Divider />
+            <Divider/>
             {/* Tag Charts, Datasets and Owners */}
             <DetailsLayout>
                 <StatsBox>
@@ -385,41 +386,41 @@ export default function TagStyleEntity({ urn, useGetSearchResults = useWrappedSe
                         </div>
                     )}
                     {!facetLoading &&
-                        aggregations &&
-                        aggregations?.map((aggregation) => {
-                            if (aggregation?.count === 0) {
-                                return null;
-                            }
-                            return (
-                                <div key={aggregation?.value}>
-                                    <StatsButton
-                                        onClick={() =>
-                                            navigateToSearchUrl({
-                                                type: aggregation?.value as EntityType,
-                                                filters:
-                                                    aggregation?.value === EntityType.Dataset
-                                                        ? entityAndSchemaFilters
-                                                        : entityFilters,
-                                                unionType: UnionType.OR,
-                                                history,
-                                            })
-                                        }
-                                        type="link"
-                                    >
+                    aggregations &&
+                    aggregations?.map((aggregation) => {
+                        if (aggregation?.count === 0) {
+                            return null;
+                        }
+                        return (
+                            <div key={aggregation?.value}>
+                                <StatsButton
+                                    onClick={() =>
+                                        navigateToSearchUrl({
+                                            type: aggregation?.value as EntityType,
+                                            filters:
+                                                aggregation?.value === EntityType.Dataset
+                                                    ? entityAndSchemaFilters
+                                                    : entityFilters,
+                                            unionType: UnionType.OR,
+                                            history,
+                                        })
+                                    }
+                                    type="link"
+                                >
                                         <span data-testid={`stats-${aggregation?.value}`}>
                                             {aggregation?.count}{' '}
                                             {entityRegistry.getCollectionName(aggregation?.value as EntityType)} &gt;
                                         </span>
-                                    </StatsButton>
-                                </div>
-                            );
-                        })}
+                                </StatsButton>
+                            </div>
+                        );
+                    })}
                 </StatsBox>
                 <div>
                     <StatsLabel>Owners</StatsLabel>
                     <div>
                         {data?.tag?.ownership?.owners?.map((owner) => (
-                            <ExpandedOwner entityUrn={urn} owner={owner} refetch={refetch} hidePopOver />
+                            <ExpandedOwner entityUrn={urn} owner={owner} refetch={refetch} hidePopOver/>
                         ))}
                         {ownersEmpty && (
                             <Typography.Paragraph type="secondary">
@@ -427,7 +428,7 @@ export default function TagStyleEntity({ urn, useGetSearchResults = useWrappedSe
                             </Typography.Paragraph>
                         )}
                         <Button type={ownersEmpty ? 'default' : 'text'} onClick={() => setShowAddModal(true)}>
-                            <PlusOutlined />
+                            <PlusOutlined/>
                             {ownersEmpty ? (
                                 <OwnerButtonEmptyTitle>Add Owners</OwnerButtonEmptyTitle>
                             ) : (

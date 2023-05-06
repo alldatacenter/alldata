@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { Affix } from 'antd';
-import { LegacyBrowsePath } from './LegacyBrowsePath';
-import { useGetBrowsePathsQuery } from '../../graphql/browse.generated';
-import { EntityType } from '../../types.generated';
+import {Affix} from 'antd';
+import {LegacyBrowsePath} from './LegacyBrowsePath';
+import {useGetBrowsePathsQuery} from '../../graphql/browse.generated';
+import {EntityType} from '../../types.generated';
 
 interface Props {
     urn: string;
@@ -16,14 +16,14 @@ interface Props {
  * A entity-details page that includes a search header & entity browse path view
  */
 export const BrowsableEntityPage = ({
-    urn: _urn,
-    type: _type,
-    children: _children,
-    lineageSupported,
-    isBrowsable,
-}: Props) => {
-    const { data } = useGetBrowsePathsQuery({
-        variables: { input: { urn: _urn, type: _type } },
+                                        urn: _urn,
+                                        type: _type,
+                                        children: _children,
+                                        lineageSupported,
+                                        isBrowsable,
+                                    }: Props) => {
+    const {data} = useGetBrowsePathsQuery({
+        variables: {input: {urn: _urn, type: _type}},
         fetchPolicy: 'cache-first',
     });
 

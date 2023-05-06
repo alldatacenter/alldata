@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { DatabaseOutlined } from '@ant-design/icons';
-import { DataPlatform, EntityType, SearchResult } from '../../../types.generated';
-import { Entity, IconStyleType, PreviewType } from '../Entity';
-import { GenericEntityProperties } from '../shared/types';
+import {DatabaseOutlined} from '@ant-design/icons';
+import {DataPlatform, EntityType, SearchResult} from '../../../types.generated';
+import {Entity, IconStyleType, PreviewType} from '../Entity';
+import {GenericEntityProperties} from '../shared/types';
 
 const getDisplayName = (data?: DataPlatform): string => {
     return data?.properties?.displayName || data?.name || '';

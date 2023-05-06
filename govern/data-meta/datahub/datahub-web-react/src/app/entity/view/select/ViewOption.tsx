@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import { DataHubView } from '../../../../types.generated';
-import { ViewOptionName } from './ViewOptionName';
-import { ViewDropdownMenu } from '../menu/ViewDropdownMenu';
-import { UserDefaultViewIcon } from '../shared/UserDefaultViewIcon';
-import { GlobalDefaultViewIcon } from '../shared/GlobalDefaultViewIcon';
+import {DataHubView} from '../../../../types.generated';
+import {ViewOptionName} from './ViewOptionName';
+import {ViewDropdownMenu} from '../menu/ViewDropdownMenu';
+import {UserDefaultViewIcon} from '../shared/UserDefaultViewIcon';
+import {GlobalDefaultViewIcon} from '../shared/GlobalDefaultViewIcon';
 
 const ICON_WIDTH = 30;
 
@@ -33,21 +33,21 @@ type Props = {
 };
 
 export const ViewOption = ({
-    view,
-    showOptions,
-    isGlobalDefault,
-    isUserDefault,
-    isOwnedByUser,
-    onClickEdit,
-    onClickPreview,
-}: Props) => {
+                               view,
+                               showOptions,
+                               isGlobalDefault,
+                               isUserDefault,
+                               isOwnedByUser,
+                               onClickEdit,
+                               onClickPreview,
+                           }: Props) => {
     return (
         <Container>
             <IconPlaceholder>
-                {isUserDefault && <UserDefaultViewIcon title="Your default View." />}
-                {isGlobalDefault && <GlobalDefaultViewIcon title="Your organization's default View." />}
+                {isUserDefault && <UserDefaultViewIcon title="Your default View."/>}
+                {isGlobalDefault && <GlobalDefaultViewIcon title="Your organization's default View."/>}
             </IconPlaceholder>
-            <ViewOptionName name={view.name} description={view.description} />
+            <ViewOptionName name={view.name} description={view.description}/>
             <ViewDropdownMenu
                 view={view}
                 isOwnedByUser={isOwnedByUser}

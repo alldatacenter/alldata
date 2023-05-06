@@ -1,5 +1,5 @@
-import { dataJob1, dataJob2, dataJob3 } from '../../../Mocks';
-import { topologicalSort } from '../topologicalSort';
+import {dataJob1, dataJob2, dataJob3} from '../../../Mocks';
+import {topologicalSort} from '../topologicalSort';
 
 describe('topologicalSort', () => {
     it('sorts a list in correct order', () => {

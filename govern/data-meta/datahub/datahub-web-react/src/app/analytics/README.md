@@ -2,19 +2,25 @@
 
 ## About
 
-The DataHub React application can be configured to emit a set of standardized product analytics events to multiple backend providers including
+The DataHub React application can be configured to emit a set of standardized product analytics events to multiple
+backend providers including
 
--   Mixpanel
--   Amplitude
--   Google Analytics
+- Mixpanel
+- Amplitude
+- Google Analytics
 
-This provides operators of DataHub with visibility into how their users are engaging with the platform, allowing them to answer questions around weekly active users, the most used features, the least used features, and more.
+This provides operators of DataHub with visibility into how their users are engaging with the platform, allowing them to
+answer questions around weekly active users, the most used features, the least used features, and more.
 
-To accomplish this, we have built a small extension on top of the popular [Analytics](https://www.npmjs.com/package/analytics) npm package. This package was chosen because it offers a clear pathway to extending support to many other providers, all of which you can find listed [here](https://github.com/DavidWells/analytics#analytic-plugins).
+To accomplish this, we have built a small extension on top of the
+popular [Analytics](https://www.npmjs.com/package/analytics) npm package. This package was chosen because it offers a
+clear pathway to extending support to many other providers, all of which you can find
+listed [here](https://github.com/DavidWells/analytics#analytic-plugins).
 
 ## Configuring an Analytics Provider
 
-Currently, configuring an analytics provider requires that you fork DataHub & modify code. As described in 'Coming Soon', we intend to improve this process by implementing no-code configuration.
+Currently, configuring an analytics provider requires that you fork DataHub & modify code. As described in 'Coming
+Soon', we intend to improve this process by implementing no-code configuration.
 
 ### Mixpanel
 
@@ -50,8 +56,12 @@ const config: any = {
 
 **Disclaimers**
 
--   This plugin requires use of Universal Analytics and does not yet support GA4. To create a Universal Analytics Property, follow [this guide](https://www.analyticsmania.com/other-posts/how-to-create-a-universal-analytics-property/).
--   Google Analytics lacks robust support for custom event properties. For that reason many of the DataHub events discussed above will not be fully populated. Instead, we map certain fields of the DataHub event to the standard `category`, `action`, `label` fields required by GA.
+- This plugin requires use of Universal Analytics and does not yet support GA4. To create a Universal Analytics
+  Property,
+  follow [this guide](https://www.analyticsmania.com/other-posts/how-to-create-a-universal-analytics-property/).
+- Google Analytics lacks robust support for custom event properties. For that reason many of the DataHub events
+  discussed above will not be fully populated. Instead, we map certain fields of the DataHub event to the
+  standard `category`, `action`, `label` fields required by GA.
 
 1. Open `datahub-web-react/src/conf/analytics.ts`
 2. Uncomment the `googleAnalytics` field within the `config` object.
@@ -68,7 +78,8 @@ const config: any = {
 
 ## Verifying your Analytics Setup
 
-To verify that analytics are being sent to your provider, you can inspect the networking tab of a Google Chrome inspector window:
+To verify that analytics are being sent to your provider, you can inspect the networking tab of a Google Chrome
+inspector window:
 
 With DataHub open on Google Chrome
 
@@ -89,7 +100,8 @@ To add a new plugin from the [Analytics](https://www.npmjs.com/package/analytics
 4. Export a default object with 'isEnabled' and 'plugin' fields
 5. Import / Export the new plugin module from `src/app/analytics/plugin/index.js`
 
-If you're unsure, check out the existing plugin implements as examples. Before contributing a plugin, please be sure to verify the integration by viewing the product metrics in the new analytics provider.
+If you're unsure, check out the existing plugin implements as examples. Before contributing a plugin, please be sure to
+verify the integration by viewing the product metrics in the new analytics provider.
 
 ### Adding an event
 
@@ -154,4 +166,5 @@ To log events to the console for debugging / verification purposes
 In the near future, we intend to
 
 1. Send product analytics events back to DataHub itself, using them as feedback to improve the product experience.
-2. No-code configuration of Analytics plugins. This will be achieved using server driven configuration for the React app.
+2. No-code configuration of Analytics plugins. This will be achieved using server driven configuration for the React
+   app.

@@ -7,10 +7,10 @@ import {
     SchemaField,
     PlatformSchema,
 } from '../../../../../../types.generated';
-import { convertTagsForUpdate } from '../../../../../shared/tags/utils/convertTagsForUpdate';
-import { SchemaDiffSummary } from '../components/SchemaVersionSummary';
-import { KEY_SCHEMA_PREFIX, UNION_TOKEN, VERSION_PREFIX } from './constants';
-import { ExtendedSchemaFields } from './types';
+import {convertTagsForUpdate} from '../../../../../shared/tags/utils/convertTagsForUpdate';
+import {SchemaDiffSummary} from '../components/SchemaVersionSummary';
+import {KEY_SCHEMA_PREFIX, UNION_TOKEN, VERSION_PREFIX} from './constants';
+import {ExtendedSchemaFields} from './types';
 
 export function convertEditableSchemaMeta(
     editableSchemaMeta?: Array<EditableSchemaFieldInfo>,
@@ -24,7 +24,7 @@ export function convertEditableSchemaMeta(
                 updatedFields[originalFieldIndex] = {
                     ...updatedFields[originalFieldIndex],
                     description: updatedField.description,
-                    globalTags: { ...updatedField.globalTags },
+                    globalTags: {...updatedField.globalTags},
                 };
             }
         });
@@ -40,7 +40,7 @@ export function convertEditableSchemaMetadataForUpdate(
             editableSchemaMetadata?.editableSchemaFieldInfo.map((editableSchemaFieldInfo) => ({
                 fieldPath: editableSchemaFieldInfo?.fieldPath,
                 description: editableSchemaFieldInfo?.description,
-                globalTags: { tags: convertTagsForUpdate(editableSchemaFieldInfo?.globalTags?.tags || []) },
+                globalTags: {tags: convertTagsForUpdate(editableSchemaFieldInfo?.globalTags?.tags || [])},
             })) || [],
     };
 }
@@ -71,7 +71,7 @@ export function pathMatchesNewPath(fieldPathA?: string | null, fieldPathB?: stri
 // group schema fields by fieldPath and grouping for hierarchy in schema table
 export function groupByFieldPath(
     schemaRows?: Array<SchemaField>,
-    options: { showKeySchema: boolean } = { showKeySchema: false },
+    options: { showKeySchema: boolean } = {showKeySchema: false},
 ): Array<ExtendedSchemaFields> {
     const rows = [
         ...(schemaRows?.filter(filterKeyFieldPath.bind({}, options.showKeySchema)) || []),
@@ -82,7 +82,7 @@ export function groupByFieldPath(
 
     for (let rowIndex = 0; rowIndex < rows.length; rowIndex++) {
         let parentRow: null | ExtendedSchemaFields = null;
-        const row = { children: undefined, ...rows[rowIndex], depth: 0 };
+        const row = {children: undefined, ...rows[rowIndex], depth: 0};
 
         for (let j = rowIndex - 1; j >= 0; j--) {
             const rowTokens = row.fieldPath.split('.');
@@ -190,7 +190,7 @@ export function getRawSchema(schema: PlatformSchema | undefined | null, showKeyS
 export function getDiffSummary(
     currentVersionRows?: Array<SchemaField>,
     previousVersionRows?: Array<SchemaField>,
-    options: { showKeySchema: boolean } = { showKeySchema: false },
+    options: { showKeySchema: boolean } = {showKeySchema: false},
 ): { rows: Array<ExtendedSchemaFields>; diffSummary: SchemaDiffSummary } {
     let rows = [
         ...(currentVersionRows?.filter(filterKeyFieldPath.bind({}, options.showKeySchema)) || []),
@@ -220,13 +220,13 @@ export function getDiffSummary(
                 }
                 previousRows.splice(relevantPastFieldIndex, 1);
             } else {
-                rows[rowIndex] = { ...rows[rowIndex], isNewRow: true };
+                rows[rowIndex] = {...rows[rowIndex], isNewRow: true};
                 diffSummary.added++; // Increase added row number in diff summary
             }
         });
-        rows = [...rows, ...previousRows.map((pf) => ({ ...pf, isDeletedRow: true }))];
+        rows = [...rows, ...previousRows.map((pf) => ({...pf, isDeletedRow: true}))];
         diffSummary.removed = previousRows.length; // removed row number in diff summary
     }
 
-    return { rows, diffSummary };
+    return {rows, diffSummary};
 }

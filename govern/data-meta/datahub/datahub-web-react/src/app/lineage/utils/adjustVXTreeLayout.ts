@@ -1,12 +1,12 @@
-import { HierarchyPointNode } from '@vx/hierarchy/lib/types';
-import { NodeData, Direction } from '../types';
+import {HierarchyPointNode} from '@vx/hierarchy/lib/types';
+import {NodeData, Direction} from '../types';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { width as nodeWidth } from '../constants';
+import {width as nodeWidth} from '../constants';
 
 export default function adjustVXTreeLayout({
-    tree,
-    direction,
-}: {
+                                               tree,
+                                               direction,
+                                           }: {
     tree: HierarchyPointNode<NodeData>;
     direction: Direction;
 }) {
@@ -49,7 +49,7 @@ export default function adjustVXTreeLayout({
     const nodesToReturn = tree.descendants().map((descendentToCopy) => ({
         x: descendentToCopy.x,
         y: descendentToCopy.y,
-        data: { ...descendentToCopy.data },
+        data: {...descendentToCopy.data},
     }));
 
     const edgesToReturn = tree.links().map((linkToCopy) => {
@@ -60,12 +60,12 @@ export default function adjustVXTreeLayout({
                 target: {
                     x: linkToCopy.target.x + (sourceHigher ? 40 : 0),
                     y: linkToCopy.target.y,
-                    data: { ...linkToCopy.target.data },
+                    data: {...linkToCopy.target.data},
                 },
                 source: {
                     x: linkToCopy.source.x - (sourceHigher ? 0 : 40),
                     y: linkToCopy.source.y,
-                    data: { ...linkToCopy.source.data },
+                    data: {...linkToCopy.source.data},
                 },
             };
         }
@@ -73,15 +73,15 @@ export default function adjustVXTreeLayout({
             target: {
                 x: linkToCopy.target.x,
                 y: linkToCopy.target.y + (direction === Direction.Upstream ? nodeWidth / 2 - 10 : -(nodeWidth / 2)),
-                data: { ...linkToCopy.target.data },
+                data: {...linkToCopy.target.data},
             },
             source: {
                 x: linkToCopy.source.x,
                 y: linkToCopy.source.y + (direction === Direction.Upstream ? -(nodeWidth / 2) : nodeWidth / 2 - 10),
-                data: { ...linkToCopy.source.data },
+                data: {...linkToCopy.source.data},
             },
         };
     });
 
-    return { nodesToRender: nodesToReturn, edgesToRender: edgesToReturn, nodesByUrn };
+    return {nodesToRender: nodesToReturn, edgesToRender: edgesToReturn, nodesByUrn};
 }

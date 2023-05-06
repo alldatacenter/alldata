@@ -1,19 +1,19 @@
-import React, { useState } from 'react';
-import { Image, Layout } from 'antd';
-import { Link } from 'react-router-dom';
-import styled, { useTheme } from 'styled-components';
+import React, {useState} from 'react';
+import {Image, Layout} from 'antd';
+import {Link} from 'react-router-dom';
+import styled, {useTheme} from 'styled-components';
 
-import { SearchBar } from './SearchBar';
-import { ManageAccount } from '../shared/ManageAccount';
-import { AutoCompleteResultForEntity, EntityType } from '../../types.generated';
+import {SearchBar} from './SearchBar';
+import {ManageAccount} from '../shared/ManageAccount';
+import {AutoCompleteResultForEntity, EntityType} from '../../types.generated';
 import EntityRegistry from '../entity/EntityRegistry';
-import { ANTD_GRAY } from '../entity/shared/constants';
-import { HeaderLinks } from '../shared/admin/HeaderLinks';
-import { useAppConfig } from '../useAppConfig';
-import { DEFAULT_APP_CONFIG } from '../../appConfigContext';
-import { ViewSelect } from '../entity/view/select/ViewSelect';
+import {ANTD_GRAY} from '../entity/shared/constants';
+import {HeaderLinks} from '../shared/admin/HeaderLinks';
+import {useAppConfig} from '../useAppConfig';
+import {DEFAULT_APP_CONFIG} from '../../appConfigContext';
+import {ViewSelect} from '../entity/view/select/ViewSelect';
 
-const { Header } = Layout;
+const {Header} = Layout;
 
 const styles = {
     header: {
@@ -71,15 +71,15 @@ const defaultProps = {
  * A header containing a Logo, Search Bar view, & an account management dropdown.
  */
 export const SearchHeader = ({
-    initialQuery,
-    placeholderText,
-    suggestions,
-    onSearch,
-    onQueryChange,
-    authenticatedUserUrn,
-    authenticatedUserPictureLink,
-    entityRegistry,
-}: Props) => {
+                                 initialQuery,
+                                 placeholderText,
+                                 suggestions,
+                                 onSearch,
+                                 onQueryChange,
+                                 authenticatedUserUrn,
+                                 authenticatedUserPictureLink,
+                                 entityRegistry,
+                             }: Props) => {
     const [isSearchBarFocused, setIsSearchBarFocused] = useState(false);
     const themeConfig = useTheme();
     const appConfig = useAppConfig();
@@ -107,16 +107,17 @@ export const SearchHeader = ({
                     entityRegistry={entityRegistry}
                     setIsSearchBarFocused={setIsSearchBarFocused}
                     fixAutoComplete
+                    showQuickFilters
                 />
             </LogoSearchContainer>
             <NavGroup>
                 {viewsEnabled && (
                     <ViewSelectContainer>
-                        <ViewSelect />
+                        <ViewSelect/>
                     </ViewSelectContainer>
                 )}
-                <HeaderLinks areLinksHidden={isSearchBarFocused} />
-                <ManageAccount urn={authenticatedUserUrn} pictureLink={authenticatedUserPictureLink || ''} />
+                <HeaderLinks areLinksHidden={isSearchBarFocused}/>
+                <ManageAccount urn={authenticatedUserUrn} pictureLink={authenticatedUserPictureLink || ''}/>
             </NavGroup>
         </Header>
     );

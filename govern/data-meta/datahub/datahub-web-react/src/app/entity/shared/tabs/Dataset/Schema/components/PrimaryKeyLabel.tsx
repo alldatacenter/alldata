@@ -1,9 +1,9 @@
 import React from 'react';
-import { Badge } from 'antd';
+import {Badge} from 'antd';
 import styled from 'styled-components';
-import { blue } from '@ant-design/colors';
+import {blue} from '@ant-design/colors';
 
-import { ANTD_GRAY } from '../../../../constants';
+import {ANTD_GRAY} from '../../../../constants';
 
 const PrimaryKeyBadge = styled(Badge)`
     margin-left: 4px;
@@ -18,5 +18,5 @@ const PrimaryKeyBadge = styled(Badge)`
 `;
 
 export default function PrimaryKeyLabel() {
-    return <PrimaryKeyBadge count="Primary Key" />;
+    return <PrimaryKeyBadge count="Primary Key"/>;
 }

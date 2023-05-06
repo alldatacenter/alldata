@@ -4,8 +4,8 @@ import kafkaLogo from '../../../images/kafkalogo.png';
 import s3Logo from '../../../images/s3.png';
 import snowflakeLogo from '../../../images/snowflakelogo.png';
 import bigqueryLogo from '../../../images/bigquerylogo.png';
-import { DataFlow, DataPlatform, EntityType, OwnershipType, PlatformType } from '../../../types.generated';
-import { findUserByUsername } from '../searchResult/userSearchResult';
+import {DataFlow, DataPlatform, EntityType, OwnershipType, PlatformType} from '../../../types.generated';
+import {findUserByUsername} from '../searchResult/userSearchResult';
 
 export type DataFlowEntityArg = {
     orchestrator: string;
@@ -19,7 +19,7 @@ export const platformLogo = {
     bigquery: bigqueryLogo,
 };
 
-export const generatePlatform = ({ platform, urn }): DataPlatform => {
+export const generatePlatform = ({platform, urn}): DataPlatform => {
     return {
         urn,
         type: EntityType.Dataset,
@@ -34,13 +34,13 @@ export const generatePlatform = ({ platform, urn }): DataPlatform => {
     };
 };
 
-export const dataFlowEntity = ({ orchestrator, cluster }: DataFlowEntityArg): DataFlow => {
+export const dataFlowEntity = ({orchestrator, cluster}: DataFlowEntityArg): DataFlow => {
     const flowId = `${faker.company.bsNoun()}_${faker.company.bsNoun()}`;
     const description = `${faker.commerce.productDescription()}`;
     const datahubUser = findUserByUsername('datahub');
     const platform = 'kafka';
     const platformURN = `urn:li:dataPlatform:kafka`;
-    const dataPlatform = generatePlatform({ platform, urn: platformURN });
+    const dataPlatform = generatePlatform({platform, urn: platformURN});
 
     return {
         urn: `urn:li:dataFlow:(${orchestrator},${flowId},${cluster})`,
@@ -64,10 +64,10 @@ export const dataFlowEntity = ({ orchestrator, cluster }: DataFlowEntityArg): Da
                     __typename: 'Owner',
                 },
             ],
-            lastModified: { time: 1620224528712, __typename: 'AuditStamp' },
+            lastModified: {time: 1620224528712, __typename: 'AuditStamp'},
             __typename: 'Ownership',
         },
-        globalTags: { tags: [], __typename: 'GlobalTags' },
+        globalTags: {tags: [], __typename: 'GlobalTags'},
         dataJobs: null,
         platform: dataPlatform,
         __typename: 'DataFlow',

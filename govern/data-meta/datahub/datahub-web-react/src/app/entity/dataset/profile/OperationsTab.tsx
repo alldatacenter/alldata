@@ -1,10 +1,10 @@
-import { DeliveredProcedureOutlined } from '@ant-design/icons';
-import { Button, Pagination, Table, Tooltip, Typography } from 'antd';
+import {DeliveredProcedureOutlined} from '@ant-design/icons';
+import {Button, Pagination, Table, Tooltip, Typography} from 'antd';
 import ButtonGroup from 'antd/lib/button/button-group';
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 
-import { useGetDatasetRunsQuery } from '../../../../graphql/dataset.generated';
+import {useGetDatasetRunsQuery} from '../../../../graphql/dataset.generated';
 import {
     DataProcessInstanceRunResultType,
     DataProcessRunStatus,
@@ -15,11 +15,11 @@ import {
     getExecutionRequestStatusDisplayText,
     getExecutionRequestStatusIcon,
 } from '../../../ingest/source/utils';
-import { CompactEntityNameList } from '../../../recommendations/renderer/component/CompactEntityNameList';
-import { ANTD_GRAY } from '../../shared/constants';
-import { useEntityData } from '../../shared/EntityContext';
-import { ReactComponent as LoadingSvg } from '../../../../images/datahub-logo-color-loading_pendulum.svg';
-import { scrollToTop } from '../../../shared/searchUtils';
+import {CompactEntityNameList} from '../../../recommendations/renderer/component/CompactEntityNameList';
+import {ANTD_GRAY} from '../../shared/constants';
+import {useEntityData} from '../../shared/EntityContext';
+import {ReactComponent as LoadingSvg} from '../../../../images/datahub-logo-color-loading_pendulum.svg';
+import {scrollToTop} from '../../../shared/searchUtils';
 
 const ExternalUrlLink = styled.a`
     font-size: 16px;
@@ -76,7 +76,7 @@ const columns = [
         title: 'Task',
         dataIndex: 'parentTemplate',
         key: 'parentTemplate',
-        render: (parentTemplate) => <CompactEntityNameList entities={[parentTemplate]} />,
+        render: (parentTemplate) => <CompactEntityNameList entities={[parentTemplate]}/>,
     },
     {
         title: 'Status',
@@ -89,9 +89,9 @@ const columns = [
             const color = getExecutionRequestStatusDisplayColor(statusForStyling);
             return (
                 <>
-                    <div style={{ display: 'flex', justifyContent: 'left', alignItems: 'center' }}>
-                        {Icon && <Icon style={{ color }} />}
-                        <Typography.Text strong style={{ color, marginLeft: 8 }}>
+                    <div style={{display: 'flex', justifyContent: 'left', alignItems: 'center'}}>
+                        {Icon && <Icon style={{color}}/>}
+                        <Typography.Text strong style={{color, marginLeft: 8}}>
                             {text || 'N/A'}
                         </Typography.Text>
                     </div>
@@ -103,13 +103,13 @@ const columns = [
         title: 'Inputs',
         dataIndex: 'inputs',
         key: 'inputs',
-        render: (inputs) => <CompactEntityNameList entities={inputs} />,
+        render: (inputs) => <CompactEntityNameList entities={inputs}/>,
     },
     {
         title: 'Outputs',
         dataIndex: 'outputs',
         key: 'outputs',
-        render: (outputs) => <CompactEntityNameList entities={outputs} />,
+        render: (outputs) => <CompactEntityNameList entities={outputs}/>,
     },
     {
         title: '',
@@ -119,7 +119,7 @@ const columns = [
             externalUrl && (
                 <Tooltip title="View task run details">
                     <ExternalUrlLink href={externalUrl}>
-                        <DeliveredProcedureOutlined />
+                        <DeliveredProcedureOutlined/>
                     </ExternalUrlLink>
                 </Tooltip>
             ),
@@ -129,12 +129,12 @@ const columns = [
 const PAGE_SIZE = 20;
 
 export const OperationsTab = () => {
-    const { urn } = useEntityData();
+    const {urn} = useEntityData();
     const [page, setPage] = useState(1);
     const [direction, setDirection] = useState(RelationshipDirection.Incoming);
 
-    const { loading, data } = useGetDatasetRunsQuery({
-        variables: { urn, start: (page - 1) * PAGE_SIZE, count: PAGE_SIZE, direction },
+    const {loading, data} = useGetDatasetRunsQuery({
+        variables: {urn, start: (page - 1) * PAGE_SIZE, count: PAGE_SIZE, direction},
     });
     const runs = data && data?.dataset?.runs?.runs;
 
@@ -174,13 +174,13 @@ export const OperationsTab = () => {
             </ReadWriteButtonGroup>
             {loading && (
                 <LoadingContainer>
-                    <LoadingSvg height={80} width={80} />
+                    <LoadingSvg height={80} width={80}/>
                     <LoadingText>Fetching runs...</LoadingText>
                 </LoadingContainer>
             )}
             {!loading && (
                 <>
-                    <Table dataSource={tableData} columns={columns} pagination={false} />
+                    <Table dataSource={tableData} columns={columns} pagination={false}/>
                     <PaginationControlContainer>
                         <Pagination
                             current={page}

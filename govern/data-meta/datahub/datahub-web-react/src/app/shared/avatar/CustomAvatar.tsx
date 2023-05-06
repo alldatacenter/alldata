@@ -1,15 +1,15 @@
-import { Avatar, Tooltip } from 'antd';
-import { TooltipPlacement } from 'antd/lib/tooltip';
+import {Avatar, Tooltip} from 'antd';
+import {TooltipPlacement} from 'antd/lib/tooltip';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 
 import defaultAvatar from '../../../images/default_avatar.png';
 import getAvatarColor from './getAvatarColor';
 
-const AvatarStyled = styled(Avatar)<{ size?: number; $backgroundColor: string }>`
+const AvatarStyled = styled(Avatar)<{ size?: number; $backgroundColor?: string }>`
     color: #fff;
-    background-color: ${(props) => props.$backgroundColor};
+    background-color: ${(props) => (props.$backgroundColor ? `${props.$backgroundColor}` : 'transparent')};
     font-size: ${(props) => (props.size ? `${Math.max(props.size / 2.0, 12)}px` : '14px')} !important;
     margin-right: 4px;
     height: 24px;
@@ -37,35 +37,31 @@ type Props = {
 
 // TODO: Refactor Policy and Role to NOT use CustomAvatar and use a clickable link instead
 export default function CustomAvatar({
-    url,
-    photoUrl,
-    useDefaultAvatar,
-    name,
-    style,
-    placement,
-    size,
-    isGroup = false,
-    isPolicy = false,
-    isRole = false,
-}: Props) {
+                                         url,
+                                         photoUrl,
+                                         useDefaultAvatar,
+                                         name,
+                                         style,
+                                         placement,
+                                         size,
+                                         isGroup = false,
+                                         isPolicy = false,
+                                         isRole = false,
+                                     }: Props) {
     const avatarWithInitial = name ? (
         <AvatarStyled style={style} size={size} $backgroundColor={getAvatarColor(name)}>
             {name.charAt(0).toUpperCase()}
         </AvatarStyled>
     ) : (
-        <AvatarStyled src={defaultAvatar} style={style} size={size} $backgroundColor={getAvatarColor(name)} />
+        <AvatarStyled src={defaultAvatar} style={style} size={size} $backgroundColor={getAvatarColor(name)}/>
     );
     const avatarWithDefault = useDefaultAvatar ? (
-        <AvatarStyled src={defaultAvatar} style={style} size={size} $backgroundColor={getAvatarColor(name)} />
+        <AvatarStyled src={defaultAvatar} style={style} size={size} $backgroundColor={getAvatarColor(name)}/>
     ) : (
         avatarWithInitial
     );
     const avatar =
-        photoUrl && photoUrl !== '' ? (
-            <AvatarStyled src={photoUrl} style={style} size={size} $backgroundColor={getAvatarColor(name)} />
-        ) : (
-            avatarWithDefault
-        );
+        photoUrl && photoUrl !== '' ? <AvatarStyled src={photoUrl} style={style} size={size}/> : avatarWithDefault;
     if (!name) {
         return url ? <Link to={url}>{avatar}</Link> : avatar;
     }

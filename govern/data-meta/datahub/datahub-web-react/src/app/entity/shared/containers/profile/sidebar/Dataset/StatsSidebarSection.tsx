@@ -1,14 +1,14 @@
-import { Button, Typography } from 'antd';
+import {Button, Typography} from 'antd';
 import React from 'react';
 import styled from 'styled-components';
-import { GetDatasetQuery } from '../../../../../../../graphql/dataset.generated';
-import { DatasetProfile, Operation, UsageQueryResult } from '../../../../../../../types.generated';
+import {GetDatasetQuery} from '../../../../../../../graphql/dataset.generated';
+import {DatasetProfile, Operation, UsageQueryResult} from '../../../../../../../types.generated';
 import UsageFacepile from '../../../../../dataset/profile/UsageFacepile';
-import { ANTD_GRAY } from '../../../../constants';
-import { useBaseEntity, useRouteToTab } from '../../../../EntityContext';
-import { SidebarHeader } from '../SidebarHeader';
-import { InfoItem } from '../../../../components/styled/InfoItem';
-import { countSeparator } from '../../../../../../../utils/formatter/index';
+import {ANTD_GRAY} from '../../../../constants';
+import {useBaseEntity, useRouteToTab} from '../../../../EntityContext';
+import {SidebarHeader} from '../SidebarHeader';
+import {InfoItem} from '../../../../components/styled/InfoItem';
+import {countSeparator} from '../../../../../../../utils/formatter/index';
 
 const HeaderInfoBody = styled(Typography.Text)`
     font-size: 16px;
@@ -69,8 +69,8 @@ export const SidebarStatsSection = () => {
     return (
         <div>
             <HeaderContainer>
-                <SidebarHeader title="Stats" />
-                <StatsButton onClick={() => routeToTab({ tabName: 'Stats' })} type="link">
+                <SidebarHeader title="Stats"/>
+                <StatsButton onClick={() => routeToTab({tabName: 'Stats'})} type="link">
                     More stats &gt;
                 </StatsButton>
             </HeaderContainer>
@@ -80,7 +80,7 @@ export const SidebarStatsSection = () => {
                     {latestProfile?.rowCount ? (
                         <InfoItem
                             title="Rows"
-                            onClick={() => routeToTab({ tabName: 'Queries' })}
+                            onClick={() => routeToTab({tabName: 'Queries'})}
                             width={INFO_ITEM_WIDTH_PX}
                         >
                             <HeaderInfoBody>{countSeparator(latestProfile?.rowCount)}</HeaderInfoBody>
@@ -99,7 +99,7 @@ export const SidebarStatsSection = () => {
                     {usageStats?.aggregations?.totalSqlQueries ? (
                         <InfoItem
                             title="Monthly Queries"
-                            onClick={() => routeToTab({ tabName: 'Queries' })}
+                            onClick={() => routeToTab({tabName: 'Queries'})}
                             width={INFO_ITEM_WIDTH_PX}
                         >
                             <HeaderInfoBody>{usageStats?.aggregations?.totalSqlQueries}</HeaderInfoBody>
@@ -107,7 +107,7 @@ export const SidebarStatsSection = () => {
                     ) : null}
                     {(usageStats?.aggregations?.users?.length || 0) > 0 ? (
                         <InfoItem title="Top Users" width={INFO_ITEM_WIDTH_PX}>
-                            <UsageFacepile users={usageStats?.aggregations?.users} maxNumberDisplayed={10} />
+                            <UsageFacepile users={usageStats?.aggregations?.users} maxNumberDisplayed={10}/>
                         </InfoItem>
                     ) : null}
                 </StatsRow>
@@ -117,7 +117,7 @@ export const SidebarStatsSection = () => {
                 <StatsRow>
                     <InfoItem
                         title="Last Updated"
-                        onClick={() => routeToTab({ tabName: 'Queries' })}
+                        onClick={() => routeToTab({tabName: 'Queries'})}
                         width={LAST_UPDATED_WIDTH_PX}
                     >
                         <HeaderInfoBody>{lastUpdatedTime}</HeaderInfoBody>

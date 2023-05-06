@@ -1,14 +1,14 @@
-import React, { useContext, useState } from 'react';
+import React, {useContext, useState} from 'react';
 import styled from 'styled-components/macro';
-import { Group } from '@vx/group';
-import { SchemaField } from '../../types.generated';
-import { downgradeV2FieldPath } from '../entity/dataset/profile/schema/utils/utils';
-import { NodeData } from './types';
-import { LineageExplorerContext } from './utils/LineageExplorerContext';
-import { ANTD_GRAY } from '../entity/shared/constants';
-import { centerY, COLUMN_HEIGHT, EXPAND_COLLAPSE_COLUMNS_TOGGLE_HEIGHT, iconX, width } from './constants';
-import { truncate } from '../entity/shared/utils';
-import { highlightColumnLineage } from './utils/highlightColumnLineage';
+import {Group} from '@vx/group';
+import {SchemaField} from '../../types.generated';
+import {downgradeV2FieldPath} from '../entity/dataset/profile/schema/utils/utils';
+import {NodeData} from './types';
+import {LineageExplorerContext} from './utils/LineageExplorerContext';
+import {ANTD_GRAY} from '../entity/shared/constants';
+import {centerY, COLUMN_HEIGHT, EXPAND_COLLAPSE_COLUMNS_TOGGLE_HEIGHT, iconX, width} from './constants';
+import {truncate} from '../entity/shared/utils';
+import {highlightColumnLineage} from './utils/highlightColumnLineage';
 
 const MAX_NUM_FIELD_CHARACTERS = 25;
 const HOVER_TEXT_SHIFT = 10;
@@ -25,8 +25,8 @@ interface Props {
     onHover: (EntitySelectParams) => void;
 }
 
-export default function ColumnNode({ field, index, node, titleHeight, onHover }: Props) {
-    const { highlightedEdges, setHighlightedEdges, selectedField, setSelectedField, fineGrainedMap } =
+export default function ColumnNode({field, index, node, titleHeight, onHover}: Props) {
+    const {highlightedEdges, setHighlightedEdges, selectedField, setSelectedField, fineGrainedMap} =
         useContext(LineageExplorerContext);
     const [showHoverText, setShowHoverText] = useState(false);
 

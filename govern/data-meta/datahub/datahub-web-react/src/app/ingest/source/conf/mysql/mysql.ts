@@ -1,4 +1,4 @@
-import { SourceConfig } from '../types';
+import {SourceConfig} from '../types';
 import mysqlLogo from '../../../../../images/mysqllogo-2.png';
 
 const placeholderRecipe = `\

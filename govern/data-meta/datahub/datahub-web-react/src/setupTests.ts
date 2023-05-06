@@ -18,9 +18,14 @@ global.matchMedia =
         };
     });
 
-const { location } = window;
+const {location} = window;
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 delete window.location;
-window.location = { ...location, replace: () => {} };
+window.location = {
+    ...location, replace: () => {
+    }
+};
 sinon.stub(window.location, 'replace');
-jest.mock('js-cookie', () => ({ get: () => 'urn:li:corpuser:2' }));
+jest.mock('js-cookie', () => ({get: () => 'urn:li:corpuser:2'}));
 jest.mock('./app/entity/shared/tabs/Documentation/components/editor/Editor');

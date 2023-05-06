@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import {render} from '@testing-library/react';
 import UserHeader from '../UserHeader';
 
 describe('UserHeader', () => {
@@ -15,7 +15,7 @@ describe('UserHeader', () => {
         );
     });
     it('renders name, title, skills, teams and email', () => {
-        const { getByText } = render(
+        const {getByText} = render(
             <UserHeader
                 name="Jane Doe"
                 title="Software Engineer"

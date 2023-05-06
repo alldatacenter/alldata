@@ -1,16 +1,16 @@
-import { Typography } from 'antd';
+import {Typography} from 'antd';
 import React from 'react';
 import styled from 'styled-components';
 import StripMarkdownText from '../../shared/components/styled/StripMarkdownText';
-import { SidebarHeader } from '../../shared/containers/profile/sidebar/SidebarHeader';
-import { useEntityData, useRouteToTab } from '../../shared/EntityContext';
+import {SidebarHeader} from '../../shared/containers/profile/sidebar/SidebarHeader';
+import {useEntityData, useRouteToTab} from '../../shared/EntityContext';
 
 const DescriptionTypography = styled(Typography.Paragraph)`
     max-width: 65ch;
 `;
 
 export default function GlossarySidebarAboutSection() {
-    const { entityData }: any = useEntityData();
+    const {entityData}: any = useEntityData();
     const description = entityData?.glossaryTermInfo?.definition;
     const source = entityData?.glossaryTermInfo?.sourceRef;
     const sourceUrl = entityData?.glossaryTermInfo?.sourceUrl;
@@ -18,13 +18,13 @@ export default function GlossarySidebarAboutSection() {
 
     return (
         <div>
-            <SidebarHeader title="About" />
+            <SidebarHeader title="About"/>
             {description && (
                 <DescriptionTypography>
                     <StripMarkdownText
                         limit={205}
                         readMore={
-                            <Typography.Link onClick={() => routeToTab({ tabName: 'Documentation' })}>
+                            <Typography.Link onClick={() => routeToTab({tabName: 'Documentation'})}>
                                 Read More
                             </Typography.Link>
                         }
@@ -34,7 +34,7 @@ export default function GlossarySidebarAboutSection() {
                 </DescriptionTypography>
             )}
 
-            <SidebarHeader title="Source" />
+            <SidebarHeader title="Source"/>
             {source && (
                 <DescriptionTypography>
                     {sourceUrl ? (

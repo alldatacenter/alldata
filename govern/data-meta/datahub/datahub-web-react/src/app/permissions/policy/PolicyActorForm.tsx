@@ -1,11 +1,11 @@
 import React from 'react';
-import { Form, Select, Switch, Tag, Typography } from 'antd';
+import {Form, Select, Switch, Tag, Typography} from 'antd';
 import styled from 'styled-components';
 
-import { useEntityRegistry } from '../../useEntityRegistry';
-import { ActorFilter, CorpUser, EntityType, PolicyType, SearchResult } from '../../../types.generated';
-import { useGetSearchResultsLazyQuery } from '../../../graphql/search.generated';
-import { CustomAvatar } from '../../shared/avatar';
+import {useEntityRegistry} from '../../useEntityRegistry';
+import {ActorFilter, CorpUser, EntityType, PolicyType, SearchResult} from '../../../types.generated';
+import {useGetSearchResultsLazyQuery} from '../../../graphql/search.generated';
+import {CustomAvatar} from '../../shared/avatar';
 
 type Props = {
     policyType: PolicyType;
@@ -40,12 +40,12 @@ const SearchResultContent = styled.div`
  * Component used to construct the "actors" portion of a DataHub
  * access Policy by populating an ActorFilter object.
  */
-export default function PolicyActorForm({ policyType, actors, setActors }: Props) {
+export default function PolicyActorForm({policyType, actors, setActors}: Props) {
     const entityRegistry = useEntityRegistry();
 
     // Search for actors while building policy.
-    const [userSearch, { data: userSearchData }] = useGetSearchResultsLazyQuery();
-    const [groupSearch, { data: groupSearchData }] = useGetSearchResultsLazyQuery();
+    const [userSearch, {data: userSearchData}] = useGetSearchResultsLazyQuery();
+    const [groupSearch, {data: groupSearchData}] = useGetSearchResultsLazyQuery();
 
     // Toggle the "Owners" switch
     const onToggleAppliesToOwners = (value: boolean) => {
@@ -178,7 +178,7 @@ export default function PolicyActorForm({ policyType, actors, setActors }: Props
 
     const tagRender = (props) => {
         // eslint-disable-next-line react/prop-types
-        const { label, closable, onClose, value } = props;
+        const {label, closable, onClose, value} = props;
         const onPreventMouseDown = (event) => {
             event.preventDefault();
             event.stopPropagation();
@@ -214,7 +214,7 @@ export default function PolicyActorForm({ policyType, actors, setActors }: Props
                         marked as owners of a Metadata Asset, either directly or indirectly via a Group, will have the
                         selected privileges.
                     </Typography.Paragraph>
-                    <Switch size="small" checked={actors.resourceOwners} onChange={onToggleAppliesToOwners} />
+                    <Switch size="small" checked={actors.resourceOwners} onChange={onToggleAppliesToOwners}/>
                 </Form.Item>
             )}
             <Form.Item label={<Typography.Text strong>Users</Typography.Text>}>

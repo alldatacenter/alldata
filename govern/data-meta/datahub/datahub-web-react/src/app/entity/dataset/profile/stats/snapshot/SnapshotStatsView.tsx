@@ -1,10 +1,10 @@
-import { Row, Table, Tag, Typography } from 'antd';
+import {Row, Table, Tag, Typography} from 'antd';
 import styled from 'styled-components';
 
-import { ColumnsType, ColumnType } from 'antd/lib/table';
-import React, { useMemo } from 'react';
-import { DatasetProfile } from '../../../../../../types.generated';
-import { Highlight } from '../../../../../analyticsDashboard/components/Highlight';
+import {ColumnsType, ColumnType} from 'antd/lib/table';
+import React, {useMemo} from 'react';
+import {DatasetProfile} from '../../../../../../types.generated';
+import {Highlight} from '../../../../../analyticsDashboard/components/Highlight';
 import StatsSection from '../StatsSection';
 
 const ColumnStatsTable = styled(Table)`
@@ -23,7 +23,7 @@ export type Props = {
     profile: DatasetProfile;
 };
 
-export default function DataProfileView({ profile }: Props) {
+export default function DataProfileView({profile}: Props) {
     const columnStatsTableData = useMemo(
         () =>
             profile.fieldProfiles?.map((doc) => ({
@@ -46,7 +46,7 @@ export default function DataProfileView({ profile }: Props) {
      * Returns a placeholder value to show in the column data table when data is null.
      */
     const unknownValue = () => {
-        return <Typography.Text style={{ color: '#B8B8B8' }}>unknown</Typography.Text>;
+        return <Typography.Text style={{color: '#B8B8B8'}}>unknown</Typography.Text>;
     };
 
     /**
@@ -161,8 +161,8 @@ export default function DataProfileView({ profile }: Props) {
         <>
             <StatsSection title="Table Stats">
                 <Row align="top" justify="start">
-                    <Highlight highlight={{ value: rowCount, title: rowCountTitle, body: '' }} />
-                    <Highlight highlight={{ value: columnCount, title: columnCountTitle, body: '' }} />
+                    <Highlight highlight={{value: rowCount, title: rowCountTitle, body: ''}}/>
+                    <Highlight highlight={{value: columnCount, title: columnCountTitle, body: ''}}/>
                 </Row>
             </StatsSection>
             <StatsSection title="Column Stats">

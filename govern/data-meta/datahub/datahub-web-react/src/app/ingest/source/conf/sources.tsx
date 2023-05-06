@@ -1,6 +1,6 @@
 import React from 'react';
-import { FormOutlined } from '@ant-design/icons';
-import { ANTD_GRAY } from '../../../entity/shared/constants';
+import {FormOutlined} from '@ant-design/icons';
+import {ANTD_GRAY} from '../../../entity/shared/constants';
 import bigqueryConfig from './bigquery/bigquery';
 import redshiftConfig from './redshift/redshift';
 import snowflakeConfig from './snowflake/snowflake';
@@ -12,7 +12,7 @@ import azureAdConfig from './azure/azure';
 import glueConfig from './glue/glue';
 import mongoConfig from './mongodb/mongodb';
 import oktaConfig from './okta/okta';
-import { SourceConfig } from './types';
+import {SourceConfig} from './types';
 import hiveConfig from './hive/hive';
 import oracleConfig from './oracle/oracle';
 import tableauConfig from './tableau/tableau';
@@ -51,6 +51,6 @@ export const SOURCE_TEMPLATE_CONFIGS: Array<SourceConfig> = [
         placeholderRecipe: DEFAULT_PLACEHOLDER_RECIPE,
         displayName: 'Other',
         docsUrl: 'https://datahubproject.io/docs/metadata-ingestion/',
-        logoComponent: <FormOutlined style={{ color: ANTD_GRAY[8], fontSize: 28 }} />,
+        logoComponent: <FormOutlined style={{color: ANTD_GRAY[8], fontSize: 28}}/>,
     },
 ];

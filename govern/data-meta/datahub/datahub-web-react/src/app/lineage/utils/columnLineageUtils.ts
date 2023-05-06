@@ -1,6 +1,6 @@
-import { ColumnEdge, FetchedEntity, NodeData } from '../types';
-import { InputFields, SchemaField } from '../../../types.generated';
-import { downgradeV2FieldPath } from '../../entity/dataset/profile/schema/utils/utils';
+import {ColumnEdge, FetchedEntity, NodeData} from '../types';
+import {InputFields, SchemaField} from '../../../types.generated';
+import {downgradeV2FieldPath} from '../../entity/dataset/profile/schema/utils/utils';
 
 export function getHighlightedColumnsForNode(highlightedEdges: ColumnEdge[], fields: SchemaField[], nodeUrn: string) {
     return highlightedEdges
@@ -68,7 +68,7 @@ export function populateColumnsByUrn(
     fetchedEntities: { [x: string]: FetchedEntity },
     setColumnsByUrn: (colsByUrn: Record<string, SchemaField[]>) => void,
 ) {
-    let populatedColumnsByUrn = { ...columnsByUrn };
+    let populatedColumnsByUrn = {...columnsByUrn};
     Object.entries(fetchedEntities).forEach(([urn, fetchedEntity]) => {
         if (fetchedEntity.schemaMetadata && !columnsByUrn[urn]) {
             populatedColumnsByUrn = {
@@ -127,6 +127,7 @@ export function encodeSchemaField(fieldPath: string) {
 export function getSourceUrnFromSchemaFieldUrn(schemaFieldUrn: string) {
     return schemaFieldUrn.replace('urn:li:schemaField:(', '').split(')')[0].concat(')');
 }
+
 export function getFieldPathFromSchemaFieldUrn(schemaFieldUrn: string) {
     return decodeSchemaField(schemaFieldUrn.replace('urn:li:schemaField:(', '').split(')')[1].replace(',', ''));
 }

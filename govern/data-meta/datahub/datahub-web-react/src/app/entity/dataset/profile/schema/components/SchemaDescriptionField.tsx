@@ -1,16 +1,16 @@
-import { Typography, message, Button } from 'antd';
-import { EditOutlined } from '@ant-design/icons';
-import React, { useState } from 'react';
+import {Typography, message, Button} from 'antd';
+import {EditOutlined} from '@ant-design/icons';
+import React, {useState} from 'react';
 import styled from 'styled-components';
-import { FetchResult } from '@apollo/client';
+import {FetchResult} from '@apollo/client';
 
-import { UpdateDatasetMutation } from '../../../../../../graphql/dataset.generated';
+import {UpdateDatasetMutation} from '../../../../../../graphql/dataset.generated';
 import UpdateDescriptionModal from '../../../../shared/components/legacy/DescriptionModal';
-import StripMarkdownText, { removeMarkdown } from '../../../../shared/components/styled/StripMarkdownText';
+import StripMarkdownText, {removeMarkdown} from '../../../../shared/components/styled/StripMarkdownText';
 import SchemaEditableContext from '../../../../../shared/SchemaEditableContext';
-import { useEntityData } from '../../../../shared/EntityContext';
-import analytics, { EventType, EntityActionType } from '../../../../../analytics';
-import { Editor } from '../../../../shared/tabs/Documentation/components/editor/Editor';
+import {useEntityData} from '../../../../shared/EntityContext';
+import analytics, {EventType, EntityActionType} from '../../../../../analytics';
+import {Editor} from '../../../../shared/tabs/Documentation/components/editor/Editor';
 
 const EditIcon = styled(EditOutlined)`
     cursor: pointer;
@@ -88,13 +88,13 @@ type Props = {
 
 const ABBREVIATED_LIMIT = 80;
 
-export default function DescriptionField({ description, onUpdate, isEdited = false, original }: Props) {
+export default function DescriptionField({description, onUpdate, isEdited = false, original}: Props) {
     const [showAddModal, setShowAddModal] = useState(false);
     const overLimit = removeMarkdown(description).length > 80;
     const [expanded, setExpanded] = useState(!overLimit);
     const isSchemaEditable = React.useContext(SchemaEditableContext);
     const onCloseModal = () => setShowAddModal(false);
-    const { urn, entityType } = useEntityData();
+    const {urn, entityType} = useEntityData();
 
     const sendAnalytics = () => {
         analytics.event({
@@ -106,22 +106,22 @@ export default function DescriptionField({ description, onUpdate, isEdited = fal
     };
 
     const onUpdateModal = async (desc: string | null) => {
-        message.loading({ content: 'Updating...' });
+        message.loading({content: 'Updating...'});
         try {
             await onUpdate(desc || '');
             message.destroy();
-            message.success({ content: 'Updated!', duration: 2 });
+            message.success({content: 'Updated!', duration: 2});
             sendAnalytics();
         } catch (e: unknown) {
             message.destroy();
-            if (e instanceof Error) message.error({ content: `Update Failed! \n ${e.message || ''}`, duration: 2 });
+            if (e instanceof Error) message.error({content: `Update Failed! \n ${e.message || ''}`, duration: 2});
         }
         onCloseModal();
     };
 
     const EditButton =
         (isSchemaEditable && description && (
-            <EditIcon twoToneColor="#52c41a" onClick={() => setShowAddModal(true)} />
+            <EditIcon twoToneColor="#52c41a" onClick={() => setShowAddModal(true)}/>
         )) ||
         undefined;
 
@@ -131,7 +131,7 @@ export default function DescriptionField({ description, onUpdate, isEdited = fal
         <DescriptionContainer>
             {expanded ? (
                 <>
-                    {!!description && <StyledViewer content={description} readOnly />}
+                    {!!description && <StyledViewer content={description} readOnly/>}
                     {!!description && (
                         <ExpandedActions>
                             {overLimit && (

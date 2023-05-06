@@ -1,4 +1,4 @@
-import { Maybe } from 'graphql/jsutils/Maybe';
+import {Maybe} from 'graphql/jsutils/Maybe';
 import {
     PolicyMatchCondition,
     PolicyMatchCriterion,
@@ -88,9 +88,9 @@ export const createCriterion = (
     condition: PolicyMatchCondition.Equals,
 });
 
-export const createCriterionValue = (value: string): PolicyMatchCriterionValue => ({ value });
+export const createCriterionValue = (value: string): PolicyMatchCriterionValue => ({value});
 
-export const createCriterionValueWithEntity = (value: string, entity): PolicyMatchCriterionValue => ({ value, entity });
+export const createCriterionValueWithEntity = (value: string, entity): PolicyMatchCriterionValue => ({value, entity});
 
 export const convertLegacyResourceFilter = (resourceFilter: Maybe<ResourceFilter> | undefined) => {
     // If empty or filter is set, resource filter is valid so return itself
@@ -122,7 +122,7 @@ export const setFieldValues = (
 ): PolicyMatchFilter => {
     const restCriteria = filter.criteria?.filter((criterion) => criterion.field !== resourceFieldType) || [];
     if (fieldValues.length === 0) {
-        return { ...filter, criteria: restCriteria };
+        return {...filter, criteria: restCriteria};
     }
-    return { ...filter, criteria: [...restCriteria, createCriterion(resourceFieldType, fieldValues)] };
+    return {...filter, criteria: [...restCriteria, createCriterion(resourceFieldType, fieldValues)]};
 };

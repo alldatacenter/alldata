@@ -1,11 +1,11 @@
 import React from 'react';
-import { fireEvent, render, waitFor } from '@testing-library/react';
-import { MockedProvider } from '@apollo/client/testing';
+import {fireEvent, render, waitFor} from '@testing-library/react';
+import {MockedProvider} from '@apollo/client/testing';
 
 import TagTermGroup from '../TagTermGroup';
 import TestPageContainer from '../../../../utils/test-utils/TestPageContainer';
-import { EntityType, GlossaryTerms } from '../../../../types.generated';
-import { mocks } from '../../../../Mocks';
+import {EntityType, GlossaryTerms} from '../../../../types.generated';
+import {mocks} from '../../../../Mocks';
 
 const legacyTag = {
     urn: 'urn:li:tag:legacy',
@@ -22,11 +22,11 @@ const ownershipTag = {
 };
 
 const globalTags1 = {
-    tags: [{ tag: legacyTag }],
+    tags: [{tag: legacyTag}],
 };
 
 const globalTags2 = {
-    tags: [{ tag: ownershipTag }],
+    tags: [{tag: ownershipTag}],
 };
 
 const identifierTerm = {
@@ -42,15 +42,15 @@ const costTerm = {
 };
 
 const glossaryTerms = {
-    terms: [{ term: identifierTerm }, { term: costTerm }],
+    terms: [{term: identifierTerm}, {term: costTerm}],
 };
 
 describe('TagTermGroup', () => {
     it('renders editable tags', async () => {
-        const { getByText, getByLabelText, queryAllByLabelText, queryByText } = render(
+        const {getByText, getByLabelText, queryAllByLabelText, queryByText} = render(
             <MockedProvider mocks={mocks} addTypename={false}>
                 <TestPageContainer>
-                    <TagTermGroup editableTags={globalTags1} canRemove />
+                    <TagTermGroup editableTags={globalTags1} canRemove/>
                 </TestPageContainer>
             </MockedProvider>,
         );
@@ -69,10 +69,10 @@ describe('TagTermGroup', () => {
     });
 
     it('renders uneditable tags', () => {
-        const { getByText, queryByLabelText, queryByText } = render(
+        const {getByText, queryByLabelText, queryByText} = render(
             <MockedProvider mocks={mocks} addTypename={false}>
                 <TestPageContainer>
-                    <TagTermGroup uneditableTags={globalTags2} />
+                    <TagTermGroup uneditableTags={globalTags2}/>
                 </TestPageContainer>
             </MockedProvider>,
         );
@@ -82,10 +82,10 @@ describe('TagTermGroup', () => {
     });
 
     it('renders both together', () => {
-        const { getByText, queryByText, queryAllByLabelText } = render(
+        const {getByText, queryByText, queryAllByLabelText} = render(
             <MockedProvider mocks={mocks} addTypename={false}>
                 <TestPageContainer>
-                    <TagTermGroup uneditableTags={globalTags1} editableTags={globalTags2} canRemove />
+                    <TagTermGroup uneditableTags={globalTags1} editableTags={globalTags2} canRemove/>
                 </TestPageContainer>
             </MockedProvider>,
         );
@@ -96,7 +96,7 @@ describe('TagTermGroup', () => {
     });
 
     it('renders create tag', () => {
-        const { getByText, queryByText } = render(
+        const {getByText, queryByText} = render(
             <MockedProvider mocks={mocks} addTypename={false}>
                 <TestPageContainer>
                     <TagTermGroup
@@ -118,7 +118,7 @@ describe('TagTermGroup', () => {
     });
 
     it('renders create term', () => {
-        const { getByText, queryByText } = render(
+        const {getByText, queryByText} = render(
             <MockedProvider mocks={mocks} addTypename={false}>
                 <TestPageContainer>
                     <TagTermGroup
@@ -140,7 +140,7 @@ describe('TagTermGroup', () => {
     });
 
     it('renders terms', () => {
-        const { getByText, queryAllByLabelText } = render(
+        const {getByText, queryAllByLabelText} = render(
             <MockedProvider mocks={mocks} addTypename={false}>
                 <TestPageContainer>
                     <TagTermGroup

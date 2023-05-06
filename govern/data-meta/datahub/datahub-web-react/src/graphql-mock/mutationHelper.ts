@@ -15,25 +15,25 @@ import {
     OwnerUpdate,
     TagAssociation,
 } from '../types.generated';
-import { findUserByURN } from './fixtures/searchResult/userSearchResult';
-import { tagDb } from './fixtures/tag';
-import { getActor } from './helper';
+import {findUserByURN} from './fixtures/searchResult/userSearchResult';
+import {tagDb} from './fixtures/tag';
+import {getActor} from './helper';
 
 type UpdateEntityOwnersArg = {
     entity?: Entity;
     owners?: OwnerUpdate[];
 };
 
-export const updateEntityOwners = ({ entity, owners }: UpdateEntityOwnersArg) => {
+export const updateEntityOwners = ({entity, owners}: UpdateEntityOwnersArg) => {
     const updateOwners = owners
         ?.map((o) => {
             const user = findUserByURN(o.owner);
             return user
                 ? {
-                      owner: user,
-                      type: o.type,
-                      __typename: 'Owner',
-                  }
+                    owner: user,
+                    type: o.type,
+                    __typename: 'Owner',
+                }
                 : null;
         })
         .filter(Boolean) as Owner[];
@@ -50,7 +50,7 @@ type UpdateEntityTagArg = {
     globalTags: GlobalTagsUpdate;
 };
 
-export const updateEntityTag = ({ entity, globalTags }: UpdateEntityTagArg) => {
+export const updateEntityTag = ({entity, globalTags}: UpdateEntityTagArg) => {
     const tagAssociations = globalTags.tags
         ?.map((t) => {
             const tag = tagDb.find((ti) => {
@@ -59,9 +59,9 @@ export const updateEntityTag = ({ entity, globalTags }: UpdateEntityTagArg) => {
 
             return tag
                 ? {
-                      tag,
-                      __typename: 'TagAssociation',
-                  }
+                    tag,
+                    __typename: 'TagAssociation',
+                }
                 : null;
         })
         .filter(Boolean) as TagAssociation[];
@@ -83,7 +83,7 @@ type UpdateEntityLinkArg = {
     institutionalMemory: InstitutionalMemoryUpdate;
 };
 
-export const updateEntityLink = ({ entity, institutionalMemory }: UpdateEntityLinkArg) => {
+export const updateEntityLink = ({entity, institutionalMemory}: UpdateEntityLinkArg) => {
     const dataEntity = entity;
     const baseElements: InstitutionalMemoryMetadata[] = [];
     const baseInstitutionalMemory: InstitutionalMemory = {
@@ -98,8 +98,8 @@ export const updateEntityLink = ({ entity, institutionalMemory }: UpdateEntityLi
             url: e.url,
             description: e.description as string,
             label: e.description as string,
-            author: { urn: e.author, username: '', type: EntityType.CorpUser },
-            created: { time: Date.now(), actor: getActor(), __typename: 'AuditStamp' },
+            author: {urn: e.author, username: '', type: EntityType.CorpUser},
+            created: {time: Date.now(), actor: getActor(), __typename: 'AuditStamp'},
         };
         return link;
     });

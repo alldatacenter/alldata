@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
-import { Button, Modal, Typography } from 'antd';
-import { DEFAULT_BUILDER_STATE, ViewBuilderState } from '../types';
-import { ViewBuilderForm } from './ViewBuilderForm';
+import {Button, Modal, Typography} from 'antd';
+import {DEFAULT_BUILDER_STATE, ViewBuilderState} from '../types';
+import {ViewBuilderForm} from './ViewBuilderForm';
 import ClickOutside from '../../../shared/ClickOutside';
-import { ViewBuilderMode } from './types';
+import {ViewBuilderMode} from './types';
 
 const modalWidth = 700;
-const modalStyle = { top: 40 };
-const modalBodyStyle = { paddingRight: 60, paddingLeft: 60, paddingBottom: 40 };
+const modalStyle = {top: 40};
+const modalBodyStyle = {paddingRight: 60, paddingLeft: 60, paddingBottom: 40};
 
 const TitleContainer = styled.div`
     display: flex;
@@ -40,7 +40,7 @@ const getTitleText = (mode, urn) => {
     return urn !== undefined ? 'Edit View' : 'Create new View';
 };
 
-export const ViewBuilderModal = ({ mode, urn, initialState, onSubmit, onCancel }: Props) => {
+export const ViewBuilderModal = ({mode, urn, initialState, onSubmit, onCancel}: Props) => {
     const [viewBuilderState, setViewBuilderState] = useState<ViewBuilderState>(initialState || DEFAULT_BUILDER_STATE);
 
     useEffect(() => {
@@ -54,7 +54,8 @@ export const ViewBuilderModal = ({ mode, urn, initialState, onSubmit, onCancel }
             onOk() {
                 onCancel?.();
             },
-            onCancel() {},
+            onCancel() {
+            },
             okText: 'Yes',
             maskClosable: true,
             closable: true,
@@ -80,7 +81,7 @@ export const ViewBuilderModal = ({ mode, urn, initialState, onSubmit, onCancel }
                 width={modalWidth}
                 onCancel={onCancel}
             >
-                <ViewBuilderForm urn={urn} mode={mode} state={viewBuilderState} updateState={setViewBuilderState} />
+                <ViewBuilderForm urn={urn} mode={mode} state={viewBuilderState} updateState={setViewBuilderState}/>
                 <SaveButtonContainer>
                     <CancelButton data-testid="view-builder-cancel" onClick={onCancel}>
                         Cancel

@@ -1,15 +1,15 @@
 import React from 'react';
-import { RecommendationRenderProps } from '../types';
-import { recommendationClickEvent } from '../util/recommendationClickEvent';
-import { TagSearchList } from './component/TagSearchList';
+import {RecommendationRenderProps} from '../types';
+import {recommendationClickEvent} from '../util/recommendationClickEvent';
+import {TagSearchList} from './component/TagSearchList';
 
 export const TagSearchListRenderer = ({
-    renderId,
-    moduleId,
-    scenarioType,
-    renderType,
-    content,
-}: RecommendationRenderProps) => {
+                                          renderId,
+                                          moduleId,
+                                          scenarioType,
+                                          renderType,
+                                          content,
+                                      }: RecommendationRenderProps) => {
     return (
         <TagSearchList
             onClick={(index) =>

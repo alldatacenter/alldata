@@ -1,13 +1,13 @@
-import { CheckOutlined, CloseOutlined } from '@ant-design/icons';
-import { Button, Divider, Modal, Typography } from 'antd';
+import {CheckOutlined, CloseOutlined} from '@ant-design/icons';
+import {Button, Divider, Modal, Typography} from 'antd';
 import React from 'react';
-import { green, red } from '@ant-design/colors';
+import {green, red} from '@ant-design/colors';
 import styled from 'styled-components/macro';
-import { ReactComponent as LoadingSvg } from '../../../../../../images/datahub-logo-color-loading_pendulum.svg';
-import { ANTD_GRAY } from '../../../../../entity/shared/constants';
+import {ReactComponent as LoadingSvg} from '../../../../../../images/datahub-logo-color-loading_pendulum.svg';
+import {ANTD_GRAY} from '../../../../../entity/shared/constants';
 import ConnectionCapabilityView from './ConnectionCapabilityView';
-import { CapabilityReport, SourceCapability, TestConnectionResult } from './types';
-import { SourceConfig } from '../../types';
+import {CapabilityReport, SourceCapability, TestConnectionResult} from './types';
+import {SourceConfig} from '../../types';
 import useGetSourceLogoUrl from '../../useGetSourceLogoUrl';
 
 const LoadingWrapper = styled.div`
@@ -91,12 +91,12 @@ interface Props {
 }
 
 function TestConnectionModal({
-    isLoading,
-    testConnectionFailed,
-    sourceConfig,
-    testConnectionResult,
-    hideModal,
-}: Props) {
+                                 isLoading,
+                                 testConnectionFailed,
+                                 sourceConfig,
+                                 testConnectionResult,
+                                 hideModal,
+                             }: Props) {
     const logoUrl = useGetSourceLogoUrl(sourceConfig?.name || '');
 
     return (
@@ -105,8 +105,8 @@ function TestConnectionModal({
             onCancel={hideModal}
             footer={<Button onClick={hideModal}>Done</Button>}
             title={
-                <ModalHeader style={{ margin: 0 }}>
-                    <SourceIcon alt="source logo" src={logoUrl} />
+                <ModalHeader style={{margin: 0}}>
+                    <SourceIcon alt="source logo" src={logoUrl}/>
                     {sourceConfig?.displayName} Connection Test
                 </ModalHeader>
             }
@@ -117,7 +117,7 @@ function TestConnectionModal({
                     <LoadingHeader level={4}>Testing your connection...</LoadingHeader>
                     <LoadingSubheader>This could take a few minutes.</LoadingSubheader>
                     <LoadingWrapper>
-                        <LoadingSvg height={100} width={100} />
+                        <LoadingSvg height={100} width={100}/>
                     </LoadingWrapper>
                 </ResultsWrapper>
             )}
@@ -126,11 +126,11 @@ function TestConnectionModal({
                     <ResultsHeader success={!testConnectionFailed}>
                         {testConnectionFailed ? (
                             <>
-                                <StyledClose /> Connection Failed
+                                <StyledClose/> Connection Failed
                             </>
                         ) : (
                             <>
-                                <StyledCheck /> Connection Succeeded
+                                <StyledCheck/> Connection Succeeded
                             </>
                         )}
                     </ResultsHeader>
@@ -139,7 +139,7 @@ function TestConnectionModal({
                             ? `A connection was not able to be established with ${sourceConfig?.displayName}.`
                             : `A connection was successfully established with ${sourceConfig?.displayName}.`}
                     </ResultsSubHeader>
-                    <Divider />
+                    <Divider/>
                     {testConnectionResult?.internal_failure ? (
                         <ConnectionCapabilityView
                             capability="Internal Failure"
@@ -165,26 +165,26 @@ function TestConnectionModal({
                         />
                     )}
                     {testConnectionResult?.capability_report &&
-                        Object.keys(testConnectionResult.capability_report).map((capabilityKey, index) => {
-                            return (
-                                <ConnectionCapabilityView
-                                    capability={SourceCapability[capabilityKey] || ''}
-                                    displayMessage={
-                                        (testConnectionResult.capability_report as CapabilityReport)[capabilityKey]
-                                            .failure_reason
-                                    }
-                                    success={
-                                        (testConnectionResult.capability_report as CapabilityReport)[capabilityKey]
-                                            .capable
-                                    }
-                                    tooltipMessage={
-                                        (testConnectionResult.capability_report as CapabilityReport)[capabilityKey]
-                                            .mitigation_message
-                                    }
-                                    number={index + 2} // Basic Connectivity is above with number 1
-                                />
-                            );
-                        })}
+                    Object.keys(testConnectionResult.capability_report).map((capabilityKey, index) => {
+                        return (
+                            <ConnectionCapabilityView
+                                capability={SourceCapability[capabilityKey] || ''}
+                                displayMessage={
+                                    (testConnectionResult.capability_report as CapabilityReport)[capabilityKey]
+                                        .failure_reason
+                                }
+                                success={
+                                    (testConnectionResult.capability_report as CapabilityReport)[capabilityKey]
+                                        .capable
+                                }
+                                tooltipMessage={
+                                    (testConnectionResult.capability_report as CapabilityReport)[capabilityKey]
+                                        .mitigation_message
+                                }
+                                number={index + 2} // Basic Connectivity is above with number 1
+                            />
+                        );
+                    })}
                 </ResultsWrapper>
             )}
         </Modal>

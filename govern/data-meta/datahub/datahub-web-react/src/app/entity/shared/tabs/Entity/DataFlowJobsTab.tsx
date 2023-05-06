@@ -1,8 +1,8 @@
 import React from 'react';
-import { useBaseEntity } from '../../EntityContext';
-import { EntityType } from '../../../../../types.generated';
-import { EntityList } from './components/EntityList';
-import { useEntityRegistry } from '../../../../useEntityRegistry';
+import {useBaseEntity} from '../../EntityContext';
+import {EntityType} from '../../../../../types.generated';
+import {EntityList} from './components/EntityList';
+import {useEntityRegistry} from '../../../../useEntityRegistry';
 
 export const DataFlowJobsTab = () => {
     const entity = useBaseEntity() as any;
@@ -15,5 +15,5 @@ export const DataFlowJobsTab = () => {
             ? entityRegistry.getEntityName(EntityType.DataJob)
             : entityRegistry.getCollectionName(EntityType.DataJob)
     }`;
-    return <EntityList title={title} type={EntityType.DataJob} entities={dataJobs || []} />;
+    return <EntityList title={title} type={EntityType.DataJob} entities={dataJobs || []}/>;
 };

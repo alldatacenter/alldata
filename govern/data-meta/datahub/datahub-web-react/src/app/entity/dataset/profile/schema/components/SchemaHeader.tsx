@@ -1,7 +1,7 @@
 import React from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
-import { Button, Input, Popover, Select, Tooltip, Typography } from 'antd';
-import { debounce } from 'lodash';
+import {useHistory, useLocation} from 'react-router-dom';
+import {Button, Input, Popover, Select, Tooltip, Typography} from 'antd';
+import {debounce} from 'lodash';
 import {
     AuditOutlined,
     CaretDownOutlined,
@@ -13,12 +13,13 @@ import {
 import styled from 'styled-components/macro';
 import CustomPagination from './CustomPagination';
 import TabToolbar from '../../../../shared/components/styled/TabToolbar';
-import { SemanticVersionStruct } from '../../../../../../types.generated';
-import { toRelativeTimeString } from '../../../../../shared/time/timeUtils';
-import { ANTD_GRAY, REDESIGN_COLORS } from '../../../../shared/constants';
-import { navigateToVersionedDatasetUrl } from '../../../../shared/tabs/Dataset/Schema/utils/navigateToVersionedDatasetUrl';
+import {SemanticVersionStruct} from '../../../../../../types.generated';
+import {toRelativeTimeString} from '../../../../../shared/time/timeUtils';
+import {ANTD_GRAY, REDESIGN_COLORS} from '../../../../shared/constants';
+import {navigateToVersionedDatasetUrl} from '../../../../shared/tabs/Dataset/Schema/utils/navigateToVersionedDatasetUrl';
 import SchemaTimeStamps from './SchemaTimeStamps';
-import getSchemaFilterFromQueryString from '../../../../shared/tabs/Dataset/Schema/utils/getSchemaFilterFromQueryString';
+import getSchemaFilterFromQueryString
+    from '../../../../shared/tabs/Dataset/Schema/utils/getSchemaFilterFromQueryString';
 
 const SchemaHeaderContainer = styled.div`
     display: flex;
@@ -148,25 +149,25 @@ type Props = {
 };
 
 export default function SchemaHeader({
-    maxVersion = 0,
-    fetchVersions,
-    editMode,
-    setEditMode,
-    hasRaw,
-    showRaw,
-    setShowRaw,
-    hasKeySchema,
-    showKeySchema,
-    setShowKeySchema,
-    lastUpdated,
-    lastObserved,
-    selectedVersion,
-    versionList,
-    showSchemaAuditView,
-    setShowSchemaAuditView,
-    setFilterText,
-    numRows,
-}: Props) {
+                                         maxVersion = 0,
+                                         fetchVersions,
+                                         editMode,
+                                         setEditMode,
+                                         hasRaw,
+                                         showRaw,
+                                         setShowRaw,
+                                         hasKeySchema,
+                                         showKeySchema,
+                                         setShowKeySchema,
+                                         lastUpdated,
+                                         lastObserved,
+                                         selectedVersion,
+                                         versionList,
+                                         showSchemaAuditView,
+                                         setShowSchemaAuditView,
+                                         setFilterText,
+                                         numRows,
+                                     }: Props) {
     const history = useHistory();
     const location = useLocation();
     const onVersionChange = (version1, version2) => {
@@ -211,18 +212,18 @@ export default function SchemaHeader({
     return (
         <TabToolbar>
             <SchemaHeaderContainer>
-                {maxVersion > 0 && !editMode && <CustomPagination onChange={onVersionChange} maxVersion={maxVersion} />}
+                {maxVersion > 0 && !editMode && <CustomPagination onChange={onVersionChange} maxVersion={maxVersion}/>}
                 <LeftButtonsGroup>
                     {hasRaw && (
                         <RawButton type="text" onClick={() => setShowRaw(!showRaw)}>
                             {showRaw ? (
                                 <RawButtonTitleContainer>
-                                    <TableOutlined style={{ padding: 0, margin: 0 }} />
+                                    <TableOutlined style={{padding: 0, margin: 0}}/>
                                     <RawButtonTitle>Tabular</RawButtonTitle>
                                 </RawButtonTitleContainer>
                             ) : (
                                 <RawButtonTitleContainer>
-                                    <FileTextOutlined style={{ padding: 0, margin: 0 }} />
+                                    <FileTextOutlined style={{padding: 0, margin: 0}}/>
                                     <RawButtonTitle>Raw</RawButtonTitle>
                                 </RawButtonTitleContainer>
                             )}
@@ -239,31 +240,31 @@ export default function SchemaHeader({
                         </KeyValueButtonGroup>
                     )}
                     {maxVersion > 0 &&
-                        (editMode ? (
-                            <ShowVersionButton onClick={() => setEditMode?.(false)}>Version Blame</ShowVersionButton>
-                        ) : (
-                            <ShowVersionButton onClick={() => setEditMode?.(true)}>Back</ShowVersionButton>
-                        ))}
+                    (editMode ? (
+                        <ShowVersionButton onClick={() => setEditMode?.(false)}>Version Blame</ShowVersionButton>
+                    ) : (
+                        <ShowVersionButton onClick={() => setEditMode?.(true)}>Back</ShowVersionButton>
+                    ))}
                     {!showRaw && (
                         <StyledInput
                             defaultValue={schemaFilter}
                             placeholder="Search in schema..."
                             onChange={debouncedSetFilterText}
                             allowClear
-                            prefix={<SearchOutlined />}
+                            prefix={<SearchOutlined/>}
                         />
                     )}
                 </LeftButtonsGroup>
                 <RightButtonsGroup>
-                    <SchemaTimeStamps lastObserved={lastObserved} lastUpdated={lastUpdated} />
+                    <SchemaTimeStamps lastObserved={lastObserved} lastUpdated={lastUpdated}/>
                     <Tooltip title={schemaAuditToggleText}>
                         <SchemaAuditButton
                             type="text"
                             data-testid="schema-blame-button"
                             onClick={() => setShowSchemaAuditView(!showSchemaAuditView)}
-                            style={{ color: showSchemaAuditView ? REDESIGN_COLORS.BLUE : ANTD_GRAY[7] }}
+                            style={{color: showSchemaAuditView ? REDESIGN_COLORS.BLUE : ANTD_GRAY[7]}}
                         >
-                            <AuditOutlined />
+                            <AuditOutlined/>
                         </SchemaAuditButton>
                     </Tooltip>
                     {numVersions > 1 && (
@@ -279,12 +280,12 @@ export default function SchemaHeader({
                                     });
                                 }}
                                 data-testid="schema-version-selector-dropdown"
-                                suffixIcon={<CaretDownOutlined />}
+                                suffixIcon={<CaretDownOutlined/>}
                             >
                                 {renderOptions()}
                             </SchemaBlameSelector>
                             <Popover
-                                overlayStyle={{ maxWidth: 240 }}
+                                overlayStyle={{maxWidth: 240}}
                                 placement="right"
                                 content={
                                     <div>
@@ -297,7 +298,7 @@ export default function SchemaHeader({
                                     </div>
                                 }
                             >
-                                <StyledQuestionCircleOutlined />
+                                <StyledQuestionCircleOutlined/>
                             </Popover>
                         </>
                     )}

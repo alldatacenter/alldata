@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useEntityRegistry } from '../../../../useEntityRegistry';
+import {useEntityRegistry} from '../../../../useEntityRegistry';
 import FailingEntity from './FailingEntity';
-import { getNumAssertionsFailing, UpstreamSummary } from './utils';
+import {getNumAssertionsFailing, UpstreamSummary} from './utils';
 
 const FailingSectionWrapper = styled.div`
     margin: 5px 0 0 34px;
@@ -18,8 +18,8 @@ interface Props {
     upstreamSummary: UpstreamSummary;
 }
 
-export default function FailingAssertions({ upstreamSummary }: Props) {
-    const { datasetsWithFailingAssertions } = upstreamSummary;
+export default function FailingAssertions({upstreamSummary}: Props) {
+    const {datasetsWithFailingAssertions} = upstreamSummary;
     const entityRegistry = useEntityRegistry();
 
     return (

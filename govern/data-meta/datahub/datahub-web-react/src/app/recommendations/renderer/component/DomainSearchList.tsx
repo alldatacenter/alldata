@@ -1,10 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import styled from 'styled-components';
-import { Domain, EntityType, RecommendationContent } from '../../../../types.generated';
-import { IconStyleType } from '../../../entity/Entity';
-import { LogoCountCard } from '../../../shared/LogoCountCard';
-import { useEntityRegistry } from '../../../useEntityRegistry';
+import {Domain, EntityType, RecommendationContent} from '../../../../types.generated';
+import {IconStyleType} from '../../../entity/Entity';
+import {LogoCountCard} from '../../../shared/LogoCountCard';
+import {useEntityRegistry} from '../../../useEntityRegistry';
 
 const DomainListContainer = styled.div`
     display: flex;
@@ -18,11 +18,11 @@ type Props = {
     onClick?: (index: number) => void;
 };
 
-export const DomainSearchList = ({ content, onClick }: Props) => {
+export const DomainSearchList = ({content, onClick}: Props) => {
     const entityRegistry = useEntityRegistry();
 
     const domainsWithCounts: Array<{ domain: Domain; count?: number }> = content
-        .map((cnt) => ({ domain: cnt.entity, count: cnt.params?.contentParams?.count }))
+        .map((cnt) => ({domain: cnt.entity, count: cnt.params?.contentParams?.count}))
         .filter((domainWithCount) => domainWithCount.domain !== null && domainWithCount !== undefined) as Array<{
         domain: Domain;
         count?: number;

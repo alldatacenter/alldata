@@ -1,6 +1,6 @@
-import React, { useMemo, useState } from 'react';
+import React, {useMemo, useState} from 'react';
 import styled from 'styled-components';
-import { Typography } from 'antd';
+import {Typography} from 'antd';
 import {
     BoldOutlined,
     DisconnectOutlined,
@@ -9,15 +9,15 @@ import {
     LinkOutlined,
     UnderlineOutlined,
 } from '@ant-design/icons';
-import { FloatingWrapper, useActive, useAttrs, useCommands } from '@remirror/react';
-import { createMarkPositioner } from 'remirror/extensions';
+import {FloatingWrapper, useActive, useAttrs, useCommands} from '@remirror/react';
+import {createMarkPositioner} from 'remirror/extensions';
 
-import { ANTD_GRAY } from '../../../../../constants';
-import { CommandButton } from './CommandButton';
-import { LinkModal } from './LinkModal';
-import { CodeIcon } from './Icons';
+import {ANTD_GRAY} from '../../../../../constants';
+import {CommandButton} from './CommandButton';
+import {LinkModal} from './LinkModal';
+import {CodeIcon} from './Icons';
 
-const { Text } = Typography;
+const {Text} = Typography;
 
 export const ToolbarContainer = styled.span`
     display: flex;
@@ -43,7 +43,7 @@ export const FloatingToolbar = () => {
     const commands = useCommands();
     const active = useActive(true);
 
-    const linkPositioner = useMemo(() => createMarkPositioner({ type: 'link' }), []);
+    const linkPositioner = useMemo(() => createMarkPositioner({type: 'link'}), []);
     const href = (useAttrs().link()?.href as string) ?? '';
 
     const handleEditLink = () => {
@@ -55,10 +55,10 @@ export const FloatingToolbar = () => {
     const linkCommmands = (
         <ToolbarContainer>
             <LinkText type="secondary">{href}</LinkText>
-            <CommandButton size="small" icon={<EditOutlined />} commandName="editLink" onClick={handleEditLink} />
+            <CommandButton size="small" icon={<EditOutlined/>} commandName="editLink" onClick={handleEditLink}/>
             <CommandButton
                 size="small"
-                icon={<DisconnectOutlined />}
+                icon={<DisconnectOutlined/>}
                 commandName="toggleLink"
                 onClick={() => commands.removeLink()}
             />
@@ -77,34 +77,34 @@ export const FloatingToolbar = () => {
                     <ToolbarContainer>
                         <CommandButton
                             size="small"
-                            icon={<BoldOutlined />}
+                            icon={<BoldOutlined/>}
                             commandName="toggleBold"
                             active={active.bold()}
                             onClick={() => commands.toggleBold()}
                         />
                         <CommandButton
                             size="small"
-                            icon={<ItalicOutlined />}
+                            icon={<ItalicOutlined/>}
                             commandName="toggleItalic"
                             active={active.italic()}
                             onClick={() => commands.toggleItalic()}
                         />
                         <CommandButton
                             size="small"
-                            icon={<UnderlineOutlined />}
+                            icon={<UnderlineOutlined/>}
                             commandName="toggleUnderline"
                             active={active.underline()}
                             onClick={() => commands.toggleUnderline()}
                         />
                         <CommandButton
                             size="small"
-                            icon={<LinkOutlined />}
+                            icon={<LinkOutlined/>}
                             commandName="updateLink"
                             onClick={handleEditLink}
                         />
                         <CommandButton
                             size="small"
-                            icon={<CodeIcon />}
+                            icon={<CodeIcon/>}
                             commandName="toggleCode"
                             active={active.code()}
                             onClick={() => commands.toggleCode()}
@@ -112,7 +112,7 @@ export const FloatingToolbar = () => {
                     </ToolbarContainer>
                 </FloatingWrapper>
             )}
-            <LinkModal visible={isModalVisible} handleClose={handleClose} />
+            <LinkModal visible={isModalVisible} handleClose={handleClose}/>
         </>
     );
 };

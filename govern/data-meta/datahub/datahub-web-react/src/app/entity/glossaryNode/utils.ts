@@ -1,4 +1,4 @@
-import { Entity, EntityType } from '../../../types.generated';
+import {Entity, EntityType} from '../../../types.generated';
 import EntityRegistry from '../EntityRegistry';
 
 export function sortGlossaryNodes(entityRegistry: EntityRegistry, nodeA?: Entity | null, nodeB?: Entity | null) {

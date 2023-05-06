@@ -1,21 +1,21 @@
-import React, { useState } from 'react';
-import { message, Modal, Button, Form, Input } from 'antd';
-import { PlusOutlined } from '@ant-design/icons';
-import { useEntityData, useMutationUrn } from '../../EntityContext';
-import { useAddLinkMutation } from '../../../../../graphql/mutations.generated';
-import analytics, { EventType, EntityActionType } from '../../../../analytics';
-import { useUserContext } from '../../../../context/useUserContext';
+import React, {useState} from 'react';
+import {message, Modal, Button, Form, Input} from 'antd';
+import {PlusOutlined} from '@ant-design/icons';
+import {useEntityData, useMutationUrn} from '../../EntityContext';
+import {useAddLinkMutation} from '../../../../../graphql/mutations.generated';
+import analytics, {EventType, EntityActionType} from '../../../../analytics';
+import {useUserContext} from '../../../../context/useUserContext';
 
 type AddLinkProps = {
     buttonProps?: Record<string, unknown>;
     refetch?: () => Promise<any>;
 };
 
-export const AddLinkModal = ({ buttonProps, refetch }: AddLinkProps) => {
+export const AddLinkModal = ({buttonProps, refetch}: AddLinkProps) => {
     const [isModalVisible, setIsModalVisible] = useState(false);
     const mutationUrn = useMutationUrn();
     const user = useUserContext();
-    const { entityType } = useEntityData();
+    const {entityType} = useEntityData();
     const [addLinkMutation] = useAddLinkMutation();
 
     const [form] = Form.useForm();
@@ -33,9 +33,9 @@ export const AddLinkModal = ({ buttonProps, refetch }: AddLinkProps) => {
         if (user?.urn) {
             try {
                 await addLinkMutation({
-                    variables: { input: { linkUrl: formData.url, label: formData.label, resourceUrn: mutationUrn } },
+                    variables: {input: {linkUrl: formData.url, label: formData.label, resourceUrn: mutationUrn}},
                 });
-                message.success({ content: 'Link Added', duration: 2 });
+                message.success({content: 'Link Added', duration: 2});
                 analytics.event({
                     type: EventType.EntityActionEvent,
                     entityType,
@@ -45,19 +45,19 @@ export const AddLinkModal = ({ buttonProps, refetch }: AddLinkProps) => {
             } catch (e: unknown) {
                 message.destroy();
                 if (e instanceof Error) {
-                    message.error({ content: `Failed to add link: \n ${e.message || ''}`, duration: 3 });
+                    message.error({content: `Failed to add link: \n ${e.message || ''}`, duration: 3});
                 }
             }
             refetch?.();
             handleClose();
         } else {
-            message.error({ content: `Error adding link: no user`, duration: 2 });
+            message.error({content: `Error adding link: no user`, duration: 2});
         }
     };
 
     return (
         <>
-            <Button icon={<PlusOutlined />} onClick={showModal} {...buttonProps}>
+            <Button icon={<PlusOutlined/>} onClick={showModal} {...buttonProps}>
                 Add Link
             </Button>
             <Modal
@@ -90,7 +90,7 @@ export const AddLinkModal = ({ buttonProps, refetch }: AddLinkProps) => {
                             },
                         ]}
                     >
-                        <Input placeholder="https://" autoFocus />
+                        <Input placeholder="https://" autoFocus/>
                     </Form.Item>
                     <Form.Item
                         name="label"
@@ -102,7 +102,7 @@ export const AddLinkModal = ({ buttonProps, refetch }: AddLinkProps) => {
                             },
                         ]}
                     >
-                        <Input placeholder="A short label for this link" />
+                        <Input placeholder="A short label for this link"/>
                     </Form.Item>
                 </Form>
             </Modal>

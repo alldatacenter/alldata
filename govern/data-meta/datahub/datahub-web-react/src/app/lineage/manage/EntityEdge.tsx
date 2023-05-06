@@ -1,10 +1,10 @@
-import { CloseOutlined } from '@ant-design/icons';
+import {CloseOutlined} from '@ant-design/icons';
 import Text from 'antd/lib/typography/Text';
 import React from 'react';
 import styled from 'styled-components/macro';
-import { CorpUser, Entity } from '../../../types.generated';
-import { ANTD_GRAY, DEFAULT_SYSTEM_ACTOR_URNS } from '../../entity/shared/constants';
-import { useEntityRegistry } from '../../useEntityRegistry';
+import {CorpUser, Entity} from '../../../types.generated';
+import {ANTD_GRAY, DEFAULT_SYSTEM_ACTOR_URNS} from '../../entity/shared/constants';
+import {useEntityRegistry} from '../../useEntityRegistry';
 import UserAvatar from './UserAvatar';
 
 const EntityItem = styled.div`
@@ -41,7 +41,7 @@ interface Props {
     createdOn?: number | null;
 }
 
-export default function EntityEdge({ entity, removeEntity, createdActor, createdOn }: Props) {
+export default function EntityEdge({entity, removeEntity, createdActor, createdOn}: Props) {
     const entityRegistry = useEntityRegistry();
     const genericProps = entityRegistry.getGenericEntityProperties(entity.type, entity);
     const platformLogoUrl = genericProps?.platform?.properties?.logoUrl;
@@ -51,14 +51,14 @@ export default function EntityEdge({ entity, removeEntity, createdActor, created
     return (
         <EntityItem data-testid="lineage-entity-item">
             <NameAndLogoWrapper>
-                {platformLogoUrl && <PlatformLogo src={platformLogoUrl} alt="platform logo" />}{' '}
-                <EntityName ellipsis={{ tooltip: entityRegistry.getDisplayName(entity.type, entity) }}>
+                {platformLogoUrl && <PlatformLogo src={platformLogoUrl} alt="platform logo"/>}{' '}
+                <EntityName ellipsis={{tooltip: entityRegistry.getDisplayName(entity.type, entity)}}>
                     {entityRegistry.getDisplayName(entity.type, entity)}
                 </EntityName>
             </NameAndLogoWrapper>
             <span>
-                {shouldDisplayAvatar && <UserAvatar createdActor={createdActor} createdOn={createdOn} />}
-                <StyledClose onClick={() => removeEntity(entity)} />
+                {shouldDisplayAvatar && <UserAvatar createdActor={createdActor} createdOn={createdOn}/>}
+                <StyledClose onClick={() => removeEntity(entity)}/>
             </span>
         </EntityItem>
     );

@@ -1,15 +1,15 @@
-import { LoadingOutlined, SubnodeOutlined } from '@ant-design/icons';
-import { AutoComplete, Empty } from 'antd';
-import React, { useState } from 'react';
+import {LoadingOutlined, SubnodeOutlined} from '@ant-design/icons';
+import {AutoComplete, Empty} from 'antd';
+import React, {useState} from 'react';
 import styled from 'styled-components/macro';
-import { useEntityRegistry } from '../../useEntityRegistry';
-import { useGetSearchResultsForMultipleLazyQuery } from '../../../graphql/search.generated';
-import { Entity, EntityType, SearchResult } from '../../../types.generated';
-import { Direction } from '../types';
-import { getValidEntityTypes } from '../utils/manageLineageUtils';
+import {useEntityRegistry} from '../../useEntityRegistry';
+import {useGetSearchResultsForMultipleLazyQuery} from '../../../graphql/search.generated';
+import {Entity, EntityType, SearchResult} from '../../../types.generated';
+import {Direction} from '../types';
+import {getValidEntityTypes} from '../utils/manageLineageUtils';
 import LineageEntityView from './LineageEntityView';
 import EntityRegistry from '../../entity/EntityRegistry';
-import { ANTD_GRAY } from '../../entity/shared/constants';
+import {ANTD_GRAY} from '../../entity/shared/constants';
 
 const AddEdgeWrapper = styled.div`
     padding: 15px 20px;
@@ -75,14 +75,14 @@ interface Props {
 }
 
 export default function AddEntityEdge({
-    lineageDirection,
-    setEntitiesToAdd,
-    entitiesToAdd,
-    entityUrn,
-    entityType,
-}: Props) {
+                                          lineageDirection,
+                                          setEntitiesToAdd,
+                                          entitiesToAdd,
+                                          entityUrn,
+                                          entityType,
+                                      }: Props) {
     const entityRegistry = useEntityRegistry();
-    const [search, { data: searchData, loading }] = useGetSearchResultsForMultipleLazyQuery();
+    const [search, {data: searchData, loading}] = useGetSearchResultsForMultipleLazyQuery();
     const [queryText, setQueryText] = useState<string>('');
 
     const validEntityTypes = getValidEntityTypes(lineageDirection, entityType);
@@ -115,7 +115,7 @@ export default function AddEntityEdge({
     const renderSearchResult = (entity: Entity) => {
         return (
             <AutoComplete.Option value={entity.urn} key={entity.urn}>
-                <LineageEntityView entity={entity} displaySearchResult />
+                <LineageEntityView entity={entity} displaySearchResult/>
             </AutoComplete.Option>
         );
     };
@@ -129,7 +129,7 @@ export default function AddEntityEdge({
     return (
         <AddEdgeWrapper>
             <AddLabel>
-                <AddIcon />
+                <AddIcon/>
                 Add {lineageDirection}
             </AddLabel>
             <StyledAutoComplete
@@ -140,12 +140,12 @@ export default function AddEntityEdge({
                 onSearch={handleSearch}
                 onSelect={(urn: any) => selectEntity(urn)}
                 filterOption={false}
-                notFoundContent={(queryText.length > 3 && <Empty description="No Assets Found" />) || undefined}
+                notFoundContent={(queryText.length > 3 && <Empty description="No Assets Found"/>) || undefined}
             >
                 {!searchData && loading && (
                     <AutoComplete.Option value="loading">
                         <LoadingWrapper>
-                            <LoadingOutlined />
+                            <LoadingOutlined/>
                         </LoadingWrapper>
                     </AutoComplete.Option>
                 )}

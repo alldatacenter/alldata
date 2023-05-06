@@ -1,4 +1,4 @@
-import { ColumnEdge } from '../types';
+import {ColumnEdge} from '../types';
 
 function highlightDownstreamColumnLineage(
     sourceField: string,
@@ -11,7 +11,7 @@ function highlightDownstreamColumnLineage(
         Object.entries(forwardLineage).forEach((entry) => {
             const [targetUrn, fieldPaths] = entry;
             (fieldPaths as string[]).forEach((targetField) => {
-                edges.push({ sourceUrn, sourceField, targetUrn, targetField });
+                edges.push({sourceUrn, sourceField, targetUrn, targetField});
                 highlightDownstreamColumnLineage(targetField, targetUrn, edges, fineGrainedMap);
             });
         });
@@ -29,7 +29,7 @@ function highlightUpstreamColumnLineage(
         Object.entries(reverseLineage).forEach((entry) => {
             const [sourceUrn, fieldPaths] = entry;
             (fieldPaths as string[]).forEach((sourceField) => {
-                edges.push({ targetUrn, targetField, sourceUrn, sourceField });
+                edges.push({targetUrn, targetField, sourceUrn, sourceField});
                 highlightUpstreamColumnLineage(sourceField, sourceUrn, edges, fineGrainedMap);
             });
         });

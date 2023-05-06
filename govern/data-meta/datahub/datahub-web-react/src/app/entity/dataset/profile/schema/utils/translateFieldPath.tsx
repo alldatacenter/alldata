@@ -1,4 +1,4 @@
-import { KEY_SCHEMA_PREFIX, VERSION_PREFIX } from './constants';
+import {KEY_SCHEMA_PREFIX, VERSION_PREFIX} from './constants';
 import translateFieldPathSegment from './translateFieldPathSegment';
 
 export default function translateFieldPath(fieldPath: string) {

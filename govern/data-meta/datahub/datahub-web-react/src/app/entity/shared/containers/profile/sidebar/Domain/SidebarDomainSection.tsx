@@ -1,20 +1,20 @@
-import { Typography, Button, Modal, message } from 'antd';
-import React, { useState } from 'react';
-import { EditOutlined } from '@ant-design/icons';
-import { EMPTY_MESSAGES } from '../../../../constants';
-import { useEntityData, useMutationUrn, useRefetch } from '../../../../EntityContext';
-import { SidebarHeader } from '../SidebarHeader';
-import { SetDomainModal } from './SetDomainModal';
-import { useUnsetDomainMutation } from '../../../../../../../graphql/mutations.generated';
-import { DomainLink } from '../../../../../../shared/tags/DomainLink';
-import { ENTITY_PROFILE_DOMAINS_ID } from '../../../../../../onboarding/config/EntityProfileOnboardingConfig';
+import {Typography, Button, Modal, message} from 'antd';
+import React, {useState} from 'react';
+import {EditOutlined} from '@ant-design/icons';
+import {EMPTY_MESSAGES} from '../../../../constants';
+import {useEntityData, useMutationUrn, useRefetch} from '../../../../EntityContext';
+import {SidebarHeader} from '../SidebarHeader';
+import {SetDomainModal} from './SetDomainModal';
+import {useUnsetDomainMutation} from '../../../../../../../graphql/mutations.generated';
+import {DomainLink} from '../../../../../../shared/tags/DomainLink';
+import {ENTITY_PROFILE_DOMAINS_ID} from '../../../../../../onboarding/config/EntityProfileOnboardingConfig';
 
 interface Props {
     readOnly?: boolean;
 }
 
-export const SidebarDomainSection = ({ readOnly }: Props) => {
-    const { entityData } = useEntityData();
+export const SidebarDomainSection = ({readOnly}: Props) => {
+    const {entityData} = useEntityData();
     const refetch = useRefetch();
     const urn = useMutationUrn();
     const [unsetDomainMutation] = useUnsetDomainMutation();
@@ -22,15 +22,15 @@ export const SidebarDomainSection = ({ readOnly }: Props) => {
     const domain = entityData?.domain?.domain;
 
     const removeDomain = (urnToRemoveFrom) => {
-        unsetDomainMutation({ variables: { entityUrn: urnToRemoveFrom } })
+        unsetDomainMutation({variables: {entityUrn: urnToRemoveFrom}})
             .then(() => {
-                message.success({ content: 'Removed Domain.', duration: 2 });
+                message.success({content: 'Removed Domain.', duration: 2});
                 refetch?.();
             })
             .catch((e: unknown) => {
                 message.destroy();
                 if (e instanceof Error) {
-                    message.error({ content: `Failed to remove domain: \n ${e.message || ''}`, duration: 3 });
+                    message.error({content: `Failed to remove domain: \n ${e.message || ''}`, duration: 3});
                 }
             });
     };
@@ -42,7 +42,8 @@ export const SidebarDomainSection = ({ readOnly }: Props) => {
             onOk() {
                 removeDomain(urnToRemoveFrom);
             },
-            onCancel() {},
+            onCancel() {
+            },
             okText: 'Yes',
             maskClosable: true,
             closable: true,
@@ -52,7 +53,7 @@ export const SidebarDomainSection = ({ readOnly }: Props) => {
     return (
         <div>
             <div id={ENTITY_PROFILE_DOMAINS_ID} className="sidebar-domain-section">
-                <SidebarHeader title="Domain" />
+                <SidebarHeader title="Domain"/>
                 <div>
                     {domain && (
                         <DomainLink
@@ -72,7 +73,7 @@ export const SidebarDomainSection = ({ readOnly }: Props) => {
                             </Typography.Paragraph>
                             {!readOnly && (
                                 <Button type="default" onClick={() => setShowModal(true)}>
-                                    <EditOutlined /> Set Domain
+                                    <EditOutlined/> 设置域
                                 </Button>
                             )}
                         </>

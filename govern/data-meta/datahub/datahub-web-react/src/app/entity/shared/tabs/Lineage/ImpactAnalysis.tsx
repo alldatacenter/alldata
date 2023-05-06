@@ -1,7 +1,7 @@
 import React from 'react';
-import { LineageDirection } from '../../../../../types.generated';
+import {LineageDirection} from '../../../../../types.generated';
 import generateUseSearchResultsViaRelationshipHook from './generateUseSearchResultsViaRelationshipHook';
-import { EmbeddedListSearchSection } from '../../components/styled/search/EmbeddedListSearchSection';
+import {EmbeddedListSearchSection} from '../../components/styled/search/EmbeddedListSearchSection';
 
 type Props = {
     urn: string;
@@ -15,15 +15,15 @@ type Props = {
 };
 
 export const ImpactAnalysis = ({
-    urn,
-    direction,
-    startTimeMillis,
-    endTimeMillis,
-    shouldRefetch,
-    skipCache,
-    setSkipCache,
-    resetShouldRefetch,
-}: Props) => {
+                                   urn,
+                                   direction,
+                                   startTimeMillis,
+                                   endTimeMillis,
+                                   shouldRefetch,
+                                   skipCache,
+                                   setSkipCache,
+                                   resetShouldRefetch,
+                               }: Props) => {
     const finalStartTimeMillis = startTimeMillis || undefined;
     const finalEndTimeMillis = endTimeMillis || undefined;
     return (
@@ -37,7 +37,7 @@ export const ImpactAnalysis = ({
                 setSkipCache,
             })}
             defaultShowFilters
-            defaultFilters={[{ field: 'degree', values: ['1'] }]}
+            defaultFilters={[{field: 'degree', values: ['1']}]}
             shouldRefetch={shouldRefetch}
             resetShouldRefetch={resetShouldRefetch}
         />

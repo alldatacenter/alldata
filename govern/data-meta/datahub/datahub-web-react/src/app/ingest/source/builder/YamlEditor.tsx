@@ -1,5 +1,5 @@
 import React from 'react';
-import Editor, { loader } from '@monaco-editor/react';
+import Editor, {loader} from '@monaco-editor/react';
 
 loader.config({
     paths: {
@@ -12,11 +12,11 @@ type Props = {
     onChange: (change: any) => void;
 };
 
-export const YamlEditor = ({ initialText, onChange }: Props) => {
+export const YamlEditor = ({initialText, onChange}: Props) => {
     return (
         <Editor
             options={{
-                minimap: { enabled: false },
+                minimap: {enabled: false},
                 scrollbar: {
                     vertical: 'hidden',
                     horizontal: 'hidden',

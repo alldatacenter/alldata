@@ -1,4 +1,4 @@
-import { UsageAggregation, Maybe } from '../../../../../../../types.generated';
+import {UsageAggregation, Maybe} from '../../../../../../../types.generated';
 
 type RecentQuery = {
     query: string;
@@ -23,7 +23,7 @@ export default function getTopNQueries(n: number, buckets?: Maybe<UsageAggregati
         // Mark each query as seen.
         newQueries.forEach((query) => seenQueries.add(query as string));
 
-        response = [...response, ...newQueries.map((query) => ({ query, dateMs: bucket?.bucket as number }))];
+        response = [...response, ...newQueries.map((query) => ({query, dateMs: bucket?.bucket as number}))];
 
         if (response.length >= n) {
             return response.slice(0, n);

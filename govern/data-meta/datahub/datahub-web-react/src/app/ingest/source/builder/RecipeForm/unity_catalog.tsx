@@ -1,5 +1,5 @@
 import React from 'react';
-import { RecipeField, FieldType, setListValuesOnRecipe } from './common';
+import {RecipeField, FieldType, setListValuesOnRecipe} from './common';
 
 export const UNITY_CATALOG = 'unity-catalog';
 

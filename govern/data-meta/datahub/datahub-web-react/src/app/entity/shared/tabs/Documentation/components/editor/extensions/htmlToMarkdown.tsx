@@ -1,7 +1,7 @@
 import _TurndownService from 'turndown';
-import { gfm } from 'turndown-plugin-gfm';
-import { defaultImport, ErrorConstant, invariant, isElementDomNode } from '@remirror/core';
-import { DATAHUB_MENTION_ATTRS } from './mentions/DataHubMentionsExtension';
+import {gfm} from 'turndown-plugin-gfm';
+import {defaultImport, ErrorConstant, invariant, isElementDomNode} from '@remirror/core';
+import {DATAHUB_MENTION_ATTRS} from './mentions/DataHubMentionsExtension';
 
 const TurndownService = defaultImport(_TurndownService);
 

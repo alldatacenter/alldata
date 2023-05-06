@@ -1,11 +1,11 @@
-import React, { useMemo } from 'react';
-import { XYChart, LineSeries, CrossHair, XAxis, YAxis } from '@data-ui/xy-chart';
-import { scaleOrdinal } from '@vx/scale';
-import { TimeSeriesChart as TimeSeriesChartType, NumericDataPoint, NamedLine } from '../../../types.generated';
-import { lineColors } from './lineColors';
+import React, {useMemo} from 'react';
+import {XYChart, LineSeries, CrossHair, XAxis, YAxis} from '@data-ui/xy-chart';
+import {scaleOrdinal} from '@vx/scale';
+import {TimeSeriesChart as TimeSeriesChartType, NumericDataPoint, NamedLine} from '../../../types.generated';
+import {lineColors} from './lineColors';
 import Legend from './Legend';
-import { addInterval } from '../../shared/time/timeUtils';
-import { formatNumber } from '../../shared/formatNumber';
+import {addInterval} from '../../shared/time/timeUtils';
+import {formatNumber} from '../../shared/formatNumber';
 
 type Props = {
     chartData: TimeSeriesChartType;
@@ -28,11 +28,11 @@ function insertBlankAt(ts: number, newLine: Array<NumericDataPoint>) {
     const dateString = new Date(ts).toISOString();
     for (let i = 0; i < newLine.length; i++) {
         if (new Date(newLine[i].x).getTime() > ts) {
-            newLine.splice(i, 0, { x: dateString, y: 0 });
+            newLine.splice(i, 0, {x: dateString, y: 0});
             return;
         }
     }
-    newLine.push({ x: dateString, y: 0 });
+    newLine.push({x: dateString, y: 0});
 }
 
 export function computeLines(chartData: TimeSeriesChartType, insertBlankPoints: boolean) {
@@ -55,12 +55,12 @@ export function computeLines(chartData: TimeSeriesChartType, insertBlankPoints: 
             }
         }
 
-        returnLines.push({ name: line.name, data: newLine });
+        returnLines.push({name: line.name, data: newLine});
     });
     return returnLines;
 }
 
-export const TimeSeriesChart = ({ chartData, width, height, hideLegend, style, insertBlankPoints }: Props) => {
+export const TimeSeriesChart = ({chartData, width, height, hideLegend, style, insertBlankPoints}: Props) => {
     const ordinalColorScale = scaleOrdinal<string, string>({
         domain: chartData.lines.map((data) => data.name),
         range: lineColors.slice(0, chartData.lines.length),
@@ -75,10 +75,10 @@ export const TimeSeriesChart = ({ chartData, width, height, hideLegend, style, i
                 ariaLabel={chartData.title}
                 width={width}
                 height={height}
-                margin={{ top: MARGIN_SIZE, right: MARGIN_SIZE, bottom: MARGIN_SIZE, left: MARGIN_SIZE }}
-                xScale={{ type: 'time' }}
-                yScale={{ type: 'linear' }}
-                renderTooltip={({ datum }) => (
+                margin={{top: MARGIN_SIZE, right: MARGIN_SIZE, bottom: MARGIN_SIZE, left: MARGIN_SIZE}}
+                xScale={{type: 'time'}}
+                yScale={{type: 'linear'}}
+                renderTooltip={({datum}) => (
                     <div>
                         <div>{new Date(Number(datum.x)).toDateString()}</div>
                         <div>{datum.y}</div>
@@ -86,15 +86,15 @@ export const TimeSeriesChart = ({ chartData, width, height, hideLegend, style, i
                 )}
                 snapTooltipToDataX={false}
             >
-                <XAxis axisStyles={{ stroke: style && style.axisColor, strokeWidth: style && style.axisWidth }} />
+                <XAxis axisStyles={{stroke: style && style.axisColor, strokeWidth: style && style.axisWidth}}/>
                 <YAxis
-                    axisStyles={{ stroke: style && style.axisColor, strokeWidth: style && style.axisWidth }}
+                    axisStyles={{stroke: style && style.axisColor, strokeWidth: style && style.axisWidth}}
                     tickFormat={(tick) => formatNumber(tick)}
                 />
                 {lines.map((line, i) => (
                     <LineSeries
                         showPoints
-                        data={line.data.map((point) => ({ x: new Date(point.x).getTime().toString(), y: point.y }))}
+                        data={line.data.map((point) => ({x: new Date(point.x).getTime().toString(), y: point.y}))}
                         stroke={(style && style.lineColor) || lineColors[i]}
                     />
                 ))}
@@ -104,7 +104,7 @@ export const TimeSeriesChart = ({ chartData, width, height, hideLegend, style, i
                     stroke={(style && style.crossHairLineColor) || '#D8D8D8'}
                 />
             </XYChart>
-            {!hideLegend && <Legend ordinalScale={ordinalColorScale} />}
+            {!hideLegend && <Legend ordinalScale={ordinalColorScale}/>}
         </>
     );
 };

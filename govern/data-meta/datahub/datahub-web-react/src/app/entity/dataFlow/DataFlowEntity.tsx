@@ -1,21 +1,21 @@
 import * as React from 'react';
-import { ShareAltOutlined } from '@ant-design/icons';
-import { DataFlow, EntityType, OwnershipType, SearchResult } from '../../../types.generated';
-import { Preview } from './preview/Preview';
-import { Entity, EntityCapabilityType, IconStyleType, PreviewType } from '../Entity';
-import { EntityProfile } from '../shared/containers/profile/EntityProfile';
-import { useGetDataFlowQuery, useUpdateDataFlowMutation } from '../../../graphql/dataFlow.generated';
-import { DocumentationTab } from '../shared/tabs/Documentation/DocumentationTab';
-import { PropertiesTab } from '../shared/tabs/Properties/PropertiesTab';
-import { SidebarAboutSection } from '../shared/containers/profile/sidebar/AboutSection/SidebarAboutSection';
-import { SidebarTagsSection } from '../shared/containers/profile/sidebar/SidebarTagsSection';
-import { SidebarOwnerSection } from '../shared/containers/profile/sidebar/Ownership/SidebarOwnerSection';
-import { GenericEntityProperties } from '../shared/types';
-import { DataFlowJobsTab } from '../shared/tabs/Entity/DataFlowJobsTab';
-import { getDataForEntityType } from '../shared/containers/profile/utils';
-import { SidebarDomainSection } from '../shared/containers/profile/sidebar/Domain/SidebarDomainSection';
-import { EntityMenuItems } from '../shared/EntityDropdown/EntityDropdown';
-import { capitalizeFirstLetterOnly } from '../../shared/textUtil';
+import {ShareAltOutlined} from '@ant-design/icons';
+import {DataFlow, EntityType, OwnershipType, SearchResult} from '../../../types.generated';
+import {Preview} from './preview/Preview';
+import {Entity, EntityCapabilityType, IconStyleType, PreviewType} from '../Entity';
+import {EntityProfile} from '../shared/containers/profile/EntityProfile';
+import {useGetDataFlowQuery, useUpdateDataFlowMutation} from '../../../graphql/dataFlow.generated';
+import {DocumentationTab} from '../shared/tabs/Documentation/DocumentationTab';
+import {PropertiesTab} from '../shared/tabs/Properties/PropertiesTab';
+import {SidebarAboutSection} from '../shared/containers/profile/sidebar/AboutSection/SidebarAboutSection';
+import {SidebarTagsSection} from '../shared/containers/profile/sidebar/SidebarTagsSection';
+import {SidebarOwnerSection} from '../shared/containers/profile/sidebar/Ownership/SidebarOwnerSection';
+import {GenericEntityProperties} from '../shared/types';
+import {DataFlowJobsTab} from '../shared/tabs/Entity/DataFlowJobsTab';
+import {getDataForEntityType} from '../shared/containers/profile/utils';
+import {SidebarDomainSection} from '../shared/containers/profile/sidebar/Domain/SidebarDomainSection';
+import {EntityMenuItems} from '../shared/EntityDropdown/EntityDropdown';
+import {capitalizeFirstLetterOnly} from '../../shared/textUtil';
 
 /**
  * Definition of the DataHub DataFlow entity.
@@ -25,11 +25,11 @@ export class DataFlowEntity implements Entity<DataFlow> {
 
     icon = (fontSize: number, styleType: IconStyleType, color?: string) => {
         if (styleType === IconStyleType.TAB_VIEW) {
-            return <ShareAltOutlined style={{ fontSize, color }} />;
+            return <ShareAltOutlined style={{fontSize, color}}/>;
         }
 
         if (styleType === IconStyleType.HIGHLIGHT) {
-            return <ShareAltOutlined style={{ fontSize, color: color || '#d6246c' }} />;
+            return <ShareAltOutlined style={{fontSize, color: color || '#d6246c'}}/>;
         }
 
         return (

@@ -1,18 +1,18 @@
 import React from 'react';
-import { render } from '@testing-library/react';
-import { MockedProvider } from '@apollo/client/testing';
+import {render} from '@testing-library/react';
+import {MockedProvider} from '@apollo/client/testing';
 
 import Lineage from '../Lineage';
-import { sampleDownstreamRelationship, sampleRelationship } from '../stories/lineageEntities';
+import {sampleDownstreamRelationship, sampleRelationship} from '../stories/lineageEntities';
 import TestPageContainer from '../../../../../utils/test-utils/TestPageContainer';
-import { mocks } from '../../../../../Mocks';
+import {mocks} from '../../../../../Mocks';
 
 describe('Lineage', () => {
     it('renders', () => {
-        const { getByText } = render(
+        const {getByText} = render(
             <MockedProvider mocks={mocks} addTypename={false}>
                 <TestPageContainer>
-                    <Lineage upstreamLineage={sampleRelationship} downstreamLineage={sampleDownstreamRelationship} />,
+                    <Lineage upstreamLineage={sampleRelationship} downstreamLineage={sampleDownstreamRelationship}/>,
                 </TestPageContainer>
             </MockedProvider>,
         );

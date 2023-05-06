@@ -1,17 +1,17 @@
 import React from 'react';
-import { render } from '@testing-library/react';
-import { MockedProvider } from '@apollo/client/testing';
-import { Properties } from '../../../shared/components/legacy/Properties';
-import { sampleProperties } from '../stories/properties';
+import {render} from '@testing-library/react';
+import {MockedProvider} from '@apollo/client/testing';
+import {Properties} from '../../../shared/components/legacy/Properties';
+import {sampleProperties} from '../stories/properties';
 import TestPageContainer from '../../../../../utils/test-utils/TestPageContainer';
-import { mocks } from '../../../../../Mocks';
+import {mocks} from '../../../../../Mocks';
 
 describe('Properties', () => {
     it('renders', () => {
-        const { getByText } = render(
+        const {getByText} = render(
             <MockedProvider mocks={mocks} addTypename={false}>
                 <TestPageContainer>
-                    <Properties properties={sampleProperties} />,
+                    <Properties properties={sampleProperties}/>,
                 </TestPageContainer>
             </MockedProvider>,
         );

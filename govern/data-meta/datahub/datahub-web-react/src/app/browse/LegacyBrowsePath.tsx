@@ -1,15 +1,15 @@
 import React from 'react';
-import { Link, useHistory, useLocation } from 'react-router-dom';
-import { Breadcrumb, Row } from 'antd';
+import {Link, useHistory, useLocation} from 'react-router-dom';
+import {Breadcrumb, Row} from 'antd';
 import styled from 'styled-components';
-import { IconBaseProps } from 'react-icons/lib';
-import { VscRepoForked, VscPreview } from 'react-icons/vsc';
-import { blue, grey } from '@ant-design/colors';
+import {IconBaseProps} from 'react-icons/lib';
+import {VscRepoForked, VscPreview} from 'react-icons/vsc';
+import {blue, grey} from '@ant-design/colors';
 
-import { PageRoutes } from '../../conf/Global';
-import { useEntityRegistry } from '../useEntityRegistry';
-import { EntityType } from '../../types.generated';
-import { navigateToLineageUrl } from '../lineage/utils/navigateToLineageUrl';
+import {PageRoutes} from '../../conf/Global';
+import {useEntityRegistry} from '../useEntityRegistry';
+import {EntityType} from '../../types.generated';
+import {navigateToLineageUrl} from '../lineage/utils/navigateToLineageUrl';
 import useIsLineageMode from '../lineage/utils/useIsLineageMode';
 
 interface Props {
@@ -26,7 +26,7 @@ const LineageIconGroup = styled.div`
     justify-content: space-between;
 `;
 
-const HoverableVscPreview = styled(({ isSelected: _, ...props }: IconBaseProps & { isSelected: boolean }) => (
+const HoverableVscPreview = styled(({isSelected: _, ...props}: IconBaseProps & { isSelected: boolean }) => (
     <VscPreview {...props} />
 ))`
     color: ${(props) => (props.isSelected ? 'black' : grey[2])};
@@ -36,7 +36,7 @@ const HoverableVscPreview = styled(({ isSelected: _, ...props }: IconBaseProps &
     }
 `;
 
-const HoverableVscRepoForked = styled(({ isSelected: _, ...props }: IconBaseProps & { isSelected: boolean }) => (
+const HoverableVscRepoForked = styled(({isSelected: _, ...props}: IconBaseProps & { isSelected: boolean }) => (
     <VscRepoForked {...props} />
 ))`
     color: ${(props) => (props.isSelected ? 'black' : grey[2])};
@@ -58,7 +58,7 @@ const BrowseRow = styled(Row)`
 /**
  * Responsible for rendering a clickable browse path view.
  */
-export const LegacyBrowsePath = ({ type, path, lineageSupported, isProfilePage, isBrowsable }: Props) => {
+export const LegacyBrowsePath = ({type, path, lineageSupported, isProfilePage, isBrowsable}: Props) => {
     const entityRegistry = useEntityRegistry();
     const history = useHistory();
     const location = useLocation();
@@ -86,7 +86,7 @@ export const LegacyBrowsePath = ({ type, path, lineageSupported, isProfilePage, 
 
     return (
         <BrowseRow>
-            <Breadcrumb style={{ fontSize: '16px' }}>
+            <Breadcrumb style={{fontSize: '16px'}}>
                 <Breadcrumb.Item>
                     <Link to={isBrowsable ? baseBrowsePath : '#'}>{entityRegistry.getCollectionName(type)}</Link>
                 </Breadcrumb.Item>
@@ -97,12 +97,12 @@ export const LegacyBrowsePath = ({ type, path, lineageSupported, isProfilePage, 
                     <HoverableVscPreview
                         isSelected={!isLineageMode}
                         size={26}
-                        onClick={() => navigateToLineageUrl({ location, history, isLineageMode: false })}
+                        onClick={() => navigateToLineageUrl({location, history, isLineageMode: false})}
                     />
                     <HoverableVscRepoForked
                         size={26}
                         isSelected={isLineageMode}
-                        onClick={() => navigateToLineageUrl({ location, history, isLineageMode: true })}
+                        onClick={() => navigateToLineageUrl({location, history, isLineageMode: true})}
                     />
                 </LineageIconGroup>
             )}

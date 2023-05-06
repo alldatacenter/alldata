@@ -1,8 +1,8 @@
-import { LinkOutlined } from '@ant-design/icons';
-import { Button } from 'antd';
+import {LinkOutlined} from '@ant-design/icons';
+import {Button} from 'antd';
 import React from 'react';
 import styled from 'styled-components';
-import { InstitutionalMemoryMetadata } from '../../../../../../types.generated';
+import {InstitutionalMemoryMetadata} from '../../../../../../types.generated';
 
 export const StyledLink = styled(Button)`
     display: flex;
@@ -22,7 +22,7 @@ interface Props {
     link: InstitutionalMemoryMetadata;
 }
 
-export default function LinkButton({ link }: Props) {
+export default function LinkButton({link}: Props) {
     return (
         <StyledLink
             type="link"
@@ -31,7 +31,7 @@ export default function LinkButton({ link }: Props) {
             rel="noreferrer"
             key={`${link.label}-${link.url}-${link.author}`}
         >
-            <LinkOutlined />
+            <LinkOutlined/>
             {link.description || link.label}
         </StyledLink>
     );

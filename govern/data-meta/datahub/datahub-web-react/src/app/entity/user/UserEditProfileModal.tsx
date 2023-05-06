@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { message, Button, Input, Modal, Typography, Form } from 'antd';
-import { useUpdateCorpUserPropertiesMutation } from '../../../graphql/user.generated';
-import { useEnterKeyListener } from '../../shared/useEnterKeyListener';
+import React, {useEffect, useState} from 'react';
+import {message, Button, Input, Modal, Typography, Form} from 'antd';
+import {useUpdateCorpUserPropertiesMutation} from '../../../graphql/user.generated';
+import {useEnterKeyListener} from '../../shared/useEnterKeyListener';
 
 type PropsData = {
     name: string | undefined;
@@ -23,7 +23,7 @@ type Props = {
 /** Regex Validations */
 export const USER_NAME_REGEX = new RegExp('^[a-zA-Z ]*$');
 
-export default function UserEditProfileModal({ visible, onClose, onSave, editModalData }: Props) {
+export default function UserEditProfileModal({visible, onClose, onSave, editModalData}: Props) {
     const [updateCorpUserPropertiesMutation] = useUpdateCorpUserPropertiesMutation();
     const [form] = Form.useForm();
 
@@ -40,7 +40,7 @@ export default function UserEditProfileModal({ visible, onClose, onSave, editMod
     });
 
     useEffect(() => {
-        setData({ ...editModalData });
+        setData({...editModalData});
     }, [editModalData]);
 
     // save changes function
@@ -79,7 +79,7 @@ export default function UserEditProfileModal({ visible, onClose, onSave, editMod
             })
             .catch((e) => {
                 message.destroy();
-                message.error({ content: `Failed to Save changes!: \n ${e.message || ''}`, duration: 3 });
+                message.error({content: `Failed to Save changes!: \n ${e.message || ''}`, duration: 3});
             });
         onClose();
     };
@@ -107,7 +107,7 @@ export default function UserEditProfileModal({ visible, onClose, onSave, editMod
         >
             <Form
                 form={form}
-                initialValues={{ ...editModalData }}
+                initialValues={{...editModalData}}
                 autoComplete="off"
                 layout="vertical"
                 onFieldsChange={() =>
@@ -122,8 +122,8 @@ export default function UserEditProfileModal({ visible, onClose, onSave, editMod
                             required: true,
                             message: 'Enter a display name.',
                         },
-                        { whitespace: true },
-                        { min: 2, max: 50 },
+                        {whitespace: true},
+                        {min: 2, max: 50},
                         {
                             pattern: USER_NAME_REGEX,
                             message: '',
@@ -134,42 +134,42 @@ export default function UserEditProfileModal({ visible, onClose, onSave, editMod
                     <Input
                         placeholder="John Smith"
                         value={data.name}
-                        onChange={(event) => setData({ ...data, name: event.target.value })}
+                        onChange={(event) => setData({...data, name: event.target.value})}
                     />
                 </Form.Item>
                 <Form.Item
                     name="title"
                     label={<Typography.Text strong>Title/Role</Typography.Text>}
-                    rules={[{ whitespace: true }, { min: 2, max: 50 }]}
+                    rules={[{whitespace: true}, {min: 2, max: 50}]}
                     hasFeedback
                 >
                     <Input
                         placeholder="Data Analyst"
                         value={data.title}
-                        onChange={(event) => setData({ ...data, title: event.target.value })}
+                        onChange={(event) => setData({...data, title: event.target.value})}
                     />
                 </Form.Item>
                 <Form.Item
                     name="image"
                     label={<Typography.Text strong>Image URL</Typography.Text>}
-                    rules={[{ whitespace: true }, { type: 'url', message: 'not valid url' }]}
+                    rules={[{whitespace: true}, {type: 'url', message: 'not valid url'}]}
                     hasFeedback
                 >
                     <Input
                         placeholder="https://www.example.com/photo.png"
                         value={data.image}
-                        onChange={(event) => setData({ ...data, image: event.target.value })}
+                        onChange={(event) => setData({...data, image: event.target.value})}
                     />
                 </Form.Item>
                 <Form.Item
                     name="team"
                     label={<Typography.Text strong>Team</Typography.Text>}
-                    rules={[{ whitespace: true }, { min: 2, max: 50 }]}
+                    rules={[{whitespace: true}, {min: 2, max: 50}]}
                 >
                     <Input
                         placeholder="Product Engineering"
                         value={data.team}
-                        onChange={(event) => setData({ ...data, team: event.target.value })}
+                        onChange={(event) => setData({...data, team: event.target.value})}
                     />
                 </Form.Item>
                 <Form.Item
@@ -184,27 +184,27 @@ export default function UserEditProfileModal({ visible, onClose, onSave, editMod
                             type: 'email',
                             message: 'Please enter valid email',
                         },
-                        { whitespace: true },
-                        { min: 2, max: 50 },
+                        {whitespace: true},
+                        {min: 2, max: 50},
                     ]}
                     hasFeedback
                 >
                     <Input
                         placeholder="john.smith@example.com"
                         value={data.email}
-                        onChange={(event) => setData({ ...data, email: event.target.value })}
+                        onChange={(event) => setData({...data, email: event.target.value})}
                     />
                 </Form.Item>
                 <Form.Item
                     name="slack"
                     label={<Typography.Text strong>Slack</Typography.Text>}
-                    rules={[{ whitespace: true }, { min: 2, max: 50 }]}
+                    rules={[{whitespace: true}, {min: 2, max: 50}]}
                     hasFeedback
                 >
                     <Input
                         placeholder="john_smith"
                         value={data.slack}
-                        onChange={(event) => setData({ ...data, slack: event.target.value })}
+                        onChange={(event) => setData({...data, slack: event.target.value})}
                     />
                 </Form.Item>
                 <Form.Item
@@ -225,7 +225,7 @@ export default function UserEditProfileModal({ visible, onClose, onSave, editMod
                     <Input
                         placeholder="444-999-9999"
                         value={data.phone}
-                        onChange={(event) => setData({ ...data, phone: event.target.value })}
+                        onChange={(event) => setData({...data, phone: event.target.value})}
                     />
                 </Form.Item>
             </Form>

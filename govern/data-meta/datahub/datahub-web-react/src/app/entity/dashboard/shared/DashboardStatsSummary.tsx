@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Popover, Tooltip } from 'antd';
-import { ClockCircleOutlined, EyeOutlined, TeamOutlined, QuestionCircleOutlined } from '@ant-design/icons';
-import { formatNumberWithoutAbbreviation } from '../../../shared/formatNumber';
-import { ANTD_GRAY } from '../../shared/constants';
-import { toLocalDateTimeString, toRelativeTimeString } from '../../../shared/time/timeUtils';
-import { StatsSummary } from '../../shared/components/styled/StatsSummary';
+import {Popover, Tooltip} from 'antd';
+import {ClockCircleOutlined, EyeOutlined, TeamOutlined, QuestionCircleOutlined} from '@ant-design/icons';
+import {formatNumberWithoutAbbreviation} from '../../../shared/formatNumber';
+import {ANTD_GRAY} from '../../shared/constants';
+import {toLocalDateTimeString, toRelativeTimeString} from '../../../shared/time/timeUtils';
+import {StatsSummary} from '../../shared/components/styled/StatsSummary';
 
 const StatText = styled.span`
     color: ${ANTD_GRAY[8]};
@@ -25,33 +25,33 @@ type Props = {
 };
 
 export const DashboardStatsSummary = ({
-    chartCount,
-    viewCount,
-    uniqueUserCountLast30Days,
-    lastUpdatedMs,
-    createdMs,
-}: Props) => {
+                                          chartCount,
+                                          viewCount,
+                                          uniqueUserCountLast30Days,
+                                          lastUpdatedMs,
+                                          createdMs,
+                                      }: Props) => {
     const statsViews = [
         (!!chartCount && (
             <StatText>
                 <b>{chartCount}</b> charts
             </StatText>
         )) ||
-            undefined,
+        undefined,
         (!!viewCount && (
             <StatText>
-                <EyeOutlined style={{ marginRight: 8, color: ANTD_GRAY[7] }} />
+                <EyeOutlined style={{marginRight: 8, color: ANTD_GRAY[7]}}/>
                 <b>{formatNumberWithoutAbbreviation(viewCount)}</b> views
             </StatText>
         )) ||
-            undefined,
+        undefined,
         (!!uniqueUserCountLast30Days && (
             <StatText>
-                <TeamOutlined style={{ marginRight: 8, color: ANTD_GRAY[7] }} />
+                <TeamOutlined style={{marginRight: 8, color: ANTD_GRAY[7]}}/>
                 <b>{formatNumberWithoutAbbreviation(uniqueUserCountLast30Days)}</b> unique users
             </StatText>
         )) ||
-            undefined,
+        undefined,
         (!!lastUpdatedMs && (
             <Popover
                 content={
@@ -60,20 +60,20 @@ export const DashboardStatsSummary = ({
                         <div>
                             Changed on {toLocalDateTimeString(lastUpdatedMs)}.{' '}
                             <Tooltip title="The time at which the dashboard was last changed in the source platform">
-                                <HelpIcon />
+                                <HelpIcon/>
                             </Tooltip>
                         </div>
                     </>
                 }
             >
                 <StatText>
-                    <ClockCircleOutlined style={{ marginRight: 8, color: ANTD_GRAY[7] }} />
+                    <ClockCircleOutlined style={{marginRight: 8, color: ANTD_GRAY[7]}}/>
                     Changed {toRelativeTimeString(lastUpdatedMs)}
                 </StatText>
             </Popover>
         )) ||
-            undefined,
+        undefined,
     ].filter((stat) => stat !== undefined);
 
-    return <>{statsViews.length > 0 && <StatsSummary stats={statsViews} />}</>;
+    return <>{statsViews.length > 0 && <StatsSummary stats={statsViews}/>}</>;
 };

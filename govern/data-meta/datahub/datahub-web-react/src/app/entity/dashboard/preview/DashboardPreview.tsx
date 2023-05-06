@@ -13,35 +13,35 @@ import {
     DashboardStatsSummary,
 } from '../../../../types.generated';
 import DefaultPreviewCard from '../../../preview/DefaultPreviewCard';
-import { useEntityRegistry } from '../../../useEntityRegistry';
-import { capitalizeFirstLetterOnly } from '../../../shared/textUtil';
-import { IconStyleType } from '../../Entity';
-import { DashboardStatsSummary as DashboardStatsSummaryView } from '../shared/DashboardStatsSummary';
+import {useEntityRegistry} from '../../../useEntityRegistry';
+import {capitalizeFirstLetterOnly} from '../../../shared/textUtil';
+import {IconStyleType} from '../../Entity';
+import {DashboardStatsSummary as DashboardStatsSummaryView} from '../shared/DashboardStatsSummary';
 
 export const DashboardPreview = ({
-    urn,
-    platform,
-    platformInstanceId,
-    name,
-    subtype,
-    description,
-    access,
-    owners,
-    tags,
-    glossaryTerms,
-    domain,
-    container,
-    insights,
-    logoUrl,
-    chartCount,
-    statsSummary,
-    lastUpdatedMs,
-    createdMs,
-    externalUrl,
-    parentContainers,
-    deprecation,
-    snippet,
-}: {
+                                     urn,
+                                     platform,
+                                     platformInstanceId,
+                                     name,
+                                     subtype,
+                                     description,
+                                     access,
+                                     owners,
+                                     tags,
+                                     glossaryTerms,
+                                     domain,
+                                     container,
+                                     insights,
+                                     logoUrl,
+                                     chartCount,
+                                     statsSummary,
+                                     lastUpdatedMs,
+                                     createdMs,
+                                     externalUrl,
+                                     parentContainers,
+                                     deprecation,
+                                     snippet,
+                                 }: {
     urn: string;
     platform?: string;
     platformInstanceId?: string;

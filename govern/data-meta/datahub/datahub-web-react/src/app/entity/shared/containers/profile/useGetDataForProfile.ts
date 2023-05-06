@@ -1,29 +1,25 @@
-import { QueryHookOptions, QueryResult } from '@apollo/client';
-import { getDataForEntityType } from './utils';
-import { combineEntityDataWithSiblings, useIsSeparateSiblingsMode } from '../../siblingUtils';
-import { GenericEntityProperties } from '../../types';
-import { EntityType, Exact } from '../../../../../types.generated';
+import {QueryHookOptions, QueryResult} from '@apollo/client';
+import {getDataForEntityType} from './utils';
+import {combineEntityDataWithSiblings, useIsSeparateSiblingsMode} from '../../siblingUtils';
+import {GenericEntityProperties} from '../../types';
+import {EntityType, Exact} from '../../../../../types.generated';
 
 interface Props<T> {
     urn: string;
     entityType: EntityType;
     useEntityQuery: (
-        baseOptions: QueryHookOptions<
-            T,
+        baseOptions: QueryHookOptions<T,
             Exact<{
                 urn: string;
-            }>
-        >,
-    ) => QueryResult<
-        T,
+            }>>,
+    ) => QueryResult<T,
         Exact<{
             urn: string;
-        }>
-    >;
+        }>>;
     getOverrideProperties: (T) => GenericEntityProperties;
 }
 
-export default function useGetDataForProfile<T>({ urn, entityType, useEntityQuery, getOverrideProperties }: Props<T>) {
+export default function useGetDataForProfile<T>({urn, entityType, useEntityQuery, getOverrideProperties}: Props<T>) {
     const isHideSiblingMode = useIsSeparateSiblingsMode();
     const {
         loading,
@@ -31,7 +27,7 @@ export default function useGetDataForProfile<T>({ urn, entityType, useEntityQuer
         data: dataNotCombinedWithSiblings,
         refetch,
     } = useEntityQuery({
-        variables: { urn },
+        variables: {urn},
     });
 
     const dataPossiblyCombinedWithSiblings = isHideSiblingMode
@@ -49,5 +45,5 @@ export default function useGetDataForProfile<T>({ urn, entityType, useEntityQuer
             })) ||
         null;
 
-    return { entityData, dataPossiblyCombinedWithSiblings, dataNotCombinedWithSiblings, loading, error, refetch };
+    return {entityData, dataPossiblyCombinedWithSiblings, dataNotCombinedWithSiblings, loading, error, refetch};
 }

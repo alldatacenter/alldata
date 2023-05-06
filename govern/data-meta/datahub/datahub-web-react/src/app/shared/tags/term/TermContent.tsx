@@ -1,12 +1,12 @@
-import { BookOutlined } from '@ant-design/icons';
-import { message, Modal, Tag } from 'antd';
+import {BookOutlined} from '@ant-design/icons';
+import {message, Modal, Tag} from 'antd';
 import React from 'react';
 import Highlight from 'react-highlighter';
-import { useRemoveTermMutation } from '../../../../graphql/mutations.generated';
-import { EntityType, GlossaryTermAssociation, SubResourceType } from '../../../../types.generated';
-import { useEntityRegistry } from '../../../useEntityRegistry';
+import {useRemoveTermMutation} from '../../../../graphql/mutations.generated';
+import {EntityType, GlossaryTermAssociation, SubResourceType} from '../../../../types.generated';
+import {useEntityRegistry} from '../../../useEntityRegistry';
 
-const highlightMatchStyle = { background: '#ffe58f', padding: '0' };
+const highlightMatchStyle = {background: '#ffe58f', padding: '0'};
 
 interface Props {
     term: GlossaryTermAssociation;
@@ -20,15 +20,15 @@ interface Props {
 }
 
 export default function TermContent({
-    term,
-    entityUrn,
-    entitySubresource,
-    canRemove,
-    readOnly,
-    highlightText,
-    onOpenModal,
-    refetch,
-}: Props) {
+                                        term,
+                                        entityUrn,
+                                        entitySubresource,
+                                        canRemove,
+                                        readOnly,
+                                        highlightText,
+                                        onOpenModal,
+                                        refetch,
+                                    }: Props) {
     const entityRegistry = useEntityRegistry();
     const [removeTermMutation] = useRemoveTermMutation();
 
@@ -50,19 +50,20 @@ export default function TermContent({
                             },
                         },
                     })
-                        .then(({ errors }) => {
+                        .then(({errors}) => {
                             if (!errors) {
-                                message.success({ content: 'Removed Term!', duration: 2 });
+                                message.success({content: 'Removed Term!', duration: 2});
                             }
                         })
                         .then(refetch)
                         .catch((e) => {
                             message.destroy();
-                            message.error({ content: `Failed to remove term: \n ${e.message || ''}`, duration: 3 });
+                            message.error({content: `Failed to remove term: \n ${e.message || ''}`, duration: 3});
                         });
                 }
             },
-            onCancel() {},
+            onCancel() {
+            },
             okText: 'Yes',
             maskClosable: true,
             closable: true,
@@ -71,15 +72,15 @@ export default function TermContent({
 
     return (
         <Tag
-            style={{ cursor: 'pointer' }}
+            style={{cursor: 'pointer'}}
             closable={canRemove && !readOnly}
             onClose={(e) => {
                 e.preventDefault();
                 removeTerm(term);
             }}
         >
-            <BookOutlined style={{ marginRight: '3%' }} />
-            <Highlight style={{ marginLeft: 0 }} matchStyle={highlightMatchStyle} search={highlightText}>
+            <BookOutlined style={{marginRight: '3%'}}/>
+            <Highlight style={{marginLeft: 0}} matchStyle={highlightMatchStyle} search={highlightText}>
                 {entityRegistry.getDisplayName(EntityType.GlossaryTerm, term.term)}
             </Highlight>
         </Tag>

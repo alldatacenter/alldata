@@ -1,6 +1,6 @@
 import React from 'react';
-import { Typography } from 'antd';
-import { OnboardingStep } from '../OnboardingStep';
+import {Typography} from 'antd';
+import {OnboardingStep} from '../OnboardingStep';
 
 export const SEARCH_RESULTS_FILTERS_ID = 'search-results-filters';
 export const SEARCH_RESULTS_ADVANCED_SEARCH_ID = 'search-results-advanced-search';
@@ -12,7 +12,8 @@ export const SearchOnboardingConfig: OnboardingStep[] = [
         title: 'Narrow your search ⚡',
         content: (
             <Typography.Paragraph>
-                Quickly find relevant assets by applying one or more filters. Try filtering by <strong>Type</strong>,{' '}
+                Quickly find relevant assets by applying one or more filters. Try filtering
+                by <strong>Type</strong>,{' '}
                 <strong>Owner</strong>, and more!
             </Typography.Paragraph>
         ),

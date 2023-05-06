@@ -19,13 +19,13 @@ module.exports = {
             add: [
                 // Self host images by copying them to the build directory
                 new CopyWebpackPlugin({
-                    patterns: [{ from: 'src/images', to: 'platforms' }],
+                    patterns: [{from: 'src/images', to: 'platforms'}],
                 }),
                 // Copy monaco-editor files to the build directory
                 new CopyWebpackPlugin({
                     patterns: [
-                        { from: "node_modules/monaco-editor/min/vs/", to: "monaco-editor/vs" },
-                        { from: "node_modules/monaco-editor/min-maps/vs/", to: "monaco-editor/min-maps/vs" },
+                        {from: "node_modules/monaco-editor/min/vs/", to: "monaco-editor/vs"},
+                        {from: "node_modules/monaco-editor/min-maps/vs/", to: "monaco-editor/min-maps/vs"},
                     ],
                 }),
             ],

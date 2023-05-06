@@ -1,9 +1,9 @@
-import { message, Modal } from 'antd';
-import React, { useState } from 'react';
-import { useBatchSetDomainMutation } from '../../../../../../../graphql/mutations.generated';
-import { SetDomainModal } from '../../../../containers/profile/sidebar/Domain/SetDomainModal';
+import {message, Modal} from 'antd';
+import React, {useState} from 'react';
+import {useBatchSetDomainMutation} from '../../../../../../../graphql/mutations.generated';
+import {SetDomainModal} from '../../../../containers/profile/sidebar/Domain/SetDomainModal';
 import ActionDropdown from './ActionDropdown';
-import { handleBatchError } from '../../../../utils';
+import {handleBatchError} from '../../../../utils';
 
 type Props = {
     urns: Array<string>;
@@ -12,7 +12,7 @@ type Props = {
 };
 
 // eslint-disable-next-line
-export default function DomainsDropdown({ urns, disabled = false, refetch }: Props) {
+export default function DomainsDropdown({urns, disabled = false, refetch}: Props) {
     const [isEditModalVisible, setIsEditModalVisible] = useState(false);
     const [batchSetDomainMutation] = useBatchSetDomainMutation();
 
@@ -20,13 +20,13 @@ export default function DomainsDropdown({ urns, disabled = false, refetch }: Pro
         batchSetDomainMutation({
             variables: {
                 input: {
-                    resources: [...urns.map((urn) => ({ resourceUrn: urn }))],
+                    resources: [...urns.map((urn) => ({resourceUrn: urn}))],
                 },
             },
         })
-            .then(({ errors }) => {
+            .then(({errors}) => {
                 if (!errors) {
-                    message.success({ content: 'Removed Domain!', duration: 2 });
+                    message.success({content: 'Removed Domain!', duration: 2});
                     refetch?.();
                 }
             })
@@ -61,7 +61,8 @@ export default function DomainsDropdown({ urns, disabled = false, refetch }: Pro
                                 onOk() {
                                     batchUnsetDomains();
                                 },
-                                onCancel() {},
+                                onCancel() {
+                                },
                                 okText: 'Yes',
                                 maskClosable: true,
                                 closable: true,

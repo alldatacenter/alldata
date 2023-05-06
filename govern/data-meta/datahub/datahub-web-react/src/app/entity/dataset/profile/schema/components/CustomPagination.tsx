@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { Button, Menu, Dropdown, Typography } from 'antd';
-import { LeftOutlined, RightOutlined } from '@ant-design/icons';
+import React, {useState} from 'react';
+import {Button, Menu, Dropdown, Typography} from 'antd';
+import {LeftOutlined, RightOutlined} from '@ant-design/icons';
 import styled from 'styled-components';
 
 const CustomPaginationContainer = styled.div`
@@ -31,7 +31,7 @@ type Props = {
     maxVersion: number;
 };
 
-export default function CustomPagination({ onChange, maxVersion }: Props) {
+export default function CustomPagination({onChange, maxVersion}: Props) {
     const [version1, setVersion1] = useState(maxVersion || 1); // current version - first dropdown selected
     const [version2, setVersion2] = useState(maxVersion ? maxVersion - 1 : 0); // past version comparing with current - second dropdown
 
@@ -45,7 +45,7 @@ export default function CustomPagination({ onChange, maxVersion }: Props) {
         setVersion2(version1);
         onChange(version1 + 1, version1);
     };
-    const onVersion1Click = ({ key }) => {
+    const onVersion1Click = ({key}) => {
         const newVersion1 = parseInt(key, 10);
         setVersion1(newVersion1);
         if (version2 >= newVersion1) {
@@ -55,7 +55,7 @@ export default function CustomPagination({ onChange, maxVersion }: Props) {
         }
         onChange(newVersion1, version2);
     };
-    const onVersion2Click = ({ key }) => {
+    const onVersion2Click = ({key}) => {
         setVersion2(parseInt(key, 10));
         onChange(version1, parseInt(key, 10));
     };
@@ -87,7 +87,7 @@ export default function CustomPagination({ onChange, maxVersion }: Props) {
             <NavButton
                 size="small"
                 type="text"
-                icon={<LeftOutlined />}
+                icon={<LeftOutlined/>}
                 onClick={onPrevClick}
                 disabled={version1 >= maxVersion}
             />
@@ -104,7 +104,7 @@ export default function CustomPagination({ onChange, maxVersion }: Props) {
             <NavButton
                 size="small"
                 type="text"
-                icon={<RightOutlined />}
+                icon={<RightOutlined/>}
                 onClick={onNextClick}
                 disabled={version1 <= 1}
             />

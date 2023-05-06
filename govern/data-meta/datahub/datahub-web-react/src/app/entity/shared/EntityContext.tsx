@@ -1,7 +1,7 @@
-import React, { useContext } from 'react';
-import { EntityType } from '../../../types.generated';
-import { useIsSeparateSiblingsMode } from './siblingUtils';
-import { EntityContextType, UpdateEntityType } from './types';
+import React, {useContext} from 'react';
+import {EntityType} from '../../../types.generated';
+import {useIsSeparateSiblingsMode} from './siblingUtils';
+import {EntityContextType, UpdateEntityType} from './types';
 
 const EntityContext = React.createContext<EntityContextType>({
     urn: '',
@@ -10,7 +10,8 @@ const EntityContext = React.createContext<EntityContextType>({
     loading: true,
     baseEntity: null,
     updateEntity: () => Promise.resolve({}),
-    routeToTab: () => {},
+    routeToTab: () => {
+    },
     refetch: () => Promise.resolve({}),
     lineage: undefined,
     dataNotCombinedWithSiblings: null,
@@ -18,43 +19,43 @@ const EntityContext = React.createContext<EntityContextType>({
 
 export default EntityContext;
 
-export const useBaseEntity = <T,>(): T => {
-    const { baseEntity } = useContext(EntityContext);
+export const useBaseEntity = <T, >(): T => {
+    const {baseEntity} = useContext(EntityContext);
     return baseEntity as T;
 };
 
-export const useDataNotCombinedWithSiblings = <T,>(): T => {
-    const { dataNotCombinedWithSiblings } = useContext(EntityContext);
+export const useDataNotCombinedWithSiblings = <T, >(): T => {
+    const {dataNotCombinedWithSiblings} = useContext(EntityContext);
     return dataNotCombinedWithSiblings as T;
 };
 
-export const useEntityUpdate = <U,>(): UpdateEntityType<U> | null | undefined => {
-    const { updateEntity } = useContext(EntityContext);
+export const useEntityUpdate = <U, >(): UpdateEntityType<U> | null | undefined => {
+    const {updateEntity} = useContext(EntityContext);
     return updateEntity;
 };
 
 export const useEntityData = () => {
-    const { urn, entityType, entityData, loading } = useContext(EntityContext);
-    return { urn, entityType, entityData, loading };
+    const {urn, entityType, entityData, loading} = useContext(EntityContext);
+    return {urn, entityType, entityData, loading};
 };
 
 export const useRouteToTab = () => {
-    const { routeToTab } = useContext(EntityContext);
+    const {routeToTab} = useContext(EntityContext);
     return routeToTab;
 };
 
 export const useRefetch = () => {
-    const { refetch } = useContext(EntityContext);
+    const {refetch} = useContext(EntityContext);
     return refetch;
 };
 
 export const useLineageData = () => {
-    const { lineage } = useContext(EntityContext);
+    const {lineage} = useContext(EntityContext);
     return lineage;
 };
 
 export const useMutationUrn = () => {
-    const { urn, entityData } = useContext(EntityContext);
+    const {urn, entityData} = useContext(EntityContext);
     const isHideSiblingMode = useIsSeparateSiblingsMode();
     if (!entityData?.siblings || entityData?.siblings?.isPrimary || isHideSiblingMode) {
         return urn;

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Tooltip } from 'antd';
-import { ViewOptionTooltipTitle } from './ViewOptionTooltipTitle';
+import {Tooltip} from 'antd';
+import {ViewOptionTooltipTitle} from './ViewOptionTooltipTitle';
 
 const ViewName = styled.span`
     width: 200px;
@@ -15,9 +15,9 @@ type Props = {
     description?: string | null;
 };
 
-export const ViewOptionName = ({ name, description }: Props) => {
+export const ViewOptionName = ({name, description}: Props) => {
     return (
-        <Tooltip placement="left" title={<ViewOptionTooltipTitle name={name} description={description} />}>
+        <Tooltip placement="left" title={<ViewOptionTooltipTitle name={name} description={description}/>}>
             <ViewName>{name}</ViewName>
         </Tooltip>
     );

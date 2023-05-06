@@ -1,7 +1,7 @@
 import React from 'react';
-import { Alert, Button, Modal, Typography } from 'antd';
+import {Alert, Button, Modal, Typography} from 'antd';
 import styled from 'styled-components';
-import { InfoCircleOutlined } from '@ant-design/icons';
+import {InfoCircleOutlined} from '@ant-design/icons';
 
 const ModalSection = styled.div`
     display: flex;
@@ -41,7 +41,7 @@ type Props = {
     expiresInText: string;
 };
 
-export const AccessTokenModal = ({ visible, onClose, accessToken, expiresInText }: Props) => {
+export const AccessTokenModal = ({visible, onClose, accessToken, expiresInText}: Props) => {
     const baseUrl = window.location.origin;
     const accessTokenCurl = `curl -X POST '${baseUrl}/api/graphql' \\
 --header 'Authorization: Bearer ${accessToken}' \\
@@ -71,7 +71,7 @@ export const AccessTokenModal = ({ visible, onClose, accessToken, expiresInText 
                     type="info"
                     message={
                         <span>
-                            <StyledInfoCircleOutlined />
+                            <StyledInfoCircleOutlined/>
                             Make sure to copy your personal access token now. You won’t be able to see it again.
                         </span>
                     }
@@ -80,17 +80,18 @@ export const AccessTokenModal = ({ visible, onClose, accessToken, expiresInText 
             <ModalSection>
                 <ModalSectionHeader strong>Token</ModalSectionHeader>
                 <ModalSectionParagraph>{expiresInText}</ModalSectionParagraph>
-                <Typography.Paragraph copyable={{ text: accessToken }}>
+                <Typography.Paragraph copyable={{text: accessToken}}>
                     <pre>{accessToken}</pre>
                 </Typography.Paragraph>
             </ModalSection>
             <ModalSection>
                 <ModalSectionHeader strong>Usage</ModalSectionHeader>
                 <ModalSectionParagraph>
-                    To use the token, provide it as a <Typography.Text keyboard>Bearer</Typography.Text> token in the{' '}
+                    To use the token, provide it as a <Typography.Text keyboard>Bearer</Typography.Text> token in
+                    the{' '}
                     <Typography.Text keyboard>Authorization</Typography.Text> header when making API requests:
                 </ModalSectionParagraph>
-                <Typography.Paragraph copyable={{ text: accessTokenCurl }}>
+                <Typography.Paragraph copyable={{text: accessTokenCurl}}>
                     <pre>{accessTokenCurl}</pre>
                 </Typography.Paragraph>
             </ModalSection>

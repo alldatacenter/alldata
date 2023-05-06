@@ -1,20 +1,20 @@
-import React, { useState } from 'react';
-import { MoreOutlined, UserAddOutlined, UserDeleteOutlined } from '@ant-design/icons';
-import { Col, Dropdown, Menu, message, Modal, Pagination, Row, Empty, Button, Typography } from 'antd';
-import { Link } from 'react-router-dom';
+import React, {useState} from 'react';
+import {MoreOutlined, UserAddOutlined, UserDeleteOutlined} from '@ant-design/icons';
+import {Col, Dropdown, Menu, message, Modal, Pagination, Row, Empty, Button, Typography} from 'antd';
+import {Link} from 'react-router-dom';
 import styled from 'styled-components';
-import { useGetAllGroupMembersQuery, useRemoveGroupMembersMutation } from '../../../graphql/group.generated';
-import { CorpUser, EntityType } from '../../../types.generated';
-import { CustomAvatar } from '../../shared/avatar';
-import { useEntityRegistry } from '../../useEntityRegistry';
-import { AddGroupMembersModal } from './AddGroupMembersModal';
-import { scrollToTop } from '../../shared/searchUtils';
+import {useGetAllGroupMembersQuery, useRemoveGroupMembersMutation} from '../../../graphql/group.generated';
+import {CorpUser, EntityType} from '../../../types.generated';
+import {CustomAvatar} from '../../shared/avatar';
+import {useEntityRegistry} from '../../useEntityRegistry';
+import {AddGroupMembersModal} from './AddGroupMembersModal';
+import {scrollToTop} from '../../shared/searchUtils';
 
 const ADD_MEMBER_STYLE = {
     backGround: '#ffffff',
     boxShadow: '0px 2px 6px rgba(0, 0, 0, 0.05)',
 };
-const AVATAR_STYLE = { margin: '5px 5px 5px 0' };
+const AVATAR_STYLE = {margin: '5px 5px 5px 0'};
 
 /**
  * Styled Components
@@ -84,15 +84,15 @@ type Props = {
     onChangeMembers?: () => void;
 };
 
-export default function GroupMembers({ urn, pageSize, isExternalGroup, onChangeMembers }: Props) {
+export default function GroupMembers({urn, pageSize, isExternalGroup, onChangeMembers}: Props) {
     const entityRegistry = useEntityRegistry();
 
     const [page, setPage] = useState(1);
     /* eslint-disable @typescript-eslint/no-unused-vars */
     const [isEditingMembers, setIsEditingMembers] = useState(false);
     const start = (page - 1) * pageSize;
-    const { data: membersData, refetch } = useGetAllGroupMembersQuery({
-        variables: { urn, start, count: pageSize },
+    const {data: membersData, refetch} = useGetAllGroupMembersQuery({
+        variables: {urn, start, count: pageSize},
     });
     const [removeGroupMembersMutation] = useRemoveGroupMembersMutation();
 
@@ -108,9 +108,9 @@ export default function GroupMembers({ urn, pageSize, isExternalGroup, onChangeM
                 userUrns: [userUrn],
             },
         })
-            .then(({ errors }) => {
+            .then(({errors}) => {
                 if (!errors) {
-                    message.success({ content: 'Removed Group Member!', duration: 2 });
+                    message.success({content: 'Removed Group Member!', duration: 2});
                     onChangeMembers?.();
                     // Hack to deal with eventual consistency
                     setTimeout(() => {
@@ -121,7 +121,7 @@ export default function GroupMembers({ urn, pageSize, isExternalGroup, onChangeM
             })
             .catch((e) => {
                 message.destroy();
-                message.error({ content: `Failed to remove group member: \n ${e.message || ''}`, duration: 3 });
+                message.error({content: `Failed to remove group member: \n ${e.message || ''}`, duration: 3});
             });
     };
 
@@ -144,7 +144,8 @@ export default function GroupMembers({ urn, pageSize, isExternalGroup, onChangeM
             onOk() {
                 removeGroupMember(memberUrn);
             },
-            onCancel() {},
+            onCancel() {
+            },
             okText: 'Yes',
             maskClosable: true,
             closable: true,
@@ -167,12 +168,12 @@ export default function GroupMembers({ urn, pageSize, isExternalGroup, onChangeM
             <Menu onClick={(e) => onMemberMenuClick(e, urnID)}>
                 <Menu.Item disabled key="make">
                     <span>
-                        <UserAddOutlined /> Make owner
+                        <UserAddOutlined/> Make owner
                     </span>
                 </Menu.Item>
                 <Menu.Item disabled={isExternalGroup} key="remove">
                     <span>
-                        <UserDeleteOutlined /> Remove from Group
+                        <UserDeleteOutlined/> Remove from Group
                     </span>
                 </Menu.Item>
             </Menu>
@@ -183,43 +184,43 @@ export default function GroupMembers({ urn, pageSize, isExternalGroup, onChangeM
         <>
             <Row style={ADD_MEMBER_STYLE}>
                 <AddMember type="text" disabled={isExternalGroup} onClick={onClickEditMembers}>
-                    <UserAddOutlined />
+                    <UserAddOutlined/>
                     <AddMemberText>Add Member</AddMemberText>
                 </AddMember>
             </Row>
             <GroupMemberWrapper>
-                {groupMembers.length === 0 && <NoGroupMembers description="No members in this group yet." />}
+                {groupMembers.length === 0 && <NoGroupMembers description="No members in this group yet."/>}
                 {groupMembers &&
-                    groupMembers.map((item) => {
-                        const entityUrn = entityRegistry.getEntityUrl(EntityType.CorpUser, item.urn);
-                        return (
-                            <Row className="groupMemberRow" align="middle" key={entityUrn}>
-                                <MemberColumn xl={23} lg={23} md={23} sm={23} xs={23}>
-                                    <Link to={entityUrn}>
-                                        <MemberNameSection>
-                                            <CustomAvatar
-                                                useDefaultAvatar={false}
-                                                size={28}
-                                                photoUrl={item.editableProperties?.pictureLink || ''}
-                                                name={entityRegistry.getDisplayName(EntityType.CorpUser, item)}
-                                                style={AVATAR_STYLE}
-                                            />
-                                            <Name>{entityRegistry.getDisplayName(EntityType.CorpUser, item)}</Name>
-                                        </MemberNameSection>
-                                    </Link>
-                                </MemberColumn>
-                                <MemberColumn xl={1} lg={1} md={1} sm={1} xs={1}>
-                                    <MemberEditIcon>
-                                        <Dropdown overlay={menu(item.urn)}>
-                                            <MoreOutlined />
-                                        </Dropdown>
-                                    </MemberEditIcon>
-                                </MemberColumn>
-                            </Row>
-                        );
-                    })}
+                groupMembers.map((item) => {
+                    const entityUrn = entityRegistry.getEntityUrl(EntityType.CorpUser, item.urn);
+                    return (
+                        <Row className="groupMemberRow" align="middle" key={entityUrn}>
+                            <MemberColumn xl={23} lg={23} md={23} sm={23} xs={23}>
+                                <Link to={entityUrn}>
+                                    <MemberNameSection>
+                                        <CustomAvatar
+                                            useDefaultAvatar={false}
+                                            size={28}
+                                            photoUrl={item.editableProperties?.pictureLink || ''}
+                                            name={entityRegistry.getDisplayName(EntityType.CorpUser, item)}
+                                            style={AVATAR_STYLE}
+                                        />
+                                        <Name>{entityRegistry.getDisplayName(EntityType.CorpUser, item)}</Name>
+                                    </MemberNameSection>
+                                </Link>
+                            </MemberColumn>
+                            <MemberColumn xl={1} lg={1} md={1} sm={1} xs={1}>
+                                <MemberEditIcon>
+                                    <Dropdown overlay={menu(item.urn)}>
+                                        <MoreOutlined/>
+                                    </Dropdown>
+                                </MemberEditIcon>
+                            </MemberColumn>
+                        </Row>
+                    );
+                })}
             </GroupMemberWrapper>
-            <Row justify="center" style={{ marginTop: '15px' }}>
+            <Row justify="center" style={{marginTop: '15px'}}>
                 <Pagination
                     current={page}
                     pageSize={pageSize}

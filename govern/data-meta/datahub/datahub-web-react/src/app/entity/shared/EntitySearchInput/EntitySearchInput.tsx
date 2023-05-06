@@ -1,9 +1,9 @@
-import { Select, Tag, Tooltip } from 'antd';
+import {Select, Tag, Tooltip} from 'antd';
 import React from 'react';
-import { useGetSearchResultsForMultipleLazyQuery } from '../../../../graphql/search.generated';
-import { EntityType } from '../../../../types.generated';
-import { useEntityRegistry } from '../../../useEntityRegistry';
-import { EntitySearchInputResult } from './EntitySearchInputResult';
+import {useGetSearchResultsForMultipleLazyQuery} from '../../../../graphql/search.generated';
+import {EntityType} from '../../../../types.generated';
+import {useEntityRegistry} from '../../../useEntityRegistry';
+import {EntitySearchInputResult} from './EntitySearchInputResult';
 
 type Props = {
     selectedUrns: string[];
@@ -15,15 +15,15 @@ type Props = {
 };
 
 export const EntitySearchInput = ({
-    selectedUrns,
-    entityTypes,
-    placeholder,
-    style,
-    mode,
-    onChangeSelectedUrns,
-}: Props) => {
+                                      selectedUrns,
+                                      entityTypes,
+                                      placeholder,
+                                      style,
+                                      mode,
+                                      onChangeSelectedUrns,
+                                  }: Props) => {
     const entityRegistry = useEntityRegistry();
-    const [searchResources, { data: resourcesSearchData }] = useGetSearchResultsForMultipleLazyQuery();
+    const [searchResources, {data: resourcesSearchData}] = useGetSearchResultsForMultipleLazyQuery();
     const searchResults = resourcesSearchData?.searchAcrossEntities?.searchResults || [];
 
     const urnToSearchResultEntity = new Map();
@@ -86,7 +86,7 @@ export const EntitySearchInput = ({
         >
             {searchResults?.map((result) => (
                 <Select.Option value={result.entity.urn}>
-                    <EntitySearchInputResult entity={result.entity} />
+                    <EntitySearchInputResult entity={result.entity}/>
                 </Select.Option>
             ))}
         </Select>

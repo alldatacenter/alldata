@@ -1,21 +1,21 @@
-import { dataFlow1, dataJob1, dataset1, dataset2, dataset3 } from '../../../Mocks';
-import { existsInEntitiesToAdd } from '../manage/AddEntityEdge';
-import { buildUpdateLineagePayload, getValidEntityTypes } from '../utils/manageLineageUtils';
-import { Direction } from '../types';
-import { EntityType } from '../../../types.generated';
+import {dataFlow1, dataJob1, dataset1, dataset2, dataset3} from '../../../Mocks';
+import {existsInEntitiesToAdd} from '../manage/AddEntityEdge';
+import {buildUpdateLineagePayload, getValidEntityTypes} from '../utils/manageLineageUtils';
+import {Direction} from '../types';
+import {EntityType} from '../../../types.generated';
 
 describe('existsInEntitiesToAdd', () => {
     it('should return false if the search result is not in entitiesAlreadyAdded', () => {
-        const result = { entity: { urn: 'urn:li:test' } } as any;
-        const entitiesAlreadyAdded = [{ urn: 'urn:li:testing123' }] as any;
+        const result = {entity: {urn: 'urn:li:test'}} as any;
+        const entitiesAlreadyAdded = [{urn: 'urn:li:testing123'}] as any;
         const exists = existsInEntitiesToAdd(result, entitiesAlreadyAdded);
 
         expect(exists).toBe(false);
     });
 
     it('should return true if the search result is in entitiesAlreadyAdded', () => {
-        const result = { entity: { urn: 'urn:li:test' } } as any;
-        const entitiesAlreadyAdded = [{ urn: 'urn:li:testing123' }, { urn: 'urn:li:test' }] as any;
+        const result = {entity: {urn: 'urn:li:test'}} as any;
+        const entitiesAlreadyAdded = [{urn: 'urn:li:testing123'}, {urn: 'urn:li:test'}] as any;
         const exists = existsInEntitiesToAdd(result, entitiesAlreadyAdded);
 
         expect(exists).toBe(true);
@@ -31,12 +31,12 @@ describe('buildUpdateLineagePayload', () => {
 
         expect(payload).toMatchObject({
             edgesToAdd: [
-                { upstreamUrn: dataFlow1.urn, downstreamUrn: entityUrn },
-                { upstreamUrn: dataset2.urn, downstreamUrn: entityUrn },
+                {upstreamUrn: dataFlow1.urn, downstreamUrn: entityUrn},
+                {upstreamUrn: dataset2.urn, downstreamUrn: entityUrn},
             ],
             edgesToRemove: [
-                { upstreamUrn: dataJob1.urn, downstreamUrn: entityUrn },
-                { upstreamUrn: dataset3.urn, downstreamUrn: entityUrn },
+                {upstreamUrn: dataJob1.urn, downstreamUrn: entityUrn},
+                {upstreamUrn: dataset3.urn, downstreamUrn: entityUrn},
             ],
         });
     });
@@ -49,12 +49,12 @@ describe('buildUpdateLineagePayload', () => {
 
         expect(payload).toMatchObject({
             edgesToAdd: [
-                { upstreamUrn: entityUrn, downstreamUrn: dataFlow1.urn },
-                { upstreamUrn: entityUrn, downstreamUrn: dataset2.urn },
+                {upstreamUrn: entityUrn, downstreamUrn: dataFlow1.urn},
+                {upstreamUrn: entityUrn, downstreamUrn: dataset2.urn},
             ],
             edgesToRemove: [
-                { upstreamUrn: entityUrn, downstreamUrn: dataJob1.urn },
-                { upstreamUrn: entityUrn, downstreamUrn: dataset3.urn },
+                {upstreamUrn: entityUrn, downstreamUrn: dataJob1.urn},
+                {upstreamUrn: entityUrn, downstreamUrn: dataset3.urn},
             ],
         });
     });

@@ -1,14 +1,14 @@
 import React from 'react';
-import { EntityType, GlossaryNode, GlossaryTerm } from '../../../types.generated';
+import {EntityType, GlossaryNode, GlossaryTerm} from '../../../types.generated';
 import EmptyGlossarySection from '../../glossary/EmptyGlossarySection';
 import GlossaryEntitiesList from '../../glossary/GlossaryEntitiesList';
-import { useEntityRegistry } from '../../useEntityRegistry';
-import { sortGlossaryTerms } from '../glossaryTerm/utils';
-import { useEntityData } from '../shared/EntityContext';
-import { sortGlossaryNodes } from './utils';
+import {useEntityRegistry} from '../../useEntityRegistry';
+import {sortGlossaryTerms} from '../glossaryTerm/utils';
+import {useEntityData} from '../shared/EntityContext';
+import {sortGlossaryNodes} from './utils';
 
 function ChildrenTab() {
-    const { entityData } = useEntityData();
+    const {entityData} = useEntityData();
     const entityRegistry = useEntityRegistry();
 
     if (!entityData) return <></>;
@@ -33,7 +33,7 @@ function ChildrenTab() {
         );
     }
 
-    return <EmptyGlossarySection description="No Terms or Term Groups" />;
+    return <EmptyGlossarySection description="No Terms or Term Groups"/>;
 }
 
 export default ChildrenTab;

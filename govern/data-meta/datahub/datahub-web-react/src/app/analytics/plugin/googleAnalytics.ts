@@ -1,5 +1,5 @@
 import googleAnalytics from '@analytics/google-analytics';
-import { Event, EventType } from '../event';
+import {Event, EventType} from '../event';
 import analyticsConfig from '../../../conf/analytics';
 
 const gaConfigs = analyticsConfig.googleAnalytics;
@@ -24,7 +24,7 @@ if (isEnabled) {
     /**
      * Init default GA plugin
      */
-    const googleAnalyticsPlugin = googleAnalytics({ trackingId });
+    const googleAnalyticsPlugin = googleAnalytics({trackingId});
 
     /**
      * Lightweight wrapper on top of the default google analytics plugin
@@ -33,7 +33,7 @@ if (isEnabled) {
      */
     wrappedGoogleAnalyticsPlugin = {
         ...googleAnalyticsPlugin,
-        track: ({ payload, config, instance }) => {
+        track: ({payload, config, instance}) => {
             const modifiedProperties = {
                 label: getLabelFromEvent(payload.properties as Event),
                 category: 'UserActions',

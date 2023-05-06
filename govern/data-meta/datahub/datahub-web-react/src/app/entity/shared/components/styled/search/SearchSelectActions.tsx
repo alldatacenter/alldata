@@ -5,11 +5,11 @@ import TagsDropdown from './action/TagsDropdown';
 import DomainDropdown from './action/DomainsDropdown';
 import DeprecationDropdown from './action/DeprecationDropdown';
 import DeleteDropdown from './action/DeleteDropdown';
-import { EntityType } from '../../../../../../types.generated';
-import { EntityCapabilityType } from '../../../../Entity';
-import { useEntityRegistry } from '../../../../../useEntityRegistry';
-import { EntityAndType } from '../../../types';
-import { SelectActionGroups } from './types';
+import {EntityType} from '../../../../../../types.generated';
+import {EntityCapabilityType} from '../../../../Entity';
+import {useEntityRegistry} from '../../../../../useEntityRegistry';
+import {EntityAndType} from '../../../types';
+import {SelectActionGroups} from './types';
 
 /**
  * The set of action groups that are visible by default.
@@ -36,10 +36,10 @@ type Props = {
  * as changing owners, tags, domains, etc.
  */
 export const SearchSelectActions = ({
-    selectedEntities,
-    visibleActionGroups = new Set(DEFAULT_ACTION_GROUPS),
-    refetch,
-}: Props) => {
+                                        selectedEntities,
+                                        visibleActionGroups = new Set(DEFAULT_ACTION_GROUPS),
+                                        refetch,
+                                    }: Props) => {
     const entityRegistry = useEntityRegistry();
 
     /**

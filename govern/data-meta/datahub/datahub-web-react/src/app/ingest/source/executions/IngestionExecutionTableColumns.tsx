@@ -1,6 +1,6 @@
 import React from 'react';
-import { CopyOutlined } from '@ant-design/icons';
-import { Button, Typography, Tooltip } from 'antd';
+import {CopyOutlined} from '@ant-design/icons';
+import {Button, Typography, Tooltip} from 'antd';
 import styled from 'styled-components';
 import {
     getExecutionRequestStatusDisplayColor,
@@ -36,15 +36,15 @@ interface StatusColumnProps {
     setFocusExecutionUrn: (urn: string) => void;
 }
 
-export function StatusColumn({ status, record, setFocusExecutionUrn }: StatusColumnProps) {
+export function StatusColumn({status, record, setFocusExecutionUrn}: StatusColumnProps) {
     const Icon = getExecutionRequestStatusIcon(status);
     const text = getExecutionRequestStatusDisplayText(status);
     const color = getExecutionRequestStatusDisplayColor(status);
     return (
         <StatusContainer>
-            {Icon && <Icon style={{ color, fontSize: 14 }} />}
+            {Icon && <Icon style={{color, fontSize: 14}}/>}
             <StatusButton type="link" onClick={() => setFocusExecutionUrn(record.urn)}>
-                <Typography.Text strong style={{ color, marginLeft: 8 }}>
+                <Typography.Text strong style={{color, marginLeft: 8}}>
                     {text || 'Pending...'}
                 </Typography.Text>
             </StatusButton>
@@ -54,12 +54,21 @@ export function StatusColumn({ status, record, setFocusExecutionUrn }: StatusCol
 
 export function SourceColumn(source: string) {
     return (
-        (source === MANUAL_INGESTION_SOURCE && 'Manual Execution') ||
-        (source === SCHEDULED_INGESTION_SOURCE && 'Scheduled Execution') ||
-        (source === CLI_INGESTION_SOURCE && 'CLI Execution') ||
+        (source === MANUAL_INGESTION_SOURCE && '手动执行') ||
+        (source === SCHEDULED_INGESTION_SOURCE && '计划执行') ||
+        (source === CLI_INGESTION_SOURCE && '命令行执行') ||
         'N/A'
     );
 }
+
+// export function SourceColumn(source: string) {
+//     return (
+//         (source === MANUAL_INGESTION_SOURCE && 'Manual Execution') ||
+//         (source === SCHEDULED_INGESTION_SOURCE && 'Scheduled Execution') ||
+//         (source === CLI_INGESTION_SOURCE && 'CLI Execution') ||
+//         'N/A'
+//     );
+// }
 
 interface ButtonsColumnProps {
     record: any;
@@ -69,18 +78,18 @@ interface ButtonsColumnProps {
 }
 
 export function ButtonsColumn({
-    record,
-    handleViewDetails,
-    handleCancelExecution,
-    handleRollbackExecution,
-}: ButtonsColumnProps) {
+                                  record,
+                                  handleViewDetails,
+                                  handleCancelExecution,
+                                  handleRollbackExecution,
+                              }: ButtonsColumnProps) {
     return (
-        <div style={{ display: 'flex', justifyContent: 'right' }}>
+        <div style={{display: 'flex', justifyContent: 'right'}}>
             {record.urn && navigator.clipboard && (
-                <Tooltip title="Copy Execution Request URN">
+                <Tooltip title="复制执行请求 URN">
                     <Button
-                        style={{ marginRight: 16 }}
-                        icon={<CopyOutlined />}
+                        style={{marginRight: 16}}
+                        icon={<CopyOutlined/>}
                         onClick={() => {
                             navigator.clipboard.writeText(record.urn);
                         }}
@@ -88,18 +97,18 @@ export function ButtonsColumn({
                 </Tooltip>
             )}
             {record.duration && (
-                <Button style={{ marginRight: 16 }} onClick={() => handleViewDetails(record.urn)}>
-                    DETAILS
+                <Button style={{marginRight: 16}} onClick={() => handleViewDetails(record.urn)}>
+                    详情
                 </Button>
             )}
             {record.status === RUNNING && (
-                <Button style={{ marginRight: 16 }} onClick={() => handleCancelExecution(record.urn)}>
-                    CANCEL
+                <Button style={{marginRight: 16}} onClick={() => handleCancelExecution(record.urn)}>
+                    取消
                 </Button>
             )}
             {record.status === SUCCESS && record.showRollback && (
-                <Button style={{ marginRight: 16 }} onClick={() => handleRollbackExecution(record.id)}>
-                    ROLLBACK
+                <Button style={{marginRight: 16}} onClick={() => handleRollbackExecution(record.id)}>
+                    回滚
                 </Button>
             )}
         </div>

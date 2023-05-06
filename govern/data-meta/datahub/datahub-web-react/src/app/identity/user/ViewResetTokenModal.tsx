@@ -1,10 +1,10 @@
-import { RedoOutlined } from '@ant-design/icons';
-import { Button, message, Modal, Typography } from 'antd';
-import React, { useState } from 'react';
+import {RedoOutlined} from '@ant-design/icons';
+import {Button, message, Modal, Typography} from 'antd';
+import React, {useState} from 'react';
 import styled from 'styled-components';
-import { PageRoutes } from '../../../conf/Global';
-import { useCreateNativeUserResetTokenMutation } from '../../../graphql/user.generated';
-import analytics, { EventType } from '../../analytics';
+import {PageRoutes} from '../../../conf/Global';
+import {useCreateNativeUserResetTokenMutation} from '../../../graphql/user.generated';
+import analytics, {EventType} from '../../analytics';
 
 const ModalSection = styled.div`
     display: flex;
@@ -40,11 +40,11 @@ type Props = {
     onClose: () => void;
 };
 
-export default function ViewResetTokenModal({ visible, userUrn, username, onClose }: Props) {
+export default function ViewResetTokenModal({visible, userUrn, username, onClose}: Props) {
     const baseUrl = window.location.origin;
     const [hasGeneratedResetToken, setHasGeneratedResetToken] = useState(false);
 
-    const [createNativeUserResetTokenMutation, { data: createNativeUserResetTokenData }] =
+    const [createNativeUserResetTokenMutation, {data: createNativeUserResetTokenData}] =
         useCreateNativeUserResetTokenMutation({});
 
     const createNativeUserResetToken = () => {
@@ -55,7 +55,7 @@ export default function ViewResetTokenModal({ visible, userUrn, username, onClos
                 },
             },
         })
-            .then(({ errors }) => {
+            .then(({errors}) => {
                 if (!errors) {
                     analytics.event({
                         type: EventType.CreateResetCredentialsLinkEvent,
@@ -97,7 +97,7 @@ export default function ViewResetTokenModal({ visible, userUrn, username, onClos
                         Share this reset link to reset the credentials for {username}.
                         <b>This link will expire in 24 hours.</b>
                     </ModalSectionParagraph>
-                    <Typography.Paragraph copyable={{ text: inviteLink }}>
+                    <Typography.Paragraph copyable={{text: inviteLink}}>
                         <pre>{inviteLink}</pre>
                     </Typography.Paragraph>
                 </ModalSection>
@@ -115,7 +115,7 @@ export default function ViewResetTokenModal({ visible, userUrn, username, onClos
                     Generate a new reset link! Note, any old links will <b>cease to be active</b>.
                 </ModalSectionParagraph>
                 <CreateResetTokenButton onClick={createNativeUserResetToken} size="small" type="text">
-                    <RedoOutlined style={{}} />
+                    <RedoOutlined style={{}}/>
                 </CreateResetTokenButton>
             </ModalSection>
         </Modal>

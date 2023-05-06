@@ -1,6 +1,6 @@
 import React from 'react';
 import Icon from '@ant-design/icons';
-import { CustomIconComponentProps } from '@ant-design/icons/lib/components/Icon';
+import {CustomIconComponentProps} from '@ant-design/icons/lib/components/Icon';
 
 export const CodeIcon = (props: Partial<CustomIconComponentProps>) => (
     <Icon

@@ -1,23 +1,23 @@
 import React from 'react';
-import { act } from 'react-dom/test-utils';
-import { fireEvent, render, waitFor } from '@testing-library/react';
-import { MockedProvider } from '@apollo/client/testing';
-import { Route } from 'react-router';
+import {act} from 'react-dom/test-utils';
+import {fireEvent, render, waitFor} from '@testing-library/react';
+import {MockedProvider} from '@apollo/client/testing';
+import {Route} from 'react-router';
 
-import { SearchPage } from '../SearchPage';
+import {SearchPage} from '../SearchPage';
 import TestPageContainer from '../../../utils/test-utils/TestPageContainer';
-import { mocks } from '../../../Mocks';
-import { PageRoutes } from '../../../conf/Global';
+import {mocks} from '../../../Mocks';
+import {PageRoutes} from '../../../conf/Global';
 
 describe('SearchPage', () => {
     it('renders loading', async () => {
         const promise = Promise.resolve();
-        const { getByText } = render(
+        const {getByText} = render(
             <MockedProvider mocks={mocks} addTypename={false}>
                 <TestPageContainer
                     initialEntries={['/search?filter_entity=DATASET&filter_platform=hive,kafka&page=1&query=sample']}
                 >
-                    <Route path={PageRoutes.SEARCH_RESULTS} render={() => <SearchPage />} />
+                    <Route path={PageRoutes.SEARCH_RESULTS} render={() => <SearchPage/>}/>
                 </TestPageContainer>
             </MockedProvider>,
         );
@@ -26,19 +26,19 @@ describe('SearchPage', () => {
     });
 
     it('renders the selected filters as checked', async () => {
-        const { getByTestId, queryByTestId } = render(
+        const {getByTestId, queryByTestId} = render(
             <MockedProvider
                 mocks={mocks}
                 addTypename={false}
                 defaultOptions={{
-                    watchQuery: { fetchPolicy: 'no-cache' },
-                    query: { fetchPolicy: 'no-cache' },
+                    watchQuery: {fetchPolicy: 'no-cache'},
+                    query: {fetchPolicy: 'no-cache'},
                 }}
             >
                 <TestPageContainer
                     initialEntries={['/search?filter_entity=DATASET&filter_platform=kafka&page=1&query=test']}
                 >
-                    <Route path={PageRoutes.SEARCH_RESULTS} render={() => <SearchPage />} />
+                    <Route path={PageRoutes.SEARCH_RESULTS} render={() => <SearchPage/>}/>
                 </TestPageContainer>
             </MockedProvider>,
         );
@@ -53,19 +53,19 @@ describe('SearchPage', () => {
     });
 
     it('renders multiple checked filters at once', async () => {
-        const { getByTestId, queryByTestId } = render(
+        const {getByTestId, queryByTestId} = render(
             <MockedProvider
                 mocks={mocks}
                 addTypename={false}
                 defaultOptions={{
-                    watchQuery: { fetchPolicy: 'no-cache' },
-                    query: { fetchPolicy: 'no-cache' },
+                    watchQuery: {fetchPolicy: 'no-cache'},
+                    query: {fetchPolicy: 'no-cache'},
                 }}
             >
                 <TestPageContainer
                     initialEntries={['/search?filter_entity=DATASET&filter_platform=kafka,hdfs&page=1&query=test']}
                 >
-                    <Route path={PageRoutes.SEARCH_RESULTS} render={() => <SearchPage />} />
+                    <Route path={PageRoutes.SEARCH_RESULTS} render={() => <SearchPage/>}/>
                 </TestPageContainer>
             </MockedProvider>,
         );
@@ -82,19 +82,19 @@ describe('SearchPage', () => {
 
     it('clicking a filter selects a new filter', async () => {
         const promise = Promise.resolve();
-        const { getByTestId, queryByTestId } = render(
+        const {getByTestId, queryByTestId} = render(
             <MockedProvider
                 mocks={mocks}
                 addTypename={false}
                 defaultOptions={{
-                    watchQuery: { fetchPolicy: 'no-cache' },
-                    query: { fetchPolicy: 'no-cache' },
+                    watchQuery: {fetchPolicy: 'no-cache'},
+                    query: {fetchPolicy: 'no-cache'},
                 }}
             >
                 <TestPageContainer
                     initialEntries={['/search?filter_entity=DATASET&filter_platform=kafka&page=1&query=test']}
                 >
-                    <Route path={PageRoutes.SEARCH_RESULTS} render={() => <SearchPage />} />
+                    <Route path={PageRoutes.SEARCH_RESULTS} render={() => <SearchPage/>}/>
                 </TestPageContainer>
             </MockedProvider>,
         );
