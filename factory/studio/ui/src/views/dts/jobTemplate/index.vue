@@ -367,7 +367,7 @@ export default {
     },
     getJobProject() {
       jobProjectApi.getJobProjectList().then(response => {
-        this.jobProjectList = response
+        this.jobProjectList = response.data
       })
     },
     getDataSourceList() {
@@ -388,7 +388,7 @@ export default {
       })
     },
     handleCreate() {
-      this.resetTemp()
+      //this.resetTemp()
       this.dialogStatus = 'create'
       this.dialogFormVisible = true
       this.temp.jobGroup = this.executorList[0]['id']
@@ -421,7 +421,7 @@ export default {
       })
     },
     handlerUpdate(row) {
-      this.resetTemp()
+      //this.resetTemp()
       this.temp = Object.assign({}, row) // copy obj
       this.dialogStatus = 'update'
       this.dialogFormVisible = true
