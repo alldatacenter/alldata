@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import LinkButton from '../LinkButton';
-import { useEntityData, useRefetch } from '../../../../EntityContext';
-import { AddLinkModal } from '../../../../components/styled/AddLinkModal';
+import {useEntityData, useRefetch} from '../../../../EntityContext';
+import {AddLinkModal} from '../../../../components/styled/AddLinkModal';
 
 const AddLinksWrapper = styled.div`
     margin-left: -15px;
@@ -13,8 +13,8 @@ interface Props {
     readOnly?: boolean;
 }
 
-export default function LinksSection({ hideLinksButton, readOnly }: Props) {
-    const { entityData } = useEntityData();
+export default function LinksSection({hideLinksButton, readOnly}: Props) {
+    const {entityData} = useEntityData();
     const refetch = useRefetch();
 
     const links = entityData?.institutionalMemory?.elements || [];
@@ -22,11 +22,11 @@ export default function LinksSection({ hideLinksButton, readOnly }: Props) {
     return (
         <>
             {links.map((link) => (
-                <LinkButton link={link} />
+                <LinkButton link={link}/>
             ))}
             {!readOnly && !hideLinksButton && (
                 <AddLinksWrapper>
-                    <AddLinkModal buttonProps={{ type: 'text' }} refetch={refetch} />
+                    <AddLinkModal buttonProps={{type: 'text'}} refetch={refetch}/>
                 </AddLinksWrapper>
             )}
         </>

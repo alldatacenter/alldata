@@ -1,10 +1,10 @@
 import React from 'react';
-import { Button, Modal, Typography } from 'antd';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import {Button, Modal, Typography} from 'antd';
+import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter';
 import styled from 'styled-components';
 import CopyQuery from './CopyQuery';
-import { ANTD_GRAY } from '../../../constants';
-import { Editor as MarkdownEditor } from '../../Documentation/components/editor/Editor';
+import {ANTD_GRAY} from '../../../constants';
+import {Editor as MarkdownEditor} from '../../Documentation/components/editor/Editor';
 
 const StyledModal = styled(Modal)`
     top: 4vh;
@@ -69,7 +69,7 @@ type Props = {
     showDetails?: boolean;
 };
 
-export default function QueryModal({ query, title, description, showDetails = true, onClose }: Props) {
+export default function QueryModal({query, title, description, showDetails = true, onClose}: Props) {
     return (
         <StyledModal
             visible
@@ -86,7 +86,7 @@ export default function QueryModal({ query, title, description, showDetails = tr
             }
         >
             <QueryActions>
-                <CopyQuery query={query} showCopyText />
+                <CopyQuery query={query} showCopyText/>
             </QueryActions>
             <QueryContainer>
                 <NestedSyntax data-testid="query-modal-query" showLineNumbers language="sql">
@@ -98,7 +98,7 @@ export default function QueryModal({ query, title, description, showDetails = tr
                     <QueryTitle level={4} secondary={!title}>
                         {title || 'No title'}
                     </QueryTitle>
-                    <StyledViewer readOnly secondary={!title} content={description || 'No description'} />
+                    <StyledViewer readOnly secondary={!title} content={description || 'No description'}/>
                 </QueryDetails>
             )}
         </StyledModal>

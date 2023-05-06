@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import { SchemaContextType } from '../../../types';
+import React, {useContext} from 'react';
+import {SchemaContextType} from '../../../types';
 
 const SchemaContext = React.createContext<SchemaContextType>({
     refetch: () => Promise.resolve({}),
@@ -8,6 +8,6 @@ const SchemaContext = React.createContext<SchemaContextType>({
 export default SchemaContext;
 
 export const useSchemaRefetch = () => {
-    const { refetch } = useContext(SchemaContext);
+    const {refetch} = useContext(SchemaContext);
     return refetch;
 };

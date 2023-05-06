@@ -1,9 +1,9 @@
-import React, { useRef, useState } from 'react';
-import { message, Button, Modal, Select, Typography, Tag as CustomTag } from 'antd';
+import React, {useRef, useState} from 'react';
+import {message, Button, Modal, Select, Typography, Tag as CustomTag} from 'antd';
 import styled from 'styled-components';
 
-import { useGetSearchResultsLazyQuery } from '../../../graphql/search.generated';
-import { EntityType, Tag, Entity, ResourceRefInput } from '../../../types.generated';
+import {useGetSearchResultsLazyQuery} from '../../../graphql/search.generated';
+import {EntityType, Tag, Entity, ResourceRefInput} from '../../../types.generated';
 import CreateTagModal from './CreateTagModal';
 import {
     useBatchAddTagsMutation,
@@ -11,14 +11,14 @@ import {
     useBatchRemoveTagsMutation,
     useBatchRemoveTermsMutation,
 } from '../../../graphql/mutations.generated';
-import { useEnterKeyListener } from '../useEnterKeyListener';
+import {useEnterKeyListener} from '../useEnterKeyListener';
 import GlossaryBrowser from '../../glossary/GlossaryBrowser/GlossaryBrowser';
 import ClickOutside from '../ClickOutside';
-import { useEntityRegistry } from '../../useEntityRegistry';
-import { useGetRecommendations } from '../recommendation';
-import { FORBIDDEN_URN_CHARS_REGEX, handleBatchError } from '../../entity/shared/utils';
-import { TagTermLabel } from './TagTermLabel';
-import { ENTER_KEY_CODE } from '../constants';
+import {useEntityRegistry} from '../../useEntityRegistry';
+import {useGetRecommendations} from '../recommendation';
+import {FORBIDDEN_URN_CHARS_REGEX, handleBatchError} from '../../entity/shared/utils';
+import {TagTermLabel} from './TagTermLabel';
+import {ENTER_KEY_CODE} from '../constants';
 
 export enum OperationType {
     ADD,
@@ -61,8 +61,8 @@ export const BrowserWrapper = styled.div<{ isHidden: boolean }>`
     width: 480px;
     z-index: 1051;
     ${(props) =>
-        props.isHidden &&
-        `
+    props.isHidden &&
+    `
         opacity: 0;
         height: 0;
     `}
@@ -78,20 +78,20 @@ const defaultValuesToSelectedValue = (defaultValues?: { urn: string; entity?: En
     return (
         defaultValues?.map((defaultValue) => ({
             urn: defaultValue.urn,
-            component: <TagTermLabel entity={defaultValue.entity} />,
+            component: <TagTermLabel entity={defaultValue.entity}/>,
         })) || []
     );
 };
 
 export default function EditTagTermsModal({
-    visible,
-    onCloseModal,
-    resources,
-    type = EntityType.Tag,
-    operationType = OperationType.ADD,
-    defaultValues = [],
-    onOkOverride,
-}: EditTagsModalProps) {
+                                              visible,
+                                              onCloseModal,
+                                              resources,
+                                              type = EntityType.Tag,
+                                              operationType = OperationType.ADD,
+                                              defaultValues = [],
+                                              onOkOverride,
+                                          }: EditTagsModalProps) {
     const entityRegistry = useEntityRegistry();
     const [inputValue, setInputValue] = useState('');
     const [showCreateModal, setShowCreateModal] = useState(false);
@@ -112,7 +112,7 @@ export default function EditTagTermsModal({
     const [batchAddTermsMutation] = useBatchAddTermsMutation();
     const [batchRemoveTermsMutation] = useBatchRemoveTermsMutation();
 
-    const [tagTermSearch, { data: tagTermSearchData }] = useGetSearchResultsLazyQuery();
+    const [tagTermSearch, {data: tagTermSearchData}] = useGetSearchResultsLazyQuery();
     const tagSearchResults = tagTermSearchData?.search?.searchResults?.map((searchResult) => searchResult.entity) || [];
     const [recommendedData] = useGetRecommendations([EntityType.Tag]);
     const inputEl = useRef(null);
@@ -135,7 +135,7 @@ export default function EditTagTermsModal({
     const renderSearchResult = (entity: Entity) => {
         const displayName =
             entity.type === EntityType.Tag ? (entity as Tag).name : entityRegistry.getDisplayName(entity.type, entity);
-        const tagOrTermComponent = <TagTermLabel entity={entity} />;
+        const tagOrTermComponent = <TagTermLabel entity={entity}/>;
         return (
             <Select.Option data-testid="tag-term-option" value={entity.urn} key={entity.urn} name={displayName}>
                 {tagOrTermComponent}
@@ -171,7 +171,7 @@ export default function EditTagTermsModal({
 
     const tagRender = (props) => {
         // eslint-disable-next-line react/prop-types
-        const { closable, onClose, value } = props;
+        const {closable, onClose, value} = props;
         const onPreventMouseDown = (event) => {
             event.preventDefault();
             event.stopPropagation();
@@ -224,13 +224,13 @@ export default function EditTagTermsModal({
         setUrns(newUrns);
         setSelectedTerms([
             ...selectedTerms,
-            { urn, component: <TagTermLabel termName={selectedSearchOption?.props.name} /> },
+            {urn, component: <TagTermLabel termName={selectedSearchOption?.props.name}/>},
         ]);
         setSelectedTags([
             ...selectedTags,
             {
                 urn,
-                component: <TagTermLabel entity={selectedTagOption} />,
+                component: <TagTermLabel entity={selectedTagOption}/>,
             },
         ]);
         if (inputEl && inputEl.current) {
@@ -257,7 +257,7 @@ export default function EditTagTermsModal({
                 },
             },
         })
-            .then(({ errors }) => {
+            .then(({errors}) => {
                 if (!errors) {
                     message.success({
                         content: `Added ${type === EntityType.GlossaryTerm ? 'Terms' : 'Tags'}!`,
@@ -268,7 +268,7 @@ export default function EditTagTermsModal({
             .catch((e) => {
                 message.destroy();
                 message.error(
-                    handleBatchError(urns, e, { content: `Failed to add: \n ${e.message || ''}`, duration: 3 }),
+                    handleBatchError(urns, e, {content: `Failed to add: \n ${e.message || ''}`, duration: 3}),
                 );
             })
             .finally(() => {
@@ -287,7 +287,7 @@ export default function EditTagTermsModal({
                 },
             },
         })
-            .then(({ errors }) => {
+            .then(({errors}) => {
                 if (!errors) {
                     message.success({
                         content: `Added ${type === EntityType.GlossaryTerm ? 'Terms' : 'Tags'}!`,
@@ -298,7 +298,7 @@ export default function EditTagTermsModal({
             .catch((e) => {
                 message.destroy();
                 message.error(
-                    handleBatchError(urns, e, { content: `Failed to add: \n ${e.message || ''}`, duration: 3 }),
+                    handleBatchError(urns, e, {content: `Failed to add: \n ${e.message || ''}`, duration: 3}),
                 );
             })
             .finally(() => {
@@ -317,7 +317,7 @@ export default function EditTagTermsModal({
                 },
             },
         })
-            .then(({ errors }) => {
+            .then(({errors}) => {
                 if (!errors) {
                     message.success({
                         content: `Removed ${type === EntityType.GlossaryTerm ? 'Terms' : 'Tags'}!`,
@@ -328,7 +328,7 @@ export default function EditTagTermsModal({
             .catch((e) => {
                 message.destroy();
                 message.error(
-                    handleBatchError(urns, e, { content: `Failed to remove: \n ${e.message || ''}`, duration: 3 }),
+                    handleBatchError(urns, e, {content: `Failed to remove: \n ${e.message || ''}`, duration: 3}),
                 );
             })
             .finally(() => {
@@ -347,7 +347,7 @@ export default function EditTagTermsModal({
                 },
             },
         })
-            .then(({ errors }) => {
+            .then(({errors}) => {
                 if (!errors) {
                     message.success({
                         content: `Removed ${type === EntityType.GlossaryTerm ? 'Terms' : 'Tags'}!`,
@@ -358,7 +358,7 @@ export default function EditTagTermsModal({
             .catch((e) => {
                 message.destroy();
                 message.error(
-                    handleBatchError(urns, e, { content: `Failed to remove: \n ${e.message || ''}`, duration: 3 }),
+                    handleBatchError(urns, e, {content: `Failed to remove: \n ${e.message || ''}`, duration: 3}),
                 );
             })
             .finally(() => {
@@ -408,7 +408,7 @@ export default function EditTagTermsModal({
         setIsFocusedOnInput(false);
         const newUrns = [...(urns || []), urn];
         setUrns(newUrns);
-        setSelectedTerms([...selectedTerms, { urn, component: <TagTermLabel termName={displayName} /> }]);
+        setSelectedTerms([...selectedTerms, {urn, component: <TagTermLabel termName={displayName}/>}]);
     }
 
     function clearInput() {
@@ -474,12 +474,12 @@ export default function EditTagTermsModal({
                     onFocus={() => setIsFocusedOnInput(true)}
                     onBlur={handleBlur}
                     onInputKeyDown={handleKeyDown}
-                    dropdownStyle={isShowingGlossaryBrowser ? { display: 'none' } : {}}
+                    dropdownStyle={isShowingGlossaryBrowser ? {display: 'none'} : {}}
                 >
                     {tagSearchOptions}
                 </TagSelect>
                 <BrowserWrapper isHidden={!isShowingGlossaryBrowser}>
-                    <GlossaryBrowser isSelecting selectTerm={selectTermFromBrowser} />
+                    <GlossaryBrowser isSelecting selectTerm={selectTermFromBrowser}/>
                 </BrowserWrapper>
             </ClickOutside>
         </Modal>

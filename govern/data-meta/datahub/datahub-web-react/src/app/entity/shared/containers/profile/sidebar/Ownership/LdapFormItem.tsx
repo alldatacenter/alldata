@@ -1,8 +1,8 @@
-import { AutoComplete, Form } from 'antd';
-import { FormInstance } from 'antd/es/form/Form';
-import React, { useState } from 'react';
-import { useGetAutoCompleteResultsLazyQuery } from '../../../../../../../graphql/search.generated';
-import { EntityType } from '../../../../../../../types.generated';
+import {AutoComplete, Form} from 'antd';
+import {FormInstance} from 'antd/es/form/Form';
+import React, {useState} from 'react';
+import {useGetAutoCompleteResultsLazyQuery} from '../../../../../../../graphql/search.generated';
+import {EntityType} from '../../../../../../../types.generated';
 
 const OWNER_SEARCH_PLACEHOLDER = 'Search an LDAP';
 
@@ -10,8 +10,8 @@ type Props = {
     form: FormInstance<any>;
 };
 
-export const LdapFormItem = ({ form }: Props) => {
-    const [getOwnerAutoCompleteResults, { data: searchOwnerSuggestionsData }] = useGetAutoCompleteResultsLazyQuery();
+export const LdapFormItem = ({form}: Props) => {
+    const [getOwnerAutoCompleteResults, {data: searchOwnerSuggestionsData}] = useGetAutoCompleteResultsLazyQuery();
     const [ownerQuery, setOwnerQuery] = useState('');
 
     const onSelectSuggestion = (ldap: string) => {

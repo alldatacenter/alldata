@@ -1,4 +1,4 @@
-import { SourceConfig } from '../types';
+import {SourceConfig} from '../types';
 import oktaLogo from '../../../../../images/oktalogo.png';
 
 const placeholderRecipe = `\

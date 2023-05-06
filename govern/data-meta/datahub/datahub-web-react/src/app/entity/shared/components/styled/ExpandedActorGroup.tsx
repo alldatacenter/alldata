@@ -1,8 +1,8 @@
-import { Popover, Typography } from 'antd';
+import {Popover, Typography} from 'antd';
 import React from 'react';
 import styled from 'styled-components';
-import { CorpGroup, CorpUser } from '../../../../../types.generated';
-import { ExpandedActor } from './ExpandedActor';
+import {CorpGroup, CorpUser} from '../../../../../types.generated';
+import {ExpandedActor} from './ExpandedActor';
 
 const PopoverActors = styled.div``;
 
@@ -28,7 +28,7 @@ type Props = {
 
 const DEFAULT_MAX = 10;
 
-export const ExpandedActorGroup = ({ actors, max = DEFAULT_MAX, onClose, containerStyle }: Props) => {
+export const ExpandedActorGroup = ({actors, max = DEFAULT_MAX, onClose, containerStyle}: Props) => {
     const finalActors = actors.length > max ? actors.slice(0, max) : actors;
     const remainder = actors.length > max ? actors.length - max : undefined;
 
@@ -38,14 +38,14 @@ export const ExpandedActorGroup = ({ actors, max = DEFAULT_MAX, onClose, contain
             content={
                 <PopoverActors>
                     {actors.map((actor) => (
-                        <ExpandedActor key={actor.urn} actor={actor} onClose={() => onClose?.(actor)} />
+                        <ExpandedActor key={actor.urn} actor={actor} onClose={() => onClose?.(actor)}/>
                     ))}
                 </PopoverActors>
             }
         >
             <ActorsContainer style={containerStyle}>
                 {finalActors.map((actor) => (
-                    <ExpandedActor key={actor.urn} actor={actor} onClose={() => onClose?.(actor)} />
+                    <ExpandedActor key={actor.urn} actor={actor} onClose={() => onClose?.(actor)}/>
                 ))}
             </ActorsContainer>
             {remainder && <RemainderText type="secondary">+ {remainder} more</RemainderText>}

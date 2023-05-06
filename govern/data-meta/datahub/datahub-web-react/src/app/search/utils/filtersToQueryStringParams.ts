@@ -1,6 +1,6 @@
-import { FacetFilterInput, FilterOperator } from '../../../types.generated';
-import { encodeComma } from '../../entity/shared/utils';
-import { DEGREE_FILTER_NAME, FILTER_URL_PREFIX } from './constants';
+import {FacetFilterInput, FilterOperator} from '../../../types.generated';
+import {encodeComma} from '../../entity/shared/utils';
+import {DEGREE_FILTER_NAME, FILTER_URL_PREFIX} from './constants';
 
 export const URL_PARAM_SEPARATOR = '___';
 
@@ -12,7 +12,7 @@ function reduceFiltersToCombineDegreeFilters(acc: FacetFilterInput[], filter: Fa
     if (filter.field === DEGREE_FILTER_NAME && acc.filter((f) => f.field === DEGREE_FILTER_NAME).length > 0) {
         // instead of appending this new degree filter, combine it with the previous one and continue
         return acc.map((f) =>
-            f.field === DEGREE_FILTER_NAME ? { ...f, values: [...(f.values || []), ...(filter.values || [])] } : f,
+            f.field === DEGREE_FILTER_NAME ? {...f, values: [...(f.values || []), ...(filter.values || [])]} : f,
         ) as FacetFilterInput[];
     }
     return [...acc, filter] as FacetFilterInput[];
@@ -24,7 +24,7 @@ function reduceFiltersIntoQueryStringDict(acc, filter, idx) {
         `${FILTER_URL_PREFIX}${filter.field}${URL_PARAM_SEPARATOR}${String(!!filter.negated)}${URL_PARAM_SEPARATOR}${
             filter.condition || FilterOperator.Equal
         }${URL_PARAM_SEPARATOR}${idx}`
-    ] = [...filter.values.map((value) => encodeComma(value))];
+        ] = [...filter.values.map((value) => encodeComma(value))];
     return acc;
 }
 

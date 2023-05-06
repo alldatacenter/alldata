@@ -1,12 +1,12 @@
-import { message, Modal, Tag } from 'antd';
+import {message, Modal, Tag} from 'antd';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import styled from 'styled-components';
-import { useRemoveOwnerMutation } from '../../../../../../graphql/mutations.generated';
-import { EntityType, Owner } from '../../../../../../types.generated';
-import { useEntityRegistry } from '../../../../../useEntityRegistry';
-import analytics, { EventType, EntityActionType } from '../../../../../analytics';
-import { useEntityData } from '../../../EntityContext';
+import {useRemoveOwnerMutation} from '../../../../../../graphql/mutations.generated';
+import {EntityType, Owner} from '../../../../../../types.generated';
+import {useEntityRegistry} from '../../../../../useEntityRegistry';
+import analytics, {EventType, EntityActionType} from '../../../../../analytics';
+import {useEntityData} from '../../../EntityContext';
 import OwnerContent from './OwnerContent';
 
 const OwnerTag = styled(Tag)`
@@ -25,9 +25,9 @@ type Props = {
     readOnly?: boolean;
 };
 
-export const ExpandedOwner = ({ entityUrn, owner, hidePopOver, refetch, readOnly }: Props) => {
+export const ExpandedOwner = ({entityUrn, owner, hidePopOver, refetch, readOnly}: Props) => {
     const entityRegistry = useEntityRegistry();
-    const { entityType } = useEntityData();
+    const {entityType} = useEntityData();
     const [removeOwnerMutation] = useRemoveOwnerMutation();
     let name = '';
     if (owner.owner.__typename === 'CorpGroup') {
@@ -51,7 +51,7 @@ export const ExpandedOwner = ({ entityUrn, owner, hidePopOver, refetch, readOnly
                     },
                 },
             });
-            message.success({ content: 'Owner Removed', duration: 2 });
+            message.success({content: 'Owner Removed', duration: 2});
             analytics.event({
                 type: EventType.EntityActionEvent,
                 actionType: EntityActionType.UpdateOwnership,
@@ -61,7 +61,7 @@ export const ExpandedOwner = ({ entityUrn, owner, hidePopOver, refetch, readOnly
         } catch (e: unknown) {
             message.destroy();
             if (e instanceof Error) {
-                message.error({ content: `Failed to remove owner: \n ${e.message || ''}`, duration: 3 });
+                message.error({content: `Failed to remove owner: \n ${e.message || ''}`, duration: 3});
             }
         }
         refetch?.();
@@ -74,7 +74,8 @@ export const ExpandedOwner = ({ entityUrn, owner, hidePopOver, refetch, readOnly
             onOk() {
                 onDelete();
             },
-            onCancel() {},
+            onCancel() {
+            },
             okText: 'Yes',
             maskClosable: true,
             closable: true,
@@ -83,10 +84,10 @@ export const ExpandedOwner = ({ entityUrn, owner, hidePopOver, refetch, readOnly
 
     return (
         <OwnerTag onClose={onClose} closable={!!entityUrn && !readOnly}>
-            {readOnly && <OwnerContent name={name} owner={owner} hidePopOver={hidePopOver} pictureLink={pictureLink} />}
+            {readOnly && <OwnerContent name={name} owner={owner} hidePopOver={hidePopOver} pictureLink={pictureLink}/>}
             {!readOnly && (
                 <Link to={entityRegistry.getEntityUrl(owner.owner.type, owner.owner.urn)}>
-                    <OwnerContent name={name} owner={owner} hidePopOver={hidePopOver} pictureLink={pictureLink} />
+                    <OwnerContent name={name} owner={owner} hidePopOver={hidePopOver} pictureLink={pictureLink}/>
                 </Link>
             )}
         </OwnerTag>

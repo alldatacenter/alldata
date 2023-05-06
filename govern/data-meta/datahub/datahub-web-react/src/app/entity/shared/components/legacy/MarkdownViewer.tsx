@@ -1,6 +1,6 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { Button } from 'antd';
-import { EditOutlined } from '@ant-design/icons';
+import React, {useState, useRef, useEffect} from 'react';
+import {Button} from 'antd';
+import {EditOutlined} from '@ant-design/icons';
 import MDEditor from '@uiw/react-md-editor';
 import styled from 'styled-components';
 
@@ -19,14 +19,14 @@ const MarkdownContainer = styled.div<{ editable?: string }>`
     position: relative;
 
     ${(props) =>
-        props.editable
-            ? `
+    props.editable
+        ? `
         &:hover ${EditIcon} {
             display: block;
         }
         padding-right: 15px;
         `
-            : ''}
+        : ''}
 `;
 
 const CustomButton = styled(Button)`
@@ -45,9 +45,9 @@ const MarkdownViewContainer = styled.div<{
     overflow-x: hidden;
     overflow-y: auto;
     ${(props) =>
-        props.showall
-            ? ''
-            : `
+    props.showall
+        ? ''
+        : `
         ${props.limit && `max-height: ${props.limit}px;`}
         ${
             props.over &&
@@ -82,7 +82,7 @@ export type Props = {
     ignoreLimit?: boolean;
 };
 
-export default function MarkdownViewer({ source, limit = 150, editable, onEditClicked, ignoreLimit }: Props) {
+export default function MarkdownViewer({source, limit = 150, editable, onEditClicked, ignoreLimit}: Props) {
     const [height, setHeight] = useState(0);
     const [showAll, setShowAll] = useState(false);
     const ref = useRef(null);
@@ -105,14 +105,14 @@ export default function MarkdownViewer({ source, limit = 150, editable, onEditCl
                 limit={ignoreLimit ? undefined : `${limit}`}
                 over={height >= limit && !ignoreLimit ? 'true' : undefined}
             >
-                <MarkdownView ref={ref} source={source} />
+                <MarkdownView ref={ref} source={source}/>
             </MarkdownViewContainer>
             {height >= limit && !ignoreLimit && (
                 <CustomButton type="link" onClick={() => setShowAll(!showAll)}>
                     {showAll ? 'show less' : 'show more'}
                 </CustomButton>
             )}
-            {editable && <EditIcon twoToneColor="#52c41a" onClick={onEditClicked} />}
+            {editable && <EditIcon twoToneColor="#52c41a" onClick={onEditClicked}/>}
         </MarkdownContainer>
     );
 }

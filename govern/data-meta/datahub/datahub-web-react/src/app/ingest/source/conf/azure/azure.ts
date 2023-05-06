@@ -1,4 +1,4 @@
-import { SourceConfig } from '../types';
+import {SourceConfig} from '../types';
 import azureLogo from '../../../../../images/azure-ad.png';
 
 const placeholderRecipe = `\

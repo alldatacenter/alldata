@@ -1,20 +1,20 @@
-import { Chart, ChartUpdateInput } from '../../types.generated';
-import { findChartByURN } from '../fixtures/searchResult/chartSearchResult';
-import { updateEntityOwners, updateEntityTag } from '../mutationHelper';
+import {Chart, ChartUpdateInput} from '../../types.generated';
+import {findChartByURN} from '../fixtures/searchResult/chartSearchResult';
+import {updateEntityOwners, updateEntityTag} from '../mutationHelper';
 
 type UpdateChart = {
     data: { updateChart: Chart };
 };
 
 export const updateChartResolver = {
-    updateChart({ variables: { urn, input } }): UpdateChart {
-        const { globalTags, ownership }: ChartUpdateInput = input;
+    updateChart({variables: {urn, input}}): UpdateChart {
+        const {globalTags, ownership}: ChartUpdateInput = input;
         const chart = findChartByURN(urn);
 
         if (ownership) {
-            updateEntityOwners({ entity: chart, owners: ownership?.owners });
+            updateEntityOwners({entity: chart, owners: ownership?.owners});
         } else if (globalTags) {
-            updateEntityTag({ entity: chart, globalTags });
+            updateEntityTag({entity: chart, globalTags});
         }
 
         return {

@@ -1,20 +1,20 @@
-import { generateData } from './dataGenerator';
-import { datasetEntity, DatasetEntityArg } from '../entity/datasetEntity';
-import { Dataset, FabricType, SearchResult, SearchResults } from '../../../types.generated';
-import { EntityBrowsePath, StringNumber } from '../../types';
-import { filterEntityByPath, toFlatPaths } from '../browsePathHelper';
+import {generateData} from './dataGenerator';
+import {datasetEntity, DatasetEntityArg} from '../entity/datasetEntity';
+import {Dataset, FabricType, SearchResult, SearchResults} from '../../../types.generated';
+import {EntityBrowsePath, StringNumber} from '../../types';
+import {filterEntityByPath, toFlatPaths} from '../browsePathHelper';
 
 type SearchResultArg = DatasetEntityArg;
 
 const searchResult =
-    ({ platform, origin, path }: SearchResultArg) =>
-    (): SearchResult => {
-        return {
-            entity: datasetEntity({ platform, origin, path }),
-            matchedFields: [],
-            __typename: 'SearchResult',
+    ({platform, origin, path}: SearchResultArg) =>
+        (): SearchResult => {
+            return {
+                entity: datasetEntity({platform, origin, path}),
+                matchedFields: [],
+                __typename: 'SearchResult',
+            };
         };
-    };
 
 export const datasetBrowsePaths: EntityBrowsePath[] = [
     {
@@ -185,18 +185,18 @@ export const datasetBrowsePaths: EntityBrowsePath[] = [
 ];
 
 const generateSearchResults = (): SearchResult[] => {
-    return datasetBrowsePaths.flatMap(({ name: origin, paths }) => {
-        return paths.flatMap(({ name: platform, paths: childPaths }) => {
+    return datasetBrowsePaths.flatMap(({name: origin, paths}) => {
+        return paths.flatMap(({name: platform, paths: childPaths}) => {
             const flatPaths: StringNumber[][] = [];
             const parentPaths: string[] = [];
 
-            toFlatPaths({ flatPaths, paths: childPaths, parentPaths });
+            toFlatPaths({flatPaths, paths: childPaths, parentPaths});
 
             return flatPaths.flatMap((fp) => {
                 const count = fp.pop() as number;
                 const path = fp.join('.');
                 return generateData<SearchResult>({
-                    generator: searchResult({ platform, origin: origin.toUpperCase() as FabricType, path }),
+                    generator: searchResult({platform, origin: origin.toUpperCase() as FabricType, path}),
                     count,
                 });
             });
@@ -278,5 +278,5 @@ export const findDatasetByURN = (urn: string): Dataset => {
 };
 
 export const filterDatasetByPath = (path: string[]): Dataset[] => {
-    return filterEntityByPath({ term: path.slice(-2).join('.'), searchResults }) as Dataset[];
+    return filterEntityByPath({term: path.slice(-2).join('.'), searchResults}) as Dataset[];
 };

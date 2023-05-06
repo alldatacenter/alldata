@@ -1,6 +1,6 @@
 import Cookies from 'js-cookie';
-import { makeVar } from '@apollo/client';
-import { GlobalCfg } from '../../conf';
+import {makeVar} from '@apollo/client';
+import {GlobalCfg} from '../../conf';
 import analytics from '../analytics';
 
 export const checkAuthStatus = (): boolean => {

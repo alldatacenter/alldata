@@ -1,13 +1,13 @@
-import { Button, Input } from 'antd';
-import { FormOutlined, SearchOutlined } from '@ant-design/icons';
-import React, { useState } from 'react';
+import {Button, Input} from 'antd';
+import {FormOutlined, SearchOutlined} from '@ant-design/icons';
+import React, {useState} from 'react';
 import styled from 'styled-components';
-import { LogoCountCard } from '../../../shared/LogoCountCard';
-import { SourceConfig, SourceBuilderState, StepProps } from './types';
-import { IngestionSourceBuilderStep } from './steps';
+import {LogoCountCard} from '../../../shared/LogoCountCard';
+import {SourceConfig, SourceBuilderState, StepProps} from './types';
+import {IngestionSourceBuilderStep} from './steps';
 import useGetSourceLogoUrl from './useGetSourceLogoUrl';
-import { CUSTOM } from './constants';
-import { ANTD_GRAY } from '../../../entity/shared/constants';
+import {CUSTOM} from './constants';
+import {ANTD_GRAY} from '../../../entity/shared/constants';
 
 const Section = styled.div`
     display: flex;
@@ -41,22 +41,22 @@ interface SourceOptionProps {
     onClick: () => void;
 }
 
-function SourceOption({ source, onClick }: SourceOptionProps) {
-    const { name, displayName } = source;
+function SourceOption({source, onClick}: SourceOptionProps) {
+    const {name, displayName} = source;
 
     const logoUrl = useGetSourceLogoUrl(name);
     let logoComponent;
     if (name === CUSTOM) {
-        logoComponent = <FormOutlined style={{ color: ANTD_GRAY[8], fontSize: 28 }} />;
+        logoComponent = <FormOutlined style={{color: ANTD_GRAY[8], fontSize: 28}}/>;
     }
 
-    return <LogoCountCard onClick={onClick} name={displayName} logoUrl={logoUrl} logoComponent={logoComponent} />;
+    return <LogoCountCard onClick={onClick} name={displayName} logoUrl={logoUrl} logoComponent={logoComponent}/>;
 }
 
 /**
  * Component responsible for selecting the mechanism for constructing a new Ingestion Source
  */
-export const SelectTemplateStep = ({ state, updateState, goTo, cancel, ingestionSources }: StepProps) => {
+export const SelectTemplateStep = ({state, updateState, goTo, cancel, ingestionSources}: StepProps) => {
     const [searchFilter, setSearchFilter] = useState('');
 
     const onSelectTemplate = (type: string) => {
@@ -81,11 +81,11 @@ export const SelectTemplateStep = ({ state, updateState, goTo, cancel, ingestion
                     value={searchFilter}
                     onChange={(e) => setSearchFilter(e.target.value)}
                     allowClear
-                    prefix={<SearchOutlined />}
+                    prefix={<SearchOutlined/>}
                 />
                 <PlatformListContainer>
                     {filteredSources.map((source) => (
-                        <SourceOption key={source.urn} source={source} onClick={() => onSelectTemplate(source.name)} />
+                        <SourceOption key={source.urn} source={source} onClick={() => onSelectTemplate(source.name)}/>
                     ))}
                 </PlatformListContainer>
             </Section>

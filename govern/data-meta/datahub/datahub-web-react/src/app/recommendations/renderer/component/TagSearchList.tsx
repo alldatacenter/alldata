@@ -1,11 +1,11 @@
-import { Button } from 'antd';
+import {Button} from 'antd';
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 import styled from 'styled-components';
-import { EntityType, RecommendationContent, Tag } from '../../../../types.generated';
-import { StyledTag } from '../../../entity/shared/components/styled/StyledTag';
-import { navigateToSearchUrl } from '../../../search/utils/navigateToSearchUrl';
-import { useEntityRegistry } from '../../../useEntityRegistry';
+import {EntityType, RecommendationContent, Tag} from '../../../../types.generated';
+import {StyledTag} from '../../../entity/shared/components/styled/StyledTag';
+import {navigateToSearchUrl} from '../../../search/utils/navigateToSearchUrl';
+import {useEntityRegistry} from '../../../useEntityRegistry';
 
 const TagSearchListContainer = styled.div`
     display: flex;
@@ -29,7 +29,7 @@ type Props = {
     onClick?: (index: number) => void;
 };
 
-export const TagSearchList = ({ content, onClick }: Props) => {
+export const TagSearchList = ({content, onClick}: Props) => {
     const history = useHistory();
     const entityRegistry = useEntityRegistry();
 

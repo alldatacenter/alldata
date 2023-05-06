@@ -1,9 +1,9 @@
 import * as QueryString from 'query-string';
 
-import { MatchedField } from '../../../types.generated';
-import { capitalizeFirstLetterOnly } from '../../shared/textUtil';
-import { FIELDS_TO_HIGHLIGHT } from '../dataset/search/highlights';
-import { GenericEntityProperties } from './types';
+import {MatchedField} from '../../../types.generated';
+import {capitalizeFirstLetterOnly} from '../../shared/textUtil';
+import {FIELDS_TO_HIGHLIGHT} from '../dataset/search/highlights';
+import {GenericEntityProperties} from './types';
 
 export function dictToQueryStringParams(params: Record<string, string | boolean>) {
     return Object.keys(params)
@@ -112,8 +112,8 @@ export const getMatchPrioritizingPrimary = (
     matchedFields: MatchedField[],
     primaryField: string,
 ): MatchedField | undefined => {
-    const { location } = window;
-    const params = QueryString.parse(location.search, { arrayFormat: 'comma' });
+    const {location} = window;
+    const params = QueryString.parse(location.search, {arrayFormat: 'comma'});
     const query: string = decodeURIComponent(params.query ? (params.query as string) : '');
 
     const primaryMatches = matchedFields.filter((field) => field.name === primaryField);
@@ -129,7 +129,7 @@ export const getMatchPrioritizingPrimary = (
 function getGraphqlErrorCode(e) {
     if (e.graphQLErrors && e.graphQLErrors.length) {
         const firstError = e.graphQLErrors[0];
-        const { extensions } = firstError;
+        const {extensions} = firstError;
         const errorCode = extensions && (extensions.code as number);
         return errorCode;
     }

@@ -1,13 +1,13 @@
-import { Typography, Button } from 'antd';
-import React, { useState } from 'react';
+import {Typography, Button} from 'antd';
+import React, {useState} from 'react';
 import styled from 'styled-components';
-import { PlusOutlined } from '@ant-design/icons';
+import {PlusOutlined} from '@ant-design/icons';
 import Highlight from 'react-highlighter';
 
-import { useEntityRegistry } from '../../useEntityRegistry';
-import { Domain, EntityType, GlobalTags, GlossaryTerms, SubResourceType } from '../../../types.generated';
-import { EMPTY_MESSAGES, ANTD_GRAY } from '../../entity/shared/constants';
-import { DomainLink } from './DomainLink';
+import {useEntityRegistry} from '../../useEntityRegistry';
+import {Domain, EntityType, GlobalTags, GlossaryTerms, SubResourceType} from '../../../types.generated';
+import {EMPTY_MESSAGES, ANTD_GRAY} from '../../entity/shared/constants';
+import {DomainLink} from './DomainLink';
 import EditTagTermsModal from './AddTagsTermsModal';
 import StyledTerm from './term/StyledTerm';
 import Tag from './tag/Tag';
@@ -44,28 +44,28 @@ const TagText = styled.span`
     margin: 0 7px 0 0;
 `;
 
-const highlightMatchStyle = { background: '#ffe58f', padding: '0' };
+const highlightMatchStyle = {background: '#ffe58f', padding: '0'};
 
 export default function TagTermGroup({
-    uneditableTags,
-    editableTags,
-    canRemove,
-    canAddTag,
-    canAddTerm,
-    showEmptyMessage,
-    buttonProps,
-    onOpenModal,
-    maxShow,
-    uneditableGlossaryTerms,
-    editableGlossaryTerms,
-    domain,
-    entityUrn,
-    entityType,
-    entitySubresource,
-    highlightText,
-    refetch,
-    readOnly,
-}: Props) {
+                                         uneditableTags,
+                                         editableTags,
+                                         canRemove,
+                                         canAddTag,
+                                         canAddTerm,
+                                         showEmptyMessage,
+                                         buttonProps,
+                                         onOpenModal,
+                                         maxShow,
+                                         uneditableGlossaryTerms,
+                                         editableGlossaryTerms,
+                                         domain,
+                                         entityUrn,
+                                         entityType,
+                                         entitySubresource,
+                                         highlightText,
+                                         refetch,
+                                         readOnly,
+                                     }: Props) {
     const entityRegistry = useEntityRegistry();
     const [showAddModal, setShowAddModal] = useState(false);
     const [addModalType, setAddModalType] = useState(EntityType.Tag);
@@ -77,7 +77,7 @@ export default function TagTermGroup({
     return (
         <>
             {domain && (
-                <DomainLink domain={domain} name={entityRegistry.getDisplayName(EntityType.Domain, domain) || ''} />
+                <DomainLink domain={domain} name={entityRegistry.getDisplayName(EntityType.Domain, domain) || ''}/>
             )}
             {uneditableGlossaryTerms?.terms?.map((term) => {
                 renderedTags += 1;
@@ -177,8 +177,8 @@ export default function TagTermGroup({
                     }}
                     {...buttonProps}
                 >
-                    <PlusOutlined />
-                    <span>Add Tags</span>
+                    <PlusOutlined/>
+                    <span>添加标签</span>
                 </NoElementButton>
             )}
             {canAddTerm && !readOnly && (
@@ -190,8 +190,8 @@ export default function TagTermGroup({
                     }}
                     {...buttonProps}
                 >
-                    <PlusOutlined />
-                    <span>Add Terms</span>
+                    <PlusOutlined/>
+                    <span>添加术语</span>
                 </NoElementButton>
             )}
             {showAddModal && !!entityUrn && !!entityType && (

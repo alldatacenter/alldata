@@ -1,13 +1,13 @@
-import React, { useEffect } from 'react';
+import React, {useEffect} from 'react';
 import styled from 'styled-components/macro';
-import { useGetRootGlossaryNodesQuery, useGetRootGlossaryTermsQuery } from '../../../graphql/glossary.generated';
-import { ChildGlossaryTermFragment } from '../../../graphql/glossaryNode.generated';
-import { GlossaryNode } from '../../../types.generated';
-import { sortGlossaryNodes } from '../../entity/glossaryNode/utils';
-import { sortGlossaryTerms } from '../../entity/glossaryTerm/utils';
-import { useGlossaryEntityData } from '../../entity/shared/GlossaryEntityContext';
-import { useEntityRegistry } from '../../useEntityRegistry';
-import { ROOT_NODES, ROOT_TERMS } from '../utils';
+import {useGetRootGlossaryNodesQuery, useGetRootGlossaryTermsQuery} from '../../../graphql/glossary.generated';
+import {ChildGlossaryTermFragment} from '../../../graphql/glossaryNode.generated';
+import {GlossaryNode} from '../../../types.generated';
+import {sortGlossaryNodes} from '../../entity/glossaryNode/utils';
+import {sortGlossaryTerms} from '../../entity/glossaryTerm/utils';
+import {useGlossaryEntityData} from '../../entity/shared/GlossaryEntityContext';
+import {useEntityRegistry} from '../../useEntityRegistry';
+import {ROOT_NODES, ROOT_TERMS} from '../utils';
 import NodeItem from './NodeItem';
 import TermItem from './TermItem';
 
@@ -44,10 +44,10 @@ function GlossaryBrowser(props: Props) {
         selectNode,
     } = props;
 
-    const { urnsToUpdate, setUrnsToUpdate } = useGlossaryEntityData();
+    const {urnsToUpdate, setUrnsToUpdate} = useGlossaryEntityData();
 
-    const { data: nodesData, refetch: refetchNodes } = useGetRootGlossaryNodesQuery({ skip: !!rootNodes });
-    const { data: termsData, refetch: refetchTerms } = useGetRootGlossaryTermsQuery({ skip: !!rootTerms });
+    const {data: nodesData, refetch: refetchNodes} = useGetRootGlossaryNodesQuery({skip: !!rootNodes});
+    const {data: termsData, refetch: refetchTerms} = useGetRootGlossaryTermsQuery({skip: !!rootTerms});
 
     const displayedNodes = rootNodes || nodesData?.getRootGlossaryNodes?.nodes || [];
     const displayedTerms = rootTerms || termsData?.getRootGlossaryTerms?.terms || [];
@@ -91,9 +91,9 @@ function GlossaryBrowser(props: Props) {
                 />
             ))}
             {!hideTerms &&
-                sortedTerms.map((term) => (
-                    <TermItem key={term.urn} term={term} isSelecting={isSelecting} selectTerm={selectTerm} />
-                ))}
+            sortedTerms.map((term) => (
+                <TermItem key={term.urn} term={term} isSelecting={isSelecting} selectTerm={selectTerm}/>
+            ))}
         </BrowserWrapper>
     );
 }

@@ -1,11 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import styled from 'styled-components';
-import { PageRoutes } from '../../../../conf/Global';
-import { DataPlatform, RecommendationContent } from '../../../../types.generated';
-import { urlEncodeUrn } from '../../../entity/shared/utils';
-import { LogoCountCard } from '../../../shared/LogoCountCard';
-import { capitalizeFirstLetterOnly } from '../../../shared/textUtil';
+import {PageRoutes} from '../../../../conf/Global';
+import {DataPlatform, RecommendationContent} from '../../../../types.generated';
+import {urlEncodeUrn} from '../../../entity/shared/utils';
+import {LogoCountCard} from '../../../shared/LogoCountCard';
+import {capitalizeFirstLetterOnly} from '../../../shared/textUtil';
 
 const PlatformListContainer = styled.div`
     display: flex;
@@ -19,9 +19,9 @@ type Props = {
     onClick?: (index: number) => void;
 };
 
-export const PlatformList = ({ content, onClick }: Props) => {
+export const PlatformList = ({content, onClick}: Props) => {
     const platformsWithCounts: Array<{ platform: DataPlatform; count?: number }> = content
-        .map((cnt) => ({ platform: cnt.entity, count: cnt.params?.contentParams?.count }))
+        .map((cnt) => ({platform: cnt.entity, count: cnt.params?.contentParams?.count}))
         .filter(
             (platformWithCount) => platformWithCount.platform !== null && platformWithCount !== undefined,
         ) as Array<{ platform: DataPlatform; count?: number }>;

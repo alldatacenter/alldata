@@ -54,22 +54,22 @@ export const ORDERED_FIELDS = [
 ];
 
 export const FIELD_TO_LABEL = {
-    owners: 'Owner',
-    tags: 'Tag',
-    domains: 'Domain',
-    platform: 'Platform',
-    fieldTags: 'Column Tag',
-    glossaryTerms: 'Glossary Term',
-    fieldGlossaryTerms: 'Column Glossary Term',
-    fieldPaths: 'Column Name',
-    description: 'Description',
-    fieldDescriptions: 'Column Description',
-    removed: 'Soft Deleted',
-    entity: 'Entity Type',
-    container: 'Container',
-    typeNames: 'Sub Type',
-    origin: 'Environment',
-    degree: 'Degree',
+    owners: '组',
+    tags: '标签',
+    domains: '领域',
+    platform: '平台',
+    fieldTags: '字段标签',
+    glossaryTerms: '术语词汇',
+    fieldGlossaryTerms: '字段术语',
+    fieldPaths: '字段名称',
+    description: '描述',
+    fieldDescriptions: '字段描述',
+    removed: '软删除',
+    entity: '实体类型',
+    container: '容器',
+    typeNames: '子类型',
+    origin: '环境',
+    degree: '度',
 };
 
 export const FIELDS_THAT_USE_CONTAINS_OPERATOR = [

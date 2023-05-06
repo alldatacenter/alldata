@@ -1,12 +1,12 @@
-import { DataJob } from '../../types.generated';
-import { findDataJobByURN } from '../fixtures/searchResult/dataJobSearchResult';
+import {DataJob} from '../../types.generated';
+import {findDataJobByURN} from '../fixtures/searchResult/dataJobSearchResult';
 
 type GetJobFlow = {
     data: { dataJob: DataJob };
 };
 
 export const getDataJobResolver = {
-    getDataJob({ variables: { urn } }): GetJobFlow {
+    getDataJob({variables: {urn}}): GetJobFlow {
         const dataJob = findDataJobByURN(urn) as DataJob;
         return {
             data: {

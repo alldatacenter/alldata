@@ -1,12 +1,12 @@
-import React, { ReactNode } from 'react';
-import { AutoComplete, Divider, Form } from 'antd';
-import { useApolloClient } from '@apollo/client';
+import React, {ReactNode} from 'react';
+import {AutoComplete, Divider, Form} from 'antd';
+import {useApolloClient} from '@apollo/client';
 import styled from 'styled-components/macro';
-import { Secret } from '../../../../../../types.generated';
+import {Secret} from '../../../../../../types.generated';
 import CreateSecretButton from './CreateSecretButton';
-import { RecipeField } from '../common';
-import { ANTD_GRAY } from '../../../../../entity/shared/constants';
-import { clearSecretListCache } from '../../../../secret/cacheUtils';
+import {RecipeField} from '../common';
+import {ANTD_GRAY} from '../../../../../entity/shared/constants';
+import {clearSecretListCache} from '../../../../secret/cacheUtils';
 
 const StyledDivider = styled(Divider)`
     margin: 0;
@@ -20,8 +20,8 @@ export const StyledFormItem = styled(Form.Item)<{
     margin-bottom: ${(props) => (props.removeMargin ? '0' : '16px')};
 
     ${(props) =>
-        props.alignLeft &&
-        `
+    props.alignLeft &&
+    `
         .ant-form-item {
             flex-direction: row;
 
@@ -34,8 +34,8 @@ export const StyledFormItem = styled(Form.Item)<{
     `}
 
     ${(props) =>
-        props.isSecretField &&
-        `
+    props.isSecretField &&
+    `
         .ant-form-item-label {
             &:after {
                 content: 'Secret Field';
@@ -57,13 +57,13 @@ interface SecretFieldProps {
     updateFormValue: (field, value) => void;
 }
 
-function SecretFieldTooltip({ tooltipLabel }: { tooltipLabel?: string | ReactNode }) {
+function SecretFieldTooltip({tooltipLabel}: { tooltipLabel?: string | ReactNode }) {
     return (
         <div>
             {tooltipLabel && (
                 <>
                     {tooltipLabel}
-                    <hr />
+                    <hr/>
                 </>
             )}
             <p>
@@ -86,8 +86,8 @@ const encodeSecret = (secretName: string) => {
     return `\${${secretName}}`;
 };
 
-function SecretField({ field, secrets, removeMargin, updateFormValue, refetchSecrets }: SecretFieldProps) {
-    const options = secrets.map((secret) => ({ value: encodeSecret(secret.name), label: secret.name }));
+function SecretField({field, secrets, removeMargin, updateFormValue, refetchSecrets}: SecretFieldProps) {
+    const options = secrets.map((secret) => ({value: encodeSecret(secret.name), label: secret.name}));
     const apolloClient = useApolloClient();
 
     return (
@@ -96,7 +96,7 @@ function SecretField({ field, secrets, removeMargin, updateFormValue, refetchSec
             name={field.name}
             label={field.label}
             rules={field.rules || undefined}
-            tooltip={<SecretFieldTooltip tooltipLabel={field?.tooltip} />}
+            tooltip={<SecretFieldTooltip tooltipLabel={field?.tooltip}/>}
             removeMargin={!!removeMargin}
             isSecretField
         >
@@ -109,7 +109,7 @@ function SecretField({ field, secrets, removeMargin, updateFormValue, refetchSec
                     return (
                         <>
                             {menu}
-                            <StyledDivider />
+                            <StyledDivider/>
                             <CreateSecretButton
                                 onSubmit={(state) => {
                                     updateFormValue(field.name, encodeSecret(state.name as string));

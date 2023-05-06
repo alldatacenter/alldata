@@ -1,11 +1,11 @@
-import React, { ReactNode, useEffect, useState } from 'react';
+import React, {ReactNode, useEffect, useState} from 'react';
 import styled from 'styled-components';
 
-import { Affix, Row, Select, Typography } from 'antd';
-import { useGetDataProfilesLazyQuery } from '../../../../../../graphql/dataset.generated';
-import { DatasetProfile, DateInterval } from '../../../../../../types.generated';
-import { Message } from '../../../../../shared/Message';
-import { getFixedLookbackWindow, TimeWindowSize } from '../../../../../shared/time/timeUtils';
+import {Affix, Row, Select, Typography} from 'antd';
+import {useGetDataProfilesLazyQuery} from '../../../../../../graphql/dataset.generated';
+import {DatasetProfile, DateInterval} from '../../../../../../types.generated';
+import {Message} from '../../../../../shared/Message';
+import {getFixedLookbackWindow, TimeWindowSize} from '../../../../../shared/time/timeUtils';
 
 import ProfilingRunsChart from './charts/ProfilingRunsChart';
 import StatsSection from '../StatsSection';
@@ -97,11 +97,11 @@ const computeAllFieldPaths = (profiles: Array<DatasetProfile>): Set<string> => {
  * Change this to add or modify the lookback windows that are selectable via the UI.
  */
 const LOOKBACK_WINDOWS = [
-    { text: '1 day', windowSize: { interval: DateInterval.Day, count: 1 } },
-    { text: '1 week', windowSize: { interval: DateInterval.Week, count: 1 } },
-    { text: '1 month', windowSize: { interval: DateInterval.Month, count: 1 } },
-    { text: '3 months', windowSize: { interval: DateInterval.Month, count: 3 } },
-    { text: '1 year', windowSize: { interval: DateInterval.Year, count: 1 } },
+    {text: '1 day', windowSize: {interval: DateInterval.Day, count: 1}},
+    {text: '1 week', windowSize: {interval: DateInterval.Week, count: 1}},
+    {text: '1 month', windowSize: {interval: DateInterval.Month, count: 1}},
+    {text: '3 months', windowSize: {interval: DateInterval.Month, count: 3}},
+    {text: '1 year', windowSize: {interval: DateInterval.Year, count: 1}},
 ];
 
 const DEFAULT_LOOKBACK_WINDOW = '1 week';
@@ -121,8 +121,8 @@ export type Props = {
     toggleView: ReactNode;
 };
 
-export default function HistoricalStatsView({ urn, toggleView }: Props) {
-    const [getDataProfiles, { data: profilesData, loading: profilesLoading }] = useGetDataProfilesLazyQuery({
+export default function HistoricalStatsView({urn, toggleView}: Props) {
+    const [getDataProfiles, {data: profilesData, loading: profilesLoading}] = useGetDataProfilesLazyQuery({
         fetchPolicy: 'cache-first',
     });
 
@@ -131,7 +131,7 @@ export default function HistoricalStatsView({ urn, toggleView }: Props) {
      */
     useEffect(() => {
         getDataProfiles({
-            variables: { urn, ...getFixedLookbackWindow(getLookbackWindowSize(DEFAULT_LOOKBACK_WINDOW)) },
+            variables: {urn, ...getFixedLookbackWindow(getLookbackWindowSize(DEFAULT_LOOKBACK_WINDOW))},
         });
     }, [urn, getDataProfiles]);
 
@@ -154,7 +154,7 @@ export default function HistoricalStatsView({ urn, toggleView }: Props) {
         const newWindowSize = getLookbackWindowSize(text);
         const newTimeWindow = getFixedLookbackWindow(newWindowSize);
         getDataProfiles({
-            variables: { urn, ...newTimeWindow },
+            variables: {urn, ...newTimeWindow},
         });
         setSelectedLookbackWindow(text);
     };
@@ -180,7 +180,7 @@ export default function HistoricalStatsView({ urn, toggleView }: Props) {
     const columnSelectView = (
         <span>
             <SubHeaderText>Viewing stats for column</SubHeaderText>
-            <EmbeddedSelect style={{ width: 200 }} value={selectedFieldPath} onChange={onChangeSelectedFieldPath}>
+            <EmbeddedSelect style={{width: 200}} value={selectedFieldPath} onChange={onChangeSelectedFieldPath}>
                 {allFieldPaths.map((fieldPath) => (
                     <Select.Option value={fieldPath}>{fieldPath}</Select.Option>
                 ))}
@@ -220,7 +220,7 @@ export default function HistoricalStatsView({ urn, toggleView }: Props) {
 
     return (
         <>
-            {profilesLoading && <Message type="loading" content="Loading..." style={{ marginTop: '10%' }} />}
+            {profilesLoading && <Message type="loading" content="Loading..." style={{marginTop: '10%'}}/>}
             <Affix offsetTop={127}>
                 <HeaderRow justify="space-between" align="middle">
                     <div>
@@ -239,7 +239,7 @@ export default function HistoricalStatsView({ urn, toggleView }: Props) {
             </Affix>
             <StatsSection title="Profiling Runs">
                 <Row>
-                    <ProfilingRunsChart profiles={profiles} />
+                    <ProfilingRunsChart profiles={profiles}/>
                 </Row>
             </StatsSection>
             <StatsSection title="Historical Table Stats">

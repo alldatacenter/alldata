@@ -1,7 +1,7 @@
 import React from 'react';
-import { Typography } from 'antd';
+import {Typography} from 'antd';
 import styled from 'styled-components';
-import { ANTD_GRAY } from '../../../constants';
+import {ANTD_GRAY} from '../../../constants';
 
 export const EntityCountText = styled(Typography.Text)`
     display: inline-block;
@@ -16,7 +16,7 @@ interface Props {
 }
 
 function EntityCount(props: Props) {
-    const { entityCount } = props;
+    const {entityCount} = props;
 
     if (!entityCount || entityCount <= 0) return null;
 

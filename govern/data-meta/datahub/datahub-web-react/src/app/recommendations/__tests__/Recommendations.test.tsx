@@ -1,26 +1,26 @@
 import React from 'react';
-import { render, waitFor } from '@testing-library/react';
-import { MockedProvider } from '@apollo/client/testing';
-import { Route } from 'react-router';
-import { HomePage } from '../../home/HomePage';
-import { mocks } from '../../../Mocks';
+import {render, waitFor} from '@testing-library/react';
+import {MockedProvider} from '@apollo/client/testing';
+import {Route} from 'react-router';
+import {HomePage} from '../../home/HomePage';
+import {mocks} from '../../../Mocks';
 import TestPageContainer from '../../../utils/test-utils/TestPageContainer';
-import { PageRoutes } from '../../../conf/Global';
-import { SearchPage } from '../../search/SearchPage';
+import {PageRoutes} from '../../../conf/Global';
+import {SearchPage} from '../../search/SearchPage';
 
 describe('Recommendations', () => {
     it('home renders recommendations', async () => {
-        const { getByText } = render(
+        const {getByText} = render(
             <MockedProvider
                 mocks={mocks}
                 addTypename={false}
                 defaultOptions={{
-                    watchQuery: { fetchPolicy: 'no-cache' },
-                    query: { fetchPolicy: 'no-cache' },
+                    watchQuery: {fetchPolicy: 'no-cache'},
+                    query: {fetchPolicy: 'no-cache'},
                 }}
             >
                 <TestPageContainer>
-                    <HomePage />
+                    <HomePage/>
                 </TestPageContainer>
             </MockedProvider>,
         );
@@ -35,17 +35,17 @@ describe('Recommendations', () => {
     });
 
     it('search results renders recommendations', async () => {
-        const { getByText } = render(
+        const {getByText} = render(
             <MockedProvider
                 mocks={mocks}
                 addTypename={false}
                 defaultOptions={{
-                    watchQuery: { fetchPolicy: 'no-cache' },
-                    query: { fetchPolicy: 'no-cache' },
+                    watchQuery: {fetchPolicy: 'no-cache'},
+                    query: {fetchPolicy: 'no-cache'},
                 }}
             >
                 <TestPageContainer initialEntries={['/search?page=1&query=noresults']}>
-                    <Route path={PageRoutes.SEARCH_RESULTS} render={() => <SearchPage />} />
+                    <Route path={PageRoutes.SEARCH_RESULTS} render={() => <SearchPage/>}/>
                 </TestPageContainer>
             </MockedProvider>,
         );

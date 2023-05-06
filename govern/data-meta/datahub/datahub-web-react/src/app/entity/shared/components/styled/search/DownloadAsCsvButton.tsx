@@ -1,6 +1,6 @@
 import React from 'react';
-import { Button } from 'antd';
-import { DownloadOutlined } from '@ant-design/icons';
+import {Button} from 'antd';
+import {DownloadOutlined} from '@ant-design/icons';
 import styled from 'styled-components';
 
 const DownloadCsvButton = styled(Button)`
@@ -14,11 +14,11 @@ type Props = {
     isDownloadingCsv: boolean;
 };
 
-export default function DownloadAsCsvButton({ setShowDownloadAsCsvModal, isDownloadingCsv }: Props) {
+export default function DownloadAsCsvButton({setShowDownloadAsCsvModal, isDownloadingCsv}: Props) {
     return (
         <>
             <DownloadCsvButton type="text" onClick={() => setShowDownloadAsCsvModal(true)} disabled={isDownloadingCsv}>
-                <DownloadOutlined />
+                <DownloadOutlined/>
                 {isDownloadingCsv ? 'Downloading...' : 'Download'}
             </DownloadCsvButton>
         </>

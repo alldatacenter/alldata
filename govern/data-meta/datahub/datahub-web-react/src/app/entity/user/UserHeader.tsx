@@ -1,7 +1,7 @@
 // import { UserOutlined } from '@ant-design/icons';
 import styled from 'styled-components';
 import React from 'react';
-import { Space, Badge, Typography, Divider } from 'antd';
+import {Space, Badge, Typography, Divider} from 'antd';
 import CustomAvatar from '../../shared/avatar/CustomAvatar';
 
 type Props = {
@@ -14,48 +14,48 @@ type Props = {
 };
 
 const Row = styled.div`
-    display: inline-flex;
+  display: inline-flex;
 `;
 
 const AvatarWrapper = styled.div`
-    margin-right: 32px;
+  margin-right: 32px;
 `;
 
 const Traits = styled.div`
-    display: inline-flex;
-    margin-top: 32px;
+  display: inline-flex;
+  margin-top: 32px;
 `;
 
 const Skills = styled.div`
-    margin-right: 32px;
+  margin-right: 32px;
 `;
 
 const TitleContainer = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const HeaderContainer = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const NameContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
 `;
 
-export default function UserHeader({ profileSrc, name, title, skills, teams, email }: Props) {
+export default function UserHeader({profileSrc, name, title, skills, teams, email}: Props) {
     return (
         <Row>
             <div>
                 <HeaderContainer>
                     <AvatarWrapper>
-                        <CustomAvatar size={100} photoUrl={profileSrc || undefined} name={name || undefined} />
+                        <CustomAvatar size={100} photoUrl={profileSrc || undefined} name={name || undefined}/>
                     </AvatarWrapper>
                     <NameContainer>
                         <Typography.Title level={3}>{name}</Typography.Title>
@@ -63,7 +63,7 @@ export default function UserHeader({ profileSrc, name, title, skills, teams, ema
                             {title && (
                                 <>
                                     <Typography.Text>{title}</Typography.Text>
-                                    <Divider type="vertical" />
+                                    <Divider type="vertical"/>
                                 </>
                             )}
                             {email && (
@@ -80,7 +80,7 @@ export default function UserHeader({ profileSrc, name, title, skills, teams, ema
                             <Typography.Title level={5}>Ask me about</Typography.Title>
                             <Space>
                                 {skills?.map((skill) => (
-                                    <Badge style={{ backgroundColor: '#108ee9' }} count={skill} key={skill} />
+                                    <Badge style={{backgroundColor: '#108ee9'}} count={skill} key={skill}/>
                                 ))}
                             </Space>
                         </Skills>
@@ -88,7 +88,7 @@ export default function UserHeader({ profileSrc, name, title, skills, teams, ema
                             <Typography.Title level={5}>Teams</Typography.Title>
                             <Space>
                                 {teams?.map((team) => (
-                                    <Badge style={{ backgroundColor: '#87d068' }} count={team} key={team} />
+                                    <Badge style={{backgroundColor: '#87d068'}} count={team} key={team}/>
                                 ))}
                             </Space>
                         </div>

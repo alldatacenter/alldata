@@ -1,25 +1,25 @@
-import React, { useEffect, useState } from 'react';
-import { Button, Empty, Pagination, Typography } from 'antd';
-import { useLocation } from 'react-router';
+import React, {useEffect, useState} from 'react';
+import {Button, Empty, Pagination, Typography} from 'antd';
+import {useLocation} from 'react-router';
 import styled from 'styled-components';
 import * as QueryString from 'query-string';
-import { PlusOutlined } from '@ant-design/icons';
-import { AlignType } from 'rc-table/lib/interface';
-import { EntityType } from '../../types.generated';
-import { useListDomainsQuery } from '../../graphql/domain.generated';
+import {PlusOutlined} from '@ant-design/icons';
+import {AlignType} from 'rc-table/lib/interface';
+import {EntityType} from '../../types.generated';
+import {useListDomainsQuery} from '../../graphql/domain.generated';
 import CreateDomainModal from './CreateDomainModal';
-import { Message } from '../shared/Message';
+import {Message} from '../shared/Message';
 import TabToolbar from '../entity/shared/components/styled/TabToolbar';
-import { SearchBar } from '../search/SearchBar';
-import { useEntityRegistry } from '../useEntityRegistry';
-import { scrollToTop } from '../shared/searchUtils';
-import { addToListDomainsCache, removeFromListDomainsCache } from './utils';
-import { OnboardingTour } from '../onboarding/OnboardingTour';
-import { DOMAINS_INTRO_ID, DOMAINS_CREATE_DOMAIN_ID } from '../onboarding/config/DomainsOnboardingConfig';
-import { getElasticCappedTotalValueText } from '../entity/shared/constants';
-import { StyledTable } from '../entity/shared/components/styled/StyledTable';
-import { IconStyleType } from '../entity/Entity';
-import { DomainOwnersColumn, DomainListMenuColumn, DomainNameColumn } from './DomainListColumns';
+import {SearchBar} from '../search/SearchBar';
+import {useEntityRegistry} from '../useEntityRegistry';
+import {scrollToTop} from '../shared/searchUtils';
+import {addToListDomainsCache, removeFromListDomainsCache} from './utils';
+import {OnboardingTour} from '../onboarding/OnboardingTour';
+import {DOMAINS_INTRO_ID, DOMAINS_CREATE_DOMAIN_ID} from '../onboarding/config/DomainsOnboardingConfig';
+import {getElasticCappedTotalValueText} from '../entity/shared/constants';
+import {StyledTable} from '../entity/shared/components/styled/StyledTable';
+import {IconStyleType} from '../entity/Entity';
+import {DomainOwnersColumn, DomainListMenuColumn, DomainNameColumn} from './DomainListColumns';
 
 const DomainsContainer = styled.div``;
 
@@ -44,7 +44,7 @@ const DEFAULT_PAGE_SIZE = 25;
 export const DomainsList = () => {
     const entityRegistry = useEntityRegistry();
     const location = useLocation();
-    const params = QueryString.parse(location.search, { arrayFormat: 'comma' });
+    const params = QueryString.parse(location.search, {arrayFormat: 'comma'});
     const paramsQuery = (params?.query as string) || undefined;
     const [query, setQuery] = useState<undefined | string>(undefined);
     useEffect(() => setQuery(paramsQuery), [paramsQuery]);
@@ -55,7 +55,7 @@ export const DomainsList = () => {
     const pageSize = DEFAULT_PAGE_SIZE;
     const start = (page - 1) * pageSize;
 
-    const { loading, error, data, client, refetch } = useListDomainsQuery({
+    const {loading, error, data, client, refetch} = useListDomainsQuery({
         variables: {
             input: {
                 start,
@@ -126,13 +126,13 @@ export const DomainsList = () => {
 
     return (
         <>
-            {!data && loading && <Message type="loading" content="Loading domains..." />}
-            {error && <Message type="error" content="Failed to load domains! An unexpected error occurred." />}
-            <OnboardingTour stepIds={[DOMAINS_INTRO_ID, DOMAINS_CREATE_DOMAIN_ID]} />
+            {!data && loading && <Message type="loading" content="Loading domains..."/>}
+            {error && <Message type="error" content="Failed to load domains! An unexpected error occurred."/>}
+            <OnboardingTour stepIds={[DOMAINS_INTRO_ID, DOMAINS_CREATE_DOMAIN_ID]}/>
             <DomainsContainer>
                 <TabToolbar>
                     <Button id={DOMAINS_CREATE_DOMAIN_ID} type="text" onClick={() => setIsCreatingDomain(true)}>
-                        <PlusOutlined /> New Domain
+                        <PlusOutlined/> New Domain
                     </Button>
                     <SearchBar
                         initialQuery={query || ''}
@@ -157,7 +157,7 @@ export const DomainsList = () => {
                     dataSource={tableData}
                     rowKey="urn"
                     pagination={false}
-                    locale={{ emptyText: <Empty description="No Domains!" image={Empty.PRESENTED_IMAGE_SIMPLE} /> }}
+                    locale={{emptyText: <Empty description="No Domains!" image={Empty.PRESENTED_IMAGE_SIMPLE}/>}}
                 />
                 <DomainsPaginationContainer>
                     <PaginationInfo>
@@ -174,7 +174,7 @@ export const DomainsList = () => {
                         onChange={onChangePage}
                         showSizeChanger={false}
                     />
-                    <span />
+                    <span/>
                 </DomainsPaginationContainer>
                 {isCreatingDomain && (
                     <CreateDomainModal

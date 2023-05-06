@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography } from 'antd';
+import {Typography} from 'antd';
 import styled from 'styled-components';
 
 const SummaryContainer = styled.div`
@@ -21,7 +21,7 @@ type Props = {
     diffSummary: SchemaDiffSummary;
 };
 
-export default function SchemaVersionSummary({ diffSummary }: Props) {
+export default function SchemaVersionSummary({diffSummary}: Props) {
     return (
         <SummaryContainer>
             <ul>

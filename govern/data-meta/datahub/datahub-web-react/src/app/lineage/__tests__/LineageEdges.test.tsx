@@ -1,9 +1,9 @@
-import { render } from '@testing-library/react';
+import {render} from '@testing-library/react';
 import React from 'react';
-import { dataset1, dataset4WithLineage } from '../../../Mocks';
-import { getTestEntityRegistry } from '../../../utils/test-utils/TestPageContainer';
+import {dataset1, dataset4WithLineage} from '../../../Mocks';
+import {getTestEntityRegistry} from '../../../utils/test-utils/TestPageContainer';
 import LineageEdges from '../manage/LineageEdges';
-import { Direction } from '../types';
+import {Direction} from '../types';
 
 const mockEntityRegistry = getTestEntityRegistry();
 jest.mock('../../useEntityRegistry', () => ({
@@ -12,7 +12,7 @@ jest.mock('../../useEntityRegistry', () => ({
 
 describe('LineageEdges', () => {
     it('should render an empty state if there are no lineage children or entities to add', () => {
-        const { getByTestId, queryByTestId } = render(
+        const {getByTestId, queryByTestId} = render(
             <LineageEdges
                 entity={dataset1}
                 lineageDirection={Direction.Upstream}
@@ -28,7 +28,7 @@ describe('LineageEdges', () => {
     });
 
     it('should render upstream children if the direction is upstream', async () => {
-        const { queryByTestId, findAllByTestId, getByText } = render(
+        const {queryByTestId, findAllByTestId, getByText} = render(
             <LineageEdges
                 entity={dataset4WithLineage}
                 lineageDirection={Direction.Upstream}
@@ -48,7 +48,7 @@ describe('LineageEdges', () => {
     });
 
     it('should render downstream children if the direction is downstream', async () => {
-        const { queryByTestId, findAllByTestId, getByText } = render(
+        const {queryByTestId, findAllByTestId, getByText} = render(
             <LineageEdges
                 entity={dataset4WithLineage}
                 lineageDirection={Direction.Downstream}
@@ -67,7 +67,7 @@ describe('LineageEdges', () => {
     });
 
     it('should remove entities from the displayed list if the urn is in entitiesToRemove', async () => {
-        const { queryByTestId, findAllByTestId, getByText, queryByText } = render(
+        const {queryByTestId, findAllByTestId, getByText, queryByText} = render(
             <LineageEdges
                 entity={dataset4WithLineage}
                 lineageDirection={Direction.Upstream}
@@ -89,7 +89,7 @@ describe('LineageEdges', () => {
     });
 
     it('should append entities from entitiesToAdd to the displayed list', async () => {
-        const { queryByTestId, findAllByTestId, getByText } = render(
+        const {queryByTestId, findAllByTestId, getByText} = render(
             <LineageEdges
                 entity={dataset4WithLineage}
                 lineageDirection={Direction.Upstream}

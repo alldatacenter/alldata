@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
+import React, {useEffect} from 'react';
 import './App.less';
-import { THIRD_PARTY_LOGGING_KEY } from './app/analytics/analytics';
-import { checkAuthStatus } from './app/auth/checkAuthStatus';
-import { AppConfigContext, DEFAULT_APP_CONFIG } from './appConfigContext';
-import { useAppConfigQuery } from './graphql/app.generated';
+import {THIRD_PARTY_LOGGING_KEY} from './app/analytics/analytics';
+import {checkAuthStatus} from './app/auth/checkAuthStatus';
+import {AppConfigContext, DEFAULT_APP_CONFIG} from './appConfigContext';
+import {useAppConfigQuery} from './graphql/app.generated';
 
 function changeFavicon(src) {
     const links = document.querySelectorAll("link[rel~='icon']") as any;
@@ -18,8 +18,8 @@ function changeFavicon(src) {
     });
 }
 
-const AppConfigProvider = ({ children }: { children: React.ReactNode }) => {
-    const { data: appConfigData, refetch } = useAppConfigQuery({ fetchPolicy: 'no-cache' });
+const AppConfigProvider = ({children}: { children: React.ReactNode }) => {
+    const {data: appConfigData, refetch} = useAppConfigQuery({fetchPolicy: 'no-cache'});
 
     const refreshAppConfig = () => {
         refetch();
@@ -39,7 +39,7 @@ const AppConfigProvider = ({ children }: { children: React.ReactNode }) => {
 
     return (
         <AppConfigContext.Provider
-            value={{ config: appConfigData?.appConfig || DEFAULT_APP_CONFIG, refreshContext: refreshAppConfig }}
+            value={{config: appConfigData?.appConfig || DEFAULT_APP_CONFIG, refreshContext: refreshAppConfig}}
         >
             {children}
         </AppConfigContext.Provider>

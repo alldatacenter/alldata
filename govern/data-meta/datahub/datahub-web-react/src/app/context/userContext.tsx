@@ -1,5 +1,5 @@
 import React from 'react';
-import { CorpUser, PlatformPrivileges } from '../../types.generated';
+import {CorpUser, PlatformPrivileges} from '../../types.generated';
 
 /**
  * Local State is persisted to local storage.

@@ -1,9 +1,9 @@
 import React from 'react';
-import { Button, Dropdown, Menu, Tooltip } from 'antd';
-import { CaretDownOutlined } from '@ant-design/icons';
+import {Button, Dropdown, Menu, Tooltip} from 'antd';
+import {CaretDownOutlined} from '@ant-design/icons';
 import styled from 'styled-components';
 import MenuItem from 'antd/lib/menu/MenuItem';
-import { ANTD_GRAY } from '../../../../constants';
+import {ANTD_GRAY} from '../../../../constants';
 
 const DownArrow = styled(CaretDownOutlined)`
     && {
@@ -46,7 +46,7 @@ type Props = {
     disabled?: boolean;
 };
 
-export default function ActionDropdown({ name, actions, disabled }: Props) {
+export default function ActionDropdown({name, actions, disabled}: Props) {
     return (
         <Tooltip title={disabled ? 'This action is not supported for the selected types.' : ''}>
             <Dropdown
@@ -66,7 +66,7 @@ export default function ActionDropdown({ name, actions, disabled }: Props) {
             >
                 <DropdownWrapper disabled={!!disabled}>
                     {name}
-                    <DownArrow />
+                    <DownArrow/>
                 </DropdownWrapper>
             </Dropdown>
         </Tooltip>

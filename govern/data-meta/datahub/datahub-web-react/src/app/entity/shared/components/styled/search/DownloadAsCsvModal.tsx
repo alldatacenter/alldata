@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { Button, Input, Modal } from 'antd';
-import { useLocation } from 'react-router';
+import React, {useState} from 'react';
+import {Button, Input, Modal} from 'antd';
+import {useLocation} from 'react-router';
 
 import {
     EntityType,
@@ -8,11 +8,11 @@ import {
     ScrollAcrossEntitiesInput,
     ScrollResults,
 } from '../../../../../../types.generated';
-import { getSearchCsvDownloadHeader, transformResultsToCsvRow } from './downloadAsCsvUtil';
-import { downloadRowsAsCsv } from '../../../../../search/utils/csvUtils';
-import { useEntityRegistry } from '../../../../../useEntityRegistry';
-import { useEntityData } from '../../../EntityContext';
-import analytics, { EventType } from '../../../../../analytics';
+import {getSearchCsvDownloadHeader, transformResultsToCsvRow} from './downloadAsCsvUtil';
+import {downloadRowsAsCsv} from '../../../../../search/utils/csvUtils';
+import {useEntityRegistry} from '../../../../../useEntityRegistry';
+import {useEntityData} from '../../../EntityContext';
+import analytics, {EventType} from '../../../../../analytics';
 
 type Props = {
     callSearchOnVariables: (variables: {
@@ -30,16 +30,16 @@ type Props = {
 const SEARCH_PAGE_SIZE_FOR_DOWNLOAD = 500;
 
 export default function DownloadAsCsvModal({
-    callSearchOnVariables,
-    entityFilters,
-    filters,
-    query,
-    viewUrn,
-    setIsDownloadingCsv,
-    showDownloadAsCsvModal,
-    setShowDownloadAsCsvModal,
-}: Props) {
-    const { entityData: entitySearchIsEmbeddedWithin } = useEntityData();
+                                               callSearchOnVariables,
+                                               entityFilters,
+                                               filters,
+                                               query,
+                                               viewUrn,
+                                               setIsDownloadingCsv,
+                                               showDownloadAsCsvModal,
+                                               setShowDownloadAsCsvModal,
+                                           }: Props) {
+    const {entityData: entitySearchIsEmbeddedWithin} = useEntityData();
     const location = useLocation();
 
     const [saveAsTitle, setSaveAsTitle] = useState(
@@ -95,6 +95,7 @@ export default function DownloadAsCsvModal({
                 }
             });
         }
+
         fetchNextPage();
     };
 

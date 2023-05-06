@@ -1,11 +1,11 @@
 import React from 'react';
-import { useEntityData } from '../shared/EntityContext';
-import { EntityType } from '../../../types.generated';
-import { EmbeddedListSearchSection } from '../shared/components/styled/search/EmbeddedListSearchSection';
-import { UnionType } from '../../search/utils/constants';
+import {useEntityData} from '../shared/EntityContext';
+import {EntityType} from '../../../types.generated';
+import {EmbeddedListSearchSection} from '../shared/components/styled/search/EmbeddedListSearchSection';
+import {UnionType} from '../../search/utils/constants';
 
 export const DomainEntitiesTab = () => {
-    const { urn, entityType } = useEntityData();
+    const {urn, entityType} = useEntityData();
 
     let fixedFilter;
     // Set a fixed filter corresponding to the current entity urn.
@@ -24,6 +24,7 @@ export const DomainEntitiesTab = () => {
             }}
             emptySearchQuery="*"
             placeholderText="Filter domain entities..."
+            skipCache
         />
     );
 };

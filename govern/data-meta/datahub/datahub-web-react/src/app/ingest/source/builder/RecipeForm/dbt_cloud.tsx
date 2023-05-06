@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { get } from 'lodash';
-import { RecipeField, FieldType, setFieldValueOnRecipe } from './common';
+import {get} from 'lodash';
+import {RecipeField, FieldType, setFieldValueOnRecipe} from './common';
 
 const TipSection = styled.div`
     margin-bottom: 12px;
@@ -269,12 +269,12 @@ export const TARGET_PLATFORM: RecipeField = {
     placeholder: 'Select a Data Platform Type...',
     type: FieldType.SELECT,
     options: [
-        { label: 'Snowflake', value: 'snowflake' },
-        { label: 'BigQuery', value: 'bigquery' },
-        { label: 'Redshift', value: 'redshift' },
-        { label: 'Postgres', value: 'postgres' },
-        { label: 'Trino (Starburst)', value: 'trino' },
-        { label: 'Databricks', value: 'databricks' },
+        {label: 'Snowflake', value: 'snowflake'},
+        {label: 'BigQuery', value: 'bigquery'},
+        {label: 'Redshift', value: 'redshift'},
+        {label: 'Postgres', value: 'postgres'},
+        {label: 'Trino (Starburst)', value: 'trino'},
+        {label: 'Databricks', value: 'databricks'},
     ],
     fieldPath: 'source.config.target_platform',
     required: true,

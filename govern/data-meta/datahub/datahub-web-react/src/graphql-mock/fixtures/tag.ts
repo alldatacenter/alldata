@@ -1,7 +1,7 @@
 import * as faker from 'faker';
-import { EntityType, Ownership, OwnershipType, Tag, TagUpdateInput } from '../../types.generated';
-import { getActor } from '../helper';
-import { findUserByURN } from './searchResult/userSearchResult';
+import {EntityType, Ownership, OwnershipType, Tag, TagUpdateInput} from '../../types.generated';
+import {getActor} from '../helper';
+import {findUserByURN} from './searchResult/userSearchResult';
 
 export const tagDb: Tag[] = [];
 
@@ -22,7 +22,7 @@ export const generateTag = (ownership?: Ownership): Tag => {
     return tag;
 };
 
-export const createTag = ({ name, urn, description }: TagUpdateInput): Tag => {
+export const createTag = ({name, urn, description}: TagUpdateInput): Tag => {
     const user = findUserByURN(getActor());
     const tag: Tag = {
         urn,
@@ -38,7 +38,7 @@ export const createTag = ({ name, urn, description }: TagUpdateInput): Tag => {
                     __typename: 'Owner',
                 },
             ],
-            lastModified: { time: Date.now(), __typename: 'AuditStamp' },
+            lastModified: {time: Date.now(), __typename: 'AuditStamp'},
             __typename: 'Ownership',
         },
         __typename: 'Tag',

@@ -1,14 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { useEntityRegistry } from '../useEntityRegistry';
-import { PageRoutes } from '../../conf/Global';
-import { IconStyleType } from '../entity/Entity';
-import { EntityType } from '../../types.generated';
-import { LogoCountCard } from '../shared/LogoCountCard';
-import { EventType } from '../analytics/event';
+import {Link} from 'react-router-dom';
+import {useEntityRegistry} from '../useEntityRegistry';
+import {PageRoutes} from '../../conf/Global';
+import {IconStyleType} from '../entity/Entity';
+import {EntityType} from '../../types.generated';
+import {LogoCountCard} from '../shared/LogoCountCard';
+import {EventType} from '../analytics/event';
 import analytics from '../analytics';
 
-export const BrowseEntityCard = ({ entityType, count }: { entityType: EntityType; count: number }) => {
+export const BrowseEntityCard = ({entityType, count}: { entityType: EntityType; count: number }) => {
     const entityRegistry = useEntityRegistry();
     const isGlossaryEntityCard = entityType === EntityType.GlossaryTerm;
     const entityPathName = entityRegistry.getPathName(entityType);

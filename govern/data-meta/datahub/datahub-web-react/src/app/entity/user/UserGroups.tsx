@@ -1,11 +1,11 @@
-import { Col, Pagination, Row, Tooltip } from 'antd';
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import {Col, Pagination, Row, Tooltip} from 'antd';
+import React, {useState} from 'react';
+import {Link} from 'react-router-dom';
 import styled from 'styled-components';
-import { useGetUserGroupsLazyQuery } from '../../../graphql/user.generated';
-import { CorpGroup, EntityRelationship, EntityType } from '../../../types.generated';
-import { scrollToTop } from '../../shared/searchUtils';
-import { useEntityRegistry } from '../../useEntityRegistry';
+import {useGetUserGroupsLazyQuery} from '../../../graphql/user.generated';
+import {CorpGroup, EntityRelationship, EntityType} from '../../../types.generated';
+import {scrollToTop} from '../../shared/searchUtils';
+import {useEntityRegistry} from '../../useEntityRegistry';
 
 type Props = {
     urn: string;
@@ -75,17 +75,17 @@ const GroupDescription = styled.span`
     max-width: 100%;
     height: 43px;
 `;
-export default function UserGroups({ urn, initialRelationships, pageSize }: Props) {
+export default function UserGroups({urn, initialRelationships, pageSize}: Props) {
     const [page, setPage] = useState(1);
     const entityRegistry = useEntityRegistry();
 
-    const [getGroups, { data: groupsData }] = useGetUserGroupsLazyQuery();
+    const [getGroups, {data: groupsData}] = useGetUserGroupsLazyQuery();
 
     const onChangeGroupsPage = (newPage: number) => {
         scrollToTop();
         setPage(newPage);
         const start = (newPage - 1) * pageSize;
-        getGroups({ variables: { urn, start, count: pageSize } });
+        getGroups({variables: {urn, start, count: pageSize}});
     };
 
     const relationships = groupsData ? groupsData.corpUser?.relationships?.relationships : initialRelationships;
@@ -96,30 +96,30 @@ export default function UserGroups({ urn, initialRelationships, pageSize }: Prop
         <GroupsViewWrapper>
             <Row justify="start">
                 {userGroups &&
-                    userGroups.map((item) => {
-                        return (
-                            <GroupItemColumn xl={8} lg={8} md={12} sm={12} xs={24} key={item.urn}>
-                                <Link to={entityRegistry.getEntityUrl(EntityType.CorpGroup, item.urn)}>
-                                    <GroupItem>
-                                        <Row className="title-row">
-                                            <GroupTitle>{item.info?.displayName || item.name}</GroupTitle>
-                                            <GroupMember>
-                                                {item.relationships?.total}
-                                                {item.relationships?.total === 1 ? ' member' : ' members'}
-                                            </GroupMember>
-                                        </Row>
-                                        <Row className="description-row">
-                                            <GroupDescription>
-                                                <Tooltip title={item.info?.description}>
-                                                    {item.info?.description}
-                                                </Tooltip>
-                                            </GroupDescription>
-                                        </Row>
-                                    </GroupItem>
-                                </Link>
-                            </GroupItemColumn>
-                        );
-                    })}
+                userGroups.map((item) => {
+                    return (
+                        <GroupItemColumn xl={8} lg={8} md={12} sm={12} xs={24} key={item.urn}>
+                            <Link to={entityRegistry.getEntityUrl(EntityType.CorpGroup, item.urn)}>
+                                <GroupItem>
+                                    <Row className="title-row">
+                                        <GroupTitle>{item.info?.displayName || item.name}</GroupTitle>
+                                        <GroupMember>
+                                            {item.relationships?.total}
+                                            {item.relationships?.total === 1 ? ' member' : ' members'}
+                                        </GroupMember>
+                                    </Row>
+                                    <Row className="description-row">
+                                        <GroupDescription>
+                                            <Tooltip title={item.info?.description}>
+                                                {item.info?.description}
+                                            </Tooltip>
+                                        </GroupDescription>
+                                    </Row>
+                                </GroupItem>
+                            </Link>
+                        </GroupItemColumn>
+                    );
+                })}
             </Row>
             <Row className="user-group-pagination">
                 <Pagination

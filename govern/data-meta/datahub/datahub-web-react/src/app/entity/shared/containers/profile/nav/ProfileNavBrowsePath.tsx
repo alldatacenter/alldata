@@ -1,12 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import styled from 'styled-components/macro';
-import { Breadcrumb, Row } from 'antd';
-import { EntityType } from '../../../../../../types.generated';
-import { useEntityRegistry } from '../../../../../useEntityRegistry';
-import { PageRoutes } from '../../../../../../conf/Global';
-import { ANTD_GRAY } from '../../../constants';
-import { LineageSelector } from './LineageSelector';
+import {Breadcrumb, Row} from 'antd';
+import {EntityType} from '../../../../../../types.generated';
+import {useEntityRegistry} from '../../../../../useEntityRegistry';
+import {PageRoutes} from '../../../../../../conf/Global';
+import {ANTD_GRAY} from '../../../constants';
+import {LineageSelector} from './LineageSelector';
 
 const BrowseRow = styled(Row)`
     padding: 10px 20px;
@@ -32,7 +32,7 @@ type Props = {
 /**
  * Responsible for rendering a clickable browse path view.
  */
-export const ProfileNavBrowsePath = ({ urn, type, path, breadcrumbLinksEnabled }: Props): JSX.Element => {
+export const ProfileNavBrowsePath = ({urn, type, path, breadcrumbLinksEnabled}: Props): JSX.Element => {
     const entityRegistry = useEntityRegistry();
 
     const createPartialPath = (parts: Array<string>) => {
@@ -61,7 +61,7 @@ export const ProfileNavBrowsePath = ({ urn, type, path, breadcrumbLinksEnabled }
 
     return (
         <BrowseRow>
-            <Breadcrumb style={{ fontSize: '16px' }} separator=">">
+            <Breadcrumb style={{fontSize: '16px'}} separator=">">
                 <BreadcrumbItem disabled={!breadcrumbLinksEnabled}>
                     {breadcrumbLinksEnabled ? (
                         <Link to={breadcrumbLinksEnabled ? baseBrowsePath : undefined}>
@@ -73,7 +73,7 @@ export const ProfileNavBrowsePath = ({ urn, type, path, breadcrumbLinksEnabled }
                 </BreadcrumbItem>
                 {pathCrumbs}
             </Breadcrumb>
-            <LineageSelector urn={urn} type={type} />
+            <LineageSelector urn={urn} type={type}/>
         </BrowseRow>
     );
 };

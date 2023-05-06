@@ -1,10 +1,10 @@
-import { Popover, Tag } from 'antd';
+import {Popover, Tag} from 'antd';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import styled from 'styled-components';
-import { CorpGroup, CorpUser, EntityType } from '../../../../../types.generated';
-import { CustomAvatar } from '../../../../shared/avatar';
-import { useEntityRegistry } from '../../../../useEntityRegistry';
+import {CorpGroup, CorpUser, EntityType} from '../../../../../types.generated';
+import {CustomAvatar} from '../../../../shared/avatar';
+import {useEntityRegistry} from '../../../../useEntityRegistry';
 
 type Props = {
     actor: CorpUser | CorpGroup;
@@ -21,7 +21,7 @@ const ActorTag = styled(Tag)`
     align-items: center;
 `;
 
-export const ExpandedActor = ({ actor, popOver, closable, onClose }: Props) => {
+export const ExpandedActor = ({actor, popOver, closable, onClose}: Props) => {
     const entityRegistry = useEntityRegistry();
 
     let name = '';
@@ -37,9 +37,9 @@ export const ExpandedActor = ({ actor, popOver, closable, onClose }: Props) => {
     return (
         <ActorTag onClose={onClose} closable={closable}>
             <Link to={`${entityRegistry.getEntityUrl(actor.type, actor.urn)}`}>
-                <CustomAvatar name={name} photoUrl={pictureLink} useDefaultAvatar={false} />
+                <CustomAvatar name={name} photoUrl={pictureLink} useDefaultAvatar={false}/>
                 {(!popOver && <>{name}</>) || (
-                    <Popover overlayStyle={{ maxWidth: 200 }} placement="left" content={popOver}>
+                    <Popover overlayStyle={{maxWidth: 200}} placement="left" content={popOver}>
                         {name}
                     </Popover>
                 )}

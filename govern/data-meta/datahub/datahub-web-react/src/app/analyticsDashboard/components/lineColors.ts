@@ -1,4 +1,4 @@
-import { cyan, gold, lime, orange, purple, red, volcano, yellow } from '@ant-design/colors';
+import {cyan, gold, lime, orange, purple, red, volcano, yellow} from '@ant-design/colors';
 
 export const lineColors = [
     cyan[6],

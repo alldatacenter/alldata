@@ -1,4 +1,4 @@
-import { SourceConfig } from '../types';
+import {SourceConfig} from '../types';
 import redshiftLogo from '../../../../../images/redshiftlogo.png';
 
 const placeholderRecipe = `\

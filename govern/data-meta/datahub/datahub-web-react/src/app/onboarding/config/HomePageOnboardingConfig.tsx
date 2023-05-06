@@ -1,7 +1,7 @@
 import React from 'react';
-import { Image, Typography } from 'antd';
-import { OnboardingStep } from '../OnboardingStep';
-import { ANTD_GRAY } from '../../entity/shared/constants';
+import {Image, Typography} from 'antd';
+import {OnboardingStep} from '../OnboardingStep';
+import {ANTD_GRAY} from '../../entity/shared/constants';
 
 export const GLOBAL_WELCOME_TO_DATAHUB_ID = 'global-welcome-to-datahub';
 export const HOME_PAGE_INGESTION_ID = 'home-page-ingestion';
@@ -19,15 +19,15 @@ export const HomePageOnboardingConfig: OnboardingStep[] = [
                     preview={false}
                     height={184}
                     width={500}
-                    style={{ marginLeft: '50px' }}
+                    style={{marginLeft: '50px'}}
                     src="https://datahubproject.io/assets/ideal-img/datahub-flow-diagram-light.5ce651b.1600.png"
                 />
                 <Typography.Title level={3}>Welcome to DataHub! 👋</Typography.Title>
-                <Typography.Paragraph style={{ lineHeight: '22px' }}>
+                <Typography.Paragraph style={{lineHeight: '22px'}}>
                     <strong>DataHub</strong> helps you discover and organize the important data within your
                     organization. You can:
                 </Typography.Paragraph>
-                <Typography.Paragraph style={{ lineHeight: '24px' }}>
+                <Typography.Paragraph style={{lineHeight: '24px'}}>
                     <ul>
                         <li>
                             Quickly <strong>search</strong> for Datasets, Dashboards, Data Pipelines, and more
@@ -54,15 +54,15 @@ export const HomePageOnboardingConfig: OnboardingStep[] = [
                             alignItems: 'center',
                         }}
                     >
-                        <span style={{ paddingLeft: '5px' }}>💡</span>
-                        <span style={{ paddingLeft: '10px' }}>
+                        <span style={{paddingLeft: '5px'}}>💡</span>
+                        <span style={{paddingLeft: '10px'}}>
                             Press <strong> Cmd + Ctrl + T</strong> to open up this tutorial at any time.
                         </span>
                     </div>
                 </Typography.Paragraph>
             </div>
         ),
-        style: { minWidth: '650px' },
+        style: {minWidth: '650px'},
     },
     {
         id: HOME_PAGE_INGESTION_ID,

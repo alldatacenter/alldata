@@ -1,11 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Button, Divider, Modal, Tag, Typography } from 'antd';
+import {Link} from 'react-router-dom';
+import {Button, Divider, Modal, Tag, Typography} from 'antd';
 import styled from 'styled-components';
-import { useEntityRegistry } from '../../useEntityRegistry';
-import { Maybe, Policy, PolicyState, PolicyType } from '../../../types.generated';
-import { useAppConfig } from '../../useAppConfig';
-import { convertLegacyResourceFilter, getFieldValues, mapResourceTypeToDisplayName } from './policyUtils';
+import {useEntityRegistry} from '../../useEntityRegistry';
+import {Maybe, Policy, PolicyState, PolicyType} from '../../../types.generated';
+import {useAppConfig} from '../../useAppConfig';
+import {convertLegacyResourceFilter, getFieldValues, mapResourceTypeToDisplayName} from './policyUtils';
 import AvatarsGroup from '../AvatarsGroup';
 
 type PrivilegeOptionType = {
@@ -60,7 +60,7 @@ const Privileges = styled.div`
 /**
  * Component used for displaying the details about an existing Policy.
  */
-export default function PolicyDetailsModal({ policy, visible, onClose, privileges }: Props) {
+export default function PolicyDetailsModal({policy, visible, onClose, privileges}: Props) {
     const entityRegistry = useEntityRegistry();
 
     const isActive = policy?.state === PolicyState.Active;
@@ -72,7 +72,7 @@ export default function PolicyDetailsModal({ policy, visible, onClose, privilege
     const domains = getFieldValues(resources?.filter, 'DOMAIN') || [];
 
     const {
-        config: { policiesConfig },
+        config: {policiesConfig},
     } = useAppConfig();
 
     const actionButtons = (
@@ -107,24 +107,24 @@ export default function PolicyDetailsModal({ policy, visible, onClose, privilege
             <PolicyContainer>
                 <div>
                     <Typography.Title level={5}>Type</Typography.Title>
-                    <ThinDivider />
+                    <ThinDivider/>
                     <PoliciesTag>{policy?.type}</PoliciesTag>
                 </div>
                 <div>
                     <Typography.Title level={5}>State</Typography.Title>
-                    <ThinDivider />
+                    <ThinDivider/>
                     <Tag color={isActive ? 'green' : 'red'}>{policy?.state}</Tag>
                 </div>
                 <div>
                     <Typography.Title level={5}>Description</Typography.Title>
-                    <ThinDivider />
+                    <ThinDivider/>
                     <Typography.Text type="secondary">{policy?.description}</Typography.Text>
                 </div>
                 {isMetadataPolicy && (
                     <>
                         <div>
                             <Typography.Title level={5}>Asset Type</Typography.Title>
-                            <ThinDivider />
+                            <ThinDivider/>
                             {(resourceTypes?.length &&
                                 resourceTypes.map((value, key) => {
                                     return (
@@ -142,7 +142,7 @@ export default function PolicyDetailsModal({ policy, visible, onClose, privilege
                         </div>
                         <div>
                             <Typography.Title level={5}>Assets</Typography.Title>
-                            <ThinDivider />
+                            <ThinDivider/>
                             {(resourceEntities?.length &&
                                 resourceEntities.map((value, key) => {
                                     return (
@@ -155,7 +155,7 @@ export default function PolicyDetailsModal({ policy, visible, onClose, privilege
                         </div>
                         <div>
                             <Typography.Title level={5}>Domains</Typography.Title>
-                            <ThinDivider />
+                            <ThinDivider/>
                             {(domains?.length &&
                                 domains.map((value, key) => {
                                     return (
@@ -170,7 +170,7 @@ export default function PolicyDetailsModal({ policy, visible, onClose, privilege
                 )}
                 <Privileges>
                     <Typography.Title level={5}>Privileges</Typography.Title>
-                    <ThinDivider />
+                    <ThinDivider/>
                     {privileges?.map((priv, key) => (
                         // eslint-disable-next-line react/no-array-index-key
                         <PrivilegeTag key={`${priv}-${key}`}>{priv?.name}</PrivilegeTag>
@@ -178,12 +178,12 @@ export default function PolicyDetailsModal({ policy, visible, onClose, privilege
                 </Privileges>
                 <div>
                     <Typography.Title level={5}>Applies to Owners</Typography.Title>
-                    <ThinDivider />
+                    <ThinDivider/>
                     <PoliciesTag>{policy?.actors?.resourceOwners ? 'True' : 'False'}</PoliciesTag>
                 </div>
                 <div>
                     <Typography.Title level={5}>Applies to Users</Typography.Title>
-                    <ThinDivider />
+                    <ThinDivider/>
                     <AvatarsGroup
                         users={policy?.actors?.resolvedUsers}
                         entityRegistry={entityRegistry}
@@ -194,7 +194,7 @@ export default function PolicyDetailsModal({ policy, visible, onClose, privilege
                 </div>
                 <div>
                     <Typography.Title level={5}>Applies to Groups</Typography.Title>
-                    <ThinDivider />
+                    <ThinDivider/>
                     <AvatarsGroup
                         groups={policy?.actors?.resolvedGroups}
                         entityRegistry={entityRegistry}
@@ -205,7 +205,7 @@ export default function PolicyDetailsModal({ policy, visible, onClose, privilege
                 </div>
                 <div>
                     <Typography.Title level={5}>Applies to Roles</Typography.Title>
-                    <ThinDivider />
+                    <ThinDivider/>
                     <AvatarsGroup
                         roles={policy?.actors?.resolvedRoles}
                         entityRegistry={entityRegistry}

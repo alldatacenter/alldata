@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Space, Table, Typography } from 'antd';
+import {Space, Table, Typography} from 'antd';
 
-import { MlHyperParam, MlMetric } from '../../../../types.generated';
-import { useBaseEntity } from '../../shared/EntityContext';
-import { GetMlModelQuery } from '../../../../graphql/mlModel.generated';
+import {MlHyperParam, MlMetric} from '../../../../types.generated';
+import {useBaseEntity} from '../../shared/EntityContext';
+import {GetMlModelQuery} from '../../../../graphql/mlModel.generated';
 
 const TabContent = styled.div`
     padding: 16px;
@@ -28,7 +28,7 @@ export default function MLModelSummary() {
 
     return (
         <TabContent>
-            <Space direction="vertical" style={{ width: '100%' }} size="large">
+            <Space direction="vertical" style={{width: '100%'}} size="large">
                 <Typography.Title level={3}>Training Metrics</Typography.Title>
                 <Table
                     pagination={false}

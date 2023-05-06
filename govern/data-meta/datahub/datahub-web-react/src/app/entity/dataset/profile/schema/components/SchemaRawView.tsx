@@ -1,8 +1,8 @@
 import React from 'react';
-import { Typography } from 'antd';
+import {Typography} from 'antd';
 import styled from 'styled-components';
-import { Schema, SchemaMetadata } from '../../../../../../types.generated';
-import { diffJson, formatRawSchema, getRawSchema } from '../utils/utils';
+import {Schema, SchemaMetadata} from '../../../../../../types.generated';
+import {diffJson, formatRawSchema, getRawSchema} from '../utils/utils';
 
 type Props = {
     schemaDiff: {
@@ -17,7 +17,7 @@ const SchemaContainer = styled.div`
     padding: 12px;
 `;
 
-export default function SchemaRawView({ schemaDiff, editMode, showKeySchema }: Props) {
+export default function SchemaRawView({schemaDiff, editMode, showKeySchema}: Props) {
     const currentSchemaRaw = formatRawSchema(getRawSchema(schemaDiff.current?.platformSchema, showKeySchema));
 
     const schemaRawDiff = editMode

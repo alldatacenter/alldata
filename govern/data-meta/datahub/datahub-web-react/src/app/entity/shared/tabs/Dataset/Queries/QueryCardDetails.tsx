@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Typography } from 'antd';
-import { ANTD_GRAY } from '../../../constants';
-import { toLocalDateString } from '../../../../../shared/time/timeUtils';
+import {Typography} from 'antd';
+import {ANTD_GRAY} from '../../../constants';
+import {toLocalDateString} from '../../../../../shared/time/timeUtils';
 import NoMarkdownViewer from '../../../components/styled/StripMarkdownText';
 import QueryCardDetailsMenu from './QueryCardDetailsMenu';
 import QueryCardEditButton from './QueryCardEditButton';
@@ -81,17 +81,17 @@ export type Props = {
 };
 
 export default function QueryCardDetails({
-    urn,
-    title,
-    description,
-    createdAtMs,
-    showDelete,
-    showEdit,
-    onClickExpand,
-    onClickEdit,
-    onDeleted,
-    index,
-}: Props) {
+                                             urn,
+                                             title,
+                                             description,
+                                             createdAtMs,
+                                             showDelete,
+                                             showEdit,
+                                             onClickExpand,
+                                             onClickEdit,
+                                             onDeleted,
+                                             index,
+                                         }: Props) {
     return (
         <Details>
             <Header>
@@ -101,12 +101,12 @@ export default function QueryCardDetails({
                 <Actions>
                     {showEdit && (
                         <EditQueryAction>
-                            <QueryCardEditButton onClickEdit={onClickEdit} index={index} />
+                            <QueryCardEditButton onClickEdit={onClickEdit} index={index}/>
                         </EditQueryAction>
                     )}
                     {showDelete && urn && (
                         <EditQueryAction>
-                            <QueryCardDetailsMenu urn={urn} onDeleted={onDeleted} index={index} />
+                            <QueryCardDetailsMenu urn={urn} onDeleted={onDeleted} index={index}/>
                         </EditQueryAction>
                     )}
                 </Actions>
@@ -126,7 +126,7 @@ export default function QueryCardDetails({
                 {(createdAtMs && (
                     <Typography.Text type="secondary">Created on {toLocalDateString(createdAtMs)}</Typography.Text>
                 )) ||
-                    undefined}
+                undefined}
             </Date>
         </Details>
     );

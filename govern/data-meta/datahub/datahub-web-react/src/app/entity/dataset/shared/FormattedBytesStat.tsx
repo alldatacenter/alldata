@@ -1,8 +1,8 @@
 import React from 'react';
-import { Tooltip } from 'antd';
-import { formatBytes, formatNumberWithoutAbbreviation } from '../../../shared/formatNumber';
+import {Tooltip} from 'antd';
+import {formatBytes, formatNumberWithoutAbbreviation} from '../../../shared/formatNumber';
 
-export const FormattedBytesStat = ({ bytes }: { bytes: number }) => {
+export const FormattedBytesStat = ({bytes}: { bytes: number }) => {
     const formattedBytes = formatBytes(bytes);
     return (
         <Tooltip title={`This dataset consumes ${formatNumberWithoutAbbreviation(bytes)} bytes of storage.`}>

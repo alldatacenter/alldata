@@ -1,11 +1,11 @@
 import * as faker from 'faker';
 // import { generatePlatform } from 'generateDataPlatform';
-import { Chart, ChartType, DataPlatform, EntityType, OwnershipType, PlatformType } from '../../../types.generated';
+import {Chart, ChartType, DataPlatform, EntityType, OwnershipType, PlatformType} from '../../../types.generated';
 import kafkaLogo from '../../../images/kafkalogo.png';
 import s3Logo from '../../../images/s3.png';
 import snowflakeLogo from '../../../images/snowflakelogo.png';
 import bigqueryLogo from '../../../images/bigquerylogo.png';
-import { findUserByUsername } from '../searchResult/userSearchResult';
+import {findUserByUsername} from '../searchResult/userSearchResult';
 
 export const platformLogo = {
     kafka: kafkaLogo,
@@ -14,7 +14,7 @@ export const platformLogo = {
     bigquery: bigqueryLogo,
 };
 
-export const generatePlatform = ({ platform, urn }): DataPlatform => {
+export const generatePlatform = ({platform, urn}): DataPlatform => {
     return {
         urn,
         type: EntityType.Dataset,
@@ -35,7 +35,7 @@ export const chartEntity = (tool): Chart => {
     const datahubUser = findUserByUsername('datahub');
     const platform = 'snowflake';
     const platformURN = `urn:li:dataPlatform:snowflake`;
-    const dataPlatform = generatePlatform({ platform, urn: platformURN });
+    const dataPlatform = generatePlatform({platform, urn: platformURN});
 
     return {
         urn: `urn:li:chart:(${tool},${name})`,
@@ -49,8 +49,8 @@ export const chartEntity = (tool): Chart => {
                 'https://superset.demo.datahubproject.io/superset/explore/?form_data=%7B%22slice_id%22%3A%202%7D',
             type: ChartType.Pie,
             access: null,
-            lastModified: { time: 1619137330, __typename: 'AuditStamp' },
-            created: { time: 1619137330, __typename: 'AuditStamp' },
+            lastModified: {time: 1619137330, __typename: 'AuditStamp'},
+            created: {time: 1619137330, __typename: 'AuditStamp'},
             __typename: 'ChartInfo',
         },
         editableProperties: null,
@@ -63,7 +63,7 @@ export const chartEntity = (tool): Chart => {
                     associatedUrn: `urn:li:chart:(${tool},${name})`,
                 },
             ],
-            lastModified: { time: 1619717962718, __typename: 'AuditStamp' },
+            lastModified: {time: 1619717962718, __typename: 'AuditStamp'},
             __typename: 'Ownership',
         },
         globalTags: null,

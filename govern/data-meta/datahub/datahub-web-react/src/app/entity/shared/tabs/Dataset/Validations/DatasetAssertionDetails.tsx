@@ -1,17 +1,17 @@
-import { Tooltip, Typography } from 'antd';
-import { SelectValue } from 'antd/lib/select';
-import React, { useEffect, useState } from 'react';
+import {Tooltip, Typography} from 'antd';
+import {SelectValue} from 'antd/lib/select';
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
-import { useGetAssertionRunsLazyQuery } from '../../../../../../graphql/assertion.generated';
-import { AssertionResultType, AssertionRunStatus } from '../../../../../../types.generated';
-import { formatNumber } from '../../../../../shared/formatNumber';
-import { getFixedLookbackWindow, getLocaleTimezone } from '../../../../../shared/time/timeUtils';
-import { ANTD_GRAY } from '../../../constants';
+import {useGetAssertionRunsLazyQuery} from '../../../../../../graphql/assertion.generated';
+import {AssertionResultType, AssertionRunStatus} from '../../../../../../types.generated';
+import {formatNumber} from '../../../../../shared/formatNumber';
+import {getFixedLookbackWindow, getLocaleTimezone} from '../../../../../shared/time/timeUtils';
+import {ANTD_GRAY} from '../../../constants';
 import PrefixedSelect from '../Stats/historical/shared/PrefixedSelect';
-import { LOOKBACK_WINDOWS } from '../Stats/lookbackWindows';
-import { getResultColor, getResultIcon, getResultText } from './assertionUtils';
-import { BooleanTimeline } from './BooleanTimeline';
-import { DatasetAssertionResultDetails } from './DatasetAssertionResultDetails';
+import {LOOKBACK_WINDOWS} from '../Stats/lookbackWindows';
+import {getResultColor, getResultIcon, getResultText} from './assertionUtils';
+import {BooleanTimeline} from './BooleanTimeline';
+import {DatasetAssertionResultDetails} from './DatasetAssertionResultDetails';
 
 const RESULT_CHART_WIDTH_PX = 800;
 
@@ -70,8 +70,8 @@ type Props = {
     lastEvaluatedAtMillis?: number | undefined;
 };
 
-export const DatasetAssertionDetails = ({ urn, lastEvaluatedAtMillis }: Props) => {
-    const [getAssertionRuns, { data }] = useGetAssertionRunsLazyQuery({ fetchPolicy: 'cache-first' });
+export const DatasetAssertionDetails = ({urn, lastEvaluatedAtMillis}: Props) => {
+    const [getAssertionRuns, {data}] = useGetAssertionRunsLazyQuery({fetchPolicy: 'cache-first'});
 
     /**
      * Set default window for fetching assertion history.
@@ -79,7 +79,7 @@ export const DatasetAssertionDetails = ({ urn, lastEvaluatedAtMillis }: Props) =
     const [lookbackWindow, setLookbackWindow] = useState(LOOKBACK_WINDOWS.WEEK);
     useEffect(() => {
         getAssertionRuns({
-            variables: { assertionUrn: urn, ...getFixedLookbackWindow(lookbackWindow.windowSize) },
+            variables: {assertionUrn: urn, ...getFixedLookbackWindow(lookbackWindow.windowSize)},
         });
     }, [urn, lookbackWindow, getAssertionRuns]);
 
@@ -136,7 +136,7 @@ export const DatasetAssertionDetails = ({ urn, lastEvaluatedAtMillis }: Props) =
      */
     const assertionResultsChartData =
         completeAssertionRunEvents.map((runEvent) => {
-            const { result } = runEvent;
+            const {result} = runEvent;
             const resultTime = new Date(runEvent.timestampMillis);
             const localTime = resultTime.toLocaleString();
             const gmtTime = resultTime.toUTCString();
@@ -158,7 +158,7 @@ export const DatasetAssertionDetails = ({ urn, lastEvaluatedAtMillis }: Props) =
                         <>
                             {result && (
                                 <AssertionResultDetailsContainer>
-                                    <DatasetAssertionResultDetails result={result} />
+                                    <DatasetAssertionResultDetails result={result}/>
                                 </AssertionResultDetailsContainer>
                             )}
                             <div>
@@ -188,7 +188,7 @@ export const DatasetAssertionDetails = ({ urn, lastEvaluatedAtMillis }: Props) =
                             <div>
                                 <SucceededEvaluationsCount>
                                     <Typography.Text
-                                        style={{ color: getResultColor(AssertionResultType.Success), fontWeight: 600 }}
+                                        style={{color: getResultColor(AssertionResultType.Success), fontWeight: 600}}
                                     >
                                         {formatNumber(succeededCount)}
                                     </Typography.Text>{' '}
@@ -196,7 +196,7 @@ export const DatasetAssertionDetails = ({ urn, lastEvaluatedAtMillis }: Props) =
                                 </SucceededEvaluationsCount>
                                 <FailedEvaluationsCount>
                                     <Typography.Text
-                                        style={{ color: getResultColor(AssertionResultType.Failure), fontWeight: 600 }}
+                                        style={{color: getResultColor(AssertionResultType.Failure), fontWeight: 600}}
                                     >
                                         {formatNumber(failedCount)}
                                     </Typography.Text>{' '}

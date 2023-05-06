@@ -1,12 +1,12 @@
-import { message, Modal } from 'antd';
-import { useState } from 'react';
-import { useEntityData } from '../EntityContext';
-import { useEntityRegistry } from '../../../useEntityRegistry';
-import { useDeleteGlossaryEntityMutation } from '../../../../graphql/glossary.generated';
+import {message, Modal} from 'antd';
+import {useState} from 'react';
+import {useEntityData} from '../EntityContext';
+import {useEntityRegistry} from '../../../useEntityRegistry';
+import {useDeleteGlossaryEntityMutation} from '../../../../graphql/glossary.generated';
 
 function useDeleteGlossaryEntity() {
     const [hasBeenDeleted, setHasBeenDeleted] = useState(false);
-    const { entityData, urn: entityDataUrn, entityType } = useEntityData();
+    const {entityData, urn: entityDataUrn, entityType} = useEntityData();
     const entityRegistry = useEntityRegistry();
 
     const [deleteGlossaryEntity] = useDeleteGlossaryEntityMutation();
@@ -19,7 +19,7 @@ function useDeleteGlossaryEntity() {
         })
             .catch((e) => {
                 message.destroy();
-                message.error({ content: `Failed to delete: \n ${e.message || ''}`, duration: 3 });
+                message.error({content: `Failed to delete: \n ${e.message || ''}`, duration: 3});
             })
             .finally(() => {
                 message.loading({
@@ -43,14 +43,15 @@ function useDeleteGlossaryEntity() {
             onOk() {
                 handleDeleteGlossaryEntity();
             },
-            onCancel() {},
+            onCancel() {
+            },
             okText: 'Yes',
             maskClosable: true,
             closable: true,
         });
     }
 
-    return { onDeleteEntity, hasBeenDeleted };
+    return {onDeleteEntity, hasBeenDeleted};
 }
 
 export default useDeleteGlossaryEntity;

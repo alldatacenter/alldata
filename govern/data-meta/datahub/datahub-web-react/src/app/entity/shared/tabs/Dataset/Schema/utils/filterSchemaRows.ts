@@ -1,4 +1,4 @@
-import { EntityType, SchemaField } from '../../../../../../../types.generated';
+import {EntityType, SchemaField} from '../../../../../../../types.generated';
 import EntityRegistry from '../../../../../EntityRegistry';
 
 function matchesTagsOrTermsOrDescription(field: SchemaField, filterText: string, entityRegistry: EntityRegistry) {
@@ -39,8 +39,8 @@ export function filterSchemaRows(
     filterText: string,
     entityRegistry: EntityRegistry,
 ) {
-    if (!rows) return { filteredRows: [], expandedRowsFromFilter: new Set() };
-    if (!filterText) return { filteredRows: rows, expandedRowsFromFilter: new Set() };
+    if (!rows) return {filteredRows: [], expandedRowsFromFilter: new Set()};
+    if (!filterText) return {filteredRows: rows, expandedRowsFromFilter: new Set()};
     const formattedFilterText = filterText.toLocaleLowerCase();
 
     const filteredFieldPathsByEditableMetadata = getFilteredFieldPathsByMetadata(
@@ -78,5 +78,5 @@ export function filterSchemaRows(
 
     const filteredRows = rows.filter((row) => finalFieldPaths.has(row.fieldPath));
 
-    return { filteredRows, expandedRowsFromFilter };
+    return {filteredRows, expandedRowsFromFilter};
 }

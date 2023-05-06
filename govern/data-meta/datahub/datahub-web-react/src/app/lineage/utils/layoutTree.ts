@@ -1,4 +1,4 @@
-import { SchemaField } from '../../../types.generated';
+import {SchemaField} from '../../../types.generated';
 import {
     COLUMN_HEIGHT,
     CURVE_PADDING,
@@ -8,9 +8,9 @@ import {
     VERTICAL_SPACE_BETWEEN_NODES,
     width as nodeWidth,
 } from '../constants';
-import { Direction, NodeData, VizEdge, VizNode } from '../types';
-import { convertInputFieldsToSchemaFields } from './columnLineageUtils';
-import { getTitleHeight, nodeHeightFromTitleLength } from './titleUtils';
+import {Direction, NodeData, VizEdge, VizNode} from '../types';
+import {convertInputFieldsToSchemaFields} from './columnLineageUtils';
+import {getTitleHeight, nodeHeightFromTitleLength} from './titleUtils';
 
 type ProcessArray = {
     parent: VizNode | null;
@@ -48,19 +48,19 @@ function layoutNodesForOneDirection(
     const directionShift = direction === Direction.Downstream ? 0 : UPSTREAM_DIRECTION_SHIFT;
 
     let numInCurrentLayer = 0;
-    let nodesInCurrentLayer: ProcessArray = [{ parent: null, node: data }];
+    let nodesInCurrentLayer: ProcessArray = [{parent: null, node: data}];
     let nodesInNextLayer: ProcessArray = [];
 
     while (nodesInCurrentLayer.length > 0) {
         // if we've already added a node to the viz higher up dont add it again
-        const urnsToAddInCurrentLayer = Array.from(new Set(nodesInCurrentLayer.map(({ node }) => node.urn || '')));
+        const urnsToAddInCurrentLayer = Array.from(new Set(nodesInCurrentLayer.map(({node}) => node.urn || '')));
         const nodesToAddInCurrentLayer = urnsToAddInCurrentLayer
             .filter((urn, pos) => urnsToAddInCurrentLayer.indexOf(urn) === pos)
             .filter((urn) => !nodesByUrn[urn || '']);
 
         const filteredNodesInCurrentLayer = nodesInCurrentLayer
-            .filter(({ node }) => nodesToAddInCurrentLayer.indexOf(node.urn || '') > -1)
-            .filter(({ node }) => node.status?.removed !== true);
+            .filter(({node}) => nodesToAddInCurrentLayer.indexOf(node.urn || '') > -1)
+            .filter(({node}) => node.status?.removed !== true);
 
         const layerSize = filteredNodesInCurrentLayer.length;
 
@@ -70,12 +70,12 @@ function layoutNodesForOneDirection(
                 (nodeHeightFromTitleLength(undefined, undefined, showColumns, false) + VERTICAL_SPACE_BETWEEN_NODES) *
                 (layerSize - 1)
             ) /
-                2 +
+            2 +
             canvasHeight / 2 +
             HEADER_HEIGHT;
 
         // eslint-disable-next-line @typescript-eslint/no-loop-func
-        nodesInCurrentLayer.forEach(({ node, parent }) => {
+        nodesInCurrentLayer.forEach(({node, parent}) => {
             if (!node.urn) return;
 
             // don't show edges to soft deleted entities
@@ -89,17 +89,17 @@ function layoutNodesForOneDirection(
                 vizNodeForNode =
                     node.urn in draggedNodes
                         ? {
-                              data: node,
-                              x: draggedNodes[node.urn].x,
-                              y: draggedNodes[node.urn].y,
-                              direction,
-                          }
+                            data: node,
+                            x: draggedNodes[node.urn].x,
+                            y: draggedNodes[node.urn].y,
+                            direction,
+                        }
                         : {
-                              data: node,
-                              x: currentXPosition,
-                              y: HORIZONTAL_SPACE_PER_LAYER * numInCurrentLayer * xModifier,
-                              direction,
-                          };
+                            data: node,
+                            x: currentXPosition,
+                            y: HORIZONTAL_SPACE_PER_LAYER * numInCurrentLayer * xModifier,
+                            direction,
+                        };
                 currentXPosition +=
                     nodeHeightFromTitleLength(
                         expandTitles ? node.expandedName || node.name : undefined,
@@ -129,25 +129,25 @@ function layoutNodesForOneDirection(
                 // if the nodes are inverted, we want to draw the edge slightly differently
                 const curve = parentIsBehindChild
                     ? [
-                          { x: parent.x, y: parent.y + INSIDE_NODE_SHIFT * xModifier + directionShift },
-                          { x: parent.x, y: parent.y + (INSIDE_NODE_SHIFT + CURVE_PADDING) * xModifier },
-                          { x: vizNodeForNode.x, y: vizNodeForNode.y - (nodeWidth / 2 + CURVE_PADDING) * xModifier },
-                          { x: vizNodeForNode.x, y: vizNodeForNode.y - (nodeWidth / 2) * xModifier + directionShift },
-                      ]
+                        {x: parent.x, y: parent.y + INSIDE_NODE_SHIFT * xModifier + directionShift},
+                        {x: parent.x, y: parent.y + (INSIDE_NODE_SHIFT + CURVE_PADDING) * xModifier},
+                        {x: vizNodeForNode.x, y: vizNodeForNode.y - (nodeWidth / 2 + CURVE_PADDING) * xModifier},
+                        {x: vizNodeForNode.x, y: vizNodeForNode.y - (nodeWidth / 2) * xModifier + directionShift},
+                    ]
                     : [
-                          { x: parent.x, y: parent.y + INSIDE_NODE_SHIFT * xModifier + directionShift },
-                          { x: parent.x, y: parent.y + (INSIDE_NODE_SHIFT + CURVE_PADDING) * xModifier },
-                          {
-                              x: parent.x + CURVE_PADDING * (parentIsHigher ? -1 : 1),
-                              y: parent.y + (INSIDE_NODE_SHIFT + CURVE_PADDING) * xModifier,
-                          },
-                          {
-                              x: vizNodeForNode.x + CURVE_PADDING * (parentIsHigher ? 1 : -1),
-                              y: vizNodeForNode.y - (nodeWidth / 2 + CURVE_PADDING) * xModifier,
-                          },
-                          { x: vizNodeForNode.x, y: vizNodeForNode.y - (nodeWidth / 2 + CURVE_PADDING) * xModifier },
-                          { x: vizNodeForNode.x, y: vizNodeForNode.y - (nodeWidth / 2) * xModifier + directionShift },
-                      ];
+                        {x: parent.x, y: parent.y + INSIDE_NODE_SHIFT * xModifier + directionShift},
+                        {x: parent.x, y: parent.y + (INSIDE_NODE_SHIFT + CURVE_PADDING) * xModifier},
+                        {
+                            x: parent.x + CURVE_PADDING * (parentIsHigher ? -1 : 1),
+                            y: parent.y + (INSIDE_NODE_SHIFT + CURVE_PADDING) * xModifier,
+                        },
+                        {
+                            x: vizNodeForNode.x + CURVE_PADDING * (parentIsHigher ? 1 : -1),
+                            y: vizNodeForNode.y - (nodeWidth / 2 + CURVE_PADDING) * xModifier,
+                        },
+                        {x: vizNodeForNode.x, y: vizNodeForNode.y - (nodeWidth / 2 + CURVE_PADDING) * xModifier},
+                        {x: vizNodeForNode.x, y: vizNodeForNode.y - (nodeWidth / 2) * xModifier + directionShift},
+                    ];
 
                 const relationship = getParentRelationship(direction, parent, node);
 
@@ -168,7 +168,7 @@ function layoutNodesForOneDirection(
         nodesInNextLayer = [];
         numInCurrentLayer++;
     }
-    return { numInCurrentLayer, nodesByUrn };
+    return {numInCurrentLayer, nodesByUrn};
 }
 
 interface DrawColumnEdgeProps {
@@ -188,20 +188,20 @@ interface DrawColumnEdgeProps {
 }
 
 function drawColumnEdge({
-    targetNode,
-    currentNode,
-    targetField,
-    targetFields,
-    targetTitleHeight,
-    collapsedColumnsNodes,
-    sourceFieldX,
-    sourceFieldY,
-    edgesToRender,
-    sourceField,
-    entityUrn,
-    targetUrn,
-    visibleColumnsByUrn,
-}: DrawColumnEdgeProps) {
+                            targetNode,
+                            currentNode,
+                            targetField,
+                            targetFields,
+                            targetTitleHeight,
+                            collapsedColumnsNodes,
+                            sourceFieldX,
+                            sourceFieldY,
+                            edgesToRender,
+                            sourceField,
+                            entityUrn,
+                            targetUrn,
+                            visibleColumnsByUrn,
+                        }: DrawColumnEdgeProps) {
     const targetFieldIndex = targetFields.findIndex((candidate) => candidate.fieldPath === targetField) || 0;
     const targetFieldY = targetNode?.y || 0 + 1;
     let targetFieldX = (targetNode?.x || 0) + 35 + targetTitleHeight;
@@ -367,7 +367,7 @@ export default function layoutTree(
     const nodesToRender: VizNode[] = [];
     const edgesToRender: VizEdge[] = [];
 
-    const { numInCurrentLayer: numUpstream, nodesByUrn: upstreamNodesByUrn } = layoutNodesForOneDirection(
+    const {numInCurrentLayer: numUpstream, nodesByUrn: upstreamNodesByUrn} = layoutNodesForOneDirection(
         upstreamData,
         Direction.Upstream,
         draggedNodes,
@@ -379,7 +379,7 @@ export default function layoutTree(
         edgesToRender,
     );
 
-    const { numInCurrentLayer: numDownstream, nodesByUrn: downstreamNodesByUrn } = layoutNodesForOneDirection(
+    const {numInCurrentLayer: numDownstream, nodesByUrn: downstreamNodesByUrn} = layoutNodesForOneDirection(
         downstreamData,
         Direction.Downstream,
         draggedNodes,
@@ -391,7 +391,7 @@ export default function layoutTree(
         edgesToRender,
     );
 
-    const nodesByUrn = { ...upstreamNodesByUrn, ...downstreamNodesByUrn };
+    const nodesByUrn = {...upstreamNodesByUrn, ...downstreamNodesByUrn};
 
     layoutColumnTree(
         fineGrainedMap,
@@ -404,5 +404,5 @@ export default function layoutTree(
         columnsByUrn,
     );
 
-    return { nodesToRender, edgesToRender, layers: numUpstream + numDownstream - 1, nodesByUrn };
+    return {nodesToRender, edgesToRender, layers: numUpstream + numDownstream - 1, nodesByUrn};
 }

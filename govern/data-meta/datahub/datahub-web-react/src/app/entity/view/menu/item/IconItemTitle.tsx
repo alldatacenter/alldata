@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Tooltip } from 'antd';
-import { ANTD_GRAY } from '../../../shared/constants';
+import {Tooltip} from 'antd';
+import {ANTD_GRAY} from '../../../shared/constants';
 
 const TitleContainer = styled.span`
     display: flex;
@@ -26,7 +26,7 @@ type Props = {
 /**
  * Base Item Title for the menu
  */
-export const IconItemTitle = ({ tip, title, icon }: Props) => {
+export const IconItemTitle = ({tip, title, icon}: Props) => {
     return (
         <Tooltip title={tip} placement="right">
             <TitleContainer>

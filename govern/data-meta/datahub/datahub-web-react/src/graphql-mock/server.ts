@@ -1,13 +1,13 @@
 /* eslint-disable no-restricted-syntax */
-import { Model, Response, createServer, belongsTo } from 'miragejs';
-import { createGraphQLHandler } from '@miragejs/graphql';
+import {Model, Response, createServer, belongsTo} from 'miragejs';
+import {createGraphQLHandler} from '@miragejs/graphql';
 
-import { graphQLSchema } from './schema';
-import { GlobalCfg } from '../conf';
+import {graphQLSchema} from './schema';
+import {GlobalCfg} from '../conf';
 
-import { resolveRequest } from './resolver';
-import { createLoginUsers } from './fixtures/user';
-import { findUserByURN } from './fixtures/searchResult/userSearchResult';
+import {resolveRequest} from './resolver';
+import {createLoginUsers} from './fixtures/user';
+import {findUserByURN} from './fixtures/searchResult/userSearchResult';
 
 export function makeServer(environment = 'development') {
     return createServer({

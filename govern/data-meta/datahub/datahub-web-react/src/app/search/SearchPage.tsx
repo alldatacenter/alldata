@@ -1,26 +1,26 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import * as QueryString from 'query-string';
-import { useHistory, useLocation, useParams } from 'react-router';
-import { useEntityRegistry } from '../useEntityRegistry';
-import { FacetFilterInput, EntityType } from '../../types.generated';
+import {useHistory, useLocation, useParams} from 'react-router';
+import {useEntityRegistry} from '../useEntityRegistry';
+import {FacetFilterInput, EntityType} from '../../types.generated';
 import useFilters from './utils/useFilters';
-import { navigateToSearchUrl } from './utils/navigateToSearchUrl';
-import { SearchResults } from './SearchResults';
-import analytics, { EventType } from '../analytics';
-import { useGetSearchResultsForMultipleQuery } from '../../graphql/search.generated';
-import { SearchCfg } from '../../conf';
-import { ENTITY_FILTER_NAME, UnionType } from './utils/constants';
-import { GetSearchResultsParams } from '../entity/shared/components/styled/search/types';
-import { EntityAndType } from '../entity/shared/types';
-import { scrollToTop } from '../shared/searchUtils';
-import { generateOrFilters } from './utils/generateOrFilters';
-import { OnboardingTour } from '../onboarding/OnboardingTour';
+import {navigateToSearchUrl} from './utils/navigateToSearchUrl';
+import {SearchResults} from './SearchResults';
+import analytics, {EventType} from '../analytics';
+import {useGetSearchResultsForMultipleQuery} from '../../graphql/search.generated';
+import {SearchCfg} from '../../conf';
+import {ENTITY_FILTER_NAME, UnionType} from './utils/constants';
+import {GetSearchResultsParams} from '../entity/shared/components/styled/search/types';
+import {EntityAndType} from '../entity/shared/types';
+import {scrollToTop} from '../shared/searchUtils';
+import {generateOrFilters} from './utils/generateOrFilters';
+import {OnboardingTour} from '../onboarding/OnboardingTour';
 import {
     SEARCH_RESULTS_ADVANCED_SEARCH_ID,
     SEARCH_RESULTS_FILTERS_ID,
 } from '../onboarding/config/SearchOnboardingConfig';
-import { useUserContext } from '../context/useUserContext';
-import { useGetDownloadScrollResultsQuery } from '../../graphql/scroll.generated';
+import {useUserContext} from '../context/useUserContext';
+import {useGetDownloadScrollResultsQuery} from '../../graphql/scroll.generated';
 
 type SearchPageParams = {
     type?: string;
@@ -35,7 +35,7 @@ export const SearchPage = () => {
     const userContext = useUserContext();
 
     const entityRegistry = useEntityRegistry();
-    const params = QueryString.parse(location.search, { arrayFormat: 'comma' });
+    const params = QueryString.parse(location.search, {arrayFormat: 'comma'});
     const query: string = decodeURIComponent(params.query ? (params.query as string) : '');
     const activeType = entityRegistry.getTypeOrDefaultFromPathName(useParams<SearchPageParams>().type || '', undefined);
     const page: number = params.page && Number(params.page as string) > 0 ? Number(params.page as string) : 1;
@@ -82,7 +82,7 @@ export const SearchPage = () => {
 
     // we need to extract refetch on its own so paging thru results for csv download
     // doesnt also update search results
-    const { refetch } = useGetDownloadScrollResultsQuery({
+    const {refetch} = useGetDownloadScrollResultsQuery({
         variables: {
             input: {
                 types: entityFilters,
@@ -100,16 +100,16 @@ export const SearchPage = () => {
     };
 
     const onChangeFilters = (newFilters: Array<FacetFilterInput>) => {
-        navigateToSearchUrl({ type: activeType, query, page: 1, filters: newFilters, history, unionType });
+        navigateToSearchUrl({type: activeType, query, page: 1, filters: newFilters, history, unionType});
     };
 
     const onChangeUnionType = (newUnionType: UnionType) => {
-        navigateToSearchUrl({ type: activeType, query, page: 1, filters, history, unionType: newUnionType });
+        navigateToSearchUrl({type: activeType, query, page: 1, filters, history, unionType: newUnionType});
     };
 
     const onChangePage = (newPage: number) => {
         scrollToTop();
-        navigateToSearchUrl({ type: activeType, query, page: newPage, filters, history, unionType });
+        navigateToSearchUrl({type: activeType, query, page: newPage, filters, history, unionType});
     };
 
     /**
@@ -157,7 +157,7 @@ export const SearchPage = () => {
 
     return (
         <>
-            {!loading && <OnboardingTour stepIds={[SEARCH_RESULTS_FILTERS_ID, SEARCH_RESULTS_ADVANCED_SEARCH_ID]} />}
+            {!loading && <OnboardingTour stepIds={[SEARCH_RESULTS_FILTERS_ID, SEARCH_RESULTS_ADVANCED_SEARCH_ID]}/>}
             <SearchResults
                 unionType={unionType}
                 entityFilters={entityFilters}

@@ -1,21 +1,21 @@
-import { ArrowRightOutlined } from '@ant-design/icons';
-import { Button, Card, Divider, List, Space, Typography } from 'antd';
-import { ListProps } from 'antd/lib/list';
+import {ArrowRightOutlined} from '@ant-design/icons';
+import {Button, Card, Divider, List, Space, Typography} from 'antd';
+import {ListProps} from 'antd/lib/list';
 import * as React from 'react';
-import { useHistory } from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 import styled from 'styled-components';
-import { EntityType, SearchResult } from '../../types.generated';
-import { IconStyleType } from '../entity/Entity';
-import { useEntityRegistry } from '../useEntityRegistry';
-import { navigateToSearchUrl } from './utils/navigateToSearchUrl';
-import analytics, { EventType } from '../analytics';
+import {EntityType, SearchResult} from '../../types.generated';
+import {IconStyleType} from '../entity/Entity';
+import {useEntityRegistry} from '../useEntityRegistry';
+import {navigateToSearchUrl} from './utils/navigateToSearchUrl';
+import analytics, {EventType} from '../analytics';
 
 const styles = {
-    header: { marginBottom: 20 },
-    resultHeaderCardBody: { padding: '16px 24px' },
-    resultHeaderCard: { right: '52px', top: '-40px', position: 'absolute' },
-    seeAllButton: { fontSize: 18 },
-    resultsContainer: { width: '100%', padding: '40px 132px' },
+    header: {marginBottom: 20},
+    resultHeaderCardBody: {padding: '16px 24px'},
+    resultHeaderCard: {right: '52px', top: '-40px', position: 'absolute'},
+    seeAllButton: {fontSize: 18},
+    resultsContainer: {width: '100%', padding: '40px 132px'},
 };
 
 const ResultList = styled(List)`
@@ -34,7 +34,7 @@ interface Props {
     searchResults: Array<SearchResult>;
 }
 
-export const EntityGroupSearchResults = ({ type, query, searchResults }: Props) => {
+export const EntityGroupSearchResults = ({type, query, searchResults}: Props) => {
     const history = useHistory();
     const entityRegistry = useEntityRegistry();
 
@@ -77,7 +77,7 @@ export const EntityGroupSearchResults = ({ type, query, searchResults }: Props) 
                             <Typography.Text>
                                 See all <b>{entityRegistry.getCollectionName(type)}</b> results
                             </Typography.Text>
-                            <ArrowRightOutlined />
+                            <ArrowRightOutlined/>
                         </Button>
                     )
                 }
@@ -88,7 +88,7 @@ export const EntityGroupSearchResults = ({ type, query, searchResults }: Props) 
                         <List.Item onClick={() => onResultClick(searchResult, index)}>
                             {entityRegistry.renderSearchResult(type, searchResult)}
                         </List.Item>
-                        {index < searchResults.length - 1 && <Divider />}
+                        {index < searchResults.length - 1 && <Divider/>}
                     </>
                 )}
                 bordered

@@ -1,21 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import { Button, Empty, List, Pagination } from 'antd';
+import React, {useEffect, useState} from 'react';
+import {Button, Empty, List, Pagination} from 'antd';
 import styled from 'styled-components';
-import { useLocation } from 'react-router';
+import {useLocation} from 'react-router';
 import * as QueryString from 'query-string';
-import { UsergroupAddOutlined } from '@ant-design/icons';
-import { CorpGroup } from '../../../types.generated';
-import { Message } from '../../shared/Message';
-import { useListGroupsQuery } from '../../../graphql/group.generated';
+import {UsergroupAddOutlined} from '@ant-design/icons';
+import {CorpGroup} from '../../../types.generated';
+import {Message} from '../../shared/Message';
+import {useListGroupsQuery} from '../../../graphql/group.generated';
 import GroupListItem from './GroupListItem';
 import TabToolbar from '../../entity/shared/components/styled/TabToolbar';
 import CreateGroupModal from './CreateGroupModal';
-import { SearchBar } from '../../search/SearchBar';
-import { useEntityRegistry } from '../../useEntityRegistry';
-import { scrollToTop } from '../../shared/searchUtils';
-import { GROUPS_CREATE_GROUP_ID, GROUPS_INTRO_ID } from '../../onboarding/config/GroupsOnboardingConfig';
-import { OnboardingTour } from '../../onboarding/OnboardingTour';
-import { addGroupToListGroupsCache, DEFAULT_GROUP_LIST_PAGE_SIZE, removeGroupFromListGroupsCache } from './cacheUtils';
+import {SearchBar} from '../../search/SearchBar';
+import {useEntityRegistry} from '../../useEntityRegistry';
+import {scrollToTop} from '../../shared/searchUtils';
+import {GROUPS_CREATE_GROUP_ID, GROUPS_INTRO_ID} from '../../onboarding/config/GroupsOnboardingConfig';
+import {OnboardingTour} from '../../onboarding/OnboardingTour';
+import {addGroupToListGroupsCache, DEFAULT_GROUP_LIST_PAGE_SIZE, removeGroupFromListGroupsCache} from './cacheUtils';
 
 const GroupContainer = styled.div``;
 
@@ -34,7 +34,7 @@ const GroupPaginationContainer = styled.div`
 export const GroupList = () => {
     const entityRegistry = useEntityRegistry();
     const location = useLocation();
-    const params = QueryString.parse(location.search, { arrayFormat: 'comma' });
+    const params = QueryString.parse(location.search, {arrayFormat: 'comma'});
     const paramsQuery = (params?.query as string) || undefined;
     const [query, setQuery] = useState<undefined | string>(undefined);
     useEffect(() => setQuery(paramsQuery), [paramsQuery]);
@@ -46,7 +46,7 @@ export const GroupList = () => {
     const pageSize = DEFAULT_GROUP_LIST_PAGE_SIZE;
     const start = (page - 1) * pageSize;
 
-    const { loading, error, data, refetch, client } = useListGroupsQuery({
+    const {loading, error, data, refetch, client} = useListGroupsQuery({
         variables: {
             input: {
                 start,
@@ -71,13 +71,13 @@ export const GroupList = () => {
 
     return (
         <>
-            <OnboardingTour stepIds={[GROUPS_INTRO_ID, GROUPS_CREATE_GROUP_ID]} />
-            {!data && loading && <Message type="loading" content="Loading groups..." />}
-            {error && <Message type="error" content="Failed to load groups! An unexpected error occurred." />}
+            <OnboardingTour stepIds={[GROUPS_INTRO_ID, GROUPS_CREATE_GROUP_ID]}/>
+            {!data && loading && <Message type="loading" content="Loading groups..."/>}
+            {error && <Message type="error" content="Failed to load groups! An unexpected error occurred."/>}
             <GroupContainer>
                 <TabToolbar>
                     <Button id={GROUPS_CREATE_GROUP_ID} type="text" onClick={() => setIsCreatingGroup(true)}>
-                        <UsergroupAddOutlined /> Create group
+                        <UsergroupAddOutlined/> Create group
                     </Button>
                     <SearchBar
                         initialQuery={query || ''}
@@ -100,16 +100,16 @@ export const GroupList = () => {
                 <GroupStyledList
                     bordered
                     locale={{
-                        emptyText: <Empty description="No Groups!" image={Empty.PRESENTED_IMAGE_SIMPLE} />,
+                        emptyText: <Empty description="No Groups!" image={Empty.PRESENTED_IMAGE_SIMPLE}/>,
                     }}
                     dataSource={groups}
                     renderItem={(item: any) => (
-                        <GroupListItem onDelete={() => handleDelete(item.urn)} group={item as CorpGroup} />
+                        <GroupListItem onDelete={() => handleDelete(item.urn)} group={item as CorpGroup}/>
                     )}
                 />
                 <GroupPaginationContainer>
                     <Pagination
-                        style={{ margin: 40 }}
+                        style={{margin: 40}}
                         current={page}
                         pageSize={pageSize}
                         total={totalGroups}

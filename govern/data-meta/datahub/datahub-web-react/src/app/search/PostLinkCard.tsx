@@ -1,9 +1,9 @@
 import React from 'react';
-import { Button, Image, Typography } from 'antd';
-import { ArrowRightOutlined } from '@ant-design/icons';
+import {Button, Image, Typography} from 'antd';
+import {ArrowRightOutlined} from '@ant-design/icons';
 import styled from 'styled-components/macro';
-import { ANTD_GRAY } from '../entity/shared/constants';
-import { Post } from '../../types.generated';
+import {ANTD_GRAY} from '../entity/shared/constants';
+import {Post} from '../../types.generated';
 
 const CardContainer = styled(Button)`
     display: flex;
@@ -69,7 +69,7 @@ type Props = {
     linkPost: Post;
 };
 
-export const PostLinkCard = ({ linkPost }: Props) => {
+export const PostLinkCard = ({linkPost}: Props) => {
     const hasMedia = !!linkPost?.content?.media?.location;
     const link = linkPost?.content?.link || '';
 
@@ -77,17 +77,17 @@ export const PostLinkCard = ({ linkPost }: Props) => {
         <CardContainer type="link" href={link}>
             {hasMedia && (
                 <LogoContainer>
-                    <PlatformLogo width={50} height={50} preview={false} src={linkPost?.content?.media?.location} />
+                    <PlatformLogo width={50} height={50} preview={false} src={linkPost?.content?.media?.location}/>
                 </LogoContainer>
             )}
             <TextContainer>
-                <TextWrapper style={{ textAlign: 'left' }}>
+                <TextWrapper style={{textAlign: 'left'}}>
                     <HeaderText type="secondary">Link</HeaderText>
-                    <Title style={{ margin: 0 }} ellipsis={{ rows: 2 }} level={5}>
+                    <Title style={{margin: 0}} ellipsis={{rows: 2}} level={5}>
                         {linkPost?.content?.title}
                     </Title>
                 </TextWrapper>
-                <StyledArrowOutlined />
+                <StyledArrowOutlined/>
             </TextContainer>
         </CardContainer>
     );

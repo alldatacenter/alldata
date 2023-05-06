@@ -1,11 +1,11 @@
 import React from 'react';
 import DOMPurify from 'dompurify';
-import { EditableSchemaMetadata, SchemaField, SubResourceType } from '../../../../../../../types.generated';
+import {EditableSchemaMetadata, SchemaField, SubResourceType} from '../../../../../../../types.generated';
 import DescriptionField from '../../../../../dataset/profile/schema/components/SchemaDescriptionField';
-import { pathMatchesNewPath } from '../../../../../dataset/profile/schema/utils/utils';
-import { useUpdateDescriptionMutation } from '../../../../../../../graphql/mutations.generated';
-import { useMutationUrn, useRefetch } from '../../../../EntityContext';
-import { useSchemaRefetch } from '../SchemaContext';
+import {pathMatchesNewPath} from '../../../../../dataset/profile/schema/utils/utils';
+import {useUpdateDescriptionMutation} from '../../../../../../../graphql/mutations.generated';
+import {useMutationUrn, useRefetch} from '../../../../EntityContext';
+import {useSchemaRefetch} from '../SchemaContext';
 
 export default function useDescriptionRenderer(editableSchemaMetadata: EditableSchemaMetadata | null | undefined) {
     const urn = useMutationUrn();

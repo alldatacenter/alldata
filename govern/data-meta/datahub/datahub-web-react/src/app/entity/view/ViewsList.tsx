@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
-import { useLocation } from 'react-router';
-import { Button, message, Pagination } from 'antd';
-import { PlusOutlined } from '@ant-design/icons';
+import {useLocation} from 'react-router';
+import {Button, message, Pagination} from 'antd';
+import {PlusOutlined} from '@ant-design/icons';
 import * as QueryString from 'query-string';
-import { useListMyViewsQuery } from '../../../graphql/view.generated';
-import { SearchBar } from '../../search/SearchBar';
+import {useListMyViewsQuery} from '../../../graphql/view.generated';
+import {SearchBar} from '../../search/SearchBar';
 import TabToolbar from '../shared/components/styled/TabToolbar';
-import { Message } from '../../shared/Message';
-import { useEntityRegistry } from '../../useEntityRegistry';
-import { scrollToTop } from '../../shared/searchUtils';
-import { ViewsTable } from './ViewsTable';
-import { DEFAULT_LIST_VIEWS_PAGE_SIZE, searchViews } from './utils';
-import { ViewBuilder } from './builder/ViewBuilder';
-import { ViewBuilderMode } from './builder/types';
+import {Message} from '../../shared/Message';
+import {useEntityRegistry} from '../../useEntityRegistry';
+import {scrollToTop} from '../../shared/searchUtils';
+import {ViewsTable} from './ViewsTable';
+import {DEFAULT_LIST_VIEWS_PAGE_SIZE, searchViews} from './utils';
+import {ViewBuilder} from './builder/ViewBuilder';
+import {ViewBuilderMode} from './builder/types';
 
 const PaginationContainer = styled.div`
     display: flex;
@@ -47,7 +47,7 @@ export const ViewsList = () => {
     /**
      * Query Params
      */
-    const params = QueryString.parse(location.search, { arrayFormat: 'comma' });
+    const params = QueryString.parse(location.search, {arrayFormat: 'comma'});
     const paramsQuery = (params?.query as string) || undefined;
 
     /**
@@ -64,7 +64,7 @@ export const ViewsList = () => {
      */
     const pageSize = DEFAULT_LIST_VIEWS_PAGE_SIZE;
     const start = (page - 1) * pageSize;
-    const { loading, error, data } = useListMyViewsQuery({
+    const {loading, error, data} = useListMyViewsQuery({
         variables: {
             start,
             count: pageSize,
@@ -100,11 +100,11 @@ export const ViewsList = () => {
 
     return (
         <>
-            {!data && loading && <Message type="loading" content="Loading Views..." />}
-            {error && message.error({ content: `Failed to load Views! An unexpected error occurred.`, duration: 3 })}
+            {!data && loading && <Message type="loading" content="Loading Views..."/>}
+            {error && message.error({content: `Failed to load Views! An unexpected error occurred.`, duration: 3})}
             <TabToolbar>
                 <Button type="text" onClick={onClickCreateView}>
-                    <PlusOutlined /> Create new View
+                    <PlusOutlined/> Create new View
                 </Button>
                 <SearchBar
                     initialQuery=""
@@ -117,7 +117,7 @@ export const ViewsList = () => {
                     entityRegistry={entityRegistry}
                 />
             </TabToolbar>
-            <ViewsTable views={views} onEditView={onClickEditView} />
+            <ViewsTable views={views} onEditView={onClickEditView}/>
             {totalViews >= pageSize && (
                 <PaginationContainer>
                     <StyledPagination

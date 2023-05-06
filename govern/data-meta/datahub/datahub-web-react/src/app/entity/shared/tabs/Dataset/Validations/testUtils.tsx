@@ -1,6 +1,6 @@
 import React from 'react';
-import { CheckCircleOutlined, CloseCircleOutlined } from '@ant-design/icons';
-import { TestResultType } from '../../../../../../types.generated';
+import {CheckCircleOutlined, CloseCircleOutlined} from '@ant-design/icons';
+import {TestResultType} from '../../../../../../types.generated';
 
 /**
  * Returns the display text assoociated with an Test Result Type
@@ -40,9 +40,9 @@ export const getResultIcon = (result: TestResultType) => {
     const resultColor = getResultColor(result);
     switch (result) {
         case TestResultType.Success:
-            return <CheckCircleOutlined style={{ color: resultColor }} />;
+            return <CheckCircleOutlined style={{color: resultColor}}/>;
         case TestResultType.Failure:
-            return <CloseCircleOutlined style={{ color: resultColor }} />;
+            return <CloseCircleOutlined style={{color: resultColor}}/>;
         default:
             throw new Error(`Unsupported Test Result Type ${result} provided.`);
     }

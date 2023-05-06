@@ -1,11 +1,11 @@
 import React from 'react';
-import { Button, Form, Input, Tooltip } from 'antd';
-import { red } from '@ant-design/colors';
+import {Button, Form, Input, Tooltip} from 'antd';
+import {red} from '@ant-design/colors';
 import styled from 'styled-components/macro';
-import { DeleteOutlined, PlusOutlined, QuestionCircleOutlined } from '@ant-design/icons';
-import { ANTD_GRAY } from '../../../../entity/shared/constants';
-import { RecipeField } from './common';
-import { StyledFormItem } from './SecretField/SecretField';
+import {DeleteOutlined, PlusOutlined, QuestionCircleOutlined} from '@ant-design/icons';
+import {ANTD_GRAY} from '../../../../entity/shared/constants';
+import {RecipeField} from './common';
+import {StyledFormItem} from './SecretField/SecretField';
 
 export const Label = styled.div`
     font-weight: bold;
@@ -54,18 +54,18 @@ interface Props {
     removeMargin?: boolean;
 }
 
-export default function DictField({ field, removeMargin }: Props) {
+export default function DictField({field, removeMargin}: Props) {
     return (
         <Form.List name={field.name} rules={field.rules || undefined}>
-            {(fields, { add, remove }, { errors }) => (
+            {(fields, {add, remove}, {errors}) => (
                 <ListWrapper removeMargin={!!removeMargin}>
                     <Label>
                         {field.label}
                         <Tooltip overlay={field.tooltip}>
-                            <StyledQuestion />
+                            <StyledQuestion/>
                         </Tooltip>
                     </Label>
-                    {fields.map(({ key, name, ...restField }) => (
+                    {fields.map(({key, name, ...restField}) => (
                         <SectionWrapper key={key}>
                             <FieldsWrapper>
                                 {field.keyField && (
@@ -78,7 +78,7 @@ export default function DictField({ field, removeMargin }: Props) {
                                         tooltip={field.keyField.tooltip}
                                         rules={field.keyField.rules || undefined}
                                     >
-                                        <Input placeholder={field.keyField.placeholder} />
+                                        <Input placeholder={field.keyField.placeholder}/>
                                     </StyledFormItem>
                                 )}
                                 {field.fields?.map((f) => (
@@ -90,16 +90,16 @@ export default function DictField({ field, removeMargin }: Props) {
                                         tooltip={f.tooltip}
                                         rules={f.rules || undefined}
                                     >
-                                        <Input placeholder={f.placeholder} />
+                                        <Input placeholder={f.placeholder}/>
                                     </StyledFormItem>
                                 ))}
                             </FieldsWrapper>
                             <StyledDeleteButton onClick={() => remove(name)} type="text" shape="circle" danger>
-                                <DeleteOutlined />
+                                <DeleteOutlined/>
                             </StyledDeleteButton>
                         </SectionWrapper>
                     ))}
-                    <StyledButton type="dashed" onClick={() => add()} icon={<PlusOutlined />}>
+                    <StyledButton type="dashed" onClick={() => add()} icon={<PlusOutlined/>}>
                         {field.buttonLabel}
                     </StyledButton>
                     <ErrorWrapper>{errors}</ErrorWrapper>

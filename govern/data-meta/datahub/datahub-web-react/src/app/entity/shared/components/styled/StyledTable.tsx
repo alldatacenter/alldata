@@ -1,6 +1,6 @@
-import { Table } from 'antd';
+import {Table} from 'antd';
 import styled from 'styled-components';
-import { ANTD_GRAY } from '../../constants';
+import {ANTD_GRAY} from '../../constants';
 
 export const StyledTable = styled(Table)`
     overflow: inherit;

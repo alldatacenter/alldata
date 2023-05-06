@@ -1,21 +1,21 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components/macro';
-import { EditOutlined } from '@ant-design/icons';
-import { message, Button, Input, Modal, Typography, Form, Collapse } from 'antd';
+import {EditOutlined} from '@ant-design/icons';
+import {message, Button, Input, Modal, Typography, Form, Collapse} from 'antd';
 import DOMPurify from 'dompurify';
 import {
     useCreateGlossaryTermMutation,
     useCreateGlossaryNodeMutation,
 } from '../../../../graphql/glossaryTerm.generated';
-import { EntityType } from '../../../../types.generated';
-import { useEntityRegistry } from '../../../useEntityRegistry';
+import {EntityType} from '../../../../types.generated';
+import {useEntityRegistry} from '../../../useEntityRegistry';
 import NodeParentSelect from './NodeParentSelect';
-import { useEntityData, useRefetch } from '../EntityContext';
-import analytics, { EventType } from '../../../analytics';
+import {useEntityData, useRefetch} from '../EntityContext';
+import analytics, {EventType} from '../../../analytics';
 import DescriptionModal from '../components/legacy/DescriptionModal';
-import { validateCustomUrnId } from '../../../shared/textUtil';
-import { useGlossaryEntityData } from '../GlossaryEntityContext';
-import { getGlossaryRootToUpdate, updateGlossarySidebar } from '../../../glossary/utils';
+import {validateCustomUrnId} from '../../../shared/textUtil';
+import {useGlossaryEntityData} from '../GlossaryEntityContext';
+import {getGlossaryRootToUpdate, updateGlossarySidebar} from '../../../glossary/utils';
 
 const StyledItem = styled(Form.Item)`
     margin-bottom: 0;
@@ -36,9 +36,9 @@ interface Props {
 }
 
 function CreateGlossaryEntityModal(props: Props) {
-    const { entityType, onClose, refetchData } = props;
+    const {entityType, onClose, refetchData} = props;
     const entityData = useEntityData();
-    const { isInGlossaryContext, urnsToUpdate, setUrnsToUpdate } = useGlossaryEntityData();
+    const {isInGlossaryContext, urnsToUpdate, setUrnsToUpdate} = useGlossaryEntityData();
     const [form] = Form.useForm();
     const entityRegistry = useEntityRegistry();
     const [stagedId, setStagedId] = useState<string | undefined>(undefined);
@@ -68,7 +68,7 @@ function CreateGlossaryEntityModal(props: Props) {
             },
         })
             .then(() => {
-                message.loading({ content: 'Updating...', duration: 2 });
+                message.loading({content: 'Updating...', duration: 2});
                 setTimeout(() => {
                     analytics.event({
                         type: EventType.CreateGlossaryEntityEvent,
@@ -92,7 +92,7 @@ function CreateGlossaryEntityModal(props: Props) {
             })
             .catch((e) => {
                 message.destroy();
-                message.error({ content: `Failed to create: \n ${e.message || ''}`, duration: 3 });
+                message.error({content: `Failed to create: \n ${e.message || ''}`, duration: 3});
             });
         onClose();
     }
@@ -136,12 +136,12 @@ function CreateGlossaryEntityModal(props: Props) {
                                 required: true,
                                 message: `Enter a ${entityRegistry.getEntityName(entityType)} name.`,
                             },
-                            { whitespace: true },
-                            { min: 1, max: 100 },
+                            {whitespace: true},
+                            {min: 1, max: 100},
                         ]}
                         hasFeedback
                     >
-                        <Input autoFocus value={stagedName} onChange={(event) => setStagedName(event.target.value)} />
+                        <Input autoFocus value={stagedName} onChange={(event) => setStagedName(event.target.value)}/>
                     </StyledItem>
                 </Form.Item>
                 <Form.Item
@@ -166,7 +166,7 @@ function CreateGlossaryEntityModal(props: Props) {
                     }
                 >
                     <StyledButton type="link" onClick={() => setIsDocumentationModalVisible(true)}>
-                        <EditOutlined />
+                        <EditOutlined/>
                         {documentation ? 'Edit' : 'Add'} Documentation
                     </StyledButton>
                     {isDocumentationModalVisible && (

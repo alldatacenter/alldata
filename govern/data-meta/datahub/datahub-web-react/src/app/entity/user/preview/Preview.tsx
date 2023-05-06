@@ -1,12 +1,12 @@
 import React from 'react';
-import { Typography } from 'antd';
-import { Link } from 'react-router-dom';
+import {Typography} from 'antd';
+import {Link} from 'react-router-dom';
 import styled from 'styled-components';
-import { EntityType } from '../../../../types.generated';
-import { useEntityRegistry } from '../../../useEntityRegistry';
-import { ANTD_GRAY } from '../../shared/constants';
-import { IconStyleType } from '../../Entity';
-import { CustomAvatar } from '../../../shared/avatar';
+import {EntityType} from '../../../../types.generated';
+import {useEntityRegistry} from '../../../useEntityRegistry';
+import {ANTD_GRAY} from '../../shared/constants';
+import {IconStyleType} from '../../Entity';
+import {CustomAvatar} from '../../../shared/avatar';
 
 const PreviewContainer = styled.div`
     display: flex;
@@ -55,11 +55,11 @@ const AvatarContainer = styled.div`
 `;
 
 export const Preview = ({
-    urn,
-    name,
-    title,
-    photoUrl,
-}: {
+                            urn,
+                            name,
+                            title,
+                            photoUrl,
+                        }: {
     urn: string;
     name: string;
     photoUrl?: string | undefined;
@@ -88,7 +88,7 @@ export const Preview = ({
             </div>
             <Link to={url}>
                 <AvatarContainer>
-                    <CustomAvatar size={48} photoUrl={photoUrl} name={name || undefined} />
+                    <CustomAvatar size={48} photoUrl={photoUrl} name={name || undefined}/>
                 </AvatarContainer>
             </Link>
         </PreviewContainer>

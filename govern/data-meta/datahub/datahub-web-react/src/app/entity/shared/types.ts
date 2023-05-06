@@ -1,4 +1,4 @@
-import { MutationFunctionOptions, FetchResult } from '@apollo/client';
+import {MutationFunctionOptions, FetchResult} from '@apollo/client';
 
 import {
     DataPlatform,
@@ -35,7 +35,7 @@ import {
     EntityPrivileges,
     Embed,
 } from '../../../types.generated';
-import { FetchedEntity } from '../../lineage/types';
+import {FetchedEntity} from '../../lineage/types';
 
 export type EntityTab = {
     name: string;
@@ -117,13 +117,11 @@ export type GenericEntityUpdate = {
 
 export type UpdateEntityType<U> = (
     options?:
-        | MutationFunctionOptions<
-              U,
-              {
-                  urn: string;
-                  input: GenericEntityUpdate;
-              }
-          >
+        | MutationFunctionOptions<U,
+        {
+            urn: string;
+            input: GenericEntityUpdate;
+        }>
         | undefined,
 ) => Promise<FetchResult<U, Record<string, any>, Record<string, any>>>;
 

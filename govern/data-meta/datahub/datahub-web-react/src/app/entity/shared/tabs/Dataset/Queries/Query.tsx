@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import QueryModal from './QueryModal';
 import QueryBuilderModal from './QueryBuilderModal';
 import QueryCard from './QueryCard';
@@ -18,18 +18,18 @@ export type Props = {
 };
 
 export default function Query({
-    urn,
-    query,
-    title,
-    description,
-    createdAtMs,
-    showDelete,
-    showEdit,
-    showDetails = true,
-    onDeleted,
-    onEdited,
-    index,
-}: Props) {
+                                  urn,
+                                  query,
+                                  title,
+                                  description,
+                                  createdAtMs,
+                                  showDelete,
+                                  showEdit,
+                                  showDetails = true,
+                                  onDeleted,
+                                  onEdited,
+                                  index,
+                              }: Props) {
     const [showQueryModal, setShowQueryModal] = useState(false);
     const [showEditQueryModal, setShowEditQueryModal] = useState(false);
 
@@ -65,7 +65,7 @@ export default function Query({
             )}
             {showEditQueryModal && (
                 <QueryBuilderModal
-                    initialState={{ urn: urn as string, title, description, query }}
+                    initialState={{urn: urn as string, title, description, query}}
                     onSubmit={onEditSubmitted}
                     onClose={() => setShowEditQueryModal(false)}
                 />

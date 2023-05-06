@@ -1,10 +1,10 @@
-import { Button, Form, Modal, Select, Tag, Tooltip } from 'antd';
-import React, { ReactNode, useRef, useState } from 'react';
+import {Button, Form, Modal, Select, Tag, Tooltip} from 'antd';
+import React, {ReactNode, useRef, useState} from 'react';
 import styled from 'styled-components/macro';
-import { useGetSearchResultsLazyQuery } from '../../../../../../../graphql/search.generated';
-import { Container, Entity, EntityType } from '../../../../../../../types.generated';
-import { useEnterKeyListener } from '../../../../../../shared/useEnterKeyListener';
-import { useEntityRegistry } from '../../../../../../useEntityRegistry';
+import {useGetSearchResultsLazyQuery} from '../../../../../../../graphql/search.generated';
+import {Container, Entity, EntityType} from '../../../../../../../types.generated';
+import {useEnterKeyListener} from '../../../../../../shared/useEnterKeyListener';
+import {useEntityRegistry} from '../../../../../../useEntityRegistry';
 
 type Props = {
     onCloseModal: () => void;
@@ -34,8 +34,8 @@ const PreviewImage = styled.img`
     margin-right: 4px;
 `;
 
-export const ContainerSelectModal = ({ onCloseModal, defaultValues, onOkOverride, titleOverride }: Props) => {
-    const [containerSearch, { data: platforSearchData }] = useGetSearchResultsLazyQuery();
+export const ContainerSelectModal = ({onCloseModal, defaultValues, onOkOverride, titleOverride}: Props) => {
+    const [containerSearch, {data: platforSearchData}] = useGetSearchResultsLazyQuery();
     const entityRegistry = useEntityRegistry();
 
     const containerSearchResults =
@@ -69,7 +69,7 @@ export const ContainerSelectModal = ({ onCloseModal, defaultValues, onOkOverride
         const truncatedDisplayName = displayName.length > 25 ? `${displayName.slice(0, 25)}...` : displayName;
         return (
             <Tooltip title={displayName}>
-                <PreviewImage src={entity.platform?.properties?.logoUrl || undefined} alt={entity.properties?.name} />
+                <PreviewImage src={entity.platform?.properties?.logoUrl || undefined} alt={entity.properties?.name}/>
                 <span>{truncatedDisplayName}</span>
             </Tooltip>
         );
@@ -125,7 +125,7 @@ export const ContainerSelectModal = ({ onCloseModal, defaultValues, onOkOverride
 
     const tagRender = (props) => {
         // eslint-disable-next-line react/prop-types
-        const { label, closable, onClose } = props;
+        const {label, closable, onClose} = props;
         const onPreventMouseDown = (event) => {
             event.preventDefault();
             event.stopPropagation();

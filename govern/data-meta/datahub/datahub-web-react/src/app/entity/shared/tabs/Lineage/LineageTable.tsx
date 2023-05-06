@@ -1,12 +1,12 @@
 import React from 'react';
-import { List } from 'antd';
+import {List} from 'antd';
 import styled from 'styled-components';
 import VisiblitySensor from 'react-visibility-sensor';
 
-import { useEntityRegistry } from '../../../../useEntityRegistry';
-import { PreviewType } from '../../../Entity';
-import { Entity } from '../../../../../types.generated';
-import { ANTD_GRAY } from '../../constants';
+import {useEntityRegistry} from '../../../../useEntityRegistry';
+import {PreviewType} from '../../../Entity';
+import {Entity} from '../../../../../types.generated';
+import {ANTD_GRAY} from '../../constants';
 
 const LineageList = styled(List)`
     padding-left: 40px;
@@ -46,7 +46,7 @@ type Props = {
     data?: Entity[];
 };
 
-export const LineageTable = ({ data, title }: Props) => {
+export const LineageTable = ({data, title}: Props) => {
     const entityRegistry = useEntityRegistry();
 
     return (
@@ -57,11 +57,11 @@ export const LineageTable = ({ data, title }: Props) => {
             renderItem={(item) => (
                 <ListItem>
                     <VisiblitySensor partialVisibility>
-                        {({ isVisible }) =>
+                        {({isVisible}) =>
                             isVisible && !!item.type ? (
                                 entityRegistry.renderPreview(item.type, PreviewType.PREVIEW, item)
                             ) : (
-                                <ItemPlaceholder />
+                                <ItemPlaceholder/>
                             )
                         }
                     </VisiblitySensor>

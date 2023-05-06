@@ -7,12 +7,12 @@ import {
     CalendarOutlined,
     FieldTimeOutlined,
 } from '@ant-design/icons';
-import { Tooltip, Typography } from 'antd';
-import React, { FC } from 'react';
-import { VscSymbolString, VscFileBinary } from 'react-icons/vsc';
+import {Tooltip, Typography} from 'antd';
+import React, {FC} from 'react';
+import {VscSymbolString, VscFileBinary} from 'react-icons/vsc';
 import styled from 'styled-components';
-import { capitalizeFirstLetter } from '../../../../../shared/textUtil';
-import { SchemaFieldDataType } from '../../../../../../types.generated';
+import {capitalizeFirstLetter} from '../../../../../shared/textUtil';
+import {SchemaFieldDataType} from '../../../../../../types.generated';
 
 const TypeIconContainer = styled.div`
     display: flex;
@@ -40,11 +40,11 @@ const DATA_TYPE_ICON_MAP: Record<SchemaFieldDataType, { icon: FC<{ style: any }>
             size: 18,
             text: 'Boolean',
         },
-        [SchemaFieldDataType.Fixed]: { icon: FieldBinaryOutlined, size: 18, text: 'Fixed' },
+        [SchemaFieldDataType.Fixed]: {icon: FieldBinaryOutlined, size: 18, text: 'Fixed'},
         [SchemaFieldDataType.String]: {
             icon: () => (
                 <IconSpan role="img" aria-label="calendar" className="anticon anticon-calendar">
-                    <VscSymbolString />
+                    <VscSymbolString/>
                 </IconSpan>
             ),
             size: 20,
@@ -53,21 +53,21 @@ const DATA_TYPE_ICON_MAP: Record<SchemaFieldDataType, { icon: FC<{ style: any }>
         [SchemaFieldDataType.Bytes]: {
             icon: () => (
                 <IconSpan role="img" aria-label="calendar" className="anticon anticon-calendar">
-                    <VscFileBinary />
+                    <VscFileBinary/>
                 </IconSpan>
             ),
             size: 18,
             text: 'Bytes',
         },
-        [SchemaFieldDataType.Number]: { icon: NumberOutlined, size: 14, text: 'Number' },
-        [SchemaFieldDataType.Date]: { icon: CalendarOutlined, size: 18, text: 'Date' },
-        [SchemaFieldDataType.Time]: { icon: FieldTimeOutlined, size: 18, text: 'Time' },
-        [SchemaFieldDataType.Enum]: { icon: UnorderedListOutlined, size: 18, text: 'Enum' },
-        [SchemaFieldDataType.Null]: { icon: QuestionCircleOutlined, size: 16, text: '' },
-        [SchemaFieldDataType.Map]: { icon: null, size: 0, text: 'Map' },
-        [SchemaFieldDataType.Array]: { icon: UnorderedListOutlined, size: 14, text: 'Array' },
-        [SchemaFieldDataType.Union]: { icon: UnderlineOutlined, size: 14, text: 'Union' },
-        [SchemaFieldDataType.Struct]: { icon: null, size: 0, text: 'Struct' },
+        [SchemaFieldDataType.Number]: {icon: NumberOutlined, size: 14, text: 'Number'},
+        [SchemaFieldDataType.Date]: {icon: CalendarOutlined, size: 18, text: 'Date'},
+        [SchemaFieldDataType.Time]: {icon: FieldTimeOutlined, size: 18, text: 'Time'},
+        [SchemaFieldDataType.Enum]: {icon: UnorderedListOutlined, size: 18, text: 'Enum'},
+        [SchemaFieldDataType.Null]: {icon: QuestionCircleOutlined, size: 16, text: ''},
+        [SchemaFieldDataType.Map]: {icon: null, size: 0, text: 'Map'},
+        [SchemaFieldDataType.Array]: {icon: UnorderedListOutlined, size: 14, text: 'Array'},
+        [SchemaFieldDataType.Union]: {icon: UnderlineOutlined, size: 14, text: 'Union'},
+        [SchemaFieldDataType.Struct]: {icon: null, size: 0, text: 'Struct'},
     };
 
 const truncate = (length: number, input?: string | null) => {
@@ -83,14 +83,14 @@ type Props = {
     nativeDataType: string | null | undefined;
 };
 
-export default function TypeIcon({ type, nativeDataType }: Props) {
-    const { icon: Icon, size, text } = DATA_TYPE_ICON_MAP[type];
+export default function TypeIcon({type, nativeDataType}: Props) {
+    const {icon: Icon, size, text} = DATA_TYPE_ICON_MAP[type];
 
     // if unable to match type to DataHub, display native type info by default
     const nativeFallback = type === SchemaFieldDataType.Null;
 
     // eslint-disable-next-line react/prop-types
-    const NativeDataTypeTooltip = ({ children }) =>
+    const NativeDataTypeTooltip = ({children}) =>
         nativeDataType ? (
             <Tooltip placement="top" title={capitalizeFirstLetter(nativeDataType)}>
                 {children}
@@ -102,7 +102,7 @@ export default function TypeIcon({ type, nativeDataType }: Props) {
     return (
         <NativeDataTypeTooltip>
             <TypeIconContainer data-testid={`icon-${type}`}>
-                {Icon && <Icon style={{ fontSize: size }} />}
+                {Icon && <Icon style={{fontSize: size}}/>}
                 <TypeSubtitle type="secondary" hasicon={Icon ? 'yes' : undefined}>
                     {nativeFallback ? truncate(250, nativeDataType) : text}
                 </TypeSubtitle>

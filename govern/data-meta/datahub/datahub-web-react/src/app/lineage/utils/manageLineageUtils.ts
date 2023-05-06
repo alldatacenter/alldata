@@ -1,7 +1,7 @@
-import { Entity, EntityType, LineageEdge } from '../../../types.generated';
-import analytics, { EventType } from '../../analytics';
+import {Entity, EntityType, LineageEdge} from '../../../types.generated';
+import analytics, {EventType} from '../../analytics';
 import EntityRegistry from '../../entity/EntityRegistry';
-import { Direction } from '../types';
+import {Direction} from '../types';
 
 interface AnalyticsEventsProps {
     lineageDirection: Direction;
@@ -13,13 +13,13 @@ interface AnalyticsEventsProps {
 }
 
 export function recordAnalyticsEvents({
-    lineageDirection,
-    entitiesToAdd,
-    entitiesToRemove,
-    entityRegistry,
-    entityType,
-    entityPlatform,
-}: AnalyticsEventsProps) {
+                                          lineageDirection,
+                                          entitiesToAdd,
+                                          entitiesToRemove,
+                                          entityRegistry,
+                                          entityType,
+                                          entityPlatform,
+                                      }: AnalyticsEventsProps) {
     entitiesToAdd.forEach((entityToAdd) => {
         const genericProps = entityRegistry.getGenericEntityProperties(entityToAdd.type, entityToAdd);
         analytics.event({
@@ -54,15 +54,15 @@ export function buildUpdateLineagePayload(
     let edgesToRemove: LineageEdge[] = [];
 
     if (lineageDirection === Direction.Upstream) {
-        edgesToAdd = entitiesToAdd.map((entity) => ({ upstreamUrn: entity.urn, downstreamUrn: entityUrn }));
-        edgesToRemove = entitiesToRemove.map((entity) => ({ upstreamUrn: entity.urn, downstreamUrn: entityUrn }));
+        edgesToAdd = entitiesToAdd.map((entity) => ({upstreamUrn: entity.urn, downstreamUrn: entityUrn}));
+        edgesToRemove = entitiesToRemove.map((entity) => ({upstreamUrn: entity.urn, downstreamUrn: entityUrn}));
     }
     if (lineageDirection === Direction.Downstream) {
-        edgesToAdd = entitiesToAdd.map((entity) => ({ upstreamUrn: entityUrn, downstreamUrn: entity.urn }));
-        edgesToRemove = entitiesToRemove.map((entity) => ({ upstreamUrn: entityUrn, downstreamUrn: entity.urn }));
+        edgesToAdd = entitiesToAdd.map((entity) => ({upstreamUrn: entityUrn, downstreamUrn: entity.urn}));
+        edgesToRemove = entitiesToRemove.map((entity) => ({upstreamUrn: entityUrn, downstreamUrn: entity.urn}));
     }
 
-    return { edgesToAdd, edgesToRemove };
+    return {edgesToAdd, edgesToRemove};
 }
 
 export function getValidEntityTypes(lineageDirection: Direction, entityType?: EntityType) {

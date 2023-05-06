@@ -1,10 +1,10 @@
 import React from 'react';
-import { Typography } from 'antd';
+import {Typography} from 'antd';
 import styled from 'styled-components';
 
-import { ANTD_GRAY } from '../../constants';
-import { StyledTable } from '../../components/styled/StyledTable';
-import { useEntityData } from '../../EntityContext';
+import {ANTD_GRAY} from '../../constants';
+import {StyledTable} from '../../components/styled/StyledTable';
+import {useEntityData} from '../../EntityContext';
 
 const NameText = styled(Typography.Text)`
     font-family: 'Roboto Mono', monospace;
@@ -21,7 +21,7 @@ const ValueText = styled(Typography.Text)`
 `;
 
 export const PropertiesTab = () => {
-    const { entityData } = useEntityData();
+    const {entityData} = useEntityData();
 
     const propertyTableColumns = [
         {

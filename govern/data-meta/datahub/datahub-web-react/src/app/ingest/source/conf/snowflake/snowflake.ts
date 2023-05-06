@@ -1,4 +1,4 @@
-import { SourceConfig } from '../types';
+import {SourceConfig} from '../types';
 import snowflakeLogo from '../../../../../images/snowflakelogo.png';
 
 const placeholderRecipe = `\

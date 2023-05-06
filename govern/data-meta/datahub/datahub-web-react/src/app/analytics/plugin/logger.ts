@@ -9,13 +9,13 @@ const loggingPlugin = () => {
         initialize: () => {
             console.log('Initializing logging plugin');
         },
-        page: ({ payload }) => {
+        page: ({payload}) => {
             console.log(`Page view event: ${JSON.stringify(payload)}`);
         },
-        track: ({ payload }) => {
+        track: ({payload}) => {
             console.log(`Tracking event: ${JSON.stringify(payload)}`);
         },
-        identify: ({ payload }) => {
+        identify: ({payload}) => {
             console.log(`Identify event: ${JSON.stringify(payload)}`);
         },
         loaded: () => {

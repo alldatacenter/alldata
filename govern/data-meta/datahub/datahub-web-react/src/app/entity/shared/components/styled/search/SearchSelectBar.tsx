@@ -1,9 +1,9 @@
 import React from 'react';
-import { Button, Checkbox, Modal, Typography } from 'antd';
+import {Button, Checkbox, Modal, Typography} from 'antd';
 import styled from 'styled-components';
-import { ANTD_GRAY } from '../../../constants';
-import { EntityAndType } from '../../../types';
-import { SearchSelectActions } from './SearchSelectActions';
+import {ANTD_GRAY} from '../../../constants';
+import {EntityAndType} from '../../../types';
+import {SearchSelectActions} from './SearchSelectActions';
 
 const CheckboxContainer = styled.div`
     display: flex;
@@ -45,14 +45,14 @@ type Props = {
  * This component provides a select all checkbox and a set of actions that can be taken on the selected entities.
  */
 export const SearchSelectBar = ({
-    isSelectAll,
-    selectedEntities = [],
-    showCancel = true,
-    showActions = true,
-    onChangeSelectAll,
-    onCancel,
-    refetch,
-}: Props) => {
+                                    isSelectAll,
+                                    selectedEntities = [],
+                                    showCancel = true,
+                                    showActions = true,
+                                    onChangeSelectAll,
+                                    onCancel,
+                                    refetch,
+                                }: Props) => {
     const selectedEntityCount = selectedEntities.length;
     const onClickCancel = () => {
         if (selectedEntityCount > 0) {
@@ -62,7 +62,8 @@ export const SearchSelectBar = ({
                 onOk() {
                     onCancel?.();
                 },
-                onCancel() {},
+                onCancel() {
+                },
                 okText: 'Yes',
                 maskClosable: true,
                 closable: true,
@@ -84,7 +85,7 @@ export const SearchSelectBar = ({
                 </Typography.Text>
             </CheckboxContainer>
             <ActionsContainer>
-                {showActions && <SearchSelectActions selectedEntities={selectedEntities} refetch={refetch} />}
+                {showActions && <SearchSelectActions selectedEntities={selectedEntities} refetch={refetch}/>}
                 {showCancel && (
                     <CancelButton onClick={onClickCancel} type="link">
                         Done

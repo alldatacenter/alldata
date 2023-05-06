@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Editor } from './editor/Editor';
-import { DescriptionPreviewToolbar } from './DescriptionPreviewToolbar';
+import {Editor} from './editor/Editor';
+import {DescriptionPreviewToolbar} from './DescriptionPreviewToolbar';
 
 const EditorContainer = styled.div`
     overflow: auto;
@@ -13,12 +13,12 @@ type DescriptionPreviewProps = {
     onEdit: () => void;
 };
 
-export const DescriptionPreview = ({ description, onEdit }: DescriptionPreviewProps) => {
+export const DescriptionPreview = ({description, onEdit}: DescriptionPreviewProps) => {
     return (
         <>
-            <DescriptionPreviewToolbar onEdit={onEdit} />
+            <DescriptionPreviewToolbar onEdit={onEdit}/>
             <EditorContainer>
-                <Editor content={description} readOnly />
+                <Editor content={description} readOnly/>
             </EditorContainer>
         </>
     );

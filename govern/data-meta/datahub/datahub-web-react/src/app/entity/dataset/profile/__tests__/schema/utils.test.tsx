@@ -1,5 +1,5 @@
-import { SchemaFieldDataType } from '../../../../../../types.generated';
-import { filterKeyFieldPath } from '../../schema/utils/utils';
+import {SchemaFieldDataType} from '../../../../../../types.generated';
+import {filterKeyFieldPath} from '../../schema/utils/utils';
 
 describe('utils', () => {
     describe('filterKeyFieldPath', () => {

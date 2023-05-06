@@ -1,16 +1,16 @@
-import { useContext, useEffect } from 'react';
-import { SchemaField } from '../../../types.generated';
+import {useContext, useEffect} from 'react';
+import {SchemaField} from '../../../types.generated';
 import usePrevious from '../../shared/usePrevious';
-import { NUM_COLUMNS_PER_PAGE } from '../constants';
-import { getHighlightedColumnsForNode } from './columnLineageUtils';
-import { LineageExplorerContext } from './LineageExplorerContext';
+import {NUM_COLUMNS_PER_PAGE} from '../constants';
+import {getHighlightedColumnsForNode} from './columnLineageUtils';
+import {LineageExplorerContext} from './LineageExplorerContext';
 
 export function useResetPageIndexAfterSelect(
     nodeUrn: string,
     fields: SchemaField[],
     setPageIndex: (pageIndex: number) => void,
 ) {
-    const { selectedField, highlightedEdges } = useContext(LineageExplorerContext);
+    const {selectedField, highlightedEdges} = useContext(LineageExplorerContext);
     const previousSelectedField = usePrevious(selectedField);
 
     useEffect(() => {

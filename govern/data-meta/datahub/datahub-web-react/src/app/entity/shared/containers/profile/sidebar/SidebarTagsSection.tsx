@@ -1,10 +1,10 @@
 import React from 'react';
-import { Divider } from 'antd';
+import {Divider} from 'antd';
 import styled from 'styled-components';
 
 import TagTermGroup from '../../../../../shared/tags/TagTermGroup';
-import { SidebarHeader } from './SidebarHeader';
-import { useEntityData, useMutationUrn, useRefetch } from '../../../EntityContext';
+import {SidebarHeader} from './SidebarHeader';
+import {useEntityData, useMutationUrn, useRefetch} from '../../../EntityContext';
 import {
     ENTITY_PROFILE_GLOSSARY_TERMS_ID,
     ENTITY_PROFILE_TAGS_ID,
@@ -19,20 +19,20 @@ interface Props {
     readOnly?: boolean;
 }
 
-export const SidebarTagsSection = ({ properties, readOnly }: Props) => {
+export const SidebarTagsSection = ({properties, readOnly}: Props) => {
     const canAddTag = properties?.hasTags;
     const canAddTerm = properties?.hasTerms;
 
     const mutationUrn = useMutationUrn();
 
-    const { entityType, entityData } = useEntityData();
+    const {entityType, entityData} = useEntityData();
 
     const refetch = useRefetch();
 
     return (
         <div>
             <span id={ENTITY_PROFILE_TAGS_ID}>
-                <SidebarHeader title="Tags" />
+                <SidebarHeader title="标签"/>
                 <TagTermGroup
                     editableTags={entityData?.globalTags}
                     canAddTag={canAddTag}
@@ -44,9 +44,9 @@ export const SidebarTagsSection = ({ properties, readOnly }: Props) => {
                     readOnly={readOnly}
                 />
             </span>
-            <StyledDivider />
+            <StyledDivider/>
             <span id={ENTITY_PROFILE_GLOSSARY_TERMS_ID}>
-                <SidebarHeader title="Glossary Terms" />
+                <SidebarHeader title="术语 表术语"/>
                 <TagTermGroup
                     editableGlossaryTerms={entityData?.glossaryTerms}
                     canAddTerm={canAddTerm}

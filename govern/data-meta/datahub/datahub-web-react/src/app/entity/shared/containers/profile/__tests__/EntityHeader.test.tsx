@@ -1,10 +1,10 @@
-import { platformPrivileges } from '../../../../../../Mocks';
-import { EntityType } from '../../../../../../types.generated';
-import { getCanEditName } from '../header/EntityHeader';
+import {platformPrivileges} from '../../../../../../Mocks';
+import {EntityType} from '../../../../../../types.generated';
+import {getCanEditName} from '../header/EntityHeader';
 
 describe('getCanEditName', () => {
-    const entityDataWithManagePrivileges = { privileges: { canManageEntity: true } };
-    const entityDataWithoutManagePrivileges = { privileges: { canManageEntity: false } };
+    const entityDataWithManagePrivileges = {privileges: {canManageEntity: true}};
+    const entityDataWithoutManagePrivileges = {privileges: {canManageEntity: false}};
 
     it('should return true for Terms if manageGlossaries privilege is true', () => {
         const canEditName = getCanEditName(
@@ -17,7 +17,7 @@ describe('getCanEditName', () => {
     });
 
     it('should return false for Terms if manageGlossaries privilege and canManageEntity is false', () => {
-        const privilegesWithoutGlossaries = { ...platformPrivileges, manageGlossaries: false };
+        const privilegesWithoutGlossaries = {...platformPrivileges, manageGlossaries: false};
         const canEditName = getCanEditName(
             EntityType.GlossaryTerm,
             entityDataWithoutManagePrivileges,
@@ -28,7 +28,7 @@ describe('getCanEditName', () => {
     });
 
     it('should return true for Terms if manageGlossaries privilege is false but canManageEntity is true', () => {
-        const privilegesWithoutGlossaries = { ...platformPrivileges, manageGlossaries: false };
+        const privilegesWithoutGlossaries = {...platformPrivileges, manageGlossaries: false};
         const canEditName = getCanEditName(
             EntityType.GlossaryTerm,
             entityDataWithManagePrivileges,
@@ -49,7 +49,7 @@ describe('getCanEditName', () => {
     });
 
     it('should return false for Nodes if manageGlossaries privilege and canManageEntity is false', () => {
-        const privilegesWithoutGlossaries = { ...platformPrivileges, manageGlossaries: false };
+        const privilegesWithoutGlossaries = {...platformPrivileges, manageGlossaries: false};
         const canEditName = getCanEditName(
             EntityType.GlossaryNode,
             entityDataWithoutManagePrivileges,
@@ -60,7 +60,7 @@ describe('getCanEditName', () => {
     });
 
     it('should return true for Nodes if manageGlossaries privilege is false but canManageEntity is true', () => {
-        const privilegesWithoutGlossaries = { ...platformPrivileges, manageGlossaries: false };
+        const privilegesWithoutGlossaries = {...platformPrivileges, manageGlossaries: false};
         const canEditName = getCanEditName(
             EntityType.GlossaryNode,
             entityDataWithManagePrivileges,
@@ -77,7 +77,7 @@ describe('getCanEditName', () => {
     });
 
     it('should return false for Domains if manageDomains privilege is false', () => {
-        const privilegesWithoutDomains = { ...platformPrivileges, manageDomains: false };
+        const privilegesWithoutDomains = {...platformPrivileges, manageDomains: false};
         const canEditName = getCanEditName(
             EntityType.Domain,
             entityDataWithoutManagePrivileges,

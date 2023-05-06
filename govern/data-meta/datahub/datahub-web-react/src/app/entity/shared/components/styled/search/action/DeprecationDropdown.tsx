@@ -1,9 +1,9 @@
-import { message, Modal } from 'antd';
-import React, { useState } from 'react';
-import { useBatchUpdateDeprecationMutation } from '../../../../../../../graphql/mutations.generated';
-import { UpdateDeprecationModal } from '../../../../EntityDropdown/UpdateDeprecationModal';
+import {message, Modal} from 'antd';
+import React, {useState} from 'react';
+import {useBatchUpdateDeprecationMutation} from '../../../../../../../graphql/mutations.generated';
+import {UpdateDeprecationModal} from '../../../../EntityDropdown/UpdateDeprecationModal';
 import ActionDropdown from './ActionDropdown';
-import { handleBatchError } from '../../../../utils';
+import {handleBatchError} from '../../../../utils';
 
 type Props = {
     urns: Array<string>;
@@ -12,7 +12,7 @@ type Props = {
 };
 
 // eslint-disable-next-line
-export default function DeprecationDropdown({ urns, disabled = false, refetch }: Props) {
+export default function DeprecationDropdown({urns, disabled = false, refetch}: Props) {
     const [isEditModalVisible, setIsEditModalVisible] = useState(false);
     const [batchUpdateDeprecationMutation] = useBatchUpdateDeprecationMutation();
 
@@ -20,14 +20,14 @@ export default function DeprecationDropdown({ urns, disabled = false, refetch }:
         batchUpdateDeprecationMutation({
             variables: {
                 input: {
-                    resources: [...urns.map((urn) => ({ resourceUrn: urn }))],
+                    resources: [...urns.map((urn) => ({resourceUrn: urn}))],
                     deprecated: false,
                 },
             },
         })
-            .then(({ errors }) => {
+            .then(({errors}) => {
                 if (!errors) {
-                    message.success({ content: 'Marked assets as un-deprecated!', duration: 2 });
+                    message.success({content: 'Marked assets as un-deprecated!', duration: 2});
                     refetch?.();
                 }
             })
@@ -62,7 +62,8 @@ export default function DeprecationDropdown({ urns, disabled = false, refetch }:
                                 onOk() {
                                     batchUndeprecate();
                                 },
-                                onCancel() {},
+                                onCancel() {
+                                },
                                 okText: 'Yes',
                                 maskClosable: true,
                                 closable: true,

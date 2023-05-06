@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { Typography } from 'antd';
-import { MatchedField } from '../../../types.generated';
-import { TagSummary } from './shared/TagSummary';
-import { TermSummary } from './shared/TermSummary';
-import { FIELDS_TO_HIGHLIGHT } from './search/highlights';
-import { getMatchPrioritizingPrimary } from '../shared/utils';
-import { downgradeV2FieldPath } from './profile/schema/utils/utils';
+import {Typography} from 'antd';
+import {MatchedField} from '../../../types.generated';
+import {TagSummary} from './shared/TagSummary';
+import {TermSummary} from './shared/TermSummary';
+import {FIELDS_TO_HIGHLIGHT} from './search/highlights';
+import {getMatchPrioritizingPrimary} from '../shared/utils';
+import {downgradeV2FieldPath} from './profile/schema/utils/utils';
 
 type Props = {
     matchedFields: MatchedField[];
@@ -14,16 +14,16 @@ type Props = {
 
 const LABEL_INDEX_NAME = 'fieldLabels';
 
-export const DatasetSearchSnippet = ({ matchedFields }: Props) => {
+export const DatasetSearchSnippet = ({matchedFields}: Props) => {
     const matchedField = getMatchPrioritizingPrimary(matchedFields, LABEL_INDEX_NAME);
 
     let snippet: React.ReactNode;
 
     if (matchedField) {
         if (matchedField.value.includes('urn:li:tag')) {
-            snippet = <TagSummary urn={matchedField.value} />;
+            snippet = <TagSummary urn={matchedField.value}/>;
         } else if (matchedField.value.includes('urn:li:glossaryTerm')) {
-            snippet = <TermSummary urn={matchedField.value} />;
+            snippet = <TermSummary urn={matchedField.value}/>;
         } else if (matchedField.name === 'fieldPaths') {
             snippet = <b>{downgradeV2FieldPath(matchedField.value)}</b>;
         } else {

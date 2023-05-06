@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Typography } from 'antd';
-import { ANTD_GRAY } from '../../constants';
+import {Typography} from 'antd';
+import {ANTD_GRAY} from '../../constants';
 
 const HeaderInfoItem = styled.div<{ onClick?: () => void; width?: string }>`
     display: inline-block;
@@ -25,7 +25,7 @@ type Props = {
     width?: string;
 };
 
-export const InfoItem = ({ title, children, width, onClick }: Props) => {
+export const InfoItem = ({title, children, width, onClick}: Props) => {
     return (
         <HeaderInfoItem onClick={onClick} width={width}>
             <div>

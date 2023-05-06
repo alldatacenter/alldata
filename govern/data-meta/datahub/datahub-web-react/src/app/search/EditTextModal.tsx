@@ -1,5 +1,5 @@
-import { Button, Input, Modal } from 'antd';
-import React, { useState } from 'react';
+import {Button, Input, Modal} from 'antd';
+import React, {useState} from 'react';
 
 type Props = {
     onCloseModal: () => void;
@@ -8,7 +8,7 @@ type Props = {
     defaultValue?: string;
 };
 
-export const EditTextModal = ({ defaultValue, onCloseModal, onOk, title }: Props) => {
+export const EditTextModal = ({defaultValue, onCloseModal, onOk, title}: Props) => {
     const [stagedValue, setStagedValue] = useState(defaultValue || '');
     return (
         <Modal
@@ -31,7 +31,7 @@ export const EditTextModal = ({ defaultValue, onCloseModal, onOk, title }: Props
                 </>
             }
         >
-            <Input data-testid="edit-text-input" onChange={(e) => setStagedValue(e.target.value)} value={stagedValue} />
+            <Input data-testid="edit-text-input" onChange={(e) => setStagedValue(e.target.value)} value={stagedValue}/>
         </Modal>
     );
 };

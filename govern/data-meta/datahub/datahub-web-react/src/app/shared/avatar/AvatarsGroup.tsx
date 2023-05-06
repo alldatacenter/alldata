@@ -1,8 +1,8 @@
 import React from 'react';
-import { EntityType, Owner } from '../../../types.generated';
+import {EntityType, Owner} from '../../../types.generated';
 import CustomAvatar from './CustomAvatar';
 import EntityRegistry from '../../entity/EntityRegistry';
-import { SpacedAvatarGroup } from './SpaceAvatarGroup';
+import {SpacedAvatarGroup} from './SpaceAvatarGroup';
 
 type Props = {
     owners?: Array<Owner> | null;
@@ -12,7 +12,7 @@ type Props = {
 };
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export default function AvatarsGroup({ owners, entityRegistry, maxCount = 6, size }: Props) {
+export default function AvatarsGroup({owners, entityRegistry, maxCount = 6, size}: Props) {
     if (!owners || owners.length === 0) {
         return null;
     }

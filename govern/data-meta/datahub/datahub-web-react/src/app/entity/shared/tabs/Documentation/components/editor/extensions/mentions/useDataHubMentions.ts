@@ -1,7 +1,7 @@
-import { useCallback, useEffect, useState } from 'react';
-import { useRemirrorContext } from '@remirror/react';
-import { ActionKind, AutocompleteAction, FromTo } from 'prosemirror-autocomplete';
-import { DataHubMentionsExtension } from './DataHubMentionsExtension';
+import {useCallback, useEffect, useState} from 'react';
+import {useRemirrorContext} from '@remirror/react';
+import {ActionKind, AutocompleteAction, FromTo} from 'prosemirror-autocomplete';
+import {DataHubMentionsExtension} from './DataHubMentionsExtension';
 
 type State = {
     active: boolean;
@@ -24,13 +24,13 @@ export function useDataHubMentions<Item = any>(props: UseDataHubMentionsProps<It
     const [index, selectedIndex] = useState(0);
     const rmrCtx = useRemirrorContext();
     const ext = rmrCtx.getExtension(DataHubMentionsExtension);
-    const [state, setState] = useState<State>({ active: false });
-    const { items, onEnter } = props;
+    const [state, setState] = useState<State>({active: false});
+    const {items, onEnter} = props;
 
     const handleEvents = useCallback(
         (action: AutocompleteAction) => {
             const active = !(action.kind === ActionKind.close || action.kind === ActionKind.enter);
-            setState({ active, range: action.range, filter: action.filter });
+            setState({active, range: action.range, filter: action.filter});
 
             if (!items) {
                 return false;
@@ -59,5 +59,5 @@ export function useDataHubMentions<Item = any>(props: UseDataHubMentionsProps<It
         return () => eventHandler();
     }, [ext, handleEvents]);
 
-    return { ...state, selectedIndex: index };
+    return {...state, selectedIndex: index};
 }

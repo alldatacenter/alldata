@@ -1,9 +1,9 @@
 import React from 'react';
-import { Typography } from 'antd';
+import {Typography} from 'antd';
 import styled from 'styled-components';
-import { RoutedTabs } from '../shared/RoutedTabs';
-import { ManagePolicies } from './policy/ManagePolicies';
-import { ManageRoles } from './roles/ManageRoles';
+import {RoutedTabs} from '../shared/RoutedTabs';
+import {ManagePolicies} from './policy/ManagePolicies';
+import {ManageRoles} from './roles/ManageRoles';
 
 const PageContainer = styled.div`
     padding-top: 20px;
@@ -38,6 +38,7 @@ enum TabType {
     Roles = 'Roles',
     Policies = 'Policies',
 }
+
 const ENABLED_TAB_TYPES = [TabType.Roles, TabType.Policies];
 
 export const ManagePermissions = () => {
@@ -50,7 +51,7 @@ export const ManagePermissions = () => {
             {
                 name: TabType.Roles,
                 path: TabType.Roles.toLocaleLowerCase(),
-                content: <ManageRoles />,
+                content: <ManageRoles/>,
                 display: {
                     enabled: () => true,
                 },
@@ -58,7 +59,7 @@ export const ManagePermissions = () => {
             {
                 name: TabType.Policies,
                 path: TabType.Policies.toLocaleLowerCase(),
-                content: <ManagePolicies />,
+                content: <ManagePolicies/>,
                 display: {
                     enabled: () => true,
                 },
@@ -78,7 +79,7 @@ export const ManagePermissions = () => {
                 </Typography.Paragraph>
             </PageHeaderContainer>
             <Content>
-                <RoutedTabs defaultPath={defaultTabPath} tabs={getTabs()} onTabChange={onTabChange} />
+                <RoutedTabs defaultPath={defaultTabPath} tabs={getTabs()} onTabChange={onTabChange}/>
             </Content>
         </PageContainer>
     );

@@ -1,6 +1,6 @@
-import { EntityType, SearchResult } from '../../types.generated';
-import { FetchedEntity } from '../lineage/types';
-import { GenericEntityProperties } from './shared/types';
+import {EntityType, SearchResult} from '../../types.generated';
+import {FetchedEntity} from '../lineage/types';
+import {GenericEntityProperties} from './shared/types';
 
 export enum PreviewType {
     /**

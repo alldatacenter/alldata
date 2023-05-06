@@ -1,11 +1,11 @@
 import React from 'react';
-import { FolderOutlined, RightOutlined } from '@ant-design/icons';
+import {FolderOutlined, RightOutlined} from '@ant-design/icons';
 import styled from 'styled-components/macro';
-import { Maybe } from 'graphql/jsutils/Maybe';
-import { Link } from 'react-router-dom';
-import { EntityType } from '../../types.generated';
-import { ANTD_GRAY } from '../entity/shared/constants';
-import { useEntityRegistry } from '../useEntityRegistry';
+import {Maybe} from 'graphql/jsutils/Maybe';
+import {Link} from 'react-router-dom';
+import {EntityType} from '../../types.generated';
+import {ANTD_GRAY} from '../entity/shared/constants';
+import {useEntityRegistry} from '../useEntityRegistry';
 
 const ItemWrapper = styled.div`
     transition: 0.15s;
@@ -53,7 +53,7 @@ interface Props {
 }
 
 function GlossaryEntityItem(props: Props) {
-    const { name, urn, type, count } = props;
+    const {name, urn, type, count} = props;
 
     const entityRegistry = useEntityRegistry();
 
@@ -62,11 +62,11 @@ function GlossaryEntityItem(props: Props) {
             <ItemWrapper>
                 <GlossaryItem>
                     <span>
-                        {type === EntityType.GlossaryNode && <FolderOutlined />}
+                        {type === EntityType.GlossaryNode && <FolderOutlined/>}
                         {name}
                         <CountWrapper>{count}</CountWrapper>
                     </span>
-                    {type === EntityType.GlossaryNode && <StyledRightOutline />}
+                    {type === EntityType.GlossaryNode && <StyledRightOutline/>}
                 </GlossaryItem>
             </ItemWrapper>
         </Link>

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Tooltip } from 'antd';
+import {Tooltip} from 'antd';
 
 const CircleContainer = styled.span`
     width: 10px;
@@ -25,11 +25,11 @@ type Props = {
     color: string;
 };
 
-export const DefaultViewIcon = ({ title, color }: Props) => {
+export const DefaultViewIcon = ({title, color}: Props) => {
     return (
         <Tooltip title={title}>
             <CircleContainer>
-                <Circle color={color} />
+                <Circle color={color}/>
             </CircleContainer>
         </Tooltip>
     );

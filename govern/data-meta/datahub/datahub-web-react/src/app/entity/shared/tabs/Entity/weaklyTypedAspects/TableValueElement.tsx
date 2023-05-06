@@ -12,7 +12,7 @@ function isValidHttpUrl(string) {
     return url.protocol === 'http:' || url.protocol === 'https:';
 }
 
-export default function TableValueElement({ value }: { value: any }) {
+export default function TableValueElement({value}: { value: any }) {
     if (typeof value === 'boolean') {
         return <span>{String(value)}</span>;
     }

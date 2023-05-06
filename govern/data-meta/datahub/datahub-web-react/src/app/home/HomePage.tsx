@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
-import { HomePageHeader } from './HomePageHeader';
-import { HomePageBody } from './HomePageBody';
-import analytics, { EventType } from '../analytics';
-import { OnboardingTour } from '../onboarding/OnboardingTour';
+import React, {useEffect} from 'react';
+import {HomePageHeader} from './HomePageHeader';
+import {HomePageBody} from './HomePageBody';
+import analytics, {EventType} from '../analytics';
+import {OnboardingTour} from '../onboarding/OnboardingTour';
 import {
     GLOBAL_WELCOME_TO_DATAHUB_ID,
     HOME_PAGE_INGESTION_ID,
@@ -14,7 +14,7 @@ import {
 
 export const HomePage = () => {
     useEffect(() => {
-        analytics.event({ type: EventType.HomePageViewEvent });
+        analytics.event({type: EventType.HomePageViewEvent});
     }, []);
     return (
         <>
@@ -28,8 +28,8 @@ export const HomePage = () => {
                     HOME_PAGE_SEARCH_BAR_ID,
                 ]}
             />
-            <HomePageHeader />
-            <HomePageBody />
+            <HomePageHeader/>
+            <HomePageBody/>
         </>
     );
 };

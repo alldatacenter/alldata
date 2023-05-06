@@ -1,27 +1,27 @@
-import { FolderFilled, FolderOutlined } from '@ant-design/icons';
+import {FolderFilled, FolderOutlined} from '@ant-design/icons';
 import React from 'react';
-import { useGetGlossaryNodeQuery } from '../../../graphql/glossaryNode.generated';
-import { EntityType, GlossaryNode, SearchResult } from '../../../types.generated';
-import { Entity, EntityCapabilityType, IconStyleType, PreviewType } from '../Entity';
-import { EntityProfile } from '../shared/containers/profile/EntityProfile';
-import { SidebarOwnerSection } from '../shared/containers/profile/sidebar/Ownership/SidebarOwnerSection';
-import { SidebarAboutSection } from '../shared/containers/profile/sidebar/AboutSection/SidebarAboutSection';
-import { getDataForEntityType } from '../shared/containers/profile/utils';
-import { EntityMenuItems } from '../shared/EntityDropdown/EntityDropdown';
-import { DocumentationTab } from '../shared/tabs/Documentation/DocumentationTab';
+import {useGetGlossaryNodeQuery} from '../../../graphql/glossaryNode.generated';
+import {EntityType, GlossaryNode, SearchResult} from '../../../types.generated';
+import {Entity, EntityCapabilityType, IconStyleType, PreviewType} from '../Entity';
+import {EntityProfile} from '../shared/containers/profile/EntityProfile';
+import {SidebarOwnerSection} from '../shared/containers/profile/sidebar/Ownership/SidebarOwnerSection';
+import {SidebarAboutSection} from '../shared/containers/profile/sidebar/AboutSection/SidebarAboutSection';
+import {getDataForEntityType} from '../shared/containers/profile/utils';
+import {EntityMenuItems} from '../shared/EntityDropdown/EntityDropdown';
+import {DocumentationTab} from '../shared/tabs/Documentation/DocumentationTab';
 import ChildrenTab from './ChildrenTab';
-import { Preview } from './preview/Preview';
+import {Preview} from './preview/Preview';
 
 class GlossaryNodeEntity implements Entity<GlossaryNode> {
     type: EntityType = EntityType.GlossaryNode;
 
     icon = (fontSize: number, styleType: IconStyleType, color?: string) => {
         if (styleType === IconStyleType.TAB_VIEW) {
-            return <FolderOutlined style={{ fontSize, color }} />;
+            return <FolderOutlined style={{fontSize, color}}/>;
         }
 
         if (styleType === IconStyleType.HIGHLIGHT) {
-            return <FolderFilled style={{ fontSize, color: color || '#B37FEB' }} />;
+            return <FolderFilled style={{fontSize, color: color || '#B37FEB'}}/>;
         }
 
         return (

@@ -18,7 +18,7 @@ type Props = {
     name: string;
 };
 
-export const DomainLabel = ({ name }: Props) => {
+export const DomainLabel = ({name}: Props) => {
     return (
         <DomainContainerWrapper>
             <DomainContentWrapper>

@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import { BookOutlined } from '@ant-design/icons';
-import { Button, Tag } from 'antd';
-import { useHistory } from 'react-router-dom';
-import { RecommendationContent, GlossaryTerm } from '../../../../types.generated';
-import { navigateToSearchUrl } from '../../../search/utils/navigateToSearchUrl';
-import { useEntityRegistry } from '../../../useEntityRegistry';
+import {BookOutlined} from '@ant-design/icons';
+import {Button, Tag} from 'antd';
+import {useHistory} from 'react-router-dom';
+import {RecommendationContent, GlossaryTerm} from '../../../../types.generated';
+import {navigateToSearchUrl} from '../../../search/utils/navigateToSearchUrl';
+import {useEntityRegistry} from '../../../useEntityRegistry';
 
 const TermSearchListContainer = styled.div`
     display: flex;
@@ -38,7 +38,7 @@ type Props = {
     onClick?: (index: number) => void;
 };
 
-export const GlossaryTermSearchList = ({ content, onClick }: Props) => {
+export const GlossaryTermSearchList = ({content, onClick}: Props) => {
     const history = useHistory();
     const entityRegistry = useEntityRegistry();
 
@@ -66,7 +66,7 @@ export const GlossaryTermSearchList = ({ content, onClick }: Props) => {
                 <TermContainer>
                     <TermButton type="link" key={term.urn} onClick={() => onClickTerm(term, index)}>
                         <Tag closable={false}>
-                            <StyledBook />
+                            <StyledBook/>
                             {entityRegistry.getDisplayName(term.type, term)}
                         </Tag>
                     </TermButton>

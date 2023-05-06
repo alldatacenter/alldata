@@ -1,9 +1,9 @@
-import { Button, Input, Tooltip } from 'antd';
-import { PlusOutlined, SearchOutlined } from '@ant-design/icons';
+import {Button, Input, Tooltip} from 'antd';
+import {PlusOutlined, SearchOutlined} from '@ant-design/icons';
 import styled from 'styled-components';
 import React from 'react';
 import TabToolbar from '../../../components/styled/TabToolbar';
-import { ADD_UNAUTHORIZED_MESSAGE } from './utils/constants';
+import {ADD_UNAUTHORIZED_MESSAGE} from './utils/constants';
 
 const StyledInput = styled(Input)`
     border-radius: 70px;
@@ -16,7 +16,7 @@ type Props = {
     onChangeSearch: (text: any) => void;
 };
 
-export default function QueriesTabToolbar({ addQueryDisabled, onAddQuery, onChangeSearch }: Props) {
+export default function QueriesTabToolbar({addQueryDisabled, onAddQuery, onChangeSearch}: Props) {
     return (
         <TabToolbar>
             <Tooltip
@@ -24,14 +24,14 @@ export default function QueriesTabToolbar({ addQueryDisabled, onAddQuery, onChan
                 title={(addQueryDisabled && ADD_UNAUTHORIZED_MESSAGE) || 'Add a highlighted query'}
             >
                 <Button disabled={addQueryDisabled} type="text" onClick={onAddQuery} data-testid="add-query-button">
-                    <PlusOutlined /> Add Query
+                    <PlusOutlined/> Add Query
                 </Button>
             </Tooltip>
             <StyledInput
                 placeholder="Search in queries..."
                 onChange={onChangeSearch}
                 allowClear
-                prefix={<SearchOutlined />}
+                prefix={<SearchOutlined/>}
                 data-testid="search-query-input"
             />
         </TabToolbar>

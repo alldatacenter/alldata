@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import { message, Modal } from 'antd';
+import React, {useEffect, useState} from 'react';
+import {message, Modal} from 'antd';
 import styled from 'styled-components';
 import {
     useGetIngestionSourceQuery,
     useCancelIngestionExecutionRequestMutation,
     useRollbackIngestionMutation,
 } from '../../../../graphql/ingestion.generated';
-import { Message } from '../../../shared/Message';
-import { ExecutionDetailsModal } from './ExecutionRequestDetailsModal';
+import {Message} from '../../../shared/Message';
+import {ExecutionDetailsModal} from './ExecutionRequestDetailsModal';
 import IngestionExecutionTable from './IngestionExecutionTable';
-import { ExecutionRequest } from '../../../../types.generated';
-import { ROLLING_BACK, RUNNING } from '../utils';
+import {ExecutionRequest} from '../../../../types.generated';
+import {ROLLING_BACK, RUNNING} from '../utils';
 import useRefreshIngestionData from './useRefreshIngestionData';
 
 const ListContainer = styled.div`
@@ -28,13 +28,13 @@ type Props = {
     onRefresh: () => void;
 };
 
-export const IngestionSourceExecutionList = ({ urn, isExpanded, lastRefresh, onRefresh }: Props) => {
+export const IngestionSourceExecutionList = ({urn, isExpanded, lastRefresh, onRefresh}: Props) => {
     const [focusExecutionUrn, setFocusExecutionUrn] = useState<undefined | string>(undefined);
 
     const start = 0;
     const count = 10; // Load 10 items at a time.
 
-    const { loading, data, error, refetch } = useGetIngestionSourceQuery({
+    const {loading, data, error, refetch} = useGetIngestionSourceQuery({
         variables: {
             urn,
             runStart: start,
@@ -47,6 +47,7 @@ export const IngestionSourceExecutionList = ({ urn, isExpanded, lastRefresh, onR
             isExecutionRequestActive(request as ExecutionRequest),
         );
     }
+
     useRefreshIngestionData(refetch, hasActiveExecution);
 
     const [cancelExecutionRequestMutation] = useCancelIngestionExecutionRequestMutation();
@@ -96,7 +97,8 @@ export const IngestionSourceExecutionList = ({ urn, isExpanded, lastRefresh, onR
             onOk() {
                 onCancelExecutionRequest(executionUrn);
             },
-            onCancel() {},
+            onCancel() {
+            },
             okText: 'Cancel',
             cancelText: 'Close',
             maskClosable: true,
@@ -111,13 +113,13 @@ export const IngestionSourceExecutionList = ({ urn, isExpanded, lastRefresh, onR
                 <div>
                     Rolling back this ingestion run will remove any new data ingested during the run. This may exclude
                     data that was previously extracted, but did not change during this run.
-                    <br />
-                    <br /> Are you sure you want to continue?
+                    <br/>
+                    <br/> Are you sure you want to continue?
                 </div>
             ),
             onOk() {
                 message.loading('Requesting rollback...');
-                rollbackIngestion({ variables: { input: { runId } } })
+                rollbackIngestion({variables: {input: {runId}}})
                     .then(() => {
                         setTimeout(() => {
                             message.destroy();
@@ -130,7 +132,8 @@ export const IngestionSourceExecutionList = ({ urn, isExpanded, lastRefresh, onR
                         message.error('Error requesting ingestion rollback');
                     });
             },
-            onCancel() {},
+            onCancel() {
+            },
             okText: 'Rollback',
             cancelText: 'Close',
             maskClosable: true,
@@ -142,9 +145,9 @@ export const IngestionSourceExecutionList = ({ urn, isExpanded, lastRefresh, onR
 
     return (
         <ListContainer>
-            {!data && loading && <Message type="loading" content="Loading executions..." />}
+            {!data && loading && <Message type="loading" content="Loading executions..."/>}
             {error && (
-                <Message type="error" content="Failed to load ingestion executions! An unexpected error occurred." />
+                <Message type="error" content="Failed to load ingestion executions! An unexpected error occurred."/>
             )}
             <IngestionExecutionTable
                 executionRequests={executionRequests}

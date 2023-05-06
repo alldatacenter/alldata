@@ -1,4 +1,4 @@
-import { FullLineageResultsFragment } from '../../graphql/lineage.generated';
+import {FullLineageResultsFragment} from '../../graphql/lineage.generated';
 import {
     Chart,
     Dashboard,
@@ -132,41 +132,41 @@ export type TreeProps = {
 
 export type EntityAndType =
     | {
-          type: EntityType.Dataset;
-          entity: Dataset;
-      }
+    type: EntityType.Dataset;
+    entity: Dataset;
+}
     | {
-          type: EntityType.Chart;
-          entity: Chart;
-      }
+    type: EntityType.Chart;
+    entity: Chart;
+}
     | {
-          type: EntityType.Dashboard;
-          entity: Dashboard;
-      }
+    type: EntityType.Dashboard;
+    entity: Dashboard;
+}
     | {
-          type: EntityType.DataJob;
-          entity: DataJob;
-      }
+    type: EntityType.DataJob;
+    entity: DataJob;
+}
     | {
-          type: EntityType.MlfeatureTable;
-          entity: MlFeatureTable;
-      }
+    type: EntityType.MlfeatureTable;
+    entity: MlFeatureTable;
+}
     | {
-          type: EntityType.Mlfeature;
-          entity: MlFeature;
-      }
+    type: EntityType.Mlfeature;
+    entity: MlFeature;
+}
     | {
-          type: EntityType.Mlmodel;
-          entity: MlModel;
-      }
+    type: EntityType.Mlmodel;
+    entity: MlModel;
+}
     | {
-          type: EntityType.MlmodelGroup;
-          entity: MlModelGroup;
-      }
+    type: EntityType.MlmodelGroup;
+    entity: MlModelGroup;
+}
     | {
-          type: EntityType.MlprimaryKey;
-          entity: MlPrimaryKey;
-      };
+    type: EntityType.MlprimaryKey;
+    entity: MlPrimaryKey;
+};
 
 export interface LineageResult {
     urn: string;

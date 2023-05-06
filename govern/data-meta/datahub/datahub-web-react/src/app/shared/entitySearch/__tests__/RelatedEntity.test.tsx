@@ -1,11 +1,11 @@
 import React from 'react';
-import { render } from '@testing-library/react';
-import { MockedProvider } from '@apollo/client/testing';
+import {render} from '@testing-library/react';
+import {MockedProvider} from '@apollo/client/testing';
 
-import { EntityType, PlatformNativeType, SearchResult } from '../../../../types.generated';
+import {EntityType, PlatformNativeType, SearchResult} from '../../../../types.generated';
 import TestPageContainer from '../../../../utils/test-utils/TestPageContainer';
 import RelatedEntity from '../RelatedEntity';
-import { mocks } from '../../../../Mocks';
+import {mocks} from '../../../../Mocks';
 
 const searchResult: {
     [key in EntityType]?: Array<SearchResult>;
@@ -50,10 +50,10 @@ const searchResult: {
 
 describe('RelatedEntity', () => {
     it('renders the entity rows', () => {
-        const { getByText } = render(
+        const {getByText} = render(
             <MockedProvider mocks={mocks} addTypename={false}>
                 <TestPageContainer>
-                    <RelatedEntity searchResult={searchResult} entityPath="dataset" />
+                    <RelatedEntity searchResult={searchResult} entityPath="dataset"/>
                 </TestPageContainer>
             </MockedProvider>,
         );

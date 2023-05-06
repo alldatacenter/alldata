@@ -1,12 +1,12 @@
-import { Image, Row, Space, Typography } from 'antd';
+import {Image, Row, Space, Typography} from 'antd';
 import React from 'react';
 import styled from 'styled-components';
-import { MlFeatureTable } from '../../../../types.generated';
-import { useEntityRegistry } from '../../../useEntityRegistry';
+import {MlFeatureTable} from '../../../../types.generated';
+import {useEntityRegistry} from '../../../useEntityRegistry';
 import CompactContext from '../../../shared/CompactContext';
-import { AvatarsGroup } from '../../../shared/avatar';
+import {AvatarsGroup} from '../../../shared/avatar';
 import MarkdownViewer from '../../shared/components/legacy/MarkdownViewer';
-import { capitalizeFirstLetterOnly } from '../../../shared/textUtil';
+import {capitalizeFirstLetterOnly} from '../../../shared/textUtil';
 
 const HeaderInfoItem = styled.div`
     display: inline-block;
@@ -29,7 +29,7 @@ export type Props = {
     mlFeatureTable: MlFeatureTable;
 };
 
-export default function MLFeatureTableHeader({ mlFeatureTable: { platform, description, ownership } }: Props) {
+export default function MLFeatureTableHeader({mlFeatureTable: {platform, description, ownership}}: Props) {
     const entityRegistry = useEntityRegistry();
     const isCompact = React.useContext(CompactContext);
 
@@ -42,7 +42,7 @@ export default function MLFeatureTableHeader({ mlFeatureTable: { platform, descr
                     {platform ? (
                         <HeaderInfoItem>
                             <div>
-                                <Typography.Text strong type="secondary" style={{ fontSize: 11 }}>
+                                <Typography.Text strong type="secondary" style={{fontSize: 11}}>
                                     Platform
                                 </Typography.Text>
                             </div>
@@ -60,8 +60,8 @@ export default function MLFeatureTableHeader({ mlFeatureTable: { platform, descr
                         </HeaderInfoItem>
                     ) : null}
                 </Row>
-                <MarkdownViewer isCompact={isCompact} source={description || ''} />
-                <AvatarsGroup owners={ownership?.owners} entityRegistry={entityRegistry} />
+                <MarkdownViewer isCompact={isCompact} source={description || ''}/>
+                <AvatarsGroup owners={ownership?.owners} entityRegistry={entityRegistry}/>
             </Space>
         </>
     );

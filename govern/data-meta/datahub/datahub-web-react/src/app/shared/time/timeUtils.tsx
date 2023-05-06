@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import moment from 'moment';
-import { DateInterval } from '../../../types.generated';
+import {DateInterval} from '../../../types.generated';
 
 dayjs.extend(relativeTime);
 
@@ -74,7 +74,7 @@ export const addInterval = (interval_num: number, date: Date, interval: DateInte
  * @param count the number of lookback intervals (3).
  */
 export const getTimeWindowStart = (endTimeMillis: number, interval: DateInterval, count: number): number => {
-    return endTimeMillis - getTimeWindowSizeMs({ interval, count });
+    return endTimeMillis - getTimeWindowSizeMs({interval, count});
 };
 
 /**
@@ -130,7 +130,7 @@ export const getLocaleTimezone = () => {
 };
 
 export const toRelativeTimeString = (timeMs: number) => {
-    const rtf = new Intl.RelativeTimeFormat('en', { numeric: 'auto' });
+    const rtf = new Intl.RelativeTimeFormat('en', {numeric: 'auto'});
 
     const diffInMs = timeMs - new Date().getTime();
 

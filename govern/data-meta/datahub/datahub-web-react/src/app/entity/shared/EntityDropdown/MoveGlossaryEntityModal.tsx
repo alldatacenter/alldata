@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components/macro';
-import { message, Button, Modal, Typography, Form } from 'antd';
-import { useEntityData, useRefetch } from '../EntityContext';
-import { useEntityRegistry } from '../../../useEntityRegistry';
-import { useUpdateParentNodeMutation } from '../../../../graphql/glossary.generated';
+import {message, Button, Modal, Typography, Form} from 'antd';
+import {useEntityData, useRefetch} from '../EntityContext';
+import {useEntityRegistry} from '../../../useEntityRegistry';
+import {useUpdateParentNodeMutation} from '../../../../graphql/glossary.generated';
 import NodeParentSelect from './NodeParentSelect';
-import { useGlossaryEntityData } from '../GlossaryEntityContext';
-import { getGlossaryRootToUpdate, getParentNodeToUpdate, updateGlossarySidebar } from '../../../glossary/utils';
+import {useGlossaryEntityData} from '../GlossaryEntityContext';
+import {getGlossaryRootToUpdate, getParentNodeToUpdate, updateGlossarySidebar} from '../../../glossary/utils';
 
 const StyledItem = styled(Form.Item)`
     margin-bottom: 0;
@@ -21,9 +21,9 @@ interface Props {
 }
 
 function MoveGlossaryEntityModal(props: Props) {
-    const { onClose } = props;
-    const { urn: entityDataUrn, entityData, entityType } = useEntityData();
-    const { isInGlossaryContext, urnsToUpdate, setUrnsToUpdate } = useGlossaryEntityData();
+    const {onClose} = props;
+    const {urn: entityDataUrn, entityData, entityType} = useEntityData();
+    const {isInGlossaryContext, urnsToUpdate, setUrnsToUpdate} = useGlossaryEntityData();
     const [form] = Form.useForm();
     const entityRegistry = useEntityRegistry();
     const [selectedParentUrn, setSelectedParentUrn] = useState('');
@@ -41,7 +41,7 @@ function MoveGlossaryEntityModal(props: Props) {
             },
         })
             .then(() => {
-                message.loading({ content: 'Updating...', duration: 2 });
+                message.loading({content: 'Updating...', duration: 2});
                 setTimeout(() => {
                     message.success({
                         content: `Moved ${entityRegistry.getEntityName(entityType)}!`,
@@ -57,7 +57,7 @@ function MoveGlossaryEntityModal(props: Props) {
             })
             .catch((e) => {
                 message.destroy();
-                message.error({ content: `Failed to move: \n ${e.message || ''}`, duration: 3 });
+                message.error({content: `Failed to move: \n ${e.message || ''}`, duration: 3});
             });
         onClose();
     }

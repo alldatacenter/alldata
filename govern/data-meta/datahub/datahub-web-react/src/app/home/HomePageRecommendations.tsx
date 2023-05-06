@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/macro';
-import { Divider, Empty, Typography } from 'antd';
+import {Divider, Empty, Typography} from 'antd';
 import {
     CorpUser,
     EntityType,
@@ -8,19 +8,19 @@ import {
     RecommendationRenderType,
     ScenarioType,
 } from '../../types.generated';
-import { useListRecommendationsQuery } from '../../graphql/recommendations.generated';
-import { RecommendationModule } from '../recommendations/RecommendationModule';
-import { BrowseEntityCard } from '../search/BrowseEntityCard';
-import { useEntityRegistry } from '../useEntityRegistry';
-import { useGetEntityCountsQuery } from '../../graphql/app.generated';
-import { ANTD_GRAY } from '../entity/shared/constants';
-import { HomePagePosts } from './HomePagePosts';
+import {useListRecommendationsQuery} from '../../graphql/recommendations.generated';
+import {RecommendationModule} from '../recommendations/RecommendationModule';
+import {BrowseEntityCard} from '../search/BrowseEntityCard';
+import {useEntityRegistry} from '../useEntityRegistry';
+import {useGetEntityCountsQuery} from '../../graphql/app.generated';
+import {ANTD_GRAY} from '../entity/shared/constants';
+import {HomePagePosts} from './HomePagePosts';
 import {
     HOME_PAGE_DOMAINS_ID,
     HOME_PAGE_MOST_POPULAR_ID,
     HOME_PAGE_PLATFORMS_ID,
 } from '../onboarding/config/HomePageOnboardingConfig';
-import { useUpdateEducationStepIdsAllowlist } from '../onboarding/useUpdateEducationStepIdsAllowlist';
+import {useUpdateEducationStepIdsAllowlist} from '../onboarding/useUpdateEducationStepIdsAllowlist';
 
 const PLATFORMS_MODULE_ID = 'Platforms';
 const MOST_POPULAR_MODULE_ID = 'HighUsageEntities';
@@ -97,7 +97,7 @@ const simpleViewEntityTypes = [
     EntityType.GlossaryTerm,
 ];
 
-export const HomePageRecommendations = ({ user }: Props) => {
+export const HomePageRecommendations = ({user}: Props) => {
     // Entity Types
     const entityRegistry = useEntityRegistry();
     const browseEntityList = entityRegistry.getBrowseEntityTypes();
@@ -105,7 +105,7 @@ export const HomePageRecommendations = ({ user }: Props) => {
 
     const showSimplifiedHomepage = user?.settings?.appearance?.showSimplifiedHomepage;
 
-    const { data: entityCountData } = useGetEntityCountsQuery({
+    const {data: entityCountData} = useGetEntityCountsQuery({
         variables: {
             input: {
                 types: browseEntityList,
@@ -121,7 +121,7 @@ export const HomePageRecommendations = ({ user }: Props) => {
 
     // Recommendations
     const scenario = ScenarioType.Home;
-    const { data } = useListRecommendationsQuery({
+    const {data} = useListRecommendationsQuery({
         variables: {
             input: {
                 userUrn,
@@ -158,14 +158,18 @@ export const HomePageRecommendations = ({ user }: Props) => {
 
     return (
         <RecommendationsContainer>
-            <HomePagePosts />
+            <HomePagePosts/>
             {orderedEntityCounts && orderedEntityCounts.length > 0 && (
                 <RecommendationContainer>
                     {domainRecommendationModule && (
                         <>
                             <DomainsRecomendationContainer id={HOME_PAGE_DOMAINS_ID}>
-                                <RecommendationTitle level={4}>{domainRecommendationModule.title}</RecommendationTitle>
-                                <ThinDivider />
+                                <RecommendationTitle level={4}>
+                                    {domainRecommendationModule.title === 'Domains'
+                                        ? '主题域'
+                                        : domainRecommendationModule.title}
+                                </RecommendationTitle>
+                                <ThinDivider/>
                                 <RecommendationModule
                                     module={domainRecommendationModule as RecommendationModuleType}
                                     scenarioType={scenario}
@@ -174,8 +178,8 @@ export const HomePageRecommendations = ({ user }: Props) => {
                             </DomainsRecomendationContainer>
                         </>
                     )}
-                    <RecommendationTitle level={4}>Explore your data</RecommendationTitle>
-                    <ThinDivider />
+                    <RecommendationTitle level={4}>探索元数据</RecommendationTitle>
+                    <ThinDivider/>
                     {hasIngestedMetadata ? (
                         <BrowseCardContainer>
                             {orderedEntityCounts.map(
@@ -191,30 +195,43 @@ export const HomePageRecommendations = ({ user }: Props) => {
                             )}
                             {!orderedEntityCounts.some(
                                 (entityCount) => entityCount.entityType === EntityType.GlossaryTerm,
-                            ) && <BrowseEntityCard entityType={EntityType.GlossaryTerm} count={0} />}
+                            ) && <BrowseEntityCard entityType={EntityType.GlossaryTerm} count={0}/>}
                         </BrowseCardContainer>
                     ) : (
                         <NoMetadataContainer>
-                            <NoMetadataEmpty description="No Metadata Found 😢" />
+                            <NoMetadataEmpty description="未找到元数据 😢"/>
                         </NoMetadataContainer>
                     )}
                 </RecommendationContainer>
             )}
             {recommendationModules &&
-                recommendationModules
-                    .filter((module) => module.renderType !== RecommendationRenderType.DomainSearchList)
-                    .map((module) => (
-                        <RecommendationContainer id={getStepId(module.moduleId)}>
-                            <RecommendationTitle level={4}>{module.title}</RecommendationTitle>
-                            <ThinDivider />
-                            <RecommendationModule
-                                key={module.moduleId}
-                                module={module as RecommendationModuleType}
-                                scenarioType={scenario}
-                                showTitle={false}
-                            />
-                        </RecommendationContainer>
-                    ))}
+            recommendationModules
+                .filter((module) => module.renderType !== RecommendationRenderType.DomainSearchList)
+                .map((module) => (
+                    <RecommendationContainer id={getStepId(module.moduleId)}>
+                        <RecommendationTitle level={4}>
+                            {/* eslint-disable-next-line react/no-unescaped-entities,no-nested-ternary */}
+                            {module.title === 'Platforms'
+                                ? '平台'
+                                : module.title === 'Recently Viewed'
+                                    ? '最近浏览'
+                                    : module.title === 'Most Popular'
+                                        ? '最受欢迎的'
+                                        : module.title === 'Top Tags'
+                                            ? '顶部标签'
+                                            : module.title === 'Domains'
+                                                ? '主题域'
+                                                : module.title}
+                        </RecommendationTitle>
+                        <ThinDivider/>
+                        <RecommendationModule
+                            key={module.moduleId}
+                            module={module as RecommendationModuleType}
+                            scenarioType={scenario}
+                            showTitle={false}
+                        />
+                    </RecommendationContainer>
+                ))}
         </RecommendationsContainer>
     );
 };

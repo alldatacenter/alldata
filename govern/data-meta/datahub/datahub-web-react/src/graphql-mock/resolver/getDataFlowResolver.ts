@@ -1,12 +1,12 @@
-import { DataFlow } from '../../types.generated';
-import { findDataFlowByURN } from '../fixtures/searchResult/dataFlowSearchResult';
+import {DataFlow} from '../../types.generated';
+import {findDataFlowByURN} from '../fixtures/searchResult/dataFlowSearchResult';
 
 type GetDataFlow = {
     data: { dataFlow: DataFlow };
 };
 
 export const getDataFlowResolver = {
-    getDataFlow({ variables: { urn } }): GetDataFlow {
+    getDataFlow({variables: {urn}}): GetDataFlow {
         const dataFlow = findDataFlowByURN(urn) as DataFlow;
         return {
             data: {

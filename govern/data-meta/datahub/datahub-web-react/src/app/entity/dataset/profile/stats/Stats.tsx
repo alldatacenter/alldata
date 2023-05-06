@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { Radio } from 'antd';
-import { DatasetProfile } from '../../../../../types.generated';
+import React, {useState} from 'react';
+import {Radio} from 'antd';
+import {DatasetProfile} from '../../../../../types.generated';
 import LatestStatsView from './snapshot/LatestStatsView';
 import HistoricalStatsView from './historical/HistoricalStatsView';
 
@@ -14,7 +14,7 @@ enum ViewType {
     HISTORICAL,
 }
 
-export default function Stats({ urn, profile }: Props) {
+export default function Stats({urn, profile}: Props) {
     /**
      * Determines which view should be visible: latest or historical.
      */
@@ -33,8 +33,8 @@ export default function Stats({ urn, profile }: Props) {
 
     return (
         <>
-            {view === ViewType.LATEST && <LatestStatsView profile={profile} toggleView={toggleView} />}
-            {view === ViewType.HISTORICAL && <HistoricalStatsView urn={urn} toggleView={toggleView} />}
+            {view === ViewType.LATEST && <LatestStatsView profile={profile} toggleView={toggleView}/>}
+            {view === ViewType.HISTORICAL && <HistoricalStatsView urn={urn} toggleView={toggleView}/>}
         </>
     );
 }

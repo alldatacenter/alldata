@@ -1,10 +1,10 @@
-import { Modal } from 'antd';
+import {Modal} from 'antd';
 import React from 'react';
 import styled from 'styled-components/macro';
-import { Entity, EntityPath } from '../../../types.generated';
-import { ANTD_GRAY } from '../../entity/shared/constants';
-import { CompactEntityNameList } from '../../recommendations/renderer/component/CompactEntityNameList';
-import { getDisplayedColumns } from './ColumnPathsText';
+import {Entity, EntityPath} from '../../../types.generated';
+import {ANTD_GRAY} from '../../entity/shared/constants';
+import {CompactEntityNameList} from '../../recommendations/renderer/component/CompactEntityNameList';
+import {getDisplayedColumns} from './ColumnPathsText';
 import ColumnsRelationshipText from './ColumnsRelationshipText';
 
 const StyledModal = styled(Modal)`
@@ -34,7 +34,7 @@ interface Props {
     hideModal: () => void;
 }
 
-export default function EntityPathsModal({ paths, resultEntityUrn, hideModal }: Props) {
+export default function EntityPathsModal({paths, resultEntityUrn, hideModal}: Props) {
     const displayedColumns = getDisplayedColumns(paths, resultEntityUrn);
 
     return (
@@ -42,7 +42,7 @@ export default function EntityPathsModal({ paths, resultEntityUrn, hideModal }: 
             title={
                 <Header>
                     Column path{paths.length > 1 && 's'} from{' '}
-                    <ColumnsRelationshipText displayedColumns={displayedColumns} />
+                    <ColumnsRelationshipText displayedColumns={displayedColumns}/>
                 </Header>
             }
             width="75vw"
@@ -50,11 +50,11 @@ export default function EntityPathsModal({ paths, resultEntityUrn, hideModal }: 
             onCancel={hideModal}
             onOk={hideModal}
             footer={null}
-            bodyStyle={{ padding: '16px 24px' }}
+            bodyStyle={{padding: '16px 24px'}}
         >
             {paths.map((path) => (
                 <PathWrapper>
-                    <CompactEntityNameList entities={path.path as Entity[]} showArrows />
+                    <CompactEntityNameList entities={path.path as Entity[]} showArrows/>
                 </PathWrapper>
             ))}{' '}
         </StyledModal>

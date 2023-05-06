@@ -1,32 +1,32 @@
 import React from 'react';
-import { Typography } from 'antd';
+import {Typography} from 'antd';
 import styled from 'styled-components';
-import { Deprecation, Domain, EntityType, GlobalTags, Owner, SearchInsight } from '../../../../types.generated';
+import {Deprecation, Domain, EntityType, GlobalTags, Owner, SearchInsight} from '../../../../types.generated';
 import DefaultPreviewCard from '../../../preview/DefaultPreviewCard';
-import { useEntityRegistry } from '../../../useEntityRegistry';
-import { IconStyleType } from '../../Entity';
-import { ANTD_GRAY } from '../../shared/constants';
+import {useEntityRegistry} from '../../../useEntityRegistry';
+import {IconStyleType} from '../../Entity';
+import {ANTD_GRAY} from '../../shared/constants';
 
 const StatText = styled(Typography.Text)`
     color: ${ANTD_GRAY[8]};
 `;
 
 export const Preview = ({
-    urn,
-    name,
-    platformInstanceId,
-    description,
-    platformName,
-    platformLogo,
-    owners,
-    globalTags,
-    domain,
-    externalUrl,
-    snippet,
-    insights,
-    jobCount,
-    deprecation,
-}: {
+                            urn,
+                            name,
+                            platformInstanceId,
+                            description,
+                            platformName,
+                            platformLogo,
+                            owners,
+                            globalTags,
+                            domain,
+                            externalUrl,
+                            snippet,
+                            insights,
+                            jobCount,
+                            deprecation,
+                        }: {
     urn: string;
     name: string;
     platformInstanceId?: string;

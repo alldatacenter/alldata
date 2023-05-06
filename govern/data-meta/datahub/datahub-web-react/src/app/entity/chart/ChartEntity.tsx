@@ -1,27 +1,27 @@
-import { LineChartOutlined } from '@ant-design/icons';
+import {LineChartOutlined} from '@ant-design/icons';
 import * as React from 'react';
 
-import { Chart, EntityType, LineageDirection, SearchResult } from '../../../types.generated';
-import { Entity, EntityCapabilityType, IconStyleType, PreviewType } from '../Entity';
-import { ChartPreview } from './preview/ChartPreview';
-import { GetChartQuery, useGetChartQuery, useUpdateChartMutation } from '../../../graphql/chart.generated';
-import { DocumentationTab } from '../shared/tabs/Documentation/DocumentationTab';
-import { SidebarAboutSection } from '../shared/containers/profile/sidebar/AboutSection/SidebarAboutSection';
-import { SidebarTagsSection } from '../shared/containers/profile/sidebar/SidebarTagsSection';
-import { SidebarOwnerSection } from '../shared/containers/profile/sidebar/Ownership/SidebarOwnerSection';
-import { GenericEntityProperties } from '../shared/types';
-import { EntityProfile } from '../shared/containers/profile/EntityProfile';
-import { PropertiesTab } from '../shared/tabs/Properties/PropertiesTab';
-import { ChartDashboardsTab } from '../shared/tabs/Entity/ChartDashboardsTab';
-import { getDataForEntityType } from '../shared/containers/profile/utils';
-import { SidebarDomainSection } from '../shared/containers/profile/sidebar/Domain/SidebarDomainSection';
-import { EntityMenuItems } from '../shared/EntityDropdown/EntityDropdown';
-import { LineageTab } from '../shared/tabs/Lineage/LineageTab';
-import { ChartStatsSummarySubHeader } from './profile/stats/ChartStatsSummarySubHeader';
-import { InputFieldsTab } from '../shared/tabs/Entity/InputFieldsTab';
-import { ChartSnippet } from './ChartSnippet';
-import { EmbedTab } from '../shared/tabs/Embed/EmbedTab';
-import { capitalizeFirstLetterOnly } from '../../shared/textUtil';
+import {Chart, EntityType, LineageDirection, SearchResult} from '../../../types.generated';
+import {Entity, EntityCapabilityType, IconStyleType, PreviewType} from '../Entity';
+import {ChartPreview} from './preview/ChartPreview';
+import {GetChartQuery, useGetChartQuery, useUpdateChartMutation} from '../../../graphql/chart.generated';
+import {DocumentationTab} from '../shared/tabs/Documentation/DocumentationTab';
+import {SidebarAboutSection} from '../shared/containers/profile/sidebar/AboutSection/SidebarAboutSection';
+import {SidebarTagsSection} from '../shared/containers/profile/sidebar/SidebarTagsSection';
+import {SidebarOwnerSection} from '../shared/containers/profile/sidebar/Ownership/SidebarOwnerSection';
+import {GenericEntityProperties} from '../shared/types';
+import {EntityProfile} from '../shared/containers/profile/EntityProfile';
+import {PropertiesTab} from '../shared/tabs/Properties/PropertiesTab';
+import {ChartDashboardsTab} from '../shared/tabs/Entity/ChartDashboardsTab';
+import {getDataForEntityType} from '../shared/containers/profile/utils';
+import {SidebarDomainSection} from '../shared/containers/profile/sidebar/Domain/SidebarDomainSection';
+import {EntityMenuItems} from '../shared/EntityDropdown/EntityDropdown';
+import {LineageTab} from '../shared/tabs/Lineage/LineageTab';
+import {ChartStatsSummarySubHeader} from './profile/stats/ChartStatsSummarySubHeader';
+import {InputFieldsTab} from '../shared/tabs/Entity/InputFieldsTab';
+import {ChartSnippet} from './ChartSnippet';
+import {EmbedTab} from '../shared/tabs/Embed/EmbedTab';
+import {capitalizeFirstLetterOnly} from '../../shared/textUtil';
 
 /**
  * Definition of the DataHub Chart entity.
@@ -31,16 +31,17 @@ export class ChartEntity implements Entity<Chart> {
 
     icon = (fontSize: number, styleType: IconStyleType, color?: string) => {
         if (styleType === IconStyleType.TAB_VIEW) {
-            return <LineChartOutlined style={{ fontSize, color }} />;
+            return <LineChartOutlined style={{fontSize, color}}/>;
         }
 
         if (styleType === IconStyleType.HIGHLIGHT) {
-            return <LineChartOutlined style={{ fontSize, color: color || 'rgb(144 163 236)' }} />;
+            return <LineChartOutlined style={{fontSize, color: color || 'rgb(144 163 236)'}}/>;
         }
 
         if (styleType === IconStyleType.SVG) {
             return (
-                <path d="M888 792H200V168c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v688c0 4.4 3.6 8 8 8h752c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM305.8 637.7c3.1 3.1 8.1 3.1 11.3 0l138.3-137.6L583 628.5c3.1 3.1 8.2 3.1 11.3 0l275.4-275.3c3.1-3.1 3.1-8.2 0-11.3l-39.6-39.6a8.03 8.03 0 00-11.3 0l-230 229.9L461.4 404a8.03 8.03 0 00-11.3 0L266.3 586.7a8.03 8.03 0 000 11.3l39.5 39.7z" />
+                <path
+                    d="M888 792H200V168c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v688c0 4.4 3.6 8 8 8h752c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM305.8 637.7c3.1 3.1 8.1 3.1 11.3 0l138.3-137.6L583 628.5c3.1 3.1 8.2 3.1 11.3 0l275.4-275.3c3.1-3.1 3.1-8.2 0-11.3l-39.6-39.6a8.03 8.03 0 00-11.3 0l-230 229.9L461.4 404a8.03 8.03 0 00-11.3 0L266.3 586.7a8.03 8.03 0 000 11.3l39.5 39.7z"/>
             );
         }
 
@@ -190,7 +191,7 @@ export class ChartEntity implements Entity<Chart> {
                 lastUpdatedMs={data.properties?.lastModified?.time}
                 createdMs={data.properties?.created?.time}
                 externalUrl={data.properties?.externalUrl}
-                snippet={<ChartSnippet matchedFields={result.matchedFields} inputFields={data.inputFields} />}
+                snippet={<ChartSnippet matchedFields={result.matchedFields} inputFields={data.inputFields}/>}
             />
         );
     };

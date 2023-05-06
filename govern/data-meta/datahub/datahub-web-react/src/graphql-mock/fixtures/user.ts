@@ -1,7 +1,7 @@
-import { getUsers } from './searchResult/userSearchResult';
+import {getUsers} from './searchResult/userSearchResult';
 
-const createCorpUserSchema = ({ server, user }) => {
-    const { info, editableInfo } = user;
+const createCorpUserSchema = ({server, user}) => {
+    const {info, editableInfo} = user;
 
     // eslint-disable-next-line no-param-reassign
     delete user.info;
@@ -16,6 +16,6 @@ const createCorpUserSchema = ({ server, user }) => {
 export const createLoginUsers = (server) => {
     const users = getUsers();
     users.forEach((user) => {
-        createCorpUserSchema({ server, user });
+        createCorpUserSchema({server, user});
     });
 };

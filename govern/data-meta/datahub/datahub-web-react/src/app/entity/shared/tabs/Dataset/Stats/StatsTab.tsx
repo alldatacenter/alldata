@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { GetDatasetQuery, useGetLastMonthUsageAggregationsQuery } from '../../../../../../graphql/dataset.generated';
-import { DatasetProfile, Operation, UsageQueryResult } from '../../../../../../types.generated';
-import { useBaseEntity } from '../../../EntityContext';
-import { toLocalDateString, toLocalTimeString, toLocalDateTimeString } from '../../../../../shared/time/timeUtils';
+import React, {useState} from 'react';
+import {GetDatasetQuery, useGetLastMonthUsageAggregationsQuery} from '../../../../../../graphql/dataset.generated';
+import {DatasetProfile, Operation, UsageQueryResult} from '../../../../../../types.generated';
+import {useBaseEntity} from '../../../EntityContext';
+import {toLocalDateString, toLocalTimeString, toLocalDateTimeString} from '../../../../../shared/time/timeUtils';
 import HistoricalStats from './historical/HistoricalStats';
-import { LOOKBACK_WINDOWS } from './lookbackWindows';
+import {LOOKBACK_WINDOWS} from './lookbackWindows';
 import ColumnStats from './snapshot/ColumnStats';
 import TableStats from './snapshot/TableStats';
 import StatsHeader from './StatsHeader';
-import { ViewType } from './viewType';
+import {ViewType} from './viewType';
 
 export default function StatsTab() {
     const baseEntity = useBaseEntity<GetDatasetQuery>();
@@ -16,8 +16,8 @@ export default function StatsTab() {
     const [viewType, setViewType] = useState(ViewType.LATEST);
     const [lookbackWindow, setLookbackWindow] = useState(LOOKBACK_WINDOWS.WEEK);
 
-    const { data: usageStatsData } = useGetLastMonthUsageAggregationsQuery({
-        variables: { urn: baseEntity?.dataset?.urn as string },
+    const {data: usageStatsData} = useGetLastMonthUsageAggregationsQuery({
+        variables: {urn: baseEntity?.dataset?.urn as string},
         skip: !baseEntity?.dataset?.urn,
     });
 
@@ -72,12 +72,12 @@ export default function StatsTab() {
                 lastReportedTime={lastReportedTime || undefined}
             />
             {latestProfile?.fieldProfiles && latestProfile?.fieldProfiles?.length > 0 && (
-                <ColumnStats columnStats={(latestProfile && latestProfile.fieldProfiles) || []} />
+                <ColumnStats columnStats={(latestProfile && latestProfile.fieldProfiles) || []}/>
             )}
         </>
     );
 
-    const historicalStats = <HistoricalStats urn={urn || ''} lookbackWindow={lookbackWindow} />;
+    const historicalStats = <HistoricalStats urn={urn || ''} lookbackWindow={lookbackWindow}/>;
 
     return (
         <>

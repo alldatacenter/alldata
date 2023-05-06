@@ -1,11 +1,11 @@
-import { Tag } from 'antd';
+import {Tag} from 'antd';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import styled from 'styled-components';
-import { Domain, EntityType } from '../../../types.generated';
-import { IconStyleType } from '../../entity/Entity';
-import { HoverEntityTooltip } from '../../recommendations/renderer/component/HoverEntityTooltip';
-import { useEntityRegistry } from '../../useEntityRegistry';
+import {Domain, EntityType} from '../../../types.generated';
+import {IconStyleType} from '../../entity/Entity';
+import {HoverEntityTooltip} from '../../recommendations/renderer/component/HoverEntityTooltip';
+import {useEntityRegistry} from '../../useEntityRegistry';
 
 const DomainLinkContainer = styled(Link)`
     display: inline-block;
@@ -25,14 +25,14 @@ interface DomainContentProps {
     tagStyle?: any | undefined;
 }
 
-function DomainContent({ domain, name, closable, onClose, tagStyle }: DomainContentProps) {
+function DomainContent({domain, name, closable, onClose, tagStyle}: DomainContentProps) {
     const entityRegistry = useEntityRegistry();
 
     const displayName = name || entityRegistry.getDisplayName(EntityType.Domain, domain);
 
     return (
         <Tag style={tagStyle} closable={closable} onClose={onClose}>
-            <span style={{ paddingRight: '4px' }}>
+            <span style={{paddingRight: '4px'}}>
                 {entityRegistry.getIcon(EntityType.Domain, 10, IconStyleType.ACCENT)}
             </span>
             {displayName}
@@ -49,7 +49,7 @@ export type Props = {
     readOnly?: boolean;
 };
 
-export const DomainLink = ({ domain, name, closable, onClose, tagStyle, readOnly }: Props): JSX.Element => {
+export const DomainLink = ({domain, name, closable, onClose, tagStyle, readOnly}: Props): JSX.Element => {
     const entityRegistry = useEntityRegistry();
     const urn = domain?.urn;
 
@@ -72,7 +72,7 @@ export const DomainLink = ({ domain, name, closable, onClose, tagStyle, readOnly
     return (
         <HoverEntityTooltip entity={domain}>
             <DomainLinkContainer to={entityRegistry.getEntityUrl(EntityType.Domain, urn)}>
-                <DomainContent domain={domain} name={name} closable={closable} onClose={onClose} tagStyle={tagStyle} />
+                <DomainContent domain={domain} name={name} closable={closable} onClose={onClose} tagStyle={tagStyle}/>
             </DomainLinkContainer>
         </HoverEntityTooltip>
     );

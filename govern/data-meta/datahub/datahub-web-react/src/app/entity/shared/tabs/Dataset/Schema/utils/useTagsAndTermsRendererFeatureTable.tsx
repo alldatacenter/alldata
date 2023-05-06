@@ -1,8 +1,8 @@
 import React from 'react';
-import { EditableSchemaMetadata, EntityType, GlobalTags, SchemaField } from '../../../../../../../types.generated';
+import {EditableSchemaMetadata, EntityType, GlobalTags, SchemaField} from '../../../../../../../types.generated';
 import TagTermGroup from '../../../../../../shared/tags/TagTermGroup';
-import { pathMatchesNewPath } from '../../../../../dataset/profile/schema/utils/utils';
-import { useEntityData, useRefetch } from '../../../../EntityContext';
+import {pathMatchesNewPath} from '../../../../../dataset/profile/schema/utils/utils';
+import {useEntityData, useRefetch} from '../../../../EntityContext';
 
 export default function useTagsAndTermsRendererFeatureTable(
     editableSchemaMetadata: EditableSchemaMetadata | null | undefined,
@@ -10,7 +10,7 @@ export default function useTagsAndTermsRendererFeatureTable(
     setTagHoveredIndex: (index: string | undefined) => void,
     options: { showTags: boolean; showTerms: boolean },
 ) {
-    const { urn } = useEntityData();
+    const {urn} = useEntityData();
     const refetch = useRefetch();
 
     const tagAndTermRender = (tags: GlobalTags, record: SchemaField, rowIndex: number | undefined) => {
@@ -26,7 +26,7 @@ export default function useTagsAndTermsRendererFeatureTable(
                     uneditableGlossaryTerms={options.showTerms ? record.glossaryTerms : null}
                     editableGlossaryTerms={options.showTerms ? relevantEditableFieldInfo?.glossaryTerms : null}
                     canRemove
-                    buttonProps={{ size: 'small' }}
+                    buttonProps={{size: 'small'}}
                     canAddTag={tagHoveredIndex === `${record.fieldPath}-${rowIndex}` && options.showTags}
                     canAddTerm={tagHoveredIndex === `${record.fieldPath}-${rowIndex}` && options.showTerms}
                     onOpenModal={() => setTagHoveredIndex(undefined)}

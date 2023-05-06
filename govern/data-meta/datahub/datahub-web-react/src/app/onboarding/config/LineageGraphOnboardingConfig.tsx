@@ -1,6 +1,6 @@
 import React from 'react';
-import { Typography } from 'antd';
-import { OnboardingStep } from '../OnboardingStep';
+import {Typography} from 'antd';
+import {OnboardingStep} from '../OnboardingStep';
 
 export const LINEAGE_GRAPH_INTRO_ID = 'lineage-graph-intro';
 export const LINEAGE_GRAPH_TIME_FILTER_ID = 'lineage-graph-time-filter';

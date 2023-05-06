@@ -1,9 +1,9 @@
-import { red } from '@ant-design/colors';
+import {red} from '@ant-design/colors';
 import Icon from '@ant-design/icons/lib/components/Icon';
-import { Typography } from 'antd';
+import {Typography} from 'antd';
 import React from 'react';
 import styled from 'styled-components';
-import { ReactComponent as ExternalLink } from '../../../../../images/link-out.svg';
+import {ReactComponent as ExternalLink} from '../../../../../images/link-out.svg';
 
 const DatasetWrapper = styled.div`
     display: flex;
@@ -41,11 +41,11 @@ interface Props {
     contentText: string;
 }
 
-export default function FailingEntity({ link, displayName, contentText }: Props) {
+export default function FailingEntity({link, displayName, contentText}: Props) {
     return (
         <DatasetWrapper>
             <StyledLink href={link} target="_blank" rel="noopener noreferrer">
-                <StyledIcon component={ExternalLink} />
+                <StyledIcon component={ExternalLink}/>
                 {displayName}
             </StyledLink>
             <AssertionsSummaryWrapper>{contentText}</AssertionsSummaryWrapper>

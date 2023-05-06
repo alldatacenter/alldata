@@ -10,9 +10,9 @@ import {
     dataFlow1,
     dataset1,
 } from '../../../Mocks';
-import { DataPlatform, EntityType, RelationshipDirection } from '../../../types.generated';
-import { getTestEntityRegistry } from '../../../utils/test-utils/TestPageContainer';
-import { Direction, FetchedEntities, UpdatedLineages } from '../types';
+import {DataPlatform, EntityType, RelationshipDirection} from '../../../types.generated';
+import {getTestEntityRegistry} from '../../../utils/test-utils/TestPageContainer';
+import {Direction, FetchedEntities, UpdatedLineages} from '../types';
 import constructTree from '../utils/constructTree';
 import extendAsyncEntities from '../utils/extendAsyncEntities';
 
@@ -26,7 +26,7 @@ describe('constructTree', () => {
         const mockFetchedEntities = {};
         expect(
             constructTree(
-                { entity: dataset3, type: EntityType.Dataset },
+                {entity: dataset3, type: EntityType.Dataset},
                 mockFetchedEntities,
                 Direction.Upstream,
                 testEntityRegistry,
@@ -48,8 +48,8 @@ describe('constructTree', () => {
 
     it('handles nodes with downstream lineage', () => {
         const fetchedEntities = [
-            { entity: dataset4, direction: Direction.Upstream, fullyFetched: false },
-            { entity: dataset5, direction: Direction.Upstream, fullyFetched: false },
+            {entity: dataset4, direction: Direction.Upstream, fullyFetched: false},
+            {entity: dataset5, direction: Direction.Upstream, fullyFetched: false},
         ];
         const mockFetchedEntities = fetchedEntities.reduce(
             (acc, entry) =>
@@ -57,7 +57,7 @@ describe('constructTree', () => {
                     {},
                     acc,
                     testEntityRegistry,
-                    { entity: entry.entity, type: EntityType.Dataset },
+                    {entity: entry.entity, type: EntityType.Dataset},
                     entry.fullyFetched,
                 ),
             {} as FetchedEntities,
@@ -65,7 +65,7 @@ describe('constructTree', () => {
 
         expect(
             constructTree(
-                { entity: dataset6WithLineage, type: EntityType.Dataset },
+                {entity: dataset6WithLineage, type: EntityType.Dataset},
                 mockFetchedEntities,
                 Direction.Downstream,
                 testEntityRegistry,
@@ -99,8 +99,8 @@ describe('constructTree', () => {
 
     it('handles nodes with upstream lineage', () => {
         const fetchedEntities = [
-            { entity: dataset4, direction: Direction.Upstream, fullyFetched: false },
-            { entity: dataset5, direction: Direction.Upstream, fullyFetched: false },
+            {entity: dataset4, direction: Direction.Upstream, fullyFetched: false},
+            {entity: dataset5, direction: Direction.Upstream, fullyFetched: false},
         ];
         const mockFetchedEntities = fetchedEntities.reduce(
             (acc, entry) =>
@@ -108,7 +108,7 @@ describe('constructTree', () => {
                     {},
                     acc,
                     testEntityRegistry,
-                    { entity: entry.entity, type: EntityType.Dataset },
+                    {entity: entry.entity, type: EntityType.Dataset},
                     entry.fullyFetched,
                 ),
             {} as FetchedEntities,
@@ -116,7 +116,7 @@ describe('constructTree', () => {
 
         expect(
             constructTree(
-                { entity: dataset6WithLineage, type: EntityType.Dataset },
+                {entity: dataset6WithLineage, type: EntityType.Dataset},
                 mockFetchedEntities,
                 Direction.Upstream,
                 testEntityRegistry,
@@ -150,9 +150,9 @@ describe('constructTree', () => {
 
     it('handles nodes with layers of lineage', () => {
         const fetchedEntities = [
-            { entity: dataset4WithLineage, direction: Direction.Upstream, fullyFetched: true },
-            { entity: dataset5WithLineage, direction: Direction.Upstream, fullyFetched: true },
-            { entity: dataset6WithLineage, direction: Direction.Upstream, fullyFetched: true },
+            {entity: dataset4WithLineage, direction: Direction.Upstream, fullyFetched: true},
+            {entity: dataset5WithLineage, direction: Direction.Upstream, fullyFetched: true},
+            {entity: dataset6WithLineage, direction: Direction.Upstream, fullyFetched: true},
         ];
         const mockFetchedEntities = fetchedEntities.reduce(
             (acc, entry) =>
@@ -160,7 +160,7 @@ describe('constructTree', () => {
                     {},
                     acc,
                     testEntityRegistry,
-                    { entity: entry.entity, type: EntityType.Dataset },
+                    {entity: entry.entity, type: EntityType.Dataset},
                     entry.fullyFetched,
                 ),
             {} as FetchedEntities,
@@ -168,7 +168,7 @@ describe('constructTree', () => {
 
         expect(
             constructTree(
-                { entity: dataset3WithLineage, type: EntityType.Dataset },
+                {entity: dataset3WithLineage, type: EntityType.Dataset},
                 mockFetchedEntities,
                 Direction.Upstream,
                 testEntityRegistry,
@@ -244,9 +244,9 @@ describe('constructTree', () => {
 
     it('for a set of identical nodes, both will be referentially identical', () => {
         const fetchedEntities = [
-            { entity: dataset4WithLineage, direction: Direction.Upstream, fullyFetched: true },
-            { entity: dataset5WithLineage, direction: Direction.Upstream, fullyFetched: true },
-            { entity: dataset6WithLineage, direction: Direction.Upstream, fullyFetched: true },
+            {entity: dataset4WithLineage, direction: Direction.Upstream, fullyFetched: true},
+            {entity: dataset5WithLineage, direction: Direction.Upstream, fullyFetched: true},
+            {entity: dataset6WithLineage, direction: Direction.Upstream, fullyFetched: true},
         ];
         const mockFetchedEntities = fetchedEntities.reduce(
             (acc, entry) =>
@@ -254,14 +254,14 @@ describe('constructTree', () => {
                     {},
                     acc,
                     testEntityRegistry,
-                    { entity: entry.entity, type: EntityType.Dataset },
+                    {entity: entry.entity, type: EntityType.Dataset},
                     entry.fullyFetched,
                 ),
             {} as FetchedEntities,
         );
 
         const tree = constructTree(
-            { entity: dataset3WithLineage, type: EntityType.Dataset },
+            {entity: dataset3WithLineage, type: EntityType.Dataset},
             mockFetchedEntities,
             Direction.Upstream,
             testEntityRegistry,
@@ -277,21 +277,21 @@ describe('constructTree', () => {
     });
 
     it('handles partially fetched graph with layers of lineage', () => {
-        const fetchedEntities = [{ entity: dataset4WithLineage, direction: Direction.Upstream, fullyFetched: false }];
+        const fetchedEntities = [{entity: dataset4WithLineage, direction: Direction.Upstream, fullyFetched: false}];
         const mockFetchedEntities = fetchedEntities.reduce(
             (acc, entry) =>
                 extendAsyncEntities(
                     {},
                     acc,
                     testEntityRegistry,
-                    { entity: entry.entity, type: EntityType.Dataset },
+                    {entity: entry.entity, type: EntityType.Dataset},
                     entry.fullyFetched,
                 ),
             {} as FetchedEntities,
         );
         expect(
             constructTree(
-                { entity: dataset3WithLineage, type: EntityType.Dataset },
+                {entity: dataset3WithLineage, type: EntityType.Dataset},
                 mockFetchedEntities,
                 Direction.Upstream,
                 testEntityRegistry,
@@ -361,8 +361,8 @@ describe('constructTree', () => {
             },
         };
         const fetchedEntities = [
-            { entity: updatedDataset5WithLineage, direction: Direction.Upstream, fullyFetched: true },
-            { entity: dataJob1, direction: Direction.Upstream, fullyFetched: true },
+            {entity: updatedDataset5WithLineage, direction: Direction.Upstream, fullyFetched: true},
+            {entity: dataJob1, direction: Direction.Upstream, fullyFetched: true},
         ];
         const mockFetchedEntities = fetchedEntities.reduce(
             (acc, entry) =>
@@ -370,14 +370,14 @@ describe('constructTree', () => {
                     {},
                     acc,
                     testEntityRegistry,
-                    { entity: entry.entity, type: entry.entity.type },
+                    {entity: entry.entity, type: entry.entity.type},
                     entry.fullyFetched,
                 ),
             {} as FetchedEntities,
         );
         expect(
             constructTree(
-                { entity: updatedDataset6WithLineage, type: EntityType.Dataset },
+                {entity: updatedDataset6WithLineage, type: EntityType.Dataset},
                 mockFetchedEntities,
                 Direction.Upstream,
                 testEntityRegistry,
@@ -415,8 +415,8 @@ describe('constructTree', () => {
 
     it('should construct a tree taking into account updatedLineages in state', () => {
         const fetchedEntities = [
-            { entity: dataset4, direction: Direction.Upstream, fullyFetched: false },
-            { entity: dataset5, direction: Direction.Upstream, fullyFetched: false },
+            {entity: dataset4, direction: Direction.Upstream, fullyFetched: false},
+            {entity: dataset5, direction: Direction.Upstream, fullyFetched: false},
         ];
         const mockFetchedEntities = fetchedEntities.reduce(
             (acc, entry) =>
@@ -424,7 +424,7 @@ describe('constructTree', () => {
                     {},
                     acc,
                     testEntityRegistry,
-                    { entity: entry.entity, type: EntityType.Dataset },
+                    {entity: entry.entity, type: EntityType.Dataset},
                     entry.fullyFetched,
                 ),
             {} as FetchedEntities,
@@ -440,7 +440,7 @@ describe('constructTree', () => {
 
         expect(
             constructTree(
-                { entity: dataset6WithLineage, type: EntityType.Dataset },
+                {entity: dataset6WithLineage, type: EntityType.Dataset},
                 mockFetchedEntities,
                 Direction.Upstream,
                 testEntityRegistry,

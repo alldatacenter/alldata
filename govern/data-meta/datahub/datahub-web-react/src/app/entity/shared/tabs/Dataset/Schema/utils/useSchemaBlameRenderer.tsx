@@ -1,12 +1,12 @@
 import React from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
-import { Button, Tooltip, Typography } from 'antd';
-import { ScanOutlined } from '@ant-design/icons';
+import {useHistory, useLocation} from 'react-router-dom';
+import {Button, Tooltip, Typography} from 'antd';
+import {ScanOutlined} from '@ant-design/icons';
 import styled from 'styled-components';
-import { SchemaField, SchemaFieldBlame } from '../../../../../../../types.generated';
-import { pathMatchesNewPath } from '../../../../../dataset/profile/schema/utils/utils';
-import { toRelativeTimeString } from '../../../../../../shared/time/timeUtils';
-import { navigateToVersionedDatasetUrl } from './navigateToVersionedDatasetUrl';
+import {SchemaField, SchemaFieldBlame} from '../../../../../../../types.generated';
+import {pathMatchesNewPath} from '../../../../../dataset/profile/schema/utils/utils';
+import {toRelativeTimeString} from '../../../../../../shared/time/timeUtils';
+import {navigateToVersionedDatasetUrl} from './navigateToVersionedDatasetUrl';
 
 const HeadingDiv = styled.div`
     vertical-align: top;
@@ -75,13 +75,13 @@ export default function useSchemaBlameRenderer(schemaBlameList?: Array<SchemaFie
                                             location,
                                             history,
                                             datasetVersion:
-                                                relevantSchemaFieldBlame.schemaFieldChange.lastSemanticVersion,
+                                            relevantSchemaFieldBlame.schemaFieldChange.lastSemanticVersion,
                                         });
                                     }}
                                     size="small"
                                     type="text"
                                 >
-                                    <ScanOutlined style={{}} />
+                                    <ScanOutlined style={{}}/>
                                 </SchemaBlameBlameButton>
                             </Tooltip>
                         </span>

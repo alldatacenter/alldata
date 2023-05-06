@@ -1,8 +1,8 @@
-import { Menu } from 'antd';
-import React, { useEffect, useState } from 'react';
+import {Menu} from 'antd';
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components/macro';
-import { useEntityData } from '../../shared/EntityContext';
-import GlossaryRelatedTermsResult, { RelatedTermTypes } from './GlossaryRelatedTermsResult';
+import {useEntityData} from '../../shared/EntityContext';
+import GlossaryRelatedTermsResult, {RelatedTermTypes} from './GlossaryRelatedTermsResult';
 
 const DetailWrapper = styled.div`
     display: inline-flex;
@@ -21,7 +21,7 @@ const Content = styled.div`
 `;
 
 export default function GlossayRelatedTerms() {
-    const { entityData } = useEntityData();
+    const {entityData} = useEntityData();
     const [selectedKey, setSelectedKey] = useState('');
     const menuOptionsArray = Object.keys(RelatedTermTypes);
 
@@ -31,7 +31,7 @@ export default function GlossayRelatedTerms() {
         }
     }, [menuOptionsArray, selectedKey]);
 
-    const onMenuClick = ({ key }) => {
+    const onMenuClick = ({key}) => {
         setSelectedKey(key);
     };
 
@@ -41,7 +41,7 @@ export default function GlossayRelatedTerms() {
                 <Menu
                     selectable={false}
                     mode="inline"
-                    style={{ width: 256 }}
+                    style={{width: 256}}
                     selectedKeys={[selectedKey]}
                     onClick={(key) => {
                         onMenuClick(key);

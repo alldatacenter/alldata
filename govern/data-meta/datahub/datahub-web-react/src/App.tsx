@@ -1,46 +1,46 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 import Cookies from 'js-cookie';
-import { message } from 'antd';
-import { BrowserRouter as Router } from 'react-router-dom';
-import { ApolloClient, ApolloProvider, createHttpLink, InMemoryCache, ServerError } from '@apollo/client';
-import { onError } from '@apollo/client/link/error';
-import { ThemeProvider } from 'styled-components';
-import { Helmet } from 'react-helmet';
+import {message} from 'antd';
+import {BrowserRouter as Router} from 'react-router-dom';
+import {ApolloClient, ApolloProvider, createHttpLink, InMemoryCache, ServerError} from '@apollo/client';
+import {onError} from '@apollo/client/link/error';
+import {ThemeProvider} from 'styled-components';
+import {Helmet} from 'react-helmet';
 import './App.less';
-import { Routes } from './app/Routes';
+import {Routes} from './app/Routes';
 import EntityRegistry from './app/entity/EntityRegistry';
-import { DashboardEntity } from './app/entity/dashboard/DashboardEntity';
-import { ChartEntity } from './app/entity/chart/ChartEntity';
-import { UserEntity } from './app/entity/user/User';
-import { GroupEntity } from './app/entity/group/Group';
-import { DatasetEntity } from './app/entity/dataset/DatasetEntity';
-import { DataFlowEntity } from './app/entity/dataFlow/DataFlowEntity';
-import { DataJobEntity } from './app/entity/dataJob/DataJobEntity';
-import { TagEntity } from './app/entity/tag/Tag';
-import { EntityRegistryContext } from './entityRegistryContext';
-import { Theme } from './conf/theme/types';
+import {DashboardEntity} from './app/entity/dashboard/DashboardEntity';
+import {ChartEntity} from './app/entity/chart/ChartEntity';
+import {UserEntity} from './app/entity/user/User';
+import {GroupEntity} from './app/entity/group/Group';
+import {DatasetEntity} from './app/entity/dataset/DatasetEntity';
+import {DataFlowEntity} from './app/entity/dataFlow/DataFlowEntity';
+import {DataJobEntity} from './app/entity/dataJob/DataJobEntity';
+import {TagEntity} from './app/entity/tag/Tag';
+import {EntityRegistryContext} from './entityRegistryContext';
+import {Theme} from './conf/theme/types';
 import defaultThemeConfig from './conf/theme/theme_light.config.json';
-import { PageRoutes } from './conf/Global';
-import { isLoggedInVar } from './app/auth/checkAuthStatus';
-import { GlobalCfg } from './conf';
-import { GlossaryTermEntity } from './app/entity/glossaryTerm/GlossaryTermEntity';
-import { MLFeatureEntity } from './app/entity/mlFeature/MLFeatureEntity';
-import { MLPrimaryKeyEntity } from './app/entity/mlPrimaryKey/MLPrimaryKeyEntity';
-import { MLFeatureTableEntity } from './app/entity/mlFeatureTable/MLFeatureTableEntity';
-import { MLModelEntity } from './app/entity/mlModel/MLModelEntity';
-import { MLModelGroupEntity } from './app/entity/mlModelGroup/MLModelGroupEntity';
-import { DomainEntity } from './app/entity/domain/DomainEntity';
-import { ContainerEntity } from './app/entity/container/ContainerEntity';
+import {PageRoutes} from './conf/Global';
+import {isLoggedInVar} from './app/auth/checkAuthStatus';
+import {GlobalCfg} from './conf';
+import {GlossaryTermEntity} from './app/entity/glossaryTerm/GlossaryTermEntity';
+import {MLFeatureEntity} from './app/entity/mlFeature/MLFeatureEntity';
+import {MLPrimaryKeyEntity} from './app/entity/mlPrimaryKey/MLPrimaryKeyEntity';
+import {MLFeatureTableEntity} from './app/entity/mlFeatureTable/MLFeatureTableEntity';
+import {MLModelEntity} from './app/entity/mlModel/MLModelEntity';
+import {MLModelGroupEntity} from './app/entity/mlModelGroup/MLModelGroupEntity';
+import {DomainEntity} from './app/entity/domain/DomainEntity';
+import {ContainerEntity} from './app/entity/container/ContainerEntity';
 import GlossaryNodeEntity from './app/entity/glossaryNode/GlossaryNodeEntity';
-import { DataPlatformEntity } from './app/entity/dataPlatform/DataPlatformEntity';
+import {DataPlatformEntity} from './app/entity/dataPlatform/DataPlatformEntity';
 
 /*
     Construct Apollo Client
 */
-const httpLink = createHttpLink({ uri: '/api/v2/graphql' });
+const httpLink = createHttpLink({uri: '/api/v2/graphql'});
 
 const errorLink = onError((error) => {
-    const { networkError, graphQLErrors } = error;
+    const {networkError, graphQLErrors} = error;
     if (networkError) {
         const serverError = networkError as ServerError;
         if (serverError.statusCode === 401) {
@@ -51,7 +51,7 @@ const errorLink = onError((error) => {
     }
     if (graphQLErrors && graphQLErrors.length) {
         const firstError = graphQLErrors[0];
-        const { extensions } = firstError;
+        const {extensions} = firstError;
         const errorCode = extensions && (extensions.code as number);
         // Fallback in case the calling component does not handle.
         message.error(`${firstError.message} (code ${errorCode})`, 3);
@@ -67,7 +67,7 @@ const client = new ApolloClient({
                 fields: {
                     dataset: {
                         merge: (oldObj, newObj) => {
-                            return { ...oldObj, ...newObj };
+                            return {...oldObj, ...newObj};
                         },
                     },
                 },
@@ -125,7 +125,7 @@ const App: React.VFC = () => {
                 </Helmet>
                 <EntityRegistryContext.Provider value={entityRegistry}>
                     <ApolloProvider client={client}>
-                        <Routes />
+                        <Routes/>
                     </ApolloProvider>
                 </EntityRegistryContext.Provider>
             </Router>

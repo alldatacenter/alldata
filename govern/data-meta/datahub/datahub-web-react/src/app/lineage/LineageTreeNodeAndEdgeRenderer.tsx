@@ -1,11 +1,11 @@
-import React, { useContext } from 'react';
-import { Group } from '@vx/group';
-import { TransformMatrix } from '@vx/zoom/lib/types';
+import React, {useContext} from 'react';
+import {Group} from '@vx/group';
+import {TransformMatrix} from '@vx/zoom/lib/types';
 
-import { NodeData, EntitySelectParams, TreeProps, VizNode, VizEdge, EntityAndType, UpdatedLineages } from './types';
+import {NodeData, EntitySelectParams, TreeProps, VizNode, VizEdge, EntityAndType, UpdatedLineages} from './types';
 import LineageEntityNode from './LineageEntityNode';
 import LineageEntityEdge from './LineageEntityEdge';
-import { LineageExplorerContext } from './utils/LineageExplorerContext';
+import {LineageExplorerContext} from './utils/LineageExplorerContext';
 
 type Props = {
     data: NodeData;
@@ -38,22 +38,22 @@ function transformToString(transform: {
 }
 
 export default function LineageTreeNodeAndEdgeRenderer({
-    data,
-    zoom,
-    margin,
-    onEntityClick,
-    onEntityCenter,
-    onLineageExpand,
-    selectedEntity,
-    hoveredEntity,
-    setHoveredEntity,
-    onDrag,
-    nodesToRender,
-    edgesToRender,
-    nodesByUrn,
-    setUpdatedLineages,
-}: Props) {
-    const { highlightedEdges } = useContext(LineageExplorerContext);
+                                                           data,
+                                                           zoom,
+                                                           margin,
+                                                           onEntityClick,
+                                                           onEntityCenter,
+                                                           onLineageExpand,
+                                                           selectedEntity,
+                                                           hoveredEntity,
+                                                           setHoveredEntity,
+                                                           onDrag,
+                                                           nodesToRender,
+                                                           edgesToRender,
+                                                           nodesByUrn,
+                                                           setUpdatedLineages,
+                                                       }: Props) {
+    const {highlightedEdges} = useContext(LineageExplorerContext);
     const isLinkHighlighted = (link) =>
         link.source.data.urn === hoveredEntity?.urn ||
         link.target.data.urn === hoveredEntity?.urn ||
@@ -77,7 +77,7 @@ export default function LineageTreeNodeAndEdgeRenderer({
                     link.target.data.urn
                 }${link.targetField && `-${link.targetField}`}-${link.target.direction}`;
 
-                return <LineageEntityEdge edge={link} key={key} isHighlighted={!!isHighlighted} />;
+                return <LineageEntityEdge edge={link} key={key} isHighlighted={!!isHighlighted}/>;
             })}
             {nodesToRender.map((node, index) => {
                 const isSelected = node.data.urn === selectedEntity?.urn;

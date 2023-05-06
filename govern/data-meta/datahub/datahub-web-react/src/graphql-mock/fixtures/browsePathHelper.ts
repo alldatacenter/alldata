@@ -1,6 +1,6 @@
-import { BrowseInput, BrowseResultGroup, BrowseResults, Entity, EntityType, SearchResult } from '../../types.generated';
-import { toLowerCaseEntityType, toTitleCase } from '../helper';
-import { EntityBrowseFn, EntityBrowsePath, GetBrowseResults, StringNumber } from '../types';
+import {BrowseInput, BrowseResultGroup, BrowseResults, Entity, EntityType, SearchResult} from '../../types.generated';
+import {toLowerCaseEntityType, toTitleCase} from '../helper';
+import {EntityBrowseFn, EntityBrowsePath, GetBrowseResults, StringNumber} from '../types';
 
 type ToFlatPathsArg = {
     flatPaths: StringNumber[][];
@@ -8,11 +8,11 @@ type ToFlatPathsArg = {
     parentPaths: string[];
 };
 
-export const toFlatPaths = ({ flatPaths, paths, parentPaths }: ToFlatPathsArg) => {
-    paths.forEach(({ name, paths: childPaths, count = 0 }) => {
+export const toFlatPaths = ({flatPaths, paths, parentPaths}: ToFlatPathsArg) => {
+    paths.forEach(({name, paths: childPaths, count = 0}) => {
         if (childPaths.length) {
             parentPaths.push(name);
-            toFlatPaths({ flatPaths, parentPaths, paths: childPaths });
+            toFlatPaths({flatPaths, parentPaths, paths: childPaths});
         } else {
             flatPaths.push([...parentPaths, name, count]);
         }
@@ -25,7 +25,7 @@ type FilterEntityByPathArg = {
     searchResults: SearchResult[];
 };
 
-export const filterEntityByPath = ({ term, searchResults }: FilterEntityByPathArg): Entity[] => {
+export const filterEntityByPath = ({term, searchResults}: FilterEntityByPathArg): Entity[] => {
     return searchResults
         .filter((r) => {
             const regex = new RegExp(term);
@@ -60,10 +60,10 @@ export class BrowsePathResolver {
     };
 
     constructor({
-        entityType,
-        paths,
-        filterEntityHandler,
-    }: {
+                    entityType,
+                    paths,
+                    filterEntityHandler,
+                }: {
         entityType: EntityType;
         paths: EntityBrowsePath[];
         filterEntityHandler(path: string[]): Entity[];
@@ -72,25 +72,25 @@ export class BrowsePathResolver {
         this.paths = paths;
         this.filterEntityHandler = filterEntityHandler;
         const browsePathKey = `${toLowerCaseEntityType(entityType)}Browse`;
-        const groups = this.paths.map<BrowseResultGroup>(({ name, paths: rootPaths, count = 0 }) => ({
+        const groups = this.paths.map<BrowseResultGroup>(({name, paths: rootPaths, count = 0}) => ({
             name,
             count: rootPaths.length ? rootPaths.reduce(this.sumTotalEntityByPaths, 0) : count,
             __typename: 'BrowseResultGroup',
         }));
-        this.initBrowsePathResolver({ browsePathKey, groups });
-        this.initBrowsePathResolverForPaths({ prefixPathKey: browsePathKey, paths });
+        this.initBrowsePathResolver({browsePathKey, groups});
+        this.initBrowsePathResolverForPaths({prefixPathKey: browsePathKey, paths});
     }
 
     public getBrowse() {
         return this.browse;
     }
 
-    private initBrowsePathResolver({ browsePathKey, groups }: { browsePathKey: string; groups: BrowseResultGroup[] }) {
+    private initBrowsePathResolver({browsePathKey, groups}: { browsePathKey: string; groups: BrowseResultGroup[] }) {
         if (!this.browse.hasOwnProperty(browsePathKey)) {
             const dataBrowse: BrowseResults = JSON.parse(JSON.stringify(this.baseBrowseResult.data.browse));
 
             Object.assign(this.browse, {
-                [browsePathKey]: ({ start, count, path }: BrowseInput): GetBrowseResults => {
+                [browsePathKey]: ({start, count, path}: BrowseInput): GetBrowseResults => {
                     const startValue = start as number;
                     const countValue = count as number;
                     const paths = path as string[];
@@ -120,37 +120,37 @@ export class BrowsePathResolver {
     }
 
     private initBrowsePathResolverForPaths({
-        prefixPathKey,
-        paths,
-    }: {
+                                               prefixPathKey,
+                                               paths,
+                                           }: {
         prefixPathKey: string;
         paths: EntityBrowsePath[];
     }) {
-        paths.forEach(({ name, paths: childPaths }) => {
+        paths.forEach(({name, paths: childPaths}) => {
             const browsePathKey = `${prefixPathKey}${toTitleCase(name)}`;
 
             if (childPaths.length) {
                 const groups = childPaths.map<BrowseResultGroup>(
-                    ({ name: childName, paths: child2Paths, count = 0 }) => ({
+                    ({name: childName, paths: child2Paths, count = 0}) => ({
                         name: childName,
                         count: child2Paths.length ? child2Paths.reduce(this.sumTotalEntityByPaths, 0) : count,
                         __typename: 'BrowseResultGroup',
                     }),
                 );
 
-                this.initBrowsePathResolver({ browsePathKey, groups });
-                this.initBrowsePathResolverForPaths({ prefixPathKey: browsePathKey, paths: childPaths });
+                this.initBrowsePathResolver({browsePathKey, groups});
+                this.initBrowsePathResolverForPaths({prefixPathKey: browsePathKey, paths: childPaths});
             } else {
-                this.initBrowsePathResolver({ browsePathKey, groups: [] });
+                this.initBrowsePathResolver({browsePathKey, groups: []});
             }
         });
     }
 
-    private sumTotalEntityByGroups = (out: number, { count = 0 }: BrowseResultGroup): number => {
+    private sumTotalEntityByGroups = (out: number, {count = 0}: BrowseResultGroup): number => {
         return out + count;
     };
 
-    private sumTotalEntityByPaths = (out: number, { paths, count = 0 }: EntityBrowsePath): number => {
+    private sumTotalEntityByPaths = (out: number, {paths, count = 0}: EntityBrowsePath): number => {
         if (paths.length) {
             return paths.reduce(this.sumTotalEntityByPaths, out);
         }

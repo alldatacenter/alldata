@@ -1,7 +1,7 @@
 import React from 'react';
-import { Form, Input, Select, Typography } from 'antd';
+import {Form, Input, Select, Typography} from 'antd';
 import styled from 'styled-components';
-import { PolicyType } from '../../../types.generated';
+import {PolicyType} from '../../../types.generated';
 
 type Props = {
     policyType: string;
@@ -25,13 +25,13 @@ const TypeDescriptionParagraph = styled(Typography.Paragraph)`
 `;
 
 export default function PolicyTypeForm({
-    policyType,
-    setPolicyType,
-    policyName,
-    setPolicyName,
-    policyDescription,
-    setPolicyDescription,
-}: Props) {
+                                           policyType,
+                                           setPolicyType,
+                                           policyName,
+                                           setPolicyName,
+                                           policyDescription,
+                                           setPolicyDescription,
+                                       }: Props) {
     const updatePolicyName = (name: string) => {
         setPolicyName(name);
     };
@@ -55,8 +55,8 @@ export default function PolicyTypeForm({
                 <TypeDescriptionParagraph type="secondary">
                     The <b>Platform</b> policy type allows you to assign top-level DataHub Platform privileges to users.
                     These include managing users and groups, creating policies, viewing analytics dashboards and more.
-                    <br />
-                    <br />
+                    <br/>
+                    <br/>
                     The <b>Metadata</b> policy type allows you to assign metadata privileges to users. These include the
                     ability to manipulate metadata like ownership, tags, documentation associated with Datasets, Charts,
                     Dashboards, & more.

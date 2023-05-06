@@ -1,4 +1,4 @@
-import { Dataset, Entity, EntityType } from '../../../../../types.generated';
+import {Dataset, Entity, EntityType} from '../../../../../types.generated';
 
 function getAssertionsSummary(dataset: Dataset) {
     let numAssertionsFailing = 0;
@@ -16,7 +16,7 @@ function getAssertionsSummary(dataset: Dataset) {
         }
     });
 
-    return { numAssertionsPassing, numAssertionsFailing };
+    return {numAssertionsPassing, numAssertionsFailing};
 }
 
 export interface UpstreamSummary {
@@ -32,7 +32,7 @@ export function extractUpstreamSummary(upstreams: Entity[]) {
 
     upstreams.forEach((entity) => {
         if (entity.type === EntityType.Dataset) {
-            const { numAssertionsPassing, numAssertionsFailing } = getAssertionsSummary(entity as Dataset);
+            const {numAssertionsPassing, numAssertionsFailing} = getAssertionsSummary(entity as Dataset);
 
             if (numAssertionsFailing) {
                 failingUpstreams += 1;

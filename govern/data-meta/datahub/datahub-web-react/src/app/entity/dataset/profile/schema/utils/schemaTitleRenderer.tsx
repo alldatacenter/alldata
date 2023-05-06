@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { Typography } from 'antd';
+import React, {useState} from 'react';
+import {Typography} from 'antd';
 import styled from 'styled-components';
 import Highlight from 'react-highlighter';
 import translateFieldPath from './translateFieldPath';
-import { ExtendedSchemaFields } from './types';
+import {ExtendedSchemaFields} from './types';
 import TypeLabel from '../../../../shared/tabs/Dataset/Schema/components/TypeLabel';
-import { ForeignKeyConstraint, SchemaMetadata } from '../../../../../../types.generated';
+import {ForeignKeyConstraint, SchemaMetadata} from '../../../../../../types.generated';
 import PrimaryKeyLabel from '../../../../shared/tabs/Dataset/Schema/components/PrimaryKeyLabel';
 import NullableLabel from '../../../../shared/tabs/Dataset/Schema/components/NullableLabel';
 import ForeignKeyLabel from '../../../../shared/tabs/Dataset/Schema/components/ForeignKeyLabel';
@@ -60,9 +60,9 @@ export default function useSchemaTitleRenderer(
                     <FieldPathText>
                         <Highlight search={filterText}>{pathToDisplay}</Highlight>
                     </FieldPathText>
-                    <TypeLabel type={record.type} nativeDataType={record.nativeDataType} />
-                    {(schemaMetadata?.primaryKeys?.includes(fieldPath) || record.isPartOfKey) && <PrimaryKeyLabel />}
-                    {record.nullable && <NullableLabel />}
+                    <TypeLabel type={record.type} nativeDataType={record.nativeDataType}/>
+                    {(schemaMetadata?.primaryKeys?.includes(fieldPath) || record.isPartOfKey) && <PrimaryKeyLabel/>}
+                    {record.nullable && <NullableLabel/>}
                     {schemaMetadata?.foreignKeys
                         ?.filter(
                             (constraint) =>

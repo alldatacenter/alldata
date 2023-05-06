@@ -1,20 +1,20 @@
-import { Dashboard, DashboardUpdateInput } from '../../types.generated';
-import { findDashboardByURN } from '../fixtures/searchResult/dashboardSearchResult';
-import { updateEntityOwners, updateEntityTag } from '../mutationHelper';
+import {Dashboard, DashboardUpdateInput} from '../../types.generated';
+import {findDashboardByURN} from '../fixtures/searchResult/dashboardSearchResult';
+import {updateEntityOwners, updateEntityTag} from '../mutationHelper';
 
 type UpdateDashboard = {
     data: { updateDashboard: Dashboard };
 };
 
 export const updateDashboardResolver = {
-    updateDashboard({ variables: { urn, input } }): UpdateDashboard {
-        const { ownership, globalTags }: DashboardUpdateInput = input;
+    updateDashboard({variables: {urn, input}}): UpdateDashboard {
+        const {ownership, globalTags}: DashboardUpdateInput = input;
         const dashboard = findDashboardByURN(urn);
 
         if (ownership) {
-            updateEntityOwners({ entity: dashboard, owners: ownership?.owners });
+            updateEntityOwners({entity: dashboard, owners: ownership?.owners});
         } else if (globalTags) {
-            updateEntityTag({ entity: dashboard, globalTags });
+            updateEntityTag({entity: dashboard, globalTags});
         }
 
         return {

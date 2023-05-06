@@ -1,15 +1,15 @@
 import React from 'react';
-import { message } from 'antd';
-import { useApolloClient } from '@apollo/client';
-import { useCreateViewMutation, useUpdateViewMutation } from '../../../../graphql/view.generated';
-import { ViewBuilderState } from '../types';
-import { ViewBuilderModal } from './ViewBuilderModal';
-import { updateViewSelectCache, updateListMyViewsCache } from '../cacheUtils';
-import { convertStateToUpdateInput, DEFAULT_LIST_VIEWS_PAGE_SIZE } from '../utils';
-import { useUserContext } from '../../../context/useUserContext';
-import { ViewBuilderMode } from './types';
-import analytics, { Event, EventType } from '../../../analytics';
-import { DataHubView } from '../../../../types.generated';
+import {message} from 'antd';
+import {useApolloClient} from '@apollo/client';
+import {useCreateViewMutation, useUpdateViewMutation} from '../../../../graphql/view.generated';
+import {ViewBuilderState} from '../types';
+import {ViewBuilderModal} from './ViewBuilderModal';
+import {updateViewSelectCache, updateListMyViewsCache} from '../cacheUtils';
+import {convertStateToUpdateInput, DEFAULT_LIST_VIEWS_PAGE_SIZE} from '../utils';
+import {useUserContext} from '../../../context/useUserContext';
+import {ViewBuilderMode} from './types';
+import analytics, {Event, EventType} from '../../../analytics';
+import {DataHubView} from '../../../../types.generated';
 
 type Props = {
     mode: ViewBuilderMode;
@@ -22,7 +22,7 @@ type Props = {
 /**
  * This component handles creating and editing DataHub Views.
  */
-export const ViewBuilder = ({ mode, urn, initialState, onSubmit, onCancel }: Props) => {
+export const ViewBuilder = ({mode, urn, initialState, onSubmit, onCancel}: Props) => {
     const userContext = useUserContext();
 
     const client = useApolloClient();
@@ -86,10 +86,10 @@ export const ViewBuilder = ({ mode, urn, initialState, onSubmit, onCancel }: Pro
         const isCreate = urn === undefined;
         const mutation = isCreate ? createViewMutation : updateViewMutation;
         const variables = urn
-            ? { urn, input: { ...viewInput, viewType: undefined } }
+            ? {urn, input: {...viewInput, viewType: undefined}}
             : {
-                  input: viewInput,
-              };
+                input: viewInput,
+            };
         (
             mutation({
                 variables: variables as any,

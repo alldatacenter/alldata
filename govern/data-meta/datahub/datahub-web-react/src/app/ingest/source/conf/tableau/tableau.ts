@@ -1,4 +1,4 @@
-import { SourceConfig } from '../types';
+import {SourceConfig} from '../types';
 import tableauLogo from '../../../../../images/tableaulogo.png';
 
 const placeholderRecipe = `\

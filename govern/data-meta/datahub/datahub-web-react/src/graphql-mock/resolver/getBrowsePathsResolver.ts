@@ -1,4 +1,4 @@
-import { BrowsePath, BrowsePathsInput, EntityType } from '../../types.generated';
+import {BrowsePath, BrowsePathsInput, EntityType} from '../../types.generated';
 
 const paths = {
     [EntityType.Dataset](urn) {
@@ -27,8 +27,8 @@ type GetBrowsePaths = {
 };
 
 export const getBrowsePathsResolver = {
-    getBrowsePaths({ variables: { input } }): GetBrowsePaths {
-        const { urn, type }: BrowsePathsInput = input;
+    getBrowsePaths({variables: {input}}): GetBrowsePaths {
+        const {urn, type}: BrowsePathsInput = input;
 
         return {
             data: {

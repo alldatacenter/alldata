@@ -1,12 +1,12 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 import styled from 'styled-components';
-import { useGetEntitiesLazyQuery } from '../../../../graphql/entity.generated';
-import { Entity, FacetFilter, FacetFilterInput, LogicalOperator } from '../../../../types.generated';
-import { AdvancedSearchFilters, LayoutDirection } from '../../../search/AdvancedSearchFilters';
-import { ENTITY_FILTER_NAME } from '../../../search/utils/constants';
-import { ANTD_GRAY } from '../../shared/constants';
-import { ViewBuilderState } from '../types';
-import { ViewBuilderMode } from './types';
+import {useGetEntitiesLazyQuery} from '../../../../graphql/entity.generated';
+import {Entity, FacetFilter, FacetFilterInput, LogicalOperator} from '../../../../types.generated';
+import {AdvancedSearchFilters, LayoutDirection} from '../../../search/AdvancedSearchFilters';
+import {ENTITY_FILTER_NAME} from '../../../search/utils/constants';
+import {ANTD_GRAY} from '../../shared/constants';
+import {ViewBuilderState} from '../types';
+import {ViewBuilderMode} from './types';
 import {
     buildEntityCache,
     extractEntityTypesFilterValues,
@@ -43,7 +43,7 @@ type Props = {
     updateState: (newState: ViewBuilderState) => void;
 };
 
-export const ViewDefinitionBuilder = ({ mode, state, updateState }: Props) => {
+export const ViewDefinitionBuilder = ({mode, state, updateState}: Props) => {
     // Stores an URN to the resolved entity.
     const [entityCache, setEntityCache] = useState<Map<string, Entity>>(new Map());
 
@@ -66,11 +66,11 @@ export const ViewDefinitionBuilder = ({ mode, state, updateState }: Props) => {
     /**
      * Bootstrap by resolving all URNs that are not in the cache yet.
      */
-    const [getEntities, { data: resolvedEntitiesData }] = useGetEntitiesLazyQuery();
+    const [getEntities, {data: resolvedEntitiesData}] = useGetEntitiesLazyQuery();
 
     useEffect(() => {
         if (isResolutionRequired(urnsToResolve, entityCache)) {
-            getEntities({ variables: { urns: urnsToResolve } });
+            getEntities({variables: {urns: urnsToResolve}});
         }
     }, [urnsToResolve, entityCache, getEntities]);
 

@@ -1,12 +1,12 @@
-import { Typography } from 'antd';
+import {Typography} from 'antd';
 import React from 'react';
-import { AssertionResult } from '../../../../../../types.generated';
+import {AssertionResult} from '../../../../../../types.generated';
 
 type Props = {
     result: AssertionResult;
 };
 
-export const DatasetAssertionResultDetails = ({ result }: Props) => {
+export const DatasetAssertionResultDetails = ({result}: Props) => {
     const maybeActualValue = result.actualAggValue;
     const maybeUnexpectedCount = result.unexpectedCount;
     const maybeRowCount = result.rowCount;

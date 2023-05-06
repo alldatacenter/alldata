@@ -1,9 +1,9 @@
 import React from 'react';
-import { Badge } from 'antd';
+import {Badge} from 'antd';
 import styled from 'styled-components';
-import { blue } from '@ant-design/colors';
+import {blue} from '@ant-design/colors';
 
-import { ANTD_GRAY } from '../../../../constants';
+import {ANTD_GRAY} from '../../../../constants';
 
 const NullableBadge = styled(Badge)`
     margin-left: 4px;
@@ -18,5 +18,5 @@ const NullableBadge = styled(Badge)`
 `;
 
 export default function NullableLabel() {
-    return <NullableBadge count="Nullable" />;
+    return <NullableBadge count="Nullable"/>;
 }

@@ -1,9 +1,9 @@
 import React from 'react';
-import { Modal } from 'antd';
+import {Modal} from 'antd';
 import ClickOutside from '../../../../../shared/ClickOutside';
-import { DescriptionEditor } from './DescriptionEditor';
-import { DescriptionPreview } from './DescriptionPreview';
-import { useRouteToTab } from '../../../EntityContext';
+import {DescriptionEditor} from './DescriptionEditor';
+import {DescriptionPreview} from './DescriptionPreview';
+import {useRouteToTab} from '../../../EntityContext';
 
 const modalStyle = {
     top: '5%',
@@ -24,7 +24,7 @@ type DescriptionPreviewModalProps = {
     onClose: (showConfirm?: boolean) => void;
 };
 
-export const DescriptionPreviewModal = ({ description, editMode, onClose }: DescriptionPreviewModalProps) => {
+export const DescriptionPreviewModal = ({description, editMode, onClose}: DescriptionPreviewModalProps) => {
     const routeToTab = useRouteToTab();
 
     const onConfirmClose = () => {
@@ -35,7 +35,8 @@ export const DescriptionPreviewModal = ({ description, editMode, onClose }: Desc
                 onOk() {
                     onClose();
                 },
-                onCancel() {},
+                onCancel() {
+                },
                 okText: 'Yes',
                 maskClosable: true,
                 closable: true,
@@ -60,13 +61,13 @@ export const DescriptionPreviewModal = ({ description, editMode, onClose }: Desc
             >
                 {(editMode && (
                     <DescriptionEditor
-                        onComplete={() => routeToTab({ tabName: 'Documentation', tabParams: { modal: true } })}
+                        onComplete={() => routeToTab({tabName: 'Documentation', tabParams: {modal: true}})}
                     />
                 )) || (
                     <DescriptionPreview
                         description={description}
                         onEdit={() =>
-                            routeToTab({ tabName: 'Documentation', tabParams: { editing: true, modal: true } })
+                            routeToTab({tabName: 'Documentation', tabParams: {editing: true, modal: true}})
                         }
                     />
                 )}

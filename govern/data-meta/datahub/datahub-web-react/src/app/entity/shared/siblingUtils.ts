@@ -1,8 +1,8 @@
 import merge from 'deepmerge';
-import { unionBy, keyBy, values } from 'lodash';
-import { useLocation } from 'react-router-dom';
+import {unionBy, keyBy, values} from 'lodash';
+import {useLocation} from 'react-router-dom';
 import * as QueryString from 'query-string';
-import { Entity, MatchedField, Maybe, SiblingProperties } from '../../../types.generated';
+import {Entity, MatchedField, Maybe, SiblingProperties} from '../../../types.generated';
 
 export function stripSiblingsFromEntity(entity: any) {
     return {
@@ -11,6 +11,7 @@ export function stripSiblingsFromEntity(entity: any) {
         siblingPlatforms: null,
     };
 }
+
 function cleanHelper(obj, visited) {
     if (visited.has(obj)) return obj;
     visited.add(obj);
@@ -199,7 +200,7 @@ export const combineEntityDataWithSiblings = <T>(baseEntity: T): T => {
     // Force the urn of the combined entity to the current entity urn.
     combinedBaseEntity.urn = extractedBaseEntity.urn;
 
-    return { [baseEntityKey]: combinedBaseEntity } as unknown as T;
+    return {[baseEntityKey]: combinedBaseEntity} as unknown as T;
 };
 
 export type CombinedSearchResult = {
@@ -211,9 +212,9 @@ export type CombinedSearchResult = {
 export function combineSiblingsInSearchResults(
     results:
         | {
-              entity: Entity;
-              matchedFields: MatchedField[];
-          }[]
+        entity: Entity;
+        matchedFields: MatchedField[];
+    }[]
         | undefined,
 ) {
     const combinedResults: CombinedSearchResult[] | undefined = [];
@@ -229,7 +230,7 @@ export function combineSiblingsInSearchResults(
         }
 
         const combinedResult: CombinedSearchResult = result;
-        const { entity }: { entity: any } = result;
+        const {entity}: { entity: any } = result;
         const siblingUrns = entity?.siblings?.siblings?.map((sibling) => sibling.urn) || [];
         if (siblingUrns.length > 0) {
             combinedResult.matchedEntities = entity.siblings.isPrimary
@@ -244,13 +245,14 @@ export function combineSiblingsInSearchResults(
 
     return combinedResults;
 }
+
 // used to determine whether sibling entities should be shown merged or not
 export const SEPARATE_SIBLINGS_URL_PARAM = 'separate_siblings';
 
 // used to determine whether sibling entities should be shown merged or not
 export function useIsSeparateSiblingsMode() {
     const location = useLocation();
-    const params = QueryString.parse(location.search, { arrayFormat: 'comma' });
+    const params = QueryString.parse(location.search, {arrayFormat: 'comma'});
 
     return params[SEPARATE_SIBLINGS_URL_PARAM] === 'true';
 }

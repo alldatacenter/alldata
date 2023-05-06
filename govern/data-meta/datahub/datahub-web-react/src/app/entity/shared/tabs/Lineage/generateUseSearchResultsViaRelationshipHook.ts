@@ -1,20 +1,20 @@
-import { useEffect } from 'react';
-import { useSearchAcrossLineageQuery } from '../../../../../graphql/search.generated';
-import { LineageDirection } from '../../../../../types.generated';
-import { GetSearchResultsParams } from '../../components/styled/search/types';
+import {useEffect} from 'react';
+import {useSearchAcrossLineageQuery} from '../../../../../graphql/search.generated';
+import {LineageDirection} from '../../../../../types.generated';
+import {GetSearchResultsParams} from '../../components/styled/search/types';
 
 const filtersExist = (filters, orFilters) => {
     return filters?.length || orFilters?.length;
 };
 
 export default function generateUseSearchResultsViaRelationshipHook({
-    urn,
-    direction,
-    startTimeMillis,
-    endTimeMillis,
-    skipCache,
-    setSkipCache,
-}: {
+                                                                        urn,
+                                                                        direction,
+                                                                        startTimeMillis,
+                                                                        endTimeMillis,
+                                                                        skipCache,
+                                                                        setSkipCache,
+                                                                    }: {
     urn: string;
     direction: LineageDirection;
     startTimeMillis?: number;
@@ -25,7 +25,7 @@ export default function generateUseSearchResultsViaRelationshipHook({
     return function useGetSearchResultsViaSearchAcrossLineage(params: GetSearchResultsParams) {
         const {
             variables: {
-                input: { types, query, start, count, filters, orFilters },
+                input: {types, query, start, count, filters, orFilters},
             },
         } = params;
         const inputFields = {
@@ -41,7 +41,7 @@ export default function generateUseSearchResultsViaRelationshipHook({
             endTimeMillis: endTimeMillis || undefined,
         };
 
-        const { data, loading, error, refetch } = useSearchAcrossLineageQuery({
+        const {data, loading, error, refetch} = useSearchAcrossLineageQuery({
             variables: {
                 input: inputFields,
             },
@@ -51,7 +51,7 @@ export default function generateUseSearchResultsViaRelationshipHook({
         useEffect(() => {
             if (skipCache) {
                 refetch({
-                    input: { ...inputFields, searchFlags: { skipCache: true, fulltext: true } },
+                    input: {...inputFields, searchFlags: {skipCache: true, fulltext: true}},
                 });
                 setSkipCache?.(false);
             }

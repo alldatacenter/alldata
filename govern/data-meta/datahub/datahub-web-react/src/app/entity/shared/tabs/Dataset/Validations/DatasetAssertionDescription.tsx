@@ -1,5 +1,5 @@
-import { Popover, Typography, Button } from 'antd';
-import React, { useState } from 'react';
+import {Popover, Typography, Button} from 'antd';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 import {
     AssertionStdAggregation,
@@ -9,9 +9,9 @@ import {
     DatasetAssertionScope,
     SchemaFieldRef,
 } from '../../../../../../types.generated';
-import { decodeSchemaField } from '../../../../../lineage/utils/columnLineageUtils';
-import { getFormattedParameterValue } from './assertionUtils';
-import { DatasetAssertionLogicModal } from './DatasetAssertionLogicModal';
+import {decodeSchemaField} from '../../../../../lineage/utils/columnLineageUtils';
+import {getFormattedParameterValue} from './assertionUtils';
+import {DatasetAssertionLogicModal} from './DatasetAssertionLogicModal';
 
 const ViewLogicButton = styled(Button)`
     padding: 0px;
@@ -319,8 +319,8 @@ const TOOLTIP_MAX_WIDTH = 440;
  *
  * For example, Column 'X' values are in [1, 2, 3]
  */
-export const DatasetAssertionDescription = ({ assertionInfo }: Props) => {
-    const { scope, aggregation, fields, operator, parameters, nativeType, nativeParameters, logic } = assertionInfo;
+export const DatasetAssertionDescription = ({assertionInfo}: Props) => {
+    const {scope, aggregation, fields, operator, parameters, nativeType, nativeParameters, logic} = assertionInfo;
     const [isLogicVisible, setIsLogicVisible] = useState(false);
     /**
      * Build a description component from a) input (aggregation, inputs) b) the operator text
@@ -336,7 +336,7 @@ export const DatasetAssertionDescription = ({ assertionInfo }: Props) => {
 
     return (
         <Popover
-            overlayStyle={{ maxWidth: TOOLTIP_MAX_WIDTH }}
+            overlayStyle={{maxWidth: TOOLTIP_MAX_WIDTH}}
             title={<Typography.Text strong>Details</Typography.Text>}
             content={
                 <>

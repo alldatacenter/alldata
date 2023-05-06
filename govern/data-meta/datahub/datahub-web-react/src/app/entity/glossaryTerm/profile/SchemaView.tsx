@@ -1,5 +1,5 @@
 import React from 'react';
-import { Empty, Typography } from 'antd';
+import {Empty, Typography} from 'antd';
 import styled from 'styled-components';
 
 export type Props = {
@@ -11,7 +11,7 @@ const Content = styled.div`
     flex-grow: 1;
 `;
 
-export default function SchemaView({ rawSchema }: Props) {
+export default function SchemaView({rawSchema}: Props) {
     return (
         <>
             {rawSchema && rawSchema.length > 0 ? (
@@ -22,7 +22,7 @@ export default function SchemaView({ rawSchema }: Props) {
                 </Typography.Text>
             ) : (
                 <Content>
-                    <Empty description="No Schema" image={Empty.PRESENTED_IMAGE_SIMPLE} />
+                    <Empty description="No Schema" image={Empty.PRESENTED_IMAGE_SIMPLE}/>
                 </Content>
             )}
         </>

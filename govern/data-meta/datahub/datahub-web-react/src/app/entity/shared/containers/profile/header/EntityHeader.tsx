@@ -1,21 +1,21 @@
 import React from 'react';
 import styled from 'styled-components/macro';
-import { useEntityData, useRefetch } from '../../../EntityContext';
-import { EntityHealthStatus } from './EntityHealthStatus';
-import EntityDropdown, { EntityMenuItems } from '../../../EntityDropdown/EntityDropdown';
+import {useEntityData, useRefetch} from '../../../EntityContext';
+import {EntityHealthStatus} from './EntityHealthStatus';
+import EntityDropdown, {EntityMenuItems} from '../../../EntityDropdown/EntityDropdown';
 import PlatformContent from './PlatformContent';
-import { getPlatformName } from '../../../utils';
-import { EntityType, PlatformPrivileges } from '../../../../../../types.generated';
+import {getPlatformName} from '../../../utils';
+import {EntityType, PlatformPrivileges} from '../../../../../../types.generated';
 import EntityCount from './EntityCount';
 import EntityName from './EntityName';
-import { DeprecationPill } from '../../../components/styled/DeprecationPill';
+import {DeprecationPill} from '../../../components/styled/DeprecationPill';
 import CompactContext from '../../../../../shared/CompactContext';
-import { EntitySubHeaderSection, GenericEntityProperties } from '../../../types';
-import EntityActions, { EntityActionItem } from '../../../entity/EntityActions';
+import {EntitySubHeaderSection, GenericEntityProperties} from '../../../types';
+import EntityActions, {EntityActionItem} from '../../../entity/EntityActions';
 import ExternalUrlButton from '../../../ExternalUrlButton';
 import ShareButton from '../../../../../shared/share/ShareButton';
-import { capitalizeFirstLetterOnly } from '../../../../../shared/textUtil';
-import { useUserContext } from '../../../../../context/useUserContext';
+import {capitalizeFirstLetterOnly} from '../../../../../shared/textUtil';
+import {useUserContext} from '../../../../../context/useUserContext';
 
 const TitleWrapper = styled.div`
     display: flex;
@@ -78,8 +78,8 @@ type Props = {
     subHeader?: EntitySubHeaderSection;
 };
 
-export const EntityHeader = ({ headerDropdownItems, headerActionItems, isNameEditable, subHeader }: Props) => {
-    const { urn, entityType, entityData } = useEntityData();
+export const EntityHeader = ({headerDropdownItems, headerActionItems, isNameEditable, subHeader}: Props) => {
+    const {urn, entityType, entityData} = useEntityData();
     const refetch = useRefetch();
     const me = useUserContext();
     const platformName = getPlatformName(entityData);
@@ -97,9 +97,9 @@ export const EntityHeader = ({ headerDropdownItems, headerActionItems, isNameEdi
         <>
             <HeaderContainer data-testid="entity-header-test-id">
                 <MainHeaderContent>
-                    <PlatformContent />
+                    <PlatformContent/>
                     <TitleWrapper>
-                        <EntityName isNameEditable={canEditName} />
+                        <EntityName isNameEditable={canEditName}/>
                         {entityData?.deprecation?.deprecated && (
                             <DeprecationPill
                                 urn={urn}
@@ -117,7 +117,7 @@ export const EntityHeader = ({ headerDropdownItems, headerActionItems, isNameEdi
                             />
                         ))}
                     </TitleWrapper>
-                    <EntityCount entityCount={entityCount} />
+                    <EntityCount entityCount={entityCount}/>
                 </MainHeaderContent>
                 <SideHeaderContent>
                     <TopButtonsWrapper>
@@ -130,9 +130,9 @@ export const EntityHeader = ({ headerDropdownItems, headerActionItems, isNameEdi
                             />
                         )}
                         {headerActionItems && (
-                            <EntityActions urn={urn} actionItems={headerActionItems} refetchForEntity={refetch} />
+                            <EntityActions urn={urn} actionItems={headerActionItems} refetchForEntity={refetch}/>
                         )}
-                        <ShareButton entityType={entityType} subType={subType} urn={urn} name={entityName} />
+                        <ShareButton entityType={entityType} subType={subType} urn={urn} name={entityName}/>
                         {headerDropdownItems && (
                             <EntityDropdown
                                 urn={urn}
@@ -145,7 +145,7 @@ export const EntityHeader = ({ headerDropdownItems, headerActionItems, isNameEdi
                     </TopButtonsWrapper>
                 </SideHeaderContent>
             </HeaderContainer>
-            {subHeader && <subHeader.component />}
+            {subHeader && <subHeader.component/>}
         </>
     );
 };

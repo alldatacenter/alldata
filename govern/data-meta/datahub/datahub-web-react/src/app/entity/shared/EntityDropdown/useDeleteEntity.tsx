@@ -1,11 +1,11 @@
-import { useState } from 'react';
-import { message, Modal } from 'antd';
-import { EntityType } from '../../../../types.generated';
-import { useEntityRegistry } from '../../../useEntityRegistry';
-import { getDeleteEntityMutation } from '../../../shared/deleteUtils';
-import analytics, { EventType } from '../../../analytics';
-import { useGlossaryEntityData } from '../GlossaryEntityContext';
-import { getParentNodeToUpdate, updateGlossarySidebar } from '../../../glossary/utils';
+import {useState} from 'react';
+import {message, Modal} from 'antd';
+import {EntityType} from '../../../../types.generated';
+import {useEntityRegistry} from '../../../useEntityRegistry';
+import {getDeleteEntityMutation} from '../../../shared/deleteUtils';
+import analytics, {EventType} from '../../../analytics';
+import {useGlossaryEntityData} from '../GlossaryEntityContext';
+import {getParentNodeToUpdate, updateGlossarySidebar} from '../../../glossary/utils';
 
 /**
  * Performs the flow for deleting an entity of a given type.
@@ -24,7 +24,7 @@ function useDeleteEntity(
 ) {
     const [hasBeenDeleted, setHasBeenDeleted] = useState(false);
     const entityRegistry = useEntityRegistry();
-    const { isInGlossaryContext, urnsToUpdate, setUrnsToUpdate } = useGlossaryEntityData();
+    const {isInGlossaryContext, urnsToUpdate, setUrnsToUpdate} = useGlossaryEntityData();
 
     const maybeDeleteEntity = getDeleteEntityMutation(type)();
     const deleteEntity = (maybeDeleteEntity && maybeDeleteEntity[0]) || undefined;
@@ -67,7 +67,7 @@ function useDeleteEntity(
             })
             .catch((e) => {
                 message.destroy();
-                message.error({ content: `Failed to delete: \n ${e.message || ''}`, duration: 3 });
+                message.error({content: `Failed to delete: \n ${e.message || ''}`, duration: 3});
             });
     }
 
@@ -80,14 +80,15 @@ function useDeleteEntity(
             onOk() {
                 handleDeleteEntity();
             },
-            onCancel() {},
+            onCancel() {
+            },
             okText: 'Yes',
             maskClosable: true,
             closable: true,
         });
     }
 
-    return { onDeleteEntity, hasBeenDeleted };
+    return {onDeleteEntity, hasBeenDeleted};
 }
 
 export default useDeleteEntity;

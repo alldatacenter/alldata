@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Col, Divider, Row, Typography } from 'antd';
-import { AnalyticsChartGroup } from '../../../types.generated';
-import { AnalyticsChart } from './AnalyticsChart';
+import {Col, Divider, Row, Typography} from 'antd';
+import {AnalyticsChartGroup} from '../../../types.generated';
+import {AnalyticsChart} from './AnalyticsChart';
 
 const Container = styled.div`
     display: flex;
@@ -29,19 +29,19 @@ type Props = {
     chartGroup: AnalyticsChartGroup;
 };
 
-export const ChartGroup = ({ chartGroup }: Props) => {
+export const ChartGroup = ({chartGroup}: Props) => {
     return (
         <Container>
             {chartGroup.title?.length > 0 && (
                 <TitleContainer>
                     <GroupTitle level={3}>{chartGroup.title}</GroupTitle>
-                    <Divider />
+                    <Divider/>
                 </TitleContainer>
             )}
             <Row>
                 {chartGroup.charts.map((chart) => (
                     <Col sm={24} md={24} lg={8} xl={8}>
-                        <AnalyticsChart chartData={chart} width={300} height={300} />
+                        <AnalyticsChart chartData={chart} width={300} height={300}/>
                     </Col>
                 ))}
             </Row>

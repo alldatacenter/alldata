@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
-import { Tabs } from 'antd';
+import React, {useEffect} from 'react';
+import {Tabs} from 'antd';
 import styled from 'styled-components/macro';
 
-import { EntityTab } from '../../../types';
-import { useBaseEntity, useEntityData, useRouteToTab } from '../../../EntityContext';
+import {EntityTab} from '../../../types';
+import {useBaseEntity, useEntityData, useRouteToTab} from '../../../EntityContext';
 
 type Props = {
     tabs: EntityTab[];
@@ -24,8 +24,8 @@ const Tab = styled(Tabs.TabPane)`
     line-height: 22px;
 `;
 
-export const EntityTabs = <T,>({ tabs, selectedTab }: Props) => {
-    const { entityData, loading } = useEntityData();
+export const EntityTabs = <T, >({tabs, selectedTab}: Props) => {
+    const {entityData, loading} = useEntityData();
     const routeToTab = useRouteToTab();
     const baseEntity = useBaseEntity<T>();
 
@@ -33,7 +33,7 @@ export const EntityTabs = <T,>({ tabs, selectedTab }: Props) => {
 
     useEffect(() => {
         if (!loading && !selectedTab && enabledTabs[0]) {
-            routeToTab({ tabName: enabledTabs[0].name, method: 'replace' });
+            routeToTab({tabName: enabledTabs[0].name, method: 'replace'});
         }
     }, [loading, enabledTabs, selectedTab, routeToTab]);
 
@@ -41,13 +41,13 @@ export const EntityTabs = <T,>({ tabs, selectedTab }: Props) => {
         <UnborderedTabs
             activeKey={selectedTab?.name || ''}
             size="large"
-            onTabClick={(tab: string) => routeToTab({ tabName: tab })}
+            onTabClick={(tab: string) => routeToTab({tabName: tab})}
         >
             {tabs.map((tab) => {
                 if (!tab.display?.enabled(entityData, baseEntity)) {
-                    return <Tab tab={tab.name} key={tab.name} disabled />;
+                    return <Tab tab={tab.name} key={tab.name} disabled/>;
                 }
-                return <Tab tab={tab.name} key={tab.name} />;
+                return <Tab tab={tab.name} key={tab.name}/>;
             })}
         </UnborderedTabs>
     );

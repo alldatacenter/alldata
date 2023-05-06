@@ -1,15 +1,15 @@
 import React from 'react';
-import { Tooltip, Typography } from 'antd';
+import {Tooltip, Typography} from 'antd';
 import styled from 'styled-components';
 
-import { NodeViewComponentProps } from '@remirror/react';
-import { HoverEntityTooltip } from '../../../../../../../../recommendations/renderer/component/HoverEntityTooltip';
-import { useGetEntityMentionNodeQuery } from '../../../../../../../../../graphql/search.generated';
-import { useEntityRegistry } from '../../../../../../../../useEntityRegistry';
-import { IconStyleType } from '../../../../../../../Entity';
-import { ANTD_GRAY } from '../../../../../../constants';
+import {NodeViewComponentProps} from '@remirror/react';
+import {HoverEntityTooltip} from '../../../../../../../../recommendations/renderer/component/HoverEntityTooltip';
+import {useGetEntityMentionNodeQuery} from '../../../../../../../../../graphql/search.generated';
+import {useEntityRegistry} from '../../../../../../../../useEntityRegistry';
+import {IconStyleType} from '../../../../../../../Entity';
+import {ANTD_GRAY} from '../../../../../../constants';
 
-const { Text } = Typography;
+const {Text} = Typography;
 
 const InvalidEntityText = styled(Text)`
     display: inline-block;
@@ -32,12 +32,12 @@ const Container = styled.span`
     }
 `;
 
-export const MentionsNodeView = ({ node }: NodeViewComponentProps) => {
-    const { urn, name } = node.attrs;
+export const MentionsNodeView = ({node}: NodeViewComponentProps) => {
+    const {urn, name} = node.attrs;
 
     const registry = useEntityRegistry();
-    const { data, loading } = useGetEntityMentionNodeQuery({
-        variables: { urn },
+    const {data, loading} = useGetEntityMentionNodeQuery({
+        variables: {urn},
     });
 
     if (loading) {
@@ -52,7 +52,7 @@ export const MentionsNodeView = ({ node }: NodeViewComponentProps) => {
         );
     }
 
-    const { entity } = data;
+    const {entity} = data;
     const entityName = registry.getDisplayName(entity.type, entity);
     const entityType = registry.getIcon(entity.type, 14, IconStyleType.ACCENT);
 

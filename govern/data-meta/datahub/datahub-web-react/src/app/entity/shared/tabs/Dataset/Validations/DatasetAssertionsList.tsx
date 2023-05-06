@@ -1,14 +1,14 @@
-import { Button, Empty, Image, message, Modal, Tag, Tooltip, Typography } from 'antd';
+import {Button, Empty, Image, message, Modal, Tag, Tooltip, Typography} from 'antd';
 import React from 'react';
 import styled from 'styled-components';
-import { DeleteOutlined, DownOutlined, RightOutlined, StopOutlined } from '@ant-design/icons';
-import { DatasetAssertionDescription } from './DatasetAssertionDescription';
-import { StyledTable } from '../../../components/styled/StyledTable';
-import { DatasetAssertionDetails } from './DatasetAssertionDetails';
-import { Assertion, AssertionRunStatus } from '../../../../../../types.generated';
-import { getResultColor, getResultIcon, getResultText } from './assertionUtils';
-import { useDeleteAssertionMutation } from '../../../../../../graphql/assertion.generated';
-import { capitalizeFirstLetterOnly } from '../../../../../shared/textUtil';
+import {DeleteOutlined, DownOutlined, RightOutlined, StopOutlined} from '@ant-design/icons';
+import {DatasetAssertionDescription} from './DatasetAssertionDescription';
+import {StyledTable} from '../../../components/styled/StyledTable';
+import {DatasetAssertionDetails} from './DatasetAssertionDetails';
+import {Assertion, AssertionRunStatus} from '../../../../../../types.generated';
+import {getResultColor, getResultIcon, getResultText} from './assertionUtils';
+import {useDeleteAssertionMutation} from '../../../../../../graphql/assertion.generated';
+import {capitalizeFirstLetterOnly} from '../../../../../shared/textUtil';
 
 const ResultContainer = styled.div`
     display: flex;
@@ -41,19 +41,19 @@ type Props = {
  *
  * Currently this component supports rendering Dataset Assertions only.
  */
-export const DatasetAssertionsList = ({ assertions, onDelete }: Props) => {
+export const DatasetAssertionsList = ({assertions, onDelete}: Props) => {
     const [deleteAssertionMutation] = useDeleteAssertionMutation();
 
     const deleteAssertion = async (urn: string) => {
         try {
             await deleteAssertionMutation({
-                variables: { urn },
+                variables: {urn},
             });
-            message.success({ content: 'Removed assertion.', duration: 2 });
+            message.success({content: 'Removed assertion.', duration: 2});
         } catch (e: unknown) {
             message.destroy();
             if (e instanceof Error) {
-                message.error({ content: `Failed to remove assertion: \n ${e.message || ''}`, duration: 3 });
+                message.error({content: `Failed to remove assertion: \n ${e.message || ''}`, duration: 3});
             }
         }
         onDelete?.(urn);
@@ -66,7 +66,8 @@ export const DatasetAssertionsList = ({ assertions, onDelete }: Props) => {
             onOk() {
                 deleteAssertion(urn);
             },
-            onCancel() {},
+            onCancel() {
+            },
             okText: 'Yes',
             maskClosable: true,
             closable: true,
@@ -95,18 +96,18 @@ export const DatasetAssertionsList = ({ assertions, onDelete }: Props) => {
                 const localTime = executionDate && `${executionDate.toLocaleDateString()}`;
                 const resultColor = (record.lastExecResult && getResultColor(record.lastExecResult)) || 'default';
                 const resultText = (record.lastExecResult && getResultText(record.lastExecResult)) || 'No Evaluations';
-                const resultIcon = (record.lastExecResult && getResultIcon(record.lastExecResult)) || <StopOutlined />;
+                const resultIcon = (record.lastExecResult && getResultIcon(record.lastExecResult)) || <StopOutlined/>;
                 return (
                     <ResultContainer>
                         <div>
                             <Tooltip title={(localTime && `Last evaluated on ${localTime}`) || 'No Evaluations'}>
-                                <Tag style={{ borderColor: resultColor }}>
+                                <Tag style={{borderColor: resultColor}}>
                                     {resultIcon}
-                                    <ResultTypeText style={{ color: resultColor }}>{resultText}</ResultTypeText>
+                                    <ResultTypeText style={{color: resultColor}}>{resultText}</ResultTypeText>
                                 </Tag>
                             </Tooltip>
                         </div>
-                        <DatasetAssertionDescription assertionInfo={record.datasetAssertionInfo} />
+                        <DatasetAssertionDescription assertionInfo={record.datasetAssertionInfo}/>
                     </ResultContainer>
                 );
             },
@@ -133,13 +134,13 @@ export const DatasetAssertionsList = ({ assertions, onDelete }: Props) => {
                             )) || (
                                 <Typography.Text>
                                     {record.platform.properties?.displayName ||
-                                        capitalizeFirstLetterOnly(record.platform.name)}
+                                    capitalizeFirstLetterOnly(record.platform.name)}
                                 </Typography.Text>
                             )}
                         </PlatformContainer>
                     </Tooltip>
                     <Button onClick={() => onDeleteAssertion(record.urn)} type="text" shape="circle" danger>
-                        <DeleteOutlined />
+                        <DeleteOutlined/>
                     </Button>
                 </ActionButtonContainer>
             ),
@@ -153,19 +154,19 @@ export const DatasetAssertionsList = ({ assertions, onDelete }: Props) => {
                 dataSource={assertionsTableData}
                 rowKey="urn"
                 locale={{
-                    emptyText: <Empty description="No Assertions Found :(" image={Empty.PRESENTED_IMAGE_SIMPLE} />,
+                    emptyText: <Empty description="No Assertions Found :(" image={Empty.PRESENTED_IMAGE_SIMPLE}/>,
                 }}
                 expandable={{
                     defaultExpandAllRows: false,
                     expandRowByClick: true,
                     expandedRowRender: (record) => {
-                        return <DatasetAssertionDetails urn={record.urn} lastEvaluatedAtMillis={record.lastExecTime} />;
+                        return <DatasetAssertionDetails urn={record.urn} lastEvaluatedAtMillis={record.lastExecTime}/>;
                     },
-                    expandIcon: ({ expanded, onExpand, record }: any) =>
+                    expandIcon: ({expanded, onExpand, record}: any) =>
                         expanded ? (
-                            <DownOutlined style={{ fontSize: 8 }} onClick={(e) => onExpand(record, e)} />
+                            <DownOutlined style={{fontSize: 8}} onClick={(e) => onExpand(record, e)}/>
                         ) : (
-                            <RightOutlined style={{ fontSize: 8 }} onClick={(e) => onExpand(record, e)} />
+                            <RightOutlined style={{fontSize: 8}} onClick={(e) => onExpand(record, e)}/>
                         ),
                 }}
                 showHeader={false}

@@ -1,17 +1,18 @@
 import * as React from 'react';
-import { FolderOutlined } from '@ant-design/icons';
-import { Domain, EntityType, SearchResult } from '../../../types.generated';
-import { Entity, EntityCapabilityType, IconStyleType, PreviewType } from '../Entity';
-import { Preview } from './preview/Preview';
-import { EntityProfile } from '../shared/containers/profile/EntityProfile';
-import { DocumentationTab } from '../shared/tabs/Documentation/DocumentationTab';
-import { SidebarAboutSection } from '../shared/containers/profile/sidebar/AboutSection/SidebarAboutSection';
-import { SidebarOwnerSection } from '../shared/containers/profile/sidebar/Ownership/SidebarOwnerSection';
-import { getDataForEntityType } from '../shared/containers/profile/utils';
-import { useGetDomainQuery } from '../../../graphql/domain.generated';
-import { DomainEntitiesTab } from './DomainEntitiesTab';
-import { EntityMenuItems } from '../shared/EntityDropdown/EntityDropdown';
-import { EntityActionItem } from '../shared/entity/EntityActions';
+import {FolderOutlined} from '@ant-design/icons';
+import {Domain, EntityType, SearchResult} from '../../../types.generated';
+import {Entity, EntityCapabilityType, IconStyleType, PreviewType} from '../Entity';
+import {Preview} from './preview/Preview';
+import {EntityProfile} from '../shared/containers/profile/EntityProfile';
+import {DocumentationTab} from '../shared/tabs/Documentation/DocumentationTab';
+import {SidebarAboutSection} from '../shared/containers/profile/sidebar/AboutSection/SidebarAboutSection';
+import {SidebarOwnerSection} from '../shared/containers/profile/sidebar/Ownership/SidebarOwnerSection';
+import {getDataForEntityType} from '../shared/containers/profile/utils';
+import {useGetDomainQuery} from '../../../graphql/domain.generated';
+import {DomainEntitiesTab} from './DomainEntitiesTab';
+import {EntityMenuItems} from '../shared/EntityDropdown/EntityDropdown';
+import {EntityActionItem} from '../shared/entity/EntityActions';
+
 // import { EntityActionItem } from '../shared/entity/EntityActions';
 
 /**
@@ -22,16 +23,17 @@ export class DomainEntity implements Entity<Domain> {
 
     icon = (fontSize: number, styleType: IconStyleType, color?: string) => {
         if (styleType === IconStyleType.TAB_VIEW) {
-            return <FolderOutlined />;
+            return <FolderOutlined/>;
         }
 
         if (styleType === IconStyleType.HIGHLIGHT) {
-            return <FolderOutlined style={{ fontSize, color: color || '#B37FEB' }} />;
+            return <FolderOutlined style={{fontSize, color: color || '#B37FEB'}}/>;
         }
 
         if (styleType === IconStyleType.SVG) {
             return (
-                <path d="M832 64H192c-17.7 0-32 14.3-32 32v832c0 17.7 14.3 32 32 32h640c17.7 0 32-14.3 32-32V96c0-17.7-14.3-32-32-32zm-600 72h560v208H232V136zm560 480H232V408h560v208zm0 272H232V680h560v208zM304 240a40 40 0 1080 0 40 40 0 10-80 0zm0 272a40 40 0 1080 0 40 40 0 10-80 0zm0 272a40 40 0 1080 0 40 40 0 10-80 0z" />
+                <path
+                    d="M832 64H192c-17.7 0-32 14.3-32 32v832c0 17.7 14.3 32 32 32h640c17.7 0 32-14.3 32-32V96c0-17.7-14.3-32-32-32zm-600 72h560v208H232V136zm560 480H232V408h560v208zm0 272H232V680h560v208zM304 240a40 40 0 1080 0 40 40 0 10-80 0zm0 272a40 40 0 1080 0 40 40 0 10-80 0zm0 272a40 40 0 1080 0 40 40 0 10-80 0z"/>
             );
         }
 

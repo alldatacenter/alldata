@@ -1,16 +1,16 @@
-import { MockedProvider } from '@apollo/client/testing';
-import { render } from '@testing-library/react';
+import {MockedProvider} from '@apollo/client/testing';
+import {render} from '@testing-library/react';
 import DOMPurify from 'dompurify';
 import React from 'react';
-import { mocks } from '../../../../../../Mocks';
-import { EntityType } from '../../../../../../types.generated';
+import {mocks} from '../../../../../../Mocks';
+import {EntityType} from '../../../../../../types.generated';
 import TestPageContainer from '../../../../../../utils/test-utils/TestPageContainer';
 import EntityContext from '../../../EntityContext';
-import { DocumentationTab } from '../DocumentationTab';
+import {DocumentationTab} from '../DocumentationTab';
 
 describe('SchemaDescriptionField', () => {
     it('renders original description', async () => {
-        const { getByText } = render(
+        const {getByText} = render(
             <MockedProvider mocks={mocks} addTypename={false}>
                 <TestPageContainer initialEntries={['/dataset/urn:li:dataset:3']}>
                     <EntityContext.Provider
@@ -27,7 +27,7 @@ describe('SchemaDescriptionField', () => {
                             routeToTab: jest.fn(),
                         }}
                     >
-                        <DocumentationTab />
+                        <DocumentationTab/>
                     </EntityContext.Provider>
                 </TestPageContainer>
             </MockedProvider>,
@@ -36,7 +36,7 @@ describe('SchemaDescriptionField', () => {
     });
 
     it('if editable is present, renders edited description', async () => {
-        const { getByText, queryByText } = render(
+        const {getByText, queryByText} = render(
             <MockedProvider mocks={mocks} addTypename={false}>
                 <TestPageContainer initialEntries={['/dataset/urn:li:dataset:3']}>
                     <EntityContext.Provider
@@ -54,7 +54,7 @@ describe('SchemaDescriptionField', () => {
                             routeToTab: jest.fn(),
                         }}
                     >
-                        <DocumentationTab />
+                        <DocumentationTab/>
                     </EntityContext.Provider>
                 </TestPageContainer>
             </MockedProvider>,

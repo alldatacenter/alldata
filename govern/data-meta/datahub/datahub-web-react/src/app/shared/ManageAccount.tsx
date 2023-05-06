@@ -1,17 +1,17 @@
 import React from 'react';
 import Cookies from 'js-cookie';
-import { Menu, Dropdown } from 'antd';
-import { CaretDownOutlined } from '@ant-design/icons';
-import styled, { useTheme } from 'styled-components';
-import { EntityType } from '../../types.generated';
-import { useEntityRegistry } from '../useEntityRegistry';
-import { GlobalCfg } from '../../conf';
-import { isLoggedInVar } from '../auth/checkAuthStatus';
+import {Menu, Dropdown} from 'antd';
+import {CaretDownOutlined} from '@ant-design/icons';
+import styled, {useTheme} from 'styled-components';
+import {EntityType} from '../../types.generated';
+import {useEntityRegistry} from '../useEntityRegistry';
+import {GlobalCfg} from '../../conf';
+import {isLoggedInVar} from '../auth/checkAuthStatus';
 import CustomAvatar from './avatar/CustomAvatar';
-import analytics, { EventType } from '../analytics';
-import { ANTD_GRAY } from '../entity/shared/constants';
-import { useAppConfig } from '../useAppConfig';
-import { useUserContext } from '../context/useUserContext';
+import analytics, {EventType} from '../analytics';
+import {ANTD_GRAY} from '../entity/shared/constants';
+import {useAppConfig} from '../useAppConfig';
+import {useUserContext} from '../context/useUserContext';
 
 const MenuItem = styled(Menu.Item)`
     display: flex;
@@ -51,26 +51,26 @@ const defaultProps = {
     pictureLink: undefined,
 };
 
-export const ManageAccount = ({ urn: _urn, pictureLink: _pictureLink, name }: Props) => {
+export const ManageAccount = ({urn: _urn, pictureLink: _pictureLink, name}: Props) => {
     const entityRegistry = useEntityRegistry();
     const themeConfig = useTheme();
-    const { config } = useAppConfig();
+    const {config} = useAppConfig();
     const userContext = useUserContext();
     const handleLogout = () => {
-        analytics.event({ type: EventType.LogOutEvent });
+        analytics.event({type: EventType.LogOutEvent});
         isLoggedInVar(false);
         Cookies.remove(GlobalCfg.CLIENT_AUTH_COOKIE);
-        userContext.updateLocalState({ selectedViewUrn: undefined });
+        userContext.updateLocalState({selectedViewUrn: undefined});
     };
     const version = config?.appVersion;
     const menu = (
-        <Menu style={{ width: '120px' }}>
+        <Menu style={{width: '120px'}}>
             {version && (
-                <MenuItem key="version" disabled style={{ color: '#8C8C8C' }}>
+                <MenuItem key="version" disabled style={{color: '#8C8C8C'}}>
                     {version}
                 </MenuItem>
             )}
-            <Menu.Divider />
+            <Menu.Divider/>
             <MenuItem key="profile">
                 <a
                     href={`/${entityRegistry.getPathName(EntityType.CorpUser)}/${_urn}`}
@@ -80,7 +80,7 @@ export const ManageAccount = ({ urn: _urn, pictureLink: _pictureLink, name }: Pr
                     Your Profile
                 </a>
             </MenuItem>
-            <Menu.Divider />
+            <Menu.Divider/>
             {themeConfig.content.menu.items.map((value) => {
                 return (
                     <MenuItem key={value.label}>
@@ -101,7 +101,7 @@ export const ManageAccount = ({ urn: _urn, pictureLink: _pictureLink, name }: Pr
             <MenuItem key="openapiLink">
                 <a href="/openapi/swagger-ui/index.html">OpenAPI</a>
             </MenuItem>
-            <Menu.Divider />
+            <Menu.Divider/>
             <MenuItem danger key="logout" tabIndex={0}>
                 <a href="/logOut" onClick={handleLogout} data-testid="log-out-menu-item">
                     Sign Out
@@ -113,8 +113,8 @@ export const ManageAccount = ({ urn: _urn, pictureLink: _pictureLink, name }: Pr
     return (
         <Dropdown overlay={menu} trigger={['click']}>
             <DropdownWrapper data-testid="manage-account-menu">
-                <CustomAvatar photoUrl={_pictureLink} style={{ marginRight: 4 }} name={name} />
-                <DownArrow />
+                <CustomAvatar photoUrl={_pictureLink} style={{marginRight: 4}} name={name}/>
+                <DownArrow/>
             </DropdownWrapper>
         </Dropdown>
     );

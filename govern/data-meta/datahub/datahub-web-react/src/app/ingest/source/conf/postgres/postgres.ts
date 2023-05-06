@@ -1,4 +1,4 @@
-import { SourceConfig } from '../types';
+import {SourceConfig} from '../types';
 import postgresLogo from '../../../../../images/postgreslogo.png';
 
 const placeholderRecipe = `\

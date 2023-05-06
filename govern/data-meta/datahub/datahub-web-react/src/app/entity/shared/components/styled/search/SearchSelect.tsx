@@ -1,19 +1,19 @@
-import React, { useState } from 'react';
-import { Button, message, Typography } from 'antd';
+import React, {useState} from 'react';
+import {Button, message, Typography} from 'antd';
 import styled from 'styled-components';
-import { FilterOutlined } from '@ant-design/icons';
+import {FilterOutlined} from '@ant-design/icons';
 
-import { useEntityRegistry } from '../../../../../useEntityRegistry';
-import { EntityType, FacetFilterInput } from '../../../../../../types.generated';
-import { ENTITY_FILTER_NAME, UnionType } from '../../../../../search/utils/constants';
-import { SearchCfg } from '../../../../../../conf';
-import { EmbeddedListSearchResults } from './EmbeddedListSearchResults';
-import { useGetSearchResultsForMultipleQuery } from '../../../../../../graphql/search.generated';
-import { isListSubset } from '../../../utils';
-import { SearchBar } from '../../../../../search/SearchBar';
-import { ANTD_GRAY } from '../../../constants';
-import { EntityAndType } from '../../../types';
-import { SearchSelectBar } from './SearchSelectBar';
+import {useEntityRegistry} from '../../../../../useEntityRegistry';
+import {EntityType, FacetFilterInput} from '../../../../../../types.generated';
+import {ENTITY_FILTER_NAME, UnionType} from '../../../../../search/utils/constants';
+import {SearchCfg} from '../../../../../../conf';
+import {EmbeddedListSearchResults} from './EmbeddedListSearchResults';
+import {useGetSearchResultsForMultipleQuery} from '../../../../../../graphql/search.generated';
+import {isListSubset} from '../../../utils';
+import {SearchBar} from '../../../../../search/SearchBar';
+import {ANTD_GRAY} from '../../../constants';
+import {EntityAndType} from '../../../types';
+import {SearchSelectBar} from './SearchSelectBar';
 import TabToolbar from '../TabToolbar';
 
 const Container = styled.span`
@@ -54,7 +54,7 @@ type Props = {
  * This component provides easy ways to filter for a specific set of entity types, and provides a set of entity urns
  * when the selection is complete.
  */
-export const SearchSelect = ({ fixedEntityTypes, placeholderText, selectedEntities, setSelectedEntities }: Props) => {
+export const SearchSelect = ({fixedEntityTypes, placeholderText, selectedEntities, setSelectedEntities}: Props) => {
     const entityRegistry = useEntityRegistry();
 
     // Component state
@@ -75,7 +75,7 @@ export const SearchSelect = ({ fixedEntityTypes, placeholderText, selectedEntiti
     const finalEntityTypes = (entityFilters.length > 0 && entityFilters) || fixedEntityTypes || [];
 
     // Execute search
-    const { data, loading, error, refetch } = useGetSearchResultsForMultipleQuery({
+    const {data, loading, error, refetch} = useGetSearchResultsForMultipleQuery({
         variables: {
             input: {
                 types: finalEntityTypes,
@@ -89,7 +89,7 @@ export const SearchSelect = ({ fixedEntityTypes, placeholderText, selectedEntiti
 
     const searchAcrossEntities = data?.searchAcrossEntities;
     const searchResultEntities =
-        searchAcrossEntities?.searchResults?.map((result) => ({ urn: result.entity.urn, type: result.entity.type })) ||
+        searchAcrossEntities?.searchResults?.map((result) => ({urn: result.entity.urn, type: result.entity.type})) ||
         [];
     const searchResultUrns = searchResultEntities.map((entity) => entity.urn);
     const selectedEntityUrns = selectedEntities.map((entity) => entity.urn);
@@ -139,7 +139,7 @@ export const SearchSelect = ({ fixedEntityTypes, placeholderText, selectedEntiti
             {error && message.error(`Failed to complete search: ${error && error.message}`)}
             <SearchBarContainer>
                 <Button type="text" onClick={onToggleFilters}>
-                    <FilterOutlined />
+                    <FilterOutlined/>
                     <Typography.Text>Filters</Typography.Text>
                 </Button>
                 <SearchBar

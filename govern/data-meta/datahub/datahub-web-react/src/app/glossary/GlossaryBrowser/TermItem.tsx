@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components/macro';
-import { Link } from 'react-router-dom';
-import { useEntityRegistry } from '../../useEntityRegistry';
-import { ANTD_GRAY } from '../../entity/shared/constants';
-import { ChildGlossaryTermFragment } from '../../../graphql/glossaryNode.generated';
-import { useGlossaryEntityData } from '../../entity/shared/GlossaryEntityContext';
+import {Link} from 'react-router-dom';
+import {useEntityRegistry} from '../../useEntityRegistry';
+import {ANTD_GRAY} from '../../entity/shared/constants';
+import {ChildGlossaryTermFragment} from '../../../graphql/glossaryNode.generated';
+import {useGlossaryEntityData} from '../../entity/shared/GlossaryEntityContext';
 
 const TermWrapper = styled.div`
     font-weight: normal;
@@ -35,8 +35,8 @@ export const NameWrapper = styled.span<{ showSelectStyles?: boolean }>`
 
     &:hover {
         ${(props) =>
-            props.showSelectStyles &&
-            `
+    props.showSelectStyles &&
+    `
         background-color: ${ANTD_GRAY[3]};
         cursor: pointer;
         `}
@@ -50,9 +50,9 @@ interface Props {
 }
 
 function TermItem(props: Props) {
-    const { term, isSelecting, selectTerm } = props;
+    const {term, isSelecting, selectTerm} = props;
 
-    const { entityData } = useGlossaryEntityData();
+    const {entityData} = useGlossaryEntityData();
     const entityRegistry = useEntityRegistry();
 
     function handleSelectTerm() {

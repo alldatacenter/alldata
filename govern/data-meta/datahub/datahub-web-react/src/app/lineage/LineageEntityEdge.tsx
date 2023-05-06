@@ -1,14 +1,14 @@
 import React from 'react';
-import { Tooltip } from 'antd';
-import { ClockCircleOutlined, EyeOutlined } from '@ant-design/icons';
+import {Tooltip} from 'antd';
+import {ClockCircleOutlined, EyeOutlined} from '@ant-design/icons';
 import dayjs from 'dayjs';
 import LocalizedFormat from 'dayjs/plugin/localizedFormat';
 import styled from 'styled-components';
-import { Group } from '@vx/group';
-import { curveBasis } from '@vx/curve';
-import { LinePath } from '@vx/shape';
-import { VizEdge } from './types';
-import { ANTD_GRAY } from '../entity/shared/constants';
+import {Group} from '@vx/group';
+import {curveBasis} from '@vx/curve';
+import {LinePath} from '@vx/shape';
+import {VizEdge} from './types';
+import {ANTD_GRAY} from '../entity/shared/constants';
 
 dayjs.extend(LocalizedFormat);
 
@@ -30,7 +30,7 @@ type Props = {
     isHighlighted: boolean;
 };
 
-export default function LineageEntityEdge({ edge, key, isHighlighted }: Props) {
+export default function LineageEntityEdge({edge, key, isHighlighted}: Props) {
     const createdOnTimestamp = edge?.createdOn;
     const updatedOnTimestamp = edge?.updatedOn;
     const createdOn = createdOnTimestamp ? dayjs(createdOnTimestamp).format('ll') : undefined;
@@ -46,12 +46,12 @@ export default function LineageEntityEdge({ edge, key, isHighlighted }: Props) {
                         <>
                             {createdOn && (
                                 <EdgeTimestamp>
-                                    <StyledClockCircleOutlined /> Created {isManual && 'manually '}on {createdOn}
+                                    <StyledClockCircleOutlined/> Created {isManual && 'manually '}on {createdOn}
                                 </EdgeTimestamp>
                             )}
                             {updatedOn && !isManual && (
                                 <EdgeTimestamp>
-                                    <StyledEyeOutlined /> Last observed on {updatedOn}
+                                    <StyledEyeOutlined/> Last observed on {updatedOn}
                                 </EdgeTimestamp>
                             )}
                         </>

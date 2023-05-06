@@ -1,9 +1,9 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import { useGetMeLazyQuery } from '../../graphql/me.generated';
-import { useGetGlobalViewsSettingsLazyQuery } from '../../graphql/app.generated';
-import { CorpUser, PlatformPrivileges } from '../../types.generated';
-import { UserContext, LocalState, DEFAULT_STATE, State } from './userContext';
-import { useInitialRedirect } from './useInitialRedirect';
+import React, {useCallback, useEffect, useState} from 'react';
+import {useGetMeLazyQuery} from '../../graphql/me.generated';
+import {useGetGlobalViewsSettingsLazyQuery} from '../../graphql/app.generated';
+import {CorpUser, PlatformPrivileges} from '../../types.generated';
+import {UserContext, LocalState, DEFAULT_STATE, State} from './userContext';
+import {useInitialRedirect} from './useInitialRedirect';
 
 // TODO: Migrate all usage of useAuthenticatedUser to using this provider.
 
@@ -29,7 +29,7 @@ const saveLocalState = (newState: LocalState) => {
 /**
  * A provider of context related to the currently authenticated user.
  */
-const UserContextProvider = ({ children }: { children: React.ReactNode }) => {
+const UserContextProvider = ({children}: { children: React.ReactNode }) => {
     /**
      * Stores transient session state, and browser-persistent local state.
      */
@@ -39,13 +39,13 @@ const UserContextProvider = ({ children }: { children: React.ReactNode }) => {
     /**
      * Retrieve the current user details once on component mount.
      */
-    const [getMe, { data: meData, refetch }] = useGetMeLazyQuery({ fetchPolicy: 'cache-first' });
+    const [getMe, {data: meData, refetch}] = useGetMeLazyQuery({fetchPolicy: 'cache-first'});
     useEffect(() => getMe(), [getMe]);
 
     /**
      * Retrieve the Global View settings once on component mount.
      */
-    const [getGlobalViewSettings, { data: settingsData }] = useGetGlobalViewsSettingsLazyQuery({
+    const [getGlobalViewSettings, {data: settingsData}] = useGetGlobalViewsSettingsLazyQuery({
         fetchPolicy: 'cache-first',
     });
     useEffect(() => getGlobalViewSettings(), [getGlobalViewSettings]);

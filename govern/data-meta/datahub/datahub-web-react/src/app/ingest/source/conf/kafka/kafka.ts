@@ -1,4 +1,4 @@
-import { SourceConfig } from '../types';
+import {SourceConfig} from '../types';
 import kafkaLogo from '../../../../../images/kafkalogo.png';
 
 const placeholderRecipe = `\

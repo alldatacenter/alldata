@@ -1,4 +1,4 @@
-import { Select } from 'antd';
+import {Select} from 'antd';
 import React from 'react';
 import moment from 'moment-timezone';
 
@@ -7,7 +7,7 @@ type Props = {
     onChange: (newTimezone: string) => void;
 };
 
-export const TimezoneSelect = ({ value, onChange }: Props) => {
+export const TimezoneSelect = ({value, onChange}: Props) => {
     const timezones = moment.tz.names();
     return (
         <>

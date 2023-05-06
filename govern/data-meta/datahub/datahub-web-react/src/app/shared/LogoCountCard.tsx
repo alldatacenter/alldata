@@ -1,8 +1,8 @@
 import React from 'react';
-import { Image, Typography, Button } from 'antd';
+import {Image, Typography, Button} from 'antd';
 import styled from 'styled-components';
-import { ANTD_GRAY } from '../entity/shared/constants';
-import { formatNumber } from './formatNumber';
+import {ANTD_GRAY} from '../entity/shared/constants';
+import {formatNumber} from './formatNumber';
 
 const Container = styled(Button)`
     margin-right: 12px;
@@ -51,11 +51,11 @@ type Props = {
     onClick?: () => void;
 };
 
-export const LogoCountCard = ({ logoUrl, logoComponent, name, count, onClick }: Props) => {
+export const LogoCountCard = ({logoUrl, logoComponent, name, count, onClick}: Props) => {
     return (
         <Container type="link" onClick={onClick}>
             <LogoContainer>
-                {(logoUrl && <PlatformLogo preview={false} src={logoUrl} alt={name} />) || logoComponent}
+                {(logoUrl && <PlatformLogo preview={false} src={logoUrl} alt={name}/>) || logoComponent}
             </LogoContainer>
             <TitleContainer>
                 <Title

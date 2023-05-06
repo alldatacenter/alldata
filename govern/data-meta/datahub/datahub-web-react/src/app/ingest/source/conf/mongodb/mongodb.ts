@@ -1,4 +1,4 @@
-import { SourceConfig } from '../types';
+import {SourceConfig} from '../types';
 import mongodbLogo from '../../../../../images/mongodblogo.png';
 
 const placeholderRecipe = `\

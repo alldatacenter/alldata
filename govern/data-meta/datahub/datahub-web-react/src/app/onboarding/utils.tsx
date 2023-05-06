@@ -1,9 +1,9 @@
-import { Typography } from 'antd';
+import {Typography} from 'antd';
 import React from 'react';
 import styled from 'styled-components';
-import { StepStateResult } from '../../types.generated';
-import { OnboardingConfig } from './OnboardingConfig';
-import { OnboardingStep } from './OnboardingStep';
+import {StepStateResult} from '../../types.generated';
+import {OnboardingConfig} from './OnboardingConfig';
+import {OnboardingStep} from './OnboardingStep';
 
 export function convertStepId(stepId: string, userUrn: string) {
     const step = OnboardingConfig.find((configStep) => configStep.id === stepId);
@@ -29,10 +29,10 @@ export function getStepsToRender(
     const filteredStepIds: string[] = reshow
         ? stepIds
         : stepIds.filter((stepId) => {
-              const convertedStepId = convertStepId(stepId, userUrn);
-              // if we don't have this step in our educationSteps from GMS we haven't seen it yet
-              return !educationSteps.find((step) => step.id === convertedStepId);
-          });
+            const convertedStepId = convertStepId(stepId, userUrn);
+            // if we don't have this step in our educationSteps from GMS we haven't seen it yet
+            return !educationSteps.find((step) => step.id === convertedStepId);
+        });
 
     return filteredStepIds
         .map((stepId) => OnboardingConfig.find((step: OnboardingStep) => step.id === stepId))

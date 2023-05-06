@@ -1,6 +1,6 @@
-import { SchemaFieldRef } from '../../../types.generated';
+import {SchemaFieldRef} from '../../../types.generated';
 import EntityRegistry from '../../entity/EntityRegistry';
-import { EntityAndType, FetchedEntities, FetchedEntity } from '../types';
+import {EntityAndType, FetchedEntities, FetchedEntity} from '../types';
 import {
     decodeSchemaField,
     getFieldPathFromSchemaFieldUrn,

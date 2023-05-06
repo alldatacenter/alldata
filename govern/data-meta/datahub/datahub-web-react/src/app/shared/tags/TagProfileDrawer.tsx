@@ -1,7 +1,7 @@
 import React from 'react';
-import { Drawer, Button, Space } from 'antd';
+import {Drawer, Button, Space} from 'antd';
 import styled from 'styled-components';
-import { InfoCircleOutlined } from '@ant-design/icons';
+import {InfoCircleOutlined} from '@ant-design/icons';
 
 import TagStyleEntity from '../TagStyleEntity';
 
@@ -16,7 +16,7 @@ const DetailsLayout = styled.div`
     justify-content: space-between;
 `;
 
-export const TagProfileDrawer = ({ closeTagProfileDrawer, tagProfileDrawerVisible, urn }: Props) => {
+export const TagProfileDrawer = ({closeTagProfileDrawer, tagProfileDrawerVisible, urn}: Props) => {
     return (
         <>
             <Drawer
@@ -34,14 +34,14 @@ export const TagProfileDrawer = ({ closeTagProfileDrawer, tagProfileDrawerVisibl
                         </Space>
                         <Space>
                             <Button href={`/tag/${urn}`}>
-                                <InfoCircleOutlined /> Tag Details
+                                <InfoCircleOutlined/> Tag Details
                             </Button>
                         </Space>
                     </DetailsLayout>
                 }
             >
                 <>
-                    <TagStyleEntity urn={urn} />
+                    <TagStyleEntity urn={urn}/>
                 </>
             </Drawer>
         </>

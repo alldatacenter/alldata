@@ -1,8 +1,8 @@
 import React from 'react';
-import { message, Popconfirm } from 'antd';
-import { useBatchAssignRoleMutation } from '../../../graphql/mutations.generated';
-import { DataHubRole } from '../../../types.generated';
-import analytics, { EventType } from '../../analytics';
+import {message, Popconfirm} from 'antd';
+import {useBatchAssignRoleMutation} from '../../../graphql/mutations.generated';
+import {DataHubRole} from '../../../types.generated';
+import analytics, {EventType} from '../../analytics';
 
 type Props = {
     visible: boolean;
@@ -14,13 +14,13 @@ type Props = {
 };
 
 export default function AssignRoleConfirmation({
-    visible,
-    roleToAssign,
-    userUrn,
-    username,
-    onClose,
-    onConfirm,
-}: Props) {
+                                                   visible,
+                                                   roleToAssign,
+                                                   userUrn,
+                                                   username,
+                                                   onClose,
+                                                   onConfirm,
+                                               }: Props) {
     const [batchAssignRoleMutation] = useBatchAssignRoleMutation();
     // eslint-disable-next-line
     const batchAssignRole = () => {
@@ -32,7 +32,7 @@ export default function AssignRoleConfirmation({
                 },
             },
         })
-            .then(({ errors }) => {
+            .then(({errors}) => {
                 if (!errors) {
                     analytics.event({
                         type: EventType.SelectUserRoleEvent,
@@ -63,5 +63,5 @@ export default function AssignRoleConfirmation({
         ? `Would you like to assign the role ${roleToAssign?.name} to ${username}?`
         : `Would you like to remove ${username}'s existing role?`;
 
-    return <Popconfirm title={assignRoleText} visible={visible} onConfirm={batchAssignRole} onCancel={onClose} />;
+    return <Popconfirm title={assignRoleText} visible={visible} onConfirm={batchAssignRole} onCancel={onClose}/>;
 }

@@ -1,8 +1,8 @@
-import { useContext, useEffect } from 'react';
-import { EducationStepsContext } from '../../providers/EducationStepsContext';
+import {useContext, useEffect} from 'react';
+import {EducationStepsContext} from '../../providers/EducationStepsContext';
 
 export function useUpdateEducationStepIdsAllowlist(condition: boolean, id: string) {
-    const { educationStepIdsAllowlist, setEducationStepIdsAllowlist } = useContext(EducationStepsContext);
+    const {educationStepIdsAllowlist, setEducationStepIdsAllowlist} = useContext(EducationStepsContext);
 
     useEffect(() => {
         const allowlistIncludesStepId = educationStepIdsAllowlist.has(id);

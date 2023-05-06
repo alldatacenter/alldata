@@ -1,6 +1,6 @@
 import React from 'react';
-import { Entity, EntityType, Tag } from '../../../types.generated';
-import { useEntityRegistry } from '../../useEntityRegistry';
+import {Entity, EntityType, Tag} from '../../../types.generated';
+import {useEntityRegistry} from '../../useEntityRegistry';
 import TagLabel from '../TagLabel';
 import TermLabel from '../TermLabel';
 
@@ -12,7 +12,7 @@ type Props = {
     termName?: string;
 };
 
-export const TagTermLabel = ({ entity, termName }: Props) => {
+export const TagTermLabel = ({entity, termName}: Props) => {
     const entityRegistry = useEntityRegistry();
 
     if (entity?.type === EntityType.Tag) {
@@ -26,11 +26,11 @@ export const TagTermLabel = ({ entity, termName }: Props) => {
     }
 
     if (entity?.type === EntityType.GlossaryTerm) {
-        return <TermLabel name={entityRegistry.getDisplayName(entity.type, entity)} />;
+        return <TermLabel name={entityRegistry.getDisplayName(entity.type, entity)}/>;
     }
 
     if (termName) {
-        return <TermLabel name={termName} />;
+        return <TermLabel name={termName}/>;
     }
     return null;
 };

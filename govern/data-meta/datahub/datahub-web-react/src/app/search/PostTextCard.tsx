@@ -1,8 +1,8 @@
 import React from 'react';
-import { Typography } from 'antd';
+import {Typography} from 'antd';
 import styled from 'styled-components/macro';
-import { ANTD_GRAY } from '../entity/shared/constants';
-import { Post } from '../../types.generated';
+import {ANTD_GRAY} from '../entity/shared/constants';
+import {Post} from '../../types.generated';
 
 const CardContainer = styled.div`
     display: flex;
@@ -43,7 +43,7 @@ type Props = {
     textPost: Post;
 };
 
-export const PostTextCard = ({ textPost }: Props) => {
+export const PostTextCard = ({textPost}: Props) => {
     return (
         <CardContainer>
             <TextContainer>

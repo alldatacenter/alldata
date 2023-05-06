@@ -1,4 +1,4 @@
-import { ListDomainsDocument, ListDomainsQuery } from '../../graphql/domain.generated';
+import {ListDomainsDocument, ListDomainsQuery} from '../../graphql/domain.generated';
 
 /**
  * Add an entry to the list domains cache.

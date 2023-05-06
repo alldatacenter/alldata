@@ -1,13 +1,13 @@
 import React from 'react';
-import { Switch, Tooltip } from 'antd';
-import { QuestionCircleOutlined } from '@ant-design/icons';
-import { useHistory, useLocation } from 'react-router';
+import {Switch, Tooltip} from 'antd';
+import {QuestionCircleOutlined} from '@ant-design/icons';
+import {useHistory, useLocation} from 'react-router';
 import styled from 'styled-components/macro';
 
-import { ANTD_GRAY } from '../../entity/shared/constants';
-import { navigateToLineageUrl } from '../utils/navigateToLineageUrl';
-import { useIsSeparateSiblingsMode } from '../../entity/shared/siblingUtils';
-import { useIsShowColumnsMode } from '../utils/useIsShowColumnsMode';
+import {ANTD_GRAY} from '../../entity/shared/constants';
+import {navigateToLineageUrl} from '../utils/navigateToLineageUrl';
+import {useIsSeparateSiblingsMode} from '../../entity/shared/siblingUtils';
+import {useIsShowColumnsMode} from '../utils/useIsShowColumnsMode';
 
 const ControlDiv = styled.div`
     display: flex;
@@ -33,7 +33,7 @@ type Props = {
     setShowExpandedTitles: (showExpandedTitles: boolean) => void;
 };
 
-export function LineageVizToggles({ showExpandedTitles, setShowExpandedTitles }: Props) {
+export function LineageVizToggles({showExpandedTitles, setShowExpandedTitles}: Props) {
     const history = useHistory();
     const location = useLocation();
     const isHideSiblingMode = useIsSeparateSiblingsMode();
@@ -48,7 +48,7 @@ export function LineageVizToggles({ showExpandedTitles, setShowExpandedTitles }:
                     onChange={(checked) => setShowExpandedTitles(checked)}
                 />{' '}
                 <ControlLabel>
-                    <b>Show Full Titles</b>
+                    <b>显示完全名称</b>
                 </ControlLabel>
             </ControlDiv>
             <ControlDiv>
@@ -65,9 +65,9 @@ export function LineageVizToggles({ showExpandedTitles, setShowExpandedTitles }:
                     }}
                 />{' '}
                 <ControlLabel>
-                    <b>Compress Lineage</b>
-                    <Tooltip title="Collapses related entities into a single lineage node" placement="topRight">
-                        <HelpIcon />
+                    <b>折叠血缘</b>
+                    <Tooltip title="将相关实体折叠到单个血缘节点中" placement="topRight">
+                        <HelpIcon/>
                     </Tooltip>
                 </ControlLabel>
             </ControlDiv>
@@ -86,7 +86,7 @@ export function LineageVizToggles({ showExpandedTitles, setShowExpandedTitles }:
                     }}
                 />{' '}
                 <ControlLabel>
-                    <b>Show Columns</b>
+                    <b>显示列</b>
                 </ControlLabel>
             </ControlDiv>
         </>

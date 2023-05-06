@@ -1,27 +1,27 @@
 import React from 'react';
-import { useWindowSize } from '@react-hook/window-size';
-import { Zoom } from '@vx/zoom';
+import {useWindowSize} from '@react-hook/window-size';
+import {Zoom} from '@vx/zoom';
 
-import { TreeProps } from './types';
+import {TreeProps} from './types';
 import LineageVizInsideZoom from './LineageVizInsideZoom';
 
-export const defaultMargin = { top: 10, left: 280, right: 280, bottom: 10 };
+export const defaultMargin = {top: 10, left: 280, right: 280, bottom: 10};
 
 interface Props extends TreeProps {
     refetchCenterNode: () => void;
 }
 
 export default function LineageViz({
-    margin = defaultMargin,
-    entityAndType,
-    fetchedEntities,
-    onEntityClick,
-    onEntityCenter,
-    onLineageExpand,
-    selectedEntity,
-    fineGrainedMap,
-    refetchCenterNode,
-}: Props) {
+                                       margin = defaultMargin,
+                                       entityAndType,
+                                       fetchedEntities,
+                                       onEntityClick,
+                                       onEntityCenter,
+                                       onLineageExpand,
+                                       selectedEntity,
+                                       fineGrainedMap,
+                                       refetchCenterNode,
+                                   }: Props) {
     const [windowWidth, windowHeight] = useWindowSize();
 
     const height = windowHeight - 111;

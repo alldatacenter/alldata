@@ -1,9 +1,9 @@
-import React, { useMemo } from 'react';
-import { Avatar, Tooltip } from 'antd';
+import React, {useMemo} from 'react';
+import {Avatar, Tooltip} from 'antd';
 import styled from 'styled-components';
 
-import { UserUsageCounts } from '../../../../types.generated';
-import { SpacedAvatarGroup } from '../../../shared/avatar/SpaceAvatarGroup';
+import {UserUsageCounts} from '../../../../types.generated';
+import {SpacedAvatarGroup} from '../../../shared/avatar/SpaceAvatarGroup';
 import getAvatarColor from '../../../shared/avatar/getAvatarColor';
 
 export type Props = {
@@ -16,7 +16,7 @@ const AvatarStyled = styled(Avatar)<{ backgroundColor: string }>`
     background-color: ${(props) => props.backgroundColor};
 `;
 
-export default function UsageFacepile({ users, maxNumberDisplayed }: Props) {
+export default function UsageFacepile({users, maxNumberDisplayed}: Props) {
     const sortedUsers = useMemo(() => users?.slice().sort((a, b) => (b?.count || 0) - (a?.count || 0)), [users]);
     let displayedUsers = sortedUsers;
     if (maxNumberDisplayed) {

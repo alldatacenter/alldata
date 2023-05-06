@@ -1,16 +1,16 @@
-import { MockedProvider } from '@apollo/client/testing';
-import { render } from '@testing-library/react';
+import {MockedProvider} from '@apollo/client/testing';
+import {render} from '@testing-library/react';
 import React from 'react';
-import { dataJob1, mocks } from '../../../../../../Mocks';
-import { EntityType } from '../../../../../../types.generated';
+import {dataJob1, mocks} from '../../../../../../Mocks';
+import {EntityType} from '../../../../../../types.generated';
 import TestPageContainer from '../../../../../../utils/test-utils/TestPageContainer';
-import { getDataForEntityType } from '../../../containers/profile/utils';
+import {getDataForEntityType} from '../../../containers/profile/utils';
 import EntityContext from '../../../EntityContext';
-import { DataJobFlowTab } from '../DataJobFlowTab';
+import {DataJobFlowTab} from '../DataJobFlowTab';
 
 describe('DataJobFlowTab', () => {
     it('renders fields', async () => {
-        const { getByText } = render(
+        const {getByText} = render(
             <MockedProvider mocks={mocks} addTypename={false}>
                 <TestPageContainer initialEntries={['/dataset/urn:li:dataset:3']}>
                     <EntityContext.Provider
@@ -22,14 +22,14 @@ describe('DataJobFlowTab', () => {
                                 entityType: EntityType.DataJob,
                                 getOverrideProperties: () => ({}),
                             }),
-                            baseEntity: { dataJob: dataJob1 },
+                            baseEntity: {dataJob: dataJob1},
                             updateEntity: jest.fn(),
                             routeToTab: jest.fn(),
                             refetch: jest.fn(),
                             lineage: undefined,
                         }}
                     >
-                        <DataJobFlowTab />
+                        <DataJobFlowTab/>
                     </EntityContext.Provider>
                 </TestPageContainer>
             </MockedProvider>,

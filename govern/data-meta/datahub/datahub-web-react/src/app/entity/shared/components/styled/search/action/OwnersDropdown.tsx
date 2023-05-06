@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { EditOwnersModal, OperationType } from '../../../../containers/profile/sidebar/Ownership/EditOwnersModal';
+import React, {useState} from 'react';
+import {EditOwnersModal, OperationType} from '../../../../containers/profile/sidebar/Ownership/EditOwnersModal';
 import ActionDropdown from './ActionDropdown';
 
 type Props = {
@@ -9,7 +9,7 @@ type Props = {
 };
 
 // eslint-disable-next-line
-export default function OwnersDropdown({ urns, disabled = false, refetch }: Props) {
+export default function OwnersDropdown({urns, disabled = false, refetch}: Props) {
     const [isEditModalVisible, setIsEditModalVisible] = useState(false);
     const [operationType, setOperationType] = useState(OperationType.ADD);
 

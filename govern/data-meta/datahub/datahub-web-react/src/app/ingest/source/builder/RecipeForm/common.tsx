@@ -1,6 +1,6 @@
 import React from 'react';
-import { set, get } from 'lodash';
-import moment, { Moment } from 'moment-timezone';
+import {set, get} from 'lodash';
+import moment, {Moment} from 'moment-timezone';
 
 export enum FieldType {
     TEXT,
@@ -54,8 +54,9 @@ function clearFieldAndParents(recipe: any, fieldPath: string | string[]) {
     }
     return recipe;
 }
+
 export function setFieldValueOnRecipe(recipe: any, value: any, fieldPath: string | string[]) {
-    const updatedRecipe = { ...recipe };
+    const updatedRecipe = {...recipe};
     if (value === null || value === '' || value === undefined) {
         clearFieldAndParents(updatedRecipe, fieldPath);
         return updatedRecipe;
@@ -65,7 +66,7 @@ export function setFieldValueOnRecipe(recipe: any, value: any, fieldPath: string
 }
 
 export function setListValuesOnRecipe(recipe: any, values: string[] | undefined, fieldPath: string) {
-    const updatedRecipe = { ...recipe };
+    const updatedRecipe = {...recipe};
     if (values !== undefined) {
         const filteredValues: string[] | undefined = values.filter((v) => !!v);
         return filteredValues.length
@@ -78,7 +79,7 @@ export function setListValuesOnRecipe(recipe: any, values: string[] | undefined,
 const NUM_CHARACTERS_TO_REMOVE_FROM_DATE = 5;
 
 export function setDateValueOnRecipe(recipe: any, value: Moment | undefined, fieldPath: string) {
-    const updatedRecipe = { ...recipe };
+    const updatedRecipe = {...recipe};
     if (value !== undefined) {
         if (!value) {
             return setFieldValueOnRecipe(updatedRecipe, null, fieldPath);
@@ -350,9 +351,9 @@ export const TABLE_LINEAGE_MODE: RecipeField = {
     fieldPath: 'source.config.table_lineage_mode',
     rules: null,
     options: [
-        { label: 'stl_scan_based', value: 'stl_scan_based' },
-        { label: 'sql_based', value: 'sql_based' },
-        { label: 'mixed', value: 'mixed' },
+        {label: 'stl_scan_based', value: 'stl_scan_based'},
+        {label: 'sql_based', value: 'sql_based'},
+        {label: 'mixed', value: 'mixed'},
     ],
 };
 

@@ -1,11 +1,11 @@
-import { blue } from '@ant-design/colors';
-import { CodeOutlined, CopyOutlined, DeleteOutlined } from '@ant-design/icons';
-import { Button, Image, Tooltip, Typography } from 'antd';
+import {blue} from '@ant-design/colors';
+import {CodeOutlined, CopyOutlined, DeleteOutlined} from '@ant-design/icons';
+import {Button, Image, Tooltip, Typography} from 'antd';
 import cronstrue from 'cronstrue';
 import React from 'react';
 import styled from 'styled-components/macro';
-import { ANTD_GRAY } from '../../entity/shared/constants';
-import { capitalizeFirstLetter } from '../../shared/textUtil';
+import {ANTD_GRAY} from '../../entity/shared/constants';
+import {capitalizeFirstLetter} from '../../shared/textUtil';
 import useGetSourceLogoUrl from './builder/useGetSourceLogoUrl';
 import {
     getExecutionRequestStatusDisplayColor,
@@ -61,12 +61,13 @@ const CliBadge = styled.span`
         margin-right: 5px;
     }
 `;
+
 interface TypeColumnProps {
     type: string;
     record: any;
 }
 
-export function TypeColumn({ type, record }: TypeColumnProps) {
+export function TypeColumn({type, record}: TypeColumnProps) {
     const iconUrl = useGetSourceLogoUrl(type);
     const typeDisplayName = capitalizeFirstLetter(type);
 
@@ -74,7 +75,7 @@ export function TypeColumn({ type, record }: TypeColumnProps) {
         <TypeWrapper>
             {iconUrl ? (
                 <Tooltip overlay={typeDisplayName}>
-                    <PreviewImage preview={false} src={iconUrl} alt={type || ''} />
+                    <PreviewImage preview={false} src={iconUrl} alt={type || ''}/>
                 </Tooltip>
             ) : (
                 <Typography.Text strong>{typeDisplayName}</Typography.Text>
@@ -82,7 +83,7 @@ export function TypeColumn({ type, record }: TypeColumnProps) {
             {record.cliIngestion && (
                 <Tooltip title="This source is ingested from the command-line interface (CLI)">
                     <CliBadge>
-                        <CodeOutlined />
+                        <CodeOutlined/>
                         CLI
                     </CliBadge>
                 </Tooltip>
@@ -112,15 +113,15 @@ interface LastStatusProps {
     setFocusExecutionUrn: (urn: string) => void;
 }
 
-export function LastStatusColumn({ status, record, setFocusExecutionUrn }: LastStatusProps) {
+export function LastStatusColumn({status, record, setFocusExecutionUrn}: LastStatusProps) {
     const Icon = getExecutionRequestStatusIcon(status);
     const text = getExecutionRequestStatusDisplayText(status);
     const color = getExecutionRequestStatusDisplayColor(status);
     return (
         <StatusContainer>
-            {Icon && <Icon style={{ color, fontSize: 14 }} />}
+            {Icon && <Icon style={{color, fontSize: 14}}/>}
             <StatusButton type="link" onClick={() => setFocusExecutionUrn(record.lastExecUrn)}>
-                <Typography.Text strong style={{ color, marginLeft: 8 }}>
+                <Typography.Text strong style={{color, marginLeft: 8}}>
                     {text || 'Pending...'}
                 </Typography.Text>
             </StatusButton>
@@ -138,20 +139,20 @@ interface ActionsColumnProps {
 }
 
 export function ActionsColumn({
-    record,
-    onEdit,
-    setFocusExecutionUrn,
-    onView,
-    onExecute,
-    onDelete,
-}: ActionsColumnProps) {
+                                  record,
+                                  onEdit,
+                                  setFocusExecutionUrn,
+                                  onView,
+                                  onExecute,
+                                  onDelete,
+                              }: ActionsColumnProps) {
     return (
         <ActionButtonContainer>
             {navigator.clipboard && (
-                <Tooltip title="Copy Ingestion Source URN">
+                <Tooltip title="拷贝采集源 URN">
                     <Button
-                        style={{ marginRight: 16 }}
-                        icon={<CopyOutlined />}
+                        style={{marginRight: 16}}
+                        icon={<CopyOutlined/>}
                         onClick={() => {
                             navigator.clipboard.writeText(record.urn);
                         }}
@@ -159,31 +160,31 @@ export function ActionsColumn({
                 </Tooltip>
             )}
             {!record.cliIngestion && (
-                <Button style={{ marginRight: 16 }} onClick={() => onEdit(record.urn)}>
-                    EDIT
+                <Button style={{marginRight: 16}} onClick={() => onEdit(record.urn)}>
+                    编辑
                 </Button>
             )}
             {record.cliIngestion && (
-                <Button style={{ marginRight: 16 }} onClick={() => onView(record.urn)}>
-                    VIEW
+                <Button style={{marginRight: 16}} onClick={() => onView(record.urn)}>
+                    查看
                 </Button>
             )}
             {record.lastExecStatus !== RUNNING && (
                 <Button
                     disabled={record.cliIngestion}
-                    style={{ marginRight: 16 }}
+                    style={{marginRight: 16}}
                     onClick={() => onExecute(record.urn)}
                 >
-                    RUN
+                    运行
                 </Button>
             )}
             {record.lastExecStatus === RUNNING && (
-                <Button style={{ marginRight: 16 }} onClick={() => setFocusExecutionUrn(record.lastExecUrn)}>
-                    DETAILS
+                <Button style={{marginRight: 16}} onClick={() => setFocusExecutionUrn(record.lastExecUrn)}>
+                    详情
                 </Button>
             )}
             <Button data-testid="delete-button" onClick={() => onDelete(record.urn)} type="text" shape="circle" danger>
-                <DeleteOutlined />
+                <DeleteOutlined/>
             </Button>
         </ActionButtonContainer>
     );

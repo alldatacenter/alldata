@@ -1,4 +1,4 @@
-import { SourceConfig } from '../types';
+import {SourceConfig} from '../types';
 import oracleLogo from '../../../../../images/oraclelogo.png';
 
 const placeholderRecipe = `\

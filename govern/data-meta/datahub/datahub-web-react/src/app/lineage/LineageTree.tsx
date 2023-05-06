@@ -1,12 +1,12 @@
-import React, { useContext, useEffect, useMemo, useState } from 'react';
-import { TransformMatrix } from '@vx/zoom/lib/types';
+import React, {useContext, useEffect, useMemo, useState} from 'react';
+import {TransformMatrix} from '@vx/zoom/lib/types';
 
-import { NodeData, EntitySelectParams, TreeProps, EntityAndType, FetchedEntity, UpdatedLineages } from './types';
+import {NodeData, EntitySelectParams, TreeProps, EntityAndType, FetchedEntity, UpdatedLineages} from './types';
 import LineageTreeNodeAndEdgeRenderer from './LineageTreeNodeAndEdgeRenderer';
 import layoutTree from './utils/layoutTree';
-import { LineageExplorerContext } from './utils/LineageExplorerContext';
+import {LineageExplorerContext} from './utils/LineageExplorerContext';
 import useSortColumnsBySelectedField from './utils/useSortColumnsBySelectedField';
-import { populateColumnsByUrn } from './utils/columnLineageUtils';
+import {populateColumnsByUrn} from './utils/columnLineageUtils';
 
 type LineageTreeProps = {
     upstreamData: NodeData;
@@ -30,23 +30,23 @@ type LineageTreeProps = {
 };
 
 export default function LineageTree({
-    upstreamData,
-    downstreamData,
-    zoom,
-    margin,
-    onEntityClick,
-    onEntityCenter,
-    onLineageExpand,
-    selectedEntity,
-    hoveredEntity,
-    setHoveredEntity,
-    canvasHeight,
-    setIsDraggingNode,
-    draggedNodes,
-    setDraggedNodes,
-    fetchedEntities,
-    setUpdatedLineages,
-}: LineageTreeProps) {
+                                        upstreamData,
+                                        downstreamData,
+                                        zoom,
+                                        margin,
+                                        onEntityClick,
+                                        onEntityCenter,
+                                        onLineageExpand,
+                                        selectedEntity,
+                                        hoveredEntity,
+                                        setHoveredEntity,
+                                        canvasHeight,
+                                        setIsDraggingNode,
+                                        draggedNodes,
+                                        setDraggedNodes,
+                                        fetchedEntities,
+                                        setUpdatedLineages,
+                                    }: LineageTreeProps) {
     const [xCanvasScale, setXCanvasScale] = useState(1);
     const {
         expandTitles,
@@ -71,7 +71,7 @@ export default function LineageTree({
 
     let dragState: { urn: string; x: number; y: number } | undefined;
 
-    const { nodesToRender, edgesToRender, nodesByUrn, layers } = useMemo(
+    const {nodesToRender, edgesToRender, nodesByUrn, layers} = useMemo(
         () =>
             layoutTree(
                 upstreamData,
@@ -110,7 +110,7 @@ export default function LineageTree({
             (event.clientY - (dragState.y || 0)) * (1 / zoom.transformMatrix.scaleX) + nodesByUrn[dragState.urn].x;
         setDraggedNodes({
             ...draggedNodes,
-            [dragState?.urn]: { x: realX, y: realY },
+            [dragState?.urn]: {x: realX, y: realY},
         });
     };
 
@@ -120,9 +120,9 @@ export default function LineageTree({
         window.removeEventListener('mouseup', stopDragging, false);
     };
 
-    const onDrag = ({ urn }, event: React.MouseEvent) => {
-        const { clientX, clientY } = event;
-        dragState = { urn, x: clientX, y: clientY };
+    const onDrag = ({urn}, event: React.MouseEvent) => {
+        const {clientX, clientY} = event;
+        dragState = {urn, x: clientX, y: clientY};
         setIsDraggingNode(true);
 
         window.addEventListener('mousemove', dragContinue, false);

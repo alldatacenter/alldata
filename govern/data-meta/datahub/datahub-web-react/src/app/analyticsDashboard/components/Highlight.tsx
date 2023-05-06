@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { Card, Typography } from 'antd';
+import {Card, Typography} from 'antd';
 import styled from 'styled-components';
 
-import { Highlight as HighlightType } from '../../../types.generated';
-import { formatNumber } from '../../shared/formatNumber';
+import {Highlight as HighlightType} from '../../../types.generated';
+import {formatNumber} from '../../shared/formatNumber';
 
 type Props = {
     highlight: HighlightType;
@@ -40,7 +40,7 @@ const BodyContainer = styled.div`
     margin-top: 8px;
 `;
 
-export const Highlight = ({ highlight, shortenValue }: Props) => {
+export const Highlight = ({highlight, shortenValue}: Props) => {
     return (
         <HighlightCard>
             <Typography.Title level={1}>

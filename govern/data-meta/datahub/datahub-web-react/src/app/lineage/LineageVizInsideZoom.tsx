@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { PlusOutlined, MinusOutlined } from '@ant-design/icons';
+import React, {useEffect, useState} from 'react';
+import {PlusOutlined, MinusOutlined} from '@ant-design/icons';
 import styled from 'styled-components/macro';
-import { Button } from 'antd';
-import { ProvidedZoom, TransformMatrix } from '@vx/zoom/lib/types';
+import {Button} from 'antd';
+import {ProvidedZoom, TransformMatrix} from '@vx/zoom/lib/types';
 
-import { ColumnEdge, EntityAndType, EntitySelectParams, FetchedEntity } from './types';
-import { LineageExplorerContext } from './utils/LineageExplorerContext';
-import { SchemaField, SchemaFieldRef } from '../../types.generated';
-import { useIsShowColumnsMode } from './utils/useIsShowColumnsMode';
-import { LineageVizControls } from './controls/LineageVizControls';
+import {ColumnEdge, EntityAndType, EntitySelectParams, FetchedEntity} from './types';
+import {LineageExplorerContext} from './utils/LineageExplorerContext';
+import {SchemaField, SchemaFieldRef} from '../../types.generated';
+import {useIsShowColumnsMode} from './utils/useIsShowColumnsMode';
+import {LineageVizControls} from './controls/LineageVizControls';
 import LineageVizRootSvg from './LineageVizRootSvg';
 
 const ControlsDiv = styled.div`
@@ -52,19 +52,19 @@ type Props = {
 };
 
 export default function LineageVizInsideZoom({
-    zoom,
-    margin,
-    entityAndType,
-    fetchedEntities,
-    onEntityClick,
-    onEntityCenter,
-    onLineageExpand,
-    selectedEntity,
-    width,
-    height,
-    fineGrainedMap,
-    refetchCenterNode,
-}: Props) {
+                                                 zoom,
+                                                 margin,
+                                                 entityAndType,
+                                                 fetchedEntities,
+                                                 onEntityClick,
+                                                 onEntityCenter,
+                                                 onLineageExpand,
+                                                 selectedEntity,
+                                                 width,
+                                                 height,
+                                                 fineGrainedMap,
+                                                 refetchCenterNode,
+                                             }: Props) {
     const [collapsedColumnsNodes, setCollapsedColumnsNodes] = useState<Record<string, boolean>>({});
     const [selectedField, setSelectedField] = useState<SchemaFieldRef | null>(null);
     const [highlightedEdges, setHighlightedEdges] = useState<ColumnEdge[]>([]);
@@ -74,7 +74,7 @@ export default function LineageVizInsideZoom({
     const showColumns = useIsShowColumnsMode();
 
     useEffect(() => {
-        zoom.setTransformMatrix({ ...zoom.transformMatrix, translateY: 0, translateX: width / 2 });
+        zoom.setTransformMatrix({...zoom.transformMatrix, translateY: 0, translateX: width / 2});
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [entityAndType?.entity?.urn]);
 
@@ -106,11 +106,11 @@ export default function LineageVizInsideZoom({
                 </ControlsDiv>
                 <ZoomContainer>
                     <ZoomControls>
-                        <ZoomButton onClick={() => zoom.scale({ scaleX: 1.2, scaleY: 1.2 })}>
-                            <PlusOutlined />
+                        <ZoomButton onClick={() => zoom.scale({scaleX: 1.2, scaleY: 1.2})}>
+                            <PlusOutlined/>
                         </ZoomButton>
-                        <Button onClick={() => zoom.scale({ scaleX: 0.8, scaleY: 0.8 })}>
-                            <MinusOutlined />
+                        <Button onClick={() => zoom.scale({scaleX: 0.8, scaleY: 0.8})}>
+                            <MinusOutlined/>
                         </Button>
                     </ZoomControls>
                     <LineageVizRootSvg

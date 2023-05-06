@@ -1,18 +1,18 @@
-import { Button } from 'antd';
-import React, { useContext, useEffect, useState } from 'react';
+import {Button} from 'antd';
+import React, {useContext, useEffect, useState} from 'react';
 import Tour from 'reactour';
-import { useBatchUpdateStepStatesMutation } from '../../graphql/step.generated';
-import { EducationStepsContext } from '../../providers/EducationStepsContext';
-import { StepStateResult } from '../../types.generated';
-import { useUserContext } from '../context/useUserContext';
-import { convertStepId, getStepsToRender } from './utils';
+import {useBatchUpdateStepStatesMutation} from '../../graphql/step.generated';
+import {EducationStepsContext} from '../../providers/EducationStepsContext';
+import {StepStateResult} from '../../types.generated';
+import {useUserContext} from '../context/useUserContext';
+import {convertStepId, getStepsToRender} from './utils';
 
 type Props = {
     stepIds: string[];
 };
 
-export const OnboardingTour = ({ stepIds }: Props) => {
-    const { educationSteps, setEducationSteps, educationStepIdsAllowlist } = useContext(EducationStepsContext);
+export const OnboardingTour = ({stepIds}: Props) => {
+    const {educationSteps, setEducationSteps, educationStepIdsAllowlist} = useContext(EducationStepsContext);
     const userUrn = useUserContext()?.user?.urn;
     const [isOpen, setIsOpen] = useState(true);
     const [reshow, setReshow] = useState(false);
@@ -30,6 +30,7 @@ export const OnboardingTour = ({ stepIds }: Props) => {
                 setIsOpen(false);
             }
         }
+
         document.addEventListener('keydown', handleKeyDown);
     }, []);
 
@@ -43,9 +44,9 @@ export const OnboardingTour = ({ stepIds }: Props) => {
         setIsOpen(false);
         setReshow(false);
         const convertedIds = filteredStepIds.map((id) => convertStepId(id, userUrn || ''));
-        const stepStates = convertedIds.map((id) => ({ id, properties: [] }));
-        batchUpdateStepStates({ variables: { input: { states: stepStates } } }).then(() => {
-            const results = convertedIds.map((id) => ({ id, properties: [{}] } as StepStateResult));
+        const stepStates = convertedIds.map((id) => ({id, properties: []}));
+        batchUpdateStepStates({variables: {input: {states: stepStates}}}).then(() => {
+            const results = convertedIds.map((id) => ({id, properties: [{}]} as StepStateResult));
             setEducationSteps((existingSteps) => (existingSteps ? [...existingSteps, ...results] : results));
         });
     }

@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Typography } from 'antd';
-import { GlobalOutlined, LockOutlined } from '@ant-design/icons';
-import { DataHubViewType } from '../../../types.generated';
+import {Typography} from 'antd';
+import {GlobalOutlined, LockOutlined} from '@ant-design/icons';
+import {DataHubViewType} from '../../../types.generated';
 
 const StyledLockOutlined = styled(LockOutlined)<{ color }>`
     color: ${(props) => props.color};
@@ -30,7 +30,7 @@ type Props = {
  *
  * @param param0 the color of the text and iconography
  */
-export const ViewTypeLabel = ({ type, color }: Props) => {
+export const ViewTypeLabel = ({type, color}: Props) => {
     const copy =
         type === DataHubViewType.Personal ? (
             <>
@@ -45,7 +45,7 @@ export const ViewTypeLabel = ({ type, color }: Props) => {
 
     return (
         <>
-            <Icon color={color} />
+            <Icon color={color}/>
             <StyledText color={color} type="secondary">
                 {copy}
             </StyledText>

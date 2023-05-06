@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Col, Divider, List, Pagination, Row, Empty } from 'antd';
-import { Content } from 'antd/lib/layout/layout';
-import { BrowseResultGroup, EntityType, Entity } from '../../types.generated';
+import {Col, Divider, List, Pagination, Row, Empty} from 'antd';
+import {Content} from 'antd/lib/layout/layout';
+import {BrowseResultGroup, EntityType, Entity} from '../../types.generated';
 import BrowseResultCard from './BrowseResultCard';
-import { useEntityRegistry } from '../useEntityRegistry';
-import analytics, { EventType } from '../analytics';
+import {useEntityRegistry} from '../useEntityRegistry';
+import analytics, {EventType} from '../analytics';
 
 const EntityList = styled(List)`
     && {
@@ -33,16 +33,16 @@ interface Props {
  * Display browse groups + entities.
  */
 export const BrowseResults = ({
-    type,
-    title,
-    rootPath,
-    page,
-    pageSize,
-    totalResults,
-    entities,
-    groups,
-    onChangePage,
-}: Props) => {
+                                  type,
+                                  title,
+                                  rootPath,
+                                  page,
+                                  pageSize,
+                                  totalResults,
+                                  entities,
+                                  groups,
+                                  onChangePage,
+                              }: Props) => {
     const entityRegistry = useEntityRegistry();
 
     const onGroupClick = (group: BrowseResultGroup) => {
@@ -67,7 +67,7 @@ export const BrowseResults = ({
 
     return (
         <div>
-            <Content style={{ padding: '25px 100px' }}>
+            <Content style={{padding: '25px 100px'}}>
                 <h1 className="ant-typography">{title}</h1>
                 <Row gutter={[4, 8]}>
                     {groups.map((group) => (
@@ -90,18 +90,18 @@ export const BrowseResults = ({
                                     <List.Item onClick={() => onEntityClick(item as Entity)}>
                                         {entityRegistry.renderBrowse(type, item)}
                                     </List.Item>
-                                    {index < entities.length - 1 && <Divider />}
+                                    {index < entities.length - 1 && <Divider/>}
                                 </>
                             )}
                             bordered
                             locale={{
-                                emptyText: <Empty description="No Entities" image={Empty.PRESENTED_IMAGE_SIMPLE} />,
+                                emptyText: <Empty description="No Entities" image={Empty.PRESENTED_IMAGE_SIMPLE}/>,
                             }}
                         />
                     )}
                     <Col span={24}>
                         <Pagination
-                            style={{ width: '100%', display: 'flex', justifyContent: 'center', paddingTop: 16 }}
+                            style={{width: '100%', display: 'flex', justifyContent: 'center', paddingTop: 16}}
                             current={page}
                             pageSize={pageSize}
                             total={totalResults}

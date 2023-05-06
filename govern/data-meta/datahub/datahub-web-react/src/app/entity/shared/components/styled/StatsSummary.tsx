@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ANTD_GRAY } from '../../constants';
+import {ANTD_GRAY} from '../../constants';
 
 type Props = {
     stats: Array<React.ReactNode>;
@@ -19,7 +19,7 @@ const StatDivider = styled.div`
     vertical-align: text-top;
 `;
 
-export const StatsSummary = ({ stats }: Props) => {
+export const StatsSummary = ({stats}: Props) => {
     return (
         <>
             {stats && stats.length > 0 && (
@@ -27,7 +27,7 @@ export const StatsSummary = ({ stats }: Props) => {
                     {stats.map((statView, index) => (
                         <span>
                             {statView}
-                            {index < stats.length - 1 && <StatDivider />}
+                            {index < stats.length - 1 && <StatDivider/>}
                         </span>
                     ))}
                 </StatsContainer>

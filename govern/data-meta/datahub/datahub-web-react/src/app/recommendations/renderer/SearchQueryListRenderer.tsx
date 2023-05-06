@@ -1,15 +1,15 @@
 import React from 'react';
-import { RecommendationRenderProps } from '../types';
-import { recommendationClickEvent } from '../util/recommendationClickEvent';
-import { SearchQueryList } from './component/SearchQueryList';
+import {RecommendationRenderProps} from '../types';
+import {recommendationClickEvent} from '../util/recommendationClickEvent';
+import {SearchQueryList} from './component/SearchQueryList';
 
 export const SearchQueryListRenderer = ({
-    renderId,
-    moduleId,
-    scenarioType,
-    renderType,
-    content,
-}: RecommendationRenderProps) => {
+                                            renderId,
+                                            moduleId,
+                                            scenarioType,
+                                            renderType,
+                                            content,
+                                        }: RecommendationRenderProps) => {
     return (
         <SearchQueryList
             onClick={(index) =>

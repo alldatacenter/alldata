@@ -1,10 +1,10 @@
-import { Button, Typography } from 'antd';
-import { EditOutlined } from '@ant-design/icons';
+import {Button, Typography} from 'antd';
+import {EditOutlined} from '@ant-design/icons';
 import React from 'react';
 import styled from 'styled-components';
-import { useRefetch, useRouteToTab } from '../../../../EntityContext';
-import { EMPTY_MESSAGES } from '../../../../constants';
-import { AddLinkModal } from '../../../../components/styled/AddLinkModal';
+import {useRefetch, useRouteToTab} from '../../../../EntityContext';
+import {EMPTY_MESSAGES} from '../../../../constants';
+import {AddLinkModal} from '../../../../components/styled/AddLinkModal';
 
 const EmptyContentWrapper = styled.div`
     margin-bottom: 5px;
@@ -24,7 +24,7 @@ interface Props {
     readOnly?: boolean;
 }
 
-export default function EmptyContentSection({ hideLinksButton, readOnly }: Props) {
+export default function EmptyContentSection({hideLinksButton, readOnly}: Props) {
     const routeToTab = useRouteToTab();
     const refetch = useRefetch();
 
@@ -35,13 +35,13 @@ export default function EmptyContentSection({ hideLinksButton, readOnly }: Props
                     {EMPTY_MESSAGES.documentation.title}. {EMPTY_MESSAGES.documentation.description}
                 </EmptyContentMessage>
                 {!readOnly && (
-                    <Button onClick={() => routeToTab({ tabName: 'Documentation', tabParams: { editing: true } })}>
-                        <EditOutlined /> Add Documentation
+                    <Button onClick={() => routeToTab({tabName: 'Documentation', tabParams: {editing: true}})}>
+                        <EditOutlined/> Add Documentation
                     </Button>
                 )}
                 {!readOnly && !hideLinksButton && (
                     <AddLinkWrapper>
-                        <AddLinkModal refetch={refetch} />
+                        <AddLinkModal refetch={refetch}/>
                     </AddLinkWrapper>
                 )}
             </>

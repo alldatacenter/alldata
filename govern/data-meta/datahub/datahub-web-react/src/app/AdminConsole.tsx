@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Menu } from 'antd';
+import React, {useState} from 'react';
+import {Link} from 'react-router-dom';
+import {Menu} from 'antd';
 import styled from 'styled-components';
-import { BankOutlined, BarChartOutlined, MenuOutlined } from '@ant-design/icons';
+import {BankOutlined, BarChartOutlined, MenuOutlined} from '@ant-design/icons';
 import Sider from 'antd/lib/layout/Sider';
-import { useGetAuthenticatedUser } from './useGetAuthenticatedUser';
-import { useAppConfig } from './useAppConfig';
-import { ANTD_GRAY } from './entity/shared/constants';
+import {useGetAuthenticatedUser} from './useGetAuthenticatedUser';
+import {useAppConfig} from './useAppConfig';
+import {ANTD_GRAY} from './entity/shared/constants';
 
 const ToggleContainer = styled.div`
     background-color: ${ANTD_GRAY[4]};
@@ -35,7 +35,7 @@ export const AdminConsole = (): JSX.Element => {
     const me = useGetAuthenticatedUser();
 
     const [adminConsoleOpen, setAdminConsoleOpen] = useState(false);
-    const { config } = useAppConfig();
+    const {config} = useAppConfig();
 
     const isAnalyticsEnabled = config?.analyticsConfig.enabled;
     const isPoliciesEnabled = config?.policiesConfig.enabled;
@@ -58,7 +58,7 @@ export const AdminConsole = (): JSX.Element => {
 
     const toggleView = (
         <ToggleContainer style={{}}>
-            <MenuOutlined style={{ color: ANTD_GRAY[9] }} />
+            <MenuOutlined style={{color: ANTD_GRAY[9]}}/>
         </ToggleContainer>
     );
 
@@ -66,7 +66,7 @@ export const AdminConsole = (): JSX.Element => {
         <>
             {showAdminConsole && (
                 <ControlSlideOut
-                    zeroWidthTriggerStyle={{ top: '50%' }}
+                    zeroWidthTriggerStyle={{top: '50%'}}
                     collapsible
                     collapsed={!adminConsoleOpen}
                     onCollapse={onCollapse}
@@ -75,14 +75,14 @@ export const AdminConsole = (): JSX.Element => {
                 >
                     <ControlMenu selectable={false} mode="inline" onSelect={onMenuItemClick}>
                         {showAnalytics && (
-                            <Menu.Item key="analytics" icon={<BarChartOutlined />}>
+                            <Menu.Item key="analytics" icon={<BarChartOutlined/>}>
                                 <Link onClick={onMenuItemClick} to="/analytics">
                                     Analytics
                                 </Link>
                             </Menu.Item>
                         )}
                         {showPolicyBuilder && (
-                            <Menu.Item key="permissions" icon={<BankOutlined />}>
+                            <Menu.Item key="permissions" icon={<BankOutlined/>}>
                                 <Link onClick={onMenuItemClick} to="/permissions">
                                     Permissions
                                 </Link>

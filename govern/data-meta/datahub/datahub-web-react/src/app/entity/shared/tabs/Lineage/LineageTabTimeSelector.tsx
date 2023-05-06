@@ -1,16 +1,16 @@
 import React from 'react';
 import moment from 'moment';
-import { useHistory, useLocation } from 'react-router';
-import analytics, { EventType } from '../../../../analytics';
+import {useHistory, useLocation} from 'react-router';
+import analytics, {EventType} from '../../../../analytics';
 import LineageTimeSelector from '../../../../lineage/LineageTimeSelector';
-import { getTimeFromNow } from '../../../../shared/time/timeUtils';
+import {getTimeFromNow} from '../../../../shared/time/timeUtils';
 import updateQueryParams from '../../../../shared/updateQueryParams';
-import { useGetLineageTimeParams } from '../../../../lineage/utils/useGetLineageTimeParams';
+import {useGetLineageTimeParams} from '../../../../lineage/utils/useGetLineageTimeParams';
 
 export default function LineageTabTimeSelector() {
     const history = useHistory();
     const location = useLocation();
-    const { startTimeMillis, endTimeMillis } = useGetLineageTimeParams();
+    const {startTimeMillis, endTimeMillis} = useGetLineageTimeParams();
 
     const lineageTimeSelectorOnChange = (dates, _dateStrings) => {
         if (dates) {
@@ -26,7 +26,7 @@ export default function LineageTabTimeSelector() {
             });
 
             updateQueryParams(
-                { start_time_millis: startTimeMillisValue, end_time_millis: endTimeMillisValue },
+                {start_time_millis: startTimeMillisValue, end_time_millis: endTimeMillisValue},
                 location,
                 history,
             );
@@ -38,5 +38,5 @@ export default function LineageTabTimeSelector() {
         endTimeMillis ? moment(endTimeMillis) : null,
     ];
 
-    return <LineageTimeSelector onChange={lineageTimeSelectorOnChange} initialDates={initialDates} />;
+    return <LineageTimeSelector onChange={lineageTimeSelectorOnChange} initialDates={initialDates}/>;
 }

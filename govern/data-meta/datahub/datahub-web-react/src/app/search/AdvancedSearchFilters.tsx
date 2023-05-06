@@ -1,13 +1,13 @@
 import * as React from 'react';
-import { useState } from 'react';
+import {useState} from 'react';
 import styled from 'styled-components';
-import { FacetFilterInput, FacetMetadata, FilterOperator } from '../../types.generated';
-import { ANTD_GRAY } from '../entity/shared/constants';
-import { AdvancedSearchFilter } from './AdvancedSearchFilter';
-import { AdvancedSearchFilterOverallUnionTypeSelect } from './AdvancedSearchFilterOverallUnionTypeSelect';
-import { AdvancedFilterSelectValueModal } from './AdvancedFilterSelectValueModal';
-import { FIELDS_THAT_USE_CONTAINS_OPERATOR, UnionType } from './utils/constants';
-import { AdvancedSearchAddFilterSelect } from './AdvancedSearchAddFilterSelect';
+import {FacetFilterInput, FacetMetadata, FilterOperator} from '../../types.generated';
+import {ANTD_GRAY} from '../entity/shared/constants';
+import {AdvancedSearchFilter} from './AdvancedSearchFilter';
+import {AdvancedSearchFilterOverallUnionTypeSelect} from './AdvancedSearchFilterOverallUnionTypeSelect';
+import {AdvancedFilterSelectValueModal} from './AdvancedFilterSelectValueModal';
+import {FIELDS_THAT_USE_CONTAINS_OPERATOR, UnionType} from './utils/constants';
+import {AdvancedSearchAddFilterSelect} from './AdvancedSearchAddFilterSelect';
 
 const AnyAllSection = styled.div`
     padding: 6px;
@@ -43,15 +43,15 @@ interface Props {
 }
 
 export const AdvancedSearchFilters = ({
-    unionType = UnionType.AND,
-    facets,
-    selectedFilters,
-    onFilterSelect,
-    onChangeUnionType,
-    loading,
-    direction = LayoutDirection.Vertical,
-    disabled = false,
-}: Props) => {
+                                          unionType = UnionType.AND,
+                                          facets,
+                                          selectedFilters,
+                                          onFilterSelect,
+                                          onChangeUnionType,
+                                          loading,
+                                          direction = LayoutDirection.Vertical,
+                                          disabled = false,
+                                      }: Props) => {
     const [filterField, setFilterField] = useState<null | string>(null);
 
     const onFilterFieldSelect = (value) => {
@@ -122,7 +122,7 @@ export const AdvancedSearchFilters = ({
                 </AnyAllSection>
             )}
             {selectedFilters?.length === 0 && direction === LayoutDirection.Vertical && (
-                <EmptyStateSection>No filters applied.</EmptyStateSection>
+                <EmptyStateSection>没有设置过滤。</EmptyStateSection>
             )}
         </>
     );

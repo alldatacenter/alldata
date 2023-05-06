@@ -4,9 +4,9 @@ import kafkaLogo from '../../../images/kafkalogo.png';
 import s3Logo from '../../../images/s3.png';
 import snowflakeLogo from '../../../images/snowflakelogo.png';
 import bigqueryLogo from '../../../images/bigquerylogo.png';
-import { generateTag } from '../tag';
-import { Dashboard, DataPlatform, EntityType, Ownership, OwnershipType, PlatformType } from '../../../types.generated';
-import { findUserByUsername } from '../searchResult/userSearchResult';
+import {generateTag} from '../tag';
+import {Dashboard, DataPlatform, EntityType, Ownership, OwnershipType, PlatformType} from '../../../types.generated';
+import {findUserByUsername} from '../searchResult/userSearchResult';
 
 export const platformLogo = {
     kafka: kafkaLogo,
@@ -15,7 +15,7 @@ export const platformLogo = {
     bigquery: bigqueryLogo,
 };
 
-export const generatePlatform = ({ platform, urn }): DataPlatform => {
+export const generatePlatform = ({platform, urn}): DataPlatform => {
     return {
         urn,
         type: EntityType.Dataset,
@@ -45,7 +45,7 @@ export const dashboardEntity = (tool): Dashboard => {
                 associatedUrn: `urn:li:dashboard:(${tool},${name})`,
             },
         ],
-        lastModified: { time: 1619993818664, __typename: 'AuditStamp' },
+        lastModified: {time: 1619993818664, __typename: 'AuditStamp'},
         __typename: 'Ownership',
     };
     const kafkaOwnership: Ownership = {
@@ -57,12 +57,12 @@ export const dashboardEntity = (tool): Dashboard => {
                 associatedUrn: `urn:li:dashboard:(${tool},${name})`,
             },
         ],
-        lastModified: { time: 1619993818664, __typename: 'AuditStamp' },
+        lastModified: {time: 1619993818664, __typename: 'AuditStamp'},
         __typename: 'Ownership',
     };
     const platform = 's3';
     const platformURN = `urn:li:dataPlatform:s3`;
-    const dataPlatform = generatePlatform({ platform, urn: platformURN });
+    const dataPlatform = generatePlatform({platform, urn: platformURN});
 
     return {
         urn: `urn:li:dashboard:(${tool},${name})`,
@@ -76,8 +76,8 @@ export const dashboardEntity = (tool): Dashboard => {
             externalUrl: null,
             access: null,
             charts: [],
-            lastModified: { time: 1619160920, __typename: 'AuditStamp' },
-            created: { time: 1619160920, __typename: 'AuditStamp' },
+            lastModified: {time: 1619160920, __typename: 'AuditStamp'},
+            created: {time: 1619160920, __typename: 'AuditStamp'},
             __typename: 'DashboardInfo',
         },
         ownership: {
@@ -101,7 +101,7 @@ export const dashboardEntity = (tool): Dashboard => {
                     __typename: 'Owner',
                 },
             ],
-            lastModified: { time: 1619993818664, __typename: 'AuditStamp' },
+            lastModified: {time: 1619993818664, __typename: 'AuditStamp'},
             __typename: 'Ownership',
         },
         globalTags: {

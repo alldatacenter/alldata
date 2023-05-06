@@ -1,11 +1,11 @@
-import { DeleteOutlined, MoreOutlined } from '@ant-design/icons';
-import { Divider, Dropdown, Menu } from 'antd';
+import {DeleteOutlined, MoreOutlined} from '@ant-design/icons';
+import {Divider, Dropdown, Menu} from 'antd';
 import React from 'react';
 import styled from 'styled-components/macro';
-import { useGetGlossaryTermQuery } from '../../../../graphql/glossaryTerm.generated';
-import { EntityType, TermRelationshipType } from '../../../../types.generated';
-import { useEntityRegistry } from '../../../useEntityRegistry';
-import { PreviewType } from '../../Entity';
+import {useGetGlossaryTermQuery} from '../../../../graphql/glossaryTerm.generated';
+import {EntityType, TermRelationshipType} from '../../../../types.generated';
+import {useEntityRegistry} from '../../../useEntityRegistry';
+import {PreviewType} from '../../Entity';
 import useRemoveRelatedTerms from './useRemoveRelatedTerms';
 
 const ListItem = styled.div`
@@ -39,15 +39,15 @@ interface Props {
 }
 
 function RelatedTerm(props: Props) {
-    const { urn, relationshipType, isEditable } = props;
+    const {urn, relationshipType, isEditable} = props;
 
     const entityRegistry = useEntityRegistry();
-    const { data, loading } = useGetGlossaryTermQuery({ variables: { urn } });
+    const {data, loading} = useGetGlossaryTermQuery({variables: {urn}});
     let displayName = '';
     if (data) {
         displayName = entityRegistry.getDisplayName(EntityType.GlossaryTerm, data.glossaryTerm);
     }
-    const { onRemove } = useRemoveRelatedTerms(urn, relationshipType, displayName);
+    const {onRemove} = useRemoveRelatedTerms(urn, relationshipType, displayName);
 
     if (loading) return null;
 
@@ -61,18 +61,18 @@ function RelatedTerm(props: Props) {
                             <Menu>
                                 <Menu.Item key="0">
                                     <MenuItem onClick={onRemove}>
-                                        <DeleteOutlined /> &nbsp; Remove Term
+                                        <DeleteOutlined/> &nbsp; Remove Term
                                     </MenuItem>
                                 </Menu.Item>
                             </Menu>
                         }
                         trigger={['click']}
                     >
-                        <MenuIcon />
+                        <MenuIcon/>
                     </Dropdown>
                 )}
             </Profile>
-            <Divider style={{ margin: '20px 0' }} />
+            <Divider style={{margin: '20px 0'}}/>
         </ListItem>
     );
 }

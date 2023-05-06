@@ -4,8 +4,8 @@ import kafkaLogo from '../../../images/kafkalogo.png';
 import s3Logo from '../../../images/s3.png';
 import snowflakeLogo from '../../../images/snowflakelogo.png';
 import bigqueryLogo from '../../../images/bigquerylogo.png';
-import { DataPlatform, Dataset, EntityType, FabricType, OwnershipType, PlatformType } from '../../../types.generated';
-import { findUserByUsername } from '../searchResult/userSearchResult';
+import {DataPlatform, Dataset, EntityType, FabricType, OwnershipType, PlatformType} from '../../../types.generated';
+import {findUserByUsername} from '../searchResult/userSearchResult';
 
 export const platformLogo = {
     kafka: kafkaLogo,
@@ -14,7 +14,7 @@ export const platformLogo = {
     bigquery: bigqueryLogo,
 };
 
-export const generatePlatform = ({ platform, urn }): DataPlatform => {
+export const generatePlatform = ({platform, urn}): DataPlatform => {
     return {
         urn,
         type: EntityType.Dataset,
@@ -35,7 +35,7 @@ export type DatasetEntityArg = {
     path: string;
 };
 
-export const datasetEntity = ({ platform, origin, path }: DatasetEntityArg): Dataset => {
+export const datasetEntity = ({platform, origin, path}: DatasetEntityArg): Dataset => {
     const name = `${path}.${faker.company.bsNoun()}_${faker.company.bsNoun()}`;
     const description = `${faker.commerce.productDescription()}`;
     const datahubUser = findUserByUsername('datahub');
@@ -48,7 +48,7 @@ export const datasetEntity = ({ platform, origin, path }: DatasetEntityArg): Dat
         origin,
         description,
         uri: null,
-        platform: generatePlatform({ platform, urn: platformURN }),
+        platform: generatePlatform({platform, urn: platformURN}),
         platformNativeType: null,
         properties: null,
         editableProperties: null,

@@ -1,8 +1,8 @@
 import React from 'react';
-import { Tooltip } from 'antd';
+import {Tooltip} from 'antd';
 import styled from 'styled-components';
-import { getHealthIcon } from '../../../../../shared/health/healthUtils';
-import { HealthStatus, HealthStatusType } from '../../../../../../types.generated';
+import {getHealthIcon} from '../../../../../shared/health/healthUtils';
+import {HealthStatus, HealthStatusType} from '../../../../../../types.generated';
 
 const StatusContainer = styled.div`
     display: flex;
@@ -17,7 +17,7 @@ type Props = {
     message?: string | undefined;
 };
 
-export const EntityHealthStatus = ({ type, status, message }: Props) => {
+export const EntityHealthStatus = ({type, status, message}: Props) => {
     const icon = getHealthIcon(type, status, 18);
     return (
         <StatusContainer>

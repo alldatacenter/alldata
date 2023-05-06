@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 
-import { ANTD_GRAY } from '../../../constants';
-import { useBaseEntity, useEntityData } from '../../../EntityContext';
-import { EntitySidebarSection } from '../../../types';
+import {ANTD_GRAY} from '../../../constants';
+import {useBaseEntity, useEntityData} from '../../../EntityContext';
+import {EntitySidebarSection} from '../../../types';
 import LastIngested from './LastIngested';
 
 const ContentContainer = styled.div`
@@ -38,15 +38,15 @@ type Props = {
     sidebarSections: EntitySidebarSection[];
 };
 
-export const EntitySidebar = <T,>({ sidebarSections }: Props) => {
-    const { entityData } = useEntityData();
+export const EntitySidebar = <T, >({sidebarSections}: Props) => {
+    const {entityData} = useEntityData();
     const baseEntity = useBaseEntity<T>();
 
     return (
         <>
             {entityData?.lastIngested && (
                 <LastIngestedSection>
-                    <LastIngested lastIngested={entityData.lastIngested} />
+                    <LastIngested lastIngested={entityData.lastIngested}/>
                 </LastIngestedSection>
             )}
             <ContentContainer>
@@ -54,7 +54,7 @@ export const EntitySidebar = <T,>({ sidebarSections }: Props) => {
                     if (section.display?.visible(entityData, baseEntity) !== true) {
                         return null;
                     }
-                    return <section.component key={`${section.component}`} properties={section.properties} />;
+                    return <section.component key={`${section.component}`} properties={section.properties}/>;
                 })}
             </ContentContainer>
         </>

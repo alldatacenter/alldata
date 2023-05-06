@@ -1,6 +1,6 @@
 import React from 'react';
-import { Typography } from 'antd';
-import { OnboardingStep } from '../OnboardingStep';
+import {Typography} from 'antd';
+import {OnboardingStep} from '../OnboardingStep';
 
 export const ROLES_INTRO_ID = 'roles-intro';
 

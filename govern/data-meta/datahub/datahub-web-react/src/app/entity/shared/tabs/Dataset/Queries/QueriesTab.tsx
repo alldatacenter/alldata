@@ -1,21 +1,21 @@
 import styled from 'styled-components';
-import React, { useState } from 'react';
-import { debounce } from 'lodash';
-import { useListQueriesQuery } from '../../../../../../graphql/query.generated';
-import { GetDatasetQuery, useGetRecentQueriesQuery } from '../../../../../../graphql/dataset.generated';
-import { useBaseEntity } from '../../../EntityContext';
+import React, {useState} from 'react';
+import {debounce} from 'lodash';
+import {useListQueriesQuery} from '../../../../../../graphql/query.generated';
+import {GetDatasetQuery, useGetRecentQueriesQuery} from '../../../../../../graphql/dataset.generated';
+import {useBaseEntity} from '../../../EntityContext';
 import getTopNQueries from './utils/getTopNQueries';
-import { useAppConfig } from '../../../../../useAppConfig';
+import {useAppConfig} from '../../../../../useAppConfig';
 import QueryBuilderModal from './QueryBuilderModal';
 import EmptyQueries from './EmptyQueries';
-import { addQueryToListQueriesCache, removeQueryFromListQueriesCache, updateListQueriesCache } from './cacheUtils';
+import {addQueryToListQueriesCache, removeQueryFromListQueriesCache, updateListQueriesCache} from './cacheUtils';
 import {
     DEFAULT_MAX_RECENT_QUERIES,
     HALF_SECOND_IN_MS,
     MAX_QUERIES_COUNT,
     MAX_ROWS_BEFORE_DEBOUNCE,
 } from './utils/constants';
-import { filterQueries } from './utils/filterQueries';
+import {filterQueries} from './utils/filterQueries';
 import QueriesTabToolbar from './QueriesTabToolbar';
 import QueriesListSection from './QueriesListSection';
 
@@ -36,8 +36,8 @@ export default function QueriesTab() {
     /**
      * Fetch the List of Custom (Highlighted) Queries
      */
-    const { data: highlightedQueriesData, client } = useListQueriesQuery({
-        variables: { input: { datasetUrn: baseEntity?.dataset?.urn, start: 0, count: MAX_QUERIES_COUNT } },
+    const {data: highlightedQueriesData, client} = useListQueriesQuery({
+        variables: {input: {datasetUrn: baseEntity?.dataset?.urn, start: 0, count: MAX_QUERIES_COUNT}},
         skip: !baseEntity?.dataset?.urn,
         fetchPolicy: 'cache-first',
     });
@@ -56,8 +56,8 @@ export default function QueriesTab() {
     /**
      * Fetch the List of Recent (auto-extracted) Queries
      */
-    const { data: recentQueriesData } = useGetRecentQueriesQuery({
-        variables: { urn: baseEntity?.dataset?.urn as string },
+    const {data: recentQueriesData} = useGetRecentQueriesQuery({
+        variables: {urn: baseEntity?.dataset?.urn as string},
         skip: !baseEntity?.dataset?.urn,
         fetchPolicy: 'cache-first',
     });
@@ -69,7 +69,7 @@ export default function QueriesTab() {
                 appConfig?.config?.visualConfig?.queriesTab?.queriesTabResultSize || DEFAULT_MAX_RECENT_QUERIES,
                 recentQueriesData?.dataset?.usageStats?.buckets,
             ) || []
-        ).map((recentQuery) => ({ query: recentQuery.query })),
+        ).map((recentQuery) => ({query: recentQuery.query})),
     );
 
     const debouncedSetFilterText = debounce(
@@ -101,7 +101,7 @@ export default function QueriesTab() {
             />
             <Content>
                 {showEmptyView && (
-                    <EmptyQueries readOnly={!canEditQueries} onClickAddQuery={() => setShowQueryBuilder(true)} />
+                    <EmptyQueries readOnly={!canEditQueries} onClickAddQuery={() => setShowQueryBuilder(true)}/>
                 )}
                 {highlightedQueries.length > 0 && (
                     <QueriesListSection

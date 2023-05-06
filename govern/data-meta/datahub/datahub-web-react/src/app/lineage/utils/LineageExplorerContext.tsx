@@ -1,22 +1,27 @@
 import React from 'react';
-import { SchemaField, SchemaFieldRef } from '../../../types.generated';
-import { ColumnEdge } from '../types';
+import {SchemaField, SchemaFieldRef} from '../../../types.generated';
+import {ColumnEdge} from '../types';
 
 export const LineageExplorerContext = React.createContext<LineageExplorerContextType>({
     expandTitles: false,
     showColumns: false,
     collapsedColumnsNodes: null,
     setCollapsedColumnsNodes: null,
-    fineGrainedMap: { forward: [], reverse: [] },
+    fineGrainedMap: {forward: [], reverse: []},
     selectedField: null,
-    setSelectedField: () => {},
+    setSelectedField: () => {
+    },
     highlightedEdges: [],
-    setHighlightedEdges: () => {},
+    setHighlightedEdges: () => {
+    },
     visibleColumnsByUrn: {},
-    setVisibleColumnsByUrn: () => {},
+    setVisibleColumnsByUrn: () => {
+    },
     columnsByUrn: {},
-    setColumnsByUrn: () => {},
-    refetchCenterNode: () => {},
+    setColumnsByUrn: () => {
+    },
+    refetchCenterNode: () => {
+    },
 });
 
 type LineageExplorerContextType = {

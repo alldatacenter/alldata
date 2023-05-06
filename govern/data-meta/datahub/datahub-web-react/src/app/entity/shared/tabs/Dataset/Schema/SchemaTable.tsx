@@ -1,6 +1,6 @@
-import React, { useEffect, useMemo, useState } from 'react';
-import { ColumnsType } from 'antd/es/table';
-import { useVT } from 'virtualizedtableforantd4';
+import React, {useEffect, useMemo, useState} from 'react';
+import {ColumnsType} from 'antd/es/table';
+import {useVT} from 'virtualizedtableforantd4';
 import ResizeObserver from 'rc-resize-observer';
 import styled from 'styled-components';
 import {
@@ -12,16 +12,16 @@ import {
     UsageQueryResult,
 } from '../../../../../../types.generated';
 import useSchemaTitleRenderer from '../../../../dataset/profile/schema/utils/schemaTitleRenderer';
-import { ExtendedSchemaFields } from '../../../../dataset/profile/schema/utils/types';
+import {ExtendedSchemaFields} from '../../../../dataset/profile/schema/utils/types';
 import useDescriptionRenderer from './utils/useDescriptionRenderer';
 import useUsageStatsRenderer from './utils/useUsageStatsRenderer';
 import useTagsAndTermsRenderer from './utils/useTagsAndTermsRenderer';
 import ExpandIcon from './components/ExpandIcon';
-import { StyledTable } from '../../../components/styled/StyledTable';
-import { SchemaRow } from './components/SchemaRow';
-import { FkContext } from './utils/selectedFkContext';
+import {StyledTable} from '../../../components/styled/StyledTable';
+import {SchemaRow} from './components/SchemaRow';
+import {FkContext} from './utils/selectedFkContext';
 import useSchemaBlameRenderer from './utils/useSchemaBlameRenderer';
-import { ANTD_GRAY } from '../../../constants';
+import {ANTD_GRAY} from '../../../constants';
 import MenuColumn from './components/MenuColumn';
 import translateFieldPath from '../../../../dataset/profile/schema/utils/translateFieldPath';
 
@@ -59,16 +59,16 @@ const EMPTY_SET: Set<string> = new Set();
 const TABLE_HEADER_HEIGHT = 52;
 
 export default function SchemaTable({
-    rows,
-    schemaMetadata,
-    editableSchemaMetadata,
-    usageStats,
-    editMode = true,
-    schemaFieldBlameList,
-    showSchemaAuditView,
-    expandedRowsFromFilter = EMPTY_SET,
-    filterText = '',
-}: Props): JSX.Element {
+                                        rows,
+                                        schemaMetadata,
+                                        editableSchemaMetadata,
+                                        usageStats,
+                                        editMode = true,
+                                        schemaFieldBlameList,
+                                        showSchemaAuditView,
+                                        expandedRowsFromFilter = EMPTY_SET,
+                                        filterText = '',
+                                    }: Props): JSX.Element {
     const hasUsageStats = useMemo(() => (usageStats?.aggregations?.fields?.length || 0) > 0, [usageStats]);
     const [tableHeight, setTableHeight] = useState(0);
     const [tagHoveredIndex, setTagHoveredIndex] = useState<string | undefined>(undefined);
@@ -100,10 +100,10 @@ export default function SchemaTable({
     const schemaTitleRenderer = useSchemaTitleRenderer(schemaMetadata, setSelectedFkFieldPath, filterText);
     const schemaBlameRenderer = useSchemaBlameRenderer(schemaFieldBlameList);
 
-    const onTagTermCell = (record: SchemaField, rowIndex: number | undefined) => ({
+    const onTagTermCell = (record: SchemaField) => ({
         onMouseEnter: () => {
             if (editMode) {
-                setTagHoveredIndex(`${record.fieldPath}-${rowIndex}`);
+                setTagHoveredIndex(record.fieldPath);
             }
         },
         onMouseLeave: () => {
@@ -158,7 +158,7 @@ export default function SchemaTable({
         render(record: SchemaField) {
             return {
                 props: {
-                    style: { backgroundColor: ANTD_GRAY[2.5] },
+                    style: {backgroundColor: ANTD_GRAY[2.5]},
                 },
                 children: schemaBlameRenderer(record),
             };
@@ -189,7 +189,7 @@ export default function SchemaTable({
         title: '',
         dataIndex: '',
         key: 'menu',
-        render: (field: SchemaField) => <MenuColumn field={field} />,
+        render: (field: SchemaField) => <MenuColumn field={field}/>,
     };
 
     let allColumns: ColumnsType<ExtendedSchemaFields> = [fieldColumn, descriptionColumn, tagColumn, termColumn];
@@ -215,9 +215,9 @@ export default function SchemaTable({
         });
     }, [expandedRowsFromFilter]);
 
-    const [VT, setVT] = useVT(() => ({ scroll: { y: tableHeight } }), [tableHeight]);
+    const [VT, setVT] = useVT(() => ({scroll: {y: tableHeight}}), [tableHeight]);
 
-    useMemo(() => setVT({ body: { row: SchemaRow } }), [setVT]);
+    useMemo(() => setVT({body: {row: SchemaRow}}), [setVT]);
 
     return (
         <FkContext.Provider value={selectedFkFieldPath}>
@@ -230,7 +230,7 @@ export default function SchemaTable({
                         columns={allColumns}
                         dataSource={rows}
                         rowKey="fieldPath"
-                        scroll={{ y: tableHeight }}
+                        scroll={{y: tableHeight}}
                         components={VT}
                         expandable={{
                             expandedRowKeys: [...Array.from(expandedRows)],

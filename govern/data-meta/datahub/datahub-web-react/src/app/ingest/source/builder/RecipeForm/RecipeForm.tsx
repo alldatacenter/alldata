@@ -1,16 +1,16 @@
-import { Button, Collapse, Form, message, Tooltip, Typography } from 'antd';
+import {Button, Collapse, Form, message, Tooltip, Typography} from 'antd';
 import React from 'react';
-import { get } from 'lodash';
+import {get} from 'lodash';
 import YAML from 'yamljs';
-import { ApiOutlined, FilterOutlined, QuestionCircleOutlined, SettingOutlined } from '@ant-design/icons';
+import {ApiOutlined, FilterOutlined, QuestionCircleOutlined, SettingOutlined} from '@ant-design/icons';
 import styled from 'styled-components/macro';
-import { jsonToYaml } from '../../utils';
-import { CONNECTORS_WITH_TEST_CONNECTION, RecipeSections, RECIPE_FIELDS } from './constants';
+import {jsonToYaml} from '../../utils';
+import {CONNECTORS_WITH_TEST_CONNECTION, RecipeSections, RECIPE_FIELDS} from './constants';
 import FormField from './FormField';
 import TestConnectionButton from './TestConnection/TestConnectionButton';
-import { useListSecretsQuery } from '../../../../../graphql/ingestion.generated';
-import { RecipeField, setFieldValueOnRecipe } from './common';
-import { SourceBuilderState, SourceConfig } from '../types';
+import {useListSecretsQuery} from '../../../../../graphql/ingestion.generated';
+import {RecipeField, setFieldValueOnRecipe} from './common';
+import {SourceBuilderState, SourceConfig} from '../types';
 
 export const ControlsContainer = styled.div`
     display: flex;
@@ -69,14 +69,14 @@ function getInitialValues(displayRecipe: string, allFields: any[]) {
     return initialValues;
 }
 
-function SectionHeader({ icon, text, sectionTooltip }: { icon: any; text: string; sectionTooltip?: string }) {
+function SectionHeader({icon, text, sectionTooltip}: { icon: any; text: string; sectionTooltip?: string }) {
     return (
         <span>
             {icon}
             <HeaderTitle>{text}</HeaderTitle>
             {sectionTooltip && (
                 <Tooltip placement="top" title={sectionTooltip}>
-                    <HeaderTooltipWrapper />
+                    <HeaderTooltipWrapper/>
                 </Tooltip>
             )}
         </span>
@@ -100,13 +100,13 @@ interface Props {
 }
 
 function RecipeForm(props: Props) {
-    const { state, isEditing, displayRecipe, sourceConfigs, setStagedRecipe, onClickNext, goToPrevious } = props;
-    const { type } = state;
+    const {state, isEditing, displayRecipe, sourceConfigs, setStagedRecipe, onClickNext, goToPrevious} = props;
+    const {type} = state;
     const version = state.config?.version;
-    const { fields, advancedFields, filterFields, filterSectionTooltip, advancedSectionTooltip, defaultOpenSections } =
+    const {fields, advancedFields, filterFields, filterSectionTooltip, advancedSectionTooltip, defaultOpenSections} =
         RECIPE_FIELDS[type as string];
     const allFields = [...fields, ...advancedFields, ...filterFields];
-    const { data, refetch: refetchSecrets } = useListSecretsQuery({
+    const {data, refetch: refetchSecrets} = useListSecretsQuery({
         variables: {
             input: {
                 start: 0,
@@ -135,8 +135,8 @@ function RecipeForm(props: Props) {
     }
 
     function updateFormValue(fieldName, fieldValue) {
-        updateFormValues({ [fieldName]: fieldValue }, { [fieldName]: fieldValue });
-        form.setFieldsValue({ [fieldName]: fieldValue });
+        updateFormValues({[fieldName]: fieldValue}, {[fieldName]: fieldValue});
+        form.setFieldsValue({[fieldName]: fieldValue});
     }
 
     return (
@@ -148,7 +148,7 @@ function RecipeForm(props: Props) {
             onValuesChange={updateFormValues}
         >
             <StyledCollapse defaultActiveKey="0">
-                <Collapse.Panel forceRender header={<SectionHeader icon={<ApiOutlined />} text="Connection" />} key="0">
+                <Collapse.Panel forceRender header={<SectionHeader icon={<ApiOutlined/>} text="Connection"/>} key="0">
                     {fields.map((field, i) => (
                         <FormField
                             field={field}
@@ -175,7 +175,7 @@ function RecipeForm(props: Props) {
                         forceRender
                         header={
                             <SectionHeader
-                                icon={<FilterOutlined />}
+                                icon={<FilterOutlined/>}
                                 text="Filter"
                                 sectionTooltip={filterSectionTooltip}
                             />
@@ -206,7 +206,7 @@ function RecipeForm(props: Props) {
                     forceRender
                     header={
                         <SectionHeader
-                            icon={<SettingOutlined />}
+                            icon={<SettingOutlined/>}
                             text="Advanced"
                             sectionTooltip={advancedSectionTooltip}
                         />

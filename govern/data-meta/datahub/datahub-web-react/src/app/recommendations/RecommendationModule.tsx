@@ -1,10 +1,10 @@
-import { Typography } from 'antd';
-import React, { useEffect, useMemo } from 'react';
-import { v4 as uuidv4 } from 'uuid';
-import { RecommendationModule as RecommendationModuleType, ScenarioType } from '../../types.generated';
-import analytics, { EventType } from '../analytics';
-import { renderTypeToRenderer } from './renderers';
-import { RecommendationDisplayType } from './types';
+import {Typography} from 'antd';
+import React, {useEffect, useMemo} from 'react';
+import {v4 as uuidv4} from 'uuid';
+import {RecommendationModule as RecommendationModuleType, ScenarioType} from '../../types.generated';
+import analytics, {EventType} from '../analytics';
+import {renderTypeToRenderer} from './renderers';
+import {RecommendationDisplayType} from './types';
 
 type Props = {
     module: RecommendationModuleType;
@@ -13,7 +13,7 @@ type Props = {
     showTitle?: boolean;
 };
 
-export const RecommendationModule = ({ module, scenarioType, displayType, showTitle }: Props) => {
+export const RecommendationModule = ({module, scenarioType, displayType, showTitle}: Props) => {
     const finalDisplayType = displayType || RecommendationDisplayType.DEFAULT;
     const renderId = useMemo(() => uuidv4(), []);
     useEffect(() => {

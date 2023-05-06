@@ -1,10 +1,10 @@
 import React from 'react';
-import { Select } from 'antd';
-import { DataHubView } from '../../../../types.generated';
-import { ViewOption } from './ViewOption';
-import { UserContextType } from '../../../context/userContext';
+import {Select} from 'antd';
+import {DataHubView} from '../../../../types.generated';
+import {ViewOption} from './ViewOption';
+import {UserContextType} from '../../../context/userContext';
 
-const selectOptionStyle = { paddingLeft: 0 };
+const selectOptionStyle = {paddingLeft: 0};
 
 type Args = {
     views: Array<DataHubView>;
@@ -18,15 +18,15 @@ type Args = {
 };
 
 export const renderViewOptionGroup = ({
-    views,
-    label,
-    userContext,
-    hoverViewUrn,
-    isOwnedByUser,
-    setHoverViewUrn,
-    onClickEditView,
-    onClickPreviewView,
-}: Args) => {
+                                          views,
+                                          label,
+                                          userContext,
+                                          hoverViewUrn,
+                                          isOwnedByUser,
+                                          setHoverViewUrn,
+                                          onClickEditView,
+                                          onClickPreviewView,
+                                      }: Args) => {
     const maybePersonalDefaultViewUrn = userContext.state?.views?.personalDefaultViewUrn;
     const maybeGlobalDefaultViewUrn = userContext.state?.views?.globalDefaultViewUrn;
 

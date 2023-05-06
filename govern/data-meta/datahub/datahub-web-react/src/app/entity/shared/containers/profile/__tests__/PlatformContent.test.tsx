@@ -1,9 +1,9 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
-import { BrowserRouter } from 'react-router-dom';
-import PlatformContentView, { getParentContainerNames } from '../header/PlatformContent/PlatformContentView';
-import { EntityType } from '../../../../../../types.generated';
-import { container1, container2 } from '../../../../../../Mocks';
+import {render, screen} from '@testing-library/react';
+import {BrowserRouter} from 'react-router-dom';
+import PlatformContentView, {getParentContainerNames} from '../header/PlatformContent/PlatformContentView';
+import {EntityType} from '../../../../../../types.generated';
+import {container1, container2} from '../../../../../../Mocks';
 
 jest.mock('../../../../../useEntityRegistry', () => ({
     useEntityRegistry: () => ({
@@ -24,16 +24,16 @@ describe('PlatformContent', () => {
     };
 
     it('should not render any containers if there are none in parentContainers', () => {
-        const { queryAllByTestId } = render(<PlatformContentView {...defaultProps} />);
+        const {queryAllByTestId} = render(<PlatformContentView {...defaultProps} />);
 
         expect(queryAllByTestId('container')).toHaveLength(0);
         expect(queryAllByTestId('right-arrow')).toHaveLength(0);
     });
 
     it('should render a direct parent container correctly when there is only one container', () => {
-        const { queryAllByTestId, getByText } = render(
+        const {queryAllByTestId, getByText} = render(
             <BrowserRouter>
-                <PlatformContentView {...defaultProps} parentContainers={[container1]} />
+                <PlatformContentView {...defaultProps} parentContainers={[container1]}/>
             </BrowserRouter>,
         );
 
@@ -43,9 +43,9 @@ describe('PlatformContent', () => {
     });
 
     it('should render all parent containers properly', () => {
-        const { queryAllByTestId } = render(
+        const {queryAllByTestId} = render(
             <BrowserRouter>
-                <PlatformContentView {...defaultProps} parentContainers={[container1, container2]} />
+                <PlatformContentView {...defaultProps} parentContainers={[container1, container2]}/>
             </BrowserRouter>,
         );
 
@@ -56,7 +56,7 @@ describe('PlatformContent', () => {
     it('should render the correct number of right arrows with no containers and an instanceId', () => {
         render(
             <BrowserRouter>
-                <PlatformContentView {...defaultProps} instanceId="mysql1" />
+                <PlatformContentView {...defaultProps} instanceId="mysql1"/>
             </BrowserRouter>,
         );
         expect(screen.queryAllByTestId('right-arrow')).toHaveLength(1);
@@ -78,7 +78,7 @@ describe('PlatformContent', () => {
     it('should render the correct number of right arrows with one containers and an instanceId', () => {
         render(
             <BrowserRouter>
-                <PlatformContentView {...defaultProps} instanceId="mysql1" parentContainers={[container2]} />
+                <PlatformContentView {...defaultProps} instanceId="mysql1" parentContainers={[container2]}/>
             </BrowserRouter>,
         );
         expect(screen.queryAllByTestId('right-arrow')).toHaveLength(2);
@@ -87,7 +87,7 @@ describe('PlatformContent', () => {
     it('should render the correct number of right arrows with multiple containers and no instanceId', () => {
         render(
             <BrowserRouter>
-                <PlatformContentView {...defaultProps} parentContainers={[container1, container2]} />
+                <PlatformContentView {...defaultProps} parentContainers={[container1, container2]}/>
             </BrowserRouter>,
         );
         expect(screen.queryAllByTestId('right-arrow')).toHaveLength(2);
@@ -96,7 +96,7 @@ describe('PlatformContent', () => {
     it('should render the correct number of right arrows with one container and no instanceId', () => {
         render(
             <BrowserRouter>
-                <PlatformContentView {...defaultProps} parentContainers={[container1]} />
+                <PlatformContentView {...defaultProps} parentContainers={[container1]}/>
             </BrowserRouter>,
         );
         expect(screen.queryAllByTestId('right-arrow')).toHaveLength(1);
@@ -105,7 +105,7 @@ describe('PlatformContent', () => {
     it('should render the correct number of right arrows with no containers and no instanceID', () => {
         render(
             <BrowserRouter>
-                <PlatformContentView {...defaultProps} parentContainers={[]} />
+                <PlatformContentView {...defaultProps} parentContainers={[]}/>
             </BrowserRouter>,
         );
         expect(screen.queryAllByTestId('right-arrow')).toHaveLength(0);

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import {useEffect, useRef, useState} from 'react';
 
 export default function useParentContainersTruncation(dataDependency: any) {
     const contentRef = useRef<HTMLDivElement>(null);
@@ -10,5 +10,5 @@ export default function useParentContainersTruncation(dataDependency: any) {
         }
     }, [dataDependency]);
 
-    return { contentRef, isContentTruncated };
+    return {contentRef, isContentTruncated};
 }

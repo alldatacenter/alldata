@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { Button, Dropdown, Menu } from 'antd';
-import { FormOutlined, MoreOutlined } from '@ant-design/icons';
+import React, {useState} from 'react';
+import {Button, Dropdown, Menu} from 'antd';
+import {FormOutlined, MoreOutlined} from '@ant-design/icons';
 import styled from 'styled-components';
 import {
     EntityType,
@@ -39,13 +39,13 @@ type Props = {
 
 // currently only contains Download As Csv but will be extended to contain other actions as well
 export default function SearchExtendedMenu({
-    callSearchOnVariables,
-    entityFilters,
-    filters,
-    query,
-    viewUrn,
-    setShowSelectMode,
-}: Props) {
+                                               callSearchOnVariables,
+                                               entityFilters,
+                                               filters,
+                                               query,
+                                               viewUrn,
+                                               setShowSelectMode,
+                                           }: Props) {
     const [isDownloadingCsv, setIsDownloadingCsv] = useState(false);
     const [showDownloadAsCsvModal, setShowDownloadAsCsvModal] = useState(false);
 
@@ -60,7 +60,7 @@ export default function SearchExtendedMenu({
             {setShowSelectMode && (
                 <MenuItem key="1">
                     <SelectButton type="text" onClick={() => setShowSelectMode(true)}>
-                        <FormOutlined />
+                        <FormOutlined/>
                         Edit...
                     </SelectButton>
                 </MenuItem>
@@ -81,7 +81,7 @@ export default function SearchExtendedMenu({
                 setShowDownloadAsCsvModal={setShowDownloadAsCsvModal}
             />
             <Dropdown overlay={menu} trigger={['click']}>
-                <MenuIcon />
+                <MenuIcon/>
             </Dropdown>
         </>
     );

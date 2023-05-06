@@ -1,9 +1,9 @@
-import { Tooltip } from 'antd';
-import React, { useContext } from 'react';
+import {Tooltip} from 'antd';
+import React, {useContext} from 'react';
 import styled from 'styled-components/macro';
-import { EntityPath, EntityType, LineageDirection, SchemaFieldEntity } from '../../../types.generated';
-import { ANTD_GRAY } from '../../entity/shared/constants';
-import { LineageTabContext } from '../../entity/shared/tabs/Lineage/LineageTabContext';
+import {EntityPath, EntityType, LineageDirection, SchemaFieldEntity} from '../../../types.generated';
+import {ANTD_GRAY} from '../../entity/shared/constants';
+import {LineageTabContext} from '../../entity/shared/tabs/Lineage/LineageTabContext';
 import ColumnsRelationshipText from './ColumnsRelationshipText';
 import DisplayedColumns from './DisplayedColumns';
 
@@ -36,8 +36,8 @@ interface Props {
     openModal: () => void;
 }
 
-export default function ColumnPathsText({ paths, resultEntityUrn, openModal }: Props) {
-    const { lineageDirection } = useContext(LineageTabContext);
+export default function ColumnPathsText({paths, resultEntityUrn, openModal}: Props) {
+    const {lineageDirection} = useContext(LineageTabContext);
 
     const displayedColumns = getDisplayedColumns(paths, resultEntityUrn);
 
@@ -53,12 +53,12 @@ export default function ColumnPathsText({ paths, resultEntityUrn, openModal }: P
                     title={
                         <span>
                             Click to see column path{paths.length > 1 && 's'} from{' '}
-                            <ColumnsRelationshipText displayedColumns={displayedColumns} />
+                            <ColumnsRelationshipText displayedColumns={displayedColumns}/>
                         </span>
                     }
                 >
                     <span>
-                        <DisplayedColumns displayedColumns={displayedColumns} />
+                        <DisplayedColumns displayedColumns={displayedColumns}/>
                     </span>
                 </Tooltip>
             </ResultText>

@@ -1,6 +1,6 @@
 import React from 'react';
-import { Typography } from 'antd';
-import { OnboardingStep } from '../OnboardingStep';
+import {Typography} from 'antd';
+import {OnboardingStep} from '../OnboardingStep';
 
 export const INGESTION_CREATE_SOURCE_ID = 'ingestion-create-source';
 export const INGESTION_REFRESH_SOURCES_ID = 'ingestion-refresh-sources';

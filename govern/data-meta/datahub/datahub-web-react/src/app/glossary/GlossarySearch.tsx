@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, {useState} from 'react';
+import {Link} from 'react-router-dom';
 import styled from 'styled-components/macro';
-import { useGetSearchResultsForMultipleQuery } from '../../graphql/search.generated';
-import { EntityType } from '../../types.generated';
-import { IconStyleType } from '../entity/Entity';
-import { ANTD_GRAY } from '../entity/shared/constants';
-import { SearchBar } from '../search/SearchBar';
+import {useGetSearchResultsForMultipleQuery} from '../../graphql/search.generated';
+import {EntityType} from '../../types.generated';
+import {IconStyleType} from '../entity/Entity';
+import {ANTD_GRAY} from '../entity/shared/constants';
+import {SearchBar} from '../search/SearchBar';
 import ClickOutside from '../shared/ClickOutside';
-import { useEntityRegistry } from '../useEntityRegistry';
+import {useEntityRegistry} from '../useEntityRegistry';
 
 const GlossarySearchWrapper = styled.div`
     position: relative;
@@ -49,7 +49,7 @@ function GlossarySearch() {
     const [isSearchBarFocused, setIsSearchBarFocused] = useState(false);
     const entityRegistry = useEntityRegistry();
 
-    const { data } = useGetSearchResultsForMultipleQuery({
+    const {data} = useGetSearchResultsForMultipleQuery({
         variables: {
             input: {
                 types: [EntityType.GlossaryTerm, EntityType.GlossaryNode],

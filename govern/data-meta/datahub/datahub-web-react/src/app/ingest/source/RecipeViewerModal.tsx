@@ -1,8 +1,8 @@
 import Editor from '@monaco-editor/react';
-import { Button, Modal } from 'antd';
+import {Button, Modal} from 'antd';
 import React from 'react';
 import styled from 'styled-components/macro';
-import { jsonToYaml } from './utils';
+import {jsonToYaml} from './utils';
 
 const YamlWrapper = styled.div`
     padding: 24px;
@@ -13,7 +13,7 @@ interface Props {
     onCancel: () => void;
 }
 
-function RecipeViewerModal({ recipe, onCancel }: Props) {
+function RecipeViewerModal({recipe, onCancel}: Props) {
     const formattedRecipe = recipe ? jsonToYaml(recipe) : '';
 
     return (
@@ -28,7 +28,7 @@ function RecipeViewerModal({ recipe, onCancel }: Props) {
                 <Editor
                     options={{
                         readOnly: true,
-                        minimap: { enabled: false },
+                        minimap: {enabled: false},
                         scrollbar: {
                             vertical: 'hidden',
                             horizontal: 'hidden',

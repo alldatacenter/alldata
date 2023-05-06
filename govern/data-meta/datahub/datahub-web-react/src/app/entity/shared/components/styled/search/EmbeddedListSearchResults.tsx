@@ -1,13 +1,13 @@
 import React from 'react';
-import { Pagination, Typography } from 'antd';
+import {Pagination, Typography} from 'antd';
 import styled from 'styled-components';
-import { FacetFilterInput, FacetMetadata, SearchResults as SearchResultType } from '../../../../../../types.generated';
-import { SearchCfg } from '../../../../../../conf';
-import { EntityNameList } from '../../../../../recommendations/renderer/component/EntityNameList';
-import { ReactComponent as LoadingSvg } from '../../../../../../images/datahub-logo-color-loading_pendulum.svg';
-import { EntityAndType } from '../../../types';
-import { UnionType } from '../../../../../search/utils/constants';
-import { SearchFiltersSection } from '../../../../../search/SearchFiltersSection';
+import {FacetFilterInput, FacetMetadata, SearchResults as SearchResultType} from '../../../../../../types.generated';
+import {SearchCfg} from '../../../../../../conf';
+import {EntityNameList} from '../../../../../recommendations/renderer/component/EntityNameList';
+import {ReactComponent as LoadingSvg} from '../../../../../../images/datahub-logo-color-loading_pendulum.svg';
+import {EntityAndType} from '../../../types';
+import {UnionType} from '../../../../../search/utils/constants';
+import {SearchFiltersSection} from '../../../../../search/SearchFiltersSection';
 
 const SearchBody = styled.div`
     height: 100%;
@@ -77,22 +77,22 @@ interface Props {
 }
 
 export const EmbeddedListSearchResults = ({
-    page,
-    searchResponse,
-    filters,
-    selectedFilters,
-    loading,
-    showFilters,
-    unionType,
-    onChangeUnionType,
-    onChangeFilters,
-    onChangePage,
-    isSelectMode,
-    selectedEntities,
-    setSelectedEntities,
-    numResultsPerPage,
-    setNumResultsPerPage,
-}: Props) => {
+                                              page,
+                                              searchResponse,
+                                              filters,
+                                              selectedFilters,
+                                              loading,
+                                              showFilters,
+                                              unionType,
+                                              onChangeUnionType,
+                                              onChangeFilters,
+                                              onChangePage,
+                                              isSelectMode,
+                                              selectedEntities,
+                                              setSelectedEntities,
+                                              numResultsPerPage,
+                                              setNumResultsPerPage,
+                                          }: Props) => {
     const pageStart = searchResponse?.start || 0;
     const pageSize = searchResponse?.count || 0;
     const totalResults = searchResponse?.total || 0;
@@ -116,7 +116,7 @@ export const EmbeddedListSearchResults = ({
                 <ResultContainer>
                     {loading && (
                         <LoadingContainer>
-                            <LoadingSvg height={80} width={80} />
+                            <LoadingSvg height={80} width={80}/>
                         </LoadingContainer>
                     )}
                     {!loading && (
@@ -156,7 +156,7 @@ export const EmbeddedListSearchResults = ({
                     onShowSizeChange={(_currNum, newNum) => setNumResultsPerPage(newNum)}
                     pageSizeOptions={['10', '20', '50', '100']}
                 />
-                <span />
+                <span/>
             </PaginationInfoContainer>
         </>
     );

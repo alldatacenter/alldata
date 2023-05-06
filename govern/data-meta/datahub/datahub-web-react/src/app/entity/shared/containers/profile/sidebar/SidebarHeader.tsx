@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography } from 'antd';
+import {Typography} from 'antd';
 import styled from 'styled-components';
 
 const HeaderContainer = styled.div`
@@ -19,7 +19,7 @@ type Props = {
     children?: React.ReactNode;
 };
 
-export const SidebarHeader = ({ title, actions, children }: Props) => {
+export const SidebarHeader = ({title, actions, children}: Props) => {
     return (
         <HeaderContainer>
             <Typography.Title level={5}>{title}</Typography.Title>

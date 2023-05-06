@@ -1,10 +1,10 @@
 import React from 'react';
-import { EntityType, MlModelGroup } from '../../../../types.generated';
+import {EntityType, MlModelGroup} from '../../../../types.generated';
 import DefaultPreviewCard from '../../../preview/DefaultPreviewCard';
-import { capitalizeFirstLetterOnly } from '../../../shared/textUtil';
-import { useEntityRegistry } from '../../../useEntityRegistry';
+import {capitalizeFirstLetterOnly} from '../../../shared/textUtil';
+import {useEntityRegistry} from '../../../useEntityRegistry';
 
-export const Preview = ({ group }: { group: MlModelGroup }): JSX.Element => {
+export const Preview = ({group}: { group: MlModelGroup }): JSX.Element => {
     const entityRegistry = useEntityRegistry();
     return (
         <DefaultPreviewCard

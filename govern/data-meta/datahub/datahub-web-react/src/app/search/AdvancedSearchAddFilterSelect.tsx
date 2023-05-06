@@ -1,33 +1,33 @@
-import { Select } from 'antd';
+import {Select} from 'antd';
 import * as React from 'react';
 import styled from 'styled-components';
-import { PlusOutlined } from '@ant-design/icons';
+import {PlusOutlined} from '@ant-design/icons';
 
-import { FacetFilterInput } from '../../types.generated';
-import { DEGREE_FILTER_NAME, FIELD_TO_LABEL, ORDERED_FIELDS } from './utils/constants';
+import {FacetFilterInput} from '../../types.generated';
+import {DEGREE_FILTER_NAME, FIELD_TO_LABEL, ORDERED_FIELDS} from './utils/constants';
 
 const StyledPlus = styled(PlusOutlined)`
     margin-right: 6px;
 `;
 
-const selectStyle = { padding: 6, fontWeight: 500, width: 'auto' };
+const selectStyle = {padding: 6, fontWeight: 500, width: 'auto'};
 
 interface Props {
     selectedFilters: Array<FacetFilterInput>;
     onFilterFieldSelect: (value) => void;
 }
 
-const { Option } = Select;
+const {Option} = Select;
 
-export const AdvancedSearchAddFilterSelect = ({ selectedFilters, onFilterFieldSelect }: Props) => {
+export const AdvancedSearchAddFilterSelect = ({selectedFilters, onFilterFieldSelect}: Props) => {
     return (
         <Select
             value={{
                 value: 'value',
                 label: (
                     <div>
-                        <StyledPlus />
-                        Add Filter
+                        <StyledPlus/>
+                        添加过滤
                     </div>
                 ),
             }}

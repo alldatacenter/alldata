@@ -1,8 +1,8 @@
-import { useContext, useEffect } from 'react';
-import { SchemaField } from '../../../types.generated';
+import {useContext, useEffect} from 'react';
+import {SchemaField} from '../../../types.generated';
 import usePrevious from '../../shared/usePrevious';
-import { NUM_COLUMNS_PER_PAGE } from '../constants';
-import { FetchedEntity } from '../types';
+import {NUM_COLUMNS_PER_PAGE} from '../constants';
+import {FetchedEntity} from '../types';
 import {
     convertFieldsToV1FieldPath,
     convertInputFieldsToSchemaFields,
@@ -10,14 +10,14 @@ import {
     sortColumnsByDefault,
     sortRelatedLineageColumns,
 } from './columnLineageUtils';
-import { LineageExplorerContext } from './LineageExplorerContext';
+import {LineageExplorerContext} from './LineageExplorerContext';
 
 export default function useSortColumnsBySelectedField(fetchedEntities: { [x: string]: FetchedEntity }) {
-    const { highlightedEdges, selectedField, columnsByUrn, setColumnsByUrn } = useContext(LineageExplorerContext);
+    const {highlightedEdges, selectedField, columnsByUrn, setColumnsByUrn} = useContext(LineageExplorerContext);
     const previousSelectedField = usePrevious(selectedField);
 
     useEffect(() => {
-        let updatedColumnsByUrn = { ...columnsByUrn };
+        let updatedColumnsByUrn = {...columnsByUrn};
 
         if (selectedField && previousSelectedField !== selectedField) {
             Object.entries(columnsByUrn).forEach(([urn, columns]) => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { CheckCircleOutlined, CloseCircleOutlined } from '@ant-design/icons';
+import {CheckCircleOutlined, CloseCircleOutlined} from '@ant-design/icons';
 import {
     AssertionResultType,
     AssertionStdParameter,
@@ -58,9 +58,9 @@ export const getResultIcon = (result: AssertionResultType) => {
     const resultColor = getResultColor(result);
     switch (result) {
         case AssertionResultType.Success:
-            return <CheckCircleOutlined style={{ color: resultColor }} />;
+            return <CheckCircleOutlined style={{color: resultColor}}/>;
         case AssertionResultType.Failure:
-            return <CloseCircleOutlined style={{ color: resultColor }} />;
+            return <CloseCircleOutlined style={{color: resultColor}}/>;
         default:
             throw new Error(`Unsupported Assertion Result Type ${result} provided.`);
     }

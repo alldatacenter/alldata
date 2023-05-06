@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Typography, Image } from 'antd';
-import { Maybe } from 'graphql/jsutils/Maybe';
-import { Container, GlossaryNode } from '../../../../../../../types.generated';
-import { ANTD_GRAY } from '../../../../constants';
+import {Typography, Image} from 'antd';
+import {Maybe} from 'graphql/jsutils/Maybe';
+import {Container, GlossaryNode} from '../../../../../../../types.generated';
+import {ANTD_GRAY} from '../../../../constants';
 import ContainerLink from './ContainerLink';
 import ParentNodesView, {
     StyledRightOutlined,
@@ -103,49 +103,49 @@ function PlatformContentView(props: Props) {
             {typeIcon && <LogoIcon>{typeIcon}</LogoIcon>}
             <PlatformText>{entityType}</PlatformText>
             {(!!platformName || !!instanceId || !!parentContainers?.length || !!parentNodes?.length) && (
-                <PlatformDivider />
+                <PlatformDivider/>
             )}
             {platformName && (
                 <LogoIcon>
                     {!platformLogoUrl && !platformLogoUrls && entityLogoComponent}
                     {!!platformLogoUrl && !platformLogoUrls && (
-                        <PreviewImage preview={false} src={platformLogoUrl} alt={platformName} />
+                        <PreviewImage preview={false} src={platformLogoUrl} alt={platformName}/>
                     )}
                     {!!platformLogoUrls &&
-                        platformLogoUrls.slice(0, 2).map((platformLogoUrlsEntry) => (
-                            <>
-                                <PreviewImage preview={false} src={platformLogoUrlsEntry || ''} alt={platformName} />
-                            </>
-                        ))}
+                    platformLogoUrls.slice(0, 2).map((platformLogoUrlsEntry) => (
+                        <>
+                            <PreviewImage preview={false} src={platformLogoUrlsEntry || ''} alt={platformName}/>
+                        </>
+                    ))}
                 </LogoIcon>
             )}
             <PlatformText>
                 {platformNames ? platformNames.join(' & ') : platformName}
-                {(directParentContainer || instanceId) && <StyledRightOutlined data-testid="right-arrow" />}
+                {(directParentContainer || instanceId) && <StyledRightOutlined data-testid="right-arrow"/>}
             </PlatformText>
             {instanceId && (
                 <PlatformText>
                     {instanceId}
-                    {directParentContainer && <StyledRightOutlined data-testid="right-arrow" />}
+                    {directParentContainer && <StyledRightOutlined data-testid="right-arrow"/>}
                 </PlatformText>
             )}
             <StyledTooltip
                 title={getParentContainerNames(parentContainers)}
-                overlayStyle={areContainersTruncated ? {} : { display: 'none' }}
+                overlayStyle={areContainersTruncated ? {} : {display: 'none'}}
             >
                 {areContainersTruncated && <Ellipsis>...</Ellipsis>}
                 <ParentContainersWrapper ref={parentContainersRef}>
                     {remainingParentContainers &&
-                        remainingParentContainers.map((container) => (
-                            <span key={container?.urn}>
-                                <ContainerLink container={container} />
-                                <StyledRightOutlined data-testid="right-arrow" />
+                    remainingParentContainers.map((container) => (
+                        <span key={container?.urn}>
+                                <ContainerLink container={container}/>
+                                <StyledRightOutlined data-testid="right-arrow"/>
                             </span>
-                        ))}
+                    ))}
                 </ParentContainersWrapper>
-                {directParentContainer && <ContainerLink container={directParentContainer} />}
+                {directParentContainer && <ContainerLink container={directParentContainer}/>}
             </StyledTooltip>
-            <ParentNodesView parentNodes={parentNodes} />
+            <ParentNodesView parentNodes={parentNodes}/>
         </PlatformContentWrapper>
     );
 }

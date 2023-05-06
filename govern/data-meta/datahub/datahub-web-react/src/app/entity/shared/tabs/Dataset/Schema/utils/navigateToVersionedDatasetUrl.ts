@@ -1,11 +1,11 @@
 import * as QueryString from 'query-string';
-import { RouteComponentProps } from 'react-router-dom';
+import {RouteComponentProps} from 'react-router-dom';
 
 export const navigateToVersionedDatasetUrl = ({
-    location,
-    history,
-    datasetVersion,
-}: {
+                                                  location,
+                                                  history,
+                                                  datasetVersion,
+                                              }: {
     location: {
         search: string;
         pathname: string;
@@ -13,12 +13,12 @@ export const navigateToVersionedDatasetUrl = ({
     history: RouteComponentProps['history'];
     datasetVersion: string;
 }) => {
-    const parsedSearch = QueryString.parse(location.search, { arrayFormat: 'comma' });
+    const parsedSearch = QueryString.parse(location.search, {arrayFormat: 'comma'});
     const newSearch = {
         ...parsedSearch,
         semantic_version: datasetVersion,
     };
-    const newSearchStringified = QueryString.stringify(newSearch, { arrayFormat: 'comma' });
+    const newSearchStringified = QueryString.stringify(newSearch, {arrayFormat: 'comma'});
 
     history.push({
         pathname: location.pathname,

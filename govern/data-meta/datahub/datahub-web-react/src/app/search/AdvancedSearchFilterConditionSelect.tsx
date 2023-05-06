@@ -1,8 +1,8 @@
-import { Select } from 'antd';
+import {Select} from 'antd';
 import React from 'react';
 import styled from 'styled-components/macro';
-import { FacetFilterInput } from '../../types.generated';
-import { ANTD_GRAY } from '../entity/shared/constants';
+import {FacetFilterInput} from '../../types.generated';
+import {ANTD_GRAY} from '../entity/shared/constants';
 import {
     DESCRIPTION_FILTER_NAME,
     DOMAINS_FILTER_NAME,
@@ -20,7 +20,7 @@ type Props = {
     onUpdate: (newValue: FacetFilterInput) => void;
 };
 
-const { Option } = Select;
+const {Option} = Select;
 
 // We track which fields are collection fields for the purpose of printing the conditions
 // in a more gramatically correct way. On the backend they are handled the same.
@@ -65,7 +65,7 @@ const StyledSelect = styled(Select)`
     width: auto;
 `;
 
-export const AdvancedSearchFilterConditionSelect = ({ filter, onUpdate }: Props) => {
+export const AdvancedSearchFilterConditionSelect = ({filter, onUpdate}: Props) => {
     const labelsForField = getLabelsForField(filter.field);
 
     const selectedValue = filter.negated ? 'negated' : 'default';

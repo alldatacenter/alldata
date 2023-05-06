@@ -1,7 +1,7 @@
 import React from 'react';
-import { Button, DatePicker, Form, Input, message, Modal } from 'antd';
-import { useBatchUpdateDeprecationMutation } from '../../../../graphql/mutations.generated';
-import { handleBatchError } from '../utils';
+import {Button, DatePicker, Form, Input, message, Modal} from 'antd';
+import {useBatchUpdateDeprecationMutation} from '../../../../graphql/mutations.generated';
+import {handleBatchError} from '../utils';
 
 type Props = {
     urns: string[];
@@ -9,7 +9,7 @@ type Props = {
     refetch?: () => void;
 };
 
-export const UpdateDeprecationModal = ({ urns, onClose, refetch }: Props) => {
+export const UpdateDeprecationModal = ({urns, onClose, refetch}: Props) => {
     const [batchUpdateDeprecation] = useBatchUpdateDeprecationMutation();
     const [form] = Form.useForm();
 
@@ -19,12 +19,12 @@ export const UpdateDeprecationModal = ({ urns, onClose, refetch }: Props) => {
     };
 
     const handleOk = async (formData: any) => {
-        message.loading({ content: 'Updating...' });
+        message.loading({content: 'Updating...'});
         try {
             await batchUpdateDeprecation({
                 variables: {
                     input: {
-                        resources: [...urns.map((urn) => ({ resourceUrn: urn }))],
+                        resources: [...urns.map((urn) => ({resourceUrn: urn}))],
                         deprecated: true,
                         note: formData.note,
                         decommissionTime: formData.decommissionTime && formData.decommissionTime.unix(),
@@ -32,7 +32,7 @@ export const UpdateDeprecationModal = ({ urns, onClose, refetch }: Props) => {
                 },
             });
             message.destroy();
-            message.success({ content: 'Deprecation Updated', duration: 2 });
+            message.success({content: 'Deprecation Updated', duration: 2});
         } catch (e: unknown) {
             message.destroy();
             if (e instanceof Error) {
@@ -66,11 +66,11 @@ export const UpdateDeprecationModal = ({ urns, onClose, refetch }: Props) => {
             }
         >
             <Form form={form} name="addDeprecationForm" onFinish={handleOk} layout="vertical">
-                <Form.Item name="note" label="Note" rules={[{ whitespace: true }, { min: 0, max: 100 }]}>
-                    <Input placeholder="Add Note" autoFocus />
+                <Form.Item name="note" label="Note" rules={[{whitespace: true}, {min: 0, max: 100}]}>
+                    <Input placeholder="Add Note" autoFocus/>
                 </Form.Item>
                 <Form.Item name="decommissionTime" label="Decommission Date">
-                    <DatePicker style={{ width: '100%' }} />
+                    <DatePicker style={{width: '100%'}}/>
                 </Form.Item>
             </Form>
         </Modal>

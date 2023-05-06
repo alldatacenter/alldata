@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components/macro';
-import { Affix } from 'antd';
-import { useGetBrowsePathsQuery } from '../../../../../../graphql/browse.generated';
-import { EntityType } from '../../../../../../types.generated';
-import { useEntityRegistry } from '../../../../../useEntityRegistry';
-import { ProfileNavBrowsePath } from './ProfileNavBrowsePath';
+import {Affix} from 'antd';
+import {useGetBrowsePathsQuery} from '../../../../../../graphql/browse.generated';
+import {EntityType} from '../../../../../../types.generated';
+import {useEntityRegistry} from '../../../../../useEntityRegistry';
+import {ProfileNavBrowsePath} from './ProfileNavBrowsePath';
 
 type Props = {
     urn: string;
@@ -13,9 +13,9 @@ type Props = {
 
 const AffixWithHeight = styled(Affix)``;
 
-export const EntityProfileNavBar = ({ urn, entityType }: Props) => {
-    const { data: browseData } = useGetBrowsePathsQuery({
-        variables: { input: { urn, type: entityType } },
+export const EntityProfileNavBar = ({urn, entityType}: Props) => {
+    const {data: browseData} = useGetBrowsePathsQuery({
+        variables: {input: {urn, type: entityType}},
         fetchPolicy: 'cache-first',
     });
     const entityRegistry = useEntityRegistry();

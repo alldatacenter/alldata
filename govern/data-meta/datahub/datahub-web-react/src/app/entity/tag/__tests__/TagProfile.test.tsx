@@ -1,18 +1,18 @@
 import React from 'react';
-import { render, waitFor } from '@testing-library/react';
-import { MockedProvider } from '@apollo/client/testing';
-import { Route } from 'react-router';
+import {render, waitFor} from '@testing-library/react';
+import {MockedProvider} from '@apollo/client/testing';
+import {Route} from 'react-router';
 
 import TagProfile from '../TagProfile';
 import TestPageContainer from '../../../../utils/test-utils/TestPageContainer';
-import { mocks } from '../../../../Mocks';
+import {mocks} from '../../../../Mocks';
 
 describe('TagProfile', () => {
     it('renders tag details', async () => {
-        const { getByText, queryByText } = render(
+        const {getByText, queryByText} = render(
             <MockedProvider mocks={mocks} addTypename={false}>
                 <TestPageContainer initialEntries={['/tag/urn:li:tag:abc-sample-tag']}>
-                    <Route path="/tag/:urn" render={() => <TagProfile />} />
+                    <Route path="/tag/:urn" render={() => <TagProfile/>}/>
                 </TestPageContainer>
             </MockedProvider>,
         );
@@ -24,17 +24,17 @@ describe('TagProfile', () => {
     });
 
     it('renders tag ownership', async () => {
-        const { queryByText } = render(
+        const {queryByText} = render(
             <MockedProvider
                 mocks={mocks}
                 addTypename={false}
                 defaultOptions={{
-                    watchQuery: { fetchPolicy: 'no-cache' },
-                    query: { fetchPolicy: 'no-cache' },
+                    watchQuery: {fetchPolicy: 'no-cache'},
+                    query: {fetchPolicy: 'no-cache'},
                 }}
             >
                 <TestPageContainer initialEntries={['/tag/urn:li:tag:abc-sample-tag']}>
-                    <Route path="/tag/:urn" render={() => <TagProfile />} />
+                    <Route path="/tag/:urn" render={() => <TagProfile/>}/>
                 </TestPageContainer>
             </MockedProvider>,
         );
@@ -43,10 +43,10 @@ describe('TagProfile', () => {
     });
 
     it('renders stats', async () => {
-        const { queryByText } = render(
+        const {queryByText} = render(
             <MockedProvider mocks={mocks} addTypename={false}>
                 <TestPageContainer initialEntries={['/tag/urn:li:tag:abc-sample-tag']}>
-                    <Route path="/tag/:urn" render={() => <TagProfile />} />
+                    <Route path="/tag/:urn" render={() => <TagProfile/>}/>
                 </TestPageContainer>
             </MockedProvider>,
         );

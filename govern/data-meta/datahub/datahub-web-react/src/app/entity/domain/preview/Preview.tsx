@@ -1,18 +1,18 @@
 import React from 'react';
-import { EntityType, Owner, SearchInsight } from '../../../../types.generated';
+import {EntityType, Owner, SearchInsight} from '../../../../types.generated';
 import DefaultPreviewCard from '../../../preview/DefaultPreviewCard';
-import { useEntityRegistry } from '../../../useEntityRegistry';
-import { IconStyleType } from '../../Entity';
+import {useEntityRegistry} from '../../../useEntityRegistry';
+import {IconStyleType} from '../../Entity';
 
 export const Preview = ({
-    urn,
-    name,
-    description,
-    owners,
-    count,
-    insights,
-    logoComponent,
-}: {
+                            urn,
+                            name,
+                            description,
+                            owners,
+                            count,
+                            insights,
+                            logoComponent,
+                        }: {
     urn: string;
     name: string;
     description?: string | null;

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, {useEffect, useRef} from 'react';
 
 interface OutsideAlerterType {
     children: React.ReactNode;
@@ -6,7 +6,7 @@ interface OutsideAlerterType {
     wrapperClassName?: string;
 }
 
-export default function ClickOutside({ children, onClickOutside, wrapperClassName }: OutsideAlerterType) {
+export default function ClickOutside({children, onClickOutside, wrapperClassName}: OutsideAlerterType) {
     const wrapperRef = useRef<HTMLDivElement>(null);
 
     function handleClickOutside(event) {

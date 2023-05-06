@@ -1,15 +1,15 @@
 import React from 'react';
-import { RecommendationRenderProps } from '../types';
-import { recommendationClickEvent } from '../util/recommendationClickEvent';
-import { GlossaryTermSearchList } from './component/GlossaryTermSearchList';
+import {RecommendationRenderProps} from '../types';
+import {recommendationClickEvent} from '../util/recommendationClickEvent';
+import {GlossaryTermSearchList} from './component/GlossaryTermSearchList';
 
 export const GlossaryTermSearchListRenderer = ({
-    renderId,
-    moduleId,
-    scenarioType,
-    renderType,
-    content,
-}: RecommendationRenderProps) => {
+                                                   renderId,
+                                                   moduleId,
+                                                   scenarioType,
+                                                   renderType,
+                                                   content,
+                                               }: RecommendationRenderProps) => {
     return (
         <GlossaryTermSearchList
             onClick={(index) =>

@@ -1,5 +1,5 @@
-import { CheckOutlined } from '@ant-design/icons';
-import { Button } from 'antd';
+import {CheckOutlined} from '@ant-design/icons';
+import {Button} from 'antd';
 import React from 'react';
 import TabToolbar from '../../../components/styled/TabToolbar';
 
@@ -9,14 +9,14 @@ type DescriptionEditorToolbarProps = {
     onSave: () => void;
 };
 
-export const DescriptionEditorToolbar = ({ disableSave, onClose, onSave }: DescriptionEditorToolbarProps) => {
+export const DescriptionEditorToolbar = ({disableSave, onClose, onSave}: DescriptionEditorToolbarProps) => {
     return (
         <TabToolbar>
             <Button type="text" onClick={onClose}>
                 Back
             </Button>
             <Button onClick={onSave} disabled={disableSave}>
-                <CheckOutlined /> Save
+                <CheckOutlined/> Save
             </Button>
         </TabToolbar>
     );

@@ -1,29 +1,29 @@
-import React, { useEffect, useState } from 'react';
-import { Button, Empty, List, Pagination } from 'antd';
+import React, {useEffect, useState} from 'react';
+import {Button, Empty, List, Pagination} from 'antd';
 import styled from 'styled-components/macro';
 import * as QueryString from 'query-string';
-import { UsergroupAddOutlined } from '@ant-design/icons';
-import { useLocation } from 'react-router';
+import {UsergroupAddOutlined} from '@ant-design/icons';
+import {useLocation} from 'react-router';
 import UserListItem from './UserListItem';
-import { Message } from '../../shared/Message';
-import { useListUsersQuery } from '../../../graphql/user.generated';
-import { CorpUser, DataHubRole } from '../../../types.generated';
+import {Message} from '../../shared/Message';
+import {useListUsersQuery} from '../../../graphql/user.generated';
+import {CorpUser, DataHubRole} from '../../../types.generated';
 import TabToolbar from '../../entity/shared/components/styled/TabToolbar';
-import { SearchBar } from '../../search/SearchBar';
-import { useEntityRegistry } from '../../useEntityRegistry';
+import {SearchBar} from '../../search/SearchBar';
+import {useEntityRegistry} from '../../useEntityRegistry';
 import ViewInviteTokenModal from './ViewInviteTokenModal';
-import { useListRolesQuery } from '../../../graphql/role.generated';
-import { scrollToTop } from '../../shared/searchUtils';
-import { OnboardingTour } from '../../onboarding/OnboardingTour';
+import {useListRolesQuery} from '../../../graphql/role.generated';
+import {scrollToTop} from '../../shared/searchUtils';
+import {OnboardingTour} from '../../onboarding/OnboardingTour';
 import {
     USERS_ASSIGN_ROLE_ID,
     USERS_INTRO_ID,
     USERS_INVITE_LINK_ID,
     USERS_SSO_ID,
 } from '../../onboarding/config/UsersOnboardingConfig';
-import { useUpdateEducationStepIdsAllowlist } from '../../onboarding/useUpdateEducationStepIdsAllowlist';
-import { DEFAULT_USER_LIST_PAGE_SIZE, removeUserFromListUsersCache } from './cacheUtils';
-import { useUserContext } from '../../context/useUserContext';
+import {useUpdateEducationStepIdsAllowlist} from '../../onboarding/useUpdateEducationStepIdsAllowlist';
+import {DEFAULT_USER_LIST_PAGE_SIZE, removeUserFromListUsersCache} from './cacheUtils';
+import {useUserContext} from '../../context/useUserContext';
 
 const UserContainer = styled.div``;
 
@@ -42,7 +42,7 @@ const UserPaginationContainer = styled.div`
 export const UserList = () => {
     const entityRegistry = useEntityRegistry();
     const location = useLocation();
-    const params = QueryString.parse(location.search, { arrayFormat: 'comma' });
+    const params = QueryString.parse(location.search, {arrayFormat: 'comma'});
     const paramsQuery = (params?.query as string) || undefined;
     const [query, setQuery] = useState<undefined | string>(undefined);
     useEffect(() => setQuery(paramsQuery), [paramsQuery]);
@@ -107,9 +107,9 @@ export const UserList = () => {
 
     return (
         <>
-            <OnboardingTour stepIds={[USERS_INTRO_ID, USERS_SSO_ID, USERS_INVITE_LINK_ID, USERS_ASSIGN_ROLE_ID]} />
-            {!usersData && loading && <Message type="loading" content="Loading users..." />}
-            {error && <Message type="error" content="Failed to load users! An unexpected error occurred." />}
+            <OnboardingTour stepIds={[USERS_INTRO_ID, USERS_SSO_ID, USERS_INVITE_LINK_ID, USERS_ASSIGN_ROLE_ID]}/>
+            {!usersData && loading && <Message type="loading" content="Loading users..."/>}
+            {error && <Message type="error" content="Failed to load users! An unexpected error occurred."/>}
             <UserContainer>
                 <TabToolbar>
                     <div>
@@ -119,7 +119,7 @@ export const UserList = () => {
                             type="text"
                             onClick={() => setIsViewingInviteToken(true)}
                         >
-                            <UsergroupAddOutlined /> Invite Users
+                            <UsergroupAddOutlined/> Invite Users
                         </Button>
                     </div>
                     <SearchBar
@@ -143,7 +143,7 @@ export const UserList = () => {
                 <UserStyledList
                     bordered
                     locale={{
-                        emptyText: <Empty description="No Users!" image={Empty.PRESENTED_IMAGE_SIMPLE} />,
+                        emptyText: <Empty description="No Users!" image={Empty.PRESENTED_IMAGE_SIMPLE}/>,
                     }}
                     dataSource={users}
                     renderItem={(item: any) => (
@@ -158,7 +158,7 @@ export const UserList = () => {
                 />
                 <UserPaginationContainer>
                     <Pagination
-                        style={{ margin: 40 }}
+                        style={{margin: 40}}
                         current={page}
                         pageSize={pageSize}
                         total={totalUsers}

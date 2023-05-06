@@ -1,11 +1,11 @@
 import React from 'react';
-import { Tooltip, Badge } from 'antd';
+import {Tooltip, Badge} from 'antd';
 import styled from 'styled-components';
 
-import { capitalizeFirstLetter } from '../../../../../../shared/textUtil';
-import { SchemaFieldDataType } from '../../../../../../../types.generated';
-import { truncate } from '../../../../utils';
-import { ANTD_GRAY } from '../../../../constants';
+import {capitalizeFirstLetter} from '../../../../../../shared/textUtil';
+import {SchemaFieldDataType} from '../../../../../../../types.generated';
+import {truncate} from '../../../../utils';
+import {ANTD_GRAY} from '../../../../constants';
 
 type Props = {
     type: SchemaFieldDataType;
@@ -24,12 +24,12 @@ const TypeBadge = styled(Badge)`
     }
 `;
 
-export default function TypeLabel({ type, nativeDataType }: Props) {
+export default function TypeLabel({type, nativeDataType}: Props) {
     // if unable to match type to DataHub, display native type info by default
     const nativeFallback = type === SchemaFieldDataType.Null;
 
     // eslint-disable-next-line react/prop-types
-    const NativeDataTypeTooltip = ({ children }) =>
+    const NativeDataTypeTooltip = ({children}) =>
         nativeDataType ? (
             <Tooltip placement="top" title={capitalizeFirstLetter(nativeDataType)}>
                 <span>{children}</span>
@@ -40,7 +40,7 @@ export default function TypeLabel({ type, nativeDataType }: Props) {
 
     return (
         <NativeDataTypeTooltip>
-            <TypeBadge count={capitalizeFirstLetter(nativeFallback ? truncate(250, nativeDataType) : type)} />
+            <TypeBadge count={capitalizeFirstLetter(nativeFallback ? truncate(250, nativeDataType) : type)}/>
         </NativeDataTypeTooltip>
     );
 }

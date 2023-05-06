@@ -1,11 +1,11 @@
-import { message, Modal } from 'antd';
-import { useEntityRegistry } from '../../../useEntityRegistry';
-import { useEntityData, useRefetch } from '../../shared/EntityContext';
-import { useRemoveRelatedTermsMutation } from '../../../../graphql/glossaryTerm.generated';
-import { TermRelationshipType } from '../../../../types.generated';
+import {message, Modal} from 'antd';
+import {useEntityRegistry} from '../../../useEntityRegistry';
+import {useEntityData, useRefetch} from '../../shared/EntityContext';
+import {useRemoveRelatedTermsMutation} from '../../../../graphql/glossaryTerm.generated';
+import {TermRelationshipType} from '../../../../types.generated';
 
 function useRemoveRelatedTerms(termUrn: string, relationshipType: TermRelationshipType, displayName: string) {
-    const { urn, entityType } = useEntityData();
+    const {urn, entityType} = useEntityData();
     const entityRegistry = useEntityRegistry();
     const refetch = useRefetch();
 
@@ -23,7 +23,7 @@ function useRemoveRelatedTerms(termUrn: string, relationshipType: TermRelationsh
         })
             .catch((e) => {
                 message.destroy();
-                message.error({ content: `Failed to remove: \n ${e.message || ''}`, duration: 3 });
+                message.error({content: `Failed to remove: \n ${e.message || ''}`, duration: 3});
             })
             .finally(() => {
                 message.loading({
@@ -47,14 +47,15 @@ function useRemoveRelatedTerms(termUrn: string, relationshipType: TermRelationsh
             onOk() {
                 handleRemoveRelatedTerms();
             },
-            onCancel() {},
+            onCancel() {
+            },
             okText: 'Yes',
             maskClosable: true,
             closable: true,
         });
     }
 
-    return { onRemove };
+    return {onRemove};
 }
 
 export default useRemoveRelatedTerms;

@@ -1,9 +1,9 @@
-import { ArrowRightOutlined } from '@ant-design/icons';
-import { Button } from 'antd';
+import {ArrowRightOutlined} from '@ant-design/icons';
+import {Button} from 'antd';
 import React from 'react';
 import styled from 'styled-components/macro';
-import { EntityType } from '../../../types.generated';
-import analytics, { EventType, EntityActionType } from '../../analytics';
+import {EntityType} from '../../../types.generated';
+import analytics, {EventType, EntityActionType} from '../../analytics';
 
 const GITHUB_LINK = 'github.com';
 const GITHUB = 'GitHub';
@@ -30,7 +30,7 @@ interface Props {
     entityType?: string;
 }
 
-export default function ExternalUrlButton({ externalUrl, platformName, entityType, entityUrn }: Props) {
+export default function ExternalUrlButton({externalUrl, platformName, entityType, entityUrn}: Props) {
     function sendAnalytics() {
         analytics.event({
             type: EventType.EntityActionEvent,
@@ -54,7 +54,7 @@ export default function ExternalUrlButton({ externalUrl, platformName, entityTyp
                 rel="noreferrer noopener"
                 onClick={sendAnalytics}
             >
-                View in {displayedName} <ArrowRightOutlined style={{ fontSize: 12 }} />
+                View in {displayedName} <ArrowRightOutlined style={{fontSize: 12}}/>
             </StyledButton>
         </ExternalUrlWrapper>
     );

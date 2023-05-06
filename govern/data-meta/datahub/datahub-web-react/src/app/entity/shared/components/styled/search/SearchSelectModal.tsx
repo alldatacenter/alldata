@@ -1,10 +1,10 @@
-import { Button, Modal } from 'antd';
-import React, { useState } from 'react';
+import {Button, Modal} from 'antd';
+import React, {useState} from 'react';
 import styled from 'styled-components';
-import { EntityType } from '../../../../../../types.generated';
+import {EntityType} from '../../../../../../types.generated';
 import ClickOutside from '../../../../../shared/ClickOutside';
-import { EntityAndType } from '../../../types';
-import { SearchSelect } from './SearchSelect';
+import {EntityAndType} from '../../../types';
+import {SearchSelect} from './SearchSelect';
 
 const StyledModal = styled(Modal)`
     top: 30px;
@@ -12,7 +12,7 @@ const StyledModal = styled(Modal)`
 
 const MODAL_WIDTH_PX = 800;
 
-const MODAL_BODY_STYLE = { padding: 0, height: '70vh' };
+const MODAL_BODY_STYLE = {padding: 0, height: '70vh'};
 
 type Props = {
     fixedEntityTypes?: Array<EntityType> | null;
@@ -30,13 +30,13 @@ type Props = {
  * when the selection is complete.
  */
 export const SearchSelectModal = ({
-    fixedEntityTypes,
-    placeholderText,
-    titleText,
-    continueText,
-    onContinue,
-    onCancel,
-}: Props) => {
+                                      fixedEntityTypes,
+                                      placeholderText,
+                                      titleText,
+                                      continueText,
+                                      onContinue,
+                                      onCancel,
+                                  }: Props) => {
     const [selectedEntities, setSelectedEntities] = useState<EntityAndType[]>([]);
 
     const onCancelSelect = () => {
@@ -47,7 +47,8 @@ export const SearchSelectModal = ({
                 onOk() {
                     onCancel?.();
                 },
-                onCancel() {},
+                onCancel() {
+                },
                 okText: 'Yes',
                 maskClosable: true,
                 closable: true,

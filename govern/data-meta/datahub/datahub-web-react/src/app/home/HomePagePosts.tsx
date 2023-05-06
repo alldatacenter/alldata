@@ -1,10 +1,10 @@
 import React from 'react';
-import { Divider, Typography } from 'antd';
+import {Divider, Typography} from 'antd';
 import styled from 'styled-components/macro';
-import { useListPostsQuery } from '../../graphql/post.generated';
-import { Post, PostContentType } from '../../types.generated';
-import { PostTextCard } from '../search/PostTextCard';
-import { PostLinkCard } from '../search/PostLinkCard';
+import {useListPostsQuery} from '../../graphql/post.generated';
+import {Post, PostContentType} from '../../types.generated';
+import {PostTextCard} from '../search/PostTextCard';
+import {PostLinkCard} from '../search/PostLinkCard';
 
 const RecommendationContainer = styled.div`
     margin-bottom: 92px;
@@ -40,7 +40,7 @@ const LinkPostsContainer = styled.div`
 `;
 
 export const HomePagePosts = () => {
-    const { data: postsData } = useListPostsQuery({
+    const {data: postsData} = useListPostsQuery({
         variables: {
             input: {
                 start: 0,
@@ -58,16 +58,16 @@ export const HomePagePosts = () => {
     return hasPosts ? (
         <RecommendationContainer>
             <RecommendationTitle level={4}>Pinned</RecommendationTitle>
-            <ThinDivider />
+            <ThinDivider/>
             <ContentContainer>
                 <TextPostsContainer>
                     {textPosts.map((post) => (
-                        <PostTextCard textPost={post as Post} />
+                        <PostTextCard textPost={post as Post}/>
                     ))}
                 </TextPostsContainer>
                 <LinkPostsContainer>
                     {linkPosts.map((post) => (
-                        <PostLinkCard linkPost={post as Post} />
+                        <PostLinkCard linkPost={post as Post}/>
                     ))}
                 </LinkPostsContainer>
             </ContentContainer>

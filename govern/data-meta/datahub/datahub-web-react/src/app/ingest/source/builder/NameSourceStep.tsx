@@ -1,7 +1,7 @@
-import { Button, Checkbox, Collapse, Form, Input, Typography } from 'antd';
+import {Button, Checkbox, Collapse, Form, Input, Typography} from 'antd';
 import React from 'react';
 import styled from 'styled-components';
-import { SourceBuilderState, StepProps } from './types';
+import {SourceBuilderState, StepProps} from './types';
 
 const ControlsContainer = styled.div`
     display: flex;
@@ -13,7 +13,7 @@ const SaveButton = styled(Button)`
     margin-right: 15px;
 `;
 
-export const NameSourceStep = ({ state, updateState, prev, submit }: StepProps) => {
+export const NameSourceStep = ({state, updateState, prev, submit}: StepProps) => {
     const setName = (stagedName: string) => {
         const newState: SourceBuilderState = {
             ...state,
@@ -67,11 +67,11 @@ export const NameSourceStep = ({ state, updateState, prev, submit }: StepProps) 
                 <Form.Item
                     required
                     label={
-                        <Typography.Text strong style={{ marginBottom: 0 }}>
+                        <Typography.Text strong style={{marginBottom: 0}}>
                             Name
                         </Typography.Text>
                     }
-                    style={{ marginBottom: 8 }}
+                    style={{marginBottom: 8}}
                 >
                     <Typography.Paragraph>Give this ingestion source a name.</Typography.Paragraph>
                     <Input

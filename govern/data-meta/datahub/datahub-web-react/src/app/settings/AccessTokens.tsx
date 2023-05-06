@@ -1,20 +1,20 @@
-import React, { useState, useMemo } from 'react';
+import React, {useState, useMemo} from 'react';
 import styled from 'styled-components';
-import { Alert, Button, Divider, Empty, message, Modal, Pagination, Typography } from 'antd';
-import { DeleteOutlined, InfoCircleOutlined, PlusOutlined } from '@ant-design/icons';
-import { red } from '@ant-design/colors';
+import {Alert, Button, Divider, Empty, message, Modal, Pagination, Typography} from 'antd';
+import {DeleteOutlined, InfoCircleOutlined, PlusOutlined} from '@ant-design/icons';
+import {red} from '@ant-design/colors';
 
-import { FacetFilterInput } from '../../types.generated';
-import { useListAccessTokensQuery, useRevokeAccessTokenMutation } from '../../graphql/auth.generated';
-import { Message } from '../shared/Message';
+import {FacetFilterInput} from '../../types.generated';
+import {useListAccessTokensQuery, useRevokeAccessTokenMutation} from '../../graphql/auth.generated';
+import {Message} from '../shared/Message';
 import TabToolbar from '../entity/shared/components/styled/TabToolbar';
-import { StyledTable } from '../entity/shared/components/styled/StyledTable';
+import {StyledTable} from '../entity/shared/components/styled/StyledTable';
 import CreateTokenModal from './CreateTokenModal';
-import { getLocaleTimezone } from '../shared/time/timeUtils';
-import { scrollToTop } from '../shared/searchUtils';
-import analytics, { EventType } from '../analytics';
-import { useUserContext } from '../context/useUserContext';
-import { useAppConfig } from '../useAppConfig';
+import {getLocaleTimezone} from '../shared/time/timeUtils';
+import {scrollToTop} from '../shared/searchUtils';
+import analytics, {EventType} from '../analytics';
+import {useUserContext} from '../context/useUserContext';
+import {useAppConfig} from '../useAppConfig';
 
 const SourceContainer = styled.div`
     width: 100%;
@@ -120,7 +120,7 @@ export const AccessTokens = () => {
     const filteredTokens = tokens.filter((token) => !removedTokens.includes(token.id));
 
     // Any time a access token  is removed or created, refetch the list.
-    const [revokeAccessToken, { error: revokeTokenError }] = useRevokeAccessTokenMutation();
+    const [revokeAccessToken, {error: revokeTokenError}] = useRevokeAccessTokenMutation();
 
     // Revoke token Handler
     const onRemoveToken = (token: any) => {
@@ -132,15 +132,15 @@ export const AccessTokens = () => {
                 const newTokenIds = [...removedTokens, token.id];
                 setRemovedTokens(newTokenIds);
 
-                revokeAccessToken({ variables: { tokenId: token.id } })
-                    .then(({ errors }) => {
+                revokeAccessToken({variables: {tokenId: token.id}})
+                    .then(({errors}) => {
                         if (!errors) {
-                            analytics.event({ type: EventType.RevokeAccessTokenEvent });
+                            analytics.event({type: EventType.RevokeAccessTokenEvent});
                         }
                     })
                     .catch((e) => {
                         message.destroy();
-                        message.error({ content: `Failed to revoke Token!: \n ${e.message || ''}`, duration: 3 });
+                        message.error({content: `Failed to revoke Token!: \n ${e.message || ''}`, duration: 3});
                     })
                     .finally(() => {
                         setTimeout(() => {
@@ -148,7 +148,8 @@ export const AccessTokens = () => {
                         }, 3000);
                     });
             },
-            onCancel() {},
+            onCancel() {
+            },
             okText: 'Yes',
             maskClosable: true,
             closable: true,
@@ -199,7 +200,7 @@ export const AccessTokens = () => {
             key: 'x',
             render: (_, record: any) => (
                 <ActionButtonContainer>
-                    <Button onClick={() => onRemoveToken(record)} icon={<DeleteOutlined />} danger>
+                    <Button onClick={() => onRemoveToken(record)} icon={<DeleteOutlined/>} danger>
                         Revoke
                     </Button>
                 </ActionButtonContainer>
@@ -215,35 +216,31 @@ export const AccessTokens = () => {
     return (
         <SourceContainer>
             {tokensLoading && !tokensData && (
-                <Message type="loading" content="Loading tokens..." style={{ marginTop: '10%' }} />
+                <Message type="loading" content="Loading tokens..." style={{marginTop: '10%'}}/>
             )}
             {tokensError && message.error('Failed to load tokens :(')}
             {revokeTokenError && message.error('Failed to update the Token :(')}
             <TokensContainer>
                 <TokensHeaderContainer>
-                    <TokensTitle level={2}>Manage Access Tokens</TokensTitle>
-                    <Typography.Paragraph type="secondary">
-                        Manage Access Tokens for use with DataHub APIs.
-                    </Typography.Paragraph>
+                    <TokensTitle level={2}>管理 Tokens</TokensTitle>
+                    <Typography.Paragraph type="secondary">管理DataHubApi的访问令牌。</Typography.Paragraph>
                 </TokensHeaderContainer>
             </TokensContainer>
-            <Divider />
+            <Divider/>
             {isTokenAuthEnabled === false && (
                 <StyledAlert
                     type="error"
                     message={
                         <span>
-                            <StyledInfoCircleOutlined />
-                            Token based authentication is currently disabled. Contact your DataHub administrator to
-                            enable this feature.
+                            <StyledInfoCircleOutlined/>
+                            基于令牌的身份验证目前被禁用。请与您的DataHub管理员联系以启用此特性。
                         </span>
                     }
                 />
             )}
-            <Typography.Title level={5}>Personal Access Tokens</Typography.Title>
+            <Typography.Title level={5}>个人访问令牌</Typography.Title>
             <PersonTokenDescriptionText type="secondary">
-                Personal Access Tokens allow you to make programmatic requests to DataHub&apos;s APIs. They inherit your
-                privileges and have a finite lifespan. Do not share Personal Access Tokens.
+                个人访问令牌允许您对datahub的api发出编程请求。他们继承了你的特权。不要共享个人访问令牌。
             </PersonTokenDescriptionText>
             <TabToolbar>
                 <div>
@@ -253,7 +250,7 @@ export const AccessTokens = () => {
                         data-testid="add-token-button"
                         disabled={!canGeneratePersonalAccessTokens}
                     >
-                        <PlusOutlined /> Generate new token
+                        <PlusOutlined/> 创建新的token
                     </Button>
                 </div>
             </TabToolbar>
@@ -262,13 +259,13 @@ export const AccessTokens = () => {
                 dataSource={tableData}
                 rowKey="urn"
                 locale={{
-                    emptyText: <Empty description="No Access Tokens!" image={Empty.PRESENTED_IMAGE_SIMPLE} />,
+                    emptyText: <Empty description="No Access Tokens!" image={Empty.PRESENTED_IMAGE_SIMPLE}/>,
                 }}
                 pagination={false}
             />
             <PaginationContainer>
                 <Pagination
-                    style={{ margin: 40 }}
+                    style={{margin: 40}}
                     current={page}
                     pageSize={pageSize}
                     total={totalTokens}

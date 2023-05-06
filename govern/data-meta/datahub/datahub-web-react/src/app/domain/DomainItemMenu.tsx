@@ -1,10 +1,10 @@
 import React from 'react';
-import { DeleteOutlined } from '@ant-design/icons';
-import { Dropdown, Menu, message, Modal } from 'antd';
-import { EntityType } from '../../types.generated';
-import { useEntityRegistry } from '../useEntityRegistry';
-import { useDeleteDomainMutation } from '../../graphql/domain.generated';
-import { MenuIcon } from '../entity/shared/EntityDropdown/EntityDropdown';
+import {DeleteOutlined} from '@ant-design/icons';
+import {Dropdown, Menu, message, Modal} from 'antd';
+import {EntityType} from '../../types.generated';
+import {useEntityRegistry} from '../useEntityRegistry';
+import {useDeleteDomainMutation} from '../../graphql/domain.generated';
+import {MenuIcon} from '../entity/shared/EntityDropdown/EntityDropdown';
 
 type Props = {
     urn: string;
@@ -12,7 +12,7 @@ type Props = {
     onDelete?: () => void;
 };
 
-export default function DomainItemMenu({ name, urn, onDelete }: Props) {
+export default function DomainItemMenu({name, urn, onDelete}: Props) {
     const entityRegistry = useEntityRegistry();
     const [deleteDomainMutation] = useDeleteDomainMutation();
 
@@ -22,7 +22,7 @@ export default function DomainItemMenu({ name, urn, onDelete }: Props) {
                 urn,
             },
         })
-            .then(({ errors }) => {
+            .then(({errors}) => {
                 if (!errors) {
                     message.success('Deleted Domain!');
                     onDelete?.();
@@ -30,7 +30,7 @@ export default function DomainItemMenu({ name, urn, onDelete }: Props) {
             })
             .catch(() => {
                 message.destroy();
-                message.error({ content: `Failed to delete Domain!: An unknown error occurred.`, duration: 3 });
+                message.error({content: `Failed to delete Domain!: An unknown error occurred.`, duration: 3});
             });
     };
 
@@ -41,7 +41,8 @@ export default function DomainItemMenu({ name, urn, onDelete }: Props) {
             onOk() {
                 deleteDomain();
             },
-            onCancel() {},
+            onCancel() {
+            },
             okText: 'Yes',
             maskClosable: true,
             closable: true,
@@ -54,12 +55,12 @@ export default function DomainItemMenu({ name, urn, onDelete }: Props) {
             overlay={
                 <Menu>
                     <Menu.Item onClick={onConfirmDelete} key="delete">
-                        <DeleteOutlined /> &nbsp;Delete
+                        <DeleteOutlined/> &nbsp;Delete
                     </Menu.Item>
                 </Menu>
             }
         >
-            <MenuIcon data-testid={`dropdown-menu-${urn}`} fontSize={20} />
+            <MenuIcon data-testid={`dropdown-menu-${urn}`} fontSize={20}/>
         </Dropdown>
     );
 }

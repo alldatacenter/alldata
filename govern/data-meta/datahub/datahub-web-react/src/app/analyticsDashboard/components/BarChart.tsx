@@ -1,11 +1,11 @@
-import React, { useMemo } from 'react';
-import { BarStack } from '@vx/shape';
-import { scaleOrdinal, scaleLinear, scaleBand } from '@vx/scale';
-import { Group } from '@vx/group';
-import { AxisBottom, AxisRight } from '@vx/axis';
+import React, {useMemo} from 'react';
+import {BarStack} from '@vx/shape';
+import {scaleOrdinal, scaleLinear, scaleBand} from '@vx/scale';
+import {Group} from '@vx/group';
+import {AxisBottom, AxisRight} from '@vx/axis';
 
-import { BarChart as BarChartType } from '../../../types.generated';
-import { lineColors } from './lineColors';
+import {BarChart as BarChartType} from '../../../types.generated';
+import {lineColors} from './lineColors';
 import Legend from './Legend';
 
 type Props = {
@@ -45,7 +45,7 @@ function transformChartData(chartData: BarChartType) {
     });
 }
 
-export const BarChart = ({ chartData, width, height }: Props) => {
+export const BarChart = ({chartData, width, height}: Props) => {
     const keys = useMemo(
         () =>
             chartData.bars
@@ -83,7 +83,7 @@ export const BarChart = ({ chartData, width, height }: Props) => {
     return (
         <>
             <svg width={width + WIDTH_MARGIN_SIZE} height={height}>
-                <rect x={0} y={0} width={width} height={height} fill="white" rx={14} />
+                <rect x={0} y={0} width={width} height={height} fill="white" rx={14}/>
                 <Group top={HEIGHT_MARGIN_SIZE} left={WIDTH_MARGIN_SIZE}>
                     <BarStack<typeof transformedChartData[0], typeof keys[number]>
                         data={transformedChartData}
@@ -109,11 +109,11 @@ export const BarChart = ({ chartData, width, height }: Props) => {
                                             <title>
                                                 {barStacks.length === 1
                                                     ? `${transformedChartData[bar.index].name}, ${
-                                                          bar.bar[1] - bar.bar[0]
-                                                      }`
+                                                        bar.bar[1] - bar.bar[0]
+                                                    }`
                                                     : `${transformedChartData[bar.index].name}, ${bar.key}, ${
-                                                          bar.bar[1] - bar.bar[0]
-                                                      }`}
+                                                        bar.bar[1] - bar.bar[0]
+                                                    }`}
                                             </title>
                                         </rect>
                                     )),
@@ -145,7 +145,7 @@ export const BarChart = ({ chartData, width, height }: Props) => {
                     })}
                 />
             </svg>
-            <Legend ordinalScale={segmentScale} />
+            <Legend ordinalScale={segmentScale}/>
         </>
     );
 };

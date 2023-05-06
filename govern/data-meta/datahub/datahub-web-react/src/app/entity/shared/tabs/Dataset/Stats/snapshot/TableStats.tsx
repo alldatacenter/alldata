@@ -1,11 +1,11 @@
-import { Tooltip, Typography } from 'antd';
+import {Tooltip, Typography} from 'antd';
 import React from 'react';
 import styled from 'styled-components';
-import { CorpUser, Maybe, UserUsageCounts } from '../../../../../../../types.generated';
-import { InfoItem } from '../../../../components/styled/InfoItem';
-import { ANTD_GRAY } from '../../../../constants';
-import { countFormatter, countSeparator } from '../../../../../../../utils/formatter/index';
-import { ExpandedActorGroup } from '../../../../components/styled/ExpandedActorGroup';
+import {CorpUser, Maybe, UserUsageCounts} from '../../../../../../../types.generated';
+import {InfoItem} from '../../../../components/styled/InfoItem';
+import {ANTD_GRAY} from '../../../../constants';
+import {countFormatter, countSeparator} from '../../../../../../../utils/formatter/index';
+import {ExpandedActorGroup} from '../../../../components/styled/ExpandedActorGroup';
 
 type Props = {
     rowCount?: number;
@@ -30,13 +30,13 @@ const StatContainer = styled.div<{ justifyContent }>`
 `;
 
 export default function TableStats({
-    rowCount,
-    columnCount,
-    queryCount,
-    users,
-    lastUpdatedTime,
-    lastReportedTime,
-}: Props) {
+                                       rowCount,
+                                       columnCount,
+                                       queryCount,
+                                       users,
+                                       lastUpdatedTime,
+                                       lastReportedTime,
+                                   }: Props) {
     // If there are less than 4 items, simply stack the stat views.
     const justifyContent = !queryCount && !users ? 'default' : 'space-between';
     const lastReportedTimeString = lastReportedTime || 'unknown';
@@ -58,7 +58,7 @@ export default function TableStats({
                 {rowCount && (
                     <InfoItem title="Rows">
                         <Tooltip title={countSeparator(rowCount)} placement="right">
-                            <Typography.Text strong style={{ fontSize: 24 }} data-testid="table-stats-rowcount">
+                            <Typography.Text strong style={{fontSize: 24}} data-testid="table-stats-rowcount">
                                 {countFormatter(rowCount)}
                             </Typography.Text>
                         </Tooltip>
@@ -66,21 +66,21 @@ export default function TableStats({
                 )}
                 {columnCount && (
                     <InfoItem title="Columns">
-                        <Typography.Text strong style={{ fontSize: 24 }}>
+                        <Typography.Text strong style={{fontSize: 24}}>
                             {columnCount}
                         </Typography.Text>
                     </InfoItem>
                 )}
                 {queryCount && (
                     <InfoItem title="Monthly Queries">
-                        <Typography.Text strong style={{ fontSize: 24 }}>
+                        <Typography.Text strong style={{fontSize: 24}}>
                             {queryCount}
                         </Typography.Text>
                     </InfoItem>
                 )}
                 {sortedUsers && sortedUsers.length > 0 && (
                     <InfoItem title="Top Users">
-                        <div style={{ paddingTop: 8 }}>
+                        <div style={{paddingTop: 8}}>
                             <ExpandedActorGroup
                                 containerStyle={{
                                     justifyContent: 'left',
@@ -98,7 +98,7 @@ export default function TableStats({
                 {lastUpdatedTime && (
                     <InfoItem title="Last Updated" width="220px">
                         <Tooltip title={`Last reported at ${lastReportedTimeString}`}>
-                            <Typography.Text strong style={{ fontSize: 16 }}>
+                            <Typography.Text strong style={{fontSize: 16}}>
                                 {lastUpdatedTime}
                             </Typography.Text>
                         </Tooltip>

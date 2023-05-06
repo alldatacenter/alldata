@@ -1,6 +1,6 @@
 import React from 'react';
-import { Tree, hierarchy } from '@vx/hierarchy';
-import { render } from '@testing-library/react';
+import {Tree, hierarchy} from '@vx/hierarchy';
+import {render} from '@testing-library/react';
 
 import {
     dataset3WithLineage,
@@ -14,18 +14,18 @@ import {
 import constructTree from '../utils/constructTree';
 import extendAsyncEntities from '../utils/extendAsyncEntities';
 import adjustVXTreeLayout from '../utils/adjustVXTreeLayout';
-import { NodeData, Direction, FetchedEntities } from '../types';
-import { getTestEntityRegistry } from '../../../utils/test-utils/TestPageContainer';
-import { EntityType } from '../../../types.generated';
+import {NodeData, Direction, FetchedEntities} from '../types';
+import {getTestEntityRegistry} from '../../../utils/test-utils/TestPageContainer';
+import {EntityType} from '../../../types.generated';
 
 const testEntityRegistry = getTestEntityRegistry();
 
 describe('adjustVXTreeLayout', () => {
     it('adjusts nodes with layers of lineage to make sure identical nodes are given the same coordinates', () => {
         const fetchedEntities = [
-            { entity: dataset4WithLineage, direction: Direction.Upstream, fullyFetched: true },
-            { entity: dataset5WithLineage, direction: Direction.Upstream, fullyFetched: true },
-            { entity: dataset6WithLineage, direction: Direction.Upstream, fullyFetched: true },
+            {entity: dataset4WithLineage, direction: Direction.Upstream, fullyFetched: true},
+            {entity: dataset5WithLineage, direction: Direction.Upstream, fullyFetched: true},
+            {entity: dataset6WithLineage, direction: Direction.Upstream, fullyFetched: true},
         ];
         const mockFetchedEntities = fetchedEntities.reduce(
             (acc, entry) =>
@@ -33,7 +33,7 @@ describe('adjustVXTreeLayout', () => {
                     {},
                     acc,
                     testEntityRegistry,
-                    { entity: entry.entity, type: EntityType.Dataset },
+                    {entity: entry.entity, type: EntityType.Dataset},
                     entry.fullyFetched,
                 ),
             {} as FetchedEntities,
@@ -41,7 +41,7 @@ describe('adjustVXTreeLayout', () => {
 
         const downstreamData = hierarchy(
             constructTree(
-                { entity: dataset3WithLineage, type: EntityType.Dataset },
+                {entity: dataset3WithLineage, type: EntityType.Dataset},
                 mockFetchedEntities,
                 Direction.Upstream,
                 testEntityRegistry,
@@ -52,7 +52,7 @@ describe('adjustVXTreeLayout', () => {
         render(
             <Tree<NodeData> root={downstreamData} size={[1000, 1000]}>
                 {(tree) => {
-                    const adjustedTree = adjustVXTreeLayout({ tree, direction: Direction.Downstream });
+                    const adjustedTree = adjustVXTreeLayout({tree, direction: Direction.Downstream});
 
                     expect(adjustedTree.nodesToRender[3].x).toEqual(adjustedTree.nodesToRender[4].x);
                     expect(adjustedTree.nodesToRender[3].y).toEqual(adjustedTree.nodesToRender[4].y);
@@ -64,7 +64,7 @@ describe('adjustVXTreeLayout', () => {
 
                     expect(adjustedTree.nodesToRender.length).toEqual(5);
 
-                    return <div />;
+                    return <div/>;
                 }}
             </Tree>,
         );
@@ -72,10 +72,10 @@ describe('adjustVXTreeLayout', () => {
 
     it('handles multiple instances of lineage jumping over layers while upstream', () => {
         const fetchedEntities = [
-            { entity: dataset4WithLineage, direction: Direction.Upstream, fullyFetched: true },
-            { entity: dataset5WithLineage, direction: Direction.Upstream, fullyFetched: true },
-            { entity: dataset6WithLineage, direction: Direction.Upstream, fullyFetched: true },
-            { entity: dataset7WithLineage, direction: Direction.Upstream, fullyFetched: true },
+            {entity: dataset4WithLineage, direction: Direction.Upstream, fullyFetched: true},
+            {entity: dataset5WithLineage, direction: Direction.Upstream, fullyFetched: true},
+            {entity: dataset6WithLineage, direction: Direction.Upstream, fullyFetched: true},
+            {entity: dataset7WithLineage, direction: Direction.Upstream, fullyFetched: true},
         ];
         const mockFetchedEntities = fetchedEntities.reduce(
             (acc, entry) =>
@@ -83,7 +83,7 @@ describe('adjustVXTreeLayout', () => {
                     {},
                     acc,
                     testEntityRegistry,
-                    { entity: entry.entity, type: EntityType.Dataset },
+                    {entity: entry.entity, type: EntityType.Dataset},
                     entry.fullyFetched,
                 ),
             {} as FetchedEntities,
@@ -91,7 +91,7 @@ describe('adjustVXTreeLayout', () => {
 
         const upstreamData = hierarchy(
             constructTree(
-                { entity: dataset3WithLineage, type: EntityType.Dataset },
+                {entity: dataset3WithLineage, type: EntityType.Dataset},
                 mockFetchedEntities,
                 Direction.Upstream,
                 testEntityRegistry,
@@ -102,7 +102,7 @@ describe('adjustVXTreeLayout', () => {
         render(
             <Tree<NodeData> root={upstreamData} size={[1000, 1000]}>
                 {(tree) => {
-                    const adjustedTree = adjustVXTreeLayout({ tree, direction: Direction.Upstream });
+                    const adjustedTree = adjustVXTreeLayout({tree, direction: Direction.Upstream});
 
                     expect(adjustedTree.nodesToRender[5].x).toEqual(adjustedTree.nodesToRender[6].x);
                     expect(adjustedTree.nodesToRender[5].y).toEqual(adjustedTree.nodesToRender[6].y);
@@ -118,7 +118,7 @@ describe('adjustVXTreeLayout', () => {
                         expect(node.y).toBeLessThanOrEqual(0);
                     });
 
-                    return <div />;
+                    return <div/>;
                 }}
             </Tree>,
         );
@@ -126,11 +126,11 @@ describe('adjustVXTreeLayout', () => {
 
     it('handles self referntial lineage at the root level', () => {
         const fetchedEntities = [
-            { entity: dataset4WithLineage, direction: Direction.Upstream, fullyFetched: true },
-            { entity: dataset5WithLineage, direction: Direction.Upstream, fullyFetched: true },
-            { entity: dataset6WithLineage, direction: Direction.Upstream, fullyFetched: true },
-            { entity: dataset3WithLineage, direction: Direction.Upstream, fullyFetched: true },
-            { entity: dataset7WithSelfReferentialLineage, direction: Direction.Upstream, fullyFetched: true },
+            {entity: dataset4WithLineage, direction: Direction.Upstream, fullyFetched: true},
+            {entity: dataset5WithLineage, direction: Direction.Upstream, fullyFetched: true},
+            {entity: dataset6WithLineage, direction: Direction.Upstream, fullyFetched: true},
+            {entity: dataset3WithLineage, direction: Direction.Upstream, fullyFetched: true},
+            {entity: dataset7WithSelfReferentialLineage, direction: Direction.Upstream, fullyFetched: true},
         ];
         const mockFetchedEntities = fetchedEntities.reduce(
             (acc, entry) =>
@@ -138,7 +138,7 @@ describe('adjustVXTreeLayout', () => {
                     {},
                     acc,
                     testEntityRegistry,
-                    { entity: entry.entity, type: EntityType.Dataset },
+                    {entity: entry.entity, type: EntityType.Dataset},
                     entry.fullyFetched,
                 ),
             {} as FetchedEntities,
@@ -146,7 +146,7 @@ describe('adjustVXTreeLayout', () => {
 
         const upstreamData = hierarchy(
             constructTree(
-                { entity: dataset7WithSelfReferentialLineage, type: EntityType.Dataset },
+                {entity: dataset7WithSelfReferentialLineage, type: EntityType.Dataset},
                 mockFetchedEntities,
                 Direction.Upstream,
                 testEntityRegistry,
@@ -157,13 +157,13 @@ describe('adjustVXTreeLayout', () => {
         render(
             <Tree<NodeData> root={upstreamData} size={[1000, 1000]}>
                 {(tree) => {
-                    const adjustedTree = adjustVXTreeLayout({ tree, direction: Direction.Upstream });
+                    const adjustedTree = adjustVXTreeLayout({tree, direction: Direction.Upstream});
 
                     adjustedTree.nodesToRender.forEach((node) => {
                         expect(node.y).toBeLessThanOrEqual(0);
                     });
 
-                    return <div />;
+                    return <div/>;
                 }}
             </Tree>,
         );
@@ -171,10 +171,10 @@ describe('adjustVXTreeLayout', () => {
 
     it('handles self referential lineage at the child level', () => {
         const fetchedEntities = [
-            { entity: dataset4WithLineage, direction: Direction.Upstream, fullyFetched: true },
-            { entity: dataset5WithLineage, direction: Direction.Upstream, fullyFetched: true },
-            { entity: dataset6WithLineage, direction: Direction.Upstream, fullyFetched: true },
-            { entity: dataset7WithSelfReferentialLineage, direction: Direction.Upstream, fullyFetched: true },
+            {entity: dataset4WithLineage, direction: Direction.Upstream, fullyFetched: true},
+            {entity: dataset5WithLineage, direction: Direction.Upstream, fullyFetched: true},
+            {entity: dataset6WithLineage, direction: Direction.Upstream, fullyFetched: true},
+            {entity: dataset7WithSelfReferentialLineage, direction: Direction.Upstream, fullyFetched: true},
         ];
         const mockFetchedEntities = fetchedEntities.reduce(
             (acc, entry) =>
@@ -182,7 +182,7 @@ describe('adjustVXTreeLayout', () => {
                     {},
                     acc,
                     testEntityRegistry,
-                    { entity: entry.entity, type: EntityType.Dataset },
+                    {entity: entry.entity, type: EntityType.Dataset},
                     entry.fullyFetched,
                 ),
             {} as FetchedEntities,
@@ -190,7 +190,7 @@ describe('adjustVXTreeLayout', () => {
 
         const upstreamData = hierarchy(
             constructTree(
-                { entity: dataset3WithLineage, type: EntityType.Dataset },
+                {entity: dataset3WithLineage, type: EntityType.Dataset},
                 mockFetchedEntities,
                 Direction.Upstream,
                 testEntityRegistry,
@@ -201,13 +201,13 @@ describe('adjustVXTreeLayout', () => {
         render(
             <Tree<NodeData> root={upstreamData} size={[1000, 1000]}>
                 {(tree) => {
-                    const adjustedTree = adjustVXTreeLayout({ tree, direction: Direction.Upstream });
+                    const adjustedTree = adjustVXTreeLayout({tree, direction: Direction.Upstream});
 
                     adjustedTree.nodesToRender.forEach((node) => {
                         expect(node.y).toBeLessThanOrEqual(0);
                     });
 
-                    return <div />;
+                    return <div/>;
                 }}
             </Tree>,
         );
@@ -215,10 +215,10 @@ describe('adjustVXTreeLayout', () => {
 
     it('handles multi-element cycle lineage', () => {
         const fetchedEntities = [
-            { entity: dataset4WithLineage, direction: Direction.Upstream, fullyFetched: true },
-            { entity: dataset5WithCyclicalLineage, direction: Direction.Upstream, fullyFetched: true },
-            { entity: dataset6WithLineage, direction: Direction.Upstream, fullyFetched: true },
-            { entity: dataset7WithSelfReferentialLineage, direction: Direction.Upstream, fullyFetched: true },
+            {entity: dataset4WithLineage, direction: Direction.Upstream, fullyFetched: true},
+            {entity: dataset5WithCyclicalLineage, direction: Direction.Upstream, fullyFetched: true},
+            {entity: dataset6WithLineage, direction: Direction.Upstream, fullyFetched: true},
+            {entity: dataset7WithSelfReferentialLineage, direction: Direction.Upstream, fullyFetched: true},
         ];
         const mockFetchedEntities = fetchedEntities.reduce(
             (acc, entry) =>
@@ -226,7 +226,7 @@ describe('adjustVXTreeLayout', () => {
                     {},
                     acc,
                     testEntityRegistry,
-                    { entity: entry.entity, type: EntityType.Dataset },
+                    {entity: entry.entity, type: EntityType.Dataset},
                     entry.fullyFetched,
                 ),
             {} as FetchedEntities,
@@ -234,7 +234,7 @@ describe('adjustVXTreeLayout', () => {
 
         const upstreamData = hierarchy(
             constructTree(
-                { entity: dataset3WithLineage, type: EntityType.Dataset },
+                {entity: dataset3WithLineage, type: EntityType.Dataset},
                 mockFetchedEntities,
                 Direction.Upstream,
                 testEntityRegistry,
@@ -245,13 +245,13 @@ describe('adjustVXTreeLayout', () => {
         render(
             <Tree<NodeData> root={upstreamData} size={[1000, 1000]}>
                 {(tree) => {
-                    const adjustedTree = adjustVXTreeLayout({ tree, direction: Direction.Upstream });
+                    const adjustedTree = adjustVXTreeLayout({tree, direction: Direction.Upstream});
 
                     adjustedTree.nodesToRender.forEach((node) => {
                         expect(node.y).toBeLessThanOrEqual(0);
                     });
 
-                    return <div />;
+                    return <div/>;
                 }}
             </Tree>,
         );

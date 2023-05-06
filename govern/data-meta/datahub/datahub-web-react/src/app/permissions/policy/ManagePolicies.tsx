@@ -1,9 +1,9 @@
-import React, { useEffect, useMemo, useState } from 'react';
-import { Button, Empty, message, Modal, Pagination, Tag } from 'antd';
+import React, {useEffect, useMemo, useState} from 'react';
+import {Button, Empty, message, Modal, Pagination, Tag} from 'antd';
 import styled from 'styled-components/macro';
 import * as QueryString from 'query-string';
-import { DeleteOutlined, PlusOutlined } from '@ant-design/icons';
-import { useLocation } from 'react-router';
+import {DeleteOutlined, PlusOutlined} from '@ant-design/icons';
+import {useLocation} from 'react-router';
 import PolicyBuilderModal from './PolicyBuilderModal';
 import {
     Policy,
@@ -17,7 +17,7 @@ import {
     PolicyMatchCriterionInput,
     EntityType,
 } from '../../../types.generated';
-import { useAppConfig } from '../../useAppConfig';
+import {useAppConfig} from '../../useAppConfig';
 import PolicyDetailsModal from './PolicyDetailsModal';
 import {
     useCreatePolicyMutation,
@@ -25,18 +25,18 @@ import {
     useListPoliciesQuery,
     useUpdatePolicyMutation,
 } from '../../../graphql/policy.generated';
-import { Message } from '../../shared/Message';
-import { EMPTY_POLICY } from './policyUtils';
+import {Message} from '../../shared/Message';
+import {EMPTY_POLICY} from './policyUtils';
 import TabToolbar from '../../entity/shared/components/styled/TabToolbar';
-import { StyledTable } from '../../entity/shared/components/styled/StyledTable';
+import {StyledTable} from '../../entity/shared/components/styled/StyledTable';
 import AvatarsGroup from '../AvatarsGroup';
-import { useEntityRegistry } from '../../useEntityRegistry';
-import { ANTD_GRAY } from '../../entity/shared/constants';
-import { SearchBar } from '../../search/SearchBar';
-import { scrollToTop } from '../../shared/searchUtils';
-import analytics, { EventType } from '../../analytics';
-import { POLICIES_CREATE_POLICY_ID, POLICIES_INTRO_ID } from '../../onboarding/config/PoliciesOnboardingConfig';
-import { OnboardingTour } from '../../onboarding/OnboardingTour';
+import {useEntityRegistry} from '../../useEntityRegistry';
+import {ANTD_GRAY} from '../../entity/shared/constants';
+import {SearchBar} from '../../search/SearchBar';
+import {scrollToTop} from '../../shared/searchUtils';
+import analytics, {EventType} from '../../analytics';
+import {POLICIES_CREATE_POLICY_ID, POLICIES_INTRO_ID} from '../../onboarding/config/PoliciesOnboardingConfig';
+import {OnboardingTour} from '../../onboarding/OnboardingTour';
 
 const SourceContainer = styled.div``;
 
@@ -118,7 +118,7 @@ const toPolicyInput = (policy: Omit<Policy, 'urn'>): PolicyUpdateInput => {
             allResources: policy.resources.allResources,
         };
         if (policy.resources.filter) {
-            resourceFilter = { ...resourceFilter, filter: toFilterInput(policy.resources.filter) };
+            resourceFilter = {...resourceFilter, filter: toFilterInput(policy.resources.filter)};
         }
         // Add the resource filters.
         policyInput = {
@@ -133,13 +133,13 @@ const toPolicyInput = (policy: Omit<Policy, 'urn'>): PolicyUpdateInput => {
 export const ManagePolicies = () => {
     const entityRegistry = useEntityRegistry();
     const location = useLocation();
-    const params = QueryString.parse(location.search, { arrayFormat: 'comma' });
+    const params = QueryString.parse(location.search, {arrayFormat: 'comma'});
     const paramsQuery = (params?.query as string) || undefined;
     const [query, setQuery] = useState<undefined | string>(undefined);
     useEffect(() => setQuery(paramsQuery), [paramsQuery]);
 
     const {
-        config: { policiesConfig },
+        config: {policiesConfig},
     } = useAppConfig();
 
     // Policy list paging.
@@ -176,11 +176,11 @@ export const ManagePolicies = () => {
     });
 
     // Any time a policy is removed, edited, or created, refetch the list.
-    const [createPolicy, { error: createPolicyError }] = useCreatePolicyMutation();
+    const [createPolicy, {error: createPolicyError}] = useCreatePolicyMutation();
 
-    const [updatePolicy, { error: updatePolicyError }] = useUpdatePolicyMutation();
+    const [updatePolicy, {error: updatePolicyError}] = useUpdatePolicyMutation();
 
-    const [deletePolicy, { error: deletePolicyError }] = useDeletePolicyMutation();
+    const [deletePolicy, {error: deletePolicyError}] = useDeletePolicyMutation();
 
     const updateError = createPolicyError || updatePolicyError || deletePolicyError;
 
@@ -210,7 +210,7 @@ export const ManagePolicies = () => {
             privileges = platformPrivileges
                 .filter((platformPrivilege) => policy.privileges.includes(platformPrivilege.type))
                 .map((platformPrivilege) => {
-                    return { type: platformPrivilege.type, name: platformPrivilege.displayName };
+                    return {type: platformPrivilege.type, name: platformPrivilege.displayName};
                 });
         } else {
             const allResourcePriviliges = resourcePrivileges.find(
@@ -220,7 +220,7 @@ export const ManagePolicies = () => {
                 allResourcePriviliges?.privileges
                     .filter((resourcePrivilege) => policy.privileges.includes(resourcePrivilege.type))
                     .map((b) => {
-                        return { type: b.type, name: b.displayName };
+                        return {type: b.type, name: b.displayName};
                     }) || [];
         }
         return privileges;
@@ -229,7 +229,7 @@ export const ManagePolicies = () => {
     const onViewPolicy = (policy: Policy) => {
         setShowViewPolicyModal(true);
         setFocusPolicyUrn(policy?.urn);
-        setFocusPolicy({ ...policy });
+        setFocusPolicy({...policy});
     };
 
     const onCancelViewPolicy = () => {
@@ -241,7 +241,7 @@ export const ManagePolicies = () => {
     const onEditPolicy = (policy: Policy) => {
         setShowPolicyBuilderModal(true);
         setFocusPolicyUrn(policy?.urn);
-        setFocusPolicy({ ...policy });
+        setFocusPolicy({...policy});
     };
 
     // On Delete Policy handler
@@ -250,7 +250,7 @@ export const ManagePolicies = () => {
             title: `Delete ${policy?.name}`,
             content: `Are you sure you want to remove policy?`,
             onOk() {
-                deletePolicy({ variables: { urn: policy?.urn as string } }); // There must be a focus policy urn.
+                deletePolicy({variables: {urn: policy?.urn as string}}); // There must be a focus policy urn.
                 analytics.event({
                     type: EventType.DeleteEntityEvent,
                     entityUrn: policy?.urn,
@@ -262,7 +262,8 @@ export const ManagePolicies = () => {
                 }, 3000);
                 onCancelViewPolicy();
             },
-            onCancel() {},
+            onCancel() {
+            },
             okText: 'Yes',
             maskClosable: true,
             closable: true,
@@ -293,14 +294,14 @@ export const ManagePolicies = () => {
     const onSavePolicy = (savePolicy: Omit<Policy, 'urn'>) => {
         if (focusPolicyUrn) {
             // If there's an URN associated with the focused policy, then we are editing an existing policy.
-            updatePolicy({ variables: { urn: focusPolicyUrn, input: toPolicyInput(savePolicy) } });
+            updatePolicy({variables: {urn: focusPolicyUrn, input: toPolicyInput(savePolicy)}});
             analytics.event({
                 type: EventType.UpdatePolicyEvent,
                 policyUrn: focusPolicyUrn,
             });
         } else {
             // If there's no URN associated with the focused policy, then we are creating.
-            createPolicy({ variables: { input: toPolicyInput(savePolicy) } });
+            createPolicy({variables: {input: toPolicyInput(savePolicy)}});
             analytics.event({
                 type: EventType.CreatePolicyEvent,
             });
@@ -321,7 +322,7 @@ export const ManagePolicies = () => {
                 return (
                     <PolicyName
                         onClick={() => onViewPolicy(record.policy)}
-                        style={{ color: record?.editable ? '#000000' : '#8C8C8C' }}
+                        style={{color: record?.editable ? '#000000' : '#8C8C8C'}}
                     >
                         {record?.name}
                     </PolicyName>
@@ -392,7 +393,7 @@ export const ManagePolicies = () => {
                                     policyUrn: record?.policy?.urn,
                                 });
                             }}
-                            style={{ color: record?.editable ? 'red' : ANTD_GRAY[6], width: 100 }}
+                            style={{color: record?.editable ? 'red' : ANTD_GRAY[6], width: 100}}
                         >
                             DEACTIVATE
                         </Button>
@@ -406,7 +407,7 @@ export const ManagePolicies = () => {
                                     policyUrn: record?.policy?.urn,
                                 });
                             }}
-                            style={{ color: record?.editable ? 'green' : ANTD_GRAY[6], width: 100 }}
+                            style={{color: record?.editable ? 'green' : ANTD_GRAY[6], width: 100}}
                         >
                             ACTIVATE
                         </Button>
@@ -418,7 +419,7 @@ export const ManagePolicies = () => {
                         shape="circle"
                         danger
                     >
-                        <DeleteOutlined />
+                        <DeleteOutlined/>
                     </Button>
                 </ActionButtonContainer>
             ),
@@ -444,11 +445,11 @@ export const ManagePolicies = () => {
 
     return (
         <PageContainer>
-            <OnboardingTour stepIds={[POLICIES_INTRO_ID, POLICIES_CREATE_POLICY_ID]} />
+            <OnboardingTour stepIds={[POLICIES_INTRO_ID, POLICIES_CREATE_POLICY_ID]}/>
             {policiesLoading && !policiesData && (
-                <Message type="loading" content="Loading policies..." style={{ marginTop: '10%' }} />
+                <Message type="loading" content="Loading policies..." style={{marginTop: '10%'}}/>
             )}
-            {policiesError && <Message type="error" content="Failed to load policies! An unexpected error occurred." />}
+            {policiesError && <Message type="error" content="Failed to load policies! An unexpected error occurred."/>}
             {updateError && message.error('Failed to update policies. An unexpected error occurred.')}
             <SourceContainer>
                 <TabToolbar>
@@ -459,7 +460,7 @@ export const ManagePolicies = () => {
                             onClick={onClickNewPolicy}
                             data-testid="add-policy-button"
                         >
-                            <PlusOutlined /> Create new policy
+                            <PlusOutlined/> Create new policy
                         </Button>
                     </div>
                     <SearchBar
@@ -485,14 +486,14 @@ export const ManagePolicies = () => {
                     dataSource={tableData}
                     rowKey="urn"
                     locale={{
-                        emptyText: <Empty description="No Policies!" image={Empty.PRESENTED_IMAGE_SIMPLE} />,
+                        emptyText: <Empty description="No Policies!" image={Empty.PRESENTED_IMAGE_SIMPLE}/>,
                     }}
                     pagination={false}
                 />
             </SourceContainer>
             <PaginationContainer>
                 <Pagination
-                    style={{ margin: 40 }}
+                    style={{margin: 40}}
                     current={page}
                     pageSize={pageSize}
                     total={totalPolicies}

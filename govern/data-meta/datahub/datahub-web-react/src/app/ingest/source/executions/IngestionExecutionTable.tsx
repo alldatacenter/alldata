@@ -1,9 +1,9 @@
 import React from 'react';
-import { Empty } from 'antd';
-import { StyledTable } from '../../../entity/shared/components/styled/StyledTable';
-import { ExecutionRequest } from '../../../../types.generated';
-import { ButtonsColumn, SourceColumn, StatusColumn, TimeColumn } from './IngestionExecutionTableColumns';
-import { SUCCESS } from '../utils';
+import {Empty} from 'antd';
+import {StyledTable} from '../../../entity/shared/components/styled/StyledTable';
+import {ExecutionRequest} from '../../../../types.generated';
+import {ButtonsColumn, SourceColumn, StatusColumn, TimeColumn} from './IngestionExecutionTableColumns';
+import {SUCCESS} from '../utils';
 
 interface Props {
     executionRequests: ExecutionRequest[];
@@ -14,27 +14,27 @@ interface Props {
 }
 
 export default function IngestionExecutionTable({
-    executionRequests,
-    setFocusExecutionUrn,
-    handleViewDetails,
-    handleCancelExecution,
-    handleRollbackExecution,
-}: Props) {
+                                                    executionRequests,
+                                                    setFocusExecutionUrn,
+                                                    handleViewDetails,
+                                                    handleCancelExecution,
+                                                    handleRollbackExecution,
+                                                }: Props) {
     const tableColumns = [
         {
-            title: 'Requested At',
+            title: '请求时间',
             dataIndex: 'requestedAt',
             key: 'requestedAt',
             render: TimeColumn,
         },
         {
-            title: 'Started At',
+            title: '开始时间',
             dataIndex: 'executedAt',
             key: 'executedAt',
             render: TimeColumn,
         },
         {
-            title: 'Duration (s)',
+            title: '持续时间 (s)',
             dataIndex: 'duration',
             key: 'duration',
             render: (durationMs: number) => {
@@ -43,15 +43,15 @@ export default function IngestionExecutionTable({
             },
         },
         {
-            title: 'Status',
+            title: '状态',
             dataIndex: 'status',
             key: 'status',
             render: (status: any, record) => (
-                <StatusColumn status={status} record={record} setFocusExecutionUrn={setFocusExecutionUrn} />
+                <StatusColumn status={status} record={record} setFocusExecutionUrn={setFocusExecutionUrn}/>
             ),
         },
         {
-            title: 'Source',
+            title: '来源',
             dataIndex: 'source',
             key: 'source',
             render: SourceColumn,
@@ -90,7 +90,7 @@ export default function IngestionExecutionTable({
             dataSource={tableData}
             rowKey="id"
             locale={{
-                emptyText: <Empty description="No Executions found!" image={Empty.PRESENTED_IMAGE_SIMPLE} />,
+                emptyText: <Empty description="No Executions found!" image={Empty.PRESENTED_IMAGE_SIMPLE}/>,
             }}
             pagination={false}
         />

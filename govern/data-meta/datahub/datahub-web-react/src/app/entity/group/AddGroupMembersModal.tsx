@@ -1,12 +1,12 @@
-import React, { useRef, useState } from 'react';
-import { message, Modal, Button, Form, Select, Tag } from 'antd';
+import React, {useRef, useState} from 'react';
+import {message, Modal, Button, Form, Select, Tag} from 'antd';
 import styled from 'styled-components';
-import { useAddGroupMembersMutation } from '../../../graphql/group.generated';
-import { CorpUser, Entity, EntityType } from '../../../types.generated';
-import { useGetSearchResultsLazyQuery } from '../../../graphql/search.generated';
-import { useEntityRegistry } from '../../useEntityRegistry';
-import { useGetRecommendations } from '../../shared/recommendation';
-import { OwnerLabel } from '../../shared/OwnerLabel';
+import {useAddGroupMembersMutation} from '../../../graphql/group.generated';
+import {CorpUser, Entity, EntityType} from '../../../types.generated';
+import {useGetSearchResultsLazyQuery} from '../../../graphql/search.generated';
+import {useEntityRegistry} from '../../useEntityRegistry';
+import {useGetRecommendations} from '../../shared/recommendation';
+import {OwnerLabel} from '../../shared/OwnerLabel';
 
 type Props = {
     urn: string;
@@ -29,12 +29,12 @@ const StyleTag = styled(Tag)`
     align-items: center;
 `;
 
-export const AddGroupMembersModal = ({ urn, visible, onCloseModal, onSubmit }: Props) => {
+export const AddGroupMembersModal = ({urn, visible, onCloseModal, onSubmit}: Props) => {
     const entityRegistry = useEntityRegistry();
     const [selectedMembers, setSelectedMembers] = useState<any[]>([]);
     const [inputValue, setInputValue] = useState('');
     const [addGroupMembersMutation] = useAddGroupMembersMutation();
-    const [userSearch, { data: userSearchData }] = useGetSearchResultsLazyQuery();
+    const [userSearch, {data: userSearchData}] = useGetSearchResultsLazyQuery();
     const searchResults = userSearchData?.search?.searchResults?.map((searchResult) => searchResult.entity) || [];
     const [recommendedData] = useGetRecommendations([EntityType.CorpUser]);
     const inputEl = useRef(null);
@@ -58,7 +58,7 @@ export const AddGroupMembersModal = ({ urn, visible, onCloseModal, onSubmit }: P
         const displayName = entityRegistry.getDisplayName(entity.type, entity);
         return (
             <Select.Option value={entity.urn} key={entity.urn}>
-                <OwnerLabel name={displayName} avatarUrl={avatarUrl} type={entity.type} />
+                <OwnerLabel name={displayName} avatarUrl={avatarUrl} type={entity.type}/>
             </Select.Option>
         );
     };
@@ -91,7 +91,7 @@ export const AddGroupMembersModal = ({ urn, visible, onCloseModal, onSubmit }: P
 
     const tagRender = (props) => {
         // eslint-disable-next-line react/prop-types
-        const { label, closable, onClose } = props;
+        const {label, closable, onClose} = props;
         const onPreventMouseDown = (event) => {
             event.preventDefault();
             event.stopPropagation();
@@ -115,11 +115,11 @@ export const AddGroupMembersModal = ({ urn, visible, onCloseModal, onSubmit }: P
                     userUrns: selectedMemberUrns,
                 },
             });
-            message.success({ content: 'Group members added!', duration: 3 });
+            message.success({content: 'Group members added!', duration: 3});
         } catch (e: unknown) {
             message.destroy();
             if (e instanceof Error) {
-                message.error({ content: `Failed to group members: \n ${e.message || ''}`, duration: 3 });
+                message.error({content: `Failed to group members: \n ${e.message || ''}`, duration: 3});
             }
         } finally {
             onSubmit();

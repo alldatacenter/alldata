@@ -1,25 +1,25 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
-import { useApolloClient } from '@apollo/client';
-import { MoreOutlined } from '@ant-design/icons';
-import { Dropdown, Menu, message, Modal } from 'antd';
-import { DataHubView, DataHubViewType } from '../../../../types.generated';
-import { useUserContext } from '../../../context/useUserContext';
-import { useUpdateCorpUserViewsSettingsMutation } from '../../../../graphql/user.generated';
-import { useUpdateGlobalViewsSettingsMutation } from '../../../../graphql/app.generated';
-import { useDeleteViewMutation } from '../../../../graphql/view.generated';
-import { removeFromListMyViewsCache, removeFromViewSelectCaches } from '../cacheUtils';
-import { DEFAULT_LIST_VIEWS_PAGE_SIZE } from '../utils';
-import { ViewBuilderMode } from '../builder/types';
-import { ViewBuilder } from '../builder/ViewBuilder';
-import { EditViewItem } from './item/EditViewItem';
-import { PreviewViewItem } from './item/PreviewViewItem';
-import { RemoveUserDefaultItem } from './item/RemoveUserDefaultItem';
-import { SetUserDefaultItem } from './item/SetUserDefaultItem';
-import { RemoveGlobalDefaultItem } from './item/RemoveGlobalDefaultItem';
-import { SetGlobalDefaultItem } from './item/SetGlobalDefaultItem';
-import { DeleteViewItem } from './item/DeleteViewItem';
-import analytics, { EventType } from '../../../analytics';
+import {useApolloClient} from '@apollo/client';
+import {MoreOutlined} from '@ant-design/icons';
+import {Dropdown, Menu, message, Modal} from 'antd';
+import {DataHubView, DataHubViewType} from '../../../../types.generated';
+import {useUserContext} from '../../../context/useUserContext';
+import {useUpdateCorpUserViewsSettingsMutation} from '../../../../graphql/user.generated';
+import {useUpdateGlobalViewsSettingsMutation} from '../../../../graphql/app.generated';
+import {useDeleteViewMutation} from '../../../../graphql/view.generated';
+import {removeFromListMyViewsCache, removeFromViewSelectCaches} from '../cacheUtils';
+import {DEFAULT_LIST_VIEWS_PAGE_SIZE} from '../utils';
+import {ViewBuilderMode} from '../builder/types';
+import {ViewBuilder} from '../builder/ViewBuilder';
+import {EditViewItem} from './item/EditViewItem';
+import {PreviewViewItem} from './item/PreviewViewItem';
+import {RemoveUserDefaultItem} from './item/RemoveUserDefaultItem';
+import {SetUserDefaultItem} from './item/SetUserDefaultItem';
+import {RemoveGlobalDefaultItem} from './item/RemoveGlobalDefaultItem';
+import {SetGlobalDefaultItem} from './item/SetGlobalDefaultItem';
+import {DeleteViewItem} from './item/DeleteViewItem';
+import analytics, {EventType} from '../../../analytics';
 
 const MenuButton = styled(MoreOutlined)`
     width: 20px;
@@ -50,14 +50,14 @@ type Props = {
 };
 
 export const ViewDropdownMenu = ({
-    view,
-    visible,
-    isOwnedByUser,
-    trigger = 'hover',
-    onClickEdit,
-    onClickPreview,
-    onClickDelete,
-}: Props) => {
+                                     view,
+                                     visible,
+                                     isOwnedByUser,
+                                     trigger = 'hover',
+                                     onClickEdit,
+                                     onClickPreview,
+                                     onClickDelete,
+                                 }: Props) => {
     const userContext = useUserContext();
     const client = useApolloClient();
 
@@ -80,7 +80,7 @@ export const ViewDropdownMenu = ({
                 },
             },
         })
-            .then(({ errors }) => {
+            .then(({errors}) => {
                 if (!errors) {
                     userContext.updateState({
                         ...userContext.state,
@@ -118,7 +118,7 @@ export const ViewDropdownMenu = ({
                 },
             },
         })
-            .then(({ errors }) => {
+            .then(({errors}) => {
                 if (!errors) {
                     userContext.updateState({
                         ...userContext.state,
@@ -170,9 +170,9 @@ export const ViewDropdownMenu = ({
 
     const deleteView = (viewUrn: string) => {
         deleteViewMutation({
-            variables: { urn: viewUrn },
+            variables: {urn: viewUrn},
         })
-            .then(({ errors }) => {
+            .then(({errors}) => {
                 if (!errors) {
                     removeFromViewSelectCaches(viewUrn, client);
                     removeFromListMyViewsCache(viewUrn, client, 1, DEFAULT_LIST_VIEWS_PAGE_SIZE, undefined, undefined);
@@ -186,7 +186,7 @@ export const ViewDropdownMenu = ({
                             selectedViewUrn: undefined,
                         });
                     }
-                    message.success({ content: 'Removed View!', duration: 2 });
+                    message.success({content: 'Removed View!', duration: 2});
                 }
             })
             .catch(() => {
@@ -208,7 +208,8 @@ export const ViewDropdownMenu = ({
                 onOk() {
                     deleteView(view.urn);
                 },
-                onCancel() {},
+                onCancel() {
+                },
                 okText: 'Yes',
                 maskClosable: true,
                 closable: true,
@@ -234,24 +235,24 @@ export const ViewDropdownMenu = ({
             <Dropdown
                 overlay={
                     <Menu>
-                        {(canManageView && <EditViewItem key="0" onClick={onEditView} />) || (
-                            <PreviewViewItem key="0" onClick={onPreviewView} />
+                        {(canManageView && <EditViewItem key="0" onClick={onEditView}/>) || (
+                            <PreviewViewItem key="0" onClick={onPreviewView}/>
                         )}
-                        {(isUserDefault && <RemoveUserDefaultItem key="1" onClick={() => setUserDefault(null)} />) || (
-                            <SetUserDefaultItem key="1" onClick={() => setUserDefault(view.urn)} />
+                        {(isUserDefault && <RemoveUserDefaultItem key="1" onClick={() => setUserDefault(null)}/>) || (
+                            <SetUserDefaultItem key="1" onClick={() => setUserDefault(view.urn)}/>
                         )}
                         {showRemoveGlobalDefaultView && (
-                            <RemoveGlobalDefaultItem key="2" onClick={() => setGlobalDefault(null)} />
+                            <RemoveGlobalDefaultItem key="2" onClick={() => setGlobalDefault(null)}/>
                         )}
                         {showSetGlobalDefaultView && (
-                            <SetGlobalDefaultItem key="2" onClick={() => setGlobalDefault(view.urn)} />
+                            <SetGlobalDefaultItem key="2" onClick={() => setGlobalDefault(view.urn)}/>
                         )}
-                        {canManageView && <DeleteViewItem key="3" onClick={confirmDeleteView} />}
+                        {canManageView && <DeleteViewItem key="3" onClick={confirmDeleteView}/>}
                     </Menu>
                 }
                 trigger={[trigger]}
             >
-                <MenuButton data-testid="views-table-dropdown" style={{ display: visible ? undefined : 'none' }} />
+                <MenuButton data-testid="views-table-dropdown" style={{display: visible ? undefined : 'none'}}/>
             </Dropdown>
             {viewBuilderState.visible && (
                 <ViewBuilder

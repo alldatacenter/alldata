@@ -1,13 +1,13 @@
 import React from 'react';
-import { Card, Row, Space, Typography } from 'antd';
-import { Link } from 'react-router-dom';
-import { ArrowRightOutlined, FolderOutlined } from '@ant-design/icons';
+import {Card, Row, Space, Typography} from 'antd';
+import {Link} from 'react-router-dom';
+import {ArrowRightOutlined, FolderOutlined} from '@ant-design/icons';
 import styled from 'styled-components';
-import { singularizeCollectionName } from '../entity/shared/utils';
+import {singularizeCollectionName} from '../entity/shared/utils';
 
 const styles = {
-    row: { padding: 8 },
-    title: { margin: 0 },
+    row: {padding: 8},
+    title: {margin: 0},
 };
 
 const ResultCard = styled(Card)`
@@ -28,7 +28,7 @@ export interface BrowseResultProps {
     onClick?: () => void;
 }
 
-export default function BrowseResultCard({ url, count, name, type, onClick }: BrowseResultProps) {
+export default function BrowseResultCard({url, count, name, type, onClick}: BrowseResultProps) {
     let displayType = type;
     if (count === 1) {
         displayType = singularizeCollectionName(type);
@@ -38,7 +38,7 @@ export default function BrowseResultCard({ url, count, name, type, onClick }: Br
             <ResultCard hoverable>
                 <Row style={styles.row} justify="space-between">
                     <Space size="middle" align="center">
-                        <FolderOutlined width={28} />
+                        <FolderOutlined width={28}/>
                         <Typography.Title style={styles.title} level={5}>
                             {name}
                         </Typography.Title>
@@ -49,7 +49,7 @@ export default function BrowseResultCard({ url, count, name, type, onClick }: Br
                                 {count} {displayType}
                             </Typography.Text>
                         )}
-                        <ArrowRightOutlined />
+                        <ArrowRightOutlined/>
                     </Space>
                 </Row>
             </ResultCard>

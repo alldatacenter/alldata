@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Typography, Tooltip } from 'antd';
-import { FolderOutlined, RightOutlined } from '@ant-design/icons';
-import { ANTD_GRAY } from '../../../../constants';
-import { EntityType, GlossaryNode } from '../../../../../../../types.generated';
+import {Typography, Tooltip} from 'antd';
+import {FolderOutlined, RightOutlined} from '@ant-design/icons';
+import {ANTD_GRAY} from '../../../../constants';
+import {EntityType, GlossaryNode} from '../../../../../../../types.generated';
 import useContentTruncation from '../../../../../../shared/useContentTruncation';
-import { useEntityRegistry } from '../../../../../../useEntityRegistry';
+import {useEntityRegistry} from '../../../../../../useEntityRegistry';
 
 export const StyledRightOutlined = styled(RightOutlined)`
     color: ${ANTD_GRAY[7]};
@@ -53,9 +53,9 @@ interface Props {
     parentNodes?: GlossaryNode[] | null;
 }
 
-export default function ParentNodesView({ parentNodes }: Props) {
+export default function ParentNodesView({parentNodes}: Props) {
     const entityRegistry = useEntityRegistry();
-    const { contentRef, isContentTruncated } = useContentTruncation(parentNodes);
+    const {contentRef, isContentTruncated} = useContentTruncation(parentNodes);
 
     return (
         <StyledTooltip
@@ -63,16 +63,16 @@ export default function ParentNodesView({ parentNodes }: Props) {
                 <>
                     {[...(parentNodes || [])]?.reverse()?.map((parentNode, idx) => (
                         <>
-                            <GlossaryNodeIcon color="white" />
+                            <GlossaryNodeIcon color="white"/>
                             <GlossaryNodeText color="white">
                                 {entityRegistry.getDisplayName(EntityType.GlossaryNode, parentNode)}
                             </GlossaryNodeText>
-                            {idx + 1 !== parentNodes?.length && <StyledRightOutlined data-testid="right-arrow" />}
+                            {idx + 1 !== parentNodes?.length && <StyledRightOutlined data-testid="right-arrow"/>}
                         </>
                     ))}
                 </>
             }
-            overlayStyle={isContentTruncated ? {} : { display: 'none' }}
+            overlayStyle={isContentTruncated ? {} : {display: 'none'}}
         >
             {isContentTruncated && <Ellipsis>...</Ellipsis>}
             <ParentNodesWrapper ref={contentRef}>
@@ -81,8 +81,8 @@ export default function ParentNodesView({ parentNodes }: Props) {
                         <GlossaryNodeText color={ANTD_GRAY[7]}>
                             {entityRegistry.getDisplayName(EntityType.GlossaryNode, parentNode)}
                         </GlossaryNodeText>
-                        <GlossaryNodeIcon color={ANTD_GRAY[7]} />
-                        {idx + 1 !== parentNodes?.length && <StyledRightOutlined data-testid="right-arrow" />}
+                        <GlossaryNodeIcon color={ANTD_GRAY[7]}/>
+                        {idx + 1 !== parentNodes?.length && <StyledRightOutlined data-testid="right-arrow"/>}
                     </>
                 ))}
             </ParentNodesWrapper>

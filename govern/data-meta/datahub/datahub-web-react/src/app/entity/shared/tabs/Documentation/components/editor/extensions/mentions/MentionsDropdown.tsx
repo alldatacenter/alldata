@@ -1,13 +1,13 @@
-import React, { useCallback, useMemo, useState } from 'react';
-import { Typography } from 'antd';
+import React, {useCallback, useMemo, useState} from 'react';
+import {Typography} from 'antd';
 import styled from 'styled-components';
-import { useDebounce } from 'react-use';
-import { useCommands } from '@remirror/react';
-import { AutoCompleteResultForEntity, Entity, EntityType } from '../../../../../../../../../types.generated';
-import { useEntityRegistry } from '../../../../../../../../useEntityRegistry';
-import { ANTD_GRAY } from '../../../../../../constants';
-import { useDataHubMentions } from './useDataHubMentions';
-import { renderEntitySuggestion } from '../../../../../../../../search/SearchBar';
+import {useDebounce} from 'react-use';
+import {useCommands} from '@remirror/react';
+import {AutoCompleteResultForEntity, Entity, EntityType} from '../../../../../../../../../types.generated';
+import {useEntityRegistry} from '../../../../../../../../useEntityRegistry';
+import {ANTD_GRAY} from '../../../../../../constants';
+import {useDataHubMentions} from './useDataHubMentions';
+import AutoCompleteItem from '../../../../../../../../search/autoComplete/AutoCompleteItem';
 
 const HeaderItem = styled(Typography.Text)`
     display: block;
@@ -44,7 +44,7 @@ type Option = {
 const flattenOptions = (suggestions: AutoCompleteResultForEntity[]): Option[] => {
     let optOffset = 0;
     return suggestions.reduce<Option[]>((acc, suggestion) => {
-        acc.push({ header: true, type: suggestion.type });
+        acc.push({header: true, type: suggestion.type});
 
         const options = suggestion.entities.map((entity) => {
             return {
@@ -59,10 +59,10 @@ const flattenOptions = (suggestions: AutoCompleteResultForEntity[]): Option[] =>
     }, []);
 };
 
-export const MentionsDropdown = ({ suggestions }: Props) => {
+export const MentionsDropdown = ({suggestions}: Props) => {
     const entityRegistry = useEntityRegistry();
     const [options, setOptions] = useState<Option[]>([]);
-    const { createDataHubMention } = useCommands();
+    const {createDataHubMention} = useCommands();
 
     useDebounce(() => setOptions(flattenOptions(suggestions)), 250, [suggestions]);
     const onSubmit = useCallback(
@@ -80,13 +80,13 @@ export const MentionsDropdown = ({ suggestions }: Props) => {
     );
 
     /** Store a separate list of options without header items for arrow keys navigation  */
-    const items = useMemo(() => options.filter(({ header }) => !header), [options]);
-    const { selectedIndex, filter } = useDataHubMentions<Option>({ items, onEnter: onSubmit });
+    const items = useMemo(() => options.filter(({header}) => !header), [options]);
+    const {selectedIndex, filter} = useDataHubMentions<Option>({items, onEnter: onSubmit});
 
     return (
         <div role="menu">
             {options.map((option) => {
-                const { header, type, entity, index = 0 } = option;
+                const {header, type, entity, index = 0} = option;
                 if (header) {
                     const label = entityRegistry.getCollectionName(type);
                     return (
@@ -105,7 +105,7 @@ export const MentionsDropdown = ({ suggestions }: Props) => {
 
                 return (
                     <OptionItem active={highlight} key={entity.urn} onMouseDown={onMouseDown} role="option">
-                        {renderEntitySuggestion(filter ?? '', entity, entityRegistry)}
+                        <AutoCompleteItem query={filter ?? ''} entity={entity}/>
                     </OptionItem>
                 );
             })}

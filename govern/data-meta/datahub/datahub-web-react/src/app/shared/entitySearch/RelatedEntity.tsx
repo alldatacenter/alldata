@@ -1,9 +1,9 @@
 import React from 'react';
-import { List, Typography, Divider } from 'antd';
+import {List, Typography, Divider} from 'antd';
 import styled from 'styled-components';
-import { useEntityRegistry } from '../../useEntityRegistry';
-import { PreviewType } from '../../entity/Entity';
-import { EntityType, SearchResult } from '../../../types.generated';
+import {useEntityRegistry} from '../../useEntityRegistry';
+import {PreviewType} from '../../entity/Entity';
+import {EntityType, SearchResult} from '../../../types.generated';
 
 type Props = {
     searchResult: {
@@ -21,7 +21,7 @@ const TitleContainer = styled.div`
     margin-bottom: 30px;
 `;
 
-export default ({ searchResult, entityPath }: Props) => {
+export default ({searchResult, entityPath}: Props) => {
     const entityRegistry = useEntityRegistry();
     const entityType = entityRegistry.getTypeFromPathName(entityPath || '');
     if (!entityType) return null;
@@ -32,7 +32,7 @@ export default ({ searchResult, entityPath }: Props) => {
         <ListContainer>
             <TitleContainer>
                 <Typography.Title level={3}>{entityRegistry.getCollectionName(entityType)}</Typography.Title>
-                <Divider />
+                <Divider/>
             </TitleContainer>
             <List
                 dataSource={entitiesToShow}
@@ -40,7 +40,7 @@ export default ({ searchResult, entityPath }: Props) => {
                     return (
                         <>
                             {entityRegistry.renderPreview(entityType, PreviewType.PREVIEW, item.entity)}
-                            <Divider />
+                            <Divider/>
                         </>
                     );
                 }}

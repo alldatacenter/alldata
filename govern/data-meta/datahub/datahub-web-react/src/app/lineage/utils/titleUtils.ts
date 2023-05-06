@@ -1,5 +1,5 @@
-import { SchemaField } from '../../../types.generated';
-import { COLUMN_HEIGHT, EXPAND_COLLAPSE_COLUMNS_TOGGLE_HEIGHT, NUM_COLUMNS_PER_PAGE } from '../constants';
+import {SchemaField} from '../../../types.generated';
+import {COLUMN_HEIGHT, EXPAND_COLLAPSE_COLUMNS_TOGGLE_HEIGHT, NUM_COLUMNS_PER_PAGE} from '../constants';
 
 interface OptionalOptions {
     font?: string;
@@ -58,7 +58,7 @@ function destroyElement(element: HTMLElement): void {
 const cache = {};
 
 const calcualteSize = (text: string, options: OptionalOptions = {}): Size => {
-    const cacheKey = JSON.stringify({ text, options });
+    const cacheKey = JSON.stringify({text, options});
 
     if (cache[cacheKey]) {
         return cache[cacheKey];

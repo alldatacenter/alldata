@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components/macro';
-import { Button, Modal, Steps } from 'antd';
+import {Button, Modal, Steps} from 'antd';
 import PolicyPrivilegeForm from './PolicyPrivilegeForm';
 import PolicyTypeForm from './PolicyTypeForm';
 import PolicyActorForm from './PolicyActorForm';
-import { ActorFilter, Policy, PolicyType, ResourceFilter } from '../../../types.generated';
-import { EMPTY_POLICY } from './policyUtils';
-import { useEnterKeyListener } from '../../shared/useEnterKeyListener';
+import {ActorFilter, Policy, PolicyType, ResourceFilter} from '../../../types.generated';
+import {EMPTY_POLICY} from './policyUtils';
+import {useEnterKeyListener} from '../../shared/useEnterKeyListener';
 import ClickOutside from '../../shared/ClickOutside';
 
 type Props = {
@@ -39,7 +39,7 @@ const NextButtonContainer = styled.div`
  * Component used for constructing new policies. The purpose of this flow is to populate or edit a Policy
  * object through a sequence of steps.
  */
-export default function PolicyBuilderModal({ policy, setPolicy, visible, onClose, onSave }: Props) {
+export default function PolicyBuilderModal({policy, setPolicy, visible, onClose, onSave}: Props) {
     // Step control-flow.
     const [activeStepIndex, setActiveStepIndex] = useState(0);
 
@@ -62,9 +62,9 @@ export default function PolicyBuilderModal({ policy, setPolicy, visible, onClose
     const setPolicyType = (type: PolicyType) => {
         // Important: If the policy type itself is changing, we need to clear policy state.
         if (type === PolicyType.Platform) {
-            setPolicy({ ...policy, type, resources: EMPTY_POLICY.resources, privileges: [] });
+            setPolicy({...policy, type, resources: EMPTY_POLICY.resources, privileges: []});
         }
-        setPolicy({ ...policy, type, privileges: [] });
+        setPolicy({...policy, type, privileges: []});
     };
 
     // Step 1: Choose Policy Type
@@ -76,9 +76,9 @@ export default function PolicyBuilderModal({ policy, setPolicy, visible, onClose
                     policyType={policy.type}
                     setPolicyType={(type: PolicyType) => setPolicyType(type)}
                     policyName={policy.name}
-                    setPolicyName={(name: string) => setPolicy({ ...policy, name })}
+                    setPolicyName={(name: string) => setPolicy({...policy, name})}
                     policyDescription={policy.description || ''}
-                    setPolicyDescription={(description: string) => setPolicy({ ...policy, description })}
+                    setPolicyDescription={(description: string) => setPolicy({...policy, description})}
                 />
             ),
             complete: policy.type && policy.name && policy.name.length > 0, // Whether the "next" button should appear.
@@ -93,10 +93,10 @@ export default function PolicyBuilderModal({ policy, setPolicy, visible, onClose
                 policyType={policy.type}
                 resources={policy.resources!}
                 setResources={(resources: ResourceFilter) => {
-                    setPolicy({ ...policy, resources });
+                    setPolicy({...policy, resources});
                 }}
                 privileges={policy.privileges}
-                setPrivileges={(privileges: string[]) => setPolicy({ ...policy, privileges })}
+                setPrivileges={(privileges: string[]) => setPolicy({...policy, privileges})}
             />
         ),
         complete: policy.privileges && policy.privileges.length > 0, // Whether the "next" button should appear.
@@ -147,7 +147,8 @@ export default function PolicyBuilderModal({ policy, setPolicy, visible, onClose
             onOk() {
                 onClose();
             },
-            onCancel() {},
+            onCancel() {
+            },
             okText: 'Yes',
             maskClosable: true,
             closable: true,
@@ -167,7 +168,7 @@ export default function PolicyBuilderModal({ policy, setPolicy, visible, onClose
             >
                 <Steps current={activeStepIndex}>
                     {policySteps.map((item) => (
-                        <Steps.Step key={item.title} title={item.title} />
+                        <Steps.Step key={item.title} title={item.title}/>
                     ))}
                 </Steps>
                 <div className="steps-content">{activeStep.content}</div>

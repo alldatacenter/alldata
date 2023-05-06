@@ -1,19 +1,19 @@
 import React from 'react';
-import { DataPlatform, EntityType, Owner } from '../../../../types.generated';
+import {DataPlatform, EntityType, Owner} from '../../../../types.generated';
 import DefaultPreviewCard from '../../../preview/DefaultPreviewCard';
-import { capitalizeFirstLetterOnly } from '../../../shared/textUtil';
-import { useEntityRegistry } from '../../../useEntityRegistry';
-import { IconStyleType } from '../../Entity';
+import {capitalizeFirstLetterOnly} from '../../../shared/textUtil';
+import {useEntityRegistry} from '../../../useEntityRegistry';
+import {IconStyleType} from '../../Entity';
 
 export const Preview = ({
-    urn,
-    name,
-    platformInstanceId,
-    featureNamespace,
-    description,
-    owners,
-    platform,
-}: {
+                            urn,
+                            name,
+                            platformInstanceId,
+                            featureNamespace,
+                            description,
+                            owners,
+                            platform,
+                        }: {
     urn: string;
     name: string;
     featureNamespace: string;

@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
-import { Table, Typography } from 'antd';
-import { CheckSquareOutlined } from '@ant-design/icons';
-import { AlignType } from 'rc-table/lib/interface';
+import React, {useState} from 'react';
+import {Table, Typography} from 'antd';
+import {CheckSquareOutlined} from '@ant-design/icons';
+import {AlignType} from 'rc-table/lib/interface';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 import MlFeatureDataTypeIcon from './MlFeatureDataTypeIcon';
-import { MlFeatureDataType, MlPrimaryKey, MlFeature } from '../../../../../types.generated';
-import { useRefetch } from '../../../shared/EntityContext';
+import {MlFeatureDataType, MlPrimaryKey, MlFeature} from '../../../../../types.generated';
+import {useRefetch} from '../../../shared/EntityContext';
 import TagTermGroup from '../../../../shared/tags/TagTermGroup';
 import SchemaDescriptionField from '../../../dataset/profile/schema/components/SchemaDescriptionField';
-import { useUpdateDescriptionMutation } from '../../../../../graphql/mutations.generated';
-import { useEntityRegistry } from '../../../../useEntityRegistry';
+import {useUpdateDescriptionMutation} from '../../../../../graphql/mutations.generated';
+import {useEntityRegistry} from '../../../../useEntityRegistry';
 
 const FeaturesContainer = styled.div`
     margin-bottom: 100px;
@@ -25,7 +25,7 @@ const defaultColumns = [
         width: 100,
         align: 'left' as AlignType,
         render: (dataType: MlFeatureDataType) => {
-            return <MlFeatureDataTypeIcon dataType={dataType} />;
+            return <MlFeatureDataTypeIcon dataType={dataType}/>;
         },
     },
 ];
@@ -34,7 +34,7 @@ type Props = {
     features: Array<MlFeature | MlPrimaryKey>;
 };
 
-export default function TableOfMlFeatures({ features }: Props) {
+export default function TableOfMlFeatures({features}: Props) {
     const refetch = useRefetch();
     const [updateDescription] = useUpdateDescriptionMutation();
     const entityRegistry = useEntityRegistry();
@@ -95,7 +95,7 @@ export default function TableOfMlFeatures({ features }: Props) {
             <TagTermGroup
                 editableTags={feature.tags}
                 canRemove
-                buttonProps={{ size: 'small' }}
+                buttonProps={{size: 'small'}}
                 canAddTag={tagHoveredIndex === `${feature.urn}-${rowIndex}`}
                 onOpenModal={() => setTagHoveredIndex(undefined)}
                 entityUrn={feature.urn}
@@ -115,7 +115,7 @@ export default function TableOfMlFeatures({ features }: Props) {
             <TagTermGroup
                 editableGlossaryTerms={feature.glossaryTerms}
                 canRemove
-                buttonProps={{ size: 'small' }}
+                buttonProps={{size: 'small'}}
                 canAddTerm={tagHoveredIndex === `${feature.urn}-${rowIndex}`}
                 onOpenModal={() => setTagHoveredIndex(undefined)}
                 entityUrn={feature.urn}
@@ -131,7 +131,7 @@ export default function TableOfMlFeatures({ features }: Props) {
         dataIndex: 'primaryKey',
         key: 'primaryKey',
         render: (_: any, record: MlFeature | MlPrimaryKey) =>
-            record.__typename === 'MLPrimaryKey' ? <CheckSquareOutlined /> : null,
+            record.__typename === 'MLPrimaryKey' ? <CheckSquareOutlined/> : null,
         width: 50,
     };
 
@@ -146,7 +146,7 @@ export default function TableOfMlFeatures({ features }: Props) {
                     // @ts-ignore
                     dataSource={features}
                     rowKey={(record) => `${record.dataType}-${record.name}`}
-                    expandable={{ defaultExpandAllRows: true, expandRowByClick: true }}
+                    expandable={{defaultExpandAllRows: true, expandRowByClick: true}}
                     pagination={false}
                 />
             )}

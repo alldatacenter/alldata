@@ -10,7 +10,7 @@ import {
     EntityType,
 } from '../../types.generated';
 import * as fixtures from '../fixtures';
-import { tagDb } from '../fixtures/tag';
+import {tagDb} from '../fixtures/tag';
 
 type GetAutoCompleteResults = {
     data: {
@@ -18,14 +18,14 @@ type GetAutoCompleteResults = {
     };
 };
 
-const findSuggestions = ({ query, type, field }: AutoCompleteInput): string[] => {
+const findSuggestions = ({query, type, field}: AutoCompleteInput): string[] => {
     const q = query.toLowerCase().trim();
 
     if (type === EntityType.Tag) {
         const results = q
             ? tagDb.filter((t) => {
-                  return t.name.indexOf(q) >= 0;
-              })
+                return t.name.indexOf(q) >= 0;
+            })
             : [];
         return results.map((r) => {
             return r.name;
@@ -67,16 +67,16 @@ const findSuggestions = ({ query, type, field }: AutoCompleteInput): string[] =>
             return field === 'ldap'
                 ? (r.entity as CorpUser)?.username
                 : (r.entity as Dataset)?.name ||
-                      (r.entity as Dashboard | Chart | DataFlow | DataJob)?.info?.name ||
-                      (r.entity as CorpUser)?.info?.fullName ||
-                      '';
+                (r.entity as Dashboard | Chart | DataFlow | DataJob)?.info?.name ||
+                (r.entity as CorpUser)?.info?.fullName ||
+                '';
         })
         .filter(Boolean);
 };
 
 export const getAutoCompleteResultsResolver = {
-    getAutoCompleteResults({ variables: { input } }): GetAutoCompleteResults {
-        const { query }: AutoCompleteInput = input;
+    getAutoCompleteResults({variables: {input}}): GetAutoCompleteResults {
+        const {query}: AutoCompleteInput = input;
         const suggestions = findSuggestions(input);
 
         return {

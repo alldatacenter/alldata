@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components/macro';
 import GlossarySearch from './GlossarySearch';
 import GlossaryBrowser from './GlossaryBrowser/GlossaryBrowser';
-import { ProfileSidebarResizer } from '../entity/shared/containers/profile/sidebar/ProfileSidebarResizer';
+import {ProfileSidebarResizer} from '../entity/shared/containers/profile/sidebar/ProfileSidebarResizer';
 
 const BrowserWrapper = styled.div<{ width: number }>`
     max-height: 100%;
@@ -19,8 +19,8 @@ export default function GlossarySidebar() {
     return (
         <>
             <BrowserWrapper width={browserWidth}>
-                <GlossarySearch />
-                <GlossaryBrowser openToEntity />
+                <GlossarySearch/>
+                <GlossaryBrowser openToEntity/>
             </BrowserWrapper>
             <ProfileSidebarResizer
                 setSidePanelWidth={(width) =>

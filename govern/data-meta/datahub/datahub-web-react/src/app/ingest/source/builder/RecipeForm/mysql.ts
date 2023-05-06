@@ -1,4 +1,4 @@
-import { RecipeField, FieldType } from './common';
+import {RecipeField, FieldType} from './common';
 
 export const MYSQL_HOST_PORT: RecipeField = {
     name: 'host_port',

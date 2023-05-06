@@ -1,7 +1,7 @@
-import { Typography } from 'antd';
+import {Typography} from 'antd';
 import React from 'react';
 import styled from 'styled-components';
-import { DomainsList } from './DomainsList';
+import {DomainsList} from './DomainsList';
 
 const PageContainer = styled.div`
     padding-top: 20px;
@@ -31,7 +31,7 @@ export const ManageDomainsPage = () => {
                 </Typography.Paragraph>
             </PageHeaderContainer>
             <ListContainer>
-                <DomainsList />
+                <DomainsList/>
             </ListContainer>
         </PageContainer>
     );

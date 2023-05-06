@@ -1,6 +1,6 @@
 import React from 'react';
-import { Typography } from 'antd';
-import { OnboardingStep } from '../OnboardingStep';
+import {Typography} from 'antd';
+import {OnboardingStep} from '../OnboardingStep';
 
 export const USERS_INTRO_ID = 'users-intro';
 export const USERS_SSO_ID = 'users-sso';
@@ -52,7 +52,8 @@ export const UsersOnboardingConfig: OnboardingStep[] = [
         content: (
             <Typography.Paragraph>
                 <p>
-                    Easily share an invite link with your colleagues to onboard them onto DataHub. Optionally assign a{' '}
+                    Easily share an invite link with your colleagues to onboard them onto DataHub. Optionally assign
+                    a{' '}
                     <strong>Role</strong> to anyone who joins using the link.
                 </p>
                 <p>

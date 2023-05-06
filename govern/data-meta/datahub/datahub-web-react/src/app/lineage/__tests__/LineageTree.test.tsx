@@ -1,7 +1,7 @@
 import React from 'react';
-import { render } from '@testing-library/react';
-import { Zoom } from '@vx/zoom';
-import { MockedProvider } from '@apollo/client/testing';
+import {render} from '@testing-library/react';
+import {Zoom} from '@vx/zoom';
+import {MockedProvider} from '@apollo/client/testing';
 import {
     dataset3WithLineage,
     dataset4WithLineage,
@@ -9,14 +9,14 @@ import {
     dataset6WithLineage,
     mocks,
 } from '../../../Mocks';
-import { Direction, FetchedEntities } from '../types';
+import {Direction, FetchedEntities} from '../types';
 import constructTree from '../utils/constructTree';
 import LineageTree from '../LineageTree';
 import extendAsyncEntities from '../utils/extendAsyncEntities';
-import TestPageContainer, { getTestEntityRegistry } from '../../../utils/test-utils/TestPageContainer';
-import { EntityType } from '../../../types.generated';
+import TestPageContainer, {getTestEntityRegistry} from '../../../utils/test-utils/TestPageContainer';
+import {EntityType} from '../../../types.generated';
 
-const margin = { top: 10, left: 280, right: 280, bottom: 10 };
+const margin = {top: 10, left: 280, right: 280, bottom: 10};
 const [windowWidth, windowHeight] = [1000, 500];
 
 const height = windowHeight - 125;
@@ -36,9 +36,9 @@ const testEntityRegistry = getTestEntityRegistry();
 describe('LineageTree', () => {
     it('renders a tree with many layers', () => {
         const fetchedEntities = [
-            { entity: dataset4WithLineage, direction: Direction.Upstream, fullyFetched: true },
-            { entity: dataset5WithLineage, direction: Direction.Upstream, fullyFetched: true },
-            { entity: dataset6WithLineage, direction: Direction.Upstream, fullyFetched: true },
+            {entity: dataset4WithLineage, direction: Direction.Upstream, fullyFetched: true},
+            {entity: dataset5WithLineage, direction: Direction.Upstream, fullyFetched: true},
+            {entity: dataset6WithLineage, direction: Direction.Upstream, fullyFetched: true},
         ];
         const mockFetchedEntities = fetchedEntities.reduce(
             (acc, entry) =>
@@ -46,28 +46,28 @@ describe('LineageTree', () => {
                     {},
                     acc,
                     testEntityRegistry,
-                    { entity: entry.entity, type: EntityType.Dataset },
+                    {entity: entry.entity, type: EntityType.Dataset},
                     entry.fullyFetched,
                 ),
             {} as FetchedEntities,
         );
 
         const downstreamData = constructTree(
-            { entity: dataset3WithLineage, type: EntityType.Dataset },
+            {entity: dataset3WithLineage, type: EntityType.Dataset},
             mockFetchedEntities,
             Direction.Downstream,
             testEntityRegistry,
             {},
         );
         const upstreamData = constructTree(
-            { entity: dataset3WithLineage, type: EntityType.Dataset },
+            {entity: dataset3WithLineage, type: EntityType.Dataset},
             mockFetchedEntities,
             Direction.Upstream,
             testEntityRegistry,
             {},
         );
 
-        const { getByTestId } = render(
+        const {getByTestId} = render(
             <MockedProvider mocks={mocks}>
                 <TestPageContainer>
                     <Zoom

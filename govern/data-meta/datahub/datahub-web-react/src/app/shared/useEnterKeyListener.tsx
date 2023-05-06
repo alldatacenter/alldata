@@ -1,11 +1,12 @@
-import { useEffect } from 'react';
+import {useEffect} from 'react';
 
-export const useEnterKeyListener = ({ querySelectorToExecuteClick }) => {
+export const useEnterKeyListener = ({querySelectorToExecuteClick}) => {
     const element = document?.querySelector(querySelectorToExecuteClick);
 
     useEffect(() => {
         const handlePressEnter = () => {
             const mouseClickEvents = ['mousedown', 'click', 'mouseup'];
+
             function simulateMouseClick(event) {
                 mouseClickEvents?.forEach((mouseEventType) =>
                     event?.dispatchEvent(
@@ -18,6 +19,7 @@ export const useEnterKeyListener = ({ querySelectorToExecuteClick }) => {
                     ),
                 );
             }
+
             simulateMouseClick(element);
         };
 

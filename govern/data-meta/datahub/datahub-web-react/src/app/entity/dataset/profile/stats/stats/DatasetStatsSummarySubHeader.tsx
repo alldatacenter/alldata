@@ -4,9 +4,9 @@ import {
     DatasetProfile,
     Operation,
 } from '../../../../../../types.generated';
-import { useBaseEntity } from '../../../../shared/EntityContext';
-import { GetDatasetQuery } from '../../../../../../graphql/dataset.generated';
-import { DatasetStatsSummary } from '../../../shared/DatasetStatsSummary';
+import {useBaseEntity} from '../../../../shared/EntityContext';
+import {GetDatasetQuery} from '../../../../../../graphql/dataset.generated';
+import {DatasetStatsSummary} from '../../../shared/DatasetStatsSummary';
 
 export const DatasetStatsSummarySubHeader = () => {
     const result = useBaseEntity<GetDatasetQuery>();

@@ -1,9 +1,9 @@
 import React from 'react';
-import { Tag, Tooltip, Typography } from 'antd';
-import { Link } from 'react-router-dom';
+import {Tag, Tooltip, Typography} from 'antd';
+import {Link} from 'react-router-dom';
 import styled from 'styled-components';
-import { Maybe, Ownership } from '../../types.generated';
-import { useEntityRegistry } from '../useEntityRegistry';
+import {Maybe, Ownership} from '../../types.generated';
+import {useEntityRegistry} from '../useEntityRegistry';
 import AvatarsGroup from '../shared/avatar/AvatarsGroup';
 import DomainItemMenu from './DomainItemMenu';
 
@@ -28,7 +28,7 @@ const DomainNameContainer = styled.div`
 
 export function DomainListMenuColumn(handleDelete: (urn: string) => void) {
     return (record: DomainEntry) => (
-        <DomainItemMenu name={record.name} urn={record.urn} onDelete={() => handleDelete(record.urn)} />
+        <DomainItemMenu name={record.name} urn={record.urn} onDelete={() => handleDelete(record.urn)}/>
     );
 }
 
@@ -55,13 +55,13 @@ export function DomainOwnersColumn(ownership: Maybe<Ownership>) {
         return null;
     }
 
-    const { owners } = ownership;
+    const {owners} = ownership;
     if (!owners || owners.length === 0) {
         return null;
     }
     return (
         <AvatarGroupWrapper>
-            <AvatarsGroup size={24} owners={owners} entityRegistry={entityRegistry} maxCount={4} />
+            <AvatarsGroup size={24} owners={owners} entityRegistry={entityRegistry} maxCount={4}/>
         </AvatarGroupWrapper>
     );
 }

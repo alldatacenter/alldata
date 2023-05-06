@@ -29,7 +29,7 @@ export const removeMarkdown = (text: string) => {
         .replace(/^•/, ''); // remove first •
 };
 
-export default function NoMarkdownViewer({ children, readMore, suffix, limit, shouldWrap }: Props) {
+export default function NoMarkdownViewer({children, readMore, suffix, limit, shouldWrap}: Props) {
     let plainText = removeMarkdown(children || '');
 
     if (limit) {

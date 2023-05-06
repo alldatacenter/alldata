@@ -1,15 +1,15 @@
-import { Image, Typography } from 'antd';
+import {Image, Typography} from 'antd';
 import React from 'react';
-import styled, { useTheme } from 'styled-components/macro';
+import styled, {useTheme} from 'styled-components/macro';
 import Link from 'antd/lib/typography/Link';
-import { ArrowRightOutlined } from '@ant-design/icons';
-import { DEFAULT_APP_CONFIG } from '../../../../appConfigContext';
-import { useAppConfig } from '../../../useAppConfig';
-import { useEntityRegistry } from '../../../useEntityRegistry';
-import { IconStyleType } from '../../Entity';
-import { useEntityData } from '../EntityContext';
-import { getDisplayedEntityType } from '../containers/profile/header/PlatformContent/PlatformContentContainer';
-import { ANTD_GRAY } from '../constants';
+import {ArrowRightOutlined} from '@ant-design/icons';
+import {DEFAULT_APP_CONFIG} from '../../../../appConfigContext';
+import {useAppConfig} from '../../../useAppConfig';
+import {useEntityRegistry} from '../../../useEntityRegistry';
+import {IconStyleType} from '../../Entity';
+import {useEntityData} from '../EntityContext';
+import {getDisplayedEntityType} from '../containers/profile/header/PlatformContent/PlatformContentContainer';
+import {ANTD_GRAY} from '../constants';
 
 const HeaderWrapper = styled.div`
     display: flex;
@@ -57,7 +57,7 @@ const EntityNameWrapper = styled.div`
 
 export default function EmbeddedHeader() {
     const entityRegistry = useEntityRegistry();
-    const { entityData, entityType } = useEntityData();
+    const {entityData, entityType} = useEntityData();
     const appConfig = useAppConfig();
     const themeConfig = useTheme();
 
@@ -72,14 +72,14 @@ export default function EmbeddedHeader() {
 
     return (
         <HeaderWrapper>
-            <LogoImage src={logoUrl} preview={false} />
+            <LogoImage src={logoUrl} preview={false}/>
             <EntityContent>
                 <EntityTypeWrapper>
                     <TypeIcon>{typeIcon}</TypeIcon>
                     {displayedEntityType}
                 </EntityTypeWrapper>
                 <EntityNameWrapper>
-                    <EntityName ellipsis={{ tooltip: entityName }} style={{ maxWidth: '75%' }}>
+                    <EntityName ellipsis={{tooltip: entityName}} style={{maxWidth: '75%'}}>
                         {entityName}
                     </EntityName>
                     <StyledLink
@@ -87,7 +87,7 @@ export default function EmbeddedHeader() {
                         target="_blank"
                         rel="noreferrer noopener"
                     >
-                        view in DataHub <ArrowRightOutlined />
+                        view in DataHub <ArrowRightOutlined/>
                     </StyledLink>
                 </EntityNameWrapper>
             </EntityContent>

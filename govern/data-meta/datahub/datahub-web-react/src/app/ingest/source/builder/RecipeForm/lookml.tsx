@@ -1,6 +1,6 @@
 import React from 'react';
-import { get } from 'lodash';
-import { FieldType, RecipeField, setFieldValueOnRecipe } from './common';
+import {get} from 'lodash';
+import {FieldType, RecipeField, setFieldValueOnRecipe} from './common';
 
 export const LOOKML = 'lookml';
 
@@ -11,7 +11,7 @@ export const LOOKML_GITHUB_INFO_REPO: RecipeField = {
     type: FieldType.TEXT,
     fieldPath: 'source.config.github_info.repo',
     placeholder: 'datahub-project/datahub',
-    rules: [{ required: true, message: 'Github Repo is required' }],
+    rules: [{required: true, message: 'Github Repo is required'}],
     required: true,
 };
 
@@ -23,7 +23,7 @@ export const DEPLOY_KEY: RecipeField = {
         <>
             An SSH private key that has been provisioned for read access on the GitHub repository where the LookML is
             defined.
-            <div style={{ marginTop: 8 }}>
+            <div style={{marginTop: 8}}>
                 Learn how to generate an SSH for your GitHub repository{' '}
                 <a
                     href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account"
@@ -39,7 +39,7 @@ export const DEPLOY_KEY: RecipeField = {
     type: FieldType.TEXTAREA,
     fieldPath: 'source.config.github_info.deploy_key',
     placeholder: '-----BEGIN OPENSSH PRIVATE KEY-----\n...',
-    rules: [{ required: true, message: 'Github Deploy Key is required' }],
+    rules: [{required: true, message: 'Github Deploy Key is required'}],
     setValueOnRecipeOverride: (recipe: any, value: string) => {
         const valueWithNewLine = `${value}\n`;
         return setFieldValueOnRecipe(recipe, valueWithNewLine, deployKeyFieldPath);
@@ -72,7 +72,7 @@ export const LOOKML_BASE_URL: RecipeField = {
     type: FieldType.TEXT,
     fieldPath: 'source.config.api.base_url',
     placeholder: 'https://looker.company.com',
-    rules: [({ getFieldValue }) => validateApiSection(getFieldValue, 'Base URL')],
+    rules: [({getFieldValue}) => validateApiSection(getFieldValue, 'Base URL')],
 };
 
 export const LOOKML_CLIENT_ID: RecipeField = {
@@ -82,7 +82,7 @@ export const LOOKML_CLIENT_ID: RecipeField = {
     type: FieldType.SECRET,
     placeholder: 'client_id',
     fieldPath: 'source.config.api.client_id',
-    rules: [({ getFieldValue }) => validateApiSection(getFieldValue, 'Client ID')],
+    rules: [({getFieldValue}) => validateApiSection(getFieldValue, 'Client ID')],
 };
 
 export const LOOKML_CLIENT_SECRET: RecipeField = {
@@ -92,7 +92,7 @@ export const LOOKML_CLIENT_SECRET: RecipeField = {
     type: FieldType.SECRET,
     fieldPath: 'source.config.api.client_secret',
     placeholder: 'client_secret',
-    rules: [({ getFieldValue }) => validateApiSection(getFieldValue, 'Client Secret')],
+    rules: [({getFieldValue}) => validateApiSection(getFieldValue, 'Client Secret')],
 };
 
 export const PROJECT_NAME: RecipeField = {
@@ -115,7 +115,7 @@ export const PROJECT_NAME: RecipeField = {
     fieldPath: 'source.config.project_name',
     placeholder: 'My Project',
     rules: [
-        ({ getFieldValue }) => ({
+        ({getFieldValue}) => ({
             validator(_, value) {
                 if (
                     !!value ||
@@ -161,7 +161,7 @@ export const CONNECTION_TO_PLATFORM_MAP_NAME: RecipeField = {
     type: FieldType.TEXT,
     fieldPath: 'name',
     placeholder: 'my_mysql_connection',
-    rules: [{ required: true, message: 'Name is required' }],
+    rules: [{required: true, message: 'Name is required'}],
 };
 
 export const PLATFORM: RecipeField = {
@@ -171,7 +171,7 @@ export const PLATFORM: RecipeField = {
     type: FieldType.TEXT,
     fieldPath: 'platform',
     placeholder: 'snowflake',
-    rules: [{ required: true, message: 'Platform is required' }],
+    rules: [{required: true, message: 'Platform is required'}],
 };
 
 export const DEFAULT_DB: RecipeField = {
@@ -181,7 +181,7 @@ export const DEFAULT_DB: RecipeField = {
     type: FieldType.TEXT,
     fieldPath: 'default_db',
     placeholder: 'default_db',
-    rules: [{ required: true, message: 'Default Database is required' }],
+    rules: [{required: true, message: 'Default Database is required'}],
 };
 
 const dictFields = [PLATFORM, DEFAULT_DB];
@@ -197,7 +197,7 @@ export const CONNECTION_TO_PLATFORM_MAP: RecipeField = {
     keyField: CONNECTION_TO_PLATFORM_MAP_NAME,
     fields: dictFields,
     rules: [
-        ({ getFieldValue }) => ({
+        ({getFieldValue}) => ({
             validator(_, value) {
                 if (
                     (!!value && !!value.length) ||

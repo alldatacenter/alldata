@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { EntityType } from '../../types.generated';
-import { CustomAvatar } from './avatar';
+import {EntityType} from '../../types.generated';
+import {CustomAvatar} from './avatar';
 
 const OwnerContainerWrapper = styled.div`
     display: flex;
@@ -22,11 +22,11 @@ type Props = {
     type: EntityType;
 };
 
-export const OwnerLabel = ({ name, avatarUrl, type }: Props) => {
+export const OwnerLabel = ({name, avatarUrl, type}: Props) => {
     return (
         <OwnerContainerWrapper>
             <OwnerContentWrapper>
-                <CustomAvatar size={24} name={name} photoUrl={avatarUrl} isGroup={type === EntityType.CorpGroup} />
+                <CustomAvatar size={24} name={name} photoUrl={avatarUrl} isGroup={type === EntityType.CorpGroup}/>
                 <div>{name}</div>
             </OwnerContentWrapper>
         </OwnerContainerWrapper>
