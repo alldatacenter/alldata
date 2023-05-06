@@ -88,7 +88,7 @@ export default {
     getJdbcDs() {
       this.loading = true
       jdbcDsList(this.jdbcDsQuery).then(response => {
-        const { records } = response
+        const { records } = response.data
         this.wDsList = records
         this.loading = false
       })
@@ -109,7 +109,7 @@ export default {
         }
         // 组装
         dsQueryApi.getTables(obj).then(response => {
-          this.wTbList = response
+          this.wTbList = response.data
         })
       }
     },
