@@ -5,10 +5,10 @@
     <parent>
         <artifactId>common</artifactId>
         <groupId>com.platform</groupId>
-        <version>0.3.7</version>
+        <version>0.4.x</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <version>0.3.7</version>
+    <version>0.4.x</version>
     <artifactId>common-security</artifactId>
 
     <dependencies>
@@ -32,7 +32,7 @@
         <dependency>
             <groupId>com.platform</groupId>
             <artifactId>common-core</artifactId>
-            <version>0.3.7</version>
+            <version>0.4.x</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.springframework.boot</groupId>
@@ -47,7 +47,7 @@
         <dependency>
             <groupId>com.platform</groupId>
             <artifactId>common-redis</artifactId>
-            <version>0.3.7</version>
+            <version>0.4.x</version>
         </dependency>
     </dependencies>
 </project>
