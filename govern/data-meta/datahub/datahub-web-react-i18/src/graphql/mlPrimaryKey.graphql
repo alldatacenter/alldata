@@ -1,0 +1,8 @@
+query getMLPrimaryKey($urn: String!) {
+    mlPrimaryKey(urn: $urn) {
+        ...nonRecursiveMLPrimaryKey
+        featureTables: relationships(input: { types: ["KeyedBy"], direction: INCOMING, start: 0, count: 100 }) {
+            ...fullRelationshipResults
+        }
+    }
+}
