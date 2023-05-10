@@ -1,4 +1,4 @@
-# AllData 一站式细分领域数字化解决方案
+# AllData数字化方案
 
 ## [原型](https://orgnext.modao.cc/app/HhitGZQTr954c7Ug8XBvAY) ｜ [官方文档](https://alldata.readthedocs.io/) ｜ [Document](https://github.com/alldatacenter/alldata/blob/master/README.md) ｜ [Community](#community)
 
@@ -1903,45 +1903,35 @@ https://docs.qq.com/sheet/DVGJHcm1Td0hibmVq?tab=BB08J2
 ```markdown
 加入条件：捐赠AllData团队100人民币【需要扫码支付】AllData募捐活动收款码 https://docs.qq.com/doc/DVE9HdG56Z3RQaWxH
 1、邀请到普通会员群，获得VIP账号，可以新创建管理员账号【需要申请】
-2、获得AllData架构师、负责人1次技术交流30分钟的面谈机会【线上会议】1v1腾讯线上会议
-3、7个自然日内无条件可退款80%【退款联系作者AllDataDC】
+2、7个自然日内无条件可退款80%【退款联系作者AllDataDC】
+3、普通会员新增数据比对功能【包括源码，已开放】
 ```
 
 
-### 高级会员【1年有效】
+### 高级会员【2年有效】
 ```markdown
-加入条件：捐赠AllData团队800人民币【需要扫码支付】AllData募捐活动收款码 https://docs.qq.com/doc/DVE9HdG56Z3RQaWxH
+加入条件：捐赠AllData团队 1500 人民币【需要扫码支付】AllData募捐活动收款码 https://docs.qq.com/doc/DVE9HdG56Z3RQaWxH
 1、获取VIP账号，邀请到高级会员群，可以新创建管理员账号【需要申请】
 2、加入AllData客户群，获取最新开发规划和内部资料【需要申请】
-3、每月1次AllData问题答疑，技术咨询【60分钟】群聊线上腾讯会议
-4、支持1V1远程辅导安装部署AllData全流程
-5、7个自然日内无条件可退款80% 【退款联系作者AllDataDC】
+3、支持1V1远程辅导安装部署AllData全流程
+4、7个自然日内无条件可退款80% 【退款联系作者AllDataDC】
+5、高级会员新增数据比对功能【包括源码，已开放】
+6、高级会员新增数据平台功能【包括源码，待开放】
+7、高级会员新增BI平台功能【包括源码，待开放】
 ```
 
-
-### 至尊会员【1年有效】
+### 终身会员【10年有效】
 ```markdown
-加入条件：捐赠AllData团队1500人民币【需要扫码支付】AllData募捐活动收款码 https://docs.qq.com/doc/DVE9HdG56Z3RQaWxH
-1、获取VIP账号，邀请到至尊会员群，可以新创建管理员账号【需要申请】
+加入条件：捐赠AllData团队2万人民币【需要扫码支付】AllData募捐活动收款码 https://docs.qq.com/doc/DVE9HdG56Z3RQaWxH
+1、获取终身会员VIP账号，邀请到终身员群，可以新创建管理员账号【需要申请】
 2、加入AllData客户群，获取最新开发规划和内部资料【需要申请】
-3、每月1次AllData问题答疑，技术咨询【60分钟】群聊线上腾讯会议
-4、支持1V1远程辅导安装部署AllData全流程
-5、每月1次参与内部至尊会员腾讯会议【30分钟】1V1答疑
-6、7个自然日内无条件可退款80%【退款联系作者AllDataDC】
-```
-
-
-
-### 终身会员【3年有效】
-```markdown
-加入条件：捐赠AllData团队5000人民币【需要扫码支付】AllData募捐活动收款码 https://docs.qq.com/doc/DVE9HdG56Z3RQaWxH
-1、获取VIP账号，可以新创建管理员账号【需要申请】
-2、加入AllData客户群，获取最新开发规划和内部资料【需要申请】
-3、每月1次AllData问题答疑，技术咨询【60分钟】群聊线上腾讯会议
-4、支持1V1远程辅导安装部署AllData全流程
-5、每月1次参与内部终身会员腾讯会议【30分钟】1V1答疑
-6、获得最新商业版功能【不对外开源】
-7、7个自然日内无条件可退款80% 【退款联系作者AllDataDC】
+3、支持1V1远程辅导安装部署Al lData全流程
+4、7个自然日内无条件可退款80% 【退款联系作者AllDataDC】
+5、终身会员新增数据比对功能
+6、终身会员新增数据平台功能【待开放】
+7、终身会员10年内可以获取全部商业版功能
+8、商业版功能【2023年底对外发布，只对商业会员开放源码】
+  商业版新增BI，数据平台，实时开发，离线开发, 机器学习算法平台，5个商业版功能
 ```
 
 ### AllData游客【社区免费共享】

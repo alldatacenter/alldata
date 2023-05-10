@@ -121,7 +121,7 @@ export default {
     getJdbcDs() {
       this.loading = true
       jdbcDsList(this.jdbcDsQuery).then(response => {
-        const { records } = response
+        const { records } = response.data
         this.wDsList = records
         this.loading = false
       })
@@ -142,7 +142,7 @@ export default {
         }
         // 组装
         dsQueryApi.getTables(obj).then(response => {
-          this.wTbList = response
+          this.wTbList = response.data
         })
       }
     },
@@ -179,8 +179,8 @@ export default {
         tableName: this.writerForm.tableName
       }
       dsQueryApi.getColumns(obj).then(response => {
-        this.fromColumnList = response
-        this.writerForm.columns = response
+        this.fromColumnList = response.data
+        this.writerForm.columns = response.data
         this.writerForm.checkAll = true
         this.writerForm.isIndeterminate = false
       })

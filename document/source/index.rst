@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-细分领域AllData数字化解决方案
+AllData数字化方案
 ===================================
 
 .. toctree::
