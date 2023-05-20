@@ -82,12 +82,30 @@ dts:
       ### log retention days
     logretentiondays: 30
   executor:
-    chunjunHome: E:/chunjun/chunjun.py
-    chunjunjsonPath: E:/chunjun/job/
-    chunjunlogHome: E:/chunjun/job-log
-    dataxHome: E:/datax/datax.py
-    dataxjsonPath: E:/datax/job/
-    dataxlogHome: E:/datax/job-log
+    #项目里用到的只有chunjun的引用，chunjun都是.sh文件，需要自己拼shell命令
+    chunjunHome: /home/datax/datax/bin/datax.py #修改为自己的datax路径
+    chunjunjsonPath: /home/datax/datax/job/    #修改为自己的datax路径
+    chunjunlogHome: /home/datax/datax/job-log    #修改为自己的datax路径
+    dataxHome: /home/datax/datax/bin/datax.py
+    dataxjsonPath: /home/datax/datax/job/
+    dataxlogHome: /home/datax/datax/job-log
+
 datasource:
   aes:
     key: AD42F6697B035B75
+
+#执行器配置
+xxl:
+  job:
+    admin:
+      # 修改为自己的data-dts服务地址
+      addresses: http://16gmaster:9536
+    executor:
+      # 此执行器的名称
+      appname: flinkx-executor
+      # 此执行器的端口
+      port: 9537
+      # 此执行器的日志存放路径
+      logpath: logs/xxl-job/datax
+      # 此执行器的日志保存时间
+      logretentiondays: 7
