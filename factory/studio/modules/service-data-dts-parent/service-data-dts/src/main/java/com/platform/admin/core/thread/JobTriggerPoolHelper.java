@@ -4,14 +4,13 @@ import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.util.IdUtil;
 import com.platform.admin.core.conf.ExcecutorConfig;
 import com.platform.admin.core.conf.JobAdminConfig;
-import com.platform.admin.core.trigger.TriggerTypeEnum;
 import com.platform.admin.core.trigger.JobTrigger;
+import com.platform.admin.core.trigger.TriggerTypeEnum;
 import com.platform.admin.entity.JobInfo;
 import com.platform.admin.entity.JobLog;
 import com.platform.core.biz.model.ReturnT;
 import com.platform.core.log.JobLogger;
 import com.platform.core.util.Constants;
-import com.platform.core.util.DateUtil;
 import com.platform.core.util.ProcessUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,7 +19,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -164,7 +162,7 @@ public class JobTriggerPoolHelper {
 		if (!folder.exists() && !folder.isDirectory()) {
 			folder.mkdirs();
 		}
-		cmdArr.add(logHome+"/"+jobId+""+timestamp+".out");
+//		cmdArr.add(logHome+"/"+jobId+""+timestamp+".out");
 		logger.info(cmdArr + " " + flinkXShPath + " " + tmpFilePath);
 		return cmdArr.toArray(new String[cmdArr.size()]);
 	}
@@ -206,7 +204,7 @@ public class JobTriggerPoolHelper {
 			jobLog.setHandleCode(0);
 			jobLog.setProcessId(prcsId);
 			// 设置job的执行路径
-			jobLog.setExecutorAddress(cmdarrayFinal[3]);
+//			jobLog.setExecutorAddress(cmdarrayFinal[3]);
 			JobAdminConfig.getAdminConfig().getJobLogMapper().save(jobLog);
 		} catch (Exception e) {
 			e.printStackTrace();
