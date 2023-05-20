@@ -1,9 +1,9 @@
-import { SNOWFLAKE } from '../../conf/snowflake/snowflake';
-import { BIGQUERY } from '../../conf/bigquery/bigquery';
-import { REDSHIFT } from '../../conf/redshift/redshift';
-import { LOOKER } from '../../conf/looker/looker';
-import { TABLEAU } from '../../conf/tableau/tableau';
-import { KAFKA } from '../../conf/kafka/kafka';
+import {SNOWFLAKE} from '../../conf/snowflake/snowflake';
+import {BIGQUERY} from '../../conf/bigquery/bigquery';
+import {REDSHIFT} from '../../conf/redshift/redshift';
+import {LOOKER} from '../../conf/looker/looker';
+import {TABLEAU} from '../../conf/tableau/tableau';
+import {KAFKA} from '../../conf/kafka/kafka';
 import {
     INCLUDE_LINEAGE,
     TABLE_PROFILING_ENABLED,
@@ -36,8 +36,8 @@ import {
     SNOWFLAKE_PASSWORD,
     SNOWFLAKE_ROLE,
 } from './snowflake';
-import { BIGQUERY_PRIVATE_KEY, BIGQUERY_PRIVATE_KEY_ID, BIGQUERY_CLIENT_EMAIL, BIGQUERY_CLIENT_ID } from './bigquery';
-import { REDSHIFT_HOST_PORT, REDSHIFT_DATABASE, REDSHIFT_USERNAME, REDSHIFT_PASSWORD } from './redshift';
+import {BIGQUERY_PRIVATE_KEY, BIGQUERY_PRIVATE_KEY_ID, BIGQUERY_CLIENT_EMAIL, BIGQUERY_CLIENT_ID} from './bigquery';
+import {REDSHIFT_HOST_PORT, REDSHIFT_DATABASE, REDSHIFT_USERNAME, REDSHIFT_PASSWORD} from './redshift';
 import {
     TABLEAU_CONNECTION_URI,
     TABLEAU_PROJECT,
@@ -67,10 +67,10 @@ import {
     TOPIC_ALLOW,
     TOPIC_DENY,
 } from './kafka';
-import { POSTGRES } from '../../conf/postgres/postgres';
-import { POSTGRES_HOST_PORT, POSTGRES_DATABASE, POSTGRES_USERNAME, POSTGRES_PASSWORD } from './postgres';
-import { HIVE } from '../../conf/hive/hive';
-import { HIVE_HOST_PORT, HIVE_DATABASE, HIVE_USERNAME, HIVE_PASSWORD } from './hive';
+import {POSTGRES} from '../../conf/postgres/postgres';
+import {POSTGRES_HOST_PORT, POSTGRES_DATABASE, POSTGRES_USERNAME, POSTGRES_PASSWORD} from './postgres';
+import {HIVE} from '../../conf/hive/hive';
+import {HIVE_HOST_PORT, HIVE_DATABASE, HIVE_USERNAME, HIVE_PASSWORD} from './hive';
 import {
     LOOKML,
     CONNECTION_TO_PLATFORM_MAP,
@@ -82,13 +82,13 @@ import {
     PARSE_TABLE_NAMES_FROM_SQL,
     PROJECT_NAME,
 } from './lookml';
-import { PRESTO, PRESTO_HOST_PORT, PRESTO_DATABASE, PRESTO_USERNAME, PRESTO_PASSWORD } from './presto';
-import { BIGQUERY_BETA, DBT_CLOUD, MYSQL, UNITY_CATALOG } from '../constants';
-import { BIGQUERY_BETA_PROJECT_ID, DATASET_ALLOW, DATASET_DENY, PROJECT_ALLOW, PROJECT_DENY } from './bigqueryBeta';
-import { MYSQL_HOST_PORT, MYSQL_PASSWORD, MYSQL_USERNAME } from './mysql';
-import { MSSQL, MSSQL_DATABASE, MSSQL_HOST_PORT, MSSQL_PASSWORD, MSSQL_USERNAME } from './mssql';
-import { TRINO, TRINO_DATABASE, TRINO_HOST_PORT, TRINO_PASSWORD, TRINO_USERNAME } from './trino';
-import { MARIADB, MARIADB_DATABASE, MARIADB_HOST_PORT, MARIADB_PASSWORD, MARIADB_USERNAME } from './mariadb';
+import {PRESTO, PRESTO_HOST_PORT, PRESTO_DATABASE, PRESTO_USERNAME, PRESTO_PASSWORD} from './presto';
+import {BIGQUERY_BETA, DBT_CLOUD, MYSQL, POWER_BI, UNITY_CATALOG} from '../constants';
+import {BIGQUERY_BETA_PROJECT_ID, DATASET_ALLOW, DATASET_DENY, PROJECT_ALLOW, PROJECT_DENY} from './bigqueryBeta';
+import {MYSQL_HOST_PORT, MYSQL_PASSWORD, MYSQL_USERNAME} from './mysql';
+import {MSSQL, MSSQL_DATABASE, MSSQL_HOST_PORT, MSSQL_PASSWORD, MSSQL_USERNAME} from './mssql';
+import {TRINO, TRINO_DATABASE, TRINO_HOST_PORT, TRINO_PASSWORD, TRINO_USERNAME} from './trino';
+import {MARIADB, MARIADB_DATABASE, MARIADB_HOST_PORT, MARIADB_PASSWORD, MARIADB_USERNAME} from './mariadb';
 import {
     INCLUDE_COLUMN_LINEAGE,
     TOKEN,
@@ -116,6 +116,19 @@ import {
     TARGET_PLATFORM_INSTANCE,
     DBT_CLOUD_TOKEN,
 } from './dbt_cloud';
+import {
+    ADMIN_APIS_ONLY,
+    EXTRACT_ENDORSEMENTS_AS_TAGS,
+    EXTRACT_OWNERSHIP,
+    INCLUDE_REPORTS,
+    INCLUDE_POWERBI_LINEAGE,
+    INCLUDE_WORKSPACES,
+    POWERBI_CLIENT_ID,
+    POWERBI_CLIENT_SECRET,
+    POWERBI_TENANT_ID,
+    WORKSPACE_ID_ALLOW,
+    WORKSPACE_ID_DENY,
+} from './powerbi';
 
 export enum RecipeSections {
     Connection = 0,
@@ -156,7 +169,7 @@ export const RECIPE_FIELDS: RecipeFields = {
             VIEW_ALLOW,
             VIEW_DENY,
         ],
-        filterSectionTooltip: 'Include or exclude specific Databases, Schemas, Tables and Views from ingestion.',
+        filterSectionTooltip: '从采集中包括或排除特定的数据库、模式、表和视图。',
     },
     [BIGQUERY]: {
         fields: [
@@ -185,7 +198,7 @@ export const RECIPE_FIELDS: RecipeFields = {
             VIEW_ALLOW,
             VIEW_DENY,
         ],
-        filterSectionTooltip: 'Include or exclude specific Projects, Datasets, Tables and Views from ingestion.',
+        filterSectionTooltip: '包括或排除采集的特定项目、数据集、表和视图。',
     },
     [BIGQUERY_BETA]: {
         fields: [
@@ -212,7 +225,7 @@ export const RECIPE_FIELDS: RecipeFields = {
             VIEW_ALLOW,
             VIEW_DENY,
         ],
-        filterSectionTooltip: 'Include or exclude specific Projects, Datasets, Tables and Views from ingestion.',
+        filterSectionTooltip: '包括或排除采集的特定项目、数据集、表和视图。',
     },
     [REDSHIFT]: {
         fields: [REDSHIFT_HOST_PORT, REDSHIFT_DATABASE, REDSHIFT_USERNAME, REDSHIFT_PASSWORD],
@@ -226,7 +239,7 @@ export const RECIPE_FIELDS: RecipeFields = {
             STATEFUL_INGESTION_ENABLED,
         ],
         filterFields: [SCHEMA_ALLOW, SCHEMA_DENY, TABLE_ALLOW, TABLE_DENY, VIEW_ALLOW, VIEW_DENY],
-        filterSectionTooltip: 'Include or exclude specific Schemas, Tables and Views from ingestion.',
+        filterSectionTooltip: '从采集中包括或排除特定的模式、表和视图。',
     },
     [TABLEAU]: {
         fields: [
@@ -246,7 +259,7 @@ export const RECIPE_FIELDS: RecipeFields = {
         fields: [LOOKER_BASE_URL, LOOKER_CLIENT_ID, LOOKER_CLIENT_SECRET],
         filterFields: [LOOKER_DASHBOARD_ALLOW, LOOKER_DASHBOARD_DENY, CHART_ALLOW, CHART_DENY],
         advancedFields: [EXTRACT_USAGE_HISTORY, EXTRACT_OWNERS, SKIP_PERSONAL_FOLDERS, STATEFUL_INGESTION_ENABLED],
-        filterSectionTooltip: 'Include or exclude specific Dashboard, Charts from Looker ingestion.',
+        filterSectionTooltip: '包括或排除特定的仪表板，图表从Looker摄取。',
     },
     [LOOKML]: {
         fields: [
@@ -309,7 +322,7 @@ export const RECIPE_FIELDS: RecipeFields = {
             COLUMN_PROFILING_ENABLED,
             STATEFUL_INGESTION_ENABLED,
         ],
-        filterSectionTooltip: 'Include or exclude specific Databases, Schemas, Tables and Views from ingestion.',
+        filterSectionTooltip: '从采集中包括或排除特定的数据库、模式、表和视图。',
     },
     [HIVE]: {
         fields: [HIVE_HOST_PORT, HIVE_USERNAME, HIVE_PASSWORD, HIVE_DATABASE],
@@ -400,6 +413,20 @@ export const RECIPE_FIELDS: RecipeFields = {
             STATEFUL_INGESTION_ENABLED,
         ],
         filterSectionTooltip: 'Include or exclude specific dbt Node (resources) from ingestion.',
+    },
+    [POWER_BI]: {
+        fields: [POWERBI_TENANT_ID, POWERBI_CLIENT_ID, POWERBI_CLIENT_SECRET],
+        filterFields: [WORKSPACE_ID_ALLOW, WORKSPACE_ID_DENY],
+        advancedFields: [
+            INCLUDE_WORKSPACES,
+            INCLUDE_REPORTS,
+            INCLUDE_POWERBI_LINEAGE,
+            EXTRACT_OWNERSHIP,
+            EXTRACT_ENDORSEMENTS_AS_TAGS,
+            ADMIN_APIS_ONLY,
+            STATEFUL_INGESTION_ENABLED,
+        ],
+        filterSectionTooltip: 'Include or exclude specific PowerBI Workspaces from ingestion.',
     },
 };
 

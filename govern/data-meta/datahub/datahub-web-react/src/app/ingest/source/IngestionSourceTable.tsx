@@ -1,9 +1,9 @@
-import { Empty, Typography } from 'antd';
+import {Empty, Typography} from 'antd';
 import React from 'react';
 import styled from 'styled-components/macro';
-import { StyledTable } from '../../entity/shared/components/styled/StyledTable';
-import { ANTD_GRAY } from '../../entity/shared/constants';
-import { CLI_EXECUTOR_ID } from './utils';
+import {StyledTable} from '../../entity/shared/components/styled/StyledTable';
+import {ANTD_GRAY} from '../../entity/shared/constants';
+import {CLI_EXECUTOR_ID} from './utils';
 import {
     LastStatusColumn,
     TypeColumn,
@@ -11,8 +11,8 @@ import {
     ScheduleColumn,
     LastExecutionColumn,
 } from './IngestionSourceTableColumns';
-import { IngestionSource } from '../../../types.generated';
-import { IngestionSourceExecutionList } from './executions/IngestionSourceExecutionList';
+import {IngestionSource} from '../../../types.generated';
+import {IngestionSourceExecutionList} from './executions/IngestionSourceExecutionList';
 
 const StyledSourceTable = styled(StyledTable)`
     .cliIngestion {
@@ -34,61 +34,61 @@ interface Props {
 }
 
 function IngestionSourceTable({
-    lastRefresh,
-    sources,
-    setFocusExecutionUrn,
-    onExecute,
-    onEdit,
-    onView,
-    onDelete,
-    onRefresh,
-}: Props) {
+                                  lastRefresh,
+                                  sources,
+                                  setFocusExecutionUrn,
+                                  onExecute,
+                                  onEdit,
+                                  onView,
+                                  onDelete,
+                                  onRefresh,
+                              }: Props) {
     const tableColumns = [
         {
-            title: 'Type',
+            title: '类型',
             dataIndex: 'type',
             key: 'type',
-            render: (type: string, record: any) => <TypeColumn type={type} record={record} />,
+            render: (type: string, record: any) => <TypeColumn type={type} record={record}/>,
             sorter: (sourceA, sourceB) => sourceA.type.localeCompare(sourceB.type),
         },
         {
-            title: 'Name',
+            title: '名称',
             dataIndex: 'name',
             key: 'name',
             render: (name: string) => name || '',
             sorter: (sourceA, sourceB) => sourceA.name.localeCompare(sourceB.name),
         },
         {
-            title: 'Schedule',
+            title: '计划',
             dataIndex: 'schedule',
             key: 'schedule',
             render: ScheduleColumn,
         },
         {
-            title: 'Execution Count',
+            title: '执行次数',
             dataIndex: 'execCount',
             key: 'execCount',
             render: (execCount: any) => <Typography.Text>{execCount || '0'}</Typography.Text>,
             sorter: (sourceA, sourceB) => sourceA.execCount - sourceB.execCount,
         },
         {
-            title: 'Last Execution',
+            title: '最后执行时间',
             dataIndex: 'lastExecTime',
             key: 'lastExecTime',
             render: LastExecutionColumn,
             sorter: (sourceA, sourceB) => sourceA.lastExecTime - sourceB.lastExecTime,
         },
         {
-            title: 'Last Status',
+            title: '执行状态',
             dataIndex: 'lastExecStatus',
             key: 'lastExecStatus',
             render: (status: any, record) => (
-                <LastStatusColumn status={status} record={record} setFocusExecutionUrn={setFocusExecutionUrn} />
+                <LastStatusColumn status={status} record={record} setFocusExecutionUrn={setFocusExecutionUrn}/>
             ),
             sorter: (sourceA, sourceB) => (sourceA.lastExecStatus || '').localeCompare(sourceB.lastExecStatus || ''),
         },
         {
-            title: '',
+            title: '操作',
             dataIndex: '',
             key: 'x',
             render: (_, record: any) => (
@@ -134,7 +134,7 @@ function IngestionSourceTable({
             rowKey="urn"
             rowClassName={(record, _) => (record.cliIngestion ? 'cliIngestion' : '')}
             locale={{
-                emptyText: <Empty description="No Ingestion Sources!" image={Empty.PRESENTED_IMAGE_SIMPLE} />,
+                emptyText: <Empty description="没有元数据!" image={Empty.PRESENTED_IMAGE_SIMPLE}/>,
             }}
             expandable={{
                 expandedRowRender: (record, _index, _indent, expanded) => {

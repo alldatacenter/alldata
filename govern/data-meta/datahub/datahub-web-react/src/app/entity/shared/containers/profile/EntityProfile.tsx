@@ -1,10 +1,10 @@
-import React, { useCallback, useState } from 'react';
-import { Alert, Divider } from 'antd';
-import { MutationHookOptions, MutationTuple, QueryHookOptions, QueryResult } from '@apollo/client/react/types/types';
+import React, {useCallback, useState} from 'react';
+import {Alert, Divider} from 'antd';
+import {MutationHookOptions, MutationTuple, QueryHookOptions, QueryResult} from '@apollo/client/react/types/types';
 import styled from 'styled-components/macro';
-import { useHistory } from 'react-router';
-import { EntityType, Exact } from '../../../../../types.generated';
-import { Message } from '../../../../shared/Message';
+import {useHistory} from 'react-router';
+import {EntityType, Exact} from '../../../../../types.generated';
+import {Message} from '../../../../shared/Message';
 import {
     getEntityPath,
     getOnboardingStepIdsForEntityType,
@@ -18,25 +18,25 @@ import {
     GenericEntityProperties,
     GenericEntityUpdate,
 } from '../../types';
-import { EntityProfileNavBar } from './nav/EntityProfileNavBar';
-import { ANTD_GRAY } from '../../constants';
-import { EntityHeader } from './header/EntityHeader';
-import { EntityTabs } from './header/EntityTabs';
-import { EntitySidebar } from './sidebar/EntitySidebar';
+import {EntityProfileNavBar} from './nav/EntityProfileNavBar';
+import {ANTD_GRAY} from '../../constants';
+import {EntityHeader} from './header/EntityHeader';
+import {EntityTabs} from './header/EntityTabs';
+import {EntitySidebar} from './sidebar/EntitySidebar';
 import EntityContext from '../../EntityContext';
 import useIsLineageMode from '../../../../lineage/utils/useIsLineageMode';
-import { useEntityRegistry } from '../../../../useEntityRegistry';
+import {useEntityRegistry} from '../../../../useEntityRegistry';
 import LineageExplorer from '../../../../lineage/LineageExplorer';
 import CompactContext from '../../../../shared/CompactContext';
 import DynamicTab from '../../tabs/Entity/weaklyTypedAspects/DynamicTab';
-import analytics, { EventType } from '../../../../analytics';
-import { ProfileSidebarResizer } from './sidebar/ProfileSidebarResizer';
-import { EntityMenuItems } from '../../EntityDropdown/EntityDropdown';
-import { useIsSeparateSiblingsMode } from '../../siblingUtils';
-import { EntityActionItem } from '../../entity/EntityActions';
-import { ErrorSection } from '../../../../shared/error/ErrorSection';
-import { EntityHead } from '../../../../shared/EntityHead';
-import { OnboardingTour } from '../../../../onboarding/OnboardingTour';
+import analytics, {EventType} from '../../../../analytics';
+import {ProfileSidebarResizer} from './sidebar/ProfileSidebarResizer';
+import {EntityMenuItems} from '../../EntityDropdown/EntityDropdown';
+import {useIsSeparateSiblingsMode} from '../../siblingUtils';
+import {EntityActionItem} from '../../entity/EntityActions';
+import {ErrorSection} from '../../../../shared/error/ErrorSection';
+import {EntityHead} from '../../../../shared/EntityHead';
+import {OnboardingTour} from '../../../../onboarding/OnboardingTour';
 import useGetDataForProfile from './useGetDataForProfile';
 import NonExistentEntityPage from '../../entity/NonExistentEntityPage';
 import {
@@ -48,18 +48,14 @@ type Props<T, U> = {
     urn: string;
     entityType: EntityType;
     useEntityQuery: (
-        baseOptions: QueryHookOptions<
-            T,
+        baseOptions: QueryHookOptions<T,
             Exact<{
                 urn: string;
-            }>
-        >,
-    ) => QueryResult<
-        T,
+            }>>,
+    ) => QueryResult<T,
         Exact<{
             urn: string;
-        }>
-    >;
+        }>>;
     useUpdateQuery?: (
         baseOptions?: MutationHookOptions<U, { urn: string; input: GenericEntityUpdate }> | undefined,
     ) => MutationTuple<U, { urn: string; input: GenericEntityUpdate }>;
@@ -82,6 +78,7 @@ const ContentContainer = styled.div`
     height: auto;
     min-height: 100%;
     flex: 1;
+    min-width: 0;
 `;
 
 const HeaderAndTabs = styled.div`
@@ -149,28 +146,28 @@ const defaultSidebarSection = {
  * Container for display of the Entity Page
  */
 export const EntityProfile = <T, U>({
-    urn,
-    useEntityQuery,
-    useUpdateQuery,
-    entityType,
-    getOverrideProperties,
-    tabs,
-    sidebarSections,
-    headerDropdownItems,
-    headerActionItems,
-    isNameEditable,
-    hideBrowseBar,
-    subHeader,
-}: Props<T, U>): JSX.Element => {
+                                        urn,
+                                        useEntityQuery,
+                                        useUpdateQuery,
+                                        entityType,
+                                        getOverrideProperties,
+                                        tabs,
+                                        sidebarSections,
+                                        headerDropdownItems,
+                                        headerActionItems,
+                                        isNameEditable,
+                                        hideBrowseBar,
+                                        subHeader,
+                                    }: Props<T, U>): JSX.Element => {
     const isLineageMode = useIsLineageMode();
     const isHideSiblingMode = useIsSeparateSiblingsMode();
     const entityRegistry = useEntityRegistry();
     const history = useHistory();
     const isCompact = React.useContext(CompactContext);
-    const tabsWithDefaults = tabs.map((tab) => ({ ...tab, display: { ...defaultTabDisplayConfig, ...tab.display } }));
+    const tabsWithDefaults = tabs.map((tab) => ({...tab, display: {...defaultTabDisplayConfig, ...tab.display}}));
     const sideBarSectionsWithDefaults = sidebarSections.map((sidebarSection) => ({
         ...sidebarSection,
-        display: { ...defaultSidebarSection, ...sidebarSection.display },
+        display: {...defaultSidebarSection, ...sidebarSection.display},
     }));
 
     const [sidebarWidth, setSidebarWidth] = useState(window.innerWidth * 0.25);
@@ -180,10 +177,10 @@ export const EntityProfile = <T, U>({
 
     const routeToTab = useCallback(
         ({
-            tabName,
-            tabParams,
-            method = 'replace',
-        }: {
+             tabName,
+             tabParams,
+             method = 'replace',
+         }: {
             tabName: string;
             tabParams?: Record<string, any>;
             method?: 'push' | 'replace';
@@ -201,8 +198,8 @@ export const EntityProfile = <T, U>({
         [history, entityType, urn, entityRegistry, isHideSiblingMode],
     );
 
-    const { entityData, dataPossiblyCombinedWithSiblings, dataNotCombinedWithSiblings, loading, error, refetch } =
-        useGetDataForProfile({ urn, entityType, useEntityQuery, getOverrideProperties });
+    const {entityData, dataPossiblyCombinedWithSiblings, dataNotCombinedWithSiblings, loading, error, refetch} =
+        useGetDataForProfile({urn, entityType, useEntityQuery, getOverrideProperties});
 
     useUpdateGlossaryEntityDataOnChange(entityData, entityType);
 
@@ -243,7 +240,7 @@ export const EntityProfile = <T, U>({
     const routedTab = useRoutedTab(enabledAndVisibleTabs);
 
     if (entityData?.exists === false) {
-        return <NonExistentEntityPage />;
+        return <NonExistentEntityPage/>;
     }
 
     if (isCompact) {
@@ -263,19 +260,19 @@ export const EntityProfile = <T, U>({
                 }}
             >
                 <>
-                    {loading && <Message type="loading" content="Loading..." style={{ marginTop: '10%' }} />}
-                    {(error && <ErrorSection />) ||
-                        (!loading && (
-                            <CompactProfile>
-                                <EntityHeader
-                                    headerDropdownItems={headerDropdownItems}
-                                    headerActionItems={headerActionItems}
-                                    subHeader={subHeader}
-                                />
-                                <Divider style={{ marginBottom: '0' }} />
-                                <EntitySidebar sidebarSections={sideBarSectionsWithDefaults} />
-                            </CompactProfile>
-                        ))}
+                    {loading && <Message type="loading" content="Loading..." style={{marginTop: '10%'}}/>}
+                    {(error && <ErrorSection/>) ||
+                    (!loading && (
+                        <CompactProfile>
+                            <EntityHeader
+                                headerDropdownItems={headerDropdownItems}
+                                headerActionItems={headerActionItems}
+                                subHeader={subHeader}
+                            />
+                            <Divider style={{marginBottom: '0'}}/>
+                            <EntitySidebar sidebarSections={sideBarSectionsWithDefaults}/>
+                        </CompactProfile>
+                    ))}
                 </>
             </EntityContext.Provider>
         );
@@ -301,20 +298,20 @@ export const EntityProfile = <T, U>({
             }}
         >
             <>
-                <OnboardingTour stepIds={stepIds} />
-                <EntityHead />
-                {showBrowseBar && <EntityProfileNavBar urn={urn} entityType={entityType} />}
+                <OnboardingTour stepIds={stepIds}/>
+                <EntityHead/>
+                {showBrowseBar && <EntityProfileNavBar urn={urn} entityType={entityType}/>}
                 {entityData?.status?.removed === true && (
                     <Alert
                         message="This entity is not discoverable via search or lineage graph. Contact your DataHub admin for more information."
                         banner
                     />
                 )}
-                {loading && <Message type="loading" content="Loading..." style={{ marginTop: '10%' }} />}
-                {(error && <ErrorSection />) || (
+                {loading && <Message type="loading" content="Loading..." style={{marginTop: '10%'}}/>}
+                {(error && <ErrorSection/>) || (
                     <ContentContainer>
                         {isLineageMode ? (
-                            <LineageExplorer type={entityType} urn={urn} />
+                            <LineageExplorer type={entityType} urn={urn}/>
                         ) : (
                             <>
                                 <HeaderAndTabs>
@@ -326,10 +323,10 @@ export const EntityProfile = <T, U>({
                                                 isNameEditable={isNameEditable}
                                                 subHeader={subHeader}
                                             />
-                                            <EntityTabs tabs={visibleTabs} selectedTab={routedTab} />
+                                            <EntityTabs tabs={visibleTabs} selectedTab={routedTab}/>
                                         </Header>
                                         <TabContent>
-                                            {routedTab && <routedTab.component properties={routedTab.properties} />}
+                                            {routedTab && <routedTab.component properties={routedTab.properties}/>}
                                         </TabContent>
                                     </HeaderAndTabsFlex>
                                 </HeaderAndTabs>
@@ -340,7 +337,7 @@ export const EntityProfile = <T, U>({
                                     initialSize={sidebarWidth}
                                 />
                                 <Sidebar $width={sidebarWidth}>
-                                    <EntitySidebar sidebarSections={sideBarSectionsWithDefaults} />
+                                    <EntitySidebar sidebarSections={sideBarSectionsWithDefaults}/>
                                 </Sidebar>
                             </>
                         )}

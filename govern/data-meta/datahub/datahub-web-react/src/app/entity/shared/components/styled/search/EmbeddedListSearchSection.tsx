@@ -1,19 +1,19 @@
 import React from 'react';
 import * as QueryString from 'query-string';
-import { useHistory, useLocation } from 'react-router';
-import { ApolloError } from '@apollo/client';
-import { FacetFilterInput } from '../../../../../../types.generated';
+import {useHistory, useLocation} from 'react-router';
+import {ApolloError} from '@apollo/client';
+import {FacetFilterInput} from '../../../../../../types.generated';
 import useFilters from '../../../../../search/utils/useFilters';
-import { navigateToEntitySearchUrl } from './navigateToEntitySearchUrl';
-import { FilterSet, GetSearchResultsParams, SearchResultsInterface } from './types';
-import { useEntityQueryParams } from '../../../containers/profile/utils';
-import { EmbeddedListSearch } from './EmbeddedListSearch';
-import { UnionType } from '../../../../../search/utils/constants';
+import {navigateToEntitySearchUrl} from './navigateToEntitySearchUrl';
+import {FilterSet, GetSearchResultsParams, SearchResultsInterface} from './types';
+import {useEntityQueryParams} from '../../../containers/profile/utils';
+import {EmbeddedListSearch} from './EmbeddedListSearch';
+import {UnionType} from '../../../../../search/utils/constants';
 
 const FILTER = 'filter';
 
 function getParamsWithoutFilters(params: QueryString.ParsedQuery<string>) {
-    const paramsCopy = { ...params };
+    const paramsCopy = {...params};
     Object.keys(paramsCopy).forEach((key) => {
         if (key.startsWith(FILTER)) {
             delete paramsCopy[key];
@@ -31,6 +31,7 @@ type Props = {
     defaultFilters?: Array<FacetFilterInput>;
     searchBarStyle?: any;
     searchBarInputStyle?: any;
+    skipCache?: boolean;
     useGetSearchResults?: (params: GetSearchResultsParams) => {
         data: SearchResultsInterface | undefined | null;
         loading: boolean;
@@ -42,25 +43,26 @@ type Props = {
 };
 
 export const EmbeddedListSearchSection = ({
-    emptySearchQuery,
-    fixedFilters,
-    fixedQuery,
-    placeholderText,
-    defaultShowFilters,
-    defaultFilters,
-    searchBarStyle,
-    searchBarInputStyle,
-    useGetSearchResults,
-    shouldRefetch,
-    resetShouldRefetch,
-}: Props) => {
+                                              emptySearchQuery,
+                                              fixedFilters,
+                                              fixedQuery,
+                                              placeholderText,
+                                              defaultShowFilters,
+                                              defaultFilters,
+                                              searchBarStyle,
+                                              searchBarInputStyle,
+                                              skipCache,
+                                              useGetSearchResults,
+                                              shouldRefetch,
+                                              resetShouldRefetch,
+                                          }: Props) => {
     const history = useHistory();
     const location = useLocation();
     const entityQueryParams = useEntityQueryParams();
 
-    const params = QueryString.parse(location.search, { arrayFormat: 'comma' });
+    const params = QueryString.parse(location.search, {arrayFormat: 'comma'});
     const paramsWithoutFilters = getParamsWithoutFilters(params);
-    const baseParams = { ...entityQueryParams, ...paramsWithoutFilters };
+    const baseParams = {...entityQueryParams, ...paramsWithoutFilters};
     const query: string = params?.query as string;
     const page: number = params.page && Number(params.page as string) > 0 ? Number(params.page as string) : 1;
     const unionType: UnionType = Number(params.unionType as any as UnionType) || UnionType.AND;
@@ -133,6 +135,7 @@ export const EmbeddedListSearchSection = ({
             defaultFilters={defaultFilters}
             searchBarStyle={searchBarStyle}
             searchBarInputStyle={searchBarInputStyle}
+            skipCache={skipCache}
             useGetSearchResults={useGetSearchResults}
             shouldRefetch={shouldRefetch}
             resetShouldRefetch={resetShouldRefetch}

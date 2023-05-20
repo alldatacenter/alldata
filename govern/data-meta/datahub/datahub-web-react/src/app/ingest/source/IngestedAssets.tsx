@@ -1,14 +1,14 @@
-import { Button, Typography } from 'antd';
-import React, { useState } from 'react';
+import {Button, Typography} from 'antd';
+import React, {useState} from 'react';
 import styled from 'styled-components';
-import { useGetSearchResultsForMultipleQuery } from '../../../graphql/search.generated';
-import { EmbeddedListSearchModal } from '../../entity/shared/components/styled/search/EmbeddedListSearchModal';
-import { ANTD_GRAY } from '../../entity/shared/constants';
-import { UnionType } from '../../search/utils/constants';
-import { formatNumber } from '../../shared/formatNumber';
-import { Message } from '../../shared/Message';
-import { useEntityRegistry } from '../../useEntityRegistry';
-import { extractEntityTypeCountsFromFacets } from './utils';
+import {useGetSearchResultsForMultipleQuery} from '../../../graphql/search.generated';
+import {EmbeddedListSearchModal} from '../../entity/shared/components/styled/search/EmbeddedListSearchModal';
+import {ANTD_GRAY} from '../../entity/shared/constants';
+import {UnionType} from '../../search/utils/constants';
+import {formatNumber} from '../../shared/formatNumber';
+import {Message} from '../../shared/Message';
+import {useEntityRegistry} from '../../useEntityRegistry';
+import {extractEntityTypeCountsFromFacets} from './utils';
 
 const HeaderContainer = styled.div`
     display: flex;
@@ -56,14 +56,14 @@ type Props = {
 const ENTITY_FACET_NAME = 'entity';
 const TYPE_NAMES_FACET_NAME = 'typeNames';
 
-export default function IngestedAssets({ id }: Props) {
+export default function IngestedAssets({id}: Props) {
     const entityRegistry = useEntityRegistry();
 
     // First thing to do is to search for all assets with the id as the run id!
     const [showAssetSearch, setShowAssetSearch] = useState(false);
 
     // Execute search
-    const { data, loading, error } = useGetSearchResultsForMultipleQuery({
+    const {data, loading, error} = useGetSearchResultsForMultipleQuery({
         variables: {
             input: {
                 query: '*',
@@ -98,25 +98,25 @@ export default function IngestedAssets({ id }: Props) {
 
     return (
         <>
-            {error && <Message type="error" content="" />}
+            {error && <Message type="error" content=""/>}
             <HeaderContainer>
                 <TitleContainer>
-                    <Typography.Title level={5}>Ingested Assets</Typography.Title>
+                    <Typography.Title level={5}>已采集资产</Typography.Title>
                     {(loading && <Typography.Text type="secondary">Loading...</Typography.Text>) || (
                         <>
                             {(total > 0 && (
                                 <Typography.Paragraph type="secondary">
-                                    The following asset types were ingested during this run.
+                                    在此运行期间采集了以下资产。
                                 </Typography.Paragraph>
-                            )) || <Typography.Text>No assets were ingested.</Typography.Text>}
+                            )) || <Typography.Text>没有任何已采集资产。</Typography.Text>}
                         </>
                     )}
                 </TitleContainer>
                 {!loading && (
                     <TotalContainer>
-                        <Typography.Text type="secondary">Total</Typography.Text>
-                        <TotalText style={{ fontSize: 16, color: ANTD_GRAY[8] }}>
-                            <b>{formatNumber(total)}</b> assets
+                        <Typography.Text type="secondary">总计</Typography.Text>
+                        <TotalText style={{fontSize: 16, color: ANTD_GRAY[8]}}>
+                            <b>{formatNumber(total)}</b> 资产
                         </TotalText>
                     </TotalContainer>
                 )}
@@ -124,7 +124,7 @@ export default function IngestedAssets({ id }: Props) {
             <EntityCountsContainer>
                 {countsByEntityType.map((entityCount) => (
                     <EntityCount>
-                        <Typography.Text style={{ paddingLeft: 2, fontSize: 18, color: ANTD_GRAY[8] }}>
+                        <Typography.Text style={{paddingLeft: 2, fontSize: 18, color: ANTD_GRAY[8]}}>
                             <b>{formatNumber(entityCount.count)}</b>
                         </Typography.Text>
                         <Typography.Text type="secondary">{entityCount.displayName}</Typography.Text>
@@ -132,14 +132,14 @@ export default function IngestedAssets({ id }: Props) {
                 ))}
             </EntityCountsContainer>
             <ViewAllButton type="link" onClick={() => setShowAssetSearch(true)}>
-                View All
+                查看全部
             </ViewAllButton>
             {showAssetSearch && (
                 <EmbeddedListSearchModal
-                    searchBarStyle={{ width: 600, marginRight: 40 }}
+                    searchBarStyle={{width: 600, marginRight: 40}}
                     fixedFilters={{
                         unionType: UnionType.AND,
-                        filters: [{ field: 'runId', values: [id] }],
+                        filters: [{field: 'runId', values: [id]}],
                     }}
                     onClose={() => setShowAssetSearch(false)}
                 />

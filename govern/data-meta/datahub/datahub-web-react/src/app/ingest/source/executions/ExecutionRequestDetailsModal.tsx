@@ -1,11 +1,11 @@
-import { DownloadOutlined } from '@ant-design/icons';
-import { Button, message, Modal, Typography } from 'antd';
-import React, { useEffect, useState } from 'react';
+import {DownloadOutlined} from '@ant-design/icons';
+import {Button, message, Modal, Typography} from 'antd';
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
-import { useGetIngestionExecutionRequestQuery } from '../../../../graphql/ingestion.generated';
-import { ANTD_GRAY } from '../../../entity/shared/constants';
-import { downloadFile } from '../../../search/utils/csvUtils';
-import { Message } from '../../../shared/Message';
+import {useGetIngestionExecutionRequestQuery} from '../../../../graphql/ingestion.generated';
+import {ANTD_GRAY} from '../../../entity/shared/constants';
+import {downloadFile} from '../../../search/utils/csvUtils';
+import {Message} from '../../../shared/Message';
 import IngestedAssets from '../IngestedAssets';
 import {
     getExecutionRequestStatusDisplayColor,
@@ -89,9 +89,9 @@ type Props = {
     onClose: () => void;
 };
 
-export const ExecutionDetailsModal = ({ urn, visible, onClose }: Props) => {
+export const ExecutionDetailsModal = ({urn, visible, onClose}: Props) => {
     const [showExpandedLogs, setShowExpandedLogs] = useState(false);
-    const { data, loading, error, refetch } = useGetIngestionExecutionRequestQuery({ variables: { urn } });
+    const {data, loading, error, refetch} = useGetIngestionExecutionRequestQuery({variables: {urn}});
     const output = data?.executionRequest?.result?.report || 'No output found.';
 
     const downloadLogs = () => {
@@ -112,8 +112,8 @@ export const ExecutionDetailsModal = ({ urn, visible, onClose }: Props) => {
     const ResultIcon = result && getExecutionRequestStatusIcon(result);
     const resultColor = result && getExecutionRequestStatusDisplayColor(result);
     const resultText = result && (
-        <Typography.Text style={{ color: resultColor, fontSize: 14 }}>
-            {ResultIcon && <ResultIcon style={{ marginRight: 4 }} />}
+        <Typography.Text style={{color: resultColor, fontSize: 14}}>
+            {ResultIcon && <ResultIcon style={{marginRight: 4}}/>}
             {getExecutionRequestStatusDisplayText(result)}
         </Typography.Text>
     );
@@ -130,41 +130,39 @@ export const ExecutionDetailsModal = ({ urn, visible, onClose }: Props) => {
             bodyStyle={modalBodyStyle}
             title={
                 <HeaderSection>
-                    <StyledTitle level={4}>Ingestion Run Details</StyledTitle>
+                    <StyledTitle level={4}>采集运行细节</StyledTitle>
                 </HeaderSection>
             }
             visible={visible}
             onCancel={onClose}
         >
-            {!data && loading && <Message type="loading" content="Loading execution details..." />}
-            {error && message.error('Failed to load execution details :(')}
+            {!data && loading && <Message type="loading" content="加载执行细节..."/>}
+            {error && message.error('加载执行细节失败 :(')}
             <Section>
                 <StatusSection>
-                    <Typography.Title level={5}>Status</Typography.Title>
+                    <Typography.Title level={5}>状态</Typography.Title>
                     <ResultText>{resultText}</ResultText>
                     <SubHeaderParagraph>{resultSummaryText}</SubHeaderParagraph>
                 </StatusSection>
                 {result === SUCCESS && (
                     <IngestedAssetsSection>
-                        {data?.executionRequest?.id && <IngestedAssets id={data?.executionRequest?.id} />}
+                        {data?.executionRequest?.id && <IngestedAssets id={data?.executionRequest?.id}/>}
                     </IngestedAssetsSection>
                 )}
                 <LogsSection>
-                    <SectionHeader level={5}>Logs</SectionHeader>
+                    <SectionHeader level={5}>日志</SectionHeader>
                     <SectionSubHeader>
-                        <SubHeaderParagraph type="secondary">
-                            View logs that were collected during the ingestion run.
-                        </SubHeaderParagraph>
+                        <SubHeaderParagraph type="secondary">查看采集过程中收集的日志。</SubHeaderParagraph>
                         <Button type="text" onClick={downloadLogs}>
-                            <DownloadOutlined />
-                            Download
+                            <DownloadOutlined/>
+                            下载
                         </Button>
                     </SectionSubHeader>
                     <Typography.Paragraph ellipsis>
                         <pre>{`${logs}${!showExpandedLogs && isOutputExpandable ? '...' : ''}`}</pre>
                         {isOutputExpandable && (
                             <ShowMoreButton type="link" onClick={() => setShowExpandedLogs(!showExpandedLogs)}>
-                                {showExpandedLogs ? 'Hide' : 'Show More'}
+                                {showExpandedLogs ? '隐藏' : '展示更多'}
                             </ShowMoreButton>
                         )}
                     </Typography.Paragraph>

@@ -6,12 +6,12 @@ import {
     LoadingOutlined,
     WarningOutlined,
 } from '@ant-design/icons';
-import { ANTD_GRAY, REDESIGN_COLORS } from '../../entity/shared/constants';
-import { EntityType, FacetMetadata } from '../../../types.generated';
-import { capitalizeFirstLetterOnly, pluralize } from '../../shared/textUtil';
+import {ANTD_GRAY, REDESIGN_COLORS} from '../../entity/shared/constants';
+import {EntityType, FacetMetadata} from '../../../types.generated';
+import {capitalizeFirstLetterOnly, pluralize} from '../../shared/textUtil';
 import EntityRegistry from '../../entity/EntityRegistry';
-import { SourceConfig } from './builder/types';
-import { ListIngestionSourcesDocument, ListIngestionSourcesQuery } from '../../../graphql/ingestion.generated';
+import {SourceConfig} from './builder/types';
+import {ListIngestionSourcesDocument, ListIngestionSourcesQuery} from '../../../graphql/ingestion.generated';
 
 export const getSourceConfigs = (ingestionSources: SourceConfig[], sourceType: string) => {
     const sourceConfigs = ingestionSources.find((source) => source.name === sourceType);
@@ -65,17 +65,31 @@ export const getExecutionRequestStatusIcon = (status: string) => {
         ClockCircleOutlined
     );
 };
+// 修改前的
+// export const getExecutionRequestStatusDisplayText = (status: string) => {
+//     return (
+//         (status === RUNNING && 'run') ||
+//         (status === SUCCESS && 'Succeeded') ||
+//         (status === FAILURE && 'Failed') ||
+//         (status === CANCELLED && 'Cancelled') ||
+//         (status === UP_FOR_RETRY && 'Up for Retry') ||
+//         (status === ROLLED_BACK && 'Rolled Back') ||
+//         (status === ROLLING_BACK && 'Rolling Back') ||
+//         (status === ROLLBACK_FAILED && 'Rollback Failed') ||
+//         status
+//     );
+// };
 
 export const getExecutionRequestStatusDisplayText = (status: string) => {
     return (
-        (status === RUNNING && 'Running') ||
-        (status === SUCCESS && 'Succeeded') ||
-        (status === FAILURE && 'Failed') ||
-        (status === CANCELLED && 'Cancelled') ||
-        (status === UP_FOR_RETRY && 'Up for Retry') ||
-        (status === ROLLED_BACK && 'Rolled Back') ||
-        (status === ROLLING_BACK && 'Rolling Back') ||
-        (status === ROLLBACK_FAILED && 'Rollback Failed') ||
+        (status === RUNNING && '运行') ||
+        (status === SUCCESS && '成功') ||
+        (status === FAILURE && '失败') ||
+        (status === CANCELLED && '取消') ||
+        (status === UP_FOR_RETRY && '准备重试') ||
+        (status === ROLLED_BACK && '回退') ||
+        (status === ROLLING_BACK && '回滚') ||
+        (status === ROLLBACK_FAILED && '回滚失败') ||
         status
     );
 };
@@ -83,23 +97,44 @@ export const getExecutionRequestStatusDisplayText = (status: string) => {
 export const getExecutionRequestSummaryText = (status: string) => {
     switch (status) {
         case RUNNING:
-            return 'Ingestion is running';
+            return '元数据同步中';
         case SUCCESS:
-            return 'Ingestion successfully completed';
+            return '元数据同步成功';
         case FAILURE:
-            return 'Ingestion completed with errors';
+            return '同步完成有错误';
         case CANCELLED:
-            return 'Ingestion was cancelled';
+            return '取消同步';
         case ROLLED_BACK:
-            return 'Ingestion was rolled back';
+            return '回滚同步';
         case ROLLING_BACK:
-            return 'Ingestion is in the process of rolling back';
+            return '同步处于回滚中';
         case ROLLBACK_FAILED:
-            return 'Ingestion rollback failed';
+            return '同步回滚失败';
         default:
-            return 'Ingestion status not recognized';
+            return '无法识别同步状态';
     }
 };
+
+// export const getExecutionRequestSummaryText = (status: string) => {
+//     switch (status) {
+//         case RUNNING:
+//             return 'Ingestion is running';
+//         case SUCCESS:
+//             return 'Ingestion successfully completed';
+//         case FAILURE:
+//             return 'Ingestion completed with errors';
+//         case CANCELLED:
+//             return 'Ingestion was cancelled';
+//         case ROLLED_BACK:
+//             return 'Ingestion was rolled back';
+//         case ROLLING_BACK:
+//             return 'Ingestion is in the process of rolling back';
+//         case ROLLBACK_FAILED:
+//             return 'Ingestion rollback failed';
+//         default:
+//             return 'Ingestion status not recognized';
+//     }
+// };
 
 export const getExecutionRequestStatusDisplayColor = (status: string) => {
     return (

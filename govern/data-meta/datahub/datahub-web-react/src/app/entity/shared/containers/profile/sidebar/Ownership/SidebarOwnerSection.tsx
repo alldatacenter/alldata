@@ -1,20 +1,20 @@
-import { Typography, Button } from 'antd';
-import React, { useState } from 'react';
-import { PlusOutlined } from '@ant-design/icons';
-import { ExpandedOwner } from '../../../../components/styled/ExpandedOwner/ExpandedOwner';
-import { EMPTY_MESSAGES } from '../../../../constants';
-import { useEntityData, useMutationUrn, useRefetch } from '../../../../EntityContext';
-import { SidebarHeader } from '../SidebarHeader';
-import { EditOwnersModal } from './EditOwnersModal';
-import { ENTITY_PROFILE_OWNERS_ID } from '../../../../../../onboarding/config/EntityProfileOnboardingConfig';
+import {Typography, Button} from 'antd';
+import React, {useState} from 'react';
+import {PlusOutlined} from '@ant-design/icons';
+import {ExpandedOwner} from '../../../../components/styled/ExpandedOwner/ExpandedOwner';
+import {EMPTY_MESSAGES} from '../../../../constants';
+import {useEntityData, useMutationUrn, useRefetch} from '../../../../EntityContext';
+import {SidebarHeader} from '../SidebarHeader';
+import {EditOwnersModal} from './EditOwnersModal';
+import {ENTITY_PROFILE_OWNERS_ID} from '../../../../../../onboarding/config/EntityProfileOnboardingConfig';
 
 interface Props {
     properties?: any;
     readOnly?: boolean;
 }
 
-export const SidebarOwnerSection = ({ properties, readOnly }: Props) => {
-    const { entityType, entityData } = useEntityData();
+export const SidebarOwnerSection = ({properties, readOnly}: Props) => {
+    const {entityType, entityData} = useEntityData();
     const mutationUrn = useMutationUrn();
 
     const refetch = useRefetch();
@@ -23,7 +23,7 @@ export const SidebarOwnerSection = ({ properties, readOnly }: Props) => {
 
     return (
         <div id={ENTITY_PROFILE_OWNERS_ID}>
-            <SidebarHeader title="Owners" />
+            <SidebarHeader title="负责人"/>
             <div>
                 {entityData?.ownership?.owners?.map((owner) => (
                     <ExpandedOwner
@@ -41,7 +41,7 @@ export const SidebarOwnerSection = ({ properties, readOnly }: Props) => {
                 )}
                 {!readOnly && (
                     <Button type={ownersEmpty ? 'default' : 'text'} onClick={() => setShowAddModal(true)}>
-                        <PlusOutlined /> Add Owners
+                        <PlusOutlined/> 添加负责人
                     </Button>
                 )}
             </div>

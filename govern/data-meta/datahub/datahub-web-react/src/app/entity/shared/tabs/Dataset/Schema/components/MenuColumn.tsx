@@ -1,12 +1,12 @@
 import React from 'react';
-import { VscGraphLeft } from 'react-icons/vsc';
-import { CopyOutlined } from '@ant-design/icons';
+import {VscGraphLeft} from 'react-icons/vsc';
+import {CopyOutlined} from '@ant-design/icons';
 import styled from 'styled-components/macro';
-import { Dropdown, Menu } from 'antd';
-import { MenuIcon } from '../../../../EntityDropdown/EntityDropdown';
-import { useEntityData, useRouteToTab } from '../../../../EntityContext';
-import { SchemaField } from '../../../../../../../types.generated';
-import { generateSchemaFieldUrn } from '../../../Lineage/utils';
+import {Dropdown, Menu} from 'antd';
+import {MenuIcon} from '../../../../EntityDropdown/EntityDropdown';
+import {useEntityData, useRouteToTab} from '../../../../EntityContext';
+import {SchemaField} from '../../../../../../../types.generated';
+import {generateSchemaFieldUrn} from '../../../Lineage/utils';
 
 export const ImpactAnalysisIcon = styled(VscGraphLeft)`
     transform: scaleX(-1);
@@ -30,9 +30,9 @@ interface Props {
     field: SchemaField;
 }
 
-export default function MenuColumn({ field }: Props) {
+export default function MenuColumn({field}: Props) {
     const routeToTab = useRouteToTab();
-    const { urn } = useEntityData();
+    const {urn} = useEntityData();
     const selectedColumnUrn = generateSchemaFieldUrn(field.fieldPath, urn);
 
     return (
@@ -41,9 +41,9 @@ export default function MenuColumn({ field }: Props) {
                 <Menu>
                     <Menu.Item key="0">
                         <MenuItem
-                            onClick={() => routeToTab({ tabName: 'Lineage', tabParams: { column: field.fieldPath } })}
+                            onClick={() => routeToTab({tabName: '血缘', tabParams: {column: field.fieldPath}})}
                         >
-                            <ImpactAnalysisIcon /> &nbsp; See Column Lineage
+                            <ImpactAnalysisIcon/> &nbsp; See Column Lineage
                         </MenuItem>
                     </Menu.Item>
                     {navigator.clipboard && (
@@ -53,7 +53,7 @@ export default function MenuColumn({ field }: Props) {
                                     navigator.clipboard.writeText(field.fieldPath);
                                 }}
                             >
-                                <CopyOutlinedIcon /> &nbsp; Copy Column Field Path
+                                <CopyOutlinedIcon/> &nbsp; Copy Column Field Path
                             </MenuItem>
                         </Menu.Item>
                     )}
@@ -64,7 +64,7 @@ export default function MenuColumn({ field }: Props) {
                                     navigator.clipboard.writeText(selectedColumnUrn || '');
                                 }}
                             >
-                                <CopyOutlinedIcon /> &nbsp; Copy Column Urn
+                                <CopyOutlinedIcon/> &nbsp; Copy Column Urn
                             </MenuItem>
                         </Menu.Item>
                     )}
@@ -72,7 +72,7 @@ export default function MenuColumn({ field }: Props) {
             }
             trigger={['click']}
         >
-            <MenuIcon fontSize={16} />
+            <MenuIcon fontSize={16}/>
         </Dropdown>
     );
 }

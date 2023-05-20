@@ -28,6 +28,7 @@ module.exports = {
         'import/extensions': 'off',
         'react/jsx-props-no-spreading': 'off',
         'no-plusplus': 'off',
+        'no-nested-ternary': 'off',
         'no-prototype-builtins': 'off',
         'react/require-default-props': 'off',
         'no-underscore-dangle': 'off',

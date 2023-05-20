@@ -1,16 +1,16 @@
 import React from 'react';
 import styled from 'styled-components/macro';
-import { useHistory, useLocation } from 'react-router-dom';
-import { Badge } from 'antd';
-import { InfoCircleOutlined, PartitionOutlined } from '@ant-design/icons';
-import { grey, blue } from '@ant-design/colors';
-import { EntityType } from '../../../../../../types.generated';
-import { navigateToLineageUrl } from '../../../../../lineage/utils/navigateToLineageUrl';
-import { ANTD_GRAY, ENTITY_TYPES_WITH_MANUAL_LINEAGE } from '../../../constants';
+import {useHistory, useLocation} from 'react-router-dom';
+import {Badge} from 'antd';
+import {InfoCircleOutlined, PartitionOutlined} from '@ant-design/icons';
+import {grey, blue} from '@ant-design/colors';
+import {EntityType} from '../../../../../../types.generated';
+import {navigateToLineageUrl} from '../../../../../lineage/utils/navigateToLineageUrl';
+import {ANTD_GRAY, ENTITY_TYPES_WITH_MANUAL_LINEAGE} from '../../../constants';
 import useIsLineageMode from '../../../../../lineage/utils/useIsLineageMode';
-import { useGetLineageTimeParams } from '../../../../../lineage/utils/useGetLineageTimeParams';
-import { useIsSeparateSiblingsMode } from '../../../siblingUtils';
-import { useGetLineageCountsQuery } from '../../../../../../graphql/lineage.generated';
+import {useGetLineageTimeParams} from '../../../../../lineage/utils/useGetLineageTimeParams';
+import {useIsSeparateSiblingsMode} from '../../../siblingUtils';
+import {useGetLineageCountsQuery} from '../../../../../../graphql/lineage.generated';
 
 const LineageIconGroup = styled.div`
     width: 180px;
@@ -34,11 +34,11 @@ const DetailIcon = styled(InfoCircleOutlined)`
 const IconGroup = styled.div<{ isSelected: boolean; disabled?: boolean }>`
     font-size: 14px;
     color: ${(props) => {
-        if (props.disabled) {
-            return grey[2];
-        }
-        return !props.isSelected ? 'black' : props.theme.styles['primary-color'] || blue[4];
-    }};
+    if (props.disabled) {
+        return grey[2];
+    }
+    return !props.isSelected ? 'black' : props.theme.styles['primary-color'] || blue[4];
+}};
     &:hover {
         color: ${(props) => (props.disabled ? grey[2] : props.theme.styles['primary-color'] || blue[4])};
         cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
@@ -74,15 +74,15 @@ type Props = {
 /**
  * Responsible for rendering a clickable browse path view.
  */
-export const LineageSelector = ({ urn, type }: Props): JSX.Element => {
+export const LineageSelector = ({urn, type}: Props): JSX.Element => {
     const history = useHistory();
     const location = useLocation();
     const isLineageMode = useIsLineageMode();
     const isHideSiblingsMode = useIsSeparateSiblingsMode();
-    const { startTimeMillis, endTimeMillis } = useGetLineageTimeParams();
+    const {startTimeMillis, endTimeMillis} = useGetLineageTimeParams();
 
     // Fetch the lineage counts for the entity.
-    const { data: lineageData, loading: lineageLoading } = useGetLineageCountsQuery({
+    const {data: lineageData, loading: lineageLoading} = useGetLineageCountsQuery({
         variables: {
             urn,
             separateSiblings: isHideSiblingsMode,
@@ -123,8 +123,8 @@ export const LineageSelector = ({ urn, type }: Props): JSX.Element => {
                         }
                     }}
                 >
-                    <DetailIcon />
-                    Details
+                    <DetailIcon/>
+                    详细
                 </IconGroup>
                 <IconGroup
                     disabled={!canNavigateToLineage}
@@ -141,15 +141,15 @@ export const LineageSelector = ({ urn, type }: Props): JSX.Element => {
                         }
                     }}
                 >
-                    <LineageIcon />
-                    Lineage
+                    <LineageIcon/>
+                    血缘
                 </IconGroup>
             </LineageIconGroup>
             <LineageSummary>
                 <LineageBadge
-                    count={`${lineageLoading ? '-' : upstreamText} upstream, ${
+                    count={`${lineageLoading ? '-' : upstreamText} 上游 , ${
                         lineageLoading ? '-' : downstreamText
-                    } downstream`}
+                    } 下游`}
                 />
             </LineageSummary>
         </LineageNavContainer>

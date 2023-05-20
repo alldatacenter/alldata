@@ -1,11 +1,11 @@
-import { Button, Typography } from 'antd';
+import {Button, Typography} from 'antd';
 import React from 'react';
 import styled from 'styled-components';
-import { GetDatasetQuery } from '../../../../../../../../graphql/dataset.generated';
-import { InfoItem } from '../../../../../components/styled/InfoItem';
-import { ANTD_GRAY } from '../../../../../constants';
-import { useBaseEntity, useRouteToTab } from '../../../../../EntityContext';
-import { SidebarHeader } from '../../SidebarHeader';
+import {GetDatasetQuery} from '../../../../../../../../graphql/dataset.generated';
+import {InfoItem} from '../../../../../components/styled/InfoItem';
+import {ANTD_GRAY} from '../../../../../constants';
+import {useBaseEntity, useRouteToTab} from '../../../../../EntityContext';
+import {SidebarHeader} from '../../SidebarHeader';
 
 const HeaderInfoBody = styled(Typography.Text)`
     font-size: 16px;
@@ -39,16 +39,16 @@ export const SidebarViewDefinitionSection = () => {
     return (
         <div>
             <HeaderContainer>
-                <SidebarHeader title="View Definition" />
-                <StatsButton onClick={() => routeToTab({ tabName: 'View Definition' })} type="link">
-                    See View Definition &gt;
+                <SidebarHeader title="视图"/>
+                <StatsButton onClick={() => routeToTab({tabName: 'View Definition'})} type="link">
+                    详细视图 &gt;
                 </StatsButton>
             </HeaderContainer>
             <InfoRow>
-                <InfoItem title="Materialized" width={INFO_ITEM_WIDTH_PX}>
+                <InfoItem title="物化" width={INFO_ITEM_WIDTH_PX}>
                     <HeaderInfoBody>{materialized ? 'True' : 'False'}</HeaderInfoBody>
                 </InfoItem>
-                <InfoItem title="Language" width={INFO_ITEM_WIDTH_PX}>
+                <InfoItem title="语言" width={INFO_ITEM_WIDTH_PX}>
                     <HeaderInfoBody>{language.toUpperCase()}</HeaderInfoBody>
                 </InfoItem>
             </InfoRow>
