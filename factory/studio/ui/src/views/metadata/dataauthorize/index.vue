@@ -87,7 +87,7 @@ export default {
       leftTreeOptions: [],
       leftTreeDefaultProps: {
         children: 'children',
-        label: 'name'
+        label: 'roleName'
       },
       // 右侧树
       rightTreeOptions: [],
