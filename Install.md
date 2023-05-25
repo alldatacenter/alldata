@@ -164,3 +164,48 @@ npm run dev
 
 
 ##### 注意目前视频能看到的功能都已开源，若发现“数据集成”菜单没有，可只导入factory/studio/install/16gmaster/studio下 的 studio-all.sql文件，该文件等于studio.sql + studio-v0.3.7.sql + studio-v0.3.8.sql + 数据集成。其他菜单若发现没有的话，也可自行配置，具体参考 https://github.com/alldatacenter/alldata/issues/489
+
+
+## 启动SystemService项目，本地运行时eureka配置处，改成localhost。及其他项目同理。
+```
+系统管理 - system-service-parent ~ system-service ~ SystemServiceApplication
+数据集成 - service-data-dts-parent ~ service-data-dts ~ DataDtsServiceApplication
+元数据管理 - data-metadata-service-parent ~ data-metadata-service ~ DataxMetadataApplication
+元数据管理 - data-metadata-service-parent ~ data-metadata-service-console ~ DataxConsoleApplication
+数据标准 - data-standard-service-parent ~ data-standard-service ~ DataxStandardApplication
+数据质量 - data-quality-service-parent ~ data-quality-service ~ DataxQualityApplication
+数据资产 - data-masterdata-service-parent ~ data-masterdata-service ~ DataxMasterdataApplication
+数据市场 - data-market-service-parent ~ data-market-service ~ DataxMarketApplication
+数据市场 - data-market-service-parent ~ data-market-service-integration ~ DataxIntegrationApplication
+数据市场 - data-market-service-parent ~ data-market-service-mapping ~ DataxMappingApplication
+数据对比 - data-compare-service-parent ~ data-compare-service ~ DataCompareApplication
+BI报表 - data-visual-service-parent ~ data-visual-service ~ DataxVisualApplication
+流程编排 - workflow-service-parent ~ workflow-service ~ DataxWorkflowApplication
+系统监控 - system-service-parent ~ system-service ~ SystemServiceApplication
+批量/定时任务 - quartz-service-parent ~ quartz-service ~ DataxQuartzApplication
+代码生成 - codegen-service-parent ~ codegen-service ~ DataxCodeGenApplication
+邮件服务 - email-service-parent ~ email-service ~ DataxMailApplication
+文件服务 - file-service-parent ~ file-service ~ DataxFileApplication
+```
+
+## 常见问题
+```
+前置 -
+1、启动前是删除了pom.xml；
+2、本地是V16版本的nodejs;
+
+运行 -
+1、启动后端相关服务；
+2、启动前端npm run dev,报错：
+multi ./node modules/.pnpm/webpack-dev-server3.1.3 webpack04.28.4/node modules/webpack-dev-server/clienthtp://192.168.0.118:8013/sockjs-node(webpack)/hot/dev-server.js ./src/main.js
+Module not found: Error: Can't resolvebabel-loader'in D: workspaceldatacenter workspacelscit-datacenter-ui
+
+原因 -
+前端UI对应nodejs版本是v10.15.3 , 需要切换版本，为开发方便，一遍采用nvm进行管理
+1、卸载nodejs;
+2、安装nvm - https://www.jianshu.com/p/13c0b3ca7c71
+3、安装v10.15.3版本： nvm install v10.15.3
+4、根据实际切换版本：nvm use v10.15.3
+5、安装依赖：npm install
+6、启动前端：npm run dev
+```
