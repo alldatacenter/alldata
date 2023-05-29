@@ -18,6 +18,11 @@
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/204965509-fc13050b-ebe8-4bd5-8882-69e1af0a8367.png">
 <br/>
 
+## AllData数字化解决方案
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/235920344-fbf3c9d2-6239-4c73-aa9c-77a72773780e.png">
+<br/>
+
 ## 首页
 
 <br/>
@@ -364,9 +369,11 @@
 > **config** 文件夹下的配置文件, 修改 **redis**, **mysql** 和 **rabbitmq** 的配置信息
 >
 ### 3、项目根目录下执行
+> cd factory/studio/common
+> mvn install:install-file -Dfile=/alldata/factory/studio/common/aspose-words-20.3.jar -DgroupId=com.aspose -DartifactId=aspose-words -Dversion=20.3 -Dpackaging=jar
 > mvn clean install -DskipTests && mvn clean package -DskipTests
 >
-> 获取安装包build/studio-release-0.3.x.tar.gz
+> 获取安装包build/studio-release-0.4.x.tar.gz
 >
 > 上传服务器解压
 >
