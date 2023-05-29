@@ -1,6 +1,5 @@
 package cn.datax.service.data.metadata.service.impl;
 
-
 import cn.datax.commo.office.word.WordUtil;
 import cn.datax.common.base.BaseServiceImpl;
 import cn.datax.common.core.DataConstant;
