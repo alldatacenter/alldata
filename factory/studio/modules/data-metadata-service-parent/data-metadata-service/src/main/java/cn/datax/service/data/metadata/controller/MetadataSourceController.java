@@ -31,6 +31,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
+import java.io.OutputStream;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -229,7 +230,7 @@ public class MetadataSourceController extends BaseController {
     @ApiOperation(value = "数据库设计文档", notes = "根据url的id来指定生成数据库设计文档对象")
     @ApiImplicitParam(name = "id", value = "ID", required = true, dataType = "String", paramType = "path")
     @PostMapping("/word/{id}")
-    public Void wordMetadata(@PathVariable String id, HttpServletResponse response) throws Exception {
+    public void wordMetadata(@PathVariable String id, HttpServletResponse response) throws Exception {
         // 清空response
         response.reset();
         // 设置response的Header
