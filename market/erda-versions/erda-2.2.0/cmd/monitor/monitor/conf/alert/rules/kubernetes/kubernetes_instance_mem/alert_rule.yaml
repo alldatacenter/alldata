@@ -1,8 +1,0 @@
-id: kubernetes_instance_mem
-name: kubernetes组件实例内存状态
-alert_scope: org
-attributes:
-  alert_group: '{{cluster_name}}-{{container_id}}'
-  level: Critical
-  recover: "true"
-  tickets_metric_key: '{{container_id}}'

@@ -1,2 +1,0 @@
-SET output_format_write_statistics = 0;
-SELECT type_id FROM mct.business_app_user_5a_distribute_daily WHERE ( p_date = '2021-07-17' AND  type = 'outer_series') ORDER BY connect_user_number DESC LIMIT 300 SETTINGS enable_optimize_predicate_expression=0 FORMAT JSONCompact

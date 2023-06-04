@@ -1,2 +1,0 @@
-SET output_format_write_statistics = 0;
-SELECT (`省/自治区`) AS _1585536982714, (`邮寄方式`) AS _1586869320959, (sum(`利润`)) AS _sum_1586869287722, (`省/自治区`) AS _1585536982714 FROM `aeolus_data_db_aeolus_delta_202003`.`aeolus_data_table_4500_dev` WHERE (((((p_date >= '2020-03-29') AND (p_date <= '2020-03-29')) AND ((`邮寄方式`) IN (('当日'), ('东华(一级)'), ('标准级'), ('二级')))))) GROUP BY `省/自治区`, `邮寄方式` HAVING ((((sum(`利润`) < 0.0) OR (sum(`利润`) > 1.0)))) FORMAT JSONCompact

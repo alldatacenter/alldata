@@ -1,9 +1,0 @@
-id: app_transaction_http_path_rt
-name: 服务接口HTTP慢事务异常
-alert_scope: micro_service
-attributes:
-  alert_group: '{{target_terminus_key}}-{{target_runtime_id}}-{{target_service_name}}-{{http_path}}-{{http_method}}'
-  display_url_id: micro_si_web
-  level: Notice
-  recover: "true"
-  tickets_metric_key: '{{target_application_id}}'

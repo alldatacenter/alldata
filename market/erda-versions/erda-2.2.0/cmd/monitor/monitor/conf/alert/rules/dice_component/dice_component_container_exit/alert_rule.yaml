@@ -1,9 +1,0 @@
-id: dice_component_container_exit
-name: 平台组件异常退出
-alert_scope: org
-attributes:
-  alert_group: '{{cluster_name}}-{{container_id}}'
-  display_url_id: org_pod
-  level: Fatal
-  recover: "true"
-  tickets_metric_key: '{{container_id}}'

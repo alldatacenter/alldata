@@ -1,8 +1,0 @@
-id: register_center_cpu
-name: 注册中心实例CPU使用率异常
-alert_scope: org
-attributes:
-  alert_group: '{{cluster_name}}-{{container_id}}'
-  level: Warning
-  recover: "true"
-  tickets_metric_key: '{{container_id}}'

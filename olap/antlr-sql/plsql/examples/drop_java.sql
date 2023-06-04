@@ -1,1 +1,0 @@
-DROP JAVA CLASS "Agent";

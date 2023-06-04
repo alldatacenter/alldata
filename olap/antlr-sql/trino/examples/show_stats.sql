@@ -1,1 +1,0 @@
-SHOW STATS FOR a;

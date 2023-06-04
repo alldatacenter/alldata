@@ -1,9 +1,0 @@
-id: app_resource_container_oom
-name: 应用实例OOM
-alert_scope: micro_service
-attributes:
-  alert_group: '{{terminus_key}}-{{container_id}}'
-  display_url_id: workbench_runtime
-  level: Fatal
-  recover: "true"
-  tickets_metric_key: '{{container_id}}'

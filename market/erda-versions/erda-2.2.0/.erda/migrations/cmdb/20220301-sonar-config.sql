@@ -1,1 +1,0 @@
-ALTER TABLE dice_app ADD COLUMN `sonar_config` text COMMENT 'sonar配置';

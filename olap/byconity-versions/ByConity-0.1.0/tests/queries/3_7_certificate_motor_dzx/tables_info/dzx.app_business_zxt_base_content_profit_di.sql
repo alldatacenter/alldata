@@ -1,4 +1,0 @@
-CREATE DATABASE IF NOT EXISTS dzx;
-DROP TABLE IF EXISTS dzx.app_business_zxt_base_content_profit_di;
-CREATE TABLE dzx.app_business_zxt_base_content_profit_di (`is_business` Int32 ,`new_a2_cnt` Int64 ,`did_act_cnt` Int64 ,`industry` String ,`series_id` Int64 ,`new_a3_cnt` Int64 ,`did_validread_cnt` Int64 ,`all_did_cnt` Int64 ,`account_id` Int64 ,`p_date` String ,`project_id` Int64 ,`did_read_cnt` Int64 ,`account_name` String ,`series_name` String ,`plan_id` Int64 ) ENGINE = CnchMergeTree() PARTITION BY (p_date,is_business) ORDER BY (plan_id,series_id,intHash64(series_id)) SAMPLE BY intHash64(series_id);
-INSERT INTO dzx.app_business_zxt_base_content_profit_di FORMAT CSV INFILE '/data01/liulanyi/cnch-sql-cases/tools/certificate_builder/certificate_motor_dzx/tables_info/dzx.app_business_zxt_base_content_profit_di.csv' SETTINGS input_format_skip_unknown_fields = 1, skip_nullinput_notnull_col = 1;

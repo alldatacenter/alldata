@@ -1,8 +1,0 @@
-id: app_browser_page_req
-name: 页面访问性能
-alert_scope: micro_service
-attributes:
-  alert_group: '{{tk}}-{{doc_path}}-{{host}}'
-  display_url_id: micro_bi_page
-  level: Notice
-  recover: "false"

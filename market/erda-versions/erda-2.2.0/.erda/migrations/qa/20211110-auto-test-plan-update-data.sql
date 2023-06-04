@@ -1,1 +1,0 @@
-UPDATE `dice_autotest_plan` SET execute_api_num = 0 WHERE total_api_num = 0;

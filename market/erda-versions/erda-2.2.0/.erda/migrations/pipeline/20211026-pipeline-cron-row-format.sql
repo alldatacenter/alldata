@@ -1,1 +1,0 @@
-ALTER TABLE `pipeline_crons` ROW_FORMAT=DYNAMIC ;

@@ -1,8 +1,0 @@
-id: addon_mysql_slave_status
-name: MySQL实例主从同步异常告警
-alert_scope: org
-attributes:
-  alert_group: '{{cluster_name}}-{{addon_id}}'
-  level: Warning
-  recover: "true"
-  tickets_metric_key: '{{addon_id}}'

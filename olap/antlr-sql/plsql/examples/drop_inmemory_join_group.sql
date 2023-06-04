@@ -1,1 +1,0 @@
-DROP INMEMORY JOIN GROUP prod_id1;

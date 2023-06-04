@@ -1,2 +1,0 @@
-thisisaprocedurecall
-select * from xyz
