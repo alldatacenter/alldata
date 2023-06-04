@@ -11,21 +11,18 @@ AllData数字化方案
 
    README
    quickstart/index
-   factory/index
-   cluster/index
-   ai/index
-   market/index
-   clawlab/index
-   dts/index
-   govern/index
+   donate/index
+   studio/index
    lake/index
    olap/index
+   ai/index
+   dts/index
+   govern/index
    fs/index
    shuffle/index
-   koordinator/index
+   k8s/index
    kg/index
    iot/index
    trade/index
    wiki/index
-   donate/index
 

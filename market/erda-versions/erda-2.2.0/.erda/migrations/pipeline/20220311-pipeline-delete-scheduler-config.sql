@@ -1,1 +1,0 @@
-DELETE FROM pipeline_configs WHERE id=1;

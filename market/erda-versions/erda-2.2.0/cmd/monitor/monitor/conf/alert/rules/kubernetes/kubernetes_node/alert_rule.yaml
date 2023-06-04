@@ -1,8 +1,0 @@
-id: kubernetes_node
-name: kubernetes节点异常
-alert_scope: org
-attributes:
-  alert_group: '{{cluster_name}}-{{node_name}}'
-  level: Fatal
-  recover: "true"
-  tickets_metric_key: '{{node_name}}'

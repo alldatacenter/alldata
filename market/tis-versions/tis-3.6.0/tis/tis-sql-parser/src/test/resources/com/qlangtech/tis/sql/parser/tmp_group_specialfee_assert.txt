@@ -1,9 +1,0 @@
-SELECT
-  sf.entity_id
-, sf.totalpay_id
-, concat_ws(';', collect_list(concat_ws('_', CAST(sf.kind AS string), CAST(sf.fee AS string)))) special_fee_summary
-, sf.pt,sf.pmod
-FROM
-  bbb.specialfee sf
-WHERE (sf.is_valid = 1) AND sf.pt='20190230111159'
-GROUP BY sf.entity_id, sf.totalpay_id,sf.pt,sf.pmod

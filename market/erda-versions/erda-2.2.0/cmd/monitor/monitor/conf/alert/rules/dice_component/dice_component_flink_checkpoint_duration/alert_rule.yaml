@@ -1,8 +1,0 @@
-id: dice_component_flink_checkpoint_duration
-name: 平台组件Flink任务checkpoint延迟异常告警
-alert_scope: org
-attributes:
-  alert_group: '{{cluster_name}}-{{container_id}}-{{job_id}}'
-  level: Warning
-  recover: "true"
-  tickets_metric_key: '{{container_id}}-{{job_id}}'

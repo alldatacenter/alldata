@@ -1,7 +1,0 @@
-id: slave_dly_alert
-name: MySQL SLAVE DELAY ALERT
-alert_scope: org
-attributes:
-  alert_group: '{{cluster_name}}-{{addon_id}}'
-  level: Warning
-  recover: "true"

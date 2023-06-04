@@ -1,1 +1,0 @@
-ALTER TABLE `dice_audit` ADD INDEX `idx_deleted` (`deleted`);

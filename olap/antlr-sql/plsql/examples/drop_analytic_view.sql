@@ -1,2 +1,0 @@
-DROP ANALYTIC VIEW sales_av;
-DROP ANALYTIC VIEW sch.sales_av;

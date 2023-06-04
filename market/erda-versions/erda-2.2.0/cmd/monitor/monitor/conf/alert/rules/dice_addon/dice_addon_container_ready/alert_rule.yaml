@@ -1,8 +1,0 @@
-id: dice_addon_container_ready
-name: 平台中间件实例Ready状态异常
-alert_scope: org
-attributes:
-  alert_group: '{{cluster_name}}-{{daemonset_name}}-{{statefulset_name}}-{{deployment_name}}'
-  level: Fatal
-  recover: "true"
-  tickets_metric_key: '{{daemonset_name}}-{{statefulset_name}}-{{deployment_name}}'

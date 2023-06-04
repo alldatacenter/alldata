@@ -360,9 +360,8 @@
 > 数据库版本为 **mysql5.7** 及以上版本
 ### 1、`studio`数据库初始化
 >
-> 1.1 source install/16gmaster/studio/studio.sql
-> 1.2 source install/16gmaster/studio/studio-v0.3.7.sql
-> 1.3 source install/16gmaster/studio/studio-v0.3.8.sql
+> 1.1 source install/sql/studio.sql
+> 1.2 source install/sql/studio-v0.x.x.sql
 
 ### 2、修改 **config** 配置中心
 
@@ -370,7 +369,7 @@
 >
 ### 3、项目根目录下执行
 > cd factory/studio/common
-> mvn install:install-file -Dfile=/alldata/factory/studio/common/aspose-words-20.3.jar -DgroupId=com.aspose -DartifactId=aspose-words -Dversion=20.3 -Dpackaging=jar
+> mvn install:install-file -Dfile=/alldata/studio/common/aspose-words-20.3.jar -DgroupId=com.aspose -DartifactId=aspose-words -Dversion=20.3 -Dpackaging=jar
 > mvn clean install -DskipTests && mvn clean package -DskipTests
 >
 > 获取安装包build/studio-release-0.4.x.tar.gz
@@ -1701,23 +1700,19 @@ void testCreateDatabase() {
 | Component                                                                       | Description                                                    | Important Composition       |
 |---------------------------------------------------------------------------------|----------------------------------------------------------------|-----------------------------|
 | [**ai**](https://github.com/alldatacenter/alldata/tree/master/ai)               | AI STUDIO FOR ALL DATA PLATFORM artificial intelligence engine | 人工智能引擎                      |
-| [**assembly**](https://github.com/alldatacenter/alldata/tree/master/assembly)   | WHOLE PACKAGE BUILD FOR ALL DATA PLATFORM assembly engine      | 整包构建引擎                      |
-| [**cluster**](https://github.com/alldatacenter/alldata/tree/master/cluster)     | DATA SRE FOR ALL DATA PLATFORM OLAP query engine               | 智能大数据运维引擎                   |
-| [**crawlab**](https://github.com/alldatacenter/alldata/tree/master/crawlab)     | CRAWLER PLATFORM FOR ALL DATA PLATFORM commerce engine         | 爬虫引擎系统                      |
-| [**document**](https://github.com/alldatacenter/alldata/tree/master/document)   | DOCUMENT FOR ALL DATA PLATFORM OLAP query engine               | 官方文档                        |
 | [**dts**](https://github.com/alldatacenter/alldata/tree/master/dts)             | DTS FOR ALL DATA PLATFORM DATA DTS engine                      | 数据集成引擎                      |
-| [**factory**](https://github.com/alldatacenter/alldata/tree/master/factory)         | FACTORY FOR ALL DATA PLATFORM DATA DTS engine                  | 数据工厂引擎                      |
 | [**fs**](https://github.com/alldatacenter/alldata/tree/master/fs)               | DATA STORAGE FOR ALL DATA PLATFORM DATA STORAGE engine         | 大数据存储引擎                     |
 | [**govern**](https://github.com/alldatacenter/alldata/tree/master/govern)       | DATA GOVERN FOR ALL DATA PLATFORM Data Governance Engine       | 数据治理引擎                      |
 | [**iot**](https://github.com/alldatacenter/alldata/tree/master/iot)             | IOT FOR ALL DATA PLATFORM Data Governance Engine               | 云原生IOT开发框架                  |
 | [**k8s**](https://github.com/alldatacenter/alldata/tree/master/k8s)               | Koordinator FOR ALL DATA PLATFORM Data Task Engine         | 知识图谱引擎                      |
 | [**kg**](https://github.com/alldatacenter/alldata/tree/master/kg)               | KNOWLEDGE GRAPH FOR ALL DATA PLATFORM Data Task Engine         | 知识图谱引擎                      |
 | [**lake**](https://github.com/alldatacenter/alldata/tree/master/lake) | LAKEHOUSE FOR ALL DATA PLATFORM ONE LAKE engine                 | 数据湖引擎                       |
-| [**market**](https://github.com/alldatacenter/alldata/tree/master/market)       | MARKET FOR ALL DATA PLATFORM MARKET engine                     | 数据实验场引擎                     |
 | [**olap**](https://github.com/alldatacenter/alldata/tree/master/olap)           | OLAP FOR ALL DATA PLATFORM OLAP query engine                   | 混合OLAP查询引擎                  |
+| [**shuffle**](https://github.com/alldatacenter/alldata/tree/master/shuffle)         | SHUFFLE FOR ALL DATA PLATFORM DATA SHUFFLE engine                  | Shuffule引擎                      |
+| [**studio**](https://github.com/alldatacenter/alldata/tree/master/studio)         | STUDIO FOR ALL DATA PLATFORM DATA STUDIO engine                  | 数据工厂引擎                      |
 | [**trade**](https://github.com/alldatacenter/alldata/tree/master/trade)         | TRADE FOR ALL DATA PLATFORM TRADE Engine                       | TRADE引擎                     |
 | [**wiki**](https://github.com/alldatacenter/alldata/tree/master/wiki)           | WIKI FOR ALL DATA PLATFORM WIKI Engine                         | AllData知识库                  |
-| [**alldata**](https://github.com/alldatacenter/alldata)                         | AllData社区项目通过二开大数据生态组件, 以及大数据采集, 大数据存储, 大数据计算, 大数据开发来建设一站式细分领域数字化解决方案    | Github一站式细分领域AllData数字化解决方案社区项目 |
+| [**alldata**](https://github.com/alldatacenter/all-in-data)                         | AllData社区项目通过二开大数据生态组件, 以及大数据采集, 大数据存储, 大数据计算, 大数据开发来建设一站式细分领域数字化解决方案    | Github一站式细分领域AllData数字化解决方案社区项目 |
 
 
 ## AllData社区商业计划图

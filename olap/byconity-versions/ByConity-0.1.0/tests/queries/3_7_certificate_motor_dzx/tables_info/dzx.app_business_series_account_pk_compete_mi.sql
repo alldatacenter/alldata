@@ -1,4 +1,0 @@
-CREATE DATABASE IF NOT EXISTS dzx;
-DROP TABLE IF EXISTS dzx.app_business_series_account_pk_compete_mi;
-CREATE TABLE dzx.app_business_series_account_pk_compete_mi (`pk_rank` Int64 ,`type_name` String ,`industry_name` String ,`p_date` String ,`reverse_pk_rank` Int64 ,`compete_type_id` Int64 ,`type_id` Int64 ,`reverse_pk_cnt` Int64 ,`pk_cnt` Int64 ,`compete_type_name` String ,`type` String ,`is_bp` Int32 ) ENGINE = CnchMergeTree() PARTITION BY p_date ORDER BY (type_id,intHash64(type_id)) SAMPLE BY intHash64(type_id);
-INSERT INTO dzx.app_business_series_account_pk_compete_mi FORMAT CSV INFILE '/data01/liulanyi/cnch-sql-cases/tools/certificate_builder/certificate_motor_dzx/tables_info/dzx.app_business_series_account_pk_compete_mi.csv' SETTINGS input_format_skip_unknown_fields = 1, skip_nullinput_notnull_col = 1;

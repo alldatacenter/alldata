@@ -1,4 +1,0 @@
-CREATE DATABASE IF NOT EXISTS mct;
-DROP TABLE IF EXISTS mct.business_app_user_5a_trend_daily;
-CREATE TABLE mct.business_app_user_5a_trend_daily (`industry_name` String ,`class_three_name` String ,`type_name` String ,`p_date` Date ,`class_two_name` String ,`type_id` Int64 ,`class_two_name2` String ,`class_one_name` String ,`mold_name` String ,`type` String ,`permeability_rate` Float64 ,`user_number` Int64 ) ENGINE = CnchMergeTree() PARTITION BY p_date ORDER BY (mold_name,type_id,class_one_name,class_two_name,class_three_name,type,intHash64(type_id)) SAMPLE BY intHash64(type_id);
-INSERT INTO mct.business_app_user_5a_trend_daily FORMAT CSV INFILE '/data01/liulanyi/cnch-sql-cases/tools/certificate_builder/certificate_motor_dzx/tables_info/mct.business_app_user_5a_trend_daily.csv' SETTINGS input_format_skip_unknown_fields = 1, skip_nullinput_notnull_col = 1;

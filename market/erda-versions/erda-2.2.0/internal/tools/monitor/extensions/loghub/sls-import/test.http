@@ -1,9 +1,0 @@
-@url = http://addon-elasticsearch.default.svc.cluster.local:9200
-
-### 
-PUT {{url}}/sls-waf_project_164616531711418_cn_hangzhou-1592870400000
-Content-Type: application/json
-
-### 
-DELETE {{url}}/sls-*
-Content-Type: application/json

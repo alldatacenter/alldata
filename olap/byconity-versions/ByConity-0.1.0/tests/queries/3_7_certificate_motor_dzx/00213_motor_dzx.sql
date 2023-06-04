@@ -1,2 +1,0 @@
-SET output_format_write_statistics = 0;
-SELECT p_date AS date FROM dealer.business_dim_dealer_series_di WHERE ( date <= '2021-07-19' AND  date >= '2021-07-09') ORDER BY p_date DESC LIMIT 1 SETTINGS enable_optimize_predicate_expression=1 FORMAT JSONCompact
