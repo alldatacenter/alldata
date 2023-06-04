@@ -1,9 +1,0 @@
-id: app_resource_nodejs_heap
-name: 应用NodeJS堆内存使用率
-alert_scope: micro_service
-attributes:
-  alert_group: '{{terminus_key}}-{{instance_id}}'
-  display_url_id: micro_nodejs
-  level: Warning
-  recover: "true"
-  tickets_metric_key: '{{instance_id}}'

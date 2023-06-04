@@ -1,1 +1,0 @@
-create or replace public synonym depts for departments

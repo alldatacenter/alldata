@@ -1,4 +1,0 @@
-CREATE DATABASE IF NOT EXISTS mct;
-DROP TABLE IF EXISTS mct.business_app_user_wave_crest_activity_stats_live_daily;
-CREATE TABLE mct.business_app_user_wave_crest_activity_stats_live_daily (`send_gift_cnt` Int64 ,`live_start_time` String ,`room_id` String ,`c_clue_uv` Int64 ,`p_date` Date ,`live_show_cnt` Int64 ,`c_clue_pv` Int64 ,`type` String ,`live_play_cnt` Int64 ,`title` String ,`spot_name` String ,`comment_cnt` Int64 ) ENGINE = CnchMergeTree() PARTITION BY p_date ORDER BY (room_id,cityHash64(room_id)) SAMPLE BY cityHash64(room_id);
-INSERT INTO mct.business_app_user_wave_crest_activity_stats_live_daily FORMAT CSV INFILE '/data01/liulanyi/cnch-sql-cases/tools/certificate_builder/certificate_motor_dzx/tables_info/mct.business_app_user_wave_crest_activity_stats_live_daily.csv' SETTINGS input_format_skip_unknown_fields = 1, skip_nullinput_notnull_col = 1;

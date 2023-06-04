@@ -1,8 +1,0 @@
-id: sidecar_circuit_breaker
-name: 服务熔断通知告警
-alert_scope: micro_service
-attributes:
-  alert_group: '{{terminus_key}}'
-  level: Warning
-  recover: "true"
-  tickets_metric_key: '{{terminus_key}}'

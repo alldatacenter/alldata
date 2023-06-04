@@ -1,1 +1,0 @@
-ALTER TABLE `sp_metric` ADD COLUMN `tenant_id` MEDIUMTEXT NOT NULL COMMENT '租户id' AFTER `id`;

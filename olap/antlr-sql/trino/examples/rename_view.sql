@@ -1,1 +1,0 @@
-ALTER VIEW a RENAME TO b;

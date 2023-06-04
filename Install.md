@@ -16,9 +16,7 @@
 │   │   ├── 16gdata
 │   │   ├── 16gmaster
 │   │   │   ├──studio
-│   │   │  │   ├──studio-all.sql( 等于 studio.sql + studio-v0.3.7.sql + 数据集成)
-│   │   │  │   ├──studio-v0.3.7.sql
-│   │   │  │   ├── studio.sql 
+│   │   │  │   ├──studio-0.x.x.sql
 │   ├── modules（各模块目录）
 │   │   ├── codegen-service-parent（代码生成模块，可选启动）
 │   │   ├── data-market-service-parent（数据集市模块，可选启动）
@@ -36,7 +34,6 @@
 │   │  └── workflow-service-parent（工作流模块，可选启动）
 │   ├── pom.xml
 
-若没有studio-all.sql，等下社区下一版本发版
 ```
 
 ## **前端结构**
@@ -117,13 +114,13 @@ RabbitMQ >= 3.0.x
 #后端运行
 
 1、前往GitHub项目页面(https://github.com/alldatacenter/alldata)
-推荐使用版本控制方式下载解压到工作目录或IDEA直接从VCS获取项目代码，便于同步最新社区版改动， alldata/factory/studio/为项目前后端存放路径。
+推荐使用版本控制方式下载解压到工作目录或IDEA直接从VCS获取项目代码，便于同步最新社区版改动， alldata/studio/为项目前后端存放路径。
 
 2、项目导入到IDEA后，会自动加载Maven依赖包，初次加载会比较慢（根据自身网络情况而定）
 
-3、创建数据库studio：到 `factory/studio/install/16gmaster/studio`目录下sql数据脚本，把` studio.sql`和`studio-v0.3.7.sql`和`studio-v0.3.8.sql`导入本地或线上Mysql数据库
+3、创建数据库studio：到 `factory/studio/install/sql`目录下sql数据脚本，把` studio.sql`和`studio-v0.x.x.sql`导入本地或线上Mysql数据库
 
-4、修改该文件 `alldata/factory/studio/config/src/main/resources/config/application-common-dev.yml`的rabbitmq，mysql，redis为自己的服务
+4、修改该文件 `alldata/studio/config/src/main/resources/config/application-common-dev.yml`的rabbitmq，mysql，redis为自己的服务
 
 5、打开运行基础模块（启动没有先后顺序）
 
@@ -157,13 +154,13 @@ SystemServiceApplication.java（系统模块 必须，不启动无法登录）
 
 # 前端运行
 ```
-cd alldata/factory/studio/ui
+cd alldata/studio/ui
 npm run dev
 ```
 启动成功，会自动弹出浏览器登录页
 
 
-##### 注意目前视频能看到的功能都已开源，若发现“数据集成”菜单没有，可只导入factory/studio/install/16gmaster/studio下 的 studio-all.sql文件，该文件等于studio.sql + studio-v0.3.7.sql + studio-v0.3.8.sql + 数据集成。其他菜单若发现没有的话，也可自行配置，具体参考 https://github.com/alldatacenter/alldata/issues/489
+##### 注意目前视频能看到的功能都已开源，若发现“数据集成”菜单没有，可只导入factory/studio/install/sql下的studio.sql + studio-v0.x.x + 数据集成。其他菜单若发现没有的话，也可自行配置，具体参考 https://github.com/alldatacenter/alldata/issues/489
 
 
 ## 启动SystemService项目，本地运行时eureka配置处，改成localhost。及其他项目同理。
@@ -223,9 +220,8 @@ BI报表 - data-visual-service-parent ~ data-visual-service ~ DataxVisualApplica
 > 数据库版本为 **mysql5.7** 及以上版本
 ### 1、`studio`数据库初始化
 >
-> 1.1 source install/16gmaster/studio/studio.sql
-> 1.2 source install/16gmaster/studio/studio-v0.3.7.sql
-> 1.3 source install/16gmaster/studio/studio-v0.3.8.sql
+> 1.1 source install/sql/studio.sql
+> 1.2 source install/sql/studio-v0.x.x.sql
 
 ### 2、修改 **config** 配置中心
 
@@ -233,7 +229,7 @@ BI报表 - data-visual-service-parent ~ data-visual-service ~ DataxVisualApplica
 >
 ### 3、项目根目录下执行
 > cd factory/studio/common
-> mvn install:install-file -Dfile=/alldata/factory/studio/common/aspose-words-20.3.jar -DgroupId=com.aspose -DartifactId=aspose-words -Dversion=20.3 -Dpackaging=jar
+> mvn install:install-file -Dfile=/alldata/studio/common/aspose-words-20.3.jar -DgroupId=com.aspose -DartifactId=aspose-words -Dversion=20.3 -Dpackaging=jar
 > mvn clean install -DskipTests && mvn clean package -DskipTests
 >
 > 获取安装包build/studio-release-0.4.x.tar.gz

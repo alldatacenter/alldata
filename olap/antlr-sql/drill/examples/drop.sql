@@ -1,1 +1,0 @@
-drop view wk.vw;

@@ -1,2 +1,0 @@
-ALTER TABLE `pipeline_crons` ADD COLUMN `cluster_name` varchar(64) DEFAULT NULL COMMENT '集群名称';
-ALTER TABLE `pipeline_crons` ADD INDEX `idx_cluster_source_yml_name` (`cluster_name`,`pipeline_source`,`pipeline_yml_name`);

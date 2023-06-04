@@ -1,1 +1,0 @@
-ALTER TABLE `s_instance_info` ADD INDEX `idx_cluster_phase_startedat_finishedat` (`cluster`, `phase`, `started_at`, `finished_at`);

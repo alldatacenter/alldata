@@ -1,8 +1,0 @@
-id: addon_elasticsearch_mem
-name: Elasticsearch实例内存使用率异常告警
-alert_scope: org
-attributes:
-  alert_group: '{{cluster_name}}-{{container_id}}'
-  level: Warning
-  recover: "true"
-  tickets_metric_key: '{{container_id}}'

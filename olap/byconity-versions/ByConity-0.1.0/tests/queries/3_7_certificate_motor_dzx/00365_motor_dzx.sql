@@ -1,2 +1,0 @@
-SET output_format_write_statistics = 0;
-SELECT distinct profile_label_value AS index, profile_label_name AS profile, car_label_number AS user_cnt, car_number AS industry_label_cnt FROM mct.business_app_user_profile_daily WHERE ( p_date = '2021-07-14' AND  type = 'account') SETTINGS enable_optimize_predicate_expression=0 FORMAT JSONCompact

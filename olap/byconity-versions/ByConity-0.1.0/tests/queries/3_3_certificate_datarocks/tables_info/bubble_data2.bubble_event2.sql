@@ -1,4 +1,0 @@
-CREATE DATABASE IF NOT EXISTS bubble_data2;
-DROP TABLE IF EXISTS bubble_data2.bubble_event2;
-CREATE TABLE IF NOT EXISTS bubble_data2.bubble_event2  (`random` Int64, `action_context` String, `from_node_id` Int64, `review_id` Int64, `caller` String, `action_type` String, `group_id` Int64, `timestamp_ms` Int64, `current_node_id` Int64, `platform` String, `timestamp` Int64) ENGINE = CnchMergeTree() PARTITION BY toDate(timestamp) ORDER BY (group_id, action_type, toDate(timestamp), intHash64(group_id)) SAMPLE BY intHash64(group_id) SETTINGS index_granularity = 8192;
-INSERT INTO bubble_data2.bubble_event2 FORMAT CSV INFILE '/data01/jiaxiang.yu/cnch-sql-cases/tools/certificate_builder/certificate_datarocks/tables_info/bubble_data2.bubble_event2.csv' SETTINGS input_format_skip_unknown_fields = 1, skip_nullinput_notnull_col = 1;

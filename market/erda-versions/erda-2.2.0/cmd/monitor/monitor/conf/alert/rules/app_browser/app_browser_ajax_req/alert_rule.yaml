@@ -1,8 +1,0 @@
-id: app_browser_ajax_req
-name: Ajax接口访问性能
-alert_scope: micro_service
-attributes:
-  alert_group: '{{tk}}-{{req_path}}-{{host}}'
-  display_url_id: micro_bi_ajax
-  level: Notice
-  recover: "false"

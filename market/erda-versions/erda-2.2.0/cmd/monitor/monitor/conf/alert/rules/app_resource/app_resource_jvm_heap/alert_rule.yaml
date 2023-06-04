@@ -1,9 +1,0 @@
-id: app_resource_jvm_heap
-name: 应用JVM堆内存
-alert_scope: micro_service
-attributes:
-  alert_group: '{{terminus_key}}-{{instance_id}}'
-  display_url_id: micro_jvm
-  level: Warning
-  recover: "true"
-  tickets_metric_key: '{{instance_id}}'

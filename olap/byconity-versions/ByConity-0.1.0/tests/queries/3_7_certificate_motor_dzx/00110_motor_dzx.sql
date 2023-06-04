@@ -1,2 +1,0 @@
-SET output_format_write_statistics = 0;
-SELECT project_id, project_name FROM dzx.motor_ad_market_project_dict WHERE ( p_date = '2021-07-18') SETTINGS enable_optimize_predicate_expression=0 FORMAT JSONCompact

@@ -4,6 +4,12 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.2.6.RELEASE</version>
+  </parent>
+
   <groupId>com.platform</groupId>
   <artifactId>alldata</artifactId>
   <version>0.4.x</version>
@@ -18,6 +24,9 @@
     <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
 
+  <modules>
+    <module>studio</module>
+  </modules>
   <dependencies>
     <dependency>
       <groupId>junit</groupId>

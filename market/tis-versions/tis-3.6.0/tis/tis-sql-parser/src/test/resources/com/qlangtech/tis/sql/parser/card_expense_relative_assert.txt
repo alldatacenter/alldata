@@ -1,8 +1,0 @@
-SELECT
-  a.totalpay_id
-, b.expense_status
-, a.create_time
-, a.pt,a.pmod
-FROM
-  tis.ent_expense_order a
-INNER JOIN tis.ent_expense b ON ((((a.expense_id = b.expense_id) AND (b.is_valid = 1)) AND (a.is_valid = 1)) AND a.pt='2019073027111159' AND b.pt='20190730111159')
