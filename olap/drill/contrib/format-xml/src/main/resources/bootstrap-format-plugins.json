@@ -1,0 +1,26 @@
+{
+  "storage":{
+    "dfs": {
+      "type": "file",
+      "formats": {
+        "xml": {
+          "type": "xml",
+          "extensions": [
+            "xml"
+          ]
+        }
+      }
+    },
+    "s3": {
+      "type": "file",
+      "formats": {
+        "xml": {
+          "type": "xml",
+          "extensions": [
+            "xml"
+          ]
+        }
+      }
+    }
+  }
+}

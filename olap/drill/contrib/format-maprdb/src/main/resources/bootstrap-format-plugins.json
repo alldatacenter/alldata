@@ -1,0 +1,20 @@
+{
+  "storage":{
+    "dfs": {
+      "type": "file",
+      "formats": {
+        "maprdb": {
+          "type": "maprdb"
+        }
+      }
+    },
+    "s3": {
+      "type": "file",
+      "formats": {
+        "maprdb": {
+          "type": "maprdb"
+        }
+      }
+    }
+  }
+}
