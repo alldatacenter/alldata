@@ -1,0 +1,10 @@
+{
+  "storage":{
+    "mongo" : {
+      "type":"mongo",
+      "connection":"mongodb://localhost:27017/",
+      "allowDiskUse": false,
+      "enabled": false
+    }
+  }
+}

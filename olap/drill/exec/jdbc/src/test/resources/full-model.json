@@ -1,0 +1,18 @@
+{
+  version: '1.0',
+   schemas: [
+     {
+       name: 'DONUTS',
+       tables: [
+         {
+           name: 'DONUTS',
+           type: 'custom',
+           factory: 'org.apache.drill.jdbc.DrillTable$Factory'
+,           operand: {
+             path: '/donuts.json'
+           }
+         }
+       ]
+     }
+   ]
+}

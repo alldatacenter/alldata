@@ -1,0 +1,13 @@
+{
+  "name": "tikvreader",
+  "parameter": {
+    "connection": [
+      {
+        "pdAddrs": "${reader.pdAddrs}",
+        "dbName": "${reader.dbName}"
+      }
+    ],
+    "column": [${reader.colsQuotes}],
+    "table": "${reader.sourceEntityName}"
+  }
+}

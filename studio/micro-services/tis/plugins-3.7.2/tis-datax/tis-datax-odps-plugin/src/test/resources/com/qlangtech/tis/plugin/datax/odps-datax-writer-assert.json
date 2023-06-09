@@ -1,0 +1,18 @@
+{
+  "name":"odpswriter",
+  "parameter":{
+    "accessId":"accessIdXXXX",
+    "accessKey":"accessKeySecretXXX",
+    "column":[
+      "col1",
+      "col2",
+      "col3"
+    ],
+    "odpsServer":"http://sxxx/api",
+    "partitionTimeFormat":"yyyyMMddHHmmss",
+    "project":"chinan_test",
+    "table":"orderinfo_new",
+    "truncate":true,
+    "tunnelServer":"http://xxx"
+  }
+}

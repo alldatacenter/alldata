@@ -1,0 +1,18 @@
+{
+  "dbName": {
+    "enum": "com.qlangtech.tis.util.PluginItems.getExistDbs(\"StarRocks\")",
+    "creator": {
+      "plugin": [
+        {
+          "descName": "StarRocks"
+        }
+      ]
+    }
+  },
+  "template": {
+    "dftVal": "com.qlangtech.tis.plugin.datax.starrocks.DataXStarRocksWriter.getDftTemplate()"
+  },
+  "loadProps": {
+    "dftVal": "com.qlangtech.tis.plugin.datax.starrocks.DataXStarRocksWriter.getDftLoadProps()"
+  }
+}

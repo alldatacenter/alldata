@@ -1,0 +1,5 @@
+SELECT
+	employee_id,
+	LAST_VALUE(employee_id) OVER(PARTITION BY position_id ORDER BY sub ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) AS `last_value`
+FROM
+	%s

@@ -368,7 +368,14 @@
 > **config** 文件夹下的配置文件, 修改 **redis**, **mysql** 和 **rabbitmq** 的配置信息
 >
 ### 3、项目根目录下执行
-> cd factory/studio/common
+```
+1、缺失aspose-words,要手动安装到本地仓库
+2、cd alldata/studio/common
+3、安装命令：windows使用git bash执行, mac直接执行以下命令
+4、mvn install:install-file -Dfile=aspose-words-20.3.jar -DgroupId=com.aspose -DartifactId=aspose-words -Dversion=20.3 -Dpackaging=jar
+5、安装成功重新刷新依赖,重新打包
+```
+> cd alldata/studio/common
 > mvn install:install-file -Dfile=/alldata/studio/common/aspose-words-20.3.jar -DgroupId=com.aspose -DartifactId=aspose-words -Dversion=20.3 -Dpackaging=jar
 > mvn clean install -DskipTests && mvn clean package -DskipTests
 >
