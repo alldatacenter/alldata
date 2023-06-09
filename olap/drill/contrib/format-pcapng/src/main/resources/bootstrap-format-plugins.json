@@ -1,0 +1,34 @@
+{
+  "storage": {
+    "dfs": {
+      "type": "file",
+      "formats": {
+        "pcap": {
+          "type": "pcap",
+          "extensions": ["pcap", "pcapng"],
+          "stat" : false
+        }
+      }
+    },
+    "cp": {
+      "type": "file",
+      "formats": {
+        "pcap": {
+          "type": "pcap",
+          "extensions": ["pcap", "pcapng"],
+          "stat" : false
+        }
+      }
+    },
+    "s3": {
+      "type": "file",
+      "formats": {
+        "pcap": {
+          "type": "pcap",
+          "extensions": ["pcap", "pcapng"],
+          "stat" : false
+        }
+      }
+    }
+  }
+}

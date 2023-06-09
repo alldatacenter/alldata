@@ -1,0 +1,9 @@
+{
+  "namespace": "drill.test",
+  "name": "test_serializer",
+  "type": "record",
+  "fields": [
+    { "name" : "key", "type" : "int" },
+    { "name" : "value", "type" : "string" }
+  ]
+}

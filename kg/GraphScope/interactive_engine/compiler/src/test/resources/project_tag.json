@@ -1,0 +1,44 @@
+{
+  "nodes": [
+    {
+      "opr": {
+        "opr": {
+          "Project": {
+            "mappings": [
+              {
+                "expr": {
+                  "operators": [
+                    {
+                      "item": {
+                        "Var": {
+                          "tag": {
+                            "item": {
+                              "Name": "a"
+                            }
+                          },
+                          "property": null,
+                          "node_type": null
+                        }
+                      }
+                    }
+                  ]
+                },
+                "alias": {
+                  "item": {
+                    "Name": "project_a"
+                  }
+                }
+              }
+            ],
+            "is_append": true,
+            "meta_data": []
+          }
+        }
+      },
+      "children": []
+    }
+  ],
+  "roots": [
+    0
+  ]
+}

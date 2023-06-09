@@ -1,0 +1,86 @@
+{
+  "head" : {
+    "version" : 1,
+    "generator" : {
+      "type" : "DefaultSqlHandler",
+      "info" : ""
+    },
+    "type" : "APACHE_DRILL_PHYSICAL",
+    "resultMode" : "EXEC"
+  },
+  "graph" : [ {
+    "pop" : "parquet-scan",
+    "@id" : 1,
+    "entries" : [ {
+      "path" : "/tpch/nation.parquet"
+    } ],
+    "storage" : {
+      "type" : "file",
+      "connection" : "classpath:///",
+      "workspaces" : null,
+      "enabled": true,
+      "formats" : {
+        "psv" : {
+          "type" : "text",
+          "extensions" : [ "tbl" ],
+          "delimiter" : "|"
+        },
+        "csv" : {
+          "type" : "text",
+          "extensions" : [ "csv" ],
+          "delimiter" : ","
+        },
+        "tsv" : {
+          "type" : "text",
+          "extensions" : [ "tsv" ],
+          "delimiter" : "\t"
+        },
+        "parquet" : {
+          "type" : "parquet"
+        },
+        "json" : {
+          "type" : "json"
+        }
+      }
+    },
+    "format" : {
+      "type" : "parquet"
+    },
+    "selectionRoot" : "/Users/mbaid/sources/drill/tpch-work/sample-data/nationsMF"
+  }, {
+    "pop" : "project",
+    "@id" : 2,
+    "exprs" : [ {
+      "ref" : "`N_NATIONKEY`",
+      "expr" : "`N_NATIONKEY`"
+    } ],
+    "child" : 1
+  }, {
+    "pop" : "hash-to-random-exchange",
+    "@id" : 3,
+    "child" : 2,
+    "expr" : "hash(`N_NATIONKEY`) "
+  }, {
+    "pop" : "union-exchange",
+    "@id" : 4,
+    "child" : 3
+  }, {
+    "pop" : "project",
+    "@id" : 5,
+    "exprs" : [ {
+      "ref" : "`N_NATIONKEY`",
+      "expr" : "`N_NATIONKEY`"
+    } ],
+    "child" : 4
+  }, {
+    "pop" : "limit",
+    "@id" : 6,
+    "child" : 5,
+    "first" : 0,
+    "last" : 1
+  }, {
+    "pop" : "screen",
+    "@id" : 7,
+    "child" : 6
+  } ]
+}

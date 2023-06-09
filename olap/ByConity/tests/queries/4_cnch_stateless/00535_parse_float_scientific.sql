@@ -1,0 +1,6 @@
+
+DROP TABLE IF EXISTS float;
+CREATE TABLE float (x Float64) ENGINE = CnchMergeTree ORDER BY x;
+INSERT INTO float VALUES (1e7);
+SELECT * FROM float;
+DROP TABLE float;

@@ -1,0 +1,70 @@
+{
+  "metadata_version" : "3.3",
+  "columnTypeInfo" : {
+    "`val`" : {
+      "name" : [ "val" ],
+      "primitiveType" : "BINARY",
+      "originalType" : "UTF8",
+      "precision" : 0,
+      "scale" : 0,
+      "repetitionLevel" : 0,
+      "definitionLevel" : 1
+    },
+    "`part`" : {
+      "name" : [ "part" ],
+      "primitiveType" : "BINARY",
+      "originalType" : "UTF8",
+      "precision" : 0,
+      "scale" : 0,
+      "repetitionLevel" : 0,
+      "definitionLevel" : 1
+    }
+  },
+  "files" : [ {
+    "path" : "0_0_2.parquet",
+    "length" : 368,
+    "rowGroups" : [ {
+      "start" : 4,
+      "length" : 90,
+      "rowCount" : 2,
+      "hostAffinity" : {
+        "localhost" : 1.0
+      },
+      "columns" : [ {
+        "name" : [ "part" ],
+        "minValue" : "Qg==",
+        "maxValue" : "Qg==",
+        "nulls" : 0
+      }, {
+        "name" : [ "val" ],
+        "minValue" : "QjE=",
+        "maxValue" : "QjI=",
+        "nulls" : 0
+      } ]
+    } ]
+  }, {
+    "path" : "0_0_1.parquet",
+    "length" : 368,
+    "rowGroups" : [ {
+      "start" : 4,
+      "length" : 90,
+      "rowCount" : 2,
+      "hostAffinity" : {
+        "localhost" : 1.0
+      },
+      "columns" : [ {
+        "name" : [ "part" ],
+        "minValue" : "QQ==",
+        "maxValue" : "QQ==",
+        "nulls" : 0
+      }, {
+        "name" : [ "val" ],
+        "minValue" : "QTE=",
+        "maxValue" : "QTI=",
+        "nulls" : 0
+      } ]
+    } ]
+  } ],
+  "directories" : [ ],
+  "drillVersion" : "1.13.0"
+}

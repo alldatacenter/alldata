@@ -1,0 +1,8 @@
+add_executable(disk_cache_test disk_cache_test.cpp)
+target_link_libraries(disk_cache_test dbms gmock)
+
+add_executable(bucket_lru_cache_test bucket_lru_cache_test.cpp)
+target_link_libraries(bucket_lru_cache_test dbms gmock)
+
+add_executable(lru_cache_perf lru_cache_perf.cpp)
+target_link_libraries(lru_cache_perf dbms gmock)

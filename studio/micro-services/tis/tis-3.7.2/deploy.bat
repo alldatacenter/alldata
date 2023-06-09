@@ -1,0 +1,1 @@
+mvn compile deploy -Dmaven.test.skip=true
