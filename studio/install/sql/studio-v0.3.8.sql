@@ -6,16 +6,16 @@ use studio;
 -- ----------------------------
 -- DROP TABLE IF EXISTS `system_dc_db_config`;
 CREATE TABLE IF NOT EXISTS `system_dc_db_config` (
-                             `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'primary key',
-                             `connect_name` varchar(255) NOT NULL COMMENT 'db connect_name',
-                             `type` varchar(255) NOT NULL COMMENT 'db config type',
-                             `url` varchar(255) NOT NULL COMMENT 'db config url',
-                             `user_name` varchar(255) DEFAULT NULL COMMENT 'db config user_name',
-                             `pwd` varchar(255) DEFAULT NULL COMMENT 'db config pwd',
-                             `create_time` datetime DEFAULT NULL COMMENT 'create_time',
-                             `create_by` varchar(255) DEFAULT NULL COMMENT 'create_by',
-                             PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COMMENT='system_dc_db_config';
+    `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'primary key',
+    `connect_name` varchar(255) NOT NULL COMMENT 'db connect_name',
+    `type` varchar(255) NOT NULL COMMENT 'db config type',
+    `url` varchar(255) NOT NULL COMMENT 'db config url',
+    `user_name` varchar(255) DEFAULT NULL COMMENT 'db config user_name',
+    `pwd` varchar(255) DEFAULT NULL COMMENT 'db config pwd',
+    `create_time` datetime DEFAULT NULL COMMENT 'create_time',
+    `create_by` varchar(255) DEFAULT NULL COMMENT 'create_by',
+    PRIMARY KEY (`id`)
+    ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COMMENT='system_dc_db_config';
 
 
 -- ----------------------------
@@ -23,60 +23,91 @@ CREATE TABLE IF NOT EXISTS `system_dc_db_config` (
 -- ----------------------------
 -- DROP TABLE IF EXISTS `system_dc_job_config`;
 CREATE TABLE IF NOT EXISTS `system_dc_job_config` (
-                              `id` int(11) NOT NULL AUTO_INCREMENT,
-                              `origin_table_name` varchar(255) DEFAULT NULL,
-                              `origin_table_primary` varchar(255) DEFAULT NULL,
-                              `origin_table_fields` varchar(255) DEFAULT NULL,
-                              `to_table_name` varchar(255) DEFAULT NULL,
-                              `to_table_primary` varchar(255) DEFAULT NULL,
-                              `to_table_fields` varchar(255) DEFAULT NULL,
-                              `db_config_id` int(11) DEFAULT NULL,
-                              `create_time` datetime DEFAULT NULL,
-                              `schdule_time` varchar(255) DEFAULT NULL,
-                              `schdule_status` tinyint(1) DEFAULT '1' COMMENT '0:true,1:false',
-                              `create_by` varchar(255) DEFAULT NULL COMMENT 'create_by',
-                              `origin_table_filter` text,
-                              `to_table_filter` text,
-                              `origin_table_group` text,
-                              `to_table_group` text,
-                              PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COMMENT='system_dc_job_config';
+    `id` int(11) NOT NULL AUTO_INCREMENT,
+    `origin_table_name` varchar(255) DEFAULT NULL,
+    `origin_table_primary` varchar(255) DEFAULT NULL,
+    `origin_table_fields` varchar(255) DEFAULT NULL,
+    `to_table_name` varchar(255) DEFAULT NULL,
+    `to_table_primary` varchar(255) DEFAULT NULL,
+    `to_table_fields` varchar(255) DEFAULT NULL,
+    `db_config_id` int(11) DEFAULT NULL,
+    `create_time` datetime DEFAULT NULL,
+    `schdule_time` varchar(255) DEFAULT NULL,
+    `schdule_status` tinyint(1) DEFAULT '1' COMMENT '0:true,1:false',
+    `create_by` varchar(255) DEFAULT NULL COMMENT 'create_by',
+    `origin_table_filter` text,
+    `to_table_filter` text,
+    `origin_table_group` text,
+    `to_table_group` text,
+    PRIMARY KEY (`id`)
+    ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COMMENT='system_dc_job_config';
 
 -- ----------------------------
 -- Table structure for system_dc_job_instance
 -- ----------------------------
 -- DROP TABLE IF EXISTS `system_dc_job_instance`;
 CREATE TABLE IF NOT EXISTS `system_dc_job_instance` (
-                                `id` int(11) NOT NULL AUTO_INCREMENT,
-                                `job_config_id` int(11) NOT NULL,
-                                `origin_table_pv` varchar(255) NOT NULL COMMENT 'origin_table_pv',
-                                `origin_table_uv` varchar(255) NOT NULL COMMENT 'origin_table_uv',
-                                `to_table_pv` varchar(255) DEFAULT NULL COMMENT 'to_table_pv',
-                                `to_table_uv` varchar(255) DEFAULT NULL COMMENT 'to_table_uv',
-                                `pv_diff` varchar(255) DEFAULT NULL COMMENT 'pv_diff',
-                                `uv_diff` varchar(255) DEFAULT NULL COMMENT 'uv_diff',
-                                `magnitude_sql` longtext COMMENT 'magnitude_sql',
-                                `origin_table_count` varchar(255) DEFAULT NULL COMMENT 'origin_table_count',
-                                `to_table_count` varchar(255) DEFAULT NULL COMMENT 'to_table_count',
-                                `count_diff` varchar(255) DEFAULT NULL COMMENT 'count_diff',
-                                `consistency_sql` longtext COMMENT 'consistency_sql',
-                                `dt` varchar(255) DEFAULT NULL COMMENT 'dt',
-                                `create_time` datetime DEFAULT NULL,
-                                PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 COMMENT='system_dc_job_instance';
+    `id` int(11) NOT NULL AUTO_INCREMENT,
+    `job_config_id` int(11) NOT NULL,
+    `origin_table_pv` varchar(255) NOT NULL COMMENT 'origin_table_pv',
+    `origin_table_uv` varchar(255) NOT NULL COMMENT 'origin_table_uv',
+    `to_table_pv` varchar(255) DEFAULT NULL COMMENT 'to_table_pv',
+    `to_table_uv` varchar(255) DEFAULT NULL COMMENT 'to_table_uv',
+    `pv_diff` varchar(255) DEFAULT NULL COMMENT 'pv_diff',
+    `uv_diff` varchar(255) DEFAULT NULL COMMENT 'uv_diff',
+    `magnitude_sql` longtext COMMENT 'magnitude_sql',
+    `origin_table_count` varchar(255) DEFAULT NULL COMMENT 'origin_table_count',
+    `to_table_count` varchar(255) DEFAULT NULL COMMENT 'to_table_count',
+    `count_diff` varchar(255) DEFAULT NULL COMMENT 'count_diff',
+    `consistency_sql` longtext COMMENT 'consistency_sql',
+    `dt` varchar(255) DEFAULT NULL COMMENT 'dt',
+    `create_time` datetime DEFAULT NULL,
+    PRIMARY KEY (`id`)
+    ) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 COMMENT='system_dc_job_instance';
+
+
+-- ----------------------------
+-- Table structure for QRTZ_TRIGGERS
+-- ----------------------------
+-- DROP TABLE IF EXISTS `QRTZ_TRIGGERS`;
+CREATE TABLE IF NOT EXISTS `QRTZ_TRIGGERS` (
+    `sched_name` varchar(120) NOT NULL COMMENT '调度名称',
+    `trigger_name` varchar(200) NOT NULL COMMENT '触发器的名字',
+    `trigger_group` varchar(200) NOT NULL COMMENT '触发器所属组的名字',
+    `job_name` varchar(200) NOT NULL COMMENT 'qrtz_job_details表job_name的外键',
+    `job_group` varchar(200) NOT NULL COMMENT 'qrtz_job_details表job_group的外键',
+    `description` varchar(250) DEFAULT NULL COMMENT '相关介绍',
+    `next_fire_time` bigint(13) DEFAULT NULL COMMENT '上一次触发时间（毫秒）',
+    `prev_fire_time` bigint(13) DEFAULT NULL COMMENT '下一次触发时间（默认为-1表示不触发）',
+    `priority` int(11) DEFAULT NULL COMMENT '优先级',
+    `trigger_state` varchar(16) NOT NULL COMMENT '触发器状态',
+    `trigger_type` varchar(8) NOT NULL COMMENT '触发器的类型',
+    `start_time` bigint(13) NOT NULL COMMENT '开始时间',
+    `end_time` bigint(13) DEFAULT NULL COMMENT '结束时间',
+    `calendar_name` varchar(200) DEFAULT NULL COMMENT '日程表名称',
+    `misfire_instr` smallint(2) DEFAULT NULL COMMENT '补偿执行的策略',
+    `job_data` blob COMMENT '存放持久化job对象',
+    PRIMARY KEY (`sched_name`,`trigger_name`,`trigger_group`),
+    KEY `sched_name` (`sched_name`,`job_name`,`job_group`),
+    CONSTRAINT `QRTZ_TRIGGERS_ibfk_1` FOREIGN KEY (`sched_name`, `job_name`, `job_group`) REFERENCES `QRTZ_JOB_DETAILS` (`sched_name`, `job_name`, `job_group`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='触发器详细信息表';
+
+-- ----------------------------
+-- Records of QRTZ_TRIGGERS
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for system_dc_QRTZ_BLOB_TRIGGERS
 -- ----------------------------
 -- DROP TABLE IF EXISTS `QRTZ_BLOB_TRIGGERS`;
 CREATE TABLE IF NOT EXISTS `QRTZ_BLOB_TRIGGERS` (
-                                      `sched_name` varchar(120) NOT NULL COMMENT '调度名称',
-                                      `trigger_name` varchar(200) NOT NULL COMMENT 'qrtz_triggers表trigger_name的外键',
-                                      `trigger_group` varchar(200) NOT NULL COMMENT 'qrtz_triggers表trigger_group的外键',
-                                      `blob_data` blob COMMENT '存放持久化Trigger对象',
-                                      PRIMARY KEY (`sched_name`,`trigger_name`,`trigger_group`),
-                                      CONSTRAINT `QRTZ_BLOB_TRIGGERS_ibfk_1` FOREIGN KEY (`sched_name`, `trigger_name`, `trigger_group`) REFERENCES `QRTZ_TRIGGERS` (`sched_name`, `trigger_name`, `trigger_group`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Blob类型的触发器表';
+    `sched_name` varchar(120) NOT NULL COMMENT '调度名称',
+    `trigger_name` varchar(200) NOT NULL COMMENT 'qrtz_triggers表trigger_name的外键',
+    `trigger_group` varchar(200) NOT NULL COMMENT 'qrtz_triggers表trigger_group的外键',
+    `blob_data` blob COMMENT '存放持久化Trigger对象',
+    PRIMARY KEY (`sched_name`,`trigger_name`,`trigger_group`),
+    CONSTRAINT `QRTZ_BLOB_TRIGGERS_ibfk_1` FOREIGN KEY (`sched_name`, `trigger_name`, `trigger_group`) REFERENCES `QRTZ_TRIGGERS` (`sched_name`, `trigger_name`, `trigger_group`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Blob类型的触发器表';
 
 -- ----------------------------
 -- Records of QRTZ_BLOB_TRIGGERS
@@ -87,11 +118,11 @@ CREATE TABLE IF NOT EXISTS `QRTZ_BLOB_TRIGGERS` (
 -- ----------------------------
 -- DROP TABLE IF EXISTS `QRTZ_CALENDARS`;
 CREATE TABLE IF NOT EXISTS `QRTZ_CALENDARS` (
-                                  `sched_name` varchar(120) NOT NULL COMMENT '调度名称',
-                                  `calendar_name` varchar(200) NOT NULL COMMENT '日历名称',
-                                  `calendar` blob NOT NULL COMMENT '存放持久化calendar对象',
-                                  PRIMARY KEY (`sched_name`,`calendar_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='日历信息表';
+    `sched_name` varchar(120) NOT NULL COMMENT '调度名称',
+    `calendar_name` varchar(200) NOT NULL COMMENT '日历名称',
+    `calendar` blob NOT NULL COMMENT '存放持久化calendar对象',
+    PRIMARY KEY (`sched_name`,`calendar_name`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='日历信息表';
 
 -- ----------------------------
 -- Records of QRTZ_CALENDARS
@@ -102,14 +133,14 @@ CREATE TABLE IF NOT EXISTS `QRTZ_CALENDARS` (
 -- ----------------------------
 -- DROP TABLE IF EXISTS `QRTZ_CRON_TRIGGERS`;
 CREATE TABLE IF NOT EXISTS `QRTZ_CRON_TRIGGERS` (
-                                      `sched_name` varchar(120) NOT NULL COMMENT '调度名称',
-                                      `trigger_name` varchar(200) NOT NULL COMMENT 'qrtz_triggers表trigger_name的外键',
-                                      `trigger_group` varchar(200) NOT NULL COMMENT 'qrtz_triggers表trigger_group的外键',
-                                      `cron_expression` varchar(200) NOT NULL COMMENT 'cron表达式',
-                                      `time_zone_id` varchar(80) DEFAULT NULL COMMENT '时区',
-                                      PRIMARY KEY (`sched_name`,`trigger_name`,`trigger_group`),
-                                      CONSTRAINT `QRTZ_CRON_TRIGGERS_ibfk_1` FOREIGN KEY (`sched_name`, `trigger_name`, `trigger_group`) REFERENCES `QRTZ_TRIGGERS` (`sched_name`, `trigger_name`, `trigger_group`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Cron类型的触发器表';
+    `sched_name` varchar(120) NOT NULL COMMENT '调度名称',
+    `trigger_name` varchar(200) NOT NULL COMMENT 'qrtz_triggers表trigger_name的外键',
+    `trigger_group` varchar(200) NOT NULL COMMENT 'qrtz_triggers表trigger_group的外键',
+    `cron_expression` varchar(200) NOT NULL COMMENT 'cron表达式',
+    `time_zone_id` varchar(80) DEFAULT NULL COMMENT '时区',
+    PRIMARY KEY (`sched_name`,`trigger_name`,`trigger_group`),
+    CONSTRAINT `QRTZ_CRON_TRIGGERS_ibfk_1` FOREIGN KEY (`sched_name`, `trigger_name`, `trigger_group`) REFERENCES `QRTZ_TRIGGERS` (`sched_name`, `trigger_name`, `trigger_group`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Cron类型的触发器表';
 
 -- ----------------------------
 -- Records of QRTZ_CRON_TRIGGERS
@@ -120,21 +151,21 @@ CREATE TABLE IF NOT EXISTS `QRTZ_CRON_TRIGGERS` (
 -- ----------------------------
 -- DROP TABLE IF EXISTS `QRTZ_FIRED_TRIGGERS`;
 CREATE TABLE IF NOT EXISTS `QRTZ_FIRED_TRIGGERS` (
-                                       `sched_name` varchar(120) NOT NULL COMMENT '调度名称',
-                                       `entry_id` varchar(95) NOT NULL COMMENT '调度器实例id',
-                                       `trigger_name` varchar(200) NOT NULL COMMENT 'qrtz_triggers表trigger_name的外键',
-                                       `trigger_group` varchar(200) NOT NULL COMMENT 'qrtz_triggers表trigger_group的外键',
-                                       `instance_name` varchar(200) NOT NULL COMMENT '调度器实例名',
-                                       `fired_time` bigint(13) NOT NULL COMMENT '触发的时间',
-                                       `sched_time` bigint(13) NOT NULL COMMENT '定时器制定的时间',
-                                       `priority` int(11) NOT NULL COMMENT '优先级',
-                                       `state` varchar(16) NOT NULL COMMENT '状态',
-                                       `job_name` varchar(200) DEFAULT NULL COMMENT '任务名称',
-                                       `job_group` varchar(200) DEFAULT NULL COMMENT '任务组名',
-                                       `is_nonconcurrent` varchar(1) DEFAULT NULL COMMENT '是否并发',
-                                       `requests_recovery` varchar(1) DEFAULT NULL COMMENT '是否接受恢复执行',
-                                       PRIMARY KEY (`sched_name`,`entry_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='已触发的触发器表';
+    `sched_name` varchar(120) NOT NULL COMMENT '调度名称',
+    `entry_id` varchar(95) NOT NULL COMMENT '调度器实例id',
+    `trigger_name` varchar(200) NOT NULL COMMENT 'qrtz_triggers表trigger_name的外键',
+    `trigger_group` varchar(200) NOT NULL COMMENT 'qrtz_triggers表trigger_group的外键',
+    `instance_name` varchar(200) NOT NULL COMMENT '调度器实例名',
+    `fired_time` bigint(13) NOT NULL COMMENT '触发的时间',
+    `sched_time` bigint(13) NOT NULL COMMENT '定时器制定的时间',
+    `priority` int(11) NOT NULL COMMENT '优先级',
+    `state` varchar(16) NOT NULL COMMENT '状态',
+    `job_name` varchar(200) DEFAULT NULL COMMENT '任务名称',
+    `job_group` varchar(200) DEFAULT NULL COMMENT '任务组名',
+    `is_nonconcurrent` varchar(1) DEFAULT NULL COMMENT '是否并发',
+    `requests_recovery` varchar(1) DEFAULT NULL COMMENT '是否接受恢复执行',
+    PRIMARY KEY (`sched_name`,`entry_id`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='已触发的触发器表';
 
 -- ----------------------------
 -- Records of QRTZ_FIRED_TRIGGERS
@@ -145,18 +176,18 @@ CREATE TABLE IF NOT EXISTS `QRTZ_FIRED_TRIGGERS` (
 -- ----------------------------
 -- DROP TABLE IF EXISTS `QRTZ_JOB_DETAILS`;
 CREATE TABLE IF NOT EXISTS `QRTZ_JOB_DETAILS` (
-                                    `sched_name` varchar(120) NOT NULL COMMENT '调度名称',
-                                    `job_name` varchar(200) NOT NULL COMMENT '任务名称',
-                                    `job_group` varchar(200) NOT NULL COMMENT '任务组名',
-                                    `description` varchar(250) DEFAULT NULL COMMENT '相关介绍',
-                                    `job_class_name` varchar(250) NOT NULL COMMENT '执行任务类名称',
-                                    `is_durable` varchar(1) NOT NULL COMMENT '是否持久化',
-                                    `is_nonconcurrent` varchar(1) NOT NULL COMMENT '是否并发',
-                                    `is_update_data` varchar(1) NOT NULL COMMENT '是否更新数据',
-                                    `requests_recovery` varchar(1) NOT NULL COMMENT '是否接受恢复执行',
-                                    `job_data` blob COMMENT '存放持久化job对象',
-                                    PRIMARY KEY (`sched_name`,`job_name`,`job_group`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='任务详细信息表';
+    `sched_name` varchar(120) NOT NULL COMMENT '调度名称',
+    `job_name` varchar(200) NOT NULL COMMENT '任务名称',
+    `job_group` varchar(200) NOT NULL COMMENT '任务组名',
+    `description` varchar(250) DEFAULT NULL COMMENT '相关介绍',
+    `job_class_name` varchar(250) NOT NULL COMMENT '执行任务类名称',
+    `is_durable` varchar(1) NOT NULL COMMENT '是否持久化',
+    `is_nonconcurrent` varchar(1) NOT NULL COMMENT '是否并发',
+    `is_update_data` varchar(1) NOT NULL COMMENT '是否更新数据',
+    `requests_recovery` varchar(1) NOT NULL COMMENT '是否接受恢复执行',
+    `job_data` blob COMMENT '存放持久化job对象',
+    PRIMARY KEY (`sched_name`,`job_name`,`job_group`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='任务详细信息表';
 
 -- ----------------------------
 -- Records of QRTZ_JOB_DETAILS
@@ -167,10 +198,10 @@ CREATE TABLE IF NOT EXISTS `QRTZ_JOB_DETAILS` (
 -- ----------------------------
 -- DROP TABLE IF EXISTS `QRTZ_LOCKS`;
 CREATE TABLE IF NOT EXISTS `QRTZ_LOCKS` (
-                              `sched_name` varchar(120) NOT NULL COMMENT '调度名称',
-                              `lock_name` varchar(40) NOT NULL COMMENT '悲观锁名称',
-                              PRIMARY KEY (`sched_name`,`lock_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='存储的悲观锁信息表';
+    `sched_name` varchar(120) NOT NULL COMMENT '调度名称',
+    `lock_name` varchar(40) NOT NULL COMMENT '悲观锁名称',
+    PRIMARY KEY (`sched_name`,`lock_name`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='存储的悲观锁信息表';
 
 -- ----------------------------
 -- Records of QRTZ_LOCKS
@@ -181,10 +212,10 @@ CREATE TABLE IF NOT EXISTS `QRTZ_LOCKS` (
 -- ----------------------------
 -- DROP TABLE IF EXISTS `QRTZ_PAUSED_TRIGGER_GRPS`;
 CREATE TABLE IF NOT EXISTS `QRTZ_PAUSED_TRIGGER_GRPS` (
-                                            `sched_name` varchar(120) NOT NULL COMMENT '调度名称',
-                                            `trigger_group` varchar(200) NOT NULL COMMENT 'qrtz_triggers表trigger_group的外键',
-                                            PRIMARY KEY (`sched_name`,`trigger_group`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='暂停的触发器表';
+    `sched_name` varchar(120) NOT NULL COMMENT '调度名称',
+    `trigger_group` varchar(200) NOT NULL COMMENT 'qrtz_triggers表trigger_group的外键',
+    PRIMARY KEY (`sched_name`,`trigger_group`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='暂停的触发器表';
 
 -- ----------------------------
 -- Records of QRTZ_PAUSED_TRIGGER_GRPS
@@ -195,12 +226,12 @@ CREATE TABLE IF NOT EXISTS `QRTZ_PAUSED_TRIGGER_GRPS` (
 -- ----------------------------
 -- DROP TABLE IF EXISTS `QRTZ_SCHEDULER_STATE`;
 CREATE TABLE IF NOT EXISTS `QRTZ_SCHEDULER_STATE` (
-                                        `sched_name` varchar(120) NOT NULL COMMENT '调度名称',
-                                        `instance_name` varchar(200) NOT NULL COMMENT '实例名称',
-                                        `last_checkin_time` bigint(13) NOT NULL COMMENT '上次检查时间',
-                                        `checkin_interval` bigint(13) NOT NULL COMMENT '检查间隔时间',
-                                        PRIMARY KEY (`sched_name`,`instance_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='调度器状态表';
+    `sched_name` varchar(120) NOT NULL COMMENT '调度名称',
+    `instance_name` varchar(200) NOT NULL COMMENT '实例名称',
+    `last_checkin_time` bigint(13) NOT NULL COMMENT '上次检查时间',
+    `checkin_interval` bigint(13) NOT NULL COMMENT '检查间隔时间',
+    PRIMARY KEY (`sched_name`,`instance_name`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='调度器状态表';
 
 -- ----------------------------
 -- Records of QRTZ_SCHEDULER_STATE
@@ -211,15 +242,15 @@ CREATE TABLE IF NOT EXISTS `QRTZ_SCHEDULER_STATE` (
 -- ----------------------------
 -- DROP TABLE IF EXISTS `QRTZ_SIMPLE_TRIGGERS`;
 CREATE TABLE IF NOT EXISTS `QRTZ_SIMPLE_TRIGGERS` (
-                                        `sched_name` varchar(120) NOT NULL COMMENT '调度名称',
-                                        `trigger_name` varchar(200) NOT NULL COMMENT 'qrtz_triggers表trigger_name的外键',
-                                        `trigger_group` varchar(200) NOT NULL COMMENT 'qrtz_triggers表trigger_group的外键',
-                                        `repeat_count` bigint(7) NOT NULL COMMENT '重复的次数统计',
-                                        `repeat_interval` bigint(12) NOT NULL COMMENT '重复的间隔时间',
-                                        `times_triggered` bigint(10) NOT NULL COMMENT '已经触发的次数',
-                                        PRIMARY KEY (`sched_name`,`trigger_name`,`trigger_group`),
-                                        CONSTRAINT `QRTZ_SIMPLE_TRIGGERS_ibfk_1` FOREIGN KEY (`sched_name`, `trigger_name`, `trigger_group`) REFERENCES `QRTZ_TRIGGERS` (`sched_name`, `trigger_name`, `trigger_group`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='简单触发器的信息表';
+    `sched_name` varchar(120) NOT NULL COMMENT '调度名称',
+    `trigger_name` varchar(200) NOT NULL COMMENT 'qrtz_triggers表trigger_name的外键',
+    `trigger_group` varchar(200) NOT NULL COMMENT 'qrtz_triggers表trigger_group的外键',
+    `repeat_count` bigint(7) NOT NULL COMMENT '重复的次数统计',
+    `repeat_interval` bigint(12) NOT NULL COMMENT '重复的间隔时间',
+    `times_triggered` bigint(10) NOT NULL COMMENT '已经触发的次数',
+    PRIMARY KEY (`sched_name`,`trigger_name`,`trigger_group`),
+    CONSTRAINT `QRTZ_SIMPLE_TRIGGERS_ibfk_1` FOREIGN KEY (`sched_name`, `trigger_name`, `trigger_group`) REFERENCES `QRTZ_TRIGGERS` (`sched_name`, `trigger_name`, `trigger_group`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='简单触发器的信息表';
 
 -- ----------------------------
 -- Records of QRTZ_SIMPLE_TRIGGERS
@@ -230,56 +261,26 @@ CREATE TABLE IF NOT EXISTS `QRTZ_SIMPLE_TRIGGERS` (
 -- ----------------------------
 -- DROP TABLE IF EXISTS `QRTZ_SIMPROP_TRIGGERS`;
 CREATE TABLE IF NOT EXISTS `QRTZ_SIMPROP_TRIGGERS` (
-                                         `sched_name` varchar(120) NOT NULL COMMENT '调度名称',
-                                         `trigger_name` varchar(200) NOT NULL COMMENT 'qrtz_triggers表trigger_name的外键',
-                                         `trigger_group` varchar(200) NOT NULL COMMENT 'qrtz_triggers表trigger_group的外键',
-                                         `str_prop_1` varchar(512) DEFAULT NULL COMMENT 'String类型的trigger的第一个参数',
-                                         `str_prop_2` varchar(512) DEFAULT NULL COMMENT 'String类型的trigger的第二个参数',
-                                         `str_prop_3` varchar(512) DEFAULT NULL COMMENT 'String类型的trigger的第三个参数',
-                                         `int_prop_1` int(11) DEFAULT NULL COMMENT 'int类型的trigger的第一个参数',
-                                         `int_prop_2` int(11) DEFAULT NULL COMMENT 'int类型的trigger的第二个参数',
-                                         `long_prop_1` bigint(20) DEFAULT NULL COMMENT 'long类型的trigger的第一个参数',
-                                         `long_prop_2` bigint(20) DEFAULT NULL COMMENT 'long类型的trigger的第二个参数',
-                                         `dec_prop_1` decimal(13,4) DEFAULT NULL COMMENT 'decimal类型的trigger的第一个参数',
-                                         `dec_prop_2` decimal(13,4) DEFAULT NULL COMMENT 'decimal类型的trigger的第二个参数',
-                                         `bool_prop_1` varchar(1) DEFAULT NULL COMMENT 'Boolean类型的trigger的第一个参数',
-                                         `bool_prop_2` varchar(1) DEFAULT NULL COMMENT 'Boolean类型的trigger的第二个参数',
-                                         PRIMARY KEY (`sched_name`,`trigger_name`,`trigger_group`),
-                                         CONSTRAINT `QRTZ_SIMPROP_TRIGGERS_ibfk_1` FOREIGN KEY (`sched_name`, `trigger_name`, `trigger_group`) REFERENCES `QRTZ_TRIGGERS` (`sched_name`, `trigger_name`, `trigger_group`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='同步机制的行锁表';
+    `sched_name` varchar(120) NOT NULL COMMENT '调度名称',
+    `trigger_name` varchar(200) NOT NULL COMMENT 'qrtz_triggers表trigger_name的外键',
+    `trigger_group` varchar(200) NOT NULL COMMENT 'qrtz_triggers表trigger_group的外键',
+    `str_prop_1` varchar(512) DEFAULT NULL COMMENT 'String类型的trigger的第一个参数',
+    `str_prop_2` varchar(512) DEFAULT NULL COMMENT 'String类型的trigger的第二个参数',
+    `str_prop_3` varchar(512) DEFAULT NULL COMMENT 'String类型的trigger的第三个参数',
+    `int_prop_1` int(11) DEFAULT NULL COMMENT 'int类型的trigger的第一个参数',
+    `int_prop_2` int(11) DEFAULT NULL COMMENT 'int类型的trigger的第二个参数',
+    `long_prop_1` bigint(20) DEFAULT NULL COMMENT 'long类型的trigger的第一个参数',
+    `long_prop_2` bigint(20) DEFAULT NULL COMMENT 'long类型的trigger的第二个参数',
+    `dec_prop_1` decimal(13,4) DEFAULT NULL COMMENT 'decimal类型的trigger的第一个参数',
+    `dec_prop_2` decimal(13,4) DEFAULT NULL COMMENT 'decimal类型的trigger的第二个参数',
+    `bool_prop_1` varchar(1) DEFAULT NULL COMMENT 'Boolean类型的trigger的第一个参数',
+    `bool_prop_2` varchar(1) DEFAULT NULL COMMENT 'Boolean类型的trigger的第二个参数',
+    PRIMARY KEY (`sched_name`,`trigger_name`,`trigger_group`),
+    CONSTRAINT `QRTZ_SIMPROP_TRIGGERS_ibfk_1` FOREIGN KEY (`sched_name`, `trigger_name`, `trigger_group`) REFERENCES `QRTZ_TRIGGERS` (`sched_name`, `trigger_name`, `trigger_group`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='同步机制的行锁表';
 
 -- ----------------------------
 -- Records of QRTZ_SIMPROP_TRIGGERS
--- ----------------------------
-
--- ----------------------------
--- Table structure for QRTZ_TRIGGERS
--- ----------------------------
--- DROP TABLE IF EXISTS `QRTZ_TRIGGERS`;
-CREATE TABLE IF NOT EXISTS `QRTZ_TRIGGERS` (
-                                 `sched_name` varchar(120) NOT NULL COMMENT '调度名称',
-                                 `trigger_name` varchar(200) NOT NULL COMMENT '触发器的名字',
-                                 `trigger_group` varchar(200) NOT NULL COMMENT '触发器所属组的名字',
-                                 `job_name` varchar(200) NOT NULL COMMENT 'qrtz_job_details表job_name的外键',
-                                 `job_group` varchar(200) NOT NULL COMMENT 'qrtz_job_details表job_group的外键',
-                                 `description` varchar(250) DEFAULT NULL COMMENT '相关介绍',
-                                 `next_fire_time` bigint(13) DEFAULT NULL COMMENT '上一次触发时间（毫秒）',
-                                 `prev_fire_time` bigint(13) DEFAULT NULL COMMENT '下一次触发时间（默认为-1表示不触发）',
-                                 `priority` int(11) DEFAULT NULL COMMENT '优先级',
-                                 `trigger_state` varchar(16) NOT NULL COMMENT '触发器状态',
-                                 `trigger_type` varchar(8) NOT NULL COMMENT '触发器的类型',
-                                 `start_time` bigint(13) NOT NULL COMMENT '开始时间',
-                                 `end_time` bigint(13) DEFAULT NULL COMMENT '结束时间',
-                                 `calendar_name` varchar(200) DEFAULT NULL COMMENT '日程表名称',
-                                 `misfire_instr` smallint(2) DEFAULT NULL COMMENT '补偿执行的策略',
-                                 `job_data` blob COMMENT '存放持久化job对象',
-                                 PRIMARY KEY (`sched_name`,`trigger_name`,`trigger_group`),
-                                 KEY `sched_name` (`sched_name`,`job_name`,`job_group`),
-                                 CONSTRAINT `QRTZ_TRIGGERS_ibfk_1` FOREIGN KEY (`sched_name`, `job_name`, `job_group`) REFERENCES `QRTZ_JOB_DETAILS` (`sched_name`, `job_name`, `job_group`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='触发器详细信息表';
-
--- ----------------------------
--- Records of QRTZ_TRIGGERS
 -- ----------------------------
 
 -- ----------------------------
@@ -287,18 +288,18 @@ CREATE TABLE IF NOT EXISTS `QRTZ_TRIGGERS` (
 -- ----------------------------
 -- DROP TABLE IF EXISTS `system_dc_config`;
 CREATE TABLE IF NOT EXISTS `system_dc_config` (
-                              `config_id` int(5) NOT NULL AUTO_INCREMENT COMMENT '参数主键',
-                              `config_name` varchar(100) DEFAULT '' COMMENT '参数名称',
-                              `config_key` varchar(100) DEFAULT '' COMMENT '参数键名',
-                              `config_value` varchar(500) DEFAULT '' COMMENT '参数键值',
-                              `config_type` char(1) DEFAULT 'N' COMMENT '系统内置（Y是 N否）',
-                              `create_by` varchar(64) DEFAULT '' COMMENT '创建者',
-                              `create_time` datetime DEFAULT NULL COMMENT '创建时间',
-                              `update_by` varchar(64) DEFAULT '' COMMENT '更新者',
-                              `update_time` datetime DEFAULT NULL COMMENT '更新时间',
-                              `remark` varchar(500) DEFAULT NULL COMMENT '备注',
-                              PRIMARY KEY (`config_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8 COMMENT='参数配置表';
+    `config_id` int(5) NOT NULL AUTO_INCREMENT COMMENT '参数主键',
+    `config_name` varchar(100) DEFAULT '' COMMENT '参数名称',
+    `config_key` varchar(100) DEFAULT '' COMMENT '参数键名',
+    `config_value` varchar(500) DEFAULT '' COMMENT '参数键值',
+    `config_type` char(1) DEFAULT 'N' COMMENT '系统内置（Y是 N否）',
+    `create_by` varchar(64) DEFAULT '' COMMENT '创建者',
+    `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+    `update_by` varchar(64) DEFAULT '' COMMENT '更新者',
+    `update_time` datetime DEFAULT NULL COMMENT '更新时间',
+    `remark` varchar(500) DEFAULT NULL COMMENT '备注',
+    PRIMARY KEY (`config_id`)
+    ) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8 COMMENT='参数配置表';
 
 -- ----------------------------
 -- Records of system_dc_config
@@ -319,22 +320,22 @@ INSERT INTO `system_dc_config` VALUES ('10', '主框架页-是否开启页签', 
 -- ----------------------------
 -- DROP TABLE IF EXISTS `system_dc_dict_data`;
 CREATE TABLE IF NOT EXISTS `system_dc_dict_data` (
-                                 `dict_code` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '字典编码',
-                                 `dict_sort` int(4) DEFAULT '0' COMMENT '字典排序',
-                                 `dict_label` varchar(100) DEFAULT '' COMMENT '字典标签',
-                                 `dict_value` varchar(100) DEFAULT '' COMMENT '字典键值',
-                                 `dict_type` varchar(100) DEFAULT '' COMMENT '字典类型',
-                                 `css_class` varchar(100) DEFAULT NULL COMMENT '样式属性（其他样式扩展）',
-                                 `list_class` varchar(100) DEFAULT NULL COMMENT '表格回显样式',
-                                 `is_default` char(1) DEFAULT 'N' COMMENT '是否默认（Y是 N否）',
-                                 `status` char(1) DEFAULT '0' COMMENT '状态（0正常 1停用）',
-                                 `create_by` varchar(64) DEFAULT '' COMMENT '创建者',
-                                 `create_time` datetime DEFAULT NULL COMMENT '创建时间',
-                                 `update_by` varchar(64) DEFAULT '' COMMENT '更新者',
-                                 `update_time` datetime DEFAULT NULL COMMENT '更新时间',
-                                 `remark` varchar(500) DEFAULT NULL COMMENT '备注',
-                                 PRIMARY KEY (`dict_code`)
-) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8 COMMENT='字典数据表';
+    `dict_code` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '字典编码',
+    `dict_sort` int(4) DEFAULT '0' COMMENT '字典排序',
+    `dict_label` varchar(100) DEFAULT '' COMMENT '字典标签',
+    `dict_value` varchar(100) DEFAULT '' COMMENT '字典键值',
+    `dict_type` varchar(100) DEFAULT '' COMMENT '字典类型',
+    `css_class` varchar(100) DEFAULT NULL COMMENT '样式属性（其他样式扩展）',
+    `list_class` varchar(100) DEFAULT NULL COMMENT '表格回显样式',
+    `is_default` char(1) DEFAULT 'N' COMMENT '是否默认（Y是 N否）',
+    `status` char(1) DEFAULT '0' COMMENT '状态（0正常 1停用）',
+    `create_by` varchar(64) DEFAULT '' COMMENT '创建者',
+    `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+    `update_by` varchar(64) DEFAULT '' COMMENT '更新者',
+    `update_time` datetime DEFAULT NULL COMMENT '更新时间',
+    `remark` varchar(500) DEFAULT NULL COMMENT '备注',
+    PRIMARY KEY (`dict_code`)
+    ) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8 COMMENT='字典数据表';
 
 -- ----------------------------
 -- Records of system_dc_dict_data
@@ -374,18 +375,18 @@ INSERT INTO `system_dc_dict_data` VALUES ('29', '2', '失败', '1', 'system_dc_c
 -- ----------------------------
 -- DROP TABLE IF EXISTS `system_dc_dict_type`;
 CREATE TABLE IF NOT EXISTS `system_dc_dict_type` (
-                                 `dict_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '字典主键',
-                                 `dict_name` varchar(100) DEFAULT '' COMMENT '字典名称',
-                                 `dict_type` varchar(100) DEFAULT '' COMMENT '字典类型',
-                                 `status` char(1) DEFAULT '0' COMMENT '状态（0正常 1停用）',
-                                 `create_by` varchar(64) DEFAULT '' COMMENT '创建者',
-                                 `create_time` datetime DEFAULT NULL COMMENT '创建时间',
-                                 `update_by` varchar(64) DEFAULT '' COMMENT '更新者',
-                                 `update_time` datetime DEFAULT NULL COMMENT '更新时间',
-                                 `remark` varchar(500) DEFAULT NULL COMMENT '备注',
-                                 PRIMARY KEY (`dict_id`),
-                                 UNIQUE KEY `dict_type` (`dict_type`)
-) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8 COMMENT='字典类型表';
+    `dict_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '字典主键',
+    `dict_name` varchar(100) DEFAULT '' COMMENT '字典名称',
+    `dict_type` varchar(100) DEFAULT '' COMMENT '字典类型',
+    `status` char(1) DEFAULT '0' COMMENT '状态（0正常 1停用）',
+    `create_by` varchar(64) DEFAULT '' COMMENT '创建者',
+    `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+    `update_by` varchar(64) DEFAULT '' COMMENT '更新者',
+    `update_time` datetime DEFAULT NULL COMMENT '更新时间',
+    `remark` varchar(500) DEFAULT NULL COMMENT '备注',
+    PRIMARY KEY (`dict_id`),
+    UNIQUE KEY `dict_type` (`dict_type`)
+    ) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8 COMMENT='字典类型表';
 
 -- ----------------------------
 -- Records of system_dc_dict_type
@@ -406,21 +407,21 @@ INSERT INTO `system_dc_dict_type` VALUES ('10', '系统状态', 'system_dc_commo
 -- ----------------------------
 -- DROP TABLE IF EXISTS `system_dc_job`;
 CREATE TABLE IF NOT EXISTS `system_dc_job` (
-                           `job_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '任务ID',
-                           `job_name` varchar(64) NOT NULL DEFAULT '' COMMENT '任务名称',
-                           `job_group` varchar(64) NOT NULL DEFAULT 'DEFAULT' COMMENT '任务组名',
-                           `invoke_target` varchar(500) NOT NULL COMMENT '调用目标字符串',
-                           `cron_expression` varchar(255) DEFAULT '' COMMENT 'cron执行表达式',
-                           `misfire_policy` varchar(20) DEFAULT '3' COMMENT '计划执行错误策略（1立即执行 2执行一次 3放弃执行）',
-                           `concurrent` char(1) DEFAULT '1' COMMENT '是否并发执行（0允许 1禁止）',
-                           `status` char(1) DEFAULT '0' COMMENT '状态（0正常 1暂停）',
-                           `create_by` varchar(64) DEFAULT '' COMMENT '创建者',
-                           `create_time` datetime DEFAULT NULL COMMENT '创建时间',
-                           `update_by` varchar(64) DEFAULT '' COMMENT '更新者',
-                           `update_time` datetime DEFAULT NULL COMMENT '更新时间',
-                           `remark` varchar(500) DEFAULT '' COMMENT '备注信息',
-                           PRIMARY KEY (`job_id`,`job_name`,`job_group`)
-) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8 COMMENT='定时任务调度表';
+    `job_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '任务ID',
+    `job_name` varchar(64) NOT NULL DEFAULT '' COMMENT '任务名称',
+    `job_group` varchar(64) NOT NULL DEFAULT 'DEFAULT' COMMENT '任务组名',
+    `invoke_target` varchar(500) NOT NULL COMMENT '调用目标字符串',
+    `cron_expression` varchar(255) DEFAULT '' COMMENT 'cron执行表达式',
+    `misfire_policy` varchar(20) DEFAULT '3' COMMENT '计划执行错误策略（1立即执行 2执行一次 3放弃执行）',
+    `concurrent` char(1) DEFAULT '1' COMMENT '是否并发执行（0允许 1禁止）',
+    `status` char(1) DEFAULT '0' COMMENT '状态（0正常 1暂停）',
+    `create_by` varchar(64) DEFAULT '' COMMENT '创建者',
+    `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+    `update_by` varchar(64) DEFAULT '' COMMENT '更新者',
+    `update_time` datetime DEFAULT NULL COMMENT '更新时间',
+    `remark` varchar(500) DEFAULT '' COMMENT '备注信息',
+    PRIMARY KEY (`job_id`,`job_name`,`job_group`)
+    ) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8 COMMENT='定时任务调度表';
 
 -- ----------------------------
 -- Records of system_dc_job
@@ -434,16 +435,16 @@ INSERT INTO `system_dc_job` VALUES ('3', '系统默认（多参）', 'DEFAULT', 
 -- ----------------------------
 -- DROP TABLE IF EXISTS `system_dc_job_log`;
 CREATE TABLE IF NOT EXISTS `system_dc_job_log` (
-                               `job_log_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '任务日志ID',
-                               `job_name` varchar(64) NOT NULL COMMENT '任务名称',
-                               `job_group` varchar(64) NOT NULL COMMENT '任务组名',
-                               `invoke_target` varchar(500) NOT NULL COMMENT '调用目标字符串',
-                               `job_message` varchar(500) DEFAULT NULL COMMENT '日志信息',
-                               `status` char(1) DEFAULT '0' COMMENT '执行状态（0正常 1失败）',
-                               `exception_info` varchar(2000) DEFAULT '' COMMENT '异常信息',
-                               `create_time` datetime DEFAULT NULL COMMENT '创建时间',
-                               PRIMARY KEY (`job_log_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='定时任务调度日志表';
+    `job_log_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '任务日志ID',
+    `job_name` varchar(64) NOT NULL COMMENT '任务名称',
+    `job_group` varchar(64) NOT NULL COMMENT '任务组名',
+    `invoke_target` varchar(500) NOT NULL COMMENT '调用目标字符串',
+    `job_message` varchar(500) DEFAULT NULL COMMENT '日志信息',
+    `status` char(1) DEFAULT '0' COMMENT '执行状态（0正常 1失败）',
+    `exception_info` varchar(2000) DEFAULT '' COMMENT '异常信息',
+    `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+    PRIMARY KEY (`job_log_id`)
+    ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='定时任务调度日志表';
 
 -- ----------------------------
 -- Records of system_dc_job_log
