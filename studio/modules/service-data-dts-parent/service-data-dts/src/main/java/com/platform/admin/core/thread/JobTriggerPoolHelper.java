@@ -180,7 +180,11 @@ public class JobTriggerPoolHelper {
 			tmpFilePath = generateTemJsonFile(jobInfo.getJobJson());
 			cmdarrayFinal = buildFlinkXExecutorCmd(ExcecutorConfig.getExcecutorConfig().getFlinkxHome(), tmpFilePath,jobId);
 			for (int j = 0; j < cmdarrayFinal.length; j++) {
-				cmdstr += cmdarrayFinal[j] + " ";
+				if (cmdarrayFinal[j].contains(".out")) {
+					cmdstr += " > " + cmdarrayFinal[j] ;
+				}else {
+					cmdstr += cmdarrayFinal[j] + " ";
+				}
 			}
 			final Process process = Runtime.getRuntime().exec(cmdstr);
 			String prcsId = ProcessUtil.getProcessId(process);
