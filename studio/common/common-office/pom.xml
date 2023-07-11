@@ -11,11 +11,18 @@
     <version>0.4.x</version>
     <artifactId>common-office</artifactId>
     <dependencies>
+<!--        <dependency>-->
+<!--            <groupId>com.aspose</groupId>-->
+<!--            <artifactId>aspose-words</artifactId>-->
+<!--            <version>23.6</version>-->
+<!--        </dependency>-->
+
         <dependency>
-            <groupId>com.aspose</groupId>
+            <groupId>com.luhuiguo</groupId>
             <artifactId>aspose-words</artifactId>
-            <version>${aspose.version}</version>
+            <version>23.1</version>
         </dependency>
     </dependencies>
+
 
 </project>
