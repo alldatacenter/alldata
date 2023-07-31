@@ -18,11 +18,9 @@ AllData数字化方案
    ai/index
    dts/index
    govern/index
-   fs/index
    shuffle/index
    k8s/index
    kg/index
    iot/index
-   trade/index
    wiki/index
 
