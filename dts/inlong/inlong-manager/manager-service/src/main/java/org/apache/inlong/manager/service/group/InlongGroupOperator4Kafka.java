@@ -17,7 +17,6 @@
 
 package org.apache.inlong.manager.service.group;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.inlong.common.constant.MQType;
 import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
 import org.apache.inlong.manager.common.exceptions.BusinessException;
@@ -32,6 +31,8 @@ import org.apache.inlong.manager.pojo.group.kafka.InlongKafkaInfo;
 import org.apache.inlong.manager.pojo.group.kafka.InlongKafkaRequest;
 import org.apache.inlong.manager.pojo.group.kafka.InlongKafkaTopicInfo;
 import org.apache.inlong.manager.pojo.stream.InlongStreamBriefInfo;
+
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -81,7 +82,7 @@ public class InlongGroupOperator4Kafka extends AbstractGroupOperator {
         InlongKafkaRequest kafkaRequest = (InlongKafkaRequest) request;
         CommonBeanUtils.copyProperties(kafkaRequest, targetEntity, true);
         try {
-            InlongKafkaDTO dto = InlongKafkaDTO.getFromRequest(kafkaRequest);
+            InlongKafkaDTO dto = InlongKafkaDTO.getFromRequest(kafkaRequest, targetEntity.getExtParams());
             targetEntity.setExtParams(objectMapper.writeValueAsString(dto));
         } catch (Exception e) {
             throw new BusinessException(ErrorCodeEnum.SOURCE_INFO_INCORRECT,

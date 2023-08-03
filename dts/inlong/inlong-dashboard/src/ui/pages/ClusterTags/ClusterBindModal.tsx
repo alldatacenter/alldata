@@ -24,6 +24,7 @@ import FormGenerator, { useForm } from '@/ui/components/FormGenerator';
 import { useUpdateEffect } from '@/ui/hooks';
 import i18n from '@/i18n';
 import request from '@/core/utils/request';
+import { clusters } from '@/plugins/clusters';
 
 export interface Props extends ModalProps {
   clusterTag: string;
@@ -79,7 +80,9 @@ const Comp: React.FC<Props> = ({ clusterTag, ...modalProps }) => {
               formatResult: result =>
                 result?.list?.map(item => ({
                   ...item,
-                  label: `${item.name} (${item.type})`,
+                  label: `${item.displayName === null ? item.name : item.displayName} (${
+                    clusters.find(c => c.value === item.type)?.label || item.type
+                  })`,
                   value: item.id,
                 })),
             },

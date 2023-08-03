@@ -17,9 +17,10 @@
 
 package org.apache.inlong.sort.standalone.dispatch;
 
-import org.apache.flume.Context;
 import org.apache.inlong.sort.standalone.channel.ProfileEvent;
 import org.apache.inlong.sort.standalone.utils.InlongLoggerFactory;
+
+import org.apache.flume.Context;
 import org.slf4j.Logger;
 
 import java.util.ArrayList;

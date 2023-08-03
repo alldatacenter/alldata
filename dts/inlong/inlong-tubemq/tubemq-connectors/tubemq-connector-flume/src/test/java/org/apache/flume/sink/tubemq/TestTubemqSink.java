@@ -17,13 +17,15 @@
 
 package org.apache.flume.sink.tubemq;
 
+import org.apache.inlong.tubemq.client.config.TubeClientConfig;
+
+import org.apache.flume.Context;
+import org.apache.flume.conf.Configurables;
+import org.junit.Test;
+
 import static org.apache.flume.sink.tubemq.ConfigOptions.MASTER_HOST_PORT_LIST;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
-import org.apache.flume.Context;
-import org.apache.flume.conf.Configurables;
-import org.apache.inlong.tubemq.client.config.TubeClientConfig;
-import org.junit.Test;
 
 public class TestTubemqSink {
 

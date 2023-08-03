@@ -80,8 +80,8 @@ public interface StreamSourceService {
     /**
      * Get the StreamSource Map by the inlong group info and inlong stream info list.
      * <p/>
-     * If the group mode is LIGHTWEIGHT, means not using any MQ as a cached source, then just get all related sources.
-     * Otherwise, if the group mode is STANDARD, need get the cached MQ sources.
+     * If the group mode is DATASYNC, means not using any MQ as a cached source, then just get all related sources.
+     * Otherwise, if the group mode is STANDARD(include Data Ingestion and Synchronization), need get the cached MQ sources.
      *
      * @param groupInfo inlong group info
      * @param streamInfos inlong stream info list

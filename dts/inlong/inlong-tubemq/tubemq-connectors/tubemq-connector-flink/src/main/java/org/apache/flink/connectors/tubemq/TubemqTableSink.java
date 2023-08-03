@@ -17,8 +17,6 @@
 
 package org.apache.flink.connectors.tubemq;
 
-import static org.apache.flink.util.Preconditions.checkNotNull;
-import java.util.Arrays;
 import org.apache.flink.api.common.serialization.SerializationSchema;
 import org.apache.flink.api.common.typeinfo.TypeInformation;
 import org.apache.flink.configuration.Configuration;
@@ -30,6 +28,10 @@ import org.apache.flink.table.api.ValidationException;
 import org.apache.flink.table.sinks.AppendStreamTableSink;
 import org.apache.flink.table.utils.TableConnectorUtils;
 import org.apache.flink.types.Row;
+
+import java.util.Arrays;
+
+import static org.apache.flink.util.Preconditions.checkNotNull;
 
 /**
  * Tubemq {@link org.apache.flink.table.sinks.StreamTableSink}.

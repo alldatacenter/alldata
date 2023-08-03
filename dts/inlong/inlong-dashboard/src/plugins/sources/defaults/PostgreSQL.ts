@@ -24,7 +24,7 @@ import { SourceInfo } from '../common/SourceInfo';
 import i18n from '@/i18n';
 
 const { I18n } = DataWithBackend;
-const { FieldDecorator } = RenderRow;
+const { FieldDecorator, SyncField } = RenderRow;
 const { ColumnDecorator } = RenderList;
 
 export default class PostgreSQLSource
@@ -39,6 +39,7 @@ export default class PostgreSQLSource
     }),
   })
   @ColumnDecorator()
+  @SyncField()
   @I18n('meta.Sources.PostgreSQL.Hostname')
   hostname: string;
 
@@ -53,6 +54,7 @@ export default class PostgreSQLSource
     }),
   })
   @ColumnDecorator()
+  @SyncField()
   @I18n('meta.Sources.PostgreSQL.Port')
   port: number;
 
@@ -63,6 +65,7 @@ export default class PostgreSQLSource
       disabled: values?.status === 101,
     }),
   })
+  @SyncField()
   @I18n('meta.Sources.PostgreSQL.Database')
   database: string;
 
@@ -73,6 +76,7 @@ export default class PostgreSQLSource
       disabled: values?.status === 101,
     }),
   })
+  @SyncField()
   @I18n('meta.Sources.PostgreSQL.SchemaName')
   schema: string;
 
@@ -83,6 +87,7 @@ export default class PostgreSQLSource
       disabled: values?.status === 101,
     }),
   })
+  @SyncField()
   @ColumnDecorator()
   @I18n('meta.Sources.PostgreSQL.Username')
   username: string;
@@ -94,6 +99,7 @@ export default class PostgreSQLSource
       disabled: values?.status === 101,
     }),
   })
+  @SyncField()
   @I18n('meta.Sources.PostgreSQL.Password')
   password: string;
 
@@ -105,6 +111,7 @@ export default class PostgreSQLSource
       disabled: values?.status === 101,
     }),
   })
+  @SyncField()
   @I18n('meta.Sources.PostgreSQL.TableName')
   tableNameList: string;
 
@@ -114,6 +121,7 @@ export default class PostgreSQLSource
       disabled: values?.status === 101,
     }),
   })
+  @SyncField()
   @I18n('meta.Sources.PostgreSQL.PrimaryKey')
   primaryKey: string;
 
@@ -150,6 +158,7 @@ export default class PostgreSQLSource
       ],
     }),
   })
+  @SyncField()
   @I18n('meta.Sources.PostgreSQL.decodingPluginName')
   decodingPluginName: string;
 

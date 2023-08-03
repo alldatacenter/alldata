@@ -17,8 +17,9 @@
 
 package org.apache.inlong.sdk.dataproxy.config;
 
-import org.apache.commons.codec.binary.Base64;
 import org.apache.inlong.sdk.dataproxy.utils.EncryptUtil;
+
+import org.apache.commons.codec.binary.Base64;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

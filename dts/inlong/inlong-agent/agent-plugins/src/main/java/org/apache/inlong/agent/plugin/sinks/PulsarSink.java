@@ -17,14 +17,10 @@
 
 package org.apache.inlong.agent.plugin.sinks;
 
-import com.google.common.base.Preconditions;
-import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.lang3.ObjectUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.inlong.agent.common.AgentThreadFactory;
 import org.apache.inlong.agent.conf.AgentConfiguration;
 import org.apache.inlong.agent.conf.JobProfile;
-import org.apache.inlong.agent.core.task.TaskPositionManager;
+import org.apache.inlong.agent.core.task.PositionManager;
 import org.apache.inlong.agent.message.BatchProxyMessage;
 import org.apache.inlong.agent.message.EndMessage;
 import org.apache.inlong.agent.message.PackProxyMessage;
@@ -35,6 +31,11 @@ import org.apache.inlong.agent.utils.AgentUtils;
 import org.apache.inlong.agent.utils.ThreadUtils;
 import org.apache.inlong.common.msg.InLongMsg;
 import org.apache.inlong.common.pojo.dataproxy.MQClusterInfo;
+
+import com.google.common.base.Preconditions;
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang3.ObjectUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.pulsar.client.api.CompressionType;
 import org.apache.pulsar.client.api.MessageId;
 import org.apache.pulsar.client.api.Producer;
@@ -90,7 +91,7 @@ public class PulsarSink extends AbstractSink {
     private static final ExecutorService EXECUTOR_SERVICE = new ThreadPoolExecutor(0, Integer.MAX_VALUE,
             60L, TimeUnit.SECONDS, new SynchronousQueue<>(), new AgentThreadFactory("PulsarSink"));
     private final AgentConfiguration agentConf = AgentConfiguration.getAgentConf();
-    private TaskPositionManager taskPositionManager;
+    private PositionManager positionManager;
     private volatile boolean shutdown = false;
     private List<MQClusterInfo> mqClusterInfos;
     private String topic;
@@ -118,7 +119,7 @@ public class PulsarSink extends AbstractSink {
     @Override
     public void init(JobProfile jobConf) {
         super.init(jobConf);
-        taskPositionManager = TaskPositionManager.getInstance();
+        positionManager = PositionManager.getInstance();
         // agentConf
         sendQueueSize = agentConf.getInt(PULSAR_SINK_SEND_QUEUE_SIZE, DEFAULT_SEND_QUEUE_SIZE);
         sendQueueSemaphore = new Semaphore(sendQueueSize);
@@ -196,6 +197,7 @@ public class PulsarSink extends AbstractSink {
             AgentUtils.silenceSleepInMs(batchFlushInterval);
         }
         shutdown = true;
+        EXECUTOR_SERVICE.shutdown();
         if (CollectionUtils.isNotEmpty(pulsarSenders)) {
             for (PulsarTopicSender sender : pulsarSenders) {
                 sender.close();
@@ -298,7 +300,6 @@ public class PulsarSink extends AbstractSink {
                     updateSuccessSendMetrics(batchMsg);
                 }
             });
-
         } else {
             try {
                 producer.newMessage().eventTime(batchMsg.getDataTime()).value(message.buildArray()).send();
@@ -318,9 +319,6 @@ public class PulsarSink extends AbstractSink {
                 batchMsg.getStreamId(), batchMsg.getDataTime(), batchMsg.getMsgCnt(),
                 batchMsg.getTotalSize());
         sinkMetric.pluginSendSuccessCount.addAndGet(batchMsg.getMsgCnt());
-        if (sourceName != null) {
-            taskPositionManager.updateSinkPosition(batchMsg.getJobId(), sourceName, batchMsg.getMsgCnt(), false);
-        }
     }
 
     private Producer selectProducer() {

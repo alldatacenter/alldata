@@ -17,10 +17,11 @@
 
 package org.apache.inlong.tubemq.server.common.fileconfig;
 
+import org.apache.inlong.tubemq.corebase.utils.TStringUtils;
+
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
-import org.apache.inlong.tubemq.corebase.utils.TStringUtils;
 
 public class ADConfig {
 

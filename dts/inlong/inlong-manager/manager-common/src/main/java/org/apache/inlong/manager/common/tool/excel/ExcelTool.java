@@ -17,11 +17,6 @@
 
 package org.apache.inlong.manager.common.tool.excel;
 
-import lombok.Data;
-import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.tuple.Pair;
-import org.apache.commons.lang3.tuple.Triple;
 import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
 import org.apache.inlong.manager.common.tool.excel.annotation.ExcelEntity;
 import org.apache.inlong.manager.common.tool.excel.annotation.ExcelField;
@@ -29,6 +24,12 @@ import org.apache.inlong.manager.common.tool.excel.annotation.Font;
 import org.apache.inlong.manager.common.tool.excel.annotation.Style;
 import org.apache.inlong.manager.common.tool.excel.validator.ExcelCellValidator;
 import org.apache.inlong.manager.common.util.Preconditions;
+
+import lombok.Data;
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.tuple.Pair;
+import org.apache.commons.lang3.tuple.Triple;
 import org.apache.poi.ss.usermodel.BorderStyle;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;

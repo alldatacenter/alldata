@@ -21,13 +21,14 @@
     <parent>
         <groupId>org.apache.inlong</groupId>
         <artifactId>inlong-tubemq</artifactId>
-        <version>1.7.0</version>
-        <relativePath>../pom.xml</relativePath>
+        <version>1.8.0</version>
     </parent>
+
     <artifactId>tubemq-manager</artifactId>
     <name>Apache InLong - TubeMQ Manager</name>
 
     <properties>
+        <inlong.root.dir>${project.parent.parent.basedir}</inlong.root.dir>
         <docker.image.prefix>springboot-docker</docker.image.prefix>
     </properties>
 

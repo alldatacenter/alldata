@@ -19,6 +19,7 @@ package org.apache.inlong.tubemq.client.consumer;
 
 import org.apache.inlong.tubemq.client.common.StatsConfig;
 import org.apache.inlong.tubemq.client.common.StatsLevel;
+
 import org.junit.Assert;
 import org.junit.Test;
 

@@ -1,7 +1,0 @@
-apiVersion: scheduling.k8s.io/v1
-description: Offline tasks, computing tasks, etc.
-kind: PriorityClass
-metadata:
-  name: batch
-preemptionPolicy: PreemptLowerPriority
-value: 5000

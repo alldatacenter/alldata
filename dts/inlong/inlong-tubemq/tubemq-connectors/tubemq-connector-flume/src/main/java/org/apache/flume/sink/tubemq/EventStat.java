@@ -17,10 +17,11 @@
 
 package org.apache.flume.sink.tubemq;
 
-import static org.apache.flume.sink.tubemq.ConfigOptions.TOPIC;
+import org.apache.flume.Event;
 
 import java.util.Map;
-import org.apache.flume.Event;
+
+import static org.apache.flume.sink.tubemq.ConfigOptions.TOPIC;
 
 /**
  * Event with retry time

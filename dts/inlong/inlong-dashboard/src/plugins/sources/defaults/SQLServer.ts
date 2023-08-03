@@ -24,7 +24,7 @@ import { SourceInfo } from '../common/SourceInfo';
 import i18n from '@/i18n';
 
 const { I18n } = DataWithBackend;
-const { FieldDecorator } = RenderRow;
+const { FieldDecorator, SyncField } = RenderRow;
 const { ColumnDecorator } = RenderList;
 
 export default class SQLServerSource
@@ -39,6 +39,7 @@ export default class SQLServerSource
     }),
   })
   @ColumnDecorator()
+  @SyncField()
   @I18n('meta.Sources.SQLServer.Hostname')
   hostname: string;
 
@@ -53,6 +54,7 @@ export default class SQLServerSource
     }),
   })
   @ColumnDecorator()
+  @SyncField()
   @I18n('meta.Sources.SQLServer.Port')
   port: number;
 
@@ -64,6 +66,7 @@ export default class SQLServerSource
     }),
   })
   @ColumnDecorator()
+  @SyncField()
   @I18n('meta.Sources.SQLServer.Username')
   username: string;
 
@@ -74,6 +77,7 @@ export default class SQLServerSource
       disabled: values?.status === 101,
     }),
   })
+  @SyncField()
   @I18n('meta.Sources.SQLServer.Password')
   password: string;
 
@@ -84,6 +88,7 @@ export default class SQLServerSource
       disabled: values?.status === 101,
     }),
   })
+  @SyncField()
   @I18n('meta.Sources.SQLServer.Database')
   database: string;
 
@@ -105,6 +110,7 @@ export default class SQLServerSource
       ],
     }),
   })
+  @SyncField()
   @I18n('meta.Sources.SQLServer.AllMigration')
   allMigration: boolean;
 
@@ -116,6 +122,7 @@ export default class SQLServerSource
       disabled: values?.status === 101,
     }),
   })
+  @SyncField()
   @I18n('meta.Sources.SQLServer.ServerTimezone')
   serverTimezone: string;
 
@@ -126,6 +133,7 @@ export default class SQLServerSource
       disabled: values?.status === 101,
     }),
   })
+  @SyncField()
   @I18n('meta.Sources.SQLServer.SchemaName')
   schemaName: string;
 
@@ -136,6 +144,7 @@ export default class SQLServerSource
       disabled: values?.status === 101,
     }),
   })
+  @SyncField()
   @I18n('meta.Sources.SQLServer.TableName')
   tableName: string;
 
@@ -145,6 +154,7 @@ export default class SQLServerSource
       disabled: values?.status === 101,
     }),
   })
+  @SyncField()
   @I18n('meta.Sources.SQLServer.PrimaryKey')
   primaryKey: string;
 }

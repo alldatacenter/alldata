@@ -17,11 +17,16 @@
 
 package org.apache.inlong.tubemq.manager.utils;
 
-import static java.nio.charset.StandardCharsets.UTF_8;
-import static org.apache.inlong.tubemq.manager.service.TubeConst.OP_MODIFY;
-import static org.apache.inlong.tubemq.manager.service.TubeConst.REBALANCE_GROUP;
+import org.apache.inlong.tubemq.manager.controller.cluster.vo.ClusterVo;
+import org.apache.inlong.tubemq.manager.controller.topic.request.RebalanceConsumerReq;
+import org.apache.inlong.tubemq.manager.controller.topic.request.RebalanceGroupReq;
+import org.apache.inlong.tubemq.manager.entry.ClusterEntry;
+import org.apache.inlong.tubemq.manager.entry.MasterEntry;
 
 import com.google.gson.Gson;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.ClassUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Field;
@@ -30,14 +35,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.ClassUtils;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.inlong.tubemq.manager.controller.cluster.vo.ClusterVo;
-import org.apache.inlong.tubemq.manager.controller.topic.request.RebalanceConsumerReq;
-import org.apache.inlong.tubemq.manager.controller.topic.request.RebalanceGroupReq;
-import org.apache.inlong.tubemq.manager.entry.ClusterEntry;
-import org.apache.inlong.tubemq.manager.entry.MasterEntry;
+import static java.nio.charset.StandardCharsets.UTF_8;
+import static org.apache.inlong.tubemq.manager.service.TubeConst.OP_MODIFY;
+import static org.apache.inlong.tubemq.manager.service.TubeConst.REBALANCE_GROUP;
 
 @Slf4j
 public class ConvertUtils {

@@ -17,8 +17,6 @@
 
 package org.apache.inlong.manager.service.node.postgresql;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.inlong.manager.common.consts.DataNodeType;
 import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
 import org.apache.inlong.manager.common.exceptions.BusinessException;
@@ -32,6 +30,9 @@ import org.apache.inlong.manager.pojo.node.postgresql.PostgreSQLDataNodeInfo;
 import org.apache.inlong.manager.pojo.node.postgresql.PostgreSQLDataNodeRequest;
 import org.apache.inlong.manager.service.node.AbstractDataNodeOperator;
 import org.apache.inlong.manager.service.resource.sink.postgresql.PostgreSQLJdbcUtils;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -77,10 +78,10 @@ public class PostgreSQLDataNodeOperator extends AbstractDataNodeOperator {
 
     @Override
     protected void setTargetEntity(DataNodeRequest request, DataNodeEntity targetEntity) {
-        PostgreSQLDataNodeRequest dataNodeRequest = (PostgreSQLDataNodeRequest) request;
-        CommonBeanUtils.copyProperties(dataNodeRequest, targetEntity, true);
+        PostgreSQLDataNodeRequest nodeRequest = (PostgreSQLDataNodeRequest) request;
+        CommonBeanUtils.copyProperties(nodeRequest, targetEntity, true);
         try {
-            PostgreSQLDataNodeDTO dto = PostgreSQLDataNodeDTO.getFromRequest(dataNodeRequest);
+            PostgreSQLDataNodeDTO dto = PostgreSQLDataNodeDTO.getFromRequest(nodeRequest, targetEntity.getExtParams());
             targetEntity.setExtParams(objectMapper.writeValueAsString(dto));
         } catch (Exception e) {
             throw new BusinessException(ErrorCodeEnum.SOURCE_INFO_INCORRECT,

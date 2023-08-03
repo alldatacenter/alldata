@@ -17,8 +17,6 @@
 
 package org.apache.inlong.manager.service.stream;
 
-import com.google.common.util.concurrent.ThreadFactoryBuilder;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
 import org.apache.inlong.manager.common.enums.GroupOperateType;
 import org.apache.inlong.manager.common.enums.GroupStatus;
@@ -29,10 +27,16 @@ import org.apache.inlong.manager.common.exceptions.BusinessException;
 import org.apache.inlong.manager.common.util.Preconditions;
 import org.apache.inlong.manager.pojo.group.InlongGroupInfo;
 import org.apache.inlong.manager.pojo.stream.InlongStreamInfo;
+import org.apache.inlong.manager.pojo.user.LoginUserUtils;
+import org.apache.inlong.manager.pojo.user.UserInfo;
 import org.apache.inlong.manager.pojo.workflow.WorkflowResult;
 import org.apache.inlong.manager.pojo.workflow.form.process.StreamResourceProcessForm;
 import org.apache.inlong.manager.service.group.InlongGroupService;
+import org.apache.inlong.manager.service.user.UserService;
 import org.apache.inlong.manager.service.workflow.WorkflowService;
+
+import com.google.common.util.concurrent.ThreadFactoryBuilder;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -69,6 +73,8 @@ public class InlongStreamProcessService {
     private InlongStreamService streamService;
     @Autowired
     private WorkflowService workflowService;
+    @Autowired
+    private UserService userService;
 
     /**
      * Create stream in synchronous/asynchronous way.
@@ -83,6 +89,9 @@ public class InlongStreamProcessService {
             throw new BusinessException(String.format("group status=%s not support start stream"
                     + " for groupId=%s", groupStatus, groupId));
         }
+
+        // only the person in charges can start process
+        userService.checkUser(groupInfo.getInCharges(), operator, ErrorCodeEnum.GROUP_PERMISSION_DENIED.getMessage());
 
         InlongStreamInfo streamInfo = streamService.get(groupId, streamId);
         Preconditions.expectNotNull(streamInfo, ErrorCodeEnum.STREAM_NOT_FOUND.getMessage());
@@ -107,7 +116,9 @@ public class InlongStreamProcessService {
             ProcessStatus processStatus = workflowResult.getProcessInfo().getStatus();
             return processStatus == ProcessStatus.COMPLETED;
         } else {
-            EXECUTOR_SERVICE.execute(() -> workflowService.start(processName, operator, processForm));
+            UserInfo userInfo = LoginUserUtils.getLoginUser();
+            EXECUTOR_SERVICE.execute(
+                    () -> workflowService.startAsync(processName, userInfo, processForm));
             return true;
         }
     }
@@ -125,6 +136,9 @@ public class InlongStreamProcessService {
             throw new BusinessException(String.format("group status=%s not support suspend stream"
                     + " for groupId=%s", groupStatus, groupId));
         }
+
+        // only the person in charges can suspend process
+        userService.checkUser(groupInfo.getInCharges(), operator, ErrorCodeEnum.GROUP_PERMISSION_DENIED.getMessage());
 
         InlongStreamInfo streamInfo = streamService.get(groupId, streamId);
         Preconditions.expectNotNull(streamInfo, ErrorCodeEnum.STREAM_NOT_FOUND.getMessage());
@@ -147,7 +161,9 @@ public class InlongStreamProcessService {
             ProcessStatus processStatus = workflowResult.getProcessInfo().getStatus();
             return processStatus == ProcessStatus.COMPLETED;
         } else {
-            EXECUTOR_SERVICE.execute(() -> workflowService.start(processName, operator, processForm));
+            UserInfo userInfo = LoginUserUtils.getLoginUser();
+            EXECUTOR_SERVICE.execute(
+                    () -> workflowService.startAsync(processName, userInfo, processForm));
             return true;
         }
     }
@@ -165,6 +181,8 @@ public class InlongStreamProcessService {
             throw new BusinessException(
                     String.format("group status=%s not support restart stream for groupId=%s", groupStatus, groupId));
         }
+        // only the person in charges can restart process
+        userService.checkUser(groupInfo.getInCharges(), operator, ErrorCodeEnum.GROUP_PERMISSION_DENIED.getMessage());
 
         InlongStreamInfo streamInfo = streamService.get(groupId, streamId);
         Preconditions.expectNotNull(streamInfo, ErrorCodeEnum.STREAM_NOT_FOUND.getMessage());
@@ -187,7 +205,9 @@ public class InlongStreamProcessService {
             ProcessStatus processStatus = workflowResult.getProcessInfo().getStatus();
             return processStatus == ProcessStatus.COMPLETED;
         } else {
-            EXECUTOR_SERVICE.execute(() -> workflowService.start(processName, operator, processForm));
+            UserInfo userInfo = LoginUserUtils.getLoginUser();
+            EXECUTOR_SERVICE.execute(
+                    () -> workflowService.startAsync(processName, userInfo, processForm));
             return true;
         }
     }
@@ -203,6 +223,10 @@ public class InlongStreamProcessService {
             throw new BusinessException(ErrorCodeEnum.GROUP_NOT_FOUND,
                     ErrorCodeEnum.GROUP_NOT_FOUND.getMessage() + " : " + groupId);
         }
+
+        // only the person in charges can delete process
+        userService.checkUser(groupInfo.getInCharges(), operator, ErrorCodeEnum.GROUP_PERMISSION_DENIED.getMessage());
+
         GroupStatus groupStatus = GroupStatus.forCode(groupInfo.getStatus());
         if (GroupStatus.notAllowedTransition(groupStatus, GroupStatus.DELETING)) {
             throw new BusinessException(ErrorCodeEnum.GROUP_DELETE_NOT_ALLOWED,
@@ -235,12 +259,15 @@ public class InlongStreamProcessService {
                 return false;
             }
         } else {
+            UserInfo userInfo = LoginUserUtils.getLoginUser();
             EXECUTOR_SERVICE.execute(() -> {
+                LoginUserUtils.setUserLoginInfo(userInfo);
                 WorkflowResult workflowResult = workflowService.start(processName, operator, processForm);
                 ProcessStatus processStatus = workflowResult.getProcessInfo().getStatus();
                 if (processStatus == ProcessStatus.COMPLETED) {
                     streamService.delete(groupId, streamId, operator);
                 }
+                LoginUserUtils.removeUserLoginInfo();
             });
             return true;
         }

@@ -17,7 +17,9 @@
 
 package org.apache.inlong.tubemq.manager.entry;
 
-import java.sql.Date;
+import lombok.Data;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
@@ -28,8 +30,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import lombok.Data;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import java.sql.Date;
 
 @Entity
 @Table(name = "topic")

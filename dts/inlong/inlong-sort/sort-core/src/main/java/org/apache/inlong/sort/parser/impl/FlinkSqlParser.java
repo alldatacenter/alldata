@@ -17,11 +17,6 @@
 
 package org.apache.inlong.sort.parser.impl;
 
-import static org.apache.inlong.common.util.MaskDataUtils.maskSensitiveMessage;
-
-import com.google.common.base.Preconditions;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.flink.table.api.TableEnvironment;
 import org.apache.inlong.sort.configuration.Constants;
 import org.apache.inlong.sort.formats.base.TableFormatUtils;
 import org.apache.inlong.sort.formats.common.ArrayFormatInfo;
@@ -58,6 +53,10 @@ import org.apache.inlong.sort.protocol.transformation.relation.JoinRelation;
 import org.apache.inlong.sort.protocol.transformation.relation.NodeRelation;
 import org.apache.inlong.sort.protocol.transformation.relation.TemporalJoinRelation;
 import org.apache.inlong.sort.protocol.transformation.relation.UnionNodeRelation;
+
+import com.google.common.base.Preconditions;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.flink.table.api.TableEnvironment;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -72,6 +71,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import static org.apache.inlong.common.util.MaskDataUtils.maskSensitiveMessage;
 
 /**
  * Flink sql parse handler

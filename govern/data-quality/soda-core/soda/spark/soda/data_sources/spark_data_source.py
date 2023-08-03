@@ -105,7 +105,7 @@ def odbc_connection_function(
     import pyodbc
 
     http_path = f"/sql/protocolv1/o/{organization}/{cluster}"
-    user_agent_entry = f"soda-sql-spark/{SODA_CORE_VERSION} (Databricks)"
+    user_agent_entry = f"soda-core-spark/{SODA_CORE_VERSION} (Databricks)"
 
     connection_str = _build_odbc_connnection_string(
         DRIVER=driver,
@@ -129,6 +129,7 @@ def odbc_connection_function(
 def databricks_connection_function(host: str, http_path: str, token: str, database: str, schema: str, **kwargs):
     from databricks import sql
 
+    user_agent_entry = f"soda-core-spark/{SODA_CORE_VERSION} (Databricks)"
     logging.getLogger("databricks.sql").setLevel(logging.INFO)
     connection = sql.connect(
         server_hostname=host,
@@ -136,6 +137,7 @@ def databricks_connection_function(host: str, http_path: str, token: str, databa
         schema=schema,
         http_path=http_path,
         access_token=token,
+        _user_agent_entry=user_agent_entry,
     )
     return connection
 

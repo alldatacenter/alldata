@@ -40,12 +40,12 @@ export class StreamDefaultInfo implements DataWithBackend, RenderRow, RenderList
     type: 'input',
     props: values => ({
       disabled: Boolean(values?.status),
-      maxLength: 64,
+      maxLength: 200,
     }),
     rules: [
       { required: true },
       {
-        pattern: /^[0-9a-z_-]+$/,
+        pattern: /^[a-zA-Z0-9_.-]+$/,
         message: i18n.t('meta.Stream.StreamIdRules'),
       },
     ],

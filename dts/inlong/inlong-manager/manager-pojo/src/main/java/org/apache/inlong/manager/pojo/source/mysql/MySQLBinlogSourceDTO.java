@@ -17,16 +17,20 @@
 
 package org.apache.inlong.manager.pojo.source.mysql;
 
+import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
+import org.apache.inlong.manager.common.exceptions.BusinessException;
+import org.apache.inlong.manager.common.util.CommonBeanUtils;
+import org.apache.inlong.manager.common.util.JsonUtils;
+
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
-import org.apache.inlong.manager.common.exceptions.BusinessException;
-import org.apache.inlong.manager.common.util.JsonUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.validation.constraints.NotNull;
+
 import java.util.Map;
 
 /**
@@ -120,28 +124,11 @@ public class MySQLBinlogSourceDTO {
     /**
      * Get the dto instance from the request
      */
-    public static MySQLBinlogSourceDTO getFromRequest(MySQLBinlogSourceRequest request) {
-        return MySQLBinlogSourceDTO.builder()
-                .user(request.getUser())
-                .password(request.getPassword())
-                .hostname(request.getHostname())
-                .port(request.getPort())
-                .serverId(request.getServerId())
-                .includeSchema(request.getIncludeSchema())
-                .databaseWhiteList(request.getDatabaseWhiteList())
-                .tableWhiteList(request.getTableWhiteList())
-                .serverTimezone(request.getServerTimezone())
-                .intervalMs(request.getIntervalMs())
-                .snapshotMode(request.getSnapshotMode())
-                .offsetFilename(request.getOffsetFilename())
-                .historyFilename(request.getHistoryFilename())
-                .monitoredDdl(request.getMonitoredDdl())
-                .allMigration(request.isAllMigration())
-                .primaryKey(request.getPrimaryKey())
-                .specificOffsetFile(request.getSpecificOffsetFile())
-                .specificOffsetPos(request.getSpecificOffsetPos())
-                .properties(request.getProperties())
-                .build();
+    public static MySQLBinlogSourceDTO getFromRequest(MySQLBinlogSourceRequest request, String extParams) {
+        MySQLBinlogSourceDTO dto = StringUtils.isNotBlank(extParams)
+                ? MySQLBinlogSourceDTO.getFromJson(extParams)
+                : new MySQLBinlogSourceDTO();
+        return CommonBeanUtils.copyProperties(request, dto, true);
     }
 
     public static MySQLBinlogSourceDTO getFromJson(@NotNull String extParams) {

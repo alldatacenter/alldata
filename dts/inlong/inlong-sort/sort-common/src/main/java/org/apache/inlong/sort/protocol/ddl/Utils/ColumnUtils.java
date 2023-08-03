@@ -17,15 +17,17 @@
 
 package org.apache.inlong.sort.protocol.ddl.Utils;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import net.sf.jsqlparser.statement.create.table.ColDataType;
-import net.sf.jsqlparser.statement.create.table.ColumnDefinition;
+import org.apache.inlong.sort.protocol.ddl.enums.PositionType;
 import org.apache.inlong.sort.protocol.ddl.expressions.Column;
 import org.apache.inlong.sort.protocol.ddl.expressions.Column.ColumnBuilder;
 import org.apache.inlong.sort.protocol.ddl.expressions.Position;
-import org.apache.inlong.sort.protocol.ddl.enums.PositionType;
+
+import net.sf.jsqlparser.statement.create.table.ColDataType;
+import net.sf.jsqlparser.statement.create.table.ColumnDefinition;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Utils for parse from statement in sqlParser to a column object.

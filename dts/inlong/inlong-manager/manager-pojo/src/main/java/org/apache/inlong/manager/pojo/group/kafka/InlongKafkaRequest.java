@@ -17,13 +17,14 @@
 
 package org.apache.inlong.manager.pojo.group.kafka;
 
+import org.apache.inlong.common.constant.MQType;
+import org.apache.inlong.manager.common.util.JsonTypeDefine;
+import org.apache.inlong.manager.pojo.group.InlongGroupRequest;
+
 import io.swagger.annotations.ApiModel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.apache.inlong.common.constant.MQType;
-import org.apache.inlong.manager.common.util.JsonTypeDefine;
-import org.apache.inlong.manager.pojo.group.InlongGroupRequest;
 
 /**
  * Inlong group request for Kafka

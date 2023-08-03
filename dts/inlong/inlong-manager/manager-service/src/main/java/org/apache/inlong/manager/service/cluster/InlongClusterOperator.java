@@ -71,4 +71,6 @@ public interface InlongClusterOperator {
      */
     Boolean testConnection(ClusterRequest request);
 
+    Object getClusterInfo(InlongClusterEntity entity);
+
 }

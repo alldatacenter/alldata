@@ -17,8 +17,9 @@
 
 package org.apache.inlong.agent.utils;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.inlong.agent.pojo.DebeziumOffset;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 

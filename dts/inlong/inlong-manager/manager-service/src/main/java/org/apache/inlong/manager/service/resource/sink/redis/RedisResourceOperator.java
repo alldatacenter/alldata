@@ -20,6 +20,7 @@ package org.apache.inlong.manager.service.resource.sink.redis;
 import org.apache.inlong.manager.common.consts.SinkType;
 import org.apache.inlong.manager.pojo.sink.SinkInfo;
 import org.apache.inlong.manager.service.resource.sink.SinkResourceOperator;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;

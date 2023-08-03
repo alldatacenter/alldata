@@ -17,15 +17,17 @@
 
 package org.apache.inlong.tubemq.server.broker.stats;
 
+import org.apache.inlong.tubemq.corebase.daemon.AbstractDaemonService;
+import org.apache.inlong.tubemq.corebase.metric.TrafficStatsUnit;
+import org.apache.inlong.tubemq.corebase.metric.impl.LongOnlineCounter;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
-import org.apache.inlong.tubemq.corebase.daemon.AbstractDaemonService;
-import org.apache.inlong.tubemq.corebase.metric.TrafficStatsUnit;
-import org.apache.inlong.tubemq.corebase.metric.impl.LongOnlineCounter;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * TrafficStatsService, Input and Output traffic statistics Service

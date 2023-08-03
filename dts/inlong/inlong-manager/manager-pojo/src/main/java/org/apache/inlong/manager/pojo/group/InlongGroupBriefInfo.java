@@ -17,6 +17,8 @@
 
 package org.apache.inlong.manager.pojo.group;
 
+import org.apache.inlong.manager.pojo.source.StreamSource;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -24,7 +26,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.apache.inlong.manager.pojo.source.StreamSource;
 
 import java.util.Date;
 import java.util.List;

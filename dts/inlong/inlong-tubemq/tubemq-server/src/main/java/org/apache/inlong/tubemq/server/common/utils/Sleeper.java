@@ -17,10 +17,12 @@
 
 package org.apache.inlong.tubemq.server.common.utils;
 
-import java.util.concurrent.atomic.AtomicBoolean;
 import org.apache.inlong.tubemq.server.Stoppable;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * Sleeper for current thread. Sleeps for passed period. Also checks passed boolean and if

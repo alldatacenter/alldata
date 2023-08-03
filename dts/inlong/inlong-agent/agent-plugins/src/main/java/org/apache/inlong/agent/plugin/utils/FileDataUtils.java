@@ -17,6 +17,8 @@
 
 package org.apache.inlong.agent.plugin.utils;
 
+import org.apache.inlong.agent.conf.JobProfile;
+
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
@@ -24,7 +26,6 @@ import io.fabric8.kubernetes.api.model.Pod;
 import io.fabric8.kubernetes.client.KubernetesClient;
 import io.fabric8.kubernetes.client.dsl.PodResource;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.inlong.agent.conf.JobProfile;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

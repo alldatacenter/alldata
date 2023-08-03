@@ -17,10 +17,11 @@
 
 package org.apache.inlong.tubemq.server.broker.metadata;
 
+import org.apache.inlong.tubemq.corebase.policies.FlowCtrlRuleHandler;
+
 import java.beans.PropertyChangeListener;
 import java.util.List;
 import java.util.Map;
-import org.apache.inlong.tubemq.corebase.policies.FlowCtrlRuleHandler;
 
 /**
  * Metadata's management interface.

@@ -17,11 +17,13 @@
 
 package org.apache.inlong.tubemq.server.broker.web;
 
-import static com.google.common.base.Preconditions.checkArgument;
 import org.apache.inlong.tubemq.server.Server;
 import org.apache.inlong.tubemq.server.broker.TubeBroker;
+
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
+
+import static com.google.common.base.Preconditions.checkArgument;
 
 /**
  * Broker's http server.

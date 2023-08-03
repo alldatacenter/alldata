@@ -17,9 +17,9 @@
 
 package org.apache.inlong.manager.dao.config;
 
-import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.inlong.manager.dao.DaoBaseTest;
 
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mybatis.spring.SqlSessionTemplate;

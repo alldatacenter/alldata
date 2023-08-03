@@ -28,6 +28,7 @@ import org.apache.inlong.agent.plugin.Message;
 import org.apache.inlong.agent.plugin.MessageFilter;
 import org.apache.inlong.agent.plugin.Reader;
 import org.apache.inlong.agent.plugin.Sink;
+
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
@@ -123,7 +124,7 @@ public class TestTaskWrapper {
 
         @Override
         public boolean isFinished() {
-            return count > 10;
+            return count > 2;
         }
 
         @Override

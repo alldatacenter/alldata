@@ -17,9 +17,10 @@
 
 package org.apache.inlong.dataproxy.config;
 
-import com.google.common.base.Splitter;
 import org.apache.inlong.dataproxy.config.holder.ConfigUpdateCallback;
 import org.apache.inlong.dataproxy.consts.AttrConstants;
+
+import com.google.common.base.Splitter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -78,7 +79,7 @@ public abstract class ConfigHolder {
      *
      * @return - true if configure updated
      */
-    public abstract boolean loadFromFileToHolder();
+    protected abstract boolean loadFromFileToHolder();
 
     /**
      * check updater
@@ -91,7 +92,7 @@ public abstract class ConfigHolder {
             if (configFile != null) {
                 this.lastModifyTime = configFile.lastModified();
             }
-            LOG.info("File {} has changed, reload from local file agent", getFileName());
+            LOG.info("File {} has changed, reload from local file", this.fileName);
             return loadFromFileToHolder();
         }
         return false;
@@ -124,12 +125,12 @@ public abstract class ConfigHolder {
         if (url != null) {
             this.filePath = url.getPath();
             this.configFile = new File(this.filePath);
-            LOG.info("set file path lastTime: {}, currentTime: {}",
-                    lastModifyTime, configFile.lastModified());
+            LOG.info("Set {} file path, lastTime: {}, currentTime: {}",
+                    fileName, lastModifyTime, configFile.lastModified());
         }
     }
 
-    public AtomicBoolean getFileChanged() {
-        return fileChanged;
+    public void setFileChanged() {
+        fileChanged.set(true);
     }
 }

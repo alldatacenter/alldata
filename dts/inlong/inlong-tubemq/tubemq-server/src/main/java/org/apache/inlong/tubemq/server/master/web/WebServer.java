@@ -17,9 +17,6 @@
 
 package org.apache.inlong.tubemq.server.master.web;
 
-import static javax.servlet.DispatcherType.ASYNC;
-import static javax.servlet.DispatcherType.REQUEST;
-import java.util.EnumSet;
 import org.apache.inlong.tubemq.server.Server;
 import org.apache.inlong.tubemq.server.master.MasterConfig;
 import org.apache.inlong.tubemq.server.master.TMaster;
@@ -36,12 +33,18 @@ import org.apache.inlong.tubemq.server.master.web.action.screen.consume.Detail;
 import org.apache.inlong.tubemq.server.master.web.simplemvc.WebApiServlet;
 import org.apache.inlong.tubemq.server.master.web.simplemvc.WebFilter;
 import org.apache.inlong.tubemq.server.master.web.simplemvc.conf.WebConfig;
+
 import org.apache.velocity.tools.generic.DateTool;
 import org.apache.velocity.tools.generic.NumberTool;
 import org.eclipse.jetty.servlet.DefaultServlet;
 import org.eclipse.jetty.servlet.FilterHolder;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
+
+import java.util.EnumSet;
+
+import static javax.servlet.DispatcherType.ASYNC;
+import static javax.servlet.DispatcherType.REQUEST;
 
 public class WebServer implements Server {
 

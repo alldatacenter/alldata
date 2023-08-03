@@ -17,10 +17,6 @@
 
 package org.apache.inlong.tubemq.server.master.metamanage.metastore.impl.zkimpl;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import java.lang.reflect.Type;
-import java.util.List;
 import org.apache.inlong.tubemq.corebase.TokenConstants;
 import org.apache.inlong.tubemq.corebase.rv.ProcessResult;
 import org.apache.inlong.tubemq.corebase.utils.TStringUtils;
@@ -31,7 +27,13 @@ import org.apache.inlong.tubemq.server.common.zookeeper.ZooKeeperWatcher;
 import org.apache.inlong.tubemq.server.master.metamanage.DataOpErrCode;
 import org.apache.inlong.tubemq.server.master.metamanage.metastore.dao.entity.TopicDeployEntity;
 import org.apache.inlong.tubemq.server.master.metamanage.metastore.impl.AbsTopicDeployMapperImpl;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import org.apache.zookeeper.KeeperException;
+
+import java.lang.reflect.Type;
+import java.util.List;
 
 public class ZKTopicDeployMapperImpl extends AbsTopicDeployMapperImpl {
 

@@ -17,19 +17,26 @@
 
 package org.apache.inlong.manager.service.resource.queue.pulsar;
 
-import com.google.common.collect.Sets;
-import org.apache.commons.lang3.StringUtils;
+import org.apache.inlong.common.enums.DataProxyMsgEncType;
 import org.apache.inlong.manager.common.consts.InlongConstants;
 import org.apache.inlong.manager.common.conversion.ConversionHandle;
 import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
 import org.apache.inlong.manager.common.exceptions.BusinessException;
 import org.apache.inlong.manager.common.util.Preconditions;
+import org.apache.inlong.manager.pojo.consume.BriefMQMessage;
 import org.apache.inlong.manager.pojo.group.pulsar.InlongPulsarInfo;
 import org.apache.inlong.manager.pojo.queue.pulsar.PulsarTopicInfo;
+import org.apache.inlong.manager.pojo.stream.InlongStreamInfo;
 import org.apache.inlong.manager.service.cluster.InlongClusterServiceImpl;
+import org.apache.inlong.manager.service.message.DeserializeOperator;
+import org.apache.inlong.manager.service.message.DeserializeOperatorFactory;
+
+import com.google.common.collect.Sets;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.pulsar.client.admin.Namespaces;
 import org.apache.pulsar.client.admin.PulsarAdmin;
 import org.apache.pulsar.client.admin.PulsarAdminException;
+import org.apache.pulsar.client.api.Message;
 import org.apache.pulsar.client.api.MessageId;
 import org.apache.pulsar.common.policies.data.PersistencePolicies;
 import org.apache.pulsar.common.policies.data.RetentionPolicies;
@@ -39,6 +46,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -56,7 +64,9 @@ public class PulsarOperator {
     private static final int MAX_PARTITION = 1000;
     private static final int RETRY_TIMES = 3;
     private static final int DELAY_SECONDS = 5;
-
+    private static final String PARSE_ATTR_ERROR_STRING = "Could not find %s in attributes!";
+    @Autowired
+    public DeserializeOperatorFactory deserializeOperatorFactory;
     @Autowired
     private ConversionHandle conversionHandle;
 
@@ -147,7 +157,7 @@ public class PulsarOperator {
      */
     public void createTopic(PulsarAdmin pulsarAdmin, PulsarTopicInfo topicInfo) throws PulsarAdminException {
         Preconditions.expectNotNull(topicInfo, "pulsar topic info cannot be empty");
-        String tenant = topicInfo.getTenant();
+        String tenant = topicInfo.getPulsarTenant();
         String namespace = topicInfo.getNamespace();
         String topicName = topicInfo.getTopicName();
         String fullTopicName = tenant + "/" + namespace + "/" + topicName;
@@ -204,7 +214,7 @@ public class PulsarOperator {
     public void forceDeleteTopic(PulsarAdmin pulsarAdmin, PulsarTopicInfo topicInfo) throws PulsarAdminException {
         Preconditions.expectNotNull(topicInfo, "pulsar topic info cannot be empty");
 
-        String tenant = topicInfo.getTenant();
+        String tenant = topicInfo.getPulsarTenant();
         String namespace = topicInfo.getNamespace();
         String topic = topicInfo.getTopicName();
         String fullTopicName = tenant + "/" + namespace + "/" + topic;
@@ -253,7 +263,7 @@ public class PulsarOperator {
             List<String> topicList) throws PulsarAdminException {
         for (String topic : topicList) {
             topicInfo.setTopicName(topic);
-            String fullTopicName = topicInfo.getTenant() + "/" + topicInfo.getNamespace() + "/" + topic;
+            String fullTopicName = topicInfo.getPulsarTenant() + "/" + topicInfo.getNamespace() + "/" + topic;
             this.createSubscription(pulsarAdmin, fullTopicName, topicInfo.getQueueModule(), subscription);
         }
         LOGGER.info("success to create subscription={} for multiple topics={}", subscription, topicList);
@@ -371,6 +381,36 @@ public class PulsarOperator {
             }
         }
         return false;
+    }
+
+    /**
+     * Query topic message for the given pulsar cluster.
+     */
+    public List<BriefMQMessage> queryLatestMessage(PulsarAdmin pulsarAdmin, String topicFullName, String subName,
+            Integer messageCount, InlongStreamInfo streamInfo) {
+        LOGGER.info("begin to query message for topic {}, subName={}", topicFullName, subName);
+
+        List<BriefMQMessage> messageList = new ArrayList<>();
+        for (int i = 0; i < messageCount; i++) {
+            try {
+                Message<byte[]> pulsarMessage = pulsarAdmin.topics().examineMessage(topicFullName, "latest", i);
+                Map<String, String> headers = pulsarMessage.getProperties();
+                int wrapTypeId = Integer.parseInt(headers.getOrDefault(InlongConstants.MSG_ENCODE_VER,
+                        Integer.toString(DataProxyMsgEncType.MSG_ENCODE_TYPE_INLONGMSG.getId())));
+                DeserializeOperator deserializeOperator = deserializeOperatorFactory.getInstance(
+                        DataProxyMsgEncType.valueOf(wrapTypeId));
+                messageList.addAll(
+                        deserializeOperator.decodeMsg(streamInfo, pulsarMessage.getData(), headers, i));
+            } catch (Exception e) {
+                String errMsg = "decode msg error: ";
+                LOGGER.error(errMsg, e);
+                throw new BusinessException(errMsg + e.getMessage());
+
+            }
+        }
+
+        LOGGER.info("success query message by subs={} for topic={}", subName, topicFullName);
+        return messageList;
     }
 
 }

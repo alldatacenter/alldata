@@ -17,9 +17,6 @@
 
 package org.apache.inlong.manager.service.cluster.node;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.inlong.manager.common.enums.ClusterType;
 import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
 import org.apache.inlong.manager.common.exceptions.BusinessException;
@@ -30,6 +27,10 @@ import org.apache.inlong.manager.pojo.cluster.ClusterNodeResponse;
 import org.apache.inlong.manager.pojo.cluster.agent.AgentClusterNodeDTO;
 import org.apache.inlong.manager.pojo.cluster.agent.AgentClusterNodeRequest;
 import org.apache.inlong.manager.pojo.cluster.agent.AgentClusterNodeResponse;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -79,7 +80,7 @@ public class AgentClusterNodeOperator extends AbstractClusterNodeOperator {
         AgentClusterNodeRequest agentNodeRequest = (AgentClusterNodeRequest) request;
         CommonBeanUtils.copyProperties(agentNodeRequest, targetEntity, true);
         try {
-            AgentClusterNodeDTO dto = AgentClusterNodeDTO.getFromRequest(agentNodeRequest);
+            AgentClusterNodeDTO dto = AgentClusterNodeDTO.getFromRequest(agentNodeRequest, targetEntity.getExtParams());
             targetEntity.setExtParams(objectMapper.writeValueAsString(dto));
             LOGGER.debug("success to set entity for agent cluster node");
         } catch (Exception e) {

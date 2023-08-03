@@ -20,6 +20,7 @@ package org.apache.inlong.manager.common.util;
 import org.apache.commons.codec.binary.Base64;
 
 import javax.crypto.Cipher;
+
 import java.io.ByteArrayOutputStream;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;

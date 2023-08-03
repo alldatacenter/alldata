@@ -17,16 +17,20 @@
 
 package org.apache.inlong.manager.pojo.source.sqlserver;
 
+import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
+import org.apache.inlong.manager.common.exceptions.BusinessException;
+import org.apache.inlong.manager.common.util.CommonBeanUtils;
+import org.apache.inlong.manager.common.util.JsonUtils;
+
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
-import org.apache.inlong.manager.common.exceptions.BusinessException;
-import org.apache.inlong.manager.common.util.JsonUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.validation.constraints.NotNull;
+
 import java.util.Map;
 
 /**
@@ -74,20 +78,11 @@ public class SQLServerSourceDTO {
     /**
      * Get the dto instance from the request
      */
-    public static SQLServerSourceDTO getFromRequest(SQLServerSourceRequest request) {
-        return SQLServerSourceDTO.builder()
-                .username(request.getUsername())
-                .password(request.getPassword())
-                .hostname(request.getHostname())
-                .port(request.getPort())
-                .database(request.getDatabase())
-                .schemaName(request.getSchemaName())
-                .tableName(request.getTableName())
-                .serverTimezone(request.getServerTimezone())
-                .allMigration(request.isAllMigration())
-                .primaryKey(request.getPrimaryKey())
-                .properties(request.getProperties())
-                .build();
+    public static SQLServerSourceDTO getFromRequest(SQLServerSourceRequest request, String extParams) {
+        SQLServerSourceDTO dto = StringUtils.isNotBlank(extParams)
+                ? SQLServerSourceDTO.getFromJson(extParams)
+                : new SQLServerSourceDTO();
+        return CommonBeanUtils.copyProperties(request, dto, true);
     }
 
     /**

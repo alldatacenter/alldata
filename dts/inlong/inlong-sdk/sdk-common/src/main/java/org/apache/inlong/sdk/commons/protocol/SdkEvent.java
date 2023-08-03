@@ -17,10 +17,10 @@
 
 package org.apache.inlong.sdk.commons.protocol;
 
+import org.apache.flume.event.SimpleEvent;
+
 import java.nio.charset.Charset;
 import java.util.Map;
-
-import org.apache.flume.event.SimpleEvent;
 
 /**
  * 

@@ -17,10 +17,11 @@
 
 package org.apache.inlong.manager.workflow.definition;
 
+import org.apache.inlong.manager.common.util.Preconditions;
+
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.Data;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.inlong.manager.common.util.Preconditions;
 
 /**
  * Workflow components

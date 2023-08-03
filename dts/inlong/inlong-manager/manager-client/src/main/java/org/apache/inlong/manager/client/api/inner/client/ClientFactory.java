@@ -17,8 +17,9 @@
 
 package org.apache.inlong.manager.client.api.inner.client;
 
-import lombok.Getter;
 import org.apache.inlong.manager.client.api.ClientConfiguration;
+
+import lombok.Getter;
 
 /**
  * Factory for {@link org.apache.inlong.manager.client.api.inner.client}.
@@ -51,6 +52,9 @@ public class ClientFactory {
     private final WorkflowApproverClient workflowApproverClient;
     private final WorkflowEventClient workflowEventClient;
     private final InlongConsumeClient consumeClient;
+    private final AuditClient auditClient;
+    private final InlongTenantClient inlongTenantClient;
+    private final InlongTenantRoleClient inlongTenantRoleClient;
 
     public ClientFactory(ClientConfiguration configuration) {
         groupClient = new InlongGroupClient(configuration);
@@ -67,5 +71,8 @@ public class ClientFactory {
         workflowApproverClient = new WorkflowApproverClient(configuration);
         workflowEventClient = new WorkflowEventClient(configuration);
         consumeClient = new InlongConsumeClient(configuration);
+        auditClient = new AuditClient(configuration);
+        inlongTenantClient = new InlongTenantClient(configuration);
+        inlongTenantRoleClient = new InlongTenantRoleClient(configuration);
     }
 }

@@ -17,16 +17,20 @@
 
 package org.apache.inlong.manager.pojo.sink.iceberg;
 
+import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
+import org.apache.inlong.manager.common.exceptions.BusinessException;
+import org.apache.inlong.manager.common.util.CommonBeanUtils;
+import org.apache.inlong.manager.common.util.JsonUtils;
+
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
-import org.apache.inlong.manager.common.exceptions.BusinessException;
-import org.apache.inlong.manager.common.util.JsonUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.validation.constraints.NotNull;
+
 import java.util.List;
 import java.util.Map;
 
@@ -73,18 +77,11 @@ public class IcebergSinkDTO {
     /**
      * Get the dto instance from the request
      */
-    public static IcebergSinkDTO getFromRequest(IcebergSinkRequest request) {
-        return IcebergSinkDTO.builder()
-                .catalogUri(request.getCatalogUri())
-                .warehouse(request.getWarehouse())
-                .dbName(request.getDbName())
-                .tableName(request.getTableName())
-                .dataPath(request.getDataPath())
-                .fileFormat(request.getFileFormat())
-                .catalogType(request.getCatalogType())
-                .primaryKey(request.getPrimaryKey())
-                .properties(request.getProperties())
-                .build();
+    public static IcebergSinkDTO getFromRequest(IcebergSinkRequest request, String extParams) {
+        IcebergSinkDTO dto = StringUtils.isNotBlank(extParams)
+                ? IcebergSinkDTO.getFromJson(extParams)
+                : new IcebergSinkDTO();
+        return CommonBeanUtils.copyProperties(request, dto, true);
     }
 
     public static IcebergSinkDTO getFromJson(@NotNull String extParams) {

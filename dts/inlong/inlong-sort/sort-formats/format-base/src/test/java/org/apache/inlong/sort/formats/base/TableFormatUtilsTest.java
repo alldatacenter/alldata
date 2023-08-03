@@ -19,6 +19,7 @@ package org.apache.inlong.sort.formats.base;
 
 import org.apache.inlong.sort.formats.common.IntFormatInfo;
 import org.apache.inlong.sort.formats.common.StringFormatInfo;
+
 import org.junit.Test;
 
 import static org.apache.inlong.sort.formats.base.TableFormatUtils.deserializeBasicField;

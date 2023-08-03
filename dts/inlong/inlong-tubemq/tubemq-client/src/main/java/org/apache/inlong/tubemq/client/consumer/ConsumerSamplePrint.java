@@ -18,6 +18,7 @@
 package org.apache.inlong.tubemq.client.consumer;
 
 import org.apache.inlong.tubemq.corebase.utils.AbstractSamplePrint;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

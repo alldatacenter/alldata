@@ -17,26 +17,28 @@
 
 package org.apache.inlong.manager.web.controller;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 import org.apache.inlong.manager.common.enums.OperationType;
-import org.apache.inlong.manager.pojo.common.Response;
 import org.apache.inlong.manager.common.validation.UpdateValidation;
+import org.apache.inlong.manager.pojo.common.PageResult;
+import org.apache.inlong.manager.pojo.common.Response;
 import org.apache.inlong.manager.pojo.transform.DeleteTransformRequest;
+import org.apache.inlong.manager.pojo.transform.TransformPageRequest;
 import org.apache.inlong.manager.pojo.transform.TransformRequest;
 import org.apache.inlong.manager.pojo.transform.TransformResponse;
+import org.apache.inlong.manager.pojo.user.LoginUserUtils;
 import org.apache.inlong.manager.service.operationlog.OperationLog;
 import org.apache.inlong.manager.service.transform.StreamTransformService;
-import org.apache.inlong.manager.service.user.LoginUserUtils;
+
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 /**
  * Stream transform control layer
@@ -57,11 +59,17 @@ public class StreamTransformController {
                 streamTransformService.save(request, LoginUserUtils.getLoginUser().getName()));
     }
 
-    @RequestMapping(value = "/transform/list", method = RequestMethod.GET)
+    @RequestMapping(value = "/transform/list", method = RequestMethod.POST)
     @ApiOperation(value = "Get stream transform list")
-    public Response<List<TransformResponse>> list(@RequestParam("inlongGroupId") String groupId,
-            @RequestParam("inlongStreamId") String streamId) {
-        return Response.success(streamTransformService.listTransform(groupId, streamId));
+    public Response<PageResult<TransformResponse>> list(@Validated @RequestBody TransformPageRequest request) {
+        return Response.success(streamTransformService.listByCondition(request, LoginUserUtils.getLoginUser()));
+    }
+
+    @RequestMapping(value = "/transform/get/{id}", method = RequestMethod.GET)
+    @ApiOperation(value = "Get stream transform")
+    @ApiImplicitParam(name = "id", dataTypeClass = Integer.class, required = true)
+    public Response<TransformResponse> get(@PathVariable Integer id) {
+        return Response.success(streamTransformService.get(id, LoginUserUtils.getLoginUser()));
     }
 
     @RequestMapping(value = "/transform/update", method = RequestMethod.POST)

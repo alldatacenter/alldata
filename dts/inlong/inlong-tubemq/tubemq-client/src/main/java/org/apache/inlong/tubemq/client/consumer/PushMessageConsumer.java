@@ -17,8 +17,9 @@
 
 package org.apache.inlong.tubemq.client.consumer;
 
-import java.util.TreeSet;
 import org.apache.inlong.tubemq.client.exception.TubeClientException;
+
+import java.util.TreeSet;
 
 public interface PushMessageConsumer extends MessageConsumer {
 

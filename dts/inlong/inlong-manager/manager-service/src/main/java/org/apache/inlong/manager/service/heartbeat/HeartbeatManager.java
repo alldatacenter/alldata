@@ -17,6 +17,30 @@
 
 package org.apache.inlong.manager.service.heartbeat;
 
+import org.apache.inlong.common.enums.NodeSrvStatus;
+import org.apache.inlong.common.heartbeat.AbstractHeartbeatManager;
+import org.apache.inlong.common.heartbeat.ComponentHeartbeat;
+import org.apache.inlong.common.heartbeat.HeartbeatMsg;
+import org.apache.inlong.manager.common.consts.InlongConstants;
+import org.apache.inlong.manager.common.enums.ClusterStatus;
+import org.apache.inlong.manager.common.enums.ClusterType;
+import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
+import org.apache.inlong.manager.common.enums.NodeStatus;
+import org.apache.inlong.manager.common.util.JsonUtils;
+import org.apache.inlong.manager.common.util.Preconditions;
+import org.apache.inlong.manager.dao.entity.ComponentHeartbeatEntity;
+import org.apache.inlong.manager.dao.entity.InlongClusterEntity;
+import org.apache.inlong.manager.dao.entity.InlongClusterNodeEntity;
+import org.apache.inlong.manager.dao.mapper.ComponentHeartbeatEntityMapper;
+import org.apache.inlong.manager.dao.mapper.InlongClusterEntityMapper;
+import org.apache.inlong.manager.dao.mapper.InlongClusterNodeEntityMapper;
+import org.apache.inlong.manager.dao.mapper.StreamSourceEntityMapper;
+import org.apache.inlong.manager.pojo.cluster.ClusterInfo;
+import org.apache.inlong.manager.pojo.cluster.ClusterNodeRequest;
+import org.apache.inlong.manager.pojo.cluster.agent.AgentClusterNodeDTO;
+import org.apache.inlong.manager.service.cluster.InlongClusterOperator;
+import org.apache.inlong.manager.service.cluster.InlongClusterOperatorFactory;
+
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
 import com.github.benmanes.caffeine.cache.LoadingCache;
@@ -29,32 +53,13 @@ import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.inlong.common.enums.NodeSrvStatus;
-import org.apache.inlong.common.heartbeat.AbstractHeartbeatManager;
-import org.apache.inlong.common.heartbeat.ComponentHeartbeat;
-import org.apache.inlong.common.heartbeat.HeartbeatMsg;
-import org.apache.inlong.manager.common.consts.InlongConstants;
-import org.apache.inlong.manager.common.enums.ClusterStatus;
-import org.apache.inlong.manager.common.enums.ClusterType;
-import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
-import org.apache.inlong.manager.common.enums.NodeStatus;
-import org.apache.inlong.manager.common.util.JsonUtils;
-import org.apache.inlong.manager.common.util.Preconditions;
-import org.apache.inlong.manager.dao.entity.InlongClusterEntity;
-import org.apache.inlong.manager.dao.entity.InlongClusterNodeEntity;
-import org.apache.inlong.manager.dao.mapper.InlongClusterEntityMapper;
-import org.apache.inlong.manager.dao.mapper.InlongClusterNodeEntityMapper;
-import org.apache.inlong.manager.dao.mapper.StreamSourceEntityMapper;
-import org.apache.inlong.manager.pojo.cluster.ClusterInfo;
-import org.apache.inlong.manager.pojo.cluster.ClusterNodeRequest;
-import org.apache.inlong.manager.pojo.cluster.agent.AgentClusterNodeDTO;
-import org.apache.inlong.manager.service.cluster.InlongClusterOperator;
-import org.apache.inlong.manager.service.cluster.InlongClusterOperatorFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -84,6 +89,11 @@ public class HeartbeatManager implements AbstractHeartbeatManager {
     private InlongClusterNodeEntityMapper clusterNodeMapper;
     @Autowired
     private StreamSourceEntityMapper sourceMapper;
+    @Autowired
+    private ComponentHeartbeatEntityMapper componentHeartbeatMapper;
+
+    @Value("${cluster.heartbeat.interval:30}")
+    private Long heartbeatIntervalFactor;
 
     /**
      * Check whether the configuration information carried in the heartbeat has been updated
@@ -106,7 +116,7 @@ public class HeartbeatManager implements AbstractHeartbeatManager {
         // When the manager restarts, set the heartbeat timeout state of all nodes
         // and wait for the heartbeat report of the corresponding node
         clusterNodeMapper.updateStatus(null, NodeStatus.HEARTBEAT_TIMEOUT.getStatus(), NodeStatus.NORMAL.getStatus());
-        long expireTime = heartbeatInterval() * 2L;
+        long expireTime = heartbeatInterval() * heartbeatIntervalFactor;
         Scheduler evictScheduler = Scheduler.forScheduledExecutorService(Executors.newSingleThreadScheduledExecutor());
         heartbeatCache = Caffeine.newBuilder()
                 .scheduler(evictScheduler)
@@ -216,6 +226,15 @@ public class HeartbeatManager implements AbstractHeartbeatManager {
             if (protocolTypes.length < ports.length) {
                 protocolTypes = null;
             }
+        }
+        // If the manager has multiple nodes, need to determine that the heartbeat is updated
+        // heartbeatInterval() is the reporting interval of cluster nodes, multiplied by two to prevent network
+        // fluctuations
+        ComponentHeartbeatEntity componentHeartbeatEntity = componentHeartbeatMapper.selectTimeOutHeartBeat(
+                componentHeartbeat.getComponentType(), componentHeartbeat.getIp(), heartbeatInterval() * 2L);
+        if (componentHeartbeatEntity != null) {
+            heartbeatCache.put(componentHeartbeat, heartbeat);
+            return;
         }
 
         for (int i = 0; i < ports.length; i++) {

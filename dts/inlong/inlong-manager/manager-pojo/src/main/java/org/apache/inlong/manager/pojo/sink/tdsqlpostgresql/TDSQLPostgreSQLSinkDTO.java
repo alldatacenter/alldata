@@ -17,16 +17,20 @@
 
 package org.apache.inlong.manager.pojo.sink.tdsqlpostgresql;
 
+import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
+import org.apache.inlong.manager.common.exceptions.BusinessException;
+import org.apache.inlong.manager.common.util.CommonBeanUtils;
+import org.apache.inlong.manager.common.util.JsonUtils;
+
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
-import org.apache.inlong.manager.common.exceptions.BusinessException;
-import org.apache.inlong.manager.common.util.JsonUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.validation.constraints.NotNull;
+
 import java.util.Map;
 
 /**
@@ -62,16 +66,11 @@ public class TDSQLPostgreSQLSinkDTO {
     /**
      * Get the dto instance from the request
      */
-    public static TDSQLPostgreSQLSinkDTO getFromRequest(TDSQLPostgreSQLSinkRequest request) {
-        return TDSQLPostgreSQLSinkDTO.builder()
-                .jdbcUrl(request.getJdbcUrl())
-                .username(request.getUsername())
-                .password(request.getPassword())
-                .schemaName(request.getSchemaName())
-                .primaryKey(request.getPrimaryKey())
-                .tableName(request.getTableName())
-                .properties(request.getProperties())
-                .build();
+    public static TDSQLPostgreSQLSinkDTO getFromRequest(TDSQLPostgreSQLSinkRequest request, String extParams) {
+        TDSQLPostgreSQLSinkDTO dto = StringUtils.isNotBlank(extParams)
+                ? TDSQLPostgreSQLSinkDTO.getFromJson(extParams)
+                : new TDSQLPostgreSQLSinkDTO();
+        return CommonBeanUtils.copyProperties(request, dto, true);
     }
 
     /**

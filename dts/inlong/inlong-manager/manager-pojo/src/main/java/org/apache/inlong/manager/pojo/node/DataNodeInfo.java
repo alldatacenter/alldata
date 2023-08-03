@@ -66,6 +66,9 @@ public abstract class DataNodeInfo {
     @ApiModelProperty(value = "Description of the data node")
     private String description;
 
+    @ApiModelProperty(value = "Inlong tenant to which the data node belongs")
+    private String tenant;
+
     @ApiModelProperty(value = "Name of in charges, separated by commas")
     private String inCharges;
 

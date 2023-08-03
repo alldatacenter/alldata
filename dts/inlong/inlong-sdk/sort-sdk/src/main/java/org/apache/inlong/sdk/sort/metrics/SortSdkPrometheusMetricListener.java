@@ -17,13 +17,17 @@
 
 package org.apache.inlong.sdk.sort.metrics;
 
-import io.prometheus.client.Collector;
-import io.prometheus.client.CounterMetricFamily;
 import org.apache.inlong.common.metric.MetricItemValue;
 import org.apache.inlong.common.metric.MetricListener;
 import org.apache.inlong.common.metric.MetricValue;
+
+import io.prometheus.client.Collector;
+import io.prometheus.client.CounterMetricFamily;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import javax.management.MBeanServer;
+import javax.management.ObjectName;
 
 import java.lang.management.ManagementFactory;
 import java.util.ArrayList;
@@ -33,9 +37,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
-
-import javax.management.MBeanServer;
-import javax.management.ObjectName;
 
 import static org.apache.inlong.common.metric.MetricItemMBean.DOMAIN_SEPARATOR;
 import static org.apache.inlong.common.metric.MetricRegister.JMX_DOMAIN;

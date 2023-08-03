@@ -19,8 +19,10 @@ package org.apache.inlong.tubemq.server.master.metamanage.metastore.dao.entity;
 
 import org.apache.inlong.tubemq.corebase.TBaseConstants;
 import org.apache.inlong.tubemq.server.common.statusdef.CleanPolType;
+
 import org.junit.Assert;
 import org.junit.Test;
+
 import java.util.HashMap;
 import java.util.Map;
 

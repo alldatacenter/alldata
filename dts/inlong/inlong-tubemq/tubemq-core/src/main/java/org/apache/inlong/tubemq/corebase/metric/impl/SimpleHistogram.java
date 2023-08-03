@@ -17,8 +17,9 @@
 
 package org.apache.inlong.tubemq.corebase.metric.impl;
 
-import java.util.Map;
 import org.apache.inlong.tubemq.corebase.metric.Histogram;
+
+import java.util.Map;
 
 /**
  * Simple Histogram Statistics, only include count, min, max value information.

@@ -17,12 +17,6 @@
 
 package org.apache.inlong.manager.client.api.inner;
 
-import com.github.tomakehurst.wiremock.WireMockServer;
-import com.github.tomakehurst.wiremock.client.WireMock;
-import com.google.common.collect.Lists;
-import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.tuple.Pair;
 import org.apache.inlong.common.constant.ProtocolType;
 import org.apache.inlong.manager.client.api.ClientConfiguration;
 import org.apache.inlong.manager.client.api.impl.InlongClientImpl;
@@ -43,7 +37,7 @@ import org.apache.inlong.manager.common.consts.DataNodeType;
 import org.apache.inlong.manager.common.consts.SinkType;
 import org.apache.inlong.manager.common.consts.SourceType;
 import org.apache.inlong.manager.common.enums.ClusterType;
-import org.apache.inlong.manager.common.enums.UserTypeEnum;
+import org.apache.inlong.manager.common.enums.TenantUserTypeEnum;
 import org.apache.inlong.manager.common.util.JsonUtils;
 import org.apache.inlong.manager.pojo.cluster.BindTagRequest;
 import org.apache.inlong.manager.pojo.cluster.ClusterInfo;
@@ -88,6 +82,13 @@ import org.apache.inlong.manager.pojo.stream.InlongStreamInfo;
 import org.apache.inlong.manager.pojo.stream.StreamField;
 import org.apache.inlong.manager.pojo.user.UserInfo;
 import org.apache.inlong.manager.pojo.user.UserRequest;
+
+import com.github.tomakehurst.wiremock.WireMockServer;
+import com.github.tomakehurst.wiremock.client.WireMock;
+import com.google.common.collect.Lists;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.tuple.Pair;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -654,7 +655,7 @@ class ClientFactoryTest {
                         .id(6)
                         .sinkType(SinkType.KAFKA)
                         .topicName("test")
-                        .partitionNum("6")
+                        .partitionNum(6)
                         .build(),
                 PostgreSQLSink.builder()
                         .id(7)
@@ -1006,7 +1007,7 @@ class ClientFactoryTest {
         request.setName("test_user");
         request.setPassword("test_pwd");
         request.setNewPassword("test_new_pwd");
-        request.setAccountType(UserTypeEnum.ADMIN.getCode());
+        request.setAccountType(TenantUserTypeEnum.TENANT_ADMIN.getCode());
         Integer userId = userClient.update(request);
         Assertions.assertEquals(userId, 1);
     }

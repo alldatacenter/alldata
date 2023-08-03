@@ -17,10 +17,11 @@
 
 package org.apache.inlong.tubemq.corebase;
 
-import java.io.Serializable;
-import java.util.Arrays;
 import org.apache.inlong.tubemq.corebase.utils.DateTimeConvertUtils;
 import org.apache.inlong.tubemq.corebase.utils.TStringUtils;
+
+import java.io.Serializable;
+import java.util.Arrays;
 
 /**
  * Message is a message object class passed in the Tube. The data of the

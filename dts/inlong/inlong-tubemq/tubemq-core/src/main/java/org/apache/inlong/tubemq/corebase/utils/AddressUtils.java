@@ -17,7 +17,10 @@
 
 package org.apache.inlong.tubemq.corebase.utils;
 
+import org.apache.inlong.tubemq.corebase.exception.AddressException;
+
 import io.netty.channel.Channel;
+
 import java.net.Inet6Address;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
@@ -25,7 +28,6 @@ import java.net.SocketAddress;
 import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.util.Enumeration;
-import org.apache.inlong.tubemq.corebase.exception.AddressException;
 
 public class AddressUtils {
 

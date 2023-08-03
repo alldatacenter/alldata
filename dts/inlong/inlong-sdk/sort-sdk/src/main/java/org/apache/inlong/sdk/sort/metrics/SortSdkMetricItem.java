@@ -17,11 +17,12 @@
 
 package org.apache.inlong.sdk.sort.metrics;
 
-import java.util.concurrent.atomic.AtomicLong;
 import org.apache.inlong.common.metric.CountMetric;
 import org.apache.inlong.common.metric.Dimension;
 import org.apache.inlong.common.metric.MetricDomain;
 import org.apache.inlong.common.metric.MetricItem;
+
+import java.util.concurrent.atomic.AtomicLong;
 
 @MetricDomain(name = "SortSdk")
 public class SortSdkMetricItem extends MetricItem {

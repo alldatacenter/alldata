@@ -17,18 +17,23 @@
 
 package org.apache.inlong.manager.pojo.sink.hudi;
 
+import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
+import org.apache.inlong.manager.common.exceptions.BusinessException;
+import org.apache.inlong.manager.common.util.CommonBeanUtils;
+import org.apache.inlong.manager.common.util.JsonUtils;
+
 import io.swagger.annotations.ApiModelProperty;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
-import org.apache.inlong.manager.common.exceptions.BusinessException;
-import org.apache.inlong.manager.common.util.JsonUtils;
+import org.apache.commons.lang3.StringUtils;
+
+import javax.validation.constraints.NotNull;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Hudi sink info
@@ -79,20 +84,9 @@ public class HudiSinkDTO {
     /**
      * Get the dto instance from the request
      */
-    public static HudiSinkDTO getFromRequest(HudiSinkRequest request) {
-        return HudiSinkDTO.builder()
-                .catalogUri(request.getCatalogUri())
-                .warehouse(request.getWarehouse())
-                .dbName(request.getDbName())
-                .tableName(request.getTableName())
-                .dataPath(request.getDataPath())
-                .partitionKey(request.getPartitionKey())
-                .fileFormat(request.getFileFormat())
-                .catalogType(request.getCatalogType())
-                .properties(request.getProperties())
-                .extList(request.getExtList())
-                .primaryKey(request.getPrimaryKey())
-                .build();
+    public static HudiSinkDTO getFromRequest(HudiSinkRequest request, String extParams) {
+        HudiSinkDTO dto = StringUtils.isNotBlank(extParams) ? HudiSinkDTO.getFromJson(extParams) : new HudiSinkDTO();
+        return CommonBeanUtils.copyProperties(request, dto, true);
     }
 
     public static HudiSinkDTO getFromJson(@NotNull String extParams) {

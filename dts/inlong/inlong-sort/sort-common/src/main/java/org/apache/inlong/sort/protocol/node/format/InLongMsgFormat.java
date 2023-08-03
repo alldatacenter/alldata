@@ -17,12 +17,13 @@
 
 package org.apache.inlong.sort.protocol.node.format;
 
+import org.apache.inlong.common.msg.InLongMsg;
+
 import lombok.Data;
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonCreator;
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonIgnore;
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonProperty;
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonTypeName;
-import org.apache.inlong.common.msg.InLongMsg;
 
 import java.util.HashMap;
 import java.util.Map;

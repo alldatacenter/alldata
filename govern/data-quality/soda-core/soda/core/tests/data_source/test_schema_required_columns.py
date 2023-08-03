@@ -46,7 +46,7 @@ def test_required_columns_fail(data_source_fixture: DataSourceFixture):
 
     scan.assert_all_checks_fail()
     check: SchemaCheck = scan._checks[0]
-    assert sorted(check.schema_missing_column_names) == sorted(
+    assert sorted(check.fail_result.missing_column_names) == sorted(
         [default_casify_column_name("non_existing_column"), default_casify_column_name("name")]
     )
 
@@ -75,6 +75,6 @@ def test_required_columns_warn(data_source_fixture: DataSourceFixture):
 
     scan.assert_all_checks_warn()
     check: SchemaCheck = scan._checks[0]
-    assert sorted(check.schema_missing_column_names) == sorted(
+    assert sorted(check.warn_result.missing_column_names) == sorted(
         [default_casify_column_name("non_existing_column"), default_casify_column_name("name")]
     )

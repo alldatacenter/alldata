@@ -17,9 +17,10 @@
 
 package org.apache.inlong.sort.formats.common;
 
+import org.junit.Test;
+
 import java.util.Arrays;
 import java.util.Collection;
-import org.junit.Test;
 
 /**
  * Unit tests for {@link RowFormatInfo}.

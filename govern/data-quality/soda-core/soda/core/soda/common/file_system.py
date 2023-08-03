@@ -54,6 +54,9 @@ class FileSystem:
     def mkdirs(self, path: str, absolute: bool = False):
         Path(self.expand_user(path)).mkdir(parents=True, exist_ok=True)
 
+    def join(self, a: str, *paths: str):
+        return os.path.join(a, *paths)
+
 
 class FileSystemSingleton:
     INSTANCE: FileSystem = FileSystem()

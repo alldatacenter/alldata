@@ -18,6 +18,7 @@
 package org.apache.inlong.manager.service.stream;
 
 import org.apache.inlong.manager.pojo.common.PageResult;
+import org.apache.inlong.manager.pojo.consume.BriefMQMessage;
 import org.apache.inlong.manager.pojo.sink.ParseFieldRequest;
 import org.apache.inlong.manager.pojo.stream.InlongStreamApproveRequest;
 import org.apache.inlong.manager.pojo.stream.InlongStreamBriefInfo;
@@ -26,6 +27,7 @@ import org.apache.inlong.manager.pojo.stream.InlongStreamPageRequest;
 import org.apache.inlong.manager.pojo.stream.InlongStreamRequest;
 import org.apache.inlong.manager.pojo.stream.StreamField;
 import org.apache.inlong.manager.pojo.user.UserInfo;
+
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
@@ -83,6 +85,16 @@ public interface InlongStreamService {
      * @return inlong stream details
      */
     InlongStreamInfo get(String groupId, String streamId, UserInfo opInfo);
+
+    /**
+     * Query the brief of the specified inlong stream
+     *
+     * @param groupId Inlong group id
+     * @param streamId Inlong stream id
+     * @param operator operator
+     * @return inlong stream brief
+     */
+    InlongStreamBriefInfo getBrief(String groupId, String streamId, String operator);
 
     /**
      * List streams contained in one group
@@ -236,7 +248,7 @@ public interface InlongStreamService {
     /**
      * Converts a statement to a streamFields
      *
-     * @param parseFieldRequest    parse field request
+     * @param parseFieldRequest parse field request
      * @return list of stream field
      */
     List<StreamField> parseFields(ParseFieldRequest parseFieldRequest);
@@ -245,4 +257,16 @@ public interface InlongStreamService {
      * Converts an Excel file to a streamFields
      */
     List<StreamField> parseFields(MultipartFile file);
+
+    /**
+     * List brief mq message info
+     *
+     * @param groupId inlong group id
+     * @param streamId inlong stream id
+     * @param messageCount Count of messages to query'
+     * @param operator operator
+     * @return list of brief mq message info
+     */
+    List<BriefMQMessage> listMessages(String groupId, String streamId, Integer messageCount, String operator);
+
 }

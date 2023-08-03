@@ -17,10 +17,11 @@
 
 package org.apache.inlong.sort.standalone.sink.hive;
 
-import org.apache.hadoop.fs.FSDataOutputStream;
 import org.apache.inlong.sort.standalone.channel.ProfileEvent;
 import org.apache.inlong.sort.standalone.dispatch.DispatchProfile;
 import org.apache.inlong.sort.standalone.utils.InlongLoggerFactory;
+
+import org.apache.hadoop.fs.FSDataOutputStream;
 import org.slf4j.Logger;
 
 /**

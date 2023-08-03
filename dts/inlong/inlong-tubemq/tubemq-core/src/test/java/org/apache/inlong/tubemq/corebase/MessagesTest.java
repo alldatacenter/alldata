@@ -18,6 +18,7 @@
 package org.apache.inlong.tubemq.corebase;
 
 import org.apache.inlong.tubemq.corebase.utils.TStringUtils;
+
 import org.junit.Assert;
 import org.junit.Test;
 

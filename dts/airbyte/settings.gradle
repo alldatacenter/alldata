@@ -1,9 +1,39 @@
 pluginManagement {
+//    repositories {
+//        gradlePluginPortal()
+//        maven {
+//            url 'https://oss.sonatype.org/content/repositories/snapshots'
+//        }
+//    }
     repositories {
-        gradlePluginPortal()
+        mavenLocal()
+        def ALIYUN_REPOSITORY_URL = 'http://maven.aliyun.com/nexus/content/groups/public'
+        def ALIYUN_JCENTER_URL = 'http://maven.aliyun.com/nexus/content/repositories/jcenter'
+        def GRADLE_LOCAL_RELEASE_URL = 'https://repo.gradle.org/gradle/libs-releases-local'
+        def ALIYUN_SPRING_RELEASE_URL = 'https://maven.aliyun.com/repository/spring-plugin'
+
+        maven {
+            allowInsecureProtocol = true
+            url ALIYUN_REPOSITORY_URL
+        }
+
+        maven {
+            allowInsecureProtocol = true
+            url ALIYUN_JCENTER_URL
+        }
+        maven {
+            allowInsecureProtocol = true
+            url ALIYUN_SPRING_RELEASE_URL
+        }
+        maven {
+            allowInsecureProtocol = true
+            url GRADLE_LOCAL_RELEASE_URL
+        }
         maven {
             url 'https://oss.sonatype.org/content/repositories/snapshots'
         }
+        mavenCentral()
+        gradlePluginPortal()
     }
     resolutionStrategy {
         eachPlugin {
@@ -20,16 +50,16 @@ pluginManagement {
 // Configure the gradle enterprise plugin to enable build scans. Enabling the plugin at the top of the settings file allows the build scan to record
 // as much information as possible.
 plugins {
-    id "com.gradle.enterprise" version "3.4.1"
-    id 'com.github.burrunan.s3-build-cache' version "1.5"
+//    id "com.gradle.enterprise" version "3.13.3"
+//    id 'com.github.burrunan.s3-build-cache' version "1.5"
 }
 
-gradleEnterprise {
-    buildScan {
-        termsOfServiceUrl = "https://gradle.com/terms-of-service"
-        termsOfServiceAgree = "yes"
-    }
-}
+//gradleEnterprise {
+//    buildScan {
+//        termsOfServiceUrl = "https://gradle.com/terms-of-service"
+//        termsOfServiceAgree = "yes"
+//    }
+//}
 
 ext.isCiServer = System.getenv().containsKey("CI")
 
@@ -39,14 +69,14 @@ buildCache {
         // in case developer modifies files while the build is running
         enabled = false
     }
-    remote(com.github.burrunan.s3cache.AwsS3BuildCache) {
-        region = 'us-east-2'
-        bucket = 'airbyte-buildcache'
-        prefix = 'cache/'
-        push = isCiServer
-        // Credentials will be taken from  S3_BUILD_CACHE_... environment variables
-        // anonymous access will be used if environment variables are missing
-    }
+//    remote(com.github.burrunan.s3cache.AwsS3BuildCache) {
+//        region = 'us-east-2'
+//        bucket = 'airbyte-buildcache'
+//        prefix = 'cache/'
+//        push = isCiServer
+//        // Credentials will be taken from  S3_BUILD_CACHE_... environment variables
+//        // anonymous access will be used if environment variables are missing
+//    }
 }
 
 rootProject.name = 'airbyte'
@@ -72,7 +102,7 @@ if (!System.getenv().containsKey("SUB_BUILD")) {
     def subBuild = System.getenv().get("SUB_BUILD")
     println("Building Airbyte Sub Build: " + subBuild)
     if (subBuild != "CONNECTORS_BASE" && subBuild != "ALL_CONNECTORS" && subBuild != "OCTAVIA_CLI") {
-        throw new IllegalArgumentException(String.format("%s is invalid. Must be unset or CONNECTORS_BASE, ALL_CONNECTORS or OCTAVIA_CLI", subBuild))
+//        throw new IllegalArgumentException(String.format("%s is invalid. Must be unset or CONNECTORS_BASE, ALL_CONNECTORS or OCTAVIA_CLI", subBuild))
     }
 }
 

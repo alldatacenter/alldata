@@ -17,11 +17,11 @@
 
 package org.apache.inlong.sdk.dataproxy;
 
+import org.apache.inlong.sdk.dataproxy.network.ProxysdkException;
+
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
-
-import org.apache.inlong.sdk.dataproxy.network.ProxysdkException;
 
 public interface MessageSender {
 

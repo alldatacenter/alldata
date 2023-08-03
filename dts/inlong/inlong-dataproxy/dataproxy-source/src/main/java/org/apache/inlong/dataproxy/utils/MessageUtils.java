@@ -17,27 +17,29 @@
 
 package org.apache.inlong.dataproxy.utils;
 
-import static org.apache.inlong.common.util.NetworkUtils.getLocalIp;
+import org.apache.inlong.common.enums.DataProxyErrCode;
+import org.apache.inlong.common.enums.DataProxyMsgEncType;
+import org.apache.inlong.common.monitor.LogCounter;
+import org.apache.inlong.common.msg.AttributeConstants;
+import org.apache.inlong.common.msg.MsgType;
+import org.apache.inlong.common.util.NetworkUtils;
+import org.apache.inlong.dataproxy.base.SinkRspEvent;
+import org.apache.inlong.dataproxy.consts.ConfigConstants;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufAllocator;
 import io.netty.channel.Channel;
-import io.netty.channel.ChannelHandlerContext;
-import java.nio.charset.StandardCharsets;
-import java.util.HashMap;
-import java.util.Map;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.flume.Event;
-import org.apache.inlong.common.enums.DataProxyErrCode;
-import org.apache.inlong.common.monitor.LogCounter;
-import org.apache.inlong.common.msg.AttributeConstants;
-import org.apache.inlong.common.util.NetworkUtils;
-import org.apache.inlong.dataproxy.base.SinkRspEvent;
-import org.apache.inlong.dataproxy.consts.ConfigConstants;
-import org.apache.inlong.common.msg.MsgType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.Map;
+
+import static org.apache.inlong.common.util.NetworkUtils.getLocalIp;
 
 public class MessageUtils {
 
@@ -195,11 +197,10 @@ public class MessageUtils {
         ByteBuf binBuffer;
         final StringBuilder strBuff = new StringBuilder(512);
         // get and check channel context
-        ChannelHandlerContext ctx = event.getCtx();
-        if (ctx == null || ctx.channel() == null || !ctx.channel().isActive()) {
+        Channel remoteChannel = event.getChannel();
+        if (remoteChannel == null || !remoteChannel.isActive()) {
             return;
         }
-        Channel remoteChannel = ctx.channel();
         // check message type
         MsgType msgType = event.getMsgType();
         if (MsgType.MSG_UNKNOWN.equals(msgType)
@@ -387,7 +388,7 @@ public class MessageUtils {
         // common attributes
         Map<String, String> attrs = new HashMap<>();
         attrs.put(ConfigConstants.MSG_ENCODE_VER, pkgVersion);
-        if (InLongMsgVer.INLONG_V1.getName().equalsIgnoreCase(pkgVersion)) {
+        if (DataProxyMsgEncType.MSG_ENCODE_TYPE_PB.getStrId().equalsIgnoreCase(pkgVersion)) {
             attrs.put("dataproxyip", NetworkUtils.getLocalIp());
             attrs.put(Constants.INLONG_GROUP_ID, headers.get(Constants.INLONG_GROUP_ID));
             attrs.put(Constants.INLONG_STREAM_ID, headers.get(Constants.INLONG_STREAM_ID));

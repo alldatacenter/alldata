@@ -17,6 +17,11 @@
 
 package org.apache.inlong.sort.formats.inlongmsgpb;
 
+import org.apache.inlong.sdk.commons.protocol.ProxySdk;
+import org.apache.inlong.sdk.commons.utils.GzipUtils;
+import org.apache.inlong.sort.formats.inlongmsgpb.InLongMsgPbDeserializationSchema.InLongPbMsgDecompressor;
+import org.apache.inlong.sort.formats.inlongmsgpb.InLongMsgPbDeserializationSchema.MetadataConverter;
+
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.apache.flink.api.common.serialization.DeserializationSchema;
 import org.apache.flink.api.common.typeinfo.TypeInformation;
@@ -34,10 +39,6 @@ import org.apache.flink.table.data.RowData;
 import org.apache.flink.table.data.StringData;
 import org.apache.flink.table.types.DataType;
 import org.apache.flink.table.types.utils.DataTypeUtils;
-import org.apache.inlong.sdk.commons.protocol.ProxySdk;
-import org.apache.inlong.sdk.commons.utils.GzipUtils;
-import org.apache.inlong.sort.formats.inlongmsgpb.InLongMsgPbDeserializationSchema.MetadataConverter;
-import org.apache.inlong.sort.formats.inlongmsgpb.InLongMsgPbDeserializationSchema.InLongPbMsgDecompressor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.xerial.snappy.Snappy;

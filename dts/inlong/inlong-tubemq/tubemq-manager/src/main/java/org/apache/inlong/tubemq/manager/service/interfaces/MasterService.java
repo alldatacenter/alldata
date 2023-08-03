@@ -17,13 +17,14 @@
 
 package org.apache.inlong.tubemq.manager.service.interfaces;
 
-import java.util.List;
-import java.util.Map;
-
 import org.apache.inlong.tubemq.manager.controller.TubeMQResult;
 import org.apache.inlong.tubemq.manager.controller.node.request.BaseReq;
 import org.apache.inlong.tubemq.manager.entry.MasterEntry;
+
 import org.springframework.stereotype.Component;
+
+import java.util.List;
+import java.util.Map;
 
 @Component
 public interface MasterService {

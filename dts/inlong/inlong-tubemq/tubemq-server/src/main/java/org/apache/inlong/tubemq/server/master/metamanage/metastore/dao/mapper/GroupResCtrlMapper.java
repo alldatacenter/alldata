@@ -17,10 +17,11 @@
 
 package org.apache.inlong.tubemq.server.master.metamanage.metastore.dao.mapper;
 
-import java.util.Map;
-import java.util.Set;
 import org.apache.inlong.tubemq.corebase.rv.ProcessResult;
 import org.apache.inlong.tubemq.server.master.metamanage.metastore.dao.entity.GroupResCtrlEntity;
+
+import java.util.Map;
+import java.util.Set;
 
 public interface GroupResCtrlMapper extends AbstractMapper {
 

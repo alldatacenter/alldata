@@ -17,17 +17,20 @@
 
 package org.apache.inlong.manager.pojo.group;
 
+import org.apache.inlong.manager.common.enums.SimpleGroupStatus;
+import org.apache.inlong.manager.common.enums.SortStatus;
+import org.apache.inlong.manager.pojo.source.StreamSource;
+
+import com.google.common.collect.Maps;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.apache.inlong.manager.common.enums.SimpleGroupStatus;
-import org.apache.inlong.manager.common.enums.SortStatus;
-import org.apache.inlong.manager.pojo.source.StreamSource;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Inlong group status info
@@ -53,5 +56,9 @@ public class InlongGroupStatusInfo {
 
     @ApiModelProperty(value = "Sort job status of the group")
     private SortStatus sortStatus = SortStatus.UNKNOWN;
+
+    @Builder.Default
+    @ApiModelProperty("Extended properties of the group")
+    private Map<String, Object> properties = Maps.newHashMap();
 
 }

@@ -32,6 +32,7 @@ const NodeSelect: React.FC<NodeSelectProps> = _props => {
     filterOption: false,
     options: {
       ..._props.options,
+      requestAuto: true,
       requestTrigger: ['onOpen', 'onSearch'],
       requestService: keyword => ({
         url: '/node/list',

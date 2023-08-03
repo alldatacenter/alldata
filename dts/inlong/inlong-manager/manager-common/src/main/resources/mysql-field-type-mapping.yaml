@@ -1,0 +1,228 @@
+#
+# Licensed to the Apache Software Foundation (ASF) under one or more
+# contributor license agreements.  See the NOTICE file distributed with
+# this work for additional information regarding copyright ownership.
+# The ASF licenses this file to You under the Apache License, Version 2.0
+# (the "License"); you may not use this file except in compliance with
+# the License.  You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
+source.type.to.target.type.converter:
+
+  - source.type: TINYINT
+    target.type: TINYINT
+
+  - source.type: SMALLINT
+    target.type: SMALLINT
+
+  - source.type: TINYINT UNSIGNED
+    target.type: SMALLINT
+
+  - source.type: TINYINT UNSIGNED ZEROFILL
+    target.type: SMALLINT
+
+  - source.type: INT
+    target.type: INT
+
+  - source.type: INTEGER
+    target.type: INT
+
+  - source.type: YEAR
+    target.type: INT
+
+  - source.type: SHORT
+    target.type: SHORT
+
+  - source.type: MEDIUMINT
+    target.type: INT
+
+  - source.type: SMALLINT UNSIGNED
+    target.type: INT
+
+  - source.type: SMALLINT UNSIGNED ZEROFILL
+    target.type: INT
+
+  - source.type: BIGINT
+    target.type: LONG
+
+  - source.type: INT UNSIGNED
+    target.type: LONG
+
+  - source.type: MEDIUMINT UNSIGNED
+    target.type: LONG
+
+  - source.type: MEDIUMINT UNSIGNED ZEROFILL
+    target.type: LONG
+
+  - source.type: INT UNSIGNED ZEROFILL
+    target.type: LONG
+
+  - source.type: BIGINT UNSIGNED
+    target.type: DECIMAL
+
+  - source.type: BIGINT UNSIGNED ZEROFILL
+    target.type: DECIMAL
+
+  - source.type: SERIAL
+    target.type: DECIMAL
+
+  - source.type: FLOAT
+    target.type: FLOAT
+
+  - source.type: FLOAT UNSIGNED
+    target.type: FLOAT
+
+  - source.type: FLOAT UNSIGNED ZEROFILL
+    target.type: FLOAT
+
+  - source.type: DOUBLE
+    target.type: DOUBLE
+
+  - source.type: DOUBLE UNSIGNED
+    target.type: DOUBLE
+
+  - source.type: DOUBLE UNSIGNED ZEROFILL
+    target.type: DOUBLE
+
+  - source.type: DOUBLE PRECISION
+    target.type: DOUBLE
+
+  - source.type: DOUBLE PRECISION UNSIGNED
+    target.type: DOUBLE
+
+  - source.type: ZEROFILL
+    target.type: DOUBLE
+
+  - source.type: REAL
+    target.type: DOUBLE
+
+  - source.type: REAL UNSIGNED
+    target.type: DOUBLE
+
+  - source.type: REAL UNSIGNED ZEROFILL
+    target.type: DOUBLE
+
+  - source.type: NUMERIC
+    target.type: DECIMAL
+
+  - source.type: NUMERIC UNSIGNED
+    target.type: DECIMAL
+
+  - source.type: NUMERIC UNSIGNED ZEROFILL
+    target.type: DECIMAL
+
+  - source.type: DECIMAL
+    target.type: DECIMAL
+
+  - source.type: DECIMAL UNSIGNED
+    target.type: DECIMAL
+
+  - source.type: DECIMAL UNSIGNED ZEROFILL
+    target.type: DECIMAL
+
+  - source.type: FIXED
+    target.type: DECIMAL
+
+  - source.type: FIXED UNSIGNED
+    target.type: DECIMAL
+
+  - source.type: FIXED UNSIGNED ZEROFILL
+    target.type: DECIMAL
+
+  - source.type: BOOLEAN
+    target.type: BOOLEAN
+
+  - source.type: DATE
+    target.type: DATE
+
+  - source.type: TIME
+    target.type: TIME
+
+  - source.type: DATETIME
+    target.type: TIMESTAMP
+
+  - source.type: TIMESTAMP
+    target.type: TIMESTAMP
+
+  - source.type: CHAR
+    target.type: STRING
+
+  - source.type: JSON
+    target.type: STRING
+
+  - source.type: BIT
+    target.type: STRING
+
+  - source.type: VARCHAR
+    target.type: STRING
+
+  - source.type: TEXT
+    target.type: STRING
+
+  - source.type: BLOB
+    target.type: STRING
+
+  - source.type: TINYBLOB
+    target.type: STRING
+
+  - source.type: TINYTEXT
+    target.type: STRING
+
+  - source.type: MEDIUMBLOB
+    target.type: STRING
+
+  - source.type: MEDIUMTEXT
+    target.type: STRING
+
+  - source.type: LONGBLOB
+    target.type: STRING
+
+  - source.type: LONGTEXT
+    target.type: STRING
+
+  - source.type: VARBINARY
+    target.type: STRING
+
+  - source.type: GEOMETRY
+    target.type: STRING
+
+  - source.type: POINT
+    target.type: STRING
+
+  - source.type: LINESTRING
+    target.type: STRING
+
+  - source.type: POLYGON
+    target.type: STRING
+
+  - source.type: MULTIPOINT
+    target.type: STRING
+
+  - source.type: MULTILINESTRING
+    target.type: STRING
+
+  - source.type: MULTIPOLYGON
+    target.type: STRING
+
+  - source.type: GEOMETRYCOLLECTION
+    target.type: STRING
+
+  - source.type: ENUM
+    target.type: STRING
+
+  - source.type: STRING
+    target.type: STRING
+
+  - source.type: BINARY
+    target.type: BINARY
+
+  - source.type: BYTE
+    target.type: BYTE

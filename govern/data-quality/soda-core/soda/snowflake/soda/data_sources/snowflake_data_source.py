@@ -115,7 +115,7 @@ class SnowflakeDataSource(DataSource):
             private_key=self.__get_private_key(),
             client_prefetch_threads=self.client_prefetch_threads,
             authenticator=self.authenticator,
-            application="Soda",
+            application="Soda Core",
         )
 
     def __get_private_key(self):
@@ -191,6 +191,9 @@ class SnowflakeDataSource(DataSource):
             {where_clause}
             """
         return sql
+
+    def _create_table_prefix(self):
+        return ".".join([p for p in [self.database, self.schema] if p is not None])
 
     def default_casify_sql_function(self) -> str:
         return "upper"

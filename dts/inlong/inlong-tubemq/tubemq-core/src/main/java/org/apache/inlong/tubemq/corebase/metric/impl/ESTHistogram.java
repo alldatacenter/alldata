@@ -17,9 +17,10 @@
 
 package org.apache.inlong.tubemq.corebase.metric.impl;
 
-import java.util.Map;
 import org.apache.inlong.tubemq.corebase.TBaseConstants;
 import org.apache.inlong.tubemq.corebase.metric.Histogram;
+
+import java.util.Map;
 
 /**
  * ESTHistogram, Exponential Statistics for Time

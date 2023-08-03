@@ -19,10 +19,9 @@ package org.apache.inlong.dataproxy.config.holder;
 
 import org.apache.inlong.common.metric.MetricListener;
 import org.apache.inlong.dataproxy.config.CommonConfigHolder;
+
 import org.junit.Assert;
 import org.junit.Test;
-
-import static org.junit.Assert.assertEquals;
 
 /**
  * Test for {@link CommonConfigHolder}
@@ -34,7 +33,13 @@ public class TestCommonConfigHolder {
         Assert.assertEquals("proxy_inlong5th_sz",
                 CommonConfigHolder.getInstance().getClusterName());
         Assert.assertTrue(CommonConfigHolder.getInstance().isEnableWhiteList());
-        assertEquals("DataProxy",
+        Assert.assertEquals("DataProxy",
                 CommonConfigHolder.getInstance().getProperties().get(MetricListener.KEY_METRIC_DOMAINS));
+        Assert.assertEquals(10000, CommonConfigHolder.getInstance().getMetaConfigSyncInvlMs());
+        Assert.assertTrue(CommonConfigHolder.getInstance().isEnableUnConfigTopicAccept());
+        Assert.assertTrue(CommonConfigHolder.getInstance().getDefTopics().contains("test2"));
+        Assert.assertTrue(CommonConfigHolder.getInstance().isEnableSendRetryAfterFailure());
+        Assert.assertEquals(2, CommonConfigHolder.getInstance().getMaxRetriesAfterFailure());
     }
+
 }

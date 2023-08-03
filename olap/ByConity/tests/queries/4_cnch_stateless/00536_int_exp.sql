@@ -1,1 +1,0 @@
-SELECT exp2(number) AS e2d, intExp2(number) AS e2i, exp2(number) = intExp2(number) AS e2eq, exp10(number) AS e10d, intExp10(number) AS e10i, exp10(number) = intExp10(number) AS e10eq FROM system.numbers LIMIT 64;

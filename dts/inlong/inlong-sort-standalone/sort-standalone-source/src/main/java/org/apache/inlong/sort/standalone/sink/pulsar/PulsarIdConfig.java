@@ -17,11 +17,11 @@
 
 package org.apache.inlong.sort.standalone.sink.pulsar;
 
-import java.util.Map;
-
 import org.apache.inlong.sort.standalone.config.pojo.InlongId;
 import org.apache.inlong.sort.standalone.config.pojo.type.DataType;
 import org.apache.inlong.sort.standalone.utils.Constants;
+
+import java.util.Map;
 
 /**
  * 

@@ -17,9 +17,6 @@
 
 package org.apache.inlong.agent.plugin.sources;
 
-import io.debezium.engine.ChangeEvent;
-import io.debezium.engine.DebeziumEngine;
-import org.apache.commons.lang3.tuple.Pair;
 import org.apache.inlong.agent.conf.JobProfile;
 import org.apache.inlong.agent.constant.CommonConstants;
 import org.apache.inlong.agent.constant.OracleConstants;
@@ -29,6 +26,10 @@ import org.apache.inlong.agent.plugin.Message;
 import org.apache.inlong.agent.plugin.sources.reader.OracleReader;
 import org.apache.inlong.agent.plugin.sources.snapshot.OracleSnapshotBase;
 import org.apache.inlong.common.metric.MetricRegister;
+
+import io.debezium.engine.ChangeEvent;
+import io.debezium.engine.DebeziumEngine;
+import org.apache.commons.lang3.tuple.Pair;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

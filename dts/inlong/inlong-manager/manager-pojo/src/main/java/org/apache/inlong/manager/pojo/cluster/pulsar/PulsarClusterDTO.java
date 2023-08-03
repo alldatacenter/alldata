@@ -17,15 +17,18 @@
 
 package org.apache.inlong.manager.pojo.cluster.pulsar;
 
+import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
+import org.apache.inlong.manager.common.exceptions.BusinessException;
+import org.apache.inlong.manager.common.util.CommonBeanUtils;
+import org.apache.inlong.manager.common.util.JsonUtils;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
-import org.apache.inlong.manager.common.exceptions.BusinessException;
-import org.apache.inlong.manager.common.util.JsonUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.validation.constraints.NotNull;
 
@@ -49,7 +52,7 @@ public class PulsarClusterDTO {
     private String serviceUrl;
 
     @ApiModelProperty(value = "Pulsar tenant, default is 'public'")
-    private String tenant;
+    private String pulsarTenant;
 
     /**
      * Saved to ext_params field, it is convenient for DataProxy to obtain.
@@ -60,12 +63,12 @@ public class PulsarClusterDTO {
     /**
      * Get the dto instance from the request
      */
-    public static PulsarClusterDTO getFromRequest(PulsarClusterRequest request) {
-        return PulsarClusterDTO.builder()
-                .adminUrl(request.getAdminUrl())
-                .serviceUrl(request.getUrl())
-                .tenant(request.getTenant())
-                .build();
+    public static PulsarClusterDTO getFromRequest(PulsarClusterRequest request, String extParams) {
+        PulsarClusterDTO dto = StringUtils.isNotBlank(extParams)
+                ? PulsarClusterDTO.getFromJson(extParams)
+                : new PulsarClusterDTO();
+        dto.setServiceUrl(request.getUrl());
+        return CommonBeanUtils.copyProperties(request, dto, true);
     }
 
     /**

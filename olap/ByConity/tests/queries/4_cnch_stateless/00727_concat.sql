@@ -1,1 +1,0 @@
-SELECT CONCAT('Hello', ', ', 'world!');

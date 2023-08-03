@@ -28,6 +28,7 @@ import org.apache.inlong.audit.service.MySqlService;
 import org.apache.inlong.tubemq.client.consumer.ConsumerResult;
 import org.apache.inlong.tubemq.client.consumer.PullMessageConsumer;
 import org.apache.inlong.tubemq.client.exception.TubeClientException;
+
 import org.junit.Before;
 import org.junit.Test;
 

@@ -18,6 +18,7 @@
 package org.apache.inlong.manager.service.resource.sort;
 
 import org.apache.inlong.manager.common.exceptions.BusinessException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -17,14 +17,14 @@
 
 package org.apache.inlong.sdk.commons.admin;
 
-import java.util.List;
+import org.apache.flume.Event;
+import org.apache.flume.conf.Configurable;
+import org.apache.flume.source.http.HTTPBadRequestException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.flume.Event;
-import org.apache.flume.conf.Configurable;
-import org.apache.flume.source.http.HTTPBadRequestException;
+import java.util.List;
 
 /**
  * 

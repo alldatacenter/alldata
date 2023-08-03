@@ -17,14 +17,7 @@
 
 package org.apache.inlong.sdk.commons.admin;
 
-import java.io.IOException;
-import java.io.StringReader;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Properties;
-import java.util.concurrent.locks.ReentrantLock;
-
+import com.google.common.eventbus.Subscribe;
 import org.apache.flume.Channel;
 import org.apache.flume.Context;
 import org.apache.flume.SinkRunner;
@@ -36,7 +29,13 @@ import org.apache.flume.node.MaterializedConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.google.common.eventbus.Subscribe;
+import java.io.IOException;
+import java.io.StringReader;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Properties;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * 

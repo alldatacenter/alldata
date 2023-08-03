@@ -17,7 +17,13 @@
 
 package org.apache.inlong.audit.file;
 
+import org.apache.inlong.audit.consts.AttributeConstants;
+import org.apache.inlong.audit.file.holder.ConfigUpdateCallback;
+
 import com.google.common.base.Splitter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.File;
 import java.net.URL;
 import java.text.SimpleDateFormat;
@@ -26,10 +32,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
-import org.apache.inlong.audit.file.holder.ConfigUpdateCallback;
-import org.apache.inlong.audit.consts.AttributeConstants;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public abstract class ConfigHolder {
 

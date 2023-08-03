@@ -1,55 +1,44 @@
 # Description
 
-# Overview
+## Overview
+InLong Sort is used to extract data from different source systems, then transforms the data and finally loads the data into different storage systems.
 
-InLong-Sort is used to extract data from different source systems, then transforms the data and finally loads the data
-into diffrent storage systems.
-InLong-Sort is simply a Flink Application, and relys on InLong-Manager to manage meta data(such as the source
-informations and storage informations).
+InLong Sort can be used together with the Manager to manage metadata, or it can run independently in the Flink environment.
 
-# Features
+## Features
+### Supports a variety of data nodes
 
-## Supported Extract Node
+| Type         | Service                                    |
+|--------------|--------------------------------------------|
+| Extract Node | Pulsar                                     | 
+|              | MySQL                                      | 
+|              | Kafka                                      | 
+|              | MongoDB                                    | 
+|              | PostgreSQL                                 | 
+| Transform    | String Split                               | 
+|              | String Regular Replace                     | 
+|              | String Regular Replace First Matched Value | 
+|              | Data Filter                                |
+|              | Data Distinct                              | 
+|              | Regular Join                               | 
+| Load Node    | Hive                                       | 
+|              | Kafka                                      | 
+|              | HBase                                      | 
+|              | ClickHouse                                 | 
+|              | Iceberg                                    | 
+|              | PostgreSQL                                 | 
+|              | HDFS                                       | 
+|              | TDSQL Postgres                             | 
+|              | Hudi                                       | 
 
-- Pulsar
-- MySQL
-- Kafka
-- MongoDB
-- PostgreSQL
-- HDFS
+## Build
+### For Apache Flink 1.13 (default)
+```
+mvn clean install -DskipTests
+```
 
-## Supported Transform
-
-- String Split
-- String Regular Replace
-- String Regular Replace First Matched Value
-- Data Filter
-- Data Distinct
-- Regular Join
-
-## Supported Load Node
-
-- Hive
-- Kafka
-- HBase
-- ClickHouse
-- Iceberg
-- Hudi 
-- PostgreSQL
-- HDFS
-- TDSQL Postgres
-- Redis 
-
-## Future Plans
-
-### More kinds of Extract Node
-
-Oracle, SqlServer, and etc.
-
-### More kinds of Transform
-
-Time window aggregation, Content extraction, Type conversion, Time format conversion, and etc.
-
-### More kinds of Load Node
-
-Elasticsearch, and etc.
+### For Apache Flink 1.15
+Modify root pom `<sort.flink.version>v1.15</sort.flink.version>`, then execute:
+```
+mvn clean install -DskipTests -P v1.15
+```

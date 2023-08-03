@@ -17,9 +17,10 @@
 
 package org.apache.inlong.tubemq.client.common;
 
+import org.apache.inlong.tubemq.corebase.rv.RetValue;
+
 import java.util.HashMap;
 import java.util.Map;
-import org.apache.inlong.tubemq.corebase.rv.RetValue;
 
 public class QueryMetaResult extends RetValue {
 

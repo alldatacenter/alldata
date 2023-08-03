@@ -17,15 +17,15 @@
 
 package org.apache.inlong.tubemq.manager.service;
 
-import static org.apache.inlong.tubemq.manager.controller.TubeMQResult.errorResult;
+import org.apache.inlong.tubemq.manager.controller.TubeMQResult;
+import org.apache.inlong.tubemq.manager.controller.node.request.BaseReq;
+import org.apache.inlong.tubemq.manager.entry.MasterEntry;
+import org.apache.inlong.tubemq.manager.repository.MasterRepository;
+import org.apache.inlong.tubemq.manager.service.interfaces.MasterService;
+import org.apache.inlong.tubemq.manager.service.tube.TubeHttpResponse;
+import org.apache.inlong.tubemq.manager.utils.ConvertUtils;
 
 import com.google.gson.Gson;
-
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import java.util.List;
-import java.util.Map;
-
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -33,16 +33,16 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
-import org.apache.inlong.tubemq.manager.controller.TubeMQResult;
-import org.apache.inlong.tubemq.manager.controller.node.request.BaseReq;
-import org.apache.inlong.tubemq.manager.entry.MasterEntry;
-import org.apache.inlong.tubemq.manager.repository.MasterRepository;
-import static org.apache.inlong.tubemq.manager.service.TubeConst.DELETE_FAIL;
-import org.apache.inlong.tubemq.manager.service.interfaces.MasterService;
-import org.apache.inlong.tubemq.manager.service.tube.TubeHttpResponse;
-import org.apache.inlong.tubemq.manager.utils.ConvertUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.util.List;
+import java.util.Map;
+
+import static org.apache.inlong.tubemq.manager.controller.TubeMQResult.errorResult;
+import static org.apache.inlong.tubemq.manager.service.TubeConst.DELETE_FAIL;
 
 @Slf4j
 @Component

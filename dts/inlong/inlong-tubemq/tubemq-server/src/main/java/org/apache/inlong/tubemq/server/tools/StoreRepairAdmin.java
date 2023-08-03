@@ -17,6 +17,20 @@
 
 package org.apache.inlong.tubemq.server.tools;
 
+import org.apache.inlong.tubemq.corebase.TBaseConstants;
+import org.apache.inlong.tubemq.corebase.utils.CheckSum;
+import org.apache.inlong.tubemq.corebase.utils.TStringUtils;
+import org.apache.inlong.tubemq.server.broker.msgstore.disk.FileSegment;
+import org.apache.inlong.tubemq.server.broker.msgstore.disk.FileSegmentList;
+import org.apache.inlong.tubemq.server.broker.msgstore.disk.Segment;
+import org.apache.inlong.tubemq.server.broker.msgstore.disk.SegmentList;
+import org.apache.inlong.tubemq.server.broker.msgstore.disk.SegmentType;
+import org.apache.inlong.tubemq.server.broker.utils.DataStoreUtils;
+import org.apache.inlong.tubemq.server.common.utils.FileUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.Closeable;
 import java.io.File;
 import java.io.IOException;
@@ -32,19 +46,6 @@ import java.util.concurrent.ExecutorCompletionService;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
-
-import org.apache.inlong.tubemq.corebase.TBaseConstants;
-import org.apache.inlong.tubemq.corebase.utils.CheckSum;
-import org.apache.inlong.tubemq.corebase.utils.TStringUtils;
-import org.apache.inlong.tubemq.server.broker.msgstore.disk.FileSegment;
-import org.apache.inlong.tubemq.server.broker.msgstore.disk.FileSegmentList;
-import org.apache.inlong.tubemq.server.broker.msgstore.disk.Segment;
-import org.apache.inlong.tubemq.server.broker.msgstore.disk.SegmentList;
-import org.apache.inlong.tubemq.server.broker.msgstore.disk.SegmentType;
-import org.apache.inlong.tubemq.server.broker.utils.DataStoreUtils;
-import org.apache.inlong.tubemq.server.common.utils.FileUtil;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * Topic Storage File(s) Repair Tool

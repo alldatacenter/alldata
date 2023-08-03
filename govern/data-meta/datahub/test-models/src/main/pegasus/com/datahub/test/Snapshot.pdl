@@ -1,8 +1,0 @@
-namespace com.datahub.test
-
-/**
- * A union of all supported metadata snapshot types.
- */
-typeref Snapshot = union[
-  TestEntitySnapshot
-]

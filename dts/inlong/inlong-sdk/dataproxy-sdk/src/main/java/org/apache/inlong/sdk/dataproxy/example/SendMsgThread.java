@@ -17,15 +17,16 @@
 
 package org.apache.inlong.sdk.dataproxy.example;
 
+import org.apache.inlong.sdk.dataproxy.DefaultMessageSender;
+import org.apache.inlong.sdk.dataproxy.SendResult;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
-
-import org.apache.inlong.sdk.dataproxy.DefaultMessageSender;
-import org.apache.inlong.sdk.dataproxy.SendResult;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class SendMsgThread extends Thread {
 

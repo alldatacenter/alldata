@@ -17,9 +17,10 @@
 
 package org.apache.inlong.agent.constant;
 
+import org.apache.inlong.agent.utils.AgentUtils;
+
 import io.netty.util.NettyRuntime;
 import io.netty.util.internal.SystemPropertyUtil;
-import org.apache.inlong.agent.utils.AgentUtils;
 
 /**
  * Configuration constants of agent.

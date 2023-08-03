@@ -192,9 +192,9 @@ def test_generate_dro_continuous_all_same_values():
     [
         pytest.param(
             RefDataCfg(distribution_type="categorical"),
-            list(rng.choice(["hello", "world", "foo"], p=[0.1, 0.4, 0.5], size=1000)),  # type: ignore
-            np.array([0.525, 0.392, 0.083]),
-            np.array(["foo", "world", "hello"]),
+            [(1, 3), (0, 3), (6, 6), (2, 6), (3, 4)],
+            [0.13636363636363635, 0.13636363636363635, 0.2727272727272727, 0.2727272727272727, 0.18181818181818182],
+            [1, 0, 6, 2, 3],
             id="categorical data",
         ),
     ],
@@ -206,4 +206,5 @@ def test_generate_dro_categorical(cfg, data, expected_weights, expected_bins):
     dro = dro_generator.generate()
 
     assert_almost_equal(dro.weights, expected_weights)
-    assert dro.bins == expected_bins.tolist()
+    assert sum(dro.weights) == 1
+    assert dro.bins == expected_bins

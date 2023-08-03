@@ -31,46 +31,65 @@ public class MySQLSinkDTOTest {
     public void testFilterSensitive() throws Exception {
         // the sensitive params no use url code
         String originUrl = MySQLSinkDTO.filterSensitive(
-                "autoDeserialize=TRue&allowLoadLocalInfile = TRue&allowUrlInLocalInfile=TRue&allowLoadLocalInfileInPath=/&autoReconnect=true");
+                "jdbc:mysql://127.0.0.1:3306?autoDeserialize=TRue&allowLoadLocalInfile = TRue&allowUrlInLocalInfile=TRue&allowLoadLocalInfileInPath=/&autoReconnect=true");
         Assertions.assertEquals(
-                "autoDeserialize=false&allowLoadLocalInfile=false&allowUrlInLocalInfile=false&allowLoadLocalInfileInPath=&autoReconnect=true",
+                "jdbc:mysql://127.0.0.1:3306?autoDeserialize=false&allowLoadLocalInfile=false&allowUrlInLocalInfile=false&autoReconnect=true",
                 originUrl);
 
         originUrl = MySQLSinkDTO.filterSensitive(
-                "autoReconnect=true&autoDeserialize = TRue&allowLoadLocalInfile=TRue&allowUrlInLocalInfile=TRue&allowLoadLocalInfileInPath=/");
+                "jdbc:mysql://127.0.0.1:3306?autoReconnect=true&autoDeserialize = TRue&allowLoadLocalInfile=TRue&allowUrlInLocalInfile=TRue&allowLoadLocalInfileInPath=/");
         Assertions.assertEquals(
-                "autoReconnect=true&autoDeserialize=false&allowLoadLocalInfile=false&allowUrlInLocalInfile=false&allowLoadLocalInfileInPath=",
+                "jdbc:mysql://127.0.0.1:3306?autoReconnect=true&autoDeserialize=false&allowLoadLocalInfile=false&allowUrlInLocalInfile=false",
                 originUrl);
 
         originUrl = MySQLSinkDTO.filterSensitive(
-                "autoDeserialize=TRue&allowLoadLocalInfile = TRue&autoReconnect=true&allowUrlInLocalInfile=TRue&allowLoadLocalInfileInPath=/");
+                "jdbc:mysql://127.0.0.1:3306?autoDeserialize=TRue&allowLoadLocalInfile = TRue&autoReconnect=true&allowUrlInLocalInfile=TRue&allowLoadLocalInfileInPath=/");
         Assertions.assertEquals(
-                "autoDeserialize=false&allowLoadLocalInfile=false&autoReconnect=true&allowUrlInLocalInfile=false&allowLoadLocalInfileInPath=",
+                "jdbc:mysql://127.0.0.1:3306?autoDeserialize=false&allowLoadLocalInfile=false&autoReconnect=true&allowUrlInLocalInfile=false",
+                originUrl);
+        originUrl = MySQLSinkDTO.filterSensitive(
+                "jdbc:mysql://127.0.0.1:3306?autoDeserialize=Yes&allowLoadLocalInfile = Yes&autoReconnect=true&allowUrlInLocalInfile=YEs&allowLoadLocalInfileInPath=/");
+        Assertions.assertEquals(
+                "jdbc:mysql://127.0.0.1:3306?autoDeserialize=false&allowLoadLocalInfile=false&autoReconnect=true&allowUrlInLocalInfile=false",
                 originUrl);
 
         // the sensitive params use url code
         originUrl = MySQLSinkDTO.filterSensitive(
                 URLEncoder.encode(
-                        "autoDeserialize=TRue&allowLoadLocalInfile = TRue&allowUrlInLocalInfile=TRue&allowLoadLocalInfileInPath=/&autoReconnect=true",
+                        "jdbc:mysql://127.0.0.1:3306?autoDeserialize=TRue&allowLoadLocalInfile = TRue&allowUrlInLocalInfile=TRue&allowLoadLocalInfileInPath=/&autoReconnect=true",
                         "UTF-8"));
         Assertions.assertEquals(
-                "autoDeserialize=false&allowLoadLocalInfile=false&allowUrlInLocalInfile=false&allowLoadLocalInfileInPath=&autoReconnect=true",
+                "jdbc:mysql://127.0.0.1:3306?autoDeserialize=false&allowLoadLocalInfile=false&allowUrlInLocalInfile=false&autoReconnect=true",
                 originUrl);
 
         originUrl = MySQLSinkDTO.filterSensitive(
                 URLEncoder.encode(
-                        "autoReconnect=true&autoDeserialize = TRue&allowLoadLocalInfile=TRue&allowUrlInLocalInfile=TRue&allowLoadLocalInfileInPath=/",
+                        "jdbc:mysql://127.0.0.1:3306?autoReconnect=true&autoDeserialize = TRue&allowLoadLocalInfile=TRue&allowUrlInLocalInfile=TRue&allowLoadLocalInfileInPath=/",
                         "UTF-8"));
         Assertions.assertEquals(
-                "autoReconnect=true&autoDeserialize=false&allowLoadLocalInfile=false&allowUrlInLocalInfile=false&allowLoadLocalInfileInPath=",
+                "jdbc:mysql://127.0.0.1:3306?autoReconnect=true&autoDeserialize=false&allowLoadLocalInfile=false&allowUrlInLocalInfile=false",
                 originUrl);
 
         originUrl = MySQLSinkDTO.filterSensitive(
                 URLEncoder.encode(
-                        "autoDeserialize=TRue&allowLoadLocalInfile = TRue&autoReconnect=true&allowUrlInLocalInfile=TRue&allowLoadLocalInfileInPath=/",
+                        "jdbc:mysql://127.0.0.1:3306?autoDeserialize=TRue&allowLoadLocalInfile = TRue&autoReconnect=true&allowUrlInLocalInfile=TRue&allowLoadLocalInfileInPath=/",
                         "UTF-8"));
         Assertions.assertEquals(
-                "autoDeserialize=false&allowLoadLocalInfile=false&autoReconnect=true&allowUrlInLocalInfile=false&allowLoadLocalInfileInPath=",
+                "jdbc:mysql://127.0.0.1:3306?autoDeserialize=false&allowLoadLocalInfile=false&autoReconnect=true&allowUrlInLocalInfile=false",
+                originUrl);
+
+        originUrl = MySQLSinkDTO.filterSensitive(
+                URLEncoder.encode(
+                        "jdbc:mysql://127.0.0.1:3306?autoDeserialize=Yes&allowLoadLocalInfile = yes&autoReconnect=true&allowUrlInLocalInfile=YES&allowLoadLocalInfileInPath=/",
+                        "UTF-8"));
+        Assertions.assertEquals(
+                "jdbc:mysql://127.0.0.1:3306?autoDeserialize=false&allowLoadLocalInfile=false&autoReconnect=true&allowUrlInLocalInfile=false",
+                originUrl);
+
+        originUrl = MySQLSinkDTO.filterSensitive(
+                "jdbc:mysql://127.0.0.1:3306?autoDeserialize=%59%65%73&allowLoadLocalInfile = yes&allowUrlInLocalInfil%65+=%74%72%75%45&allowLoadLocalInfileInPath=%2F");
+        Assertions.assertEquals(
+                "jdbc:mysql://127.0.0.1:3306?autoDeserialize=false&allowLoadLocalInfile=false&allowUrlInLocalInfile=false",
                 originUrl);
     }
 

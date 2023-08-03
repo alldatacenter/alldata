@@ -17,13 +17,14 @@
 
 package org.apache.inlong.audit.protocol;
 
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.ByteBufAllocator;
 import org.apache.inlong.audit.protocol.AuditApi.AuditReply;
 import org.apache.inlong.audit.protocol.AuditApi.AuditRequest;
 import org.apache.inlong.audit.protocol.AuditApi.BaseCommand;
 import org.apache.inlong.audit.protocol.AuditApi.BaseCommand.Type;
 import org.apache.inlong.audit.protocol.AuditApi.Pong;
+
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.ByteBufAllocator;
 
 /**
  * Audit commands, used to get various of ByteBuf.

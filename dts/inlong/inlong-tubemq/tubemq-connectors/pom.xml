@@ -21,17 +21,22 @@
     <parent>
         <groupId>org.apache.inlong</groupId>
         <artifactId>inlong-tubemq</artifactId>
-        <version>1.7.0</version>
-        <relativePath>../pom.xml</relativePath>
+        <version>1.8.0</version>
     </parent>
+
     <artifactId>tubemq-connectors</artifactId>
     <packaging>pom</packaging>
     <name>Apache InLong - TubeMQ Connectors</name>
+
     <modules>
         <module>tubemq-connector-flink</module>
         <module>tubemq-connector-flume</module>
         <module>tubemq-connector-spark</module>
     </modules>
+
+    <properties>
+        <inlong.root.dir>${project.parent.parent.basedir}</inlong.root.dir>
+    </properties>
 
     <dependencies>
         <dependency>

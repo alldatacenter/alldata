@@ -17,13 +17,10 @@
 
 package org.apache.inlong.manager.service.resource.sink.hudi;
 
-import com.google.common.collect.Maps;
+import org.apache.inlong.manager.pojo.sink.hudi.HudiColumnInfo;
+import org.apache.inlong.manager.pojo.sink.hudi.HudiTableInfo;
 
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
+import com.google.common.collect.Maps;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.hive.conf.HiveConf;
 import org.apache.hadoop.hive.metastore.IMetaStoreClient;
@@ -36,11 +33,15 @@ import org.apache.hadoop.hive.metastore.api.StorageDescriptor;
 import org.apache.hadoop.hive.metastore.api.Table;
 import org.apache.hadoop.hive.ql.metadata.Hive;
 import org.apache.hadoop.security.UserGroupInformation;
-import org.apache.inlong.manager.pojo.sink.hudi.HudiColumnInfo;
-import org.apache.inlong.manager.pojo.sink.hudi.HudiTableInfo;
 import org.apache.thrift.TException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import static org.apache.inlong.manager.service.resource.sink.hudi.HudiUtils.IS_QUERY_AS_RO_TABLE;
 import static org.apache.inlong.manager.service.resource.sink.hudi.HudiUtils.getInputFormatClassName;

@@ -18,7 +18,7 @@
     <parent>
         <groupId>org.apache.seatunnel</groupId>
         <artifactId>seatunnel-translation</artifactId>
-        <version>2.3.1</version>
+        <version>2.3.2</version>
     </parent>
 
     <artifactId>seatunnel-translation-spark</artifactId>
@@ -28,6 +28,7 @@
     <modules>
         <module>seatunnel-translation-spark-2.4</module>
         <module>seatunnel-translation-spark-3.3</module>
+        <module>seatunnel-translation-spark-common</module>
     </modules>
 
     <dependencies>
@@ -42,6 +43,6 @@
 
 
   <scm>
-    <tag>2.3.1</tag>
+    <tag>2.3.2</tag>
   </scm>
 </project>

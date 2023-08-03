@@ -17,11 +17,6 @@
 
 package org.apache.inlong.manager.service.sink.doris;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.List;
-import javax.validation.constraints.NotNull;
-
-import org.apache.commons.lang3.StringUtils;
 import org.apache.inlong.manager.common.consts.SinkType;
 import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
 import org.apache.inlong.manager.common.exceptions.BusinessException;
@@ -34,10 +29,17 @@ import org.apache.inlong.manager.pojo.sink.doris.DorisSink;
 import org.apache.inlong.manager.pojo.sink.doris.DorisSinkDTO;
 import org.apache.inlong.manager.pojo.sink.doris.DorisSinkRequest;
 import org.apache.inlong.manager.service.sink.AbstractSinkOperator;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.validation.constraints.NotNull;
+
+import java.util.List;
 
 /**
  * Doris sink operator, such as save or update doris field, etc.
@@ -68,7 +70,7 @@ public class DorisSinkOperator extends AbstractSinkOperator {
         }
         DorisSinkRequest sinkRequest = (DorisSinkRequest) request;
         try {
-            DorisSinkDTO dto = DorisSinkDTO.getFromRequest(sinkRequest);
+            DorisSinkDTO dto = DorisSinkDTO.getFromRequest(sinkRequest, targetEntity.getExtParams());
             targetEntity.setExtParams(objectMapper.writeValueAsString(dto));
         } catch (Exception e) {
             throw new BusinessException(ErrorCodeEnum.SINK_SAVE_FAILED,

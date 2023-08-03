@@ -1,0 +1,81 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+.type-width {
+  width: 220px;
+}
+.width-100 {
+  width: 100%;
+}
+.detail-step {
+  width: 50vw;
+  margin-top: 20px;
+  margin-left: 16vw;
+  margin-bottom: 30px;
+}
+.detail-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.detail-step-two {
+  width: 100%;
+  padding-bottom: 20px;
+  padding-top: 10px;
+}
+.detail-step-three {
+  width: 100%;
+  padding-bottom: 20px;
+}
+.detail-table-header {
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+.detail-table-title {
+  font-weight: bold;
+}
+.step-two-table {
+  :global {
+    .n-form-item-feedback-wrapper {
+      line-height: 14px;
+      min-height: 14px;
+    }
+  }
+}
+.table-cell-center {
+  text-align: center !important;
+}
+.edit-row {
+  :global {
+    td {
+      padding-bottom: 0px;
+    }
+  }
+}
+.detail-step-three-params {
+  display: flex;
+  margin-bottom: 10px;
+  justify-content: space-between;
+}
+.detail-step-three-left {
+  width: 33%;
+  margin-right: 10px;
+}
+.detail-step-three-right {
+  flex-grow: 1;
+}

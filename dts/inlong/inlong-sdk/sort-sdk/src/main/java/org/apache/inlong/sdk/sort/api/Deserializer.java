@@ -17,11 +17,12 @@
 
 package org.apache.inlong.sdk.sort.api;
 
+import org.apache.inlong.sdk.sort.entity.InLongMessage;
+import org.apache.inlong.sdk.sort.entity.InLongTopic;
+
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
-import org.apache.inlong.sdk.sort.entity.InLongMessage;
-import org.apache.inlong.sdk.sort.entity.InLongTopic;
 
 public interface Deserializer extends Serializable {
 

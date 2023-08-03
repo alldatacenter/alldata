@@ -17,15 +17,18 @@
 
 package org.apache.inlong.manager.pojo.node.iceberg;
 
+import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
+import org.apache.inlong.manager.common.exceptions.BusinessException;
+import org.apache.inlong.manager.common.util.CommonBeanUtils;
+import org.apache.inlong.manager.common.util.JsonUtils;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
-import org.apache.inlong.manager.common.exceptions.BusinessException;
-import org.apache.inlong.manager.common.util.JsonUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -53,11 +56,11 @@ public class IcebergDataNodeDTO {
     /**
      * Get the dto instance from the request
      */
-    public static IcebergDataNodeDTO getFromRequest(IcebergDataNodeRequest request) throws Exception {
-        return IcebergDataNodeDTO.builder()
-                .catalogType(request.getCatalogType())
-                .warehouse(request.getWarehouse())
-                .build();
+    public static IcebergDataNodeDTO getFromRequest(IcebergDataNodeRequest request, String extParams) throws Exception {
+        IcebergDataNodeDTO dto = StringUtils.isNotBlank(extParams)
+                ? IcebergDataNodeDTO.getFromJson(extParams)
+                : new IcebergDataNodeDTO();
+        return CommonBeanUtils.copyProperties(request, dto, true);
     }
 
     /**

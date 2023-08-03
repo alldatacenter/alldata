@@ -17,6 +17,24 @@
 
 package org.apache.inlong.sdk.dataproxy.pb;
 
+import org.apache.inlong.sdk.dataproxy.pb.context.ProfileEvent;
+import org.apache.inlong.sdk.dataproxy.pb.context.SdkSinkContext;
+import org.apache.inlong.sdk.dataproxy.pb.dispatch.DispatchManager;
+import org.apache.inlong.sdk.dataproxy.pb.dispatch.DispatchProfile;
+import org.apache.inlong.sdk.dataproxy.pb.network.IpPort;
+
+import com.alibaba.fastjson.JSON;
+import org.apache.flume.Channel;
+import org.apache.flume.Context;
+import org.apache.flume.Event;
+import org.apache.flume.EventDeliveryException;
+import org.apache.flume.Transaction;
+import org.apache.flume.conf.Configurable;
+import org.apache.flume.sink.AbstractSink;
+import org.jboss.netty.channel.ChannelException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
@@ -27,24 +45,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.LinkedBlockingQueue;
-
-import org.apache.flume.Channel;
-import org.apache.flume.Context;
-import org.apache.flume.Event;
-import org.apache.flume.EventDeliveryException;
-import org.apache.flume.Transaction;
-import org.apache.flume.conf.Configurable;
-import org.apache.flume.sink.AbstractSink;
-import org.apache.inlong.sdk.dataproxy.pb.context.ProfileEvent;
-import org.apache.inlong.sdk.dataproxy.pb.context.SdkSinkContext;
-import org.apache.inlong.sdk.dataproxy.pb.dispatch.DispatchManager;
-import org.apache.inlong.sdk.dataproxy.pb.dispatch.DispatchProfile;
-import org.apache.inlong.sdk.dataproxy.pb.network.IpPort;
-import org.jboss.netty.channel.ChannelException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import com.alibaba.fastjson.JSON;
 
 /**
  * ProxySdkSink

@@ -17,13 +17,14 @@
 
 package org.apache.inlong.tubemq.server.master.web.simplemvc;
 
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.util.HashMap;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 import javax.servlet.http.Part;
+
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
 
 public class MultipartHttpServletRequest extends HttpServletRequestWrapper {
 

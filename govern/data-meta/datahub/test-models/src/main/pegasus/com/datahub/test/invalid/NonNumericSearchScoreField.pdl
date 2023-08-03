@@ -1,9 +1,0 @@
-namespace com.datahub.test.invalid
-
-@Aspect = {
-  "name": "invalidAspect"
-}
-record NonNumericSearchScoreField {
-  @SearchScore = {}
-  textField: string
-}

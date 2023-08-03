@@ -17,10 +17,12 @@
 
 package org.apache.inlong.tubemq.server.master.utils;
 
-import com.sleepycat.je.rep.utilint.ServiceDispatcher;
-import java.io.IOException;
 import org.apache.inlong.tubemq.corebase.utils.AbstractSamplePrint;
+
+import com.sleepycat.je.rep.utilint.ServiceDispatcher;
 import org.slf4j.Logger;
+
+import java.io.IOException;
 
 public class MetaConfigSamplePrint extends AbstractSamplePrint {
 

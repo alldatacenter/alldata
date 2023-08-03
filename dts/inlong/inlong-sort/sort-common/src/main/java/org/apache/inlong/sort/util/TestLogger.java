@@ -17,14 +17,15 @@
 
 package org.apache.inlong.sort.util;
 
-import java.io.PrintWriter;
-import java.io.StringWriter;
 import org.junit.Rule;
 import org.junit.rules.TestRule;
 import org.junit.rules.TestWatcher;
 import org.junit.runner.Description;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.io.PrintWriter;
+import java.io.StringWriter;
 
 /**
  * Adds automatic test name logging. Every test which wants to log which test is currently executed

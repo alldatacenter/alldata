@@ -17,13 +17,14 @@
 
 package org.apache.inlong.sort.protocol.transformation.relation;
 
+import org.apache.inlong.sort.protocol.transformation.FilterFunction;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonCreator;
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonProperty;
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonTypeName;
-import org.apache.inlong.sort.protocol.transformation.FilterFunction;
 
 import java.util.List;
 import java.util.Map;

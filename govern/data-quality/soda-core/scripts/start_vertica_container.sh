@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-docker-compose -f soda/verica/docker-compose.yml up --remove-orphans
+docker-compose -f soda/vertica/docker-compose.yml up --remove-orphans

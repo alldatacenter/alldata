@@ -18,10 +18,11 @@
 package org.apache.inlong.manager.common.util;
 
 import com.google.common.collect.ImmutableMap;
+import org.apache.commons.collections.CollectionUtils;
+
 import java.util.Collection;
 import java.util.Map;
 import java.util.function.Function;
-import org.apache.commons.collections.CollectionUtils;
 
 /**
  * Utils of inlong collection.

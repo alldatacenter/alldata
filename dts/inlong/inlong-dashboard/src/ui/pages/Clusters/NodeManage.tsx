@@ -28,6 +28,7 @@ import { useRequest, useLocation } from '@/ui/hooks';
 import NodeEditModal from './NodeEditModal';
 import request from '@/core/utils/request';
 import { timestampFormat } from '@/core/utils';
+import { genStatusTag } from './status';
 
 const getFilterFormContent = defaultValues => [
   {
@@ -128,6 +129,11 @@ const Comp: React.FC = () => {
       {
         title: i18n.t('pages.Clusters.Node.ProtocolType'),
         dataIndex: 'protocolType',
+      },
+      {
+        title: i18n.t('pages.Clusters.Node.Status'),
+        dataIndex: 'status',
+        render: text => genStatusTag(text),
       },
       {
         title: i18n.t('pages.Clusters.Node.LastModifier'),

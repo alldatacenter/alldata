@@ -17,16 +17,20 @@
 
 package org.apache.inlong.manager.pojo.source.tubemq;
 
+import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
+import org.apache.inlong.manager.common.exceptions.BusinessException;
+import org.apache.inlong.manager.common.util.CommonBeanUtils;
+import org.apache.inlong.manager.common.util.JsonUtils;
+
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
-import org.apache.inlong.manager.common.exceptions.BusinessException;
-import org.apache.inlong.manager.common.util.JsonUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.validation.constraints.NotNull;
+
 import java.util.Map;
 import java.util.TreeSet;
 
@@ -66,16 +70,12 @@ public class TubeMQSourceDTO {
     /**
      * Get the dto instance from the request
      */
-    public static TubeMQSourceDTO getFromRequest(TubeMQSourceRequest request) {
-        return TubeMQSourceDTO.builder()
-                .masterRpc(request.getMasterRpc())
-                .topic(request.getTopic())
-                .format(request.getSerializationType())
-                .groupId(request.getGroupId())
-                .sessionKey(request.getSessionKey())
-                .tid(request.getTid())
-                .properties(request.getProperties())
-                .build();
+    public static TubeMQSourceDTO getFromRequest(TubeMQSourceRequest request, String extParams) {
+        TubeMQSourceDTO dto = StringUtils.isNotBlank(extParams)
+                ? TubeMQSourceDTO.getFromJson(extParams)
+                : new TubeMQSourceDTO();
+        dto.setFormat(request.getSerializationType());
+        return CommonBeanUtils.copyProperties(request, dto, true);
     }
 
     /**
@@ -86,7 +86,7 @@ public class TubeMQSourceDTO {
             return JsonUtils.parseObject(extParams, TubeMQSourceDTO.class);
         } catch (Exception e) {
             throw new BusinessException(ErrorCodeEnum.SOURCE_INFO_INCORRECT,
-                    String.format("parse extParams of TubeMQSource failure: %s", e.getMessage()));
+                    String.format("Parse extParams of TubeMQSource failure: %s", e.getMessage()));
         }
     }
 }

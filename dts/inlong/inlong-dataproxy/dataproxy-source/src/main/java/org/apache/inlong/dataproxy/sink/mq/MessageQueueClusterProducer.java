@@ -17,18 +17,21 @@
 
 package org.apache.inlong.dataproxy.sink.mq;
 
+import org.apache.inlong.dataproxy.config.pojo.CacheClusterConfig;
+
 import org.apache.flume.lifecycle.LifecycleAware;
 import org.apache.flume.lifecycle.LifecycleState;
-import org.apache.inlong.dataproxy.config.pojo.CacheClusterConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.Set;
 
 /**
  * MessageQueueClusterProducer
  */
 public class MessageQueueClusterProducer implements LifecycleAware {
 
-    public static final Logger LOG = LoggerFactory.getLogger(MessageQueueClusterProducer.class);
+    private static final Logger logger = LoggerFactory.getLogger(MessageQueueClusterProducer.class);
 
     private final String workerName;
     private final CacheClusterConfig config;
@@ -87,10 +90,10 @@ public class MessageQueueClusterProducer implements LifecycleAware {
     /**
      * send
      * 
-     * @param event
+     * @param profile
      */
-    public boolean send(BatchPackProfile event) {
-        return this.handler.send(event);
+    public boolean send(PackProfile profile) {
+        return this.handler.send(profile);
     }
 
     /**
@@ -124,6 +127,10 @@ public class MessageQueueClusterProducer implements LifecycleAware {
      */
     public CacheClusterConfig getConfig() {
         return config;
+    }
+
+    public void publishTopic(Set<String> topicNames) {
+        this.handler.publishTopic(topicNames);
     }
 
 }

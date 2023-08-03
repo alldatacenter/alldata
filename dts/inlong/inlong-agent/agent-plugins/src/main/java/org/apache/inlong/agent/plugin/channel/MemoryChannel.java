@@ -24,6 +24,7 @@ import org.apache.inlong.agent.metrics.AgentMetricItemSet;
 import org.apache.inlong.agent.plugin.Channel;
 import org.apache.inlong.agent.plugin.Message;
 import org.apache.inlong.common.metric.MetricRegister;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

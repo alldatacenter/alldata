@@ -17,11 +17,12 @@
 
 package org.apache.inlong.tubemq.server.common.aaaserver;
 
+import org.apache.inlong.tubemq.corebase.protobuf.generated.ClientMaster;
+import org.apache.inlong.tubemq.corebase.rv.ProcessResult;
+
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
-import org.apache.inlong.tubemq.corebase.protobuf.generated.ClientMaster;
-import org.apache.inlong.tubemq.corebase.rv.ProcessResult;
 
 public interface CertificateMasterHandler {
 

@@ -17,9 +17,9 @@
 
 package org.apache.inlong.sdk.dataproxy.network;
 
-import java.util.concurrent.TimeUnit;
-
 import org.apache.inlong.sdk.dataproxy.SendMessageCallback;
+
+import java.util.concurrent.TimeUnit;
 
 public class QueueObject {
 

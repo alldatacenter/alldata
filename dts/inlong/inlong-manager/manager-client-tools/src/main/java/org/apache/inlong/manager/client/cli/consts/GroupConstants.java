@@ -19,7 +19,7 @@ package org.apache.inlong.manager.client.cli.consts;
 
 public class GroupConstants {
 
-    public static final int DEFAULT_LIGHTWEIGHT = 0;
+    public static final int DEFAULT_INLONG_GROUP_MODE = 0;
 
     public static final String DEFAULT_DATA_ENCODING = "UTF-8";
 

@@ -17,13 +17,14 @@
 
 package org.apache.inlong.sort.standalone;
 
-import java.util.HashMap;
-import java.util.Map;
+import org.apache.inlong.sort.standalone.utils.InlongLoggerFactory;
 
 import org.apache.flume.conf.FlumeConfiguration;
 import org.apache.flume.node.AbstractConfigurationProvider;
 import org.slf4j.Logger;
-import org.apache.inlong.sort.standalone.utils.InlongLoggerFactory;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 

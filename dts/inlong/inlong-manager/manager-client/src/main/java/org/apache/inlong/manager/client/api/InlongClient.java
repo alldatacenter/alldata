@@ -32,6 +32,7 @@ import org.apache.inlong.manager.pojo.group.InlongGroupInfo;
 import org.apache.inlong.manager.pojo.group.InlongGroupStatusInfo;
 
 import javax.annotation.Nullable;
+
 import java.util.List;
 import java.util.Map;
 

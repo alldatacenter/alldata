@@ -17,8 +17,9 @@
 
 package org.apache.inlong.agent.pojo;
 
-import lombok.Data;
 import org.apache.inlong.agent.conf.JobProfile;
+
+import lombok.Data;
 
 @Data
 public class DbCollectorTaskResult {

@@ -18,6 +18,7 @@
 package org.apache.inlong.sort.standalone.sink.elasticsearch;
 
 import org.apache.inlong.sort.standalone.channel.ProfileEvent;
+
 import org.elasticsearch.action.index.IndexRequest;
 
 /**

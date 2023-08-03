@@ -96,6 +96,8 @@ namespace dataproxy_sdk
         static const char kBasicAuthJoiner[] = ":";
         static const char kProtocolType [] = "TCP";
 
+        static const uint32_t kMaxAttrLen = 2048;
+
     } // namespace constants
 
 } // namespace dataproxy_sdk

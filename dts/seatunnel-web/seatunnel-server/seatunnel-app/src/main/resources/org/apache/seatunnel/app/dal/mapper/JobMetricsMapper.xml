@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+       http://www.apache.org/licenses/LICENSE-2.0
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.apache.seatunnel.app.dal.mapper.JobMetricsMapper">
+    <resultMap id="BaseResultMap" type="org.apache.seatunnel.app.dal.entity.JobMetrics">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="job_instance_id" jdbcType="BIGINT" property="jobInstanceId"/>
+        <result column="pipeline_id" jdbcType="INTEGER" property="pipelineId"/>
+        <result column="read_row_count" jdbcType="BIGINT" property="readRowCount"/>
+        <result column="write_row_count" jdbcType="BIGINT" property="writeRowCount"/>
+        <result column="source_table_names" jdbcType="VARCHAR" property="sourceTableNames"/>
+        <result column="sink_table_names" jdbcType="VARCHAR" property="sinkTableNames"/>
+        <result column="read_qps" jdbcType="BIGINT" property="readQps"/>
+        <result column="write_qps" jdbcType="BIGINT" property="writeQps"/>
+        <result column="status" jdbcType="VARCHAR" property="status"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id
+        , `job_instance_id`, `pipeline_id`, read_row_count, write_row_count, source_table_names, sink_table_names, read_qps, write_qps, status
+    </sql>
+    <insert id="insert" parameterType="org.apache.seatunnel.app.dal.entity.JobMetrics">
+        insert into `t_st_job_metrics` (<include refid="Base_Column_List"/>, `create_user_id`, `update_user_id`)
+        values (#{id,jdbcType=BIGINT},
+                #{jobInstanceId,jdbcType=BIGINT},
+                #{pipelineId,jdbcType=INTEGER},
+                #{readRowCount,jdbcType=BIGINT},
+                #{writeRowCount,jdbcType=BIGINT},
+                #{sourceTableNames,jdbcType=VARCHAR},
+                #{sinkTableNames,jdbcType=VARCHAR},
+                #{read_qps,jdbcType=BIGINT},
+                #{write_qps,jdbcType=BIGINT},
+                #{status,jdbcType=VARCHAR},
+                #{createUserId,jdbcType=BIGINT},
+                #{updateUserId,jdbcType=BIGINT})
+    </insert>
+
+    <select id="queryJobMetricsByInstanceId" resultType="org.apache.seatunnel.app.dal.entity.JobMetrics">
+        select
+        <include refid="Base_Column_List"/>
+        from t_st_job_metrics
+        where 1=1
+        <if test="jobInstanceId != null and jobInstanceId > 0">
+            and job_instance_id = #{jobInstanceId}
+        </if>
+    </select>
+
+    <insert id="insertBatchMetrics">
+        insert into t_st_job_metrics (<include refid="Base_Column_List"/>, `create_user_id`, `update_user_id`)
+        values
+        <foreach collection="jobMetrics" item="metrics" separator=",">
+            (#{metrics.id},
+            #{metrics.jobInstanceId},
+            #{metrics.pipelineId},
+            #{metrics.readRowCount},
+            #{metrics.writeRowCount},
+            #{metrics.sourceTableNames},
+            #{metrics.sinkTableNames},
+            #{metrics.readQps},
+            #{metrics.writeQps},
+            #{metrics.status},
+            #{metrics.createUserId},
+            #{metrics.updateUserId})
+        </foreach>
+    </insert>
+</mapper>

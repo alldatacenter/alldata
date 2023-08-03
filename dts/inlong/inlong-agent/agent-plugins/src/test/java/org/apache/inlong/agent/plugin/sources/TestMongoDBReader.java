@@ -17,12 +17,13 @@
 
 package org.apache.inlong.agent.plugin.sources;
 
-import com.alibaba.fastjson.JSONPath;
 import org.apache.inlong.agent.conf.JobProfile;
 import org.apache.inlong.agent.constant.JobConstants;
 import org.apache.inlong.agent.plugin.Message;
 import org.apache.inlong.agent.plugin.sources.reader.MongoDBReader;
 import org.apache.inlong.agent.pojo.DebeziumFormat;
+
+import com.alibaba.fastjson.JSONPath;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;

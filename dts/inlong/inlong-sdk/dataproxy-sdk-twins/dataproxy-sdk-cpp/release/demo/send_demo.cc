@@ -39,7 +39,7 @@ int call_back_func(const char *inlong_group_id, const char *inlong_stream_id, co
 
 int main(int argc, char const *argv[])
 {
-    if (2 != argc)
+    if ( argc <2)
     {
         cout << "USAGE: ./send_demo ../config/config_example.json" << endl;
         return 0;
@@ -54,8 +54,13 @@ int main(int argc, char const *argv[])
     cout << "---->start sdk successfully" << endl;
 
     int count = 1000;
-    string inlong_group_id = "test_20220727_86";
-    string inlong_stream_id = "test_20220727_86_str_17";
+    string inlong_group_id = "test_cpp_sdk_20230404";
+    string inlong_stream_id = "stream1";
+    if ( 4 == argc) {
+        inlong_group_id = argv[2];
+        inlong_stream_id = argv[3];
+    }
+    cout << "inlong_group_id: "<<inlong_group_id<<"inlong_stream_id:"<<inlong_stream_id << endl;
     string msg = "this is a test ttttttttttttttt; eiwhgreuhg jfdiowaehgorerlea; test end";
 
     // step2. send
@@ -68,40 +73,6 @@ int main(int argc, char const *argv[])
                  << " ";
         }
     }
-
-    string bad_groupid="test_wrong_groupid";
-    int32_t bad_res=tc_api_send(bad_groupid.c_str(), inlong_stream_id.c_str(), msg.c_str(), msg.length(), call_back_func);
-    cout << endl << "send bad inlong_group_id res:"<<bad_res;
-
-    cout << endl
-         << "---->start tc_api_send_ext" << endl;
-    for (size_t i = 0; i < count; i++)
-    {
-        auto time_now = chrono::system_clock::now();
-        auto duration_in_ms = chrono::duration_cast<chrono::milliseconds>(time_now.time_since_epoch());
-        auto dt = duration_in_ms.count();
-        if (tc_api_send_ext(inlong_group_id.c_str(), inlong_stream_id.c_str(), msg.c_str(), msg.length(), dt, call_back_func))
-        {
-            cout << "tc_api_send_ext error;"
-                 << " ";
-        }
-    }
-
-    cout << endl
-         << "---->start tc_api_send_base" << endl;
-    for (size_t i = 0; i < count; i++)
-    {
-        auto time_now = chrono::system_clock::now();
-        auto duration_in_ms = chrono::duration_cast<chrono::milliseconds>(time_now.time_since_epoch());
-        auto dt = duration_in_ms.count();
-        if (tc_api_send_base(inlong_group_id.c_str(), inlong_stream_id.c_str(), msg.c_str(), msg.length(), dt, "127.0.0.1"))
-        {
-            cout << "tc_api_send_base error;"
-                 << " ";
-        }
-    }
-
-    // std::this_thread::sleep_for(std::chrono::minutes(2));
 
     // step3. close
     if (tc_api_close(1000))

@@ -17,11 +17,12 @@
 
 package org.apache.inlong.manager.service.resource.sink.starrocks;
 
+import org.apache.inlong.manager.pojo.sink.starrocks.StarRocksColumnInfo;
+import org.apache.inlong.manager.pojo.sink.starrocks.StarRocksTableInfo;
+
 import com.google.common.collect.Lists;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.hive.jdbc.HiveDatabaseMetaData;
-import org.apache.inlong.manager.pojo.sink.starrocks.StarRocksColumnInfo;
-import org.apache.inlong.manager.pojo.sink.starrocks.StarRocksTableInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

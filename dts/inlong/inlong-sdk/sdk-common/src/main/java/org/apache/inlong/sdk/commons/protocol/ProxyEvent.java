@@ -19,6 +19,8 @@ package org.apache.inlong.sdk.commons.protocol;
 
 import org.apache.inlong.sdk.commons.protocol.ProxySdk.MessageObj;
 
+import org.apache.commons.lang3.math.NumberUtils;
+
 import java.util.Map;
 
 /**
@@ -39,11 +41,11 @@ public class ProxyEvent extends SdkEvent {
     /**
      * Constructor
      * 
-     * @param inlongGroupId
-     * @param inlongStreamId
-     * @param body
-     * @param msgTime
-     * @param sourceIp
+     * @param inlongGroupId the group id
+     * @param inlongStreamId the stream id
+     * @param body the body content
+     * @param msgTime the message time
+     * @param sourceIp the source ip
      */
     public ProxyEvent(String inlongGroupId, String inlongStreamId, byte[] body, long msgTime, String sourceIp) {
         this.inlongGroupId = inlongGroupId;
@@ -65,9 +67,9 @@ public class ProxyEvent extends SdkEvent {
     /**
      * Constructor
      * 
-     * @param inlongGroupId
-     * @param inlongStreamId
-     * @param obj
+     * @param inlongGroupId the group id
+     * @param inlongStreamId the stream id
+     * @param obj  the pb message object
      */
     public ProxyEvent(String inlongGroupId, String inlongStreamId, MessageObj obj) {
         this.inlongGroupId = inlongGroupId;
@@ -84,6 +86,29 @@ public class ProxyEvent extends SdkEvent {
 
         this.sourceTime = System.currentTimeMillis();
         this.getHeaders().put(EventConstants.HEADER_KEY_SOURCE_TIME, String.valueOf(sourceTime));
+    }
+
+    /**
+     * ReBuild ProxyEvent object
+     *
+     * @param groupId the group id
+     * @param streamId the stream id
+     * @param msgTimeStr the message time
+     * @param sourceIp the source ip
+     * @param sourceTimeStr the source time
+     * @param headers the rebuild headers, include required headers
+     * @param body the rebuild body
+     */
+    public ProxyEvent(String groupId, String streamId, String msgTimeStr, String sourceIp,
+            String sourceTimeStr, Map<String, String> headers, byte[] body) {
+        this.inlongGroupId = groupId;
+        this.inlongStreamId = streamId;
+        this.sourceIp = sourceIp;
+        this.uid = InlongId.generateUid(this.inlongGroupId, this.inlongStreamId);
+        this.msgTime = NumberUtils.toLong(msgTimeStr, System.currentTimeMillis());
+        this.sourceTime = NumberUtils.toLong(sourceTimeStr, System.currentTimeMillis());
+        super.setBody(body);
+        super.setHeaders(headers);
     }
 
     /**

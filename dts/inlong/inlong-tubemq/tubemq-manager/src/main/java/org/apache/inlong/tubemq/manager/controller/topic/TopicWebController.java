@@ -17,11 +17,6 @@
 
 package org.apache.inlong.tubemq.manager.controller.topic;
 
-import com.google.gson.Gson;
-
-import java.util.Map;
-
-import lombok.extern.slf4j.Slf4j;
 import org.apache.inlong.tubemq.manager.controller.TubeMQResult;
 import org.apache.inlong.tubemq.manager.controller.node.request.BatchAddTopicReq;
 import org.apache.inlong.tubemq.manager.controller.node.request.CloneTopicReq;
@@ -36,6 +31,9 @@ import org.apache.inlong.tubemq.manager.service.TubeMQErrorConst;
 import org.apache.inlong.tubemq.manager.service.interfaces.MasterService;
 import org.apache.inlong.tubemq.manager.service.interfaces.NodeService;
 import org.apache.inlong.tubemq.manager.service.interfaces.TopicService;
+
+import com.google.gson.Gson;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -43,6 +41,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Map;
 
 @RestController
 @RequestMapping(path = "/v1/topic")

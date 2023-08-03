@@ -17,8 +17,6 @@
 
 package org.apache.inlong.manager.service.listener.consume;
 
-import com.alibaba.druid.util.StringUtils;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
 import org.apache.inlong.manager.common.enums.TaskEvent;
 import org.apache.inlong.manager.common.exceptions.BusinessException;
@@ -30,6 +28,9 @@ import org.apache.inlong.manager.service.consume.InlongConsumeService;
 import org.apache.inlong.manager.workflow.WorkflowContext;
 import org.apache.inlong.manager.workflow.event.ListenerResult;
 import org.apache.inlong.manager.workflow.event.task.TaskEventListener;
+
+import com.alibaba.druid.util.StringUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

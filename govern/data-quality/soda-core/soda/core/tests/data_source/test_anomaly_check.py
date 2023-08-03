@@ -3,7 +3,7 @@ import os
 import pytest
 from helpers.common_test_tables import customers_test_table
 from helpers.data_source_fixture import DataSourceFixture
-from soda.soda_cloud.historic_descriptor import (
+from soda.cloud.historic_descriptor import (
     HistoricCheckResultsDescriptor,
     HistoricMeasurementsDescriptor,
 )
@@ -272,3 +272,33 @@ def test_anomaly_detection_invalid_values(data_source_fixture):
 
     scan.execute()
     scan.assert_all_checks_pass()
+
+
+@pytest.mark.skipif(
+    condition=os.getenv("SCIENTIFIC_TESTS") == "SKIP",
+    reason="Environment variable SCIENTIFIC_TESTS is set to SKIP which skips tests depending on the scientific package",
+)
+def test_anomaly_detection_incorrect_metric(data_source_fixture):
+    table_name = data_source_fixture.ensure_test_table(customers_test_table)
+
+    scan = data_source_fixture.create_test_scan()
+
+    scan.add_sodacl_yaml_str(
+        f"""
+          checks for {table_name}:
+              - anomaly score for incorrect_metric < default
+        """
+    )
+
+    scan.mock_historic_values(
+        metric_identity=f"metric-{scan._scan_definition_name}-{scan._data_source_name}-{table_name}-id-invalid_count-05d677bc",
+        metric_values=[10, 10, 10, 9, 8, 0, 0, 0, 0],
+    )
+
+    with pytest.raises(Exception) as e:
+        scan.execute()
+
+    assert (
+        "An error occurred during the initialization of AnomalyMetricCheck. Please make sure that the metric 'incorrect_metric' is supported. For more information see the docs: https://docs.soda.io/soda-cl/anomaly-score.html#anomaly-score-checks."
+        in str(e.value)
+    )

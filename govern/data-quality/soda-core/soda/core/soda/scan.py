@@ -7,6 +7,8 @@ import textwrap
 from datetime import datetime, timezone
 
 from soda.__version__ import SODA_CORE_VERSION
+from soda.cloud.historic_descriptor import HistoricDescriptor
+from soda.cloud.soda_cloud import SodaCloud
 from soda.common.json_helper import JsonHelper
 from soda.common.log import Log, LogLevel
 from soda.common.logs import Logs
@@ -21,8 +23,6 @@ from soda.profiling.profile_columns_result import ProfileColumnsResultTable
 from soda.profiling.sample_tables_result import SampleTablesResultTable
 from soda.sampler.default_sampler import DefaultSampler
 from soda.sampler.sampler import Sampler
-from soda.soda_cloud.historic_descriptor import HistoricDescriptor
-from soda.soda_cloud.soda_cloud import SodaCloud
 from soda.sodacl.check_cfg import CheckCfg
 from soda.sodacl.location import Location
 from soda.sodacl.sodacl_cfg import SodaCLCfg
@@ -321,7 +321,7 @@ class Scan:
             file_path = f"{unique_name}.yml"
             self._parse_sodacl_yaml_str(sodacl_yaml_str=sodacl_yaml_str, file_path=file_path)
         except Exception as e:
-            self._logs.error(f"Could not add SodaCL string", exception=e)
+            self._logs.error("Could not add SodaCL string", exception=e)
 
     def _parse_sodacl_yaml_str(self, sodacl_yaml_str: str, file_path: str = None):
         from soda.sodacl.sodacl_parser import SodaCLParser
@@ -497,6 +497,11 @@ class Scan:
                     if isinstance(metric, DerivedMetric):
                         metric.compute_derived_metric_values()
 
+                        # Carry over queries created in dependencies (metrics) so that correct queries
+                        # are associated with the derived metric as well.
+                        for metric_dep in metric.derived_formula.metric_dependencies.values():
+                            metric.queries += metric_dep.queries
+
                 # Run profiling, data samples, automated monitoring, sample tables
                 try:
                     self.run_data_source_scan()
@@ -580,6 +585,9 @@ class Scan:
 
             if error_count > 0:
                 Log.log_errors(self.get_error_logs())
+
+            if self._logs.logs_buffer:
+                self._logs.flush_buffer()
 
             # Telemetry data
             soda_telemetry.set_attributes(

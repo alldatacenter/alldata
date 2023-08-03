@@ -17,6 +17,9 @@
 
 package org.apache.inlong.manager.service.resource.sink.hbase;
 
+import org.apache.inlong.manager.pojo.sink.hbase.HBaseColumnFamilyInfo;
+import org.apache.inlong.manager.pojo.sink.hbase.HBaseTableInfo;
+
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.HBaseConfiguration;
 import org.apache.hadoop.hbase.NamespaceDescriptor;
@@ -28,8 +31,6 @@ import org.apache.hadoop.hbase.client.Connection;
 import org.apache.hadoop.hbase.client.ConnectionFactory;
 import org.apache.hadoop.hbase.client.Table;
 import org.apache.hadoop.hbase.client.TableDescriptorBuilder;
-import org.apache.inlong.manager.pojo.sink.hbase.HBaseColumnFamilyInfo;
-import org.apache.inlong.manager.pojo.sink.hbase.HBaseTableInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

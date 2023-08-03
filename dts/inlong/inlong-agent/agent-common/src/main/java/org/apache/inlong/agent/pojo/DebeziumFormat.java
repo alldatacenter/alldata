@@ -17,8 +17,9 @@
 
 package org.apache.inlong.agent.pojo;
 
-import java.util.Map;
 import lombok.Data;
+
+import java.util.Map;
 
 @Data
 public class DebeziumFormat {

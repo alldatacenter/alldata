@@ -17,6 +17,11 @@
 
 package org.apache.inlong.manager.service.resource.sink.iceberg;
 
+import org.apache.inlong.manager.pojo.sink.iceberg.IcebergColumnInfo;
+import org.apache.inlong.manager.pojo.sink.iceberg.IcebergPartition;
+import org.apache.inlong.manager.pojo.sink.iceberg.IcebergTableInfo;
+import org.apache.inlong.manager.pojo.sink.iceberg.IcebergType;
+
 import org.apache.commons.lang3.StringUtils;
 import org.apache.iceberg.PartitionSpec;
 import org.apache.iceberg.Schema;
@@ -29,10 +34,6 @@ import org.apache.iceberg.expressions.Expressions;
 import org.apache.iceberg.hive.HiveCatalog;
 import org.apache.iceberg.types.Types;
 import org.apache.iceberg.types.Types.NestedField;
-import org.apache.inlong.manager.pojo.sink.iceberg.IcebergColumnInfo;
-import org.apache.inlong.manager.pojo.sink.iceberg.IcebergPartition;
-import org.apache.inlong.manager.pojo.sink.iceberg.IcebergTableInfo;
-import org.apache.inlong.manager.pojo.sink.iceberg.IcebergType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

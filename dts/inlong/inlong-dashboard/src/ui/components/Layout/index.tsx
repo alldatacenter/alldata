@@ -36,6 +36,7 @@ import type { MenuProps } from 'antd/es/menu';
 import { State } from '@/core/stores';
 import NavWidget from './NavWidget';
 import LocaleSelect from './NavWidget/LocaleSelect';
+import Tenant from './Tenant';
 
 const BasicLayout: React.FC = props => {
   const location = useLocation();
@@ -46,8 +47,25 @@ const BasicLayout: React.FC = props => {
   const { pathname } = location;
   const roles = useSelector<State, State['roles']>(state => state.roles);
   const { breadcrumbMap, menuData } = useMemo(() => {
+    if (roles?.includes('INLONG_ADMIN') || roles?.includes('INLONG_OPERATOR')) {
+      const _menus = menusTree.filter(
+        item => (item.isAdmin && roles?.includes('INLONG_ADMIN')) || !item.isAdmin,
+      );
+      return getMenuData(_menus);
+    }
+    if (roles?.includes('TENANT_ADMIN')) {
+      const _menus = menusTree.filter(item => {
+        if (item.isAdmin) {
+          item.children = item.children?.filter(
+            i => (i.isAdmin && roles.includes('TENANT_ADMIN')) || i.isAdmin,
+          );
+        }
+        return item;
+      });
+      return getMenuData(_menus);
+    }
     const _menus = menusTree.filter(
-      item => (item.isAdmin && roles?.includes('ADMIN')) || !item.isAdmin,
+      item => (!item.isAdmin && roles?.includes('TENANT_OPERATOR')) || !item.isAdmin,
     );
     return getMenuData(_menus);
   }, [roles]);
@@ -113,6 +131,7 @@ const BasicLayout: React.FC = props => {
           ),
           <LocaleSelect />,
           <NavWidget />,
+          <Tenant />,
         ]}
       >
         {props.children}

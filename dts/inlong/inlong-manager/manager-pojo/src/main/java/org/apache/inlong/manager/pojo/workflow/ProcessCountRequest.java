@@ -37,6 +37,9 @@ public class ProcessCountRequest {
     @ApiModelProperty("Process display name")
     private String displayName;
 
+    @ApiModelProperty("Inlong tenant name")
+    private String tenant;
+
     @ApiModelProperty("Applicant")
     private String applicant;
 

@@ -17,12 +17,13 @@
 
 package org.apache.inlong.tubemq.manager.controller.node.request;
 
-import java.util.List;
+import org.apache.inlong.tubemq.manager.service.tube.AddTopicRequest;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.apache.inlong.tubemq.manager.service.tube.AddTopicRequest;
+
+import java.util.List;
 
 @Data
 @EqualsAndHashCode(callSuper = true)

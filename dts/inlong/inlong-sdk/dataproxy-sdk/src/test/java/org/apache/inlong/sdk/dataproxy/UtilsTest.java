@@ -18,6 +18,7 @@
 package org.apache.inlong.sdk.dataproxy;
 
 import org.apache.inlong.sdk.dataproxy.network.Utils;
+
 import org.junit.Assert;
 import org.junit.Test;
 

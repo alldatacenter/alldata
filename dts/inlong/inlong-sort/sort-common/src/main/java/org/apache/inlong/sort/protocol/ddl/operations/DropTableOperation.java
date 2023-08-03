@@ -17,13 +17,14 @@
 
 package org.apache.inlong.sort.protocol.ddl.operations;
 
+import org.apache.inlong.sort.protocol.ddl.enums.OperationType;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonCreator;
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonInclude;
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonInclude.Include;
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonTypeName;
-import org.apache.inlong.sort.protocol.ddl.enums.OperationType;
 
 /**
  * DropTableOperation represents a drop operation on table

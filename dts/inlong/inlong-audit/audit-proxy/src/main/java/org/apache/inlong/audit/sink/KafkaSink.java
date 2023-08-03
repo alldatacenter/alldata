@@ -17,6 +17,13 @@
 
 package org.apache.inlong.audit.sink;
 
+import org.apache.inlong.audit.base.HighPriorityThreadFactory;
+import org.apache.inlong.audit.file.ConfigManager;
+import org.apache.inlong.audit.utils.FailoverChannelProcessorHolder;
+import org.apache.inlong.common.constant.MQType;
+import org.apache.inlong.common.pojo.audit.MQInfo;
+import org.apache.inlong.common.util.NetworkUtils;
+
 import com.google.common.base.Preconditions;
 import com.google.common.util.concurrent.RateLimiter;
 import org.apache.commons.lang3.StringUtils;
@@ -27,12 +34,6 @@ import org.apache.flume.Transaction;
 import org.apache.flume.conf.Configurable;
 import org.apache.flume.instrumentation.SinkCounter;
 import org.apache.flume.sink.AbstractSink;
-import org.apache.inlong.audit.base.HighPriorityThreadFactory;
-import org.apache.inlong.audit.file.ConfigManager;
-import org.apache.inlong.audit.utils.FailoverChannelProcessorHolder;
-import org.apache.inlong.common.constant.MQType;
-import org.apache.inlong.common.pojo.audit.MQInfo;
-import org.apache.inlong.common.util.NetworkUtils;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;

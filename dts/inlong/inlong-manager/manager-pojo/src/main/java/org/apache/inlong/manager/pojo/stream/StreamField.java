@@ -17,17 +17,18 @@
 
 package org.apache.inlong.manager.pojo.stream;
 
+import org.apache.inlong.manager.common.tool.excel.annotation.ExcelEntity;
+import org.apache.inlong.manager.common.tool.excel.annotation.ExcelField;
+import org.apache.inlong.manager.common.tool.excel.annotation.Font;
+import org.apache.inlong.manager.common.tool.excel.annotation.Style;
+import org.apache.inlong.manager.common.tool.excel.validator.NonEmptyCellValidator;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.apache.inlong.manager.common.tool.excel.annotation.ExcelEntity;
-import org.apache.inlong.manager.common.tool.excel.annotation.ExcelField;
-import org.apache.inlong.manager.common.tool.excel.annotation.Font;
-import org.apache.inlong.manager.common.tool.excel.annotation.Style;
-import org.apache.inlong.manager.common.tool.excel.validator.NonEmptyCellValidator;
 import org.apache.poi.ss.usermodel.BorderStyle;
 import org.apache.poi.ss.usermodel.IndexedColors;
 

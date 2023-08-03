@@ -17,10 +17,8 @@
 
 package org.apache.inlong.agent.core;
 
-import static org.apache.inlong.agent.constant.AgentConstants.AGENT_CONF_PARENT;
-import static org.apache.inlong.agent.constant.AgentConstants.AGENT_ENABLE_HTTP;
-import static org.apache.inlong.agent.constant.AgentConstants.AGENT_HTTP_PORT;
-import static org.apache.inlong.agent.constant.AgentConstants.DEFAULT_AGENT_HTTP_PORT;
+import org.apache.inlong.agent.conf.AgentConfiguration;
+import org.apache.inlong.agent.core.conf.ResponseResult;
 
 import com.google.gson.Gson;
 import org.apache.http.client.config.RequestConfig;
@@ -31,12 +29,15 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
-import org.apache.inlong.agent.conf.AgentConfiguration;
-import org.apache.inlong.agent.core.conf.ResponseResult;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import static org.apache.inlong.agent.constant.AgentConstants.AGENT_CONF_PARENT;
+import static org.apache.inlong.agent.constant.AgentConstants.AGENT_ENABLE_HTTP;
+import static org.apache.inlong.agent.constant.AgentConstants.AGENT_HTTP_PORT;
+import static org.apache.inlong.agent.constant.AgentConstants.DEFAULT_AGENT_HTTP_PORT;
 
 public class TestConfigJetty {
 

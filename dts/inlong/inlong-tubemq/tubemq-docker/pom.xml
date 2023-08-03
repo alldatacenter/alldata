@@ -21,18 +21,23 @@
     <parent>
         <groupId>org.apache.inlong</groupId>
         <artifactId>inlong-tubemq</artifactId>
-        <version>1.7.0</version>
-        <relativePath>../pom.xml</relativePath>
+        <version>1.8.0</version>
     </parent>
+
     <artifactId>tubemq-docker</artifactId>
     <packaging>pom</packaging>
     <name>Apache InLong - TubeMQ Docker</name>
+
     <modules>
         <module>tubemq-all</module>
         <module>tubemq-build</module>
         <module>tubemq-cpp</module>
         <module>tubemq-manager</module>
     </modules>
+
+    <properties>
+        <inlong.root.dir>${project.parent.parent.basedir}</inlong.root.dir>
+    </properties>
 
     <dependencies>
         <dependency>

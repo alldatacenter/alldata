@@ -20,6 +20,7 @@ package org.apache.inlong.sdk.dataproxy.example;
 import org.apache.inlong.sdk.dataproxy.DefaultMessageSender;
 import org.apache.inlong.sdk.dataproxy.FileCallback;
 import org.apache.inlong.sdk.dataproxy.SendResult;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

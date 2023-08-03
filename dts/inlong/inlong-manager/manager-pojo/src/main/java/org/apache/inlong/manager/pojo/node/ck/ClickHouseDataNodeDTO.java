@@ -17,13 +17,15 @@
 
 package org.apache.inlong.manager.pojo.node.ck;
 
+import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
+import org.apache.inlong.manager.common.exceptions.BusinessException;
+import org.apache.inlong.manager.common.util.CommonBeanUtils;
+import org.apache.inlong.manager.common.util.JsonUtils;
+
 import io.swagger.annotations.ApiModel;
 import lombok.Builder;
 import lombok.Data;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
-import org.apache.inlong.manager.common.exceptions.BusinessException;
-import org.apache.inlong.manager.common.util.JsonUtils;
 
 import javax.validation.constraints.NotNull;
 
@@ -40,8 +42,11 @@ public class ClickHouseDataNodeDTO {
     /**
      * Get the dto instance from the request
      */
-    public static ClickHouseDataNodeDTO getFromRequest(ClickHouseDataNodeRequest request) throws Exception {
-        return ClickHouseDataNodeDTO.builder().build();
+    public static ClickHouseDataNodeDTO getFromRequest(ClickHouseDataNodeRequest request, String extParams) {
+        ClickHouseDataNodeDTO dto = StringUtils.isNotBlank(extParams)
+                ? ClickHouseDataNodeDTO.getFromJson(extParams)
+                : new ClickHouseDataNodeDTO();
+        return CommonBeanUtils.copyProperties(request, dto, true);
     }
 
     /**

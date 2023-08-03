@@ -3,7 +3,6 @@ import math
 from typing import List
 
 import numpy as np
-import pandas as pd
 from pydantic import BaseModel
 
 from soda.scientific.distribution.utils import RefDataCfg
@@ -126,13 +125,10 @@ automatically computed {n_bins} is higher than maximum allowed bin size: {self.m
         return DRO(weights=weights.tolist(), bins=bins.tolist())
 
     def generate_categorical_dro(self) -> DRO:
-        data = pd.Series(self.data)
-        value_counts = data.value_counts()
-
-        labels = value_counts.index.to_numpy()
-        weights = value_counts.to_numpy()
-        weights = normalize(weights)
-        return DRO(weights=weights.tolist(), bins=labels.tolist())
+        labels = [row[0] for row in self.data]
+        label_counts = [row[1] for row in self.data]
+        weights = [label_count / sum(label_counts) for label_count in label_counts]
+        return DRO(weights=weights, bins=labels)
 
     def generate(self) -> DRO:
         if self.distribution_type == "continuous":

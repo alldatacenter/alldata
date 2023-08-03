@@ -17,16 +17,18 @@
 
 package org.apache.inlong.manager.pojo.node.es;
 
+import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
+import org.apache.inlong.manager.common.exceptions.BusinessException;
+import org.apache.inlong.manager.common.util.CommonBeanUtils;
+import org.apache.inlong.manager.common.util.JsonUtils;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
-import org.apache.inlong.manager.common.exceptions.BusinessException;
-import org.apache.inlong.manager.common.util.CommonBeanUtils;
-import org.apache.inlong.manager.common.util.JsonUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -74,8 +76,11 @@ public class ElasticsearchDataNodeDTO {
     /**
      * Get the dto instance from the request
      */
-    public static ElasticsearchDataNodeDTO getFromRequest(ElasticsearchDataNodeRequest request) {
-        return CommonBeanUtils.copyProperties(request, ElasticsearchDataNodeDTO::new, true);
+    public static ElasticsearchDataNodeDTO getFromRequest(ElasticsearchDataNodeRequest request, String extParams) {
+        ElasticsearchDataNodeDTO dto = StringUtils.isNotBlank(extParams)
+                ? ElasticsearchDataNodeDTO.getFromJson(extParams)
+                : new ElasticsearchDataNodeDTO();
+        return CommonBeanUtils.copyProperties(request, dto, true);
     }
 
     /**

@@ -31,6 +31,7 @@ import { CommonInterface } from '../common';
 import StreamItemModal from './StreamItemModal';
 import SourceSinkCard from './SourceSinkCard';
 import { getFilterFormContent } from './config';
+import PreviewModal from './PreviewModal';
 
 type Props = CommonInterface;
 
@@ -50,10 +51,17 @@ const Comp = ({ inlongGroupId, readonly, mqType }: Props, ref) => {
     inlongGroupId,
   });
 
+  const [previewModal, setPreviewModal] = useState({
+    open: false,
+    inlongStreamId: '',
+    inlongGroupId,
+  });
+
   const [groupLogs, setGroupLogs] = useState({
     open: false,
     inlongGroupId,
     inlongStreamId: '',
+    inlongGroupMode: true,
   });
 
   const [groupStatus, setGroupStatus] = useState();
@@ -111,6 +119,7 @@ const Comp = ({ inlongGroupId, readonly, mqType }: Props, ref) => {
       open: true,
       inlongGroupId: inlongGroupId,
       inlongStreamId: record.inlongStreamId,
+      inlongGroupMode: true,
     });
   };
 
@@ -147,6 +156,10 @@ const Comp = ({ inlongGroupId, readonly, mqType }: Props, ref) => {
         message.success(t('meta.Stream.ExecuteSuccess'));
       },
     });
+  };
+
+  const onPreview = record => {
+    setPreviewModal({ open: true, inlongGroupId, inlongStreamId: record.inlongStreamId });
   };
 
   const onChange = ({ current: pageNum, pageSize }) => {
@@ -202,6 +215,9 @@ const Comp = ({ inlongGroupId, readonly, mqType }: Props, ref) => {
                 {t('meta.Stream.ExecuteWorkflow')}
               </Button>
             )}
+            <Button type="link" onClick={() => onPreview(record)}>
+              {t('pages.GroupDetail.Stream.Preview')}
+            </Button>
           </div>
         ),
     },
@@ -253,10 +269,32 @@ const Comp = ({ inlongGroupId, readonly, mqType }: Props, ref) => {
         onCancel={() => setStreamItemModal(prev => ({ ...prev, open: false }))}
       />
 
+      <PreviewModal
+        {...previewModal}
+        onOk={async () => {
+          setPreviewModal(prev => ({ ...prev, open: false }));
+        }}
+        onCancel={() => setPreviewModal(prev => ({ ...prev, open: false }))}
+      />
+
       <GroupLogs
         {...groupLogs}
-        onOk={() => setGroupLogs({ open: false, inlongGroupId: '', inlongStreamId: '' })}
-        onCancel={() => setGroupLogs({ open: false, inlongGroupId: '', inlongStreamId: '' })}
+        onOk={() =>
+          setGroupLogs({
+            open: false,
+            inlongGroupId: '',
+            inlongStreamId: '',
+            inlongGroupMode: true,
+          })
+        }
+        onCancel={() =>
+          setGroupLogs({
+            open: false,
+            inlongGroupId: '',
+            inlongStreamId: '',
+            inlongGroupMode: true,
+          })
+        }
       />
     </>
   );

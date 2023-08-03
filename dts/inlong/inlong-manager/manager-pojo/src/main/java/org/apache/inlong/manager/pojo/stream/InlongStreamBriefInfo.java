@@ -17,11 +17,12 @@
 
 package org.apache.inlong.manager.pojo.stream;
 
+import org.apache.inlong.manager.pojo.sink.SinkBriefInfo;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-import org.apache.inlong.manager.pojo.sink.SinkBriefInfo;
 
 import java.util.Date;
 import java.util.List;
@@ -45,8 +46,47 @@ public class InlongStreamBriefInfo {
     @ApiModelProperty(value = "Inlong stream name")
     private String name;
 
+    @ApiModelProperty(value = "Inlong stream description")
+    private String description;
+
     @ApiModelProperty(value = "MQ resource")
     private String mqResource;
+
+    @ApiModelProperty(value = "Data type, including: TEXT, KV, etc.")
+    private String dataType;
+
+    @ApiModelProperty(value = "Data encoding format: UTF-8, GBK")
+    private String dataEncoding;
+
+    @ApiModelProperty(value = "Data separator")
+    private String dataSeparator;
+
+    @ApiModelProperty(value = "Data field escape symbol")
+    private String dataEscapeChar;
+
+    @ApiModelProperty(value = "Whether to send synchronously, 0: no, 1: yes")
+    private Integer syncSend;
+
+    @ApiModelProperty(value = "Number of access items per day, unit: 10,000 items per day")
+    private Integer dailyRecords;
+
+    @ApiModelProperty(value = "Access size per day, unit: GB per day")
+    private Integer dailyStorage;
+
+    @ApiModelProperty(value = "peak access per second, unit: bars per second")
+    private Integer peakRecords;
+
+    @ApiModelProperty(value = "The maximum length of a single piece of data, unit: Byte")
+    private Integer maxLength;
+
+    @ApiModelProperty(value = "Data storage period, unit: day")
+    private Integer storagePeriod;
+
+    @ApiModelProperty(value = "Whether the message body wrapped with InlongMsg")
+    private Boolean wrapWithInlongMsg;
+
+    @ApiModelProperty(value = "Whether to ignore the parse errors of field value")
+    private Boolean ignoreParseError;
 
     @ApiModelProperty(value = "Status")
     private Integer status;
@@ -68,5 +108,11 @@ public class InlongStreamBriefInfo {
 
     @ApiModelProperty(value = "Sink brief list")
     private List<SinkBriefInfo> sinkList;
+
+    @ApiModelProperty(value = "Field list")
+    private List<StreamField> fieldList;
+
+    @ApiModelProperty(value = "Inlong stream Extension properties")
+    private List<InlongStreamExtInfo> extList;
 
 }

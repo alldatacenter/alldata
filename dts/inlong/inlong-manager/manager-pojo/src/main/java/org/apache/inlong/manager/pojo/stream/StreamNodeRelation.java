@@ -17,10 +17,11 @@
 
 package org.apache.inlong.manager.pojo.stream;
 
-import com.google.common.collect.Sets;
-import lombok.Data;
 import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
 import org.apache.inlong.manager.common.util.Preconditions;
+
+import com.google.common.collect.Sets;
+import lombok.Data;
 
 import java.util.Set;
 

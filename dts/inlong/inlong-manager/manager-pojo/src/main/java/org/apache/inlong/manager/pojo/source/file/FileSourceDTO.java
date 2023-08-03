@@ -17,16 +17,20 @@
 
 package org.apache.inlong.manager.pojo.source.file;
 
+import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
+import org.apache.inlong.manager.common.exceptions.BusinessException;
+import org.apache.inlong.manager.common.util.CommonBeanUtils;
+import org.apache.inlong.manager.common.util.JsonUtils;
+
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
-import org.apache.inlong.manager.common.exceptions.BusinessException;
-import org.apache.inlong.manager.common.util.JsonUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.validation.constraints.NotNull;
+
 import java.util.List;
 import java.util.Map;
 
@@ -79,19 +83,11 @@ public class FileSourceDTO {
     @ApiModelProperty("Metadata filters by label, special parameters for K8S")
     private Map<String, String> filterMetaByLabels;
 
-    public static FileSourceDTO getFromRequest(@NotNull FileSourceRequest fileSourceRequest) {
-        return FileSourceDTO.builder()
-                .pattern(fileSourceRequest.getPattern())
-                .blackList(fileSourceRequest.getBlackList())
-                .lineEndPattern(fileSourceRequest.getLineEndPattern())
-                .contentCollectType(fileSourceRequest.getContentCollectType())
-                .envList(fileSourceRequest.getEnvList())
-                .dataContentStyle(fileSourceRequest.getDataContentStyle())
-                .filterMetaByLabels(fileSourceRequest.getFilterMetaByLabels())
-                .metaFields(fileSourceRequest.getMetaFields())
-                .timeOffset(fileSourceRequest.getTimeOffset())
-                .properties(fileSourceRequest.getProperties())
-                .build();
+    public static FileSourceDTO getFromRequest(@NotNull FileSourceRequest fileSourceRequest, String extParams) {
+        FileSourceDTO dto = StringUtils.isNotBlank(extParams)
+                ? FileSourceDTO.getFromJson(extParams)
+                : new FileSourceDTO();
+        return CommonBeanUtils.copyProperties(fileSourceRequest, dto, true);
     }
 
     public static FileSourceDTO getFromJson(@NotNull String extParams) {

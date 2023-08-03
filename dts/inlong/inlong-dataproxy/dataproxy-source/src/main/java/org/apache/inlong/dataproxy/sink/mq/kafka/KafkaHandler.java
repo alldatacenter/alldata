@@ -17,18 +17,22 @@
 
 package org.apache.inlong.dataproxy.sink.mq.kafka;
 
-import org.apache.commons.collections.MapUtils;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.flume.Context;
-import org.apache.inlong.common.constant.Constants;
+import org.apache.inlong.common.enums.DataProxyErrCode;
+import org.apache.inlong.common.monitor.LogCounter;
+import org.apache.inlong.dataproxy.config.CommonConfigHolder;
+import org.apache.inlong.dataproxy.config.ConfigManager;
 import org.apache.inlong.dataproxy.config.pojo.CacheClusterConfig;
 import org.apache.inlong.dataproxy.config.pojo.IdTopicConfig;
+import org.apache.inlong.dataproxy.consts.StatConstants;
 import org.apache.inlong.dataproxy.sink.common.EventHandler;
 import org.apache.inlong.dataproxy.sink.mq.BatchPackProfile;
 import org.apache.inlong.dataproxy.sink.mq.MessageQueueHandler;
 import org.apache.inlong.dataproxy.sink.mq.MessageQueueZoneSinkContext;
-import org.apache.inlong.dataproxy.sink.mq.OrderBatchPackProfileV0;
-import org.apache.inlong.dataproxy.sink.mq.SimpleBatchPackProfileV0;
+import org.apache.inlong.dataproxy.sink.mq.PackProfile;
+import org.apache.inlong.dataproxy.sink.mq.SimplePackProfile;
+
+import org.apache.commons.lang3.StringUtils;
+import org.apache.flume.Context;
 import org.apache.kafka.clients.producer.Callback;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
@@ -40,6 +44,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Map;
 import java.util.Properties;
+import java.util.Set;
 
 /**
  * KafkaHandler
@@ -47,8 +52,9 @@ import java.util.Properties;
  */
 public class KafkaHandler implements MessageQueueHandler {
 
-    public static final Logger LOG = LoggerFactory.getLogger(KafkaHandler.class);
-    public static final String KEY_NAMESPACE = "namespace";
+    private static final Logger logger = LoggerFactory.getLogger(KafkaHandler.class);
+    // log print count
+    private static final LogCounter logCounter = new LogCounter(10, 100000, 30 * 1000);
 
     private CacheClusterConfig config;
     private String clusterName;
@@ -56,12 +62,12 @@ public class KafkaHandler implements MessageQueueHandler {
 
     // kafka producer
     private KafkaProducer<String, byte[]> producer;
-    private ThreadLocal<EventHandler> handlerLocal = new ThreadLocal<>();
+    private final ThreadLocal<EventHandler> handlerLocal = new ThreadLocal<>();
 
     /**
      * init
-     * @param config
-     * @param sinkContext
+     * @param config   the kafka cluster configure
+     * @param sinkContext   the sink context
      */
     @Override
     public void init(CacheClusterConfig config, MessageQueueZoneSinkContext sinkContext) {
@@ -82,12 +88,17 @@ public class KafkaHandler implements MessageQueueHandler {
             Context context = this.sinkContext.getProducerContext();
             props.putAll(context.getParameters());
             props.putAll(config.getParams());
-            LOG.info("try to create kafka client:{}", props);
+            logger.info("try to create kafka client:{}", props);
             producer = new KafkaProducer<>(props, new StringSerializer(), new ByteArraySerializer());
-            LOG.info("create new producer success:{}", producer);
+            logger.info("create new producer success:{}", producer);
         } catch (Throwable e) {
-            LOG.error(e.getMessage(), e);
+            logger.error(e.getMessage(), e);
         }
+    }
+
+    @Override
+    public void publishTopic(Set<String> topicSet) {
+        //
     }
 
     /**
@@ -97,68 +108,70 @@ public class KafkaHandler implements MessageQueueHandler {
     public void stop() {
         // kafka producer
         this.producer.close();
-        LOG.info("kafka handler stopped");
+        logger.info("kafka handler stopped");
     }
 
     /**
-     * send
-     * @param event
-     * @return
+     * send  message to mq
+     * @param profile the profile need to send
+     * @return whether sent the profile
      */
     @Override
-    public boolean send(BatchPackProfile event) {
+    public boolean send(PackProfile profile) {
+        String topic = null;
         try {
-            // idConfig
-            IdTopicConfig idConfig = sinkContext.getIdTopicHolder().getIdConfig(event.getUid());
+            // get idConfig
+            IdTopicConfig idConfig = ConfigManager.getInstance().getIdTopicConfig(
+                    profile.getInlongGroupId(), profile.getInlongStreamId());
             if (idConfig == null) {
-                sinkContext.addSendResultMetric(event, clusterName, event.getUid(), false, 0);
-                sinkContext.getDispatchQueue().release(event.getSize());
-                return false;
+                if (!CommonConfigHolder.getInstance().isEnableUnConfigTopicAccept()) {
+                    sinkContext.fileMetricIncWithDetailStats(
+                            StatConstants.EVENT_SINK_CONFIG_TOPIC_MISSING, profile.getUid());
+                    sinkContext.addSendResultMetric(profile, clusterName, profile.getUid(), false, 0);
+                    sinkContext.getMqZoneSink().releaseAcquiredSizePermit(profile);
+                    profile.fail(DataProxyErrCode.GROUPID_OR_STREAMID_NOT_CONFIGURE, "");
+                    return false;
+                }
+                topic = CommonConfigHolder.getInstance().getRandDefTopics();
+                if (StringUtils.isEmpty(topic)) {
+                    sinkContext.fileMetricIncSumStats(StatConstants.EVENT_SINK_DEFAULT_TOPIC_MISSING);
+                    sinkContext.addSendResultMetric(profile, clusterName, profile.getUid(), false, 0);
+                    sinkContext.getMqZoneSink().releaseAcquiredSizePermit(profile);
+                    profile.fail(DataProxyErrCode.GROUPID_OR_STREAMID_NOT_CONFIGURE, "");
+                    return false;
+                }
+                sinkContext.fileMetricIncSumStats(StatConstants.EVENT_SINK_DEFAULT_TOPIC_USED);
+            } else {
+                topic = idConfig.getTopicName();
             }
-            String baseTopic = idConfig.getTopicName();
-            if (baseTopic == null) {
-                sinkContext.addSendResultMetric(event, clusterName, event.getUid(), false, 0);
-                sinkContext.getDispatchQueue().release(event.getSize());
-                return false;
-            }
-            String topic = getProducerTopic(baseTopic, idConfig);
-
             // create producer failed
             if (producer == null) {
-                sinkContext.processSendFail(event, clusterName, topic, 0);
+                sinkContext.fileMetricIncWithDetailStats(StatConstants.EVENT_SINK_PRODUCER_NULL, topic);
+                sinkContext.processSendFail(profile, clusterName, topic, 0, DataProxyErrCode.PRODUCER_IS_NULL, "");
                 return false;
             }
             // send
-            if (event instanceof SimpleBatchPackProfileV0) {
-                this.sendSimpleProfileV0((SimpleBatchPackProfileV0) event, idConfig, topic);
-            } else if (event instanceof OrderBatchPackProfileV0) {
-                this.sendOrderProfileV0((OrderBatchPackProfileV0) event, idConfig, topic);
+            if (profile instanceof SimplePackProfile) {
+                this.sendSimplePackProfile((SimplePackProfile) profile, idConfig, topic);
             } else {
-                this.sendProfileV1(event, idConfig, topic);
+                this.sendBatchPackProfile((BatchPackProfile) profile, idConfig, topic);
             }
             return true;
-        } catch (Exception e) {
-            LOG.error(e.getMessage(), e);
-            sinkContext.processSendFail(event, clusterName, event.getUid(), 0);
+        } catch (Exception ex) {
+            sinkContext.fileMetricIncWithDetailStats(StatConstants.EVENT_SINK_SEND_EXCEPTION, topic);
+            sinkContext.processSendFail(profile, clusterName, profile.getUid(), 0,
+                    DataProxyErrCode.SEND_REQUEST_TO_MQ_FAILURE, ex.getMessage());
+            if (logCounter.shouldPrint()) {
+                logger.error("Send Message to Kafka failure", ex);
+            }
             return false;
         }
     }
 
     /**
-     * getProducerTopic
+     * send BatchPackProfile
      */
-    private String getProducerTopic(String baseTopic, IdTopicConfig config) {
-        String namespace = config.getParams().get(KEY_NAMESPACE);
-        if (StringUtils.isNotEmpty(namespace)) {
-            return String.format(Constants.DEFAULT_KAFKA_TOPIC_FORMAT, namespace, baseTopic);
-        }
-        return baseTopic;
-    }
-
-    /**
-     * sendProfileV1
-     */
-    private void sendProfileV1(BatchPackProfile event, IdTopicConfig idConfig,
+    private void sendBatchPackProfile(BatchPackProfile batchProfile, IdTopicConfig idConfig,
             String topic) throws Exception {
         EventHandler handler = handlerLocal.get();
         if (handler == null) {
@@ -166,12 +179,12 @@ public class KafkaHandler implements MessageQueueHandler {
             handlerLocal.set(handler);
         }
         // headers
-        Map<String, String> headers = handler.parseHeader(idConfig, event, sinkContext.getNodeId(),
+        Map<String, String> headers = handler.parseHeader(idConfig, batchProfile, sinkContext.getNodeId(),
                 sinkContext.getCompressType());
         // compress
-        byte[] bodyBytes = handler.parseBody(idConfig, event, sinkContext.getCompressType());
+        byte[] bodyBytes = handler.parseBody(idConfig, batchProfile, sinkContext.getCompressType());
         // metric
-        sinkContext.addSendMetric(event, clusterName, topic, bodyBytes.length);
+        sinkContext.addSendMetric(batchProfile, clusterName, topic, bodyBytes.length);
         // sendAsync
         long sendTime = System.currentTimeMillis();
 
@@ -188,17 +201,17 @@ public class KafkaHandler implements MessageQueueHandler {
             @Override
             public void onCompletion(RecordMetadata arg0, Exception ex) {
                 if (ex != null) {
-                    LOG.error("Send fail:{}", ex.getMessage());
-                    LOG.error(ex.getMessage(), ex);
-                    if (event.isResend()) {
-                        sinkContext.processSendFail(event, clusterName, topic, sendTime);
-                    } else {
-                        event.fail();
+                    sinkContext.fileMetricIncSumStats(StatConstants.EVENT_SINK_FAILURE);
+                    sinkContext.processSendFail(batchProfile, clusterName, topic, sendTime,
+                            DataProxyErrCode.MQ_RETURN_ERROR, ex.getMessage());
+                    if (logCounter.shouldPrint()) {
+                        logger.error("Send BatchPackProfile to Kafka failure", ex);
                     }
                 } else {
-                    sinkContext.addSendResultMetric(event, clusterName, topic, true, sendTime);
-                    sinkContext.getDispatchQueue().release(event.getSize());
-                    event.ack();
+                    sinkContext.fileMetricIncSumStats(StatConstants.EVENT_SINK_SUCCESS);
+                    sinkContext.addSendResultMetric(batchProfile, clusterName, topic, true, sendTime);
+                    sinkContext.getMqZoneSink().releaseAcquiredSizePermit(batchProfile);
+                    batchProfile.ack();
                 }
             }
         };
@@ -206,19 +219,16 @@ public class KafkaHandler implements MessageQueueHandler {
     }
 
     /**
-     * sendSimpleProfileV0
+     * send SimplePackProfile
      */
-    private void sendSimpleProfileV0(SimpleBatchPackProfileV0 event, IdTopicConfig idConfig,
+    private void sendSimplePackProfile(SimplePackProfile simpleProfile, IdTopicConfig idConfig,
             String topic) throws Exception {
         // headers
-        Map<String, String> headers = event.getProperties();
-        if (MapUtils.isEmpty(headers)) {
-            headers = event.getSimpleProfile().getHeaders();
-        }
+        Map<String, String> headers = simpleProfile.getPropsToMQ();
         // body
-        byte[] bodyBytes = event.getSimpleProfile().getBody();
+        byte[] bodyBytes = simpleProfile.getEvent().getBody();
         // metric
-        sinkContext.addSendMetric(event, clusterName, topic, bodyBytes.length);
+        sinkContext.addSendMetric(simpleProfile, clusterName, topic, bodyBytes.length);
         // sendAsync
         long sendTime = System.currentTimeMillis();
 
@@ -235,61 +245,21 @@ public class KafkaHandler implements MessageQueueHandler {
             @Override
             public void onCompletion(RecordMetadata arg0, Exception ex) {
                 if (ex != null) {
-                    LOG.error("Send fail:{}", ex.getMessage());
-                    LOG.error(ex.getMessage(), ex);
-                    if (event.isResend()) {
-                        sinkContext.processSendFail(event, clusterName, topic, sendTime);
-                    } else {
-                        event.fail();
+                    sinkContext.fileMetricIncWithDetailStats(StatConstants.EVENT_SINK_FAILURE, topic);
+                    sinkContext.fileMetricAddFailCnt(simpleProfile, topic,
+                            arg0 == null ? "" : String.valueOf(arg0.partition()));
+                    sinkContext.processSendFail(simpleProfile, clusterName, topic, sendTime,
+                            DataProxyErrCode.MQ_RETURN_ERROR, ex.getMessage());
+                    if (logCounter.shouldPrint()) {
+                        logger.error("Send SimplePackProfile to Kafka failure", ex);
                     }
                 } else {
-                    sinkContext.addSendResultMetric(event, clusterName, topic, true, sendTime);
-                    sinkContext.getDispatchQueue().release(event.getSize());
-                    event.ack();
-                }
-            }
-        };
-        producer.send(producerRecord, callback);
-    }
-
-    /**
-     * sendOrderProfileV0
-     */
-    private void sendOrderProfileV0(OrderBatchPackProfileV0 event, IdTopicConfig idConfig,
-            String topic) throws Exception {
-        // headers
-        Map<String, String> headers = event.getOrderProfile().getHeaders();
-        // compress
-        byte[] bodyBytes = event.getOrderProfile().getBody();
-        // metric
-        sinkContext.addSendMetric(event, clusterName, topic, bodyBytes.length);
-        // sendAsync
-        long sendTime = System.currentTimeMillis();
-
-        // prepare ProducerRecord
-        ProducerRecord<String, byte[]> producerRecord = new ProducerRecord<>(topic, bodyBytes);
-        // add headers
-        headers.forEach((key, value) -> {
-            producerRecord.headers().add(key, value.getBytes());
-        });
-
-        // callback
-        Callback callback = new Callback() {
-
-            @Override
-            public void onCompletion(RecordMetadata arg0, Exception ex) {
-                if (ex != null) {
-                    LOG.error("Send fail:{}", ex.getMessage());
-                    LOG.error(ex.getMessage(), ex);
-                    if (event.isResend()) {
-                        sinkContext.processSendFail(event, clusterName, topic, sendTime);
-                    } else {
-                        event.fail();
-                    }
-                } else {
-                    sinkContext.addSendResultMetric(event, clusterName, topic, true, sendTime);
-                    sinkContext.getDispatchQueue().release(event.getSize());
-                    event.ack();
+                    sinkContext.fileMetricAddSuccCnt(simpleProfile, topic,
+                            arg0 == null ? "" : String.valueOf(arg0.partition()));
+                    sinkContext.fileMetricIncSumStats(StatConstants.EVENT_SINK_SUCCESS);
+                    sinkContext.addSendResultMetric(simpleProfile, clusterName, topic, true, sendTime);
+                    sinkContext.getMqZoneSink().releaseAcquiredSizePermit(simpleProfile);
+                    simpleProfile.ack();
                 }
             }
         };

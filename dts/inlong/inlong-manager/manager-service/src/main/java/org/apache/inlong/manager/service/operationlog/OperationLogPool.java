@@ -17,15 +17,17 @@
 
 package org.apache.inlong.manager.service.operationlog;
 
+import org.apache.inlong.manager.dao.entity.OperationLogEntity;
+import org.apache.inlong.manager.dao.mapper.OperationLogEntityMapper;
+
 import com.google.common.collect.Queues;
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.inlong.manager.dao.entity.OperationLogEntity;
-import org.apache.inlong.manager.dao.mapper.OperationLogEntityMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ArrayBlockingQueue;

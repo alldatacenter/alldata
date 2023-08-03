@@ -17,9 +17,10 @@
 
 package org.apache.inlong.manager.common.enums;
 
+import org.apache.inlong.manager.common.exceptions.BusinessException;
+
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
-import org.apache.inlong.manager.common.exceptions.BusinessException;
 
 import java.util.Locale;
 import java.util.Map;

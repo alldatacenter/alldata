@@ -1,1 +1,0 @@
-SELECT TRANSFORM(*) USING 'cat' AS (col ARRAY<BIGINT>) FROM transform1_t1

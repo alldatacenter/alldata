@@ -17,6 +17,8 @@
 
 package org.apache.inlong.manager.pojo.workflow;
 
+import org.apache.inlong.manager.pojo.common.PageRequest;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -24,7 +26,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import org.apache.inlong.manager.pojo.common.PageRequest;
 
 /**
  * Workflow approver query request
@@ -45,6 +46,9 @@ public class ApproverPageRequest extends PageRequest {
 
     @ApiModelProperty("Workflow task name")
     private String taskName;
+
+    @ApiModelProperty("Inlong tenant name")
+    private String tenant;
 
     @ApiModelProperty("Specified workflow approver")
     private String approver;

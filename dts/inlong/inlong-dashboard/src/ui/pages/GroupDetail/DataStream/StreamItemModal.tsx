@@ -109,7 +109,7 @@ const Comp: React.FC<Props> = ({ inlongGroupId, inlongStreamId, mqType, ...modal
 
   const { data: savedData, run: getStreamData } = useRequest(
     {
-      url: '/stream/get',
+      url: '/stream/getBrief',
       params: {
         groupId: inlongGroupId,
         streamId: inlongStreamId,

@@ -17,10 +17,11 @@
 
 package org.apache.inlong.manager.pojo.workflow;
 
+import org.apache.inlong.manager.pojo.workflow.form.task.BaseTaskForm;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-import org.apache.inlong.manager.pojo.workflow.form.task.BaseTaskForm;
 
 import java.util.List;
 

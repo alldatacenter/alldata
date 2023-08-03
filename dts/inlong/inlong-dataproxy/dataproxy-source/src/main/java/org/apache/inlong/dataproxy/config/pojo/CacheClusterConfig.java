@@ -17,6 +17,8 @@
 
 package org.apache.inlong.dataproxy.config.pojo;
 
+import org.apache.commons.lang.builder.ToStringBuilder;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -84,4 +86,12 @@ public class CacheClusterConfig {
         this.params = params;
     }
 
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("clusterName", clusterName)
+                .append("token", token)
+                .append("params", params)
+                .toString();
+    }
 }

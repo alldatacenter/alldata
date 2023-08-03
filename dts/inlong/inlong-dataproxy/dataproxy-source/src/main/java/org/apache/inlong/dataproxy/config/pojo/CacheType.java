@@ -17,13 +17,20 @@
 
 package org.apache.inlong.dataproxy.config.pojo;
 
+import org.apache.inlong.common.constant.MQType;
+
 /**
  * cache cluster type
  */
 public enum CacheType {
 
-    TUBE("tube"), KAFKA("kafka"), PULSAR("pulsar"), N("n");
+    TUBE(0, MQType.TUBEMQ),
+    KAFKA(1, MQType.KAFKA),
+    PULSAR(2, MQType.PULSAR),
+    TDMQPULSAR(3, MQType.TDMQ_PULSAR),
+    N(99, MQType.NONE);
 
+    private final int id;
     private final String value;
 
     /**
@@ -32,8 +39,13 @@ public enum CacheType {
      * 
      * @param value
      */
-    private CacheType(String value) {
+    private CacheType(int id, String value) {
+        this.id = id;
         this.value = value;
+    }
+
+    public int getId() {
+        return id;
     }
 
     /**

@@ -17,10 +17,11 @@
 
 package org.apache.inlong.tubemq.client.producer;
 
-import java.util.List;
 import org.apache.inlong.tubemq.client.exception.TubeClientException;
 import org.apache.inlong.tubemq.corebase.Message;
 import org.apache.inlong.tubemq.corebase.cluster.Partition;
+
+import java.util.List;
 
 public interface PartitionRouter {
 

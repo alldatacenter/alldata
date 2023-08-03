@@ -4,13 +4,13 @@ import logging
 import re
 
 from soda.cloud.dbt_config import DbtCloudConfig
+from soda.cloud.soda_cloud import SodaCloud
 from soda.common.logs import Logs
 from soda.common.parser import Parser
 from soda.configuration.configuration import Configuration
 from soda.sampler.default_sampler import DefaultSampler
 from soda.sampler.http_sampler import HTTPSampler
 from soda.sampler.soda_cloud_sampler import SodaCloudSampler
-from soda.soda_cloud.soda_cloud import SodaCloud
 
 logger = logging.getLogger(__name__)
 
@@ -106,6 +106,15 @@ class ConfigurationParser(Parser):
                             "'exclude_columns' configuration must be a dict",
                             location=self.location,
                         )
+                samples_limit = sampler_configuration.get("samples_limit")
+                if samples_limit:
+                    if isinstance(samples_limit, int):
+                        self.configuration.samples_limit = samples_limit
+                    else:
+                        self.logs.error(
+                            "'samples_limit' configuration must be an int",
+                            location=self.location,
+                        )
 
                 storage = sampler_configuration.get("storage")
                 if storage:
@@ -143,7 +152,7 @@ class ConfigurationParser(Parser):
             port = config_dict.get("port")
         scheme = None
         if "scheme" in config_dict:
-            port = config_dict.get("scheme")
+            scheme = config_dict.get("scheme")
         return SodaCloud(
             api_key_id=api_key,
             api_key_secret=api_secret,

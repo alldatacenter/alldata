@@ -43,6 +43,8 @@ class Query:
         self.passing_sql: str | None = None
         self.failing_sql: str | None = None
 
+        self.failing_rows_sql_aggregated: str | None = None
+
         # Following fields are initialized in execute method
         self.description: tuple | None = None
         self.row: tuple | None = None
@@ -59,6 +61,9 @@ class Query:
 
         if self.passing_sql:
             dicts.append(self.get_dict("passing_sql", self.passing_sql))
+
+        if self.failing_rows_sql_aggregated:
+            dicts.append(self.get_dict("failing_rows_sql_aggregated", self.failing_rows_sql_aggregated))
 
         return dicts
 

@@ -17,18 +17,21 @@
 
 package org.apache.inlong.manager.pojo.sink.es;
 
+import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
+import org.apache.inlong.manager.common.exceptions.BusinessException;
+import org.apache.inlong.manager.common.util.AESUtils;
+import org.apache.inlong.manager.common.util.CommonBeanUtils;
+import org.apache.inlong.manager.common.util.JsonUtils;
+
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
-import org.apache.inlong.manager.common.exceptions.BusinessException;
-import org.apache.inlong.manager.common.util.AESUtils;
-import org.apache.inlong.manager.common.util.JsonUtils;
 
 import javax.validation.constraints.NotNull;
+
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
@@ -83,17 +86,11 @@ public class ElasticsearchSinkDTO {
     /**
      * Get the dto instance from the request
      */
-    public static ElasticsearchSinkDTO getFromRequest(ElasticsearchSinkRequest request) throws Exception {
-        return ElasticsearchSinkDTO.builder()
-                .indexName(request.getIndexName())
-                .flushInterval(request.getFlushInterval())
-                .flushRecord(request.getFlushRecord())
-                .retryTimes(request.getRetryTimes())
-                .documentType(request.getDocumentType())
-                .primaryKey(request.getPrimaryKey())
-                .esVersion(request.getEsVersion())
-                .properties(request.getProperties())
-                .build();
+    public static ElasticsearchSinkDTO getFromRequest(ElasticsearchSinkRequest request, String extParams) {
+        ElasticsearchSinkDTO dto = StringUtils.isNotBlank(extParams)
+                ? ElasticsearchSinkDTO.getFromJson(extParams)
+                : new ElasticsearchSinkDTO();
+        return CommonBeanUtils.copyProperties(request, dto, true);
     }
 
     /**

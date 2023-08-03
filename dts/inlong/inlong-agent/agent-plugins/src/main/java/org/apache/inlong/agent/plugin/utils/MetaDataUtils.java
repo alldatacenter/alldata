@@ -17,11 +17,12 @@
 
 package org.apache.inlong.agent.plugin.utils;
 
+import org.apache.inlong.agent.conf.JobProfile;
+import org.apache.inlong.agent.constant.CommonConstants;
+
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.inlong.agent.conf.JobProfile;
-import org.apache.inlong.agent.constant.CommonConstants;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;

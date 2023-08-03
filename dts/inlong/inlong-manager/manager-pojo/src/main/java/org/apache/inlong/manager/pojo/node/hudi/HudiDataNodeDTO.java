@@ -17,18 +17,22 @@
 
 package org.apache.inlong.manager.pojo.node.hudi;
 
+import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
+import org.apache.inlong.manager.common.exceptions.BusinessException;
+import org.apache.inlong.manager.common.util.CommonBeanUtils;
+import org.apache.inlong.manager.common.util.JsonUtils;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
-import org.apache.inlong.manager.common.exceptions.BusinessException;
-import org.apache.inlong.manager.common.util.JsonUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import javax.validation.constraints.NotNull;
 
 /**
  * Hudi data node info
@@ -52,11 +56,11 @@ public class HudiDataNodeDTO {
     /**
      * Get the dto instance from the request
      */
-    public static HudiDataNodeDTO getFromRequest(HudiDataNodeRequest request) throws Exception {
-        return HudiDataNodeDTO.builder()
-                .catalogType(request.getCatalogType())
-                .warehouse(request.getWarehouse())
-                .build();
+    public static HudiDataNodeDTO getFromRequest(HudiDataNodeRequest request, String extParams) {
+        HudiDataNodeDTO dto = StringUtils.isNotBlank(extParams)
+                ? HudiDataNodeDTO.getFromJson(extParams)
+                : new HudiDataNodeDTO();
+        return CommonBeanUtils.copyProperties(request, dto, true);
     }
 
     /**

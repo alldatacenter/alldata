@@ -1,9 +1,0 @@
-Projection est. ? rows
-│     Expressions: [a]
-└─ Sorting est. ? rows
-   │     Order by: {a asc, b asc}
-   └─ Gather Exchange est. ? rows
-      └─ Sorting est. ? rows
-         │     Order by: {a asc, b asc}
-         └─ TableScan correctness.q2_t1 est. ? rows
-                  Outputs: [a, b]

@@ -20,10 +20,10 @@ package org.apache.inlong.common.metric;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.lang.management.ManagementFactory;
-
 import javax.management.MBeanServer;
 import javax.management.ObjectName;
+
+import java.lang.management.ManagementFactory;
 
 /**
  * MetricRegister

@@ -17,8 +17,6 @@
 
 package org.apache.inlong.sort.protocol.transformation;
 
-import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonSubTypes;
-import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.apache.inlong.sort.protocol.transformation.operator.EqualOperator;
 import org.apache.inlong.sort.protocol.transformation.operator.InOperator;
 import org.apache.inlong.sort.protocol.transformation.operator.IsNotNullOperator;
@@ -29,6 +27,9 @@ import org.apache.inlong.sort.protocol.transformation.operator.MoreThanOperator;
 import org.apache.inlong.sort.protocol.transformation.operator.MoreThanOrEqualOperator;
 import org.apache.inlong.sort.protocol.transformation.operator.NotEqualOperator;
 import org.apache.inlong.sort.protocol.transformation.operator.NotInOperator;
+
+import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonSubTypes;
+import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 /**
  * interface for all compare operators

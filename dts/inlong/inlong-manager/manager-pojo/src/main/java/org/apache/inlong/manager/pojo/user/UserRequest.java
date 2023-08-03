@@ -17,6 +17,11 @@
 
 package org.apache.inlong.manager.pojo.user;
 
+import org.apache.inlong.manager.common.enums.TenantUserTypeEnum;
+import org.apache.inlong.manager.common.validation.InEnumInt;
+import org.apache.inlong.manager.common.validation.UpdateValidation;
+import org.apache.inlong.manager.pojo.common.PageRequest;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -24,10 +29,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import org.apache.inlong.manager.common.validation.UpdateValidation;
-import org.apache.inlong.manager.pojo.common.PageRequest;
-import org.apache.inlong.manager.common.enums.UserTypeEnum;
-import org.apache.inlong.manager.common.validation.InEnumInt;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.Range;
 
@@ -81,7 +82,7 @@ public class UserRequest extends PageRequest {
     private Integer encryptVersion;
 
     @NotNull(message = "accountType cannot be null")
-    @InEnumInt(UserTypeEnum.class)
+    @InEnumInt(TenantUserTypeEnum.class)
     @ApiModelProperty(value = "Account type: 0 - manager, 1 - operator", required = true)
     @Range(min = 0, max = 1, message = "only supports [0: manager, 1: operator]")
     private Integer accountType;

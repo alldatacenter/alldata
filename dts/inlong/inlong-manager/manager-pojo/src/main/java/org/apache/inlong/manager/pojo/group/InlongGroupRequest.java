@@ -17,6 +17,9 @@
 
 package org.apache.inlong.manager.pojo.group;
 
+import org.apache.inlong.manager.common.validation.SaveValidation;
+import org.apache.inlong.manager.common.validation.UpdateValidation;
+
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -24,15 +27,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-
-import org.apache.inlong.manager.common.validation.SaveValidation;
-import org.apache.inlong.manager.common.validation.UpdateValidation;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.Range;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+
 import java.util.List;
 
 /**
@@ -48,8 +49,8 @@ public abstract class InlongGroupRequest extends BaseInlongGroup {
 
     @ApiModelProperty(value = "Inlong group id", required = true)
     @NotBlank(message = "inlongGroupId cannot be blank")
-    @Length(min = 4, max = 100, message = "length must be between 4 and 100")
-    @Pattern(regexp = "^[a-z0-9_.-]{4,100}$", message = "only supports lowercase letters, numbers, '-', or '_'")
+    @Length(min = 4, max = 200, message = "length must be between 4 and 200")
+    @Pattern(regexp = "^[a-zA-Z0-9_.-]{4,200}$", message = "only supports letters, numbers, '.', '-', or '_'")
     private String inlongGroupId;
 
     @ApiModelProperty(value = "Inlong group name", required = true)
@@ -79,22 +80,22 @@ public abstract class InlongGroupRequest extends BaseInlongGroup {
 
     @ApiModelProperty(value = "Whether to enable zookeeper? 0: disable, 1: enable")
     @Range(min = 0, max = 1, message = "default is 0, only supports [0: disable, 1: enable]")
-    private Integer enableZookeeper = 0;
+    private Integer enableZookeeper;
 
     @ApiModelProperty(value = "Whether to enable create resource? 0: disable, 1: enable")
     @Range(min = 0, max = 1, message = "default is 1, only supports [0: disable, 1: enable]")
-    private Integer enableCreateResource = 1;
+    private Integer enableCreateResource;
 
-    @ApiModelProperty(value = "Whether to use lightweight mode, 0: no, 1: yes")
-    @Range(min = 0, max = 1, message = "default is 0, only supports [0: no, 1: yes]")
-    private Integer lightweight = 0;
+    @ApiModelProperty(value = "Standard mode(include Data Ingestion and Synchronization): 0, DataSync mode(only Data Synchronization): 1")
+    @Range(min = 0, max = 1, message = "default is 0, only supports [0: Standard, 1: DataSync]")
+    private Integer inlongGroupMode;
 
     @ApiModelProperty(value = "Data report type, default is 0.\n"
             + " 0: report to DataProxy and respond when the DataProxy received data.\n"
             + " 1: report to DataProxy and respond after DataProxy sends data.\n"
             + " 2: report to MQ and respond when the MQ received data.", notes = "Current constraint is that all InLong Agents under one InlongGroup use the same type")
     @Range(min = 0, max = 2, message = "default is 0, only supports [0, 1, 2]")
-    private Integer dataReportType = 0;
+    private Integer dataReportType;
 
     @ApiModelProperty(value = "Inlong cluster tag, which links to inlong_cluster table")
     @Length(max = 128, message = "Length must be less than or equal to 128")

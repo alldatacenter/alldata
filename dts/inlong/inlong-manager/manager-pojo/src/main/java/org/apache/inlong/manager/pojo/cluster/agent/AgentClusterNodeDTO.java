@@ -17,16 +17,18 @@
 
 package org.apache.inlong.manager.pojo.cluster.agent;
 
+import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
+import org.apache.inlong.manager.common.exceptions.BusinessException;
+import org.apache.inlong.manager.common.util.CommonBeanUtils;
+import org.apache.inlong.manager.common.util.JsonUtils;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
-import org.apache.inlong.manager.common.exceptions.BusinessException;
-import org.apache.inlong.manager.common.util.CommonBeanUtils;
-import org.apache.inlong.manager.common.util.JsonUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.validation.constraints.NotNull;
 
@@ -46,8 +48,11 @@ public class AgentClusterNodeDTO {
     /**
      * Get the dto instance from the request
      */
-    public static AgentClusterNodeDTO getFromRequest(AgentClusterNodeRequest request) {
-        return CommonBeanUtils.copyProperties(request, AgentClusterNodeDTO::new, true);
+    public static AgentClusterNodeDTO getFromRequest(AgentClusterNodeRequest request, String extParams) {
+        AgentClusterNodeDTO dto = StringUtils.isNotBlank(extParams)
+                ? AgentClusterNodeDTO.getFromJson(extParams)
+                : new AgentClusterNodeDTO();
+        return CommonBeanUtils.copyProperties(request, dto, true);
     }
 
     /**

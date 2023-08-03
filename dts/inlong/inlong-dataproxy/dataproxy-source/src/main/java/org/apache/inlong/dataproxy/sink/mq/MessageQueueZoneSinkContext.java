@@ -17,19 +17,23 @@
 
 package org.apache.inlong.dataproxy.sink.mq;
 
-import org.apache.commons.lang.ClassUtils;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.flume.Channel;
-import org.apache.flume.Context;
-import org.apache.flume.conf.Configurable;
+import org.apache.inlong.common.enums.DataProxyErrCode;
+import org.apache.inlong.common.util.NetworkUtils;
 import org.apache.inlong.dataproxy.config.CommonConfigHolder;
-import org.apache.inlong.dataproxy.config.holder.CacheClusterConfigHolder;
-import org.apache.inlong.dataproxy.config.holder.IdTopicConfigHolder;
+import org.apache.inlong.dataproxy.consts.AttrConstants;
+import org.apache.inlong.dataproxy.consts.ConfigConstants;
+import org.apache.inlong.dataproxy.consts.StatConstants;
 import org.apache.inlong.dataproxy.metrics.DataProxyMetricItem;
 import org.apache.inlong.dataproxy.metrics.audit.AuditUtils;
 import org.apache.inlong.dataproxy.sink.common.SinkContext;
-import org.apache.inlong.dataproxy.utils.BufferQueue;
 import org.apache.inlong.sdk.commons.protocol.ProxySdk.INLONG_COMPRESSED_TYPE;
+
+import org.apache.commons.lang.ClassUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.math.NumberUtils;
+import org.apache.flume.Channel;
+import org.apache.flume.Context;
+import org.apache.flume.conf.Configurable;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -44,23 +48,19 @@ public class MessageQueueZoneSinkContext extends SinkContext {
     public static final String PREFIX_PRODUCER = "producer.";
     public static final String KEY_COMPRESS_TYPE = "compressType";
 
-    private final BufferQueue<BatchPackProfile> dispatchQueue;
-
+    private final MessageQueueZoneSink mqZoneSink;
     private final String proxyClusterId;
     private final String nodeId;
     private final Context producerContext;
     //
-    private final IdTopicConfigHolder idTopicHolder;
-    private final CacheClusterConfigHolder cacheHolder;
     private final INLONG_COMPRESSED_TYPE compressType;
 
     /**
      * Constructor
      */
-    public MessageQueueZoneSinkContext(String sinkName, Context context, Channel channel,
-            BufferQueue<BatchPackProfile> dispatchQueue) {
-        super(sinkName, context, channel);
-        this.dispatchQueue = dispatchQueue;
+    public MessageQueueZoneSinkContext(MessageQueueZoneSink mqZoneSink, Context context, Channel channel) {
+        super(mqZoneSink.getName(), context, channel);
+        this.mqZoneSink = mqZoneSink;
         // proxyClusterId
         this.proxyClusterId = CommonConfigHolder.getInstance().getClusterName();
         // nodeId
@@ -71,14 +71,6 @@ public class MessageQueueZoneSinkContext extends SinkContext {
         // producerContext
         Map<String, String> producerParams = context.getSubProperties(PREFIX_PRODUCER);
         this.producerContext = new Context(producerParams);
-        // idTopicHolder
-        Context commonPropertiesContext =
-                new Context(CommonConfigHolder.getInstance().getProperties());
-        this.idTopicHolder = new IdTopicConfigHolder();
-        this.idTopicHolder.configure(commonPropertiesContext);
-        // cacheHolder
-        this.cacheHolder = new CacheClusterConfigHolder();
-        this.cacheHolder.configure(commonPropertiesContext);
     }
 
     /**
@@ -86,8 +78,6 @@ public class MessageQueueZoneSinkContext extends SinkContext {
      */
     public void start() {
         super.start();
-        this.idTopicHolder.start();
-        this.cacheHolder.start();
     }
 
     /**
@@ -95,8 +85,6 @@ public class MessageQueueZoneSinkContext extends SinkContext {
      */
     public void close() {
         super.close();
-        this.idTopicHolder.close();
-        this.cacheHolder.close();
     }
 
     /**
@@ -109,12 +97,12 @@ public class MessageQueueZoneSinkContext extends SinkContext {
     }
 
     /**
-     * get dispatchQueue
-     * 
-     * @return the dispatchQueue
+     * get message queue zone sink
+     *
+     * @return the zone sink
      */
-    public BufferQueue<BatchPackProfile> getDispatchQueue() {
-        return dispatchQueue;
+    public MessageQueueZoneSink getMqZoneSink() {
+        return mqZoneSink;
     }
 
     /**
@@ -124,24 +112,6 @@ public class MessageQueueZoneSinkContext extends SinkContext {
      */
     public Context getProducerContext() {
         return producerContext;
-    }
-
-    /**
-     * get idTopicHolder
-     * 
-     * @return the idTopicHolder
-     */
-    public IdTopicConfigHolder getIdTopicHolder() {
-        return idTopicHolder;
-    }
-
-    /**
-     * get cacheHolder
-     * 
-     * @return the cacheHolder
-     */
-    public CacheClusterConfigHolder getCacheHolder() {
-        return cacheHolder;
     }
 
     /**
@@ -165,24 +135,24 @@ public class MessageQueueZoneSinkContext extends SinkContext {
     /**
      * addSendResultMetric
      */
-    public void addSendResultMetric(BatchPackProfile currentRecord, String mqName, String topic, boolean result,
+    public void addSendResultMetric(PackProfile currentRecord, String mqName, String topic, boolean result,
             long sendTime) {
-        if (currentRecord instanceof SimpleBatchPackProfileV0) {
+        if (currentRecord instanceof SimplePackProfile) {
             AuditUtils.add(AuditUtils.AUDIT_ID_DATAPROXY_SEND_SUCCESS,
-                    ((SimpleBatchPackProfileV0) currentRecord).getSimpleProfile());
+                    ((SimplePackProfile) currentRecord).getEvent());
             return;
         }
-
+        BatchPackProfile batchProfile = (BatchPackProfile) currentRecord;
         Map<String, String> dimensions = new HashMap<>();
         dimensions.put(DataProxyMetricItem.KEY_CLUSTER_ID, this.getProxyClusterId());
         dimensions.put(DataProxyMetricItem.KEY_SOURCE_ID, "-");
         dimensions.put(DataProxyMetricItem.KEY_SOURCE_DATA_ID, "-");
         // metric
-        fillInlongId(currentRecord, dimensions);
+        fillInlongId(batchProfile, dimensions);
         dimensions.put(DataProxyMetricItem.KEY_SINK_ID, mqName);
         dimensions.put(DataProxyMetricItem.KEY_SINK_DATA_ID, topic);
         final long currentTime = System.currentTimeMillis();
-        currentRecord.getEvents().forEach(event -> {
+        batchProfile.getEvents().forEach(event -> {
             long msgTime = event.getMsgTime();
             long auditFormatTime =
                     msgTime - msgTime % CommonConfigHolder.getInstance().getAuditFormatInvlMs();
@@ -210,7 +180,7 @@ public class MessageQueueZoneSinkContext extends SinkContext {
     /**
      * addSendMetric
      */
-    public void addSendMetric(BatchPackProfile currentRecord, String mqName, String topic, int sendPackSize) {
+    public void addSendMetric(PackProfile currentRecord, String mqName, String topic, int sendPackSize) {
         Map<String, String> dimensions = new HashMap<>();
         dimensions.put(DataProxyMetricItem.KEY_CLUSTER_ID, this.getProxyClusterId());
         dimensions.put(DataProxyMetricItem.KEY_SOURCE_ID, "-");
@@ -256,7 +226,7 @@ public class MessageQueueZoneSinkContext extends SinkContext {
     /**
      * fillInlongId
      */
-    public static void fillInlongId(BatchPackProfile currentRecord, Map<String, String> dimensions) {
+    public static void fillInlongId(PackProfile currentRecord, Map<String, String> dimensions) {
         String inlongGroupId = currentRecord.getInlongGroupId();
         inlongGroupId = (StringUtils.isBlank(inlongGroupId)) ? "-" : inlongGroupId;
         String inlongStreamId = currentRecord.getInlongStreamId();
@@ -268,12 +238,17 @@ public class MessageQueueZoneSinkContext extends SinkContext {
     /**
      * processSendFail
      */
-    public void processSendFail(BatchPackProfile currentRecord, String mqName, String topic, long sendTime) {
+    public void processSendFail(PackProfile currentRecord,
+            String mqName, String topic, long sendTime,
+            DataProxyErrCode errCode, String errMsg) {
         if (currentRecord.isResend()) {
-            dispatchQueue.offer(currentRecord);
+            this.mqZoneSink.offerDispatchRecord(currentRecord);
+            fileMetricIncSumStats(StatConstants.EVENT_SINK_FAILRETRY);
             this.addSendResultMetric(currentRecord, mqName, topic, false, sendTime);
         } else {
-            currentRecord.fail();
+            this.mqZoneSink.releaseAcquiredSizePermit(currentRecord);
+            fileMetricIncSumStats(StatConstants.EVENT_SINK_FAILDROPPED);
+            currentRecord.fail(errCode, errMsg);
         }
     }
 
@@ -290,13 +265,51 @@ public class MessageQueueZoneSinkContext extends SinkContext {
                 configurable.configure(new Context(CommonConfigHolder.getInstance().getProperties()));
             }
             if (selectorObject instanceof CacheClusterSelector) {
-                CacheClusterSelector selector = (CacheClusterSelector) selectorObject;
-                return selector;
+                return (CacheClusterSelector) selectorObject;
             }
         } catch (Throwable t) {
-            LOG.error("Fail to init CacheClusterSelector,selectorClass:{},error:{}",
+            logger.error("Fail to init CacheClusterSelector,selectorClass:{},error:{}",
                     strSelectorClass, t.getMessage(), t);
         }
         return null;
+    }
+
+    public void fileMetricAddSuccCnt(PackProfile packProfile, String topic, String remoteId) {
+        if (!CommonConfigHolder.getInstance().isEnableFileMetric()) {
+            return;
+        }
+        if (packProfile instanceof SimplePackProfile) {
+            SimplePackProfile simpleProfile = (SimplePackProfile) packProfile;
+            StringBuilder statsKey = new StringBuilder(512)
+                    .append(sinkName).append(AttrConstants.SEP_HASHTAG)
+                    .append(simpleProfile.getInlongGroupId()).append(AttrConstants.SEP_HASHTAG)
+                    .append(simpleProfile.getInlongStreamId()).append(AttrConstants.SEP_HASHTAG)
+                    .append(topic).append(AttrConstants.SEP_HASHTAG)
+                    .append(NetworkUtils.getLocalIp()).append(AttrConstants.SEP_HASHTAG)
+                    .append(remoteId).append(AttrConstants.SEP_HASHTAG)
+                    .append(simpleProfile.getProperties().get(ConfigConstants.PKG_TIME_KEY));
+            monitorIndex.addSuccStats(statsKey.toString(), NumberUtils.toInt(
+                    simpleProfile.getProperties().get(ConfigConstants.MSG_COUNTER_KEY), 1),
+                    1, simpleProfile.getSize());
+        }
+    }
+
+    public void fileMetricAddFailCnt(PackProfile packProfile, String topic, String remoteId) {
+        if (!CommonConfigHolder.getInstance().isEnableFileMetric()) {
+            return;
+        }
+
+        if (packProfile instanceof SimplePackProfile) {
+            SimplePackProfile simpleProfile = (SimplePackProfile) packProfile;
+            StringBuilder statsKey = new StringBuilder(512)
+                    .append(sinkName).append(AttrConstants.SEP_HASHTAG)
+                    .append(simpleProfile.getInlongGroupId()).append(AttrConstants.SEP_HASHTAG)
+                    .append(simpleProfile.getInlongStreamId()).append(AttrConstants.SEP_HASHTAG)
+                    .append(topic).append(AttrConstants.SEP_HASHTAG)
+                    .append(NetworkUtils.getLocalIp()).append(AttrConstants.SEP_HASHTAG)
+                    .append(remoteId).append(AttrConstants.SEP_HASHTAG)
+                    .append(simpleProfile.getProperties().get(ConfigConstants.PKG_TIME_KEY));
+            monitorIndex.addFailStats(statsKey.toString(), 1);
+        }
     }
 }

@@ -17,10 +17,11 @@
 
 package org.apache.inlong.tubemq.manager.controller.cluster.request;
 
+import org.apache.inlong.tubemq.manager.entry.MasterEntry;
+
 import lombok.Data;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.inlong.tubemq.manager.entry.MasterEntry;
 
 import java.util.List;
 

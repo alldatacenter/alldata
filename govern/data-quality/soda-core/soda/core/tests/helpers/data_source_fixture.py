@@ -136,7 +136,7 @@ class DataSourceFixture:
             self._create_and_insert_test_table(test_table)
             self.data_source.commit()
 
-            # TODO investigate if this is really needed
+            # Run table analyze so that internal data source statistics are refreshed before running any tests.
             self.data_source.analyze_table(test_table.unique_table_name)
         return test_table.unique_view_name if test_table.create_view else test_table.unique_table_name
 

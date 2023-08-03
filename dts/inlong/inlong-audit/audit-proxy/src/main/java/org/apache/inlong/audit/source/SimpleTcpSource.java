@@ -17,6 +17,11 @@
 
 package org.apache.inlong.audit.source;
 
+import org.apache.inlong.audit.channel.FailoverChannelProcessor;
+import org.apache.inlong.audit.consts.ConfigConstants;
+import org.apache.inlong.audit.utils.EventLoopUtil;
+import org.apache.inlong.audit.utils.FailoverChannelProcessorHolder;
+
 import com.google.common.base.Preconditions;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.buffer.ByteBufAllocator;
@@ -29,8 +34,6 @@ import io.netty.channel.group.ChannelGroup;
 import io.netty.channel.group.DefaultChannelGroup;
 import io.netty.util.concurrent.DefaultThreadFactory;
 import io.netty.util.concurrent.GlobalEventExecutor;
-import java.lang.reflect.Constructor;
-import java.net.InetSocketAddress;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.flume.ChannelSelector;
 import org.apache.flume.Context;
@@ -38,23 +41,21 @@ import org.apache.flume.EventDrivenSource;
 import org.apache.flume.FlumeException;
 import org.apache.flume.conf.Configurable;
 import org.apache.flume.source.AbstractSource;
-import org.apache.inlong.audit.channel.FailoverChannelProcessor;
-import org.apache.inlong.audit.consts.ConfigConstants;
-import org.apache.inlong.audit.utils.EventLoopUtil;
-import org.apache.inlong.audit.utils.FailoverChannelProcessorHolder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.lang.reflect.Constructor;
+import java.net.InetSocketAddress;
+
 /**
  * Simple tcp source
- *
  */
 public class SimpleTcpSource extends AbstractSource implements Configurable, EventDrivenSource {
 
     private static final Logger logger = LoggerFactory.getLogger(SimpleTcpSource.class);
     private static final String CONNECTIONS = "connections";
-
     protected int maxConnections = Integer.MAX_VALUE;
+    protected long msgValidThresholdDays;
     protected Context context;
 
     private ServerBootstrap bootstrap = null;
@@ -84,6 +85,8 @@ public class SimpleTcpSource extends AbstractSource implements Configurable, Eve
     private static int DEFAULT_MAX_THREADS = 32;
 
     private static int DEFAULT_MAX_CONNECTIONS = 5000;
+
+    private static long DEFAULT_MSG_VALID_THRESHOLD_DAYS = 7L;
 
     private static int MIN_MSG_LENGTH = 4;
 
@@ -158,11 +161,11 @@ public class SimpleTcpSource extends AbstractSource implements Configurable, Eve
             Constructor ctor =
                     clazz.getConstructor(AbstractSource.class, ChannelGroup.class,
                             ServiceDecoder.class, String.class,
-                            Integer.class, Integer.class, String.class);
+                            Integer.class, Integer.class, Long.class, String.class);
             logger.info("Using channel processor:{}", this.getClass().getName());
             fac = (ChannelInitializer) ctor
                     .newInstance(this, allChannels, serviceDecoder,
-                            messageHandlerName, maxMsgLength, maxConnections, this.getName());
+                            messageHandlerName, maxMsgLength, maxConnections, msgValidThresholdDays, this.getName());
 
         } catch (Exception e) {
             logger.error(
@@ -243,6 +246,14 @@ public class SimpleTcpSource extends AbstractSource implements Configurable, Eve
         } catch (NumberFormatException e) {
             logger.warn("BaseSource\'s \"connections\" property must specify an integer value.",
                     context.getString(CONNECTIONS));
+        }
+
+        try {
+            msgValidThresholdDays =
+                    context.getLong(ConfigConstants.MSG_VALID_THRESHOLD_DAYS, DEFAULT_MSG_VALID_THRESHOLD_DAYS);
+        } catch (NumberFormatException e) {
+            logger.warn("BaseSource\'s \"msg.valid.threshold.days\" property must specify a long value.",
+                    context.getString(ConfigConstants.MSG_VALID_THRESHOLD_DAYS));
         }
 
         msgFactoryName = context.getString(ConfigConstants.MSG_FACTORY_NAME,

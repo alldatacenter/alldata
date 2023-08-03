@@ -43,10 +43,10 @@ class SampleRef:
     def is_persisted(self) -> bool:
         return self.type != self.TYPE_NOT_PERSISTED
 
-    def get_cloud_diagnostics_block(self) -> dict:
+    def get_cloud_diagnostics_block(self, title: str = "Failed Rows") -> dict:
         file_block = {
             "type": "file",
-            "title": "Failed Rows",
+            "title": title,
             "file": self.get_cloud_diagnostics_dict(),
         }
         return file_block
@@ -61,11 +61,11 @@ class SampleRef:
         if self.soda_cloud_file_id:
             sample_ref_dict["reference"] = {"type": "sodaCloudStorage", "fileId": self.soda_cloud_file_id}
         elif self.message:
-            sample_ref_dict["reference"] = {"type": "noFile", "message": self.message, "link": self.link, "fileId": ""}
-            # TODO Replace above with the following when https://sodadata.atlassian.net/browse/CLOUD-2449 is done.
-            # sample_ref_dict["reference"] = {"type": "noFile",
-            #                                 "message": self.message,
-            #                                 "link": {"href": self.link, "text": self.link_text},
-            #                                 "fileId": ""}
+            sample_ref_dict["reference"] = {
+                "type": "noFile",
+                "message": self.message,
+                "link": {"href": self.link, "text": self.link_text},
+                "fileId": "",
+            }
 
         return sample_ref_dict

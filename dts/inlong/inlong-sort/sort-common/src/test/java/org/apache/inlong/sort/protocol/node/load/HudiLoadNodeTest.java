@@ -17,16 +17,17 @@
 
 package org.apache.inlong.sort.protocol.node.load;
 
-import com.google.common.collect.Maps;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Map;
 import org.apache.inlong.sort.SerializeBaseTest;
 import org.apache.inlong.sort.formats.common.StringFormatInfo;
 import org.apache.inlong.sort.protocol.FieldInfo;
 import org.apache.inlong.sort.protocol.constant.HudiConstant.CatalogType;
 import org.apache.inlong.sort.protocol.transformation.FieldRelation;
+
+import com.google.common.collect.Maps;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Map;
 
 /**
  * Test for {@link HudiLoadNode}

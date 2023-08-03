@@ -17,7 +17,9 @@
 
 package org.apache.inlong.sort.protocol.ddl.operations;
 
-import java.util.List;
+import org.apache.inlong.sort.protocol.ddl.enums.OperationType;
+import org.apache.inlong.sort.protocol.ddl.expressions.AlterColumn;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonCreator;
@@ -25,8 +27,8 @@ import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonInc
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonInclude.Include;
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonProperty;
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonTypeName;
-import org.apache.inlong.sort.protocol.ddl.enums.OperationType;
-import org.apache.inlong.sort.protocol.ddl.expressions.AlterColumn;
+
+import java.util.List;
 
 /**
  * Alter operation which contains alter columns.

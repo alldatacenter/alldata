@@ -17,6 +17,11 @@
 
 package org.apache.inlong.manager.pojo.cluster.kafka;
 
+import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
+import org.apache.inlong.manager.common.exceptions.BusinessException;
+import org.apache.inlong.manager.common.util.CommonBeanUtils;
+import org.apache.inlong.manager.common.util.JsonUtils;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -24,9 +29,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
-import org.apache.inlong.manager.common.exceptions.BusinessException;
-import org.apache.inlong.manager.common.util.JsonUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.validation.constraints.NotNull;
 
@@ -56,10 +59,12 @@ public class KafkaClusterDTO {
     /**
      * Get the dto instance from the request
      */
-    public static KafkaClusterDTO getFromRequest(KafkaClusterRequest request) {
-        return KafkaClusterDTO.builder()
-                .bootstrapServers(request.getUrl())
-                .build();
+    public static KafkaClusterDTO getFromRequest(KafkaClusterRequest request, String extParams) {
+        KafkaClusterDTO dto = StringUtils.isNotBlank(extParams)
+                ? KafkaClusterDTO.getFromJson(extParams)
+                : new KafkaClusterDTO();
+        dto.setBootstrapServers(request.getUrl());
+        return CommonBeanUtils.copyProperties(request, dto, true);
     }
 
     /**

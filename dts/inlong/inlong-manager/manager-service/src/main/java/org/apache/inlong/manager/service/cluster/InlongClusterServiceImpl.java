@@ -17,13 +17,6 @@
 
 package org.apache.inlong.manager.service.cluster;
 
-import com.github.pagehelper.Page;
-import com.github.pagehelper.PageHelper;
-import com.google.common.base.Joiner;
-import com.google.common.collect.Sets;
-import com.google.gson.Gson;
-import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.inlong.common.constant.Constants;
 import org.apache.inlong.common.constant.MQType;
 import org.apache.inlong.common.pojo.audit.AuditConfig;
@@ -40,7 +33,7 @@ import org.apache.inlong.manager.common.enums.ClusterType;
 import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
 import org.apache.inlong.manager.common.enums.GroupStatus;
 import org.apache.inlong.manager.common.enums.NodeStatus;
-import org.apache.inlong.manager.common.enums.UserTypeEnum;
+import org.apache.inlong.manager.common.enums.TenantUserTypeEnum;
 import org.apache.inlong.manager.common.exceptions.BusinessException;
 import org.apache.inlong.manager.common.util.CommonBeanUtils;
 import org.apache.inlong.manager.common.util.Preconditions;
@@ -73,7 +66,17 @@ import org.apache.inlong.manager.pojo.user.UserInfo;
 import org.apache.inlong.manager.service.cluster.node.InlongClusterNodeOperator;
 import org.apache.inlong.manager.service.cluster.node.InlongClusterNodeOperatorFactory;
 import org.apache.inlong.manager.service.repository.DataProxyConfigRepository;
+import org.apache.inlong.manager.service.repository.DataProxyConfigRepositoryV2;
 import org.apache.inlong.manager.service.user.UserService;
+
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import com.google.common.base.Joiner;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import com.google.gson.Gson;
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -118,9 +121,15 @@ public class InlongClusterServiceImpl implements InlongClusterService {
     private InlongClusterEntityMapper clusterMapper;
     @Autowired
     private InlongClusterNodeEntityMapper clusterNodeMapper;
+
     @Lazy
     @Autowired
+    @Deprecated
     private DataProxyConfigRepository proxyRepository;
+
+    @Lazy
+    @Autowired
+    private DataProxyConfigRepositoryV2 proxyRepositoryV2;
 
     @Override
     public Integer saveTag(ClusterTagRequest request, String operator) {
@@ -211,7 +220,7 @@ public class InlongClusterServiceImpl implements InlongClusterService {
         if (CollectionUtils.isNotEmpty(clusterTagEntities)) {
             for (InlongClusterTagEntity tagEntity : clusterTagEntities) {
                 // only the person in charges can query
-                if (!opInfo.getAccountType().equals(UserTypeEnum.ADMIN.getCode())) {
+                if (!opInfo.getAccountType().equals(TenantUserTypeEnum.TENANT_ADMIN.getCode())) {
                     List<String> inCharges = Arrays.asList(tagEntity.getInCharges().split(InlongConstants.COMMA));
                     if (!inCharges.contains(opInfo.getName())) {
                         continue;
@@ -524,7 +533,7 @@ public class InlongClusterServiceImpl implements InlongClusterService {
         List<InlongClusterEntity> filterResult = new ArrayList<>();
         for (InlongClusterEntity entity : clusterEntities) {
             // only the person in charges can query
-            if (!opInfo.getAccountType().equals(UserTypeEnum.ADMIN.getCode())) {
+            if (!opInfo.getAccountType().equals(TenantUserTypeEnum.TENANT_ADMIN.getCode())) {
                 List<String> inCharges = Arrays.asList(entity.getInCharges().split(InlongConstants.COMMA));
                 if (!inCharges.contains(opInfo.getName())) {
                     continue;
@@ -936,7 +945,7 @@ public class InlongClusterServiceImpl implements InlongClusterService {
                     clusterMapper.selectByKey(request.getClusterTag(), request.getName(), request.getType());
             for (InlongClusterEntity cluster : clusterList) {
                 // only the person in charges can query
-                if (!opInfo.getAccountType().equals(UserTypeEnum.ADMIN.getCode())) {
+                if (!opInfo.getAccountType().equals(TenantUserTypeEnum.TENANT_ADMIN.getCode())) {
                     List<String> inCharges = Arrays.asList(cluster.getInCharges().split(InlongConstants.COMMA));
                     if (!inCharges.contains(opInfo.getName())) {
                         continue;
@@ -1194,9 +1203,8 @@ public class InlongClusterServiceImpl implements InlongClusterService {
     private List<InlongClusterNodeEntity> getClusterNodes(String groupId, String clusterType, String protocolType) {
         InlongGroupEntity groupEntity = groupMapper.selectByGroupId(groupId);
         if (groupEntity == null) {
-            String msg = "inlong group not exists for groupId=" + groupId;
-            LOGGER.debug(msg);
-            throw new BusinessException(msg);
+            LOGGER.warn("inlong group not exists for groupId={}", groupId);
+            return Lists.newArrayList();
         }
 
         String clusterTag = groupEntity.getInlongClusterTag();
@@ -1262,7 +1270,7 @@ public class InlongClusterServiceImpl implements InlongClusterService {
             if (MQType.PULSAR.equals(mqType) || MQType.TDMQ_PULSAR.equals(mqType)) {
                 InlongPulsarDTO pulsarDTO = InlongPulsarDTO.getFromJson(groupInfo.getExtParams());
                 // First get the tenant from the InlongGroup, and then get it from the PulsarCluster.
-                String tenant = pulsarDTO.getTenant();
+                String tenant = pulsarDTO.getPulsarTenant();
                 if (StringUtils.isBlank(tenant)) {
                     // If there are multiple Pulsar clusters, take the first one.
                     // Note that the tenants in multiple Pulsar clusters must be identical.
@@ -1273,7 +1281,7 @@ public class InlongClusterServiceImpl implements InlongClusterService {
                         continue;
                     }
                     PulsarClusterDTO cluster = PulsarClusterDTO.getFromJson(pulsarClusters.get(0).getExtParams());
-                    tenant = cluster.getTenant();
+                    tenant = cluster.getPulsarTenant();
                 }
 
                 List<InlongStreamBriefInfo> streamList = streamMapper.selectBriefList(groupId);
@@ -1336,6 +1344,7 @@ public class InlongClusterServiceImpl implements InlongClusterService {
     }
 
     @Override
+    @Deprecated
     public String getAllConfig(String clusterName, String md5) {
         DataProxyConfigResponse response = new DataProxyConfigResponse();
         String configMd5 = proxyRepository.getProxyMd5(clusterName);
@@ -1355,6 +1364,35 @@ public class InlongClusterServiceImpl implements InlongClusterService {
         }
 
         String configJson = proxyRepository.getProxyConfigJson(clusterName);
+        if (configJson == null) {
+            response.setResult(false);
+            response.setErrCode(DataProxyConfigResponse.REQ_PARAMS_ERROR);
+            return GSON.toJson(response);
+        }
+
+        return configJson;
+    }
+
+    @Override
+    public String getMetaConfig(String clusterName, String md5) {
+        DataProxyConfigResponse response = new DataProxyConfigResponse();
+        String configMd5 = proxyRepositoryV2.getProxyMd5(clusterName);
+        if (configMd5 == null) {
+            response.setResult(false);
+            response.setErrCode(DataProxyConfigResponse.REQ_PARAMS_ERROR);
+            return GSON.toJson(response);
+        }
+
+        // same config
+        if (configMd5.equals(md5)) {
+            response.setResult(true);
+            response.setErrCode(DataProxyConfigResponse.NOUPDATE);
+            response.setMd5(configMd5);
+            response.setData(new DataProxyCluster());
+            return GSON.toJson(response);
+        }
+
+        String configJson = proxyRepositoryV2.getProxyConfigJson(clusterName);
         if (configJson == null) {
             response.setResult(false);
             response.setErrCode(DataProxyConfigResponse.REQ_PARAMS_ERROR);

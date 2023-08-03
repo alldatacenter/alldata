@@ -17,12 +17,13 @@
 
 package org.apache.inlong.tubemq.server.broker.msgstore.disk;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import org.apache.inlong.tubemq.corebase.TBaseConstants;
 import org.apache.inlong.tubemq.corebase.protobuf.generated.ClientBroker.TransferedMessage;
 import org.apache.inlong.tubemq.server.broker.stats.TrafficInfo;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * Broker's reply to Consumer's GetMessage request.

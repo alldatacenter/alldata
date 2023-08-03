@@ -17,37 +17,12 @@
 
 package org.apache.inlong.agent.plugin.sinks;
 
-import static org.apache.inlong.agent.constant.CommonConstants.DEFAULT_PROXY_BATCH_FLUSH_INTERVAL;
-import static org.apache.inlong.agent.constant.CommonConstants.PROXY_BATCH_FLUSH_INTERVAL;
-import static org.apache.inlong.agent.constant.FetcherConstants.AGENT_MANAGER_AUTH_SECRET_ID;
-import static org.apache.inlong.agent.constant.FetcherConstants.AGENT_MANAGER_AUTH_SECRET_KEY;
-import static org.apache.inlong.agent.constant.FetcherConstants.AGENT_MANAGER_VIP_HTTP_HOST;
-import static org.apache.inlong.agent.constant.FetcherConstants.AGENT_MANAGER_VIP_HTTP_PORT;
-import static org.apache.inlong.agent.constant.JobConstants.DEFAULT_JOB_PROXY_SEND;
-import static org.apache.inlong.agent.constant.JobConstants.JOB_PROXY_SEND;
-import static org.apache.inlong.agent.metrics.AgentMetricItem.KEY_INLONG_GROUP_ID;
-import static org.apache.inlong.agent.metrics.AgentMetricItem.KEY_INLONG_STREAM_ID;
-import static org.apache.inlong.agent.metrics.AgentMetricItem.KEY_PLUGIN_ID;
-
-import io.netty.util.concurrent.DefaultThreadFactory;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.Semaphore;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicLong;
 import org.apache.inlong.agent.common.AgentThreadFactory;
 import org.apache.inlong.agent.conf.AgentConfiguration;
 import org.apache.inlong.agent.conf.JobProfile;
 import org.apache.inlong.agent.constant.CommonConstants;
-import org.apache.inlong.agent.core.task.TaskPositionManager;
+import org.apache.inlong.agent.core.task.MemoryManager;
+import org.apache.inlong.agent.core.task.PositionManager;
 import org.apache.inlong.agent.message.BatchProxyMessage;
 import org.apache.inlong.agent.metrics.AgentMetricItem;
 import org.apache.inlong.agent.metrics.AgentMetricItemSet;
@@ -61,8 +36,33 @@ import org.apache.inlong.sdk.dataproxy.DefaultMessageSender;
 import org.apache.inlong.sdk.dataproxy.ProxyClientConfig;
 import org.apache.inlong.sdk.dataproxy.SendMessageCallback;
 import org.apache.inlong.sdk.dataproxy.SendResult;
+
+import io.netty.util.concurrent.DefaultThreadFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicLong;
+
+import static org.apache.inlong.agent.constant.CommonConstants.DEFAULT_PROXY_BATCH_FLUSH_INTERVAL;
+import static org.apache.inlong.agent.constant.CommonConstants.PROXY_BATCH_FLUSH_INTERVAL;
+import static org.apache.inlong.agent.constant.FetcherConstants.AGENT_GLOBAL_WRITER_PERMIT;
+import static org.apache.inlong.agent.constant.FetcherConstants.AGENT_MANAGER_AUTH_SECRET_ID;
+import static org.apache.inlong.agent.constant.FetcherConstants.AGENT_MANAGER_AUTH_SECRET_KEY;
+import static org.apache.inlong.agent.constant.FetcherConstants.AGENT_MANAGER_VIP_HTTP_HOST;
+import static org.apache.inlong.agent.constant.FetcherConstants.AGENT_MANAGER_VIP_HTTP_PORT;
+import static org.apache.inlong.agent.constant.JobConstants.DEFAULT_JOB_PROXY_SEND;
+import static org.apache.inlong.agent.constant.JobConstants.JOB_PROXY_SEND;
+import static org.apache.inlong.agent.metrics.AgentMetricItem.KEY_INLONG_GROUP_ID;
+import static org.apache.inlong.agent.metrics.AgentMetricItem.KEY_INLONG_STREAM_ID;
+import static org.apache.inlong.agent.metrics.AgentMetricItem.KEY_PLUGIN_ID;
 
 /**
  * proxy client
@@ -71,18 +71,16 @@ public class SenderManager {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(SenderManager.class);
     private static final SequentialID SEQUENTIAL_ID = SequentialID.getInstance();
-    private static final AtomicInteger SENDER_INDEX = new AtomicInteger(0);
+    private final AtomicInteger SENDER_INDEX = new AtomicInteger(0);
     // cache for group and sender list, share the map cross agent lifecycle.
-    private static final ConcurrentHashMap<String, List<DefaultMessageSender>> SENDER_MAP =
-            new ConcurrentHashMap<>();
+    private DefaultMessageSender sender;
     private LinkedBlockingQueue<AgentSenderCallback> resendQueue;
     private final ExecutorService resendExecutorService = new ThreadPoolExecutor(1, 1,
             0L, TimeUnit.MILLISECONDS,
             new LinkedBlockingQueue<>(), new AgentThreadFactory("SendManager-Resend"));
     // sharing worker threads between sender client
     // in case of thread abusing.
-    private static final ThreadFactory SHARED_FACTORY = new DefaultThreadFactory("agent-client-io",
-            Thread.currentThread().isDaemon());
+    private ThreadFactory SHARED_FACTORY;
     private static final AtomicLong METRIC_INDEX = new AtomicLong(0);
     private final String managerHost;
     private final int managerPort;
@@ -102,14 +100,12 @@ public class SenderManager {
     private final String sourcePath;
     private final boolean proxySend;
     private volatile boolean shutdown = false;
-
     // metric
     private AgentMetricItemSet metricItemSet;
     private Map<String, String> dimensions;
-    private TaskPositionManager taskPositionManager;
+    private PositionManager positionManager;
     private int ioThreadNum;
     private boolean enableBusyWait;
-    private Semaphore semaphore;
     private String authSecretId;
     private String authSecretKey;
     protected int batchFlushInterval;
@@ -142,9 +138,7 @@ public class SenderManager {
         retrySleepTime = jobConf.getLong(
                 CommonConstants.PROXY_RETRY_SLEEP, CommonConstants.DEFAULT_PROXY_RETRY_SLEEP);
         isFile = jobConf.getBoolean(CommonConstants.PROXY_IS_FILE, CommonConstants.DEFAULT_IS_FILE);
-        taskPositionManager = TaskPositionManager.getInstance();
-        semaphore = new Semaphore(jobConf.getInt(CommonConstants.PROXY_MESSAGE_SEMAPHORE,
-                CommonConstants.DEFAULT_PROXY_MESSAGE_SEMAPHORE));
+        positionManager = PositionManager.getInstance();
         ioThreadNum = jobConf.getInt(CommonConstants.PROXY_CLIENT_IO_THREAD_NUM,
                 CommonConstants.DEFAULT_PROXY_CLIENT_IO_THREAD_NUM);
         enableBusyWait = jobConf.getBoolean(CommonConstants.PROXY_CLIENT_ENABLE_BUSY_WAIT,
@@ -165,13 +159,15 @@ public class SenderManager {
         resendQueue = new LinkedBlockingQueue<>();
     }
 
-    public void Start() {
+    public void Start() throws Exception {
+        sender = createMessageSender(inlongGroupId);
         resendExecutorService.execute(flushResendQueue());
     }
 
     public void Stop() {
         shutdown = true;
         resendExecutorService.shutdown();
+        sender.close();
     }
 
     private AgentMetricItem getMetricItem(Map<String, String> otherDimensions) {
@@ -186,26 +182,6 @@ public class SenderManager {
         dims.put(KEY_INLONG_GROUP_ID, groupId);
         dims.put(KEY_INLONG_STREAM_ID, streamId);
         return getMetricItem(dims);
-    }
-
-    /**
-     * Select by group.
-     *
-     * @param group inlong group id
-     * @return default message sender
-     */
-    private DefaultMessageSender selectSender(String group) {
-        List<DefaultMessageSender> senderList = SENDER_MAP.get(group);
-        return senderList.get((SENDER_INDEX.getAndIncrement() & 0x7FFFFFFF) % senderList.size());
-    }
-
-    public void acquireSemaphore(int messageNum) {
-        try {
-            semaphore.acquire(messageNum);
-        } catch (Exception e) {
-            LOGGER.error("acquire messageNum {} fail, current semaphore {}",
-                    messageNum, semaphore.availablePermits());
-        }
     }
 
     /**
@@ -226,26 +202,13 @@ public class SenderManager {
         proxyClientConfig.setEnableBusyWait(enableBusyWait);
         proxyClientConfig.setProtocolType(ProtocolType.TCP);
 
+        SHARED_FACTORY = new DefaultThreadFactory("agent-client-" + sourcePath,
+                Thread.currentThread().isDaemon());
+
         DefaultMessageSender sender = new DefaultMessageSender(proxyClientConfig, SHARED_FACTORY);
         sender.setMsgtype(msgType);
         sender.setCompress(isCompress);
         return sender;
-    }
-
-    /**
-     * Add new sender for group id if max size is not satisfied.
-     */
-    public void addMessageSender() throws Exception {
-        List<DefaultMessageSender> tmpList = new ArrayList<>();
-        List<DefaultMessageSender> senderList = SENDER_MAP.putIfAbsent(inlongGroupId, tmpList);
-        if (senderList == null) {
-            senderList = tmpList;
-        }
-        if (senderList.size() > maxSenderPerGroup) {
-            return;
-        }
-        DefaultMessageSender sender = createMessageSender(inlongGroupId);
-        senderList.add(sender);
     }
 
     public void sendBatch(BatchProxyMessage batchMessage) {
@@ -259,7 +222,7 @@ public class SenderManager {
         boolean suc = false;
         while (!suc) {
             try {
-                selectSender(batchMessage.getGroupId()).asyncSendMessage(new AgentSenderCallback(batchMessage, retry),
+                sender.asyncSendMessage(new AgentSenderCallback(batchMessage, retry),
                         batchMessage.getDataList(), batchMessage.getGroupId(), batchMessage.getStreamId(),
                         batchMessage.getDataTime(), SEQUENTIAL_ID.getNextUuid(), maxSenderTimeout, TimeUnit.SECONDS,
                         batchMessage.getExtraMap(), proxySend);
@@ -269,13 +232,14 @@ public class SenderManager {
             } catch (Exception exception) {
                 suc = false;
                 if (retry > maxSenderRetry) {
-                    LOGGER.warn("max retry reached, retry count is {}, sleep and send again", retry);
+                    if (retry % 10 == 0) {
+                        LOGGER.error("max retry reached, sample log Exception caught", exception);
+                    }
                 } else {
                     LOGGER.error("Exception caught", exception);
                 }
                 retry++;
                 AgentUtils.silenceSleepInMs(retrySleepTime);
-
             }
         }
     }
@@ -287,7 +251,7 @@ public class SenderManager {
      */
     private Runnable flushResendQueue() {
         return () -> {
-            LOGGER.info("start flush cache thread for {} ProxySink", inlongGroupId);
+            LOGGER.info("start flush resend queue {}:{}", inlongGroupId, sourcePath);
             while (!shutdown) {
                 try {
                     AgentSenderCallback callback = resendQueue.poll(1, TimeUnit.SECONDS);
@@ -302,6 +266,7 @@ public class SenderManager {
                     AgentUtils.silenceSleepInMs(batchFlushInterval);
                 }
             }
+            LOGGER.info("stop flush resend queue {}:{}", inlongGroupId, sourcePath);
         };
     }
 
@@ -340,13 +305,12 @@ public class SenderManager {
             String jobId = batchMessage.getJobId();
             long dataTime = batchMessage.getDataTime();
             if (result != null && result.equals(SendResult.OK)) {
-                semaphore.release(msgCnt);
+                MemoryManager.getInstance().release(AGENT_GLOBAL_WRITER_PERMIT, (int) batchMessage.getTotalSize());
                 AuditUtils.add(AuditUtils.AUDIT_ID_AGENT_SEND_SUCCESS, groupId, streamId, dataTime, msgCnt,
                         batchMessage.getTotalSize());
                 getMetricItem(groupId, streamId).pluginSendSuccessCount.addAndGet(msgCnt);
-                if (sourcePath != null) {
-                    taskPositionManager.updateSinkPosition(batchMessage.getJobId(), sourcePath, msgCnt, false);
-                }
+                PositionManager.getInstance()
+                        .updateSinkPosition(batchMessage.getJobId(), sourcePath, msgCnt, false);
             } else {
                 LOGGER.warn("send groupId {}, streamId {}, jobId {}, dataTime {} fail with times {}, "
                         + "error {}", groupId, streamId, jobId, dataTime, retry, result);

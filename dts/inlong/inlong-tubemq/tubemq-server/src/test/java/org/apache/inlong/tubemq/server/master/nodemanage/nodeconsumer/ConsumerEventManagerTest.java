@@ -17,12 +17,14 @@
 
 package org.apache.inlong.tubemq.server.master.nodemanage.nodeconsumer;
 
-import static org.mockito.Mockito.mock;
 import org.apache.inlong.tubemq.corebase.balance.ConsumerEvent;
+
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
+import static org.mockito.Mockito.mock;
 
 public class ConsumerEventManagerTest {
 

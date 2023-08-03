@@ -24,7 +24,7 @@ import i18n from '@/i18n';
 import { SourceInfo } from '../common/SourceInfo';
 
 const { I18n } = DataWithBackend;
-const { FieldDecorator } = RenderRow;
+const { FieldDecorator, SyncField } = RenderRow;
 const { ColumnDecorator } = RenderList;
 
 export default class TubeMqSource
@@ -38,6 +38,7 @@ export default class TubeMqSource
       disabled: values?.status === 101,
     }),
   })
+  @SyncField()
   @ColumnDecorator()
   @I18n('meta.Sources.Db.Server')
   hostname: string;
@@ -52,6 +53,7 @@ export default class TubeMqSource
       max: 65535,
     }),
   })
+  @SyncField()
   @ColumnDecorator()
   @I18n('meta.Sources.Db.Port')
   port: number;
@@ -63,6 +65,7 @@ export default class TubeMqSource
       disabled: values?.status === 101,
     }),
   })
+  @SyncField()
   @I18n('meta.Sources.Db.User')
   user: string;
 
@@ -73,6 +76,7 @@ export default class TubeMqSource
       disabled: values?.status === 101,
     }),
   })
+  @SyncField()
   @I18n('meta.Sources.Db.Password')
   password: string;
 
@@ -131,6 +135,7 @@ export default class TubeMqSource
       ],
     }),
   })
+  @SyncField()
   @I18n('meta.Sources.Db.AllMigration')
   allMigration: boolean;
 
@@ -143,17 +148,19 @@ export default class TubeMqSource
     }),
     visible: values => !values?.allMigration,
   })
+  @SyncField()
   @I18n('meta.Sources.Db.TableWhiteList')
   tableWhiteList: boolean;
 
   @FieldDecorator({
     type: 'input',
+    rules: [{ required: true }],
     tooltip: i18n.t('meta.Sources.Db.DatabaseWhiteListHelp'),
     props: values => ({
       disabled: values?.status === 101,
     }),
-    visible: values => values?.allMigration,
   })
+  @SyncField()
   @I18n('meta.Sources.Db.DatabaseWhiteList')
   databaseWhiteList: string;
 }

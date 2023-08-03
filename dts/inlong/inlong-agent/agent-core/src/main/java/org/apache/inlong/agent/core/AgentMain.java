@@ -17,15 +17,16 @@
 
 package org.apache.inlong.agent.core;
 
+import org.apache.inlong.agent.conf.AgentConfiguration;
+import org.apache.inlong.agent.metrics.audit.AuditUtils;
+import org.apache.inlong.common.metric.MetricObserver;
+
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.DefaultParser;
 import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
-import org.apache.inlong.agent.conf.AgentConfiguration;
-import org.apache.inlong.agent.metrics.audit.AuditUtils;
-import org.apache.inlong.common.metric.MetricObserver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

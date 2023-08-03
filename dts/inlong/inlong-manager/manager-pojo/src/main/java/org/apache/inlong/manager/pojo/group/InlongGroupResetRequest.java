@@ -38,8 +38,8 @@ import javax.validation.constraints.Pattern;
 public class InlongGroupResetRequest {
 
     @ApiModelProperty(value = "Inlong group id", required = true)
-    @Length(min = 4, max = 100, message = "length must be between 4 and 100")
-    @Pattern(regexp = "^[a-z0-9_-]{4,100}$", message = "only supports lowercase letters, numbers, '-', or '_'")
+    @Length(min = 4, max = 200, message = "length must be between 4 and 200")
+    @Pattern(regexp = "^[a-zA-Z0-9_.-]{4,200}$", message = "only supports letters, numbers, '.', '-', or '_'")
     private String inlongGroupId;
 
     @ApiModelProperty(value = "If rerun process when group is in operating, 0: false 1: true")

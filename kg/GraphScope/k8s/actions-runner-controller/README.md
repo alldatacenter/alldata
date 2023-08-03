@@ -1,1 +1,0 @@
-Customed runner docker based on [actions-runner-controller](https://github.com/actions-runner-controller/actions-runner-controller), used in CI of GraphScope.

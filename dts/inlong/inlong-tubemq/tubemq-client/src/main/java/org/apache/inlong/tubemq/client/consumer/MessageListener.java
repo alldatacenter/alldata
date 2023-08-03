@@ -17,10 +17,11 @@
 
 package org.apache.inlong.tubemq.client.consumer;
 
-import java.util.List;
-import java.util.concurrent.Executor;
 import org.apache.inlong.tubemq.client.common.PeerInfo;
 import org.apache.inlong.tubemq.corebase.Message;
+
+import java.util.List;
+import java.util.concurrent.Executor;
 
 public interface MessageListener {
 

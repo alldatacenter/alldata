@@ -17,8 +17,9 @@
 
 package org.apache.inlong.tubemq.corerpc;
 
-import java.io.Serializable;
 import org.apache.inlong.tubemq.corebase.TBaseConstants;
+
+import java.io.Serializable;
 
 public class RequestWrapper implements Serializable {
 

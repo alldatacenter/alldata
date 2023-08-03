@@ -17,11 +17,12 @@
 
 package org.apache.inlong.tubemq.corerpc.utils;
 
-import java.lang.reflect.Constructor;
 import org.apache.inlong.tubemq.corebase.TokenConstants;
 import org.apache.inlong.tubemq.corebase.utils.TStringUtils;
 import org.apache.inlong.tubemq.corerpc.exception.RemoteException;
 import org.apache.inlong.tubemq.corerpc.protocol.RpcProtocol;
+
+import java.lang.reflect.Constructor;
 
 public class MixUtils {
 

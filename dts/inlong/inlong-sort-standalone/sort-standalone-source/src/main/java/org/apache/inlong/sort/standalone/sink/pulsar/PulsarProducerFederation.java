@@ -17,10 +17,11 @@
 
 package org.apache.inlong.sort.standalone.sink.pulsar;
 
-import org.apache.flume.Transaction;
 import org.apache.inlong.sort.standalone.channel.ProfileEvent;
 import org.apache.inlong.sort.standalone.config.pojo.CacheClusterConfig;
 import org.apache.inlong.sort.standalone.utils.InlongLoggerFactory;
+
+import org.apache.flume.Transaction;
 import org.slf4j.Logger;
 
 import java.io.IOException;

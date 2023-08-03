@@ -17,8 +17,9 @@
 
 package org.apache.inlong.sdk.sort.api;
 
-import java.util.List;
 import org.apache.inlong.sdk.sort.entity.MessageRecord;
+
+import java.util.List;
 
 public interface ReadCallback {
 

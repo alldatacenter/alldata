@@ -17,10 +17,11 @@
 
 package org.apache.inlong.tubemq.corebase.utils;
 
-import java.time.format.DateTimeParseException;
-import java.util.Date;
 import org.junit.Assert;
 import org.junit.Test;
+
+import java.time.format.DateTimeParseException;
+import java.util.Date;
 
 public class DateTimeConvertUtilsTest {
 

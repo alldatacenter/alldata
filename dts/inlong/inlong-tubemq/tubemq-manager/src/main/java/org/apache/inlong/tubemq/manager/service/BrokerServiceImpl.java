@@ -17,15 +17,6 @@
 
 package org.apache.inlong.tubemq.manager.service;
 
-import static org.apache.inlong.tubemq.manager.service.TubeConst.DEFAULT_REGION;
-import static org.apache.inlong.tubemq.manager.service.TubeConst.SCHEMA;
-import static org.apache.inlong.tubemq.manager.service.TubeConst.TUBE_REQUEST_PATH;
-
-import com.google.gson.Gson;
-
-import java.util.List;
-import java.util.stream.Collectors;
-
 import org.apache.inlong.tubemq.manager.controller.TubeMQResult;
 import org.apache.inlong.tubemq.manager.controller.group.request.DeleteOffsetReq;
 import org.apache.inlong.tubemq.manager.controller.group.request.QueryOffsetReq;
@@ -36,8 +27,17 @@ import org.apache.inlong.tubemq.manager.repository.BrokerRepository;
 import org.apache.inlong.tubemq.manager.service.interfaces.BrokerService;
 import org.apache.inlong.tubemq.manager.service.interfaces.MasterService;
 import org.apache.inlong.tubemq.manager.utils.ConvertUtils;
+
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static org.apache.inlong.tubemq.manager.service.TubeConst.DEFAULT_REGION;
+import static org.apache.inlong.tubemq.manager.service.TubeConst.SCHEMA;
+import static org.apache.inlong.tubemq.manager.service.TubeConst.TUBE_REQUEST_PATH;
 
 @Component
 public class BrokerServiceImpl implements BrokerService {

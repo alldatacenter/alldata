@@ -17,8 +17,6 @@
 
 package org.apache.inlong.tubemq.server.master.web.action.screen;
 
-import static org.apache.inlong.tubemq.server.common.webbase.WebMethodMapper.getWebApiRegInfo;
-import javax.servlet.http.HttpServletRequest;
 import org.apache.inlong.tubemq.corebase.TBaseConstants;
 import org.apache.inlong.tubemq.corebase.rv.ProcessResult;
 import org.apache.inlong.tubemq.corebase.utils.TStringUtils;
@@ -41,6 +39,10 @@ import org.apache.inlong.tubemq.server.master.web.handler.WebTopicCtrlHandler;
 import org.apache.inlong.tubemq.server.master.web.handler.WebTopicDeployHandler;
 import org.apache.inlong.tubemq.server.master.web.simplemvc.Action;
 import org.apache.inlong.tubemq.server.master.web.simplemvc.RequestContext;
+
+import javax.servlet.http.HttpServletRequest;
+
+import static org.apache.inlong.tubemq.server.common.webbase.WebMethodMapper.getWebApiRegInfo;
 
 /**
  * Public APIs for master

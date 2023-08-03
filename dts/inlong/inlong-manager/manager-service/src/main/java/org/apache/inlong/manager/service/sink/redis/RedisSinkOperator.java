@@ -17,16 +17,6 @@
 
 package org.apache.inlong.manager.service.sink.redis;
 
-import static org.apache.inlong.manager.common.enums.ErrorCodeEnum.IP_EMPTY;
-import static org.apache.inlong.manager.common.enums.ErrorCodeEnum.PORT_EMPTY;
-import static org.apache.inlong.manager.common.enums.ErrorCodeEnum.SINK_SAVE_FAILED;
-import static org.apache.inlong.manager.common.enums.ErrorCodeEnum.SINK_TYPE_NOT_SUPPORT;
-import static org.apache.inlong.manager.common.util.Preconditions.expectNotBlank;
-import static org.apache.inlong.manager.common.util.Preconditions.expectNotEmpty;
-import static org.apache.inlong.manager.common.util.Preconditions.expectNotNull;
-import static org.apache.inlong.manager.common.util.Preconditions.expectTrue;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.inlong.manager.common.consts.SinkType;
 import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
 import org.apache.inlong.manager.common.exceptions.BusinessException;
@@ -42,6 +32,8 @@ import org.apache.inlong.manager.pojo.sink.redis.RedisSink;
 import org.apache.inlong.manager.pojo.sink.redis.RedisSinkDTO;
 import org.apache.inlong.manager.pojo.sink.redis.RedisSinkRequest;
 import org.apache.inlong.manager.service.sink.AbstractSinkOperator;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,6 +41,15 @@ import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
+
+import static org.apache.inlong.manager.common.enums.ErrorCodeEnum.IP_EMPTY;
+import static org.apache.inlong.manager.common.enums.ErrorCodeEnum.PORT_EMPTY;
+import static org.apache.inlong.manager.common.enums.ErrorCodeEnum.SINK_SAVE_FAILED;
+import static org.apache.inlong.manager.common.enums.ErrorCodeEnum.SINK_TYPE_NOT_SUPPORT;
+import static org.apache.inlong.manager.common.util.Preconditions.expectNotBlank;
+import static org.apache.inlong.manager.common.util.Preconditions.expectNotEmpty;
+import static org.apache.inlong.manager.common.util.Preconditions.expectNotNull;
+import static org.apache.inlong.manager.common.util.Preconditions.expectTrue;
 
 /**
  * Redis sink operator, such as save or update redis field, etc.
@@ -117,7 +118,7 @@ public class RedisSinkOperator extends AbstractSinkOperator {
                 "Redis schemaMapMode '" + mapMode + "' is not supported in '" + dataType + "'");
 
         try {
-            RedisSinkDTO dto = RedisSinkDTO.getFromRequest(sinkRequest);
+            RedisSinkDTO dto = RedisSinkDTO.getFromRequest(sinkRequest, targetEntity.getExtParams());
             targetEntity.setExtParams(objectMapper.writeValueAsString(dto));
         } catch (Exception e) {
             throw new BusinessException(SINK_SAVE_FAILED,

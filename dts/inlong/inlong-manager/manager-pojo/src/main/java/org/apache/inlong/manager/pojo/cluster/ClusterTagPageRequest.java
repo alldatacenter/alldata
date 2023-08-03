@@ -17,6 +17,8 @@
 
 package org.apache.inlong.manager.pojo.cluster;
 
+import org.apache.inlong.manager.pojo.common.PageRequest;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -24,7 +26,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import org.apache.inlong.manager.pojo.common.PageRequest;
 
 /**
  * Cluster tag paging query conditions
@@ -42,6 +43,9 @@ public class ClusterTagPageRequest extends PageRequest {
 
     @ApiModelProperty(value = "Status")
     private Integer status;
+
+    @ApiModelProperty(value = "Inlong tenant of cluster tag", hidden = true)
+    private String tenant;
 
     @ApiModelProperty(value = "Current user", hidden = true)
     private String currentUser;

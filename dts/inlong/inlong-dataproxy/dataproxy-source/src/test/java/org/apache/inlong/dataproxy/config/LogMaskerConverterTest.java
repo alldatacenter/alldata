@@ -17,13 +17,13 @@
 
 package org.apache.inlong.dataproxy.config;
 
-import static org.junit.Assert.assertEquals;
-
 import org.apache.logging.log4j.core.LogEvent;
 import org.apache.logging.log4j.core.impl.Log4jLogEvent;
 import org.apache.logging.log4j.message.Message;
 import org.apache.logging.log4j.message.MessageFormatMessage;
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * Test class for LogMaskerConverter.

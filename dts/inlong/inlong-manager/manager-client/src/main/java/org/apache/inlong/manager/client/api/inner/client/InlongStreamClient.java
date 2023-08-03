@@ -17,7 +17,6 @@
 
 package org.apache.inlong.manager.client.api.inner.client;
 
-import org.apache.commons.lang3.tuple.Pair;
 import org.apache.inlong.manager.client.api.ClientConfiguration;
 import org.apache.inlong.manager.client.api.service.InlongStreamApi;
 import org.apache.inlong.manager.client.api.util.ClientUtils;
@@ -25,11 +24,14 @@ import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
 import org.apache.inlong.manager.common.util.Preconditions;
 import org.apache.inlong.manager.pojo.common.PageResult;
 import org.apache.inlong.manager.pojo.common.Response;
+import org.apache.inlong.manager.pojo.consume.BriefMQMessage;
 import org.apache.inlong.manager.pojo.sink.ParseFieldRequest;
 import org.apache.inlong.manager.pojo.stream.InlongStreamBriefInfo;
 import org.apache.inlong.manager.pojo.stream.InlongStreamInfo;
 import org.apache.inlong.manager.pojo.stream.InlongStreamPageRequest;
 import org.apache.inlong.manager.pojo.stream.StreamField;
+
+import org.apache.commons.lang3.tuple.Pair;
 
 import java.util.List;
 
@@ -129,6 +131,19 @@ public class InlongStreamClient {
                 inlongStreamApi.listByCondition(request));
         ClientUtils.assertRespSuccess(response);
         return response.getData();
+    }
+
+    /**
+     * Paging query inlong stream with sources and sinks info list
+     *
+     * @param request query request
+     * @return inlong stream with sources and sinks list
+     */
+    public PageResult<InlongStreamInfo> listAllByCondition(InlongStreamPageRequest request) {
+        Response<PageResult<InlongStreamInfo>> pageResultResponse = ClientUtils.executeHttpCall(
+                inlongStreamApi.listStream(request));
+        ClientUtils.assertRespSuccess(pageResultResponse);
+        return pageResultResponse.getData();
     }
 
     /**
@@ -234,7 +249,8 @@ public class InlongStreamClient {
 
     /**
      * Converts a json string to a streamFields
-     *     @param method the method for the field information: json or sql
+     *
+     * @param method the method for the field information: json or sql
      * @param statement the statement for the field information
      * @return list of stream field
      */
@@ -244,5 +260,14 @@ public class InlongStreamClient {
         Preconditions.expectNotBlank(statement, "The statement must not empty");
         ParseFieldRequest request = ParseFieldRequest.builder().method(method).statement(statement).build();
         return parseFields(request);
+    }
+
+    public List<BriefMQMessage> queryMessage(String groupId, String streamId, Integer messageCount) {
+        Preconditions.expectNotBlank(groupId, ErrorCodeEnum.GROUP_ID_IS_EMPTY);
+        Preconditions.expectNotBlank(streamId, ErrorCodeEnum.STREAM_ID_IS_EMPTY);
+        Response<List<BriefMQMessage>> response = ClientUtils.executeHttpCall(
+                inlongStreamApi.listMessages(groupId, streamId, messageCount));
+        ClientUtils.assertRespSuccess(response);
+        return response.getData();
     }
 }

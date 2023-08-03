@@ -17,13 +17,14 @@
 
 package org.apache.inlong.tubemq.server.master.nodemanage.nodebroker;
 
+import org.apache.inlong.tubemq.corebase.utils.ConcurrentHashSet;
+import org.apache.inlong.tubemq.server.master.TMaster;
+import org.apache.inlong.tubemq.server.master.nodemanage.nodeconsumer.ConsumerInfoHolder;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import org.apache.inlong.tubemq.corebase.utils.ConcurrentHashSet;
-import org.apache.inlong.tubemq.server.master.TMaster;
-import org.apache.inlong.tubemq.server.master.nodemanage.nodeconsumer.ConsumerInfoHolder;
 
 /**
  * Topic Publication/Subscription info management

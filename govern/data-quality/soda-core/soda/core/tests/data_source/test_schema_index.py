@@ -51,7 +51,7 @@ def test_required_columns_indexes_fail(data_source_fixture: DataSourceFixture):
 
     scan.assert_all_checks_fail()
     check: SchemaCheck = scan._checks[0]
-    assert check.schema_column_index_mismatches == {
+    assert check.fail_result.column_index_mismatches == {
         default_casify_column_name("distance"): {
             "actual_index": 3,
             "column_on_expected_index": default_casify_column_name("pct"),
@@ -93,7 +93,7 @@ def test_required_columns_indexes_warn(data_source_fixture: DataSourceFixture):
 
     scan.assert_all_checks_warn()
     check: SchemaCheck = scan._checks[0]
-    assert check.schema_column_index_mismatches == {
+    assert check.warn_result.column_index_mismatches == {
         default_casify_column_name("distance"): {
             "actual_index": 3,
             "column_on_expected_index": default_casify_column_name("pct"),

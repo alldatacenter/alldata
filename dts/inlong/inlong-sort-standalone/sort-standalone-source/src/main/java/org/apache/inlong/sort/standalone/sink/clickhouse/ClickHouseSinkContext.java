@@ -17,12 +17,6 @@
 
 package org.apache.inlong.sort.standalone.sink.clickhouse;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import org.apache.commons.lang.ClassUtils;
-import org.apache.commons.math3.util.Pair;
-import org.apache.flume.Channel;
-import org.apache.flume.Context;
 import org.apache.inlong.common.pojo.sortstandalone.SortTaskConfig;
 import org.apache.inlong.common.util.NetworkUtils;
 import org.apache.inlong.sort.standalone.channel.ProfileEvent;
@@ -35,6 +29,12 @@ import org.apache.inlong.sort.standalone.metrics.audit.AuditUtils;
 import org.apache.inlong.sort.standalone.sink.SinkContext;
 import org.apache.inlong.sort.standalone.utils.Constants;
 import org.apache.inlong.sort.standalone.utils.InlongLoggerFactory;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.commons.lang.ClassUtils;
+import org.apache.commons.math3.util.Pair;
+import org.apache.flume.Channel;
+import org.apache.flume.Context;
 import org.slf4j.Logger;
 
 import java.sql.Connection;

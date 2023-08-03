@@ -17,10 +17,10 @@
 
 package org.apache.inlong.sort.protocol.deserialization;
 
-import static com.google.common.base.Preconditions.checkNotNull;
-
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonCreator;
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonProperty;
+
+import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
  * Kv deserialization info

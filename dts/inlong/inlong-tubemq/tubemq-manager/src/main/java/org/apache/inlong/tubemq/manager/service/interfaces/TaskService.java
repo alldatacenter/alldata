@@ -17,10 +17,11 @@
 
 package org.apache.inlong.tubemq.manager.service.interfaces;
 
-import java.util.Set;
-
 import org.apache.inlong.tubemq.manager.controller.TubeMQResult;
+
 import org.springframework.stereotype.Service;
+
+import java.util.Set;
 
 @Service
 public interface TaskService {

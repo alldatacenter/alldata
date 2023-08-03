@@ -131,10 +131,9 @@ class SQLServerDataSource(DataSource):
                 + "DRIVER={"
                 + self.driver
                 + "};SERVER="
-                # + "SERVER="
                 + self.host
-                + ";PORT="
-                + self.port
+                + ","
+                + str(self.port)
                 + ";DATABASE="
                 + self.database
                 + ";UID="
@@ -314,7 +313,7 @@ class SQLServerDataSource(DataSource):
     def expr_false_condition(self):
         return "1 = 0"
 
-    def sql_get_duplicates(
+    def sql_get_duplicates_aggregated(
         self,
         column_names: str,
         table_name: str,
@@ -332,14 +331,49 @@ class SQLServerDataSource(DataSource):
         sql = dedent(
             f"""
             WITH frequencies AS (
-              SELECT {column_names}, COUNT(*) AS frequency
-              FROM {table_name}
-              WHERE {filter}
-              GROUP BY {column_names})
+                SELECT {column_names}, COUNT(*) AS frequency
+                FROM {table_name}
+                WHERE {filter}
+                GROUP BY {column_names})
             SELECT {limit_sql} {main_query_columns}
             FROM frequencies
             WHERE frequency {'<=' if invert_condition else '>'} 1
             ORDER BY frequency DESC"""
+        )
+
+        return sql
+
+    def sql_get_duplicates(
+        self,
+        column_names: str,
+        table_name: str,
+        filter: str,
+        limit: str | None = None,
+        invert_condition: bool = False,
+        exclude_patterns: list[str] | None = None,
+    ) -> str | None:
+        columns = column_names.split(", ")
+
+        qualified_main_query_columns = ", ".join([f"main.{c}" for c in columns])
+        main_query_columns = qualified_main_query_columns if exclude_patterns else "main.*"
+        join = " AND ".join([f"main.{c} = frequencies.{c}" for c in columns])
+
+        limit_sql = ""
+        if limit:
+            limit_sql = f"TOP {limit}"
+
+        sql = dedent(
+            f"""
+            WITH frequencies AS (
+                SELECT {column_names}
+                FROM {table_name}
+                WHERE {filter}
+                GROUP BY {column_names}
+                HAVING count(*) {'<=' if invert_condition else '>'} 1)
+            SELECT {limit_sql} {main_query_columns}
+            FROM {table_name} main
+            JOIN frequencies ON {join}
+            """
         )
 
         return sql

@@ -17,6 +17,9 @@
 
 package org.apache.inlong.agent.utils;
 
+import org.apache.inlong.agent.conf.AgentConfiguration;
+import org.apache.inlong.common.util.BasicAuth;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.apache.http.client.config.RequestConfig;
@@ -27,8 +30,6 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
-import org.apache.inlong.agent.conf.AgentConfiguration;
-import org.apache.inlong.common.util.BasicAuth;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

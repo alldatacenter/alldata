@@ -20,6 +20,7 @@ package org.apache.inlong.sort.standalone.channel;
 import org.apache.inlong.sdk.sort.api.SortClient;
 import org.apache.inlong.sdk.sort.entity.MessageRecord;
 import org.apache.inlong.sort.standalone.config.holder.AckPolicy;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

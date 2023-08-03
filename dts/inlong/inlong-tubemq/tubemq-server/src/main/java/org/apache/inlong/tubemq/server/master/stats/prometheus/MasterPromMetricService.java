@@ -17,20 +17,22 @@
 
 package org.apache.inlong.tubemq.server.master.stats.prometheus;
 
+import org.apache.inlong.tubemq.server.common.fileconfig.PrometheusConfig;
+import org.apache.inlong.tubemq.server.common.webbase.WebCallStatsHolder;
+import org.apache.inlong.tubemq.server.master.stats.MasterSrvStatsHolder;
+
+import io.prometheus.client.Collector;
+import io.prometheus.client.CounterMetricFamily;
+import io.prometheus.client.exporter.HTTPServer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import io.prometheus.client.Collector;
-import io.prometheus.client.CounterMetricFamily;
-import io.prometheus.client.exporter.HTTPServer;
-import org.apache.inlong.tubemq.server.common.fileconfig.PrometheusConfig;
-import org.apache.inlong.tubemq.server.common.webbase.WebCallStatsHolder;
-import org.apache.inlong.tubemq.server.master.stats.MasterSrvStatsHolder;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class MasterPromMetricService extends Collector {
 

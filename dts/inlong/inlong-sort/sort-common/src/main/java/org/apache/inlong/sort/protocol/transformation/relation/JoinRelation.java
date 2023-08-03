@@ -17,6 +17,8 @@
 
 package org.apache.inlong.sort.protocol.transformation.relation;
 
+import org.apache.inlong.sort.protocol.transformation.FilterFunction;
+
 import com.google.common.base.Preconditions;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -24,7 +26,6 @@ import lombok.NoArgsConstructor;
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonProperty;
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonSubTypes;
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonTypeInfo;
-import org.apache.inlong.sort.protocol.transformation.FilterFunction;
 
 import java.util.List;
 import java.util.Map;

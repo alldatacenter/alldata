@@ -18,6 +18,7 @@
 package org.apache.inlong.manager.web.auth;
 
 import org.apache.inlong.manager.common.auth.InlongShiro;
+
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.realm.Realm;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
@@ -29,6 +30,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import javax.annotation.Resource;
+
 import java.util.Collection;
 
 /**

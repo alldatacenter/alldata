@@ -17,16 +17,17 @@
 
 package org.apache.inlong.manager.client.cli.validator;
 
+import org.apache.inlong.manager.common.enums.TenantUserTypeEnum;
+
 import com.beust.jcommander.IParameterValidator;
 import com.beust.jcommander.ParameterException;
-import org.apache.inlong.manager.common.enums.UserTypeEnum;
 
 public class UserTypeValidator implements IParameterValidator {
 
     @Override
     public void validate(String name, String value) throws ParameterException {
         try {
-            UserTypeEnum.parseName(value);
+            TenantUserTypeEnum.parseName(value);
         } catch (Exception e) {
             throw new ParameterException(e.getMessage());
         }

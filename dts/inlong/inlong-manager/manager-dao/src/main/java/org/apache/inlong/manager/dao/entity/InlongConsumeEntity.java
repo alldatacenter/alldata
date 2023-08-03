@@ -40,6 +40,7 @@ public class InlongConsumeEntity implements Serializable {
     private String inlongStreamId;
     private String extParams;
 
+    private String tenant;
     private String inCharges;
     private Integer status;
     private Integer previousStatus;

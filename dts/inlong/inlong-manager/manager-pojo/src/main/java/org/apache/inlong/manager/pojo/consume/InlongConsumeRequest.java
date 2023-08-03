@@ -17,6 +17,8 @@
 
 package org.apache.inlong.manager.pojo.consume;
 
+import org.apache.inlong.manager.common.validation.UpdateValidation;
+
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -24,7 +26,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import org.apache.inlong.manager.common.validation.UpdateValidation;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -63,6 +64,9 @@ public abstract class InlongConsumeRequest extends BaseInlongConsume {
 
     @ApiModelProperty(value = "The target inlong stream id of this consume, needed if the filterEnabled=1")
     private String inlongStreamId;
+
+    @ApiModelProperty(value = "Inlong tenant of consume", hidden = true)
+    private String tenant;
 
     @NotBlank(message = "inCharges cannot be null")
     @ApiModelProperty(value = "Name of responsible person, separated by commas")

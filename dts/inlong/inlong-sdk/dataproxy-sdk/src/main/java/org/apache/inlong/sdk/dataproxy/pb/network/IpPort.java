@@ -17,9 +17,9 @@
 
 package org.apache.inlong.sdk.dataproxy.pb.network;
 
-import java.net.InetSocketAddress;
-
 import org.apache.commons.lang3.math.NumberUtils;
+
+import java.net.InetSocketAddress;
 
 /**
  * IPPort

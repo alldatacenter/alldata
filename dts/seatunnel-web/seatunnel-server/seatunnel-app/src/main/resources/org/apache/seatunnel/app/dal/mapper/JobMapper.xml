@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+       http://www.apache.org/licenses/LICENSE-2.0
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.apache.seatunnel.app.dal.mapper.JobMapper">
+  <resultMap id="BaseResultMap" type="org.apache.seatunnel.app.dal.entity.JobDefinition">
+    <id column="id" jdbcType="BIGINT" property="id"/>
+    <result column="name" jdbcType="VARCHAR" property="name"/>
+    <result column="description" jdbcType="VARCHAR" property="description"/>
+    <result column="job_type" jdbcType="VARCHAR" property="jobType"/>
+    <result column="create_user_id" jdbcType="INTEGER" property="createUserId"/>
+    <result column="update_user_id" jdbcType="INTEGER" property="updateUserId"/>
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id
+    , `name`, `description`,`job_type`, create_user_id, update_user_id
+  </sql>
+  <insert id="insert" parameterType="org.apache.seatunnel.app.dal.entity.JobDefinition">
+    insert into `t_st_job_definition` (<include refid="Base_Column_List"/>)
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR},
+    #{description,jdbcType=VARCHAR},#{jobType,jdbcType=VARCHAR},
+    #{createUserId,jdbcType=BIGINT}, #{updateUserId,jdbcType=BIGINT})
+  </insert>
+  <select id="queryJobListPaging" resultType="org.apache.seatunnel.app.dal.entity.JobDefinition">
+    select
+    <include refid="Base_Column_List"/>, create_time, update_time
+    from t_st_job_definition
+    <where>
+    <if test="searchName!=null and searchName != ''">
+      and name LIKE concat('%', #{searchName}, '%')
+    </if>
+    </where>
+    order by update_time desc
+  </select>
+
+  <select id="queryJobListPagingWithJobMode" resultType="org.apache.seatunnel.app.dal.entity.JobDefinition">
+    select t.*
+    from t_st_job_definition t
+    join (select * from t_st_job_version where job_mode = #{jobMode}) v on t.id = v.job_id
+    <where>
+    <if test="searchName!=null and searchName != ''">
+      and name LIKE concat('%', #{searchName}, '%')
+    </if>
+    </where>
+    order by update_time desc
+  </select>
+
+  <select id="queryJobList" resultType="org.apache.seatunnel.app.dal.entity.JobDefinition">
+    select
+    <include refid="Base_Column_List"/>, create_time, update_time
+    from t_st_job_definition
+    <where>
+    <if test="searchName!=null and searchName != ''">
+      and name LIKE concat('%', #{searchName}, '%')
+    </if>
+    </where>
+    order by update_time desc
+  </select>
+
+  <select id="queryJob" resultType="org.apache.seatunnel.app.dal.entity.JobDefinition">
+    select
+    <include refid="Base_Column_List"/>, create_time, update_time
+    from t_st_job_definition
+    <where>
+      <if test="searchName!=null and searchName != ''">
+        and name LIKE concat('%', #{searchName}, '%')
+      </if>
+    </where>
+  </select>
+</mapper>

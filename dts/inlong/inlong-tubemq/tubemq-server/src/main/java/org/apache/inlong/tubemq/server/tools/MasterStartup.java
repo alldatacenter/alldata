@@ -20,6 +20,7 @@ package org.apache.inlong.tubemq.server.tools;
 import org.apache.inlong.tubemq.corebase.rv.ProcessResult;
 import org.apache.inlong.tubemq.server.master.MasterConfig;
 import org.apache.inlong.tubemq.server.master.TMaster;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

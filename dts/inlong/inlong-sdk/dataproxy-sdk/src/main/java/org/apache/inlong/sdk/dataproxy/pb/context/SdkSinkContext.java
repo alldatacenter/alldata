@@ -17,17 +17,6 @@
 
 package org.apache.inlong.sdk.dataproxy.pb.context;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-
-import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.math.NumberUtils;
-import org.apache.flume.Channel;
-import org.apache.flume.Context;
 import org.apache.inlong.sdk.commons.protocol.ProxySdk.INLONG_COMPRESSED_TYPE;
 import org.apache.inlong.sdk.dataproxy.pb.config.ProxyClusterConfigHolder;
 import org.apache.inlong.sdk.dataproxy.pb.config.pojo.ProxyClusterConfig;
@@ -37,8 +26,20 @@ import org.apache.inlong.sdk.dataproxy.pb.dispatch.DispatchManager;
 import org.apache.inlong.sdk.dataproxy.pb.dispatch.DispatchProfile;
 import org.apache.inlong.sdk.dataproxy.pb.metrics.SdkMetricItem;
 import org.apache.inlong.sdk.dataproxy.pb.network.IpPort;
+
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.math.NumberUtils;
+import org.apache.flume.Channel;
+import org.apache.flume.Context;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * 

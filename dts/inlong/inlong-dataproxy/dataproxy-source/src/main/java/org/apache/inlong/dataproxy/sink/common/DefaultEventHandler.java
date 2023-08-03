@@ -17,9 +17,9 @@
 
 package org.apache.inlong.dataproxy.sink.common;
 
-import com.google.protobuf.ByteString;
-
+import org.apache.inlong.common.enums.DataProxyMsgEncType;
 import org.apache.inlong.dataproxy.config.pojo.IdTopicConfig;
+import org.apache.inlong.dataproxy.consts.ConfigConstants;
 import org.apache.inlong.dataproxy.sink.mq.BatchPackProfile;
 import org.apache.inlong.sdk.commons.protocol.EventConstants;
 import org.apache.inlong.sdk.commons.protocol.ProxyEvent;
@@ -28,15 +28,14 @@ import org.apache.inlong.sdk.commons.protocol.ProxySdk.MapFieldEntry;
 import org.apache.inlong.sdk.commons.protocol.ProxySdk.MessageObj;
 import org.apache.inlong.sdk.commons.protocol.ProxySdk.MessageObjs;
 import org.apache.inlong.sdk.commons.utils.GzipUtils;
+
+import com.google.protobuf.ByteString;
 import org.xerial.snappy.Snappy;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import static org.apache.inlong.sdk.commons.protocol.EventConstants.HEADER_CACHE_VERSION_1;
-import static org.apache.inlong.sdk.commons.protocol.EventConstants.HEADER_KEY_VERSION;
 
 /**
  * DefaultEventHandler
@@ -52,7 +51,8 @@ public class DefaultEventHandler implements EventHandler {
             INLONG_COMPRESSED_TYPE compressType) {
         Map<String, String> headers = new HashMap<>();
         // version int32 protocol version, the value is 1
-        headers.put(HEADER_KEY_VERSION, HEADER_CACHE_VERSION_1);
+        headers.put(ConfigConstants.MSG_ENCODE_VER, DataProxyMsgEncType.MSG_ENCODE_TYPE_PB.getStrId());
+        headers.put(EventConstants.HEADER_KEY_VERSION, DataProxyMsgEncType.MSG_ENCODE_TYPE_PB.getStrId());
         // inlongGroupId string inlongGroupId
         headers.put(EventConstants.INLONG_GROUP_ID, profile.getInlongGroupId());
         // inlongStreamId string inlongStreamId

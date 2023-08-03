@@ -1,1 +1,0 @@
-select * from people FULL join max_avg_parition_by on people.id=max_avg_parition_by.id

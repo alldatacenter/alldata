@@ -17,10 +17,11 @@
 
 package org.apache.inlong.tubemq.server.broker.msgstore.disk;
 
-import java.io.IOException;
-import java.util.concurrent.atomic.AtomicReference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.io.IOException;
+import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * FileSegments management. Contains two types FileSegment: data and index.

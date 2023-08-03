@@ -45,7 +45,7 @@ class ProfileColumnsRun:
             for column_name, column_data_type in columns_metadata.items():
                 profiling_column_type = "unknown type"
                 try:
-                    if column_data_type in self.data_source.NUMERIC_TYPES_FOR_PROFILING:
+                    if column_data_type.startswith(tuple(self.data_source.NUMERIC_TYPES_FOR_PROFILING)):
                         profiling_column_type = "numeric"
                         numeric_column_profiler = NumericColumnProfiler(
                             data_source_scan=self.data_source_scan,
@@ -56,7 +56,7 @@ class ProfileColumnsRun:
                         )
                         result_column: ProfileColumnsResultColumn = numeric_column_profiler.profile()
                         result_table.append_column(result_column)
-                    elif column_data_type in self.data_source.TEXT_TYPES_FOR_PROFILING:
+                    elif column_data_type.startswith(tuple(self.data_source.TEXT_TYPES_FOR_PROFILING)):
                         profiling_column_type = "text"
                         text_column_profiler = TextColumnProfiler(
                             data_source_scan=self.data_source_scan,

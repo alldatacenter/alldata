@@ -17,8 +17,9 @@
 
 package org.apache.inlong.manager.dao.entity;
 
-import java.io.Serializable;
 import lombok.Data;
+
+import java.io.Serializable;
 
 /**
  * Agent system config info, including retry thread info, message queue info, etc.

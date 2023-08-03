@@ -38,6 +38,7 @@ public class WorkflowTaskEntity {
     private String processName;
     private String processDisplayName;
 
+    private String tenant;
     private String applicant;
     private String approvers;
     private String status;

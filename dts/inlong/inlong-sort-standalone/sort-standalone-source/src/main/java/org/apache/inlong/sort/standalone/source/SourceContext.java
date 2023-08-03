@@ -17,9 +17,10 @@
 
 package org.apache.inlong.sort.standalone.source;
 
-import org.apache.flume.Context;
 import org.apache.inlong.common.metric.MetricItem;
 import org.apache.inlong.sort.standalone.config.holder.CommonPropertiesHolder;
+
+import org.apache.flume.Context;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;

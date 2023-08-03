@@ -17,7 +17,6 @@
 
 package org.apache.inlong.manager.service.source.redis;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.inlong.manager.common.consts.SourceType;
 import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
 import org.apache.inlong.manager.common.exceptions.BusinessException;
@@ -30,6 +29,8 @@ import org.apache.inlong.manager.pojo.source.redis.RedisSourceDTO;
 import org.apache.inlong.manager.pojo.source.redis.RedisSourceRequest;
 import org.apache.inlong.manager.pojo.stream.StreamField;
 import org.apache.inlong.manager.service.source.AbstractSourceOperator;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -59,7 +60,7 @@ public class RedisSourceOperator extends AbstractSourceOperator {
         RedisSourceRequest sourceRequest = (RedisSourceRequest) request;
         CommonBeanUtils.copyProperties(sourceRequest, targetEntity, true);
         try {
-            RedisSourceDTO dto = RedisSourceDTO.getFromRequest(sourceRequest);
+            RedisSourceDTO dto = RedisSourceDTO.getFromRequest(sourceRequest, targetEntity.getExtParams());
             targetEntity.setExtParams(objectMapper.writeValueAsString(dto));
         } catch (Exception e) {
             throw new BusinessException(ErrorCodeEnum.SOURCE_INFO_INCORRECT,

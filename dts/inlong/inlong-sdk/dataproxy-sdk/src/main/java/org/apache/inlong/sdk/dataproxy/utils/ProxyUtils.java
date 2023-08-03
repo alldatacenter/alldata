@@ -20,6 +20,7 @@ package org.apache.inlong.sdk.dataproxy.utils;
 import org.apache.inlong.common.msg.AttributeConstants;
 import org.apache.inlong.sdk.dataproxy.ProxyClientConfig;
 import org.apache.inlong.sdk.dataproxy.network.Utils;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

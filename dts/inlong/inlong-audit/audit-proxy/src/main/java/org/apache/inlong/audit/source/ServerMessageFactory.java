@@ -23,12 +23,13 @@ import io.netty.channel.group.ChannelGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
 import io.netty.handler.timeout.ReadTimeoutHandler;
-import java.lang.reflect.Constructor;
-import java.util.concurrent.TimeUnit;
 import org.apache.flume.channel.ChannelProcessor;
 import org.apache.flume.source.AbstractSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.lang.reflect.Constructor;
+import java.util.concurrent.TimeUnit;
 
 public class ServerMessageFactory extends ChannelInitializer<SocketChannel> {
 
@@ -40,6 +41,7 @@ public class ServerMessageFactory extends ChannelInitializer<SocketChannel> {
     private ServiceDecoder serviceDecoder;
     private String messageHandlerName;
     private int maxConnections = Integer.MAX_VALUE;
+    private final long msgValidThresholdDays;
     private int maxMsgLength;
     private String name;
 
@@ -56,7 +58,7 @@ public class ServerMessageFactory extends ChannelInitializer<SocketChannel> {
      */
     public ServerMessageFactory(AbstractSource source,
             ChannelGroup allChannels, ServiceDecoder serviceDecoder,
-            String messageHandlerName, Integer maxMsgLength, Integer maxCons, String name) {
+            String messageHandlerName, Integer maxMsgLength, Integer maxCons, Long msgValidThresholdDays, String name) {
         this.source = source;
         this.processor = source.getChannelProcessor();
         this.allChannels = allChannels;
@@ -65,6 +67,7 @@ public class ServerMessageFactory extends ChannelInitializer<SocketChannel> {
         this.name = name;
         this.maxConnections = maxCons;
         this.maxMsgLength = maxMsgLength;
+        this.msgValidThresholdDays = msgValidThresholdDays;
     }
 
     @Override
@@ -82,10 +85,10 @@ public class ServerMessageFactory extends ChannelInitializer<SocketChannel> {
 
                 Constructor<?> ctor =
                         clazz.getConstructor(AbstractSource.class, ServiceDecoder.class,
-                                ChannelGroup.class, Integer.class);
+                                ChannelGroup.class, Integer.class, Long.class);
 
                 ChannelInboundHandlerAdapter messageHandler = (ChannelInboundHandlerAdapter) ctor
-                        .newInstance(source, serviceDecoder, allChannels, maxConnections);
+                        .newInstance(source, serviceDecoder, allChannels, maxConnections, msgValidThresholdDays);
 
                 ch.pipeline().addLast("messageHandler", messageHandler);
             } catch (Exception e) {

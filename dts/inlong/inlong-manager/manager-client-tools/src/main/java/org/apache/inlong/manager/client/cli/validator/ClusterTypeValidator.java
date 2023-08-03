@@ -17,9 +17,10 @@
 
 package org.apache.inlong.manager.client.cli.validator;
 
+import org.apache.inlong.manager.common.enums.ClusterType;
+
 import com.beust.jcommander.IParameterValidator;
 import com.beust.jcommander.ParameterException;
-import org.apache.inlong.manager.common.enums.ClusterType;
 
 /**
  * Class for cluster type verification.

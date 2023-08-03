@@ -17,9 +17,10 @@
 
 package org.apache.inlong.manager.web.aspect;
 
-import lombok.extern.slf4j.Slf4j;
 import org.apache.inlong.manager.service.operationlog.OperationLog;
 import org.apache.inlong.manager.service.operationlog.OperationLogRecorder;
+
+import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;

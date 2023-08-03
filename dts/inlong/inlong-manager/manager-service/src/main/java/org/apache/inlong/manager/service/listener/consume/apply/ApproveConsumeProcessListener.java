@@ -17,8 +17,6 @@
 
 package org.apache.inlong.manager.service.listener.consume.apply;
 
-import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.inlong.common.constant.MQType;
 import org.apache.inlong.manager.common.consts.InlongConstants;
 import org.apache.inlong.manager.common.enums.ClusterType;
@@ -45,6 +43,9 @@ import org.apache.inlong.manager.service.resource.queue.tubemq.TubeMQOperator;
 import org.apache.inlong.manager.workflow.WorkflowContext;
 import org.apache.inlong.manager.workflow.event.ListenerResult;
 import org.apache.inlong.manager.workflow.event.process.ProcessEventListener;
+
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.pulsar.client.admin.PulsarAdmin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -132,12 +133,12 @@ public class ApproveConsumeProcessListener implements ProcessEventListener {
         PulsarClusterInfo pulsarCluster = (PulsarClusterInfo) clusterInfo;
         try (PulsarAdmin pulsarAdmin = PulsarUtils.getPulsarAdmin(pulsarCluster)) {
             InlongPulsarDTO pulsarDTO = InlongPulsarDTO.getFromJson(groupEntity.getExtParams());
-            String tenant = pulsarDTO.getTenant();
+            String tenant = pulsarDTO.getPulsarTenant();
             if (StringUtils.isBlank(tenant)) {
-                tenant = pulsarCluster.getTenant();
+                tenant = pulsarCluster.getPulsarTenant();
             }
             PulsarTopicInfo topicMessage = new PulsarTopicInfo();
-            topicMessage.setTenant(tenant);
+            topicMessage.setPulsarTenant(tenant);
             topicMessage.setNamespace(mqResource);
 
             List<String> topics = Arrays.asList(entity.getTopic().split(InlongConstants.COMMA));

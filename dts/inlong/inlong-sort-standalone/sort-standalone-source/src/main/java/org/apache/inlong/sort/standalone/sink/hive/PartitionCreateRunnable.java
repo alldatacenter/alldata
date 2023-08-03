@@ -17,7 +17,14 @@
 
 package org.apache.inlong.sort.standalone.sink.hive;
 
-import static org.apache.inlong.sort.standalone.sink.hive.HiveSinkContext.MINUTE_MS;
+import org.apache.inlong.sort.standalone.utils.InlongLoggerFactory;
+
+import org.apache.hadoop.fs.FSDataOutputStream;
+import org.apache.hadoop.fs.FileStatus;
+import org.apache.hadoop.fs.FileSystem;
+import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.hdfs.DistributedFileSystem;
+import org.slf4j.Logger;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -26,13 +33,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.hadoop.fs.FSDataOutputStream;
-import org.apache.hadoop.fs.FileStatus;
-import org.apache.hadoop.fs.FileSystem;
-import org.apache.hadoop.fs.Path;
-import org.apache.hadoop.hdfs.DistributedFileSystem;
-import org.apache.inlong.sort.standalone.utils.InlongLoggerFactory;
-import org.slf4j.Logger;
+import static org.apache.inlong.sort.standalone.sink.hive.HiveSinkContext.MINUTE_MS;
 
 /**
  * 

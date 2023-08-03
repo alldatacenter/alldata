@@ -17,9 +17,9 @@
 
 package org.apache.inlong.sort.standalone.sink.hive;
 
-import static org.apache.inlong.sort.standalone.sink.hive.HdfsIdConfig.SEPARATOR_LENGTH;
-
 import org.apache.inlong.sort.standalone.channel.ProfileEvent;
+
+import static org.apache.inlong.sort.standalone.sink.hive.HdfsIdConfig.SEPARATOR_LENGTH;
 
 /**
  * 

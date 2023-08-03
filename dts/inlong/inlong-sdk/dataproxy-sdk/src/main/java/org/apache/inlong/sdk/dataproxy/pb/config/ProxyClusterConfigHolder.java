@@ -17,6 +17,17 @@
 
 package org.apache.inlong.sdk.dataproxy.pb.config;
 
+import org.apache.inlong.sdk.commons.protocol.InlongId;
+import org.apache.inlong.sdk.dataproxy.pb.config.pojo.InlongStreamConfig;
+import org.apache.inlong.sdk.dataproxy.pb.config.pojo.ProxyClusterConfig;
+import org.apache.inlong.sdk.dataproxy.pb.config.pojo.ProxyClusterResult;
+import org.apache.inlong.sdk.dataproxy.pb.config.pojo.ProxyInfo;
+
+import org.apache.commons.lang3.ClassUtils;
+import org.apache.flume.Context;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -25,16 +36,6 @@ import java.util.Map.Entry;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.ConcurrentHashMap;
-
-import org.apache.commons.lang3.ClassUtils;
-import org.apache.flume.Context;
-import org.apache.inlong.sdk.commons.protocol.InlongId;
-import org.apache.inlong.sdk.dataproxy.pb.config.pojo.InlongStreamConfig;
-import org.apache.inlong.sdk.dataproxy.pb.config.pojo.ProxyClusterConfig;
-import org.apache.inlong.sdk.dataproxy.pb.config.pojo.ProxyClusterResult;
-import org.apache.inlong.sdk.dataproxy.pb.config.pojo.ProxyInfo;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * ProxyClusterConfigHolder

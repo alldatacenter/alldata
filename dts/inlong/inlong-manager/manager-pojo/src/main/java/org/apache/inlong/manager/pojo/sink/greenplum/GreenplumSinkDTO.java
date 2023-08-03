@@ -17,16 +17,20 @@
 
 package org.apache.inlong.manager.pojo.sink.greenplum;
 
+import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
+import org.apache.inlong.manager.common.exceptions.BusinessException;
+import org.apache.inlong.manager.common.util.CommonBeanUtils;
+import org.apache.inlong.manager.common.util.JsonUtils;
+
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
-import org.apache.inlong.manager.common.exceptions.BusinessException;
-import org.apache.inlong.manager.common.util.JsonUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.validation.constraints.NotNull;
+
 import java.util.List;
 import java.util.Map;
 
@@ -60,15 +64,11 @@ public class GreenplumSinkDTO {
     /**
      * Get the dto instance from the request
      */
-    public static GreenplumSinkDTO getFromRequest(GreenplumSinkRequest request) {
-        return GreenplumSinkDTO.builder()
-                .jdbcUrl(request.getJdbcUrl())
-                .username(request.getUsername())
-                .password(request.getPassword())
-                .primaryKey(request.getPrimaryKey())
-                .tableName(request.getTableName())
-                .properties(request.getProperties())
-                .build();
+    public static GreenplumSinkDTO getFromRequest(GreenplumSinkRequest request, String extParams) {
+        GreenplumSinkDTO dto = StringUtils.isNotBlank(extParams)
+                ? GreenplumSinkDTO.getFromJson(extParams)
+                : new GreenplumSinkDTO();
+        return CommonBeanUtils.copyProperties(request, dto, true);
     }
 
     /**

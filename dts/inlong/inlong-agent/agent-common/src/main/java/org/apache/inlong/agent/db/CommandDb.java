@@ -17,14 +17,14 @@
 
 package org.apache.inlong.agent.db;
 
-import static org.apache.inlong.agent.constant.AgentConstants.DEFAULT_JOB_VERSION;
-import static org.apache.inlong.agent.constant.AgentConstants.JOB_VERSION;
-
 import org.apache.inlong.agent.conf.TriggerProfile;
 import org.apache.inlong.common.constant.Constants;
 import org.apache.inlong.common.db.CommandEntity;
 
 import java.util.List;
+
+import static org.apache.inlong.agent.constant.AgentConstants.DEFAULT_JOB_VERSION;
+import static org.apache.inlong.agent.constant.AgentConstants.JOB_VERSION;
 
 /**
  * Command for database

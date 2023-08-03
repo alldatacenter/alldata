@@ -17,9 +17,6 @@
 
 package org.apache.inlong.tubemq.client.consumer;
 
-import java.util.List;
-import java.util.Map;
-import java.util.TreeSet;
 import org.apache.inlong.tubemq.client.config.ConsumerConfig;
 import org.apache.inlong.tubemq.client.exception.TubeClientException;
 import org.apache.inlong.tubemq.client.factory.InnerSessionFactory;
@@ -31,6 +28,10 @@ import org.apache.inlong.tubemq.corebase.protobuf.generated.ClientBroker;
 import org.apache.inlong.tubemq.corebase.utils.AddressUtils;
 import org.apache.inlong.tubemq.corebase.utils.TStringUtils;
 import org.apache.inlong.tubemq.corebase.utils.ThreadUtils;
+
+import java.util.List;
+import java.util.Map;
+import java.util.TreeSet;
 
 /**
  * An implementation of PullMessageConsumer

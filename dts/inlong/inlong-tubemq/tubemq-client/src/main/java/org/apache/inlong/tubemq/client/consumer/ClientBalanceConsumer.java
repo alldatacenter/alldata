@@ -17,9 +17,6 @@
 
 package org.apache.inlong.tubemq.client.consumer;
 
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeSet;
 import org.apache.inlong.tubemq.client.common.ConfirmResult;
 import org.apache.inlong.tubemq.client.common.ConsumeResult;
 import org.apache.inlong.tubemq.client.common.QueryMetaResult;
@@ -27,6 +24,10 @@ import org.apache.inlong.tubemq.client.config.ConsumerConfig;
 import org.apache.inlong.tubemq.client.exception.TubeClientException;
 import org.apache.inlong.tubemq.corebase.Shutdownable;
 import org.apache.inlong.tubemq.corebase.rv.ProcessResult;
+
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
 
 public interface ClientBalanceConsumer extends Shutdownable {
 

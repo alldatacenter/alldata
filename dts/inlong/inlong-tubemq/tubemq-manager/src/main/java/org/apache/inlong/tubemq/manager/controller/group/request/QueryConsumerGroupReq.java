@@ -17,11 +17,12 @@
 
 package org.apache.inlong.tubemq.manager.controller.group.request;
 
+import org.apache.inlong.tubemq.manager.controller.node.request.BaseReq;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.inlong.tubemq.manager.controller.node.request.BaseReq;
 
 /**
  * query consumer group

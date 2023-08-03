@@ -17,13 +17,13 @@
 
 package org.apache.inlong.sort.formats.inlongmsg;
 
+import org.apache.inlong.common.msg.InLongMsg;
+
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-
-import org.apache.inlong.common.msg.InLongMsg;
 
 /**
  * The head deserialized from {@link InLongMsg}.

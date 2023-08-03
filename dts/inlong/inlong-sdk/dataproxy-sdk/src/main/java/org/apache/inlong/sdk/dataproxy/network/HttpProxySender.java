@@ -17,23 +17,25 @@
 
 package org.apache.inlong.sdk.dataproxy.network;
 
+import org.apache.inlong.common.constant.ProtocolType;
+import org.apache.inlong.sdk.dataproxy.ProxyClientConfig;
+import org.apache.inlong.sdk.dataproxy.SendMessageCallback;
+import org.apache.inlong.sdk.dataproxy.SendResult;
+import org.apache.inlong.sdk.dataproxy.config.HostInfo;
+import org.apache.inlong.sdk.dataproxy.config.ProxyConfigEntry;
+import org.apache.inlong.sdk.dataproxy.config.ProxyConfigManager;
+import org.apache.inlong.sdk.dataproxy.http.InternalHttpSender;
+import org.apache.inlong.sdk.dataproxy.utils.ConcurrentHashSet;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
-
-import org.apache.inlong.sdk.dataproxy.ProxyClientConfig;
-import org.apache.inlong.sdk.dataproxy.SendMessageCallback;
-import org.apache.inlong.sdk.dataproxy.SendResult;
-import org.apache.inlong.sdk.dataproxy.config.ProxyConfigEntry;
-import org.apache.inlong.sdk.dataproxy.config.ProxyConfigManager;
-import org.apache.inlong.sdk.dataproxy.config.HostInfo;
-import org.apache.inlong.sdk.dataproxy.http.InternalHttpSender;
-import org.apache.inlong.sdk.dataproxy.utils.ConcurrentHashSet;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * http sender
@@ -53,6 +55,11 @@ public class HttpProxySender extends Thread {
     private final LinkedBlockingQueue<HttpMessage> messageCache;
 
     public HttpProxySender(ProxyClientConfig configure) throws Exception {
+        // correct ProtocolType settings
+        if (!ProtocolType.HTTP.equals(configure.getProtocolType())) {
+            configure.setProtocolType(ProtocolType.HTTP);
+        }
+        logger.info("Initial http sender, configure is {}", configure);
         this.proxyClientConfig = configure;
         initTDMClientAndRequest(configure);
         this.messageCache = new LinkedBlockingQueue<>(configure.getTotalAsyncCallbackSize());

@@ -19,6 +19,7 @@ package org.apache.inlong.common.msg;
 
 import com.google.common.base.Joiner;
 import com.google.common.base.Splitter;
+import org.xerial.snappy.Snappy;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -27,8 +28,6 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
-
-import org.xerial.snappy.Snappy;
 
 public class InLongMsg {
 

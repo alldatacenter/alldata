@@ -17,12 +17,13 @@
 
 package org.apache.inlong.sdk.dataproxy.pb.config;
 
-import java.util.List;
-import java.util.Map;
-
-import org.apache.flume.conf.Configurable;
 import org.apache.inlong.sdk.dataproxy.pb.config.pojo.ProxyClusterResult;
 import org.apache.inlong.sdk.dataproxy.pb.config.pojo.ProxyInfo;
+
+import org.apache.flume.conf.Configurable;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * 

@@ -17,10 +17,11 @@
 
 package org.apache.inlong.manager.client.api;
 
+import org.apache.inlong.manager.common.auth.Authentication;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.apache.inlong.manager.common.auth.Authentication;
 
 import java.io.Serializable;
 import java.util.concurrent.TimeUnit;
@@ -52,4 +53,6 @@ public class ClientConfiguration implements Serializable {
     private boolean isUseTls = false;
 
     private boolean retryOnConnectionFailure = true;
+
+    private String tenant = "public";
 }

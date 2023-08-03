@@ -227,7 +227,6 @@ class AnomalyDetector:
                     "greaterThanOrEqual": results_dict["critical_greater_than_or_equal"],
                     "lessThanOrEqual": results_dict["critical_lower_than_or_equal"],
                 },
-                "anomalyProbability": results_dict["anomaly_probability"],
                 "anomalyPredictedValue": results_dict["yhat"],
                 "anomalyErrorSeverity": freq_detection_result.error_severity,
                 "anomalyErrorCode": freq_detection_result.error_code,

@@ -23,8 +23,9 @@
     <parent>
         <groupId>org.apache.inlong</groupId>
         <artifactId>inlong</artifactId>
-        <version>1.7.0</version>
+        <version>1.8.0</version>
     </parent>
+
     <artifactId>inlong-agent</artifactId>
     <packaging>pom</packaging>
     <name>Apache InLong - Agent</name>
@@ -36,4 +37,9 @@
         <module>agent-release</module>
         <module>agent-docker</module>
     </modules>
+
+    <properties>
+        <inlong.root.dir>${project.parent.basedir}</inlong.root.dir>
+    </properties>
+
 </project>

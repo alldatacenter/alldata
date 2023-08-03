@@ -17,10 +17,6 @@
 
 package org.apache.inlong.tubemq.server.master.web.action.screen.cluster;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import javax.servlet.http.HttpServletRequest;
 import org.apache.inlong.tubemq.corebase.cluster.BrokerInfo;
 import org.apache.inlong.tubemq.server.master.TMaster;
 import org.apache.inlong.tubemq.server.master.metamanage.MetaDataService;
@@ -28,6 +24,12 @@ import org.apache.inlong.tubemq.server.master.web.common.ClusterQueryResult;
 import org.apache.inlong.tubemq.server.master.web.model.ClusterGroupVO;
 import org.apache.inlong.tubemq.server.master.web.simplemvc.Action;
 import org.apache.inlong.tubemq.server.master.web.simplemvc.RequestContext;
+
+import javax.servlet.http.HttpServletRequest;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 
 public class ClusterManager implements Action {
 

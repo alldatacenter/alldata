@@ -17,6 +17,11 @@
 
 package org.apache.inlong.manager.pojo.cluster.tubemq;
 
+import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
+import org.apache.inlong.manager.common.exceptions.BusinessException;
+import org.apache.inlong.manager.common.util.CommonBeanUtils;
+import org.apache.inlong.manager.common.util.JsonUtils;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -24,9 +29,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
-import org.apache.inlong.manager.common.exceptions.BusinessException;
-import org.apache.inlong.manager.common.util.JsonUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -50,6 +53,16 @@ public class TubeClusterDTO {
 
     @JsonProperty("master-host-port-list")
     private String masterIpPortList;
+
+    /**
+     * Get the dto instance from the request
+     */
+    public static TubeClusterDTO getFromRequest(TubeClusterRequest request, String extParams) {
+        TubeClusterDTO dto = StringUtils.isNotBlank(extParams)
+                ? TubeClusterDTO.getFromJson(extParams)
+                : new TubeClusterDTO();
+        return CommonBeanUtils.copyProperties(request, dto, true);
+    }
 
     /**
      * Get the dto instance from the JSON string.

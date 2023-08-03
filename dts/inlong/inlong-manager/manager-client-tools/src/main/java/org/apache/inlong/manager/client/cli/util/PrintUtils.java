@@ -17,10 +17,11 @@
 
 package org.apache.inlong.manager.client.cli.util;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.inlong.manager.common.enums.SimpleGroupStatus;
 import org.apache.inlong.manager.common.enums.SimpleSourceStatus;
 import org.apache.inlong.manager.common.util.JsonUtils;
+
+import org.apache.commons.lang3.StringUtils;
 
 import java.lang.reflect.Field;
 import java.text.SimpleDateFormat;

@@ -17,10 +17,10 @@
 
 package org.apache.inlong.sdk.dataproxy.network;
 
+import org.apache.inlong.sdk.dataproxy.SendMessageCallback;
+
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-
-import org.apache.inlong.sdk.dataproxy.SendMessageCallback;
 
 /**
  * http message for cache.

@@ -19,9 +19,11 @@ package org.apache.inlong.manager.service.core.impl;
 
 import org.apache.inlong.manager.pojo.audit.AuditInfo;
 import org.apache.inlong.manager.pojo.audit.AuditRequest;
+import org.apache.inlong.manager.pojo.audit.AuditSourceRequest;
 import org.apache.inlong.manager.pojo.audit.AuditVO;
 import org.apache.inlong.manager.service.ServiceBaseTest;
 import org.apache.inlong.manager.service.core.AuditService;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,17 +42,18 @@ class AuditServiceTest extends ServiceBaseTest {
     private AuditService auditService;
 
     @Test
-    void testQueryFromMySQL() throws IOException {
+    void testQueryFromMySQL() {
         AuditRequest request = new AuditRequest();
         request.setAuditIds(Arrays.asList("3", "4"));
         request.setInlongGroupId("g1");
         request.setInlongStreamId("s1");
-        request.setDt("2022-01-01");
+        request.setStartDate("2022-01-01");
+        request.setEndDate("2022-01-01");
         List<AuditVO> result = new ArrayList<>();
         AuditVO auditVO = new AuditVO();
         auditVO.setAuditId("3");
-        auditVO.setAuditSet(Arrays.asList(new AuditInfo("2022-01-01 00:00:00", 123L),
-                new AuditInfo("2022-01-01 00:01:00", 124L)));
+        auditVO.setAuditSet(Arrays.asList(new AuditInfo("2022-01-01 00:00:00", 123L, 12L),
+                new AuditInfo("2022-01-01 00:01:00", 124L, 12L)));
         result.add(auditVO);
         Assertions.assertNotNull(result);
         // close real test for testQueryFromMySQL due to date_format function not support in h2
@@ -69,7 +72,34 @@ class AuditServiceTest extends ServiceBaseTest {
         request.setAuditIds(Arrays.asList("3", "4"));
         request.setInlongGroupId("g1");
         request.setInlongStreamId("s1");
-        request.setDt("2022-01-01");
+        request.setStartDate("2022-01-01");
+        request.setEndDate("2022-01-01");
         Assertions.assertNotNull(auditService.listByCondition(request));
     }
+
+    @Test
+    void testUpdateAuditSource() {
+        AuditSourceRequest request1 = AuditSourceRequest.builder()
+                .name("source_ch_1")
+                .type("CLICKHOUSE")
+                .url("jdbc:clickhouse://127.0.0.1:8123/db1")
+                .offlineUrl(null)
+                .enableAuth(0)
+                .build();
+        auditService.updateAuditSource(request1, GLOBAL_OPERATOR);
+
+        AuditSourceRequest request2 = AuditSourceRequest.builder()
+                .name("source_ch_2")
+                .type("CLICKHOUSE")
+                .url("jdbc:clickhouse://127.0.0.1:8123/db2")
+                .offlineUrl("jdbc:clickhouse://127.0.0.1:8123/db1")
+                .enableAuth(1)
+                .username("default")
+                .token("123456")
+                .build();
+        auditService.updateAuditSource(request2, GLOBAL_OPERATOR);
+
+        Assertions.assertEquals(auditService.getAuditSource().getUrl(), request2.getUrl());
+    }
+
 }

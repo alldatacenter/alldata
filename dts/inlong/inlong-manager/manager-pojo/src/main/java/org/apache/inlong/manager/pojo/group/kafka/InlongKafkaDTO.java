@@ -17,16 +17,18 @@
 
 package org.apache.inlong.manager.pojo.group.kafka;
 
-import io.swagger.annotations.ApiModel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
 import org.apache.inlong.manager.common.exceptions.BusinessException;
 import org.apache.inlong.manager.common.util.CommonBeanUtils;
 import org.apache.inlong.manager.common.util.JsonUtils;
 import org.apache.inlong.manager.pojo.group.BaseInlongGroup;
+
+import io.swagger.annotations.ApiModel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.validation.constraints.NotNull;
 
@@ -48,8 +50,11 @@ public class InlongKafkaDTO extends BaseInlongGroup {
     /**
      * Get the dto instance from the request
      */
-    public static InlongKafkaDTO getFromRequest(InlongKafkaRequest request) {
-        return CommonBeanUtils.copyProperties(request, InlongKafkaDTO::new, true);
+    public static InlongKafkaDTO getFromRequest(InlongKafkaRequest request, String extParams) {
+        InlongKafkaDTO dto = StringUtils.isNotBlank(extParams)
+                ? InlongKafkaDTO.getFromJson(extParams)
+                : new InlongKafkaDTO();
+        return CommonBeanUtils.copyProperties(request, dto, true);
     }
 
     /**
