@@ -25,23 +25,18 @@ import java.util.Map;
 /**
  * Constants of source type.
  */
-public class SourceType {
+public class SourceType extends StreamType {
 
     public static final String AUTO_PUSH = "AUTO_PUSH";
     public static final String TUBEMQ = "TUBEMQ";
     public static final String PULSAR = "PULSAR";
-    public static final String KAFKA = "KAFKA";
 
     public static final String FILE = "FILE";
     public static final String MYSQL_SQL = "MYSQL_SQL";
     public static final String MYSQL_BINLOG = "MYSQL_BINLOG";
-    public static final String POSTGRESQL = "POSTGRESQL";
-    public static final String ORACLE = "ORACLE";
-    public static final String SQLSERVER = "SQLSERVER";
     public static final String MONGODB = "MONGODB";
     public static final String REDIS = "REDIS";
     public static final String MQTT = "MQTT";
-    public static final String HUDI = "HUDI";
 
     public static final Map<String, TaskTypeEnum> SOURCE_TASK_MAP = new HashMap<String, TaskTypeEnum>() {
 

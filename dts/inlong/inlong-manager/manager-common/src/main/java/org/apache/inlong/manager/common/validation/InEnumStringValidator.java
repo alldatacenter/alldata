@@ -17,11 +17,13 @@
 
 package org.apache.inlong.manager.common.validation;
 
-import com.google.common.base.Joiner;
 import org.apache.inlong.manager.common.enums.StringListValuable;
+
+import com.google.common.base.Joiner;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
+
 import java.util.Collections;
 import java.util.List;
 

@@ -21,6 +21,7 @@ import org.apache.inlong.sort.tests.utils.FlinkContainerTestEnv;
 import org.apache.inlong.sort.tests.utils.JdbcProxy;
 import org.apache.inlong.sort.tests.utils.PlaceholderResolver;
 import org.apache.inlong.sort.tests.utils.TestUtils;
+
 import org.junit.AfterClass;
 import org.junit.ClassRule;
 import org.junit.Test;

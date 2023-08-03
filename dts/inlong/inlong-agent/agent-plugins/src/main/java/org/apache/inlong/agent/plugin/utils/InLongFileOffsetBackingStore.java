@@ -17,9 +17,10 @@
 
 package org.apache.inlong.agent.plugin.utils;
 
-import io.debezium.embedded.EmbeddedEngine;
 import org.apache.inlong.agent.pojo.DebeziumOffset;
 import org.apache.inlong.agent.utils.DebeziumOffsetSerializer;
+
+import io.debezium.embedded.EmbeddedEngine;
 import org.apache.kafka.connect.errors.ConnectException;
 import org.apache.kafka.connect.json.JsonConverter;
 import org.apache.kafka.connect.runtime.WorkerConfig;

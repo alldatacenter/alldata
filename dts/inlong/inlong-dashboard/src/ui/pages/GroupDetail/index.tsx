@@ -27,6 +27,8 @@ import request from '@/core/utils/request';
 import Info from './Info';
 import DataStream from './DataStream';
 import Audit from './Audit';
+import ResourceInfo from './ResourceInfo';
+import Delay from './Delay';
 
 const Comp: React.FC = () => {
   const { t } = useTranslation();
@@ -74,6 +76,18 @@ const Comp: React.FC = () => {
           label: t('pages.GroupDetail.Audit'),
           value: 'audit',
           content: Audit,
+          hidden: isReadonly || isCreate,
+        },
+        {
+          label: t('pages.GroupDetail.Resource'),
+          value: 'ResourceInfo',
+          content: ResourceInfo,
+          hidden: isReadonly || isCreate,
+        },
+        {
+          label: t('pages.GroupDetail.Delay'),
+          value: 'Delay',
+          content: Delay,
           hidden: isReadonly || isCreate,
         },
       ].filter(item => !item.hidden),

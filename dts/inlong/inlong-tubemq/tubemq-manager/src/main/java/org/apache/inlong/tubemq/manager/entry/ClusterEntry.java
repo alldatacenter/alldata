@@ -17,13 +17,14 @@
 
 package org.apache.inlong.tubemq.manager.entry;
 
-import java.util.Date;
+import lombok.Data;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
-import lombok.Data;
+import java.util.Date;
 
 /**
  * cluster machine for tube cluster. broker/master/standby

@@ -25,16 +25,16 @@ import lombok.Getter;
 public enum GroupMode {
 
     /**
-     * Standard group init with all components in Inlong Cluster
+     * Standard mode(include Data Ingestion and Synchronization): group init with all components in InLong Cluster
      * StreamSource -> Agent/SDK -> DataProxy -> MQ Cache -> Sort -> StreamSink
      */
     STANDARD("standard"),
 
     /**
-     * Lightweight group init with sort in Inlong Cluster
+     * DataSync mode(only Data Synchronization): group init only with sort in InLong Cluster
      * StreamSource -> Sort -> StreamSink
      */
-    LIGHTWEIGHT("lightweight");
+    DATASYNC("datasync");
 
     @Getter
     private final String mode;

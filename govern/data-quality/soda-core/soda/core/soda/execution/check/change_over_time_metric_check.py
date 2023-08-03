@@ -1,8 +1,8 @@
 from typing import Dict, Optional
 
+from soda.cloud.historic_descriptor import HistoricChangeOverTimeDescriptor
 from soda.execution.check.metric_check import MetricCheck
 from soda.execution.metric.metric import Metric
-from soda.soda_cloud.historic_descriptor import HistoricChangeOverTimeDescriptor
 from soda.sodacl.metric_check_cfg import MetricCheckCfg
 
 KEY_HISTORIC_METRIC_AGGREGATE = "historic_metric_aggregate"
@@ -22,7 +22,6 @@ class ChangeOverTimeMetricCheck(MetricCheck):
             partition=partition,
             column=column,
         )
-
         metric_check_cfg: MetricCheckCfg = self.check_cfg
         metric_name = metric_check_cfg.metric_name
         metric = self.metrics[metric_name]

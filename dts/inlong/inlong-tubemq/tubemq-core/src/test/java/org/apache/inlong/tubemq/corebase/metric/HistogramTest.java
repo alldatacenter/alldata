@@ -17,12 +17,14 @@
 
 package org.apache.inlong.tubemq.corebase.metric;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
 import org.apache.inlong.tubemq.corebase.metric.impl.ESTHistogram;
 import org.apache.inlong.tubemq.corebase.metric.impl.SimpleHistogram;
+
 import org.junit.Assert;
 import org.junit.Test;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class HistogramTest {
 

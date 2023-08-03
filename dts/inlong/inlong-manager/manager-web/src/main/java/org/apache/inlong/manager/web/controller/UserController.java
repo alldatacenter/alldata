@@ -17,15 +17,16 @@
 
 package org.apache.inlong.manager.web.controller;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 import org.apache.inlong.manager.pojo.common.PageResult;
 import org.apache.inlong.manager.pojo.common.Response;
+import org.apache.inlong.manager.pojo.user.LoginUserUtils;
 import org.apache.inlong.manager.pojo.user.UserInfo;
 import org.apache.inlong.manager.pojo.user.UserRequest;
 import org.apache.inlong.manager.pojo.user.UserRoleCode;
-import org.apache.inlong.manager.service.user.LoginUserUtils;
 import org.apache.inlong.manager.service.user.UserService;
+
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -58,21 +59,21 @@ public class UserController {
 
     @PostMapping("/user/register")
     @ApiOperation(value = "Register user")
-    @RequiresRoles(value = UserRoleCode.ADMIN)
+    @RequiresRoles(value = UserRoleCode.TENANT_ADMIN)
     public Response<Integer> register(@Validated @RequestBody UserRequest userInfo) {
         String currentUser = LoginUserUtils.getLoginUser().getName();
         return Response.success(userService.save(userInfo, currentUser));
     }
 
     @GetMapping("/user/get/{id}")
-    @ApiOperation(value = "Get user info by user id")
+    @ApiOperation(value = "Get user by ID")
     public Response<UserInfo> getById(@PathVariable Integer id) {
         String currentUser = LoginUserUtils.getLoginUser().getName();
         return Response.success(userService.getById(id, currentUser));
     }
 
     @GetMapping("/user/getByName/{name}")
-    @ApiOperation(value = "Get user info by username")
+    @ApiOperation(value = "Get user by name")
     public Response<UserInfo> getByName(@PathVariable String name) {
         return Response.success(userService.getByName(name));
     }
@@ -92,7 +93,7 @@ public class UserController {
 
     @DeleteMapping("/user/delete")
     @ApiOperation(value = "Delete user by id")
-    @RequiresRoles(value = UserRoleCode.ADMIN)
+    @RequiresRoles(value = UserRoleCode.TENANT_ADMIN)
     public Response<Boolean> delete(@RequestParam("id") Integer id) {
         String currentUser = LoginUserUtils.getLoginUser().getName();
         return Response.success(userService.delete(id, currentUser));

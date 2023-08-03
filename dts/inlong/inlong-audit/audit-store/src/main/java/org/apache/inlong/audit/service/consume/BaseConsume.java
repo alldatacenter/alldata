@@ -17,12 +17,12 @@
 
 package org.apache.inlong.audit.service.consume;
 
-import com.google.gson.Gson;
-
 import org.apache.inlong.audit.config.MessageQueueConfig;
 import org.apache.inlong.audit.config.StoreConfig;
 import org.apache.inlong.audit.protocol.AuditData;
 import org.apache.inlong.audit.service.InsertData;
+
+import com.google.gson.Gson;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

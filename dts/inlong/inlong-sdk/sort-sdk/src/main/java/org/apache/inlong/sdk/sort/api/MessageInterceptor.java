@@ -17,8 +17,9 @@
 
 package org.apache.inlong.sdk.sort.api;
 
-import java.io.Serializable;
 import org.apache.inlong.sdk.sort.entity.MessageRecord;
+
+import java.io.Serializable;
 
 public interface MessageInterceptor extends Serializable {
 

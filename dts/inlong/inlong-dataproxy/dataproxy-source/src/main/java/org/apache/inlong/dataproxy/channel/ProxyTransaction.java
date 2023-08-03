@@ -17,9 +17,10 @@
 
 package org.apache.inlong.dataproxy.channel;
 
-import org.apache.flume.Transaction;
 import org.apache.inlong.dataproxy.utils.BufferQueue;
 import org.apache.inlong.sdk.commons.protocol.ProxyEvent;
+
+import org.apache.flume.Transaction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

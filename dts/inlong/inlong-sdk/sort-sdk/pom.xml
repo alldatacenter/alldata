@@ -23,12 +23,16 @@
     <parent>
         <groupId>org.apache.inlong</groupId>
         <artifactId>inlong-sdk</artifactId>
-        <version>1.7.0</version>
+        <version>1.8.0</version>
     </parent>
     <artifactId>sort-sdk</artifactId>
-    <version>1.7.0</version>
+    <version>1.8.0</version>
 
     <name>Apache InLong - Sort SDK</name>
+
+    <properties>
+        <inlong.root.dir>${project.parent.parent.basedir}</inlong.root.dir>
+    </properties>
 
     <dependencies>
         <dependency>

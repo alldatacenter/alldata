@@ -17,11 +17,13 @@
 
 package org.apache.inlong.sort.formats.common;
 
-import java.io.IOException;
-import javax.annotation.Nonnull;
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.databind.DeserializationFeature;
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.databind.SerializationFeature;
+
+import javax.annotation.Nonnull;
+
+import java.io.IOException;
 
 /**
  * A utility class to marshall and demarshall format information.

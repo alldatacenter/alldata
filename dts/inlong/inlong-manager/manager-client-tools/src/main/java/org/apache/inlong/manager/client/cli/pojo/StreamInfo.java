@@ -17,10 +17,11 @@
 
 package org.apache.inlong.manager.client.cli.pojo;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.Data;
 import org.apache.inlong.manager.client.cli.util.ParseStatus;
 import org.apache.inlong.manager.common.enums.SimpleGroupStatus;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Data;
 
 import java.util.Date;
 

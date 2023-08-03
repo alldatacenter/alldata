@@ -19,19 +19,19 @@
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
     <modelVersion>4.0.0</modelVersion>
-
     <parent>
         <groupId>org.apache.inlong</groupId>
         <artifactId>sort-formats</artifactId>
-        <version>1.7.0</version>
-        <relativePath>..</relativePath>
+        <version>1.8.0</version>
     </parent>
 
     <artifactId>sort-format-csv</artifactId>
-    <packaging>jar</packaging>
     <name>Apache InLong - Sort Format-csv</name>
+
+    <properties>
+        <inlong.root.dir>${project.parent.parent.parent.basedir}</inlong.root.dir>
+    </properties>
 
     <dependencies>
         <dependency>
@@ -86,6 +86,7 @@
         </dependency>
 
     </dependencies>
+
     <profiles>
         <!-- Create SQL Client uber jars by default -->
         <profile>

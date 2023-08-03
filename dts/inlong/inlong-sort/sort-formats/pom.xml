@@ -19,14 +19,11 @@
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
     <modelVersion>4.0.0</modelVersion>
-
     <parent>
         <groupId>org.apache.inlong</groupId>
         <artifactId>inlong-sort</artifactId>
-        <version>1.7.0</version>
-        <relativePath>../pom.xml</relativePath>
+        <version>1.8.0</version>
     </parent>
 
     <artifactId>sort-formats</artifactId>
@@ -40,11 +37,11 @@
         <module>format-kv</module>
         <module>format-inlongmsg-base</module>
         <module>format-inlongmsg-csv</module>
-        <module>format-json</module>
         <module>format-inlongmsg-pb</module>
     </modules>
 
     <properties>
+        <inlong.root.dir>${project.parent.parent.basedir}</inlong.root.dir>
         <flink.forkCount>1C</flink.forkCount>
         <flink.reuseForks>true</flink.reuseForks>
         <log4j.configurationfile>log4j2-test.properties</log4j.configurationfile>
@@ -212,5 +209,23 @@
         <connection>git@git.code.oa.com:flink/flink-formats.git</connection>
         <url>https://git.code.oa.com/flink/flink-formats</url>
     </scm>
+
+    <profiles>
+        <profile>
+            <id>v1.13</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <modules>
+                <module>format-json-v1.13</module>
+            </modules>
+        </profile>
+        <profile>
+            <id>v1.15</id>
+            <modules>
+                <module>format-json-v1.15</module>
+            </modules>
+        </profile>
+    </profiles>
 
 </project>

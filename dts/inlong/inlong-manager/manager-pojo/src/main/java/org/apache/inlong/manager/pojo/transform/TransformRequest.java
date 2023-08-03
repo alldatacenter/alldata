@@ -17,17 +17,19 @@
 
 package org.apache.inlong.manager.pojo.transform;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
 import org.apache.inlong.manager.common.validation.SaveValidation;
 import org.apache.inlong.manager.common.validation.UpdateValidation;
 import org.apache.inlong.manager.pojo.stream.StreamField;
+
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+
 import java.util.List;
 
 /**
@@ -43,20 +45,20 @@ public class TransformRequest {
 
     @ApiModelProperty("Inlong group id")
     @NotBlank(groups = SaveValidation.class, message = "inlongGroupId cannot be blank")
-    @Length(min = 4, max = 100, message = "length must be between 4 and 100")
-    @Pattern(regexp = "^[a-z0-9_-]{4,100}$", message = "only supports lowercase letters, numbers, '-', or '_'")
+    @Length(min = 4, max = 200, message = "length must be between 4 and 200")
+    @Pattern(regexp = "^[a-zA-Z0-9_.-]{4,200}$", message = "only supports letters, numbers, '.', '-', or '_'")
     private String inlongGroupId;
 
     @ApiModelProperty("Inlong stream id")
     @NotBlank(groups = SaveValidation.class, message = "inlongStreamId cannot be blank")
-    @Length(min = 1, max = 100, message = "inlongStreamId length must be between 1 and 100")
-    @Pattern(regexp = "^[a-z0-9_-]{1,100}$", message = "inlongStreamId only supports lowercase letters, numbers, '-', or '_'")
+    @Length(min = 1, max = 200, message = "inlongStreamId length must be between 1 and 200")
+    @Pattern(regexp = "^[a-zA-Z0-9_.-]{1,200}$", message = "inlongStreamId only supports letters, numbers, '.', '-', or '_'")
     private String inlongStreamId;
 
     @ApiModelProperty("Transform name, unique in one stream")
     @NotBlank(groups = SaveValidation.class, message = "transformName cannot be blank")
     @Length(min = 1, max = 100, message = "transformName length must be between 1 and 100")
-    @Pattern(regexp = "^[a-z0-9_-]{1,100}$", message = "transformName only supports lowercase letters, numbers, '-', or '_'")
+    @Pattern(regexp = "^[a-zA-Z0-9_.-]{1,100}$", message = "transformName only supports letters, numbers, '.', '-', or '_'")
     private String transformName;
 
     @ApiModelProperty("Transform type, including: splitter, filter, joiner, etc.")

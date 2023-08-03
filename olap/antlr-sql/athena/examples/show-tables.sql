@@ -1,1 +1,0 @@
-show tables in db

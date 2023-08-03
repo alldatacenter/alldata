@@ -56,7 +56,7 @@ public enum ErrorCodeEnum {
     GROUP_MIDDLEWARE_UPDATE_NOT_ALLOWED(1011, "The current status does not support modifying the MQ type"),
     GROUP_NAME_UPDATE_NOT_ALLOWED(1012, "The current inlong group status does not support modifying the name"),
     GROUP_INFO_INCONSISTENT(1013, "The inlong group info is inconsistent, please contact the administrator"),
-    GROUP_MODE_UNSUPPORTED(1014, "The current inlong group mode only support lightweight or standard"),
+    GROUP_MODE_UNSUPPORTED(1014, "The current inlong group mode only support dataSync or standard"),
 
     OPT_NOT_ALLOWED_BY_STATUS(1021, "InlongGroup status %s was not allowed to add/update/delete related info"),
 
@@ -148,6 +148,8 @@ public enum ErrorCodeEnum {
     CONSUME_PERMISSION_DENIED(3005, "No permission to access this inlong consume"),
 
     AUDIT_ID_TYPE_NOT_SUPPORTED(4001, "Audit id type '%s' not supported"),
+
+    TENANT_NOT_EXIST(5001, "Tenant '%s' is not exist"),
     ;
 
     private final int code;

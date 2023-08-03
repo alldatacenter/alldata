@@ -17,9 +17,10 @@
 
 package org.apache.inlong.sort.protocol.serialization;
 
-import java.util.Objects;
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonInclude;
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.util.Objects;
 
 public class DebeziumSerializationInfo implements SerializationInfo {
 

@@ -38,3 +38,11 @@ def execute_scan_and_get_scan_result(
     scan.add_sodacl_yaml_str(sodacl_yaml_str)
     scan.execute()
     return mock_soda_cloud.pop_scan_result()
+
+
+def replace_tokens(string: str, tokens: dict(str, str)) -> str:
+    for k, v in tokens.items():
+        if k in string:
+            string = string.replace(k, v)
+
+    return string

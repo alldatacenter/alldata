@@ -17,15 +17,17 @@
 
 package org.apache.inlong.tubemq.corebase.utils;
 
+import org.apache.inlong.tubemq.corebase.Message;
+import org.apache.inlong.tubemq.corebase.TokenConstants;
+
+import org.apache.commons.codec.binary.StringUtils;
+
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeSet;
-import org.apache.commons.codec.binary.StringUtils;
-import org.apache.inlong.tubemq.corebase.Message;
-import org.apache.inlong.tubemq.corebase.TokenConstants;
 
 public class MixedUtils {
 

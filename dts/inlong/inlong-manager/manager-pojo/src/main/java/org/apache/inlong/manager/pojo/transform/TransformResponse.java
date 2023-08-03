@@ -17,10 +17,11 @@
 
 package org.apache.inlong.manager.pojo.transform;
 
+import org.apache.inlong.manager.pojo.stream.StreamField;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-import org.apache.inlong.manager.pojo.stream.StreamField;
 
 import java.util.ArrayList;
 import java.util.List;

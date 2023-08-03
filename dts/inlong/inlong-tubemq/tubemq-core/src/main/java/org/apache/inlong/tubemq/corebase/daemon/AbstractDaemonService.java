@@ -17,10 +17,12 @@
 
 package org.apache.inlong.tubemq.corebase.daemon;
 
-import java.util.concurrent.atomic.AtomicBoolean;
 import org.apache.inlong.tubemq.corebase.TBaseConstants;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public abstract class AbstractDaemonService implements Service, Runnable {
 

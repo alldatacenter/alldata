@@ -17,9 +17,10 @@
 
 package org.apache.inlong.manager.workflow.definition;
 
-import com.google.common.collect.ImmutableSet;
 import org.apache.inlong.manager.workflow.WorkflowAction;
 import org.apache.inlong.manager.workflow.WorkflowContext;
+
+import com.google.common.collect.ImmutableSet;
 
 import java.util.List;
 import java.util.Set;

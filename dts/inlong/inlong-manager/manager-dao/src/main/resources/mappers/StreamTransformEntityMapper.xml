@@ -142,6 +142,27 @@
         </where>
     </select>
 
+    <select id="selectByCondition"
+            parameterType="org.apache.inlong.manager.pojo.transform.TransformPageRequest"
+            resultType="org.apache.inlong.manager.dao.entity.StreamTransformEntity">
+        select
+        <include refid="Base_Column_List"/>
+        from stream_transform
+        <where>
+            is_deleted = 0
+            and inlong_group_id = #{request.inlongGroupId, jdbcType=VARCHAR}
+            <if test="request.inlongStreamId != null and request.inlongStreamId != ''">
+                and inlong_stream_id = #{request.inlongStreamId, jdbcType=VARCHAR}
+            </if>
+            <if test="request.transformType != null and request.transformType != ''">
+                and transform_type = #{request.transformType, jdbcType=VARCHAR}
+            </if>
+            <if test="request.transformName != null and request.transformName != ''">
+                and transform_name = #{request.transformName, jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+
     <update id="updateById" parameterType="org.apache.inlong.manager.dao.entity.StreamTransformEntity">
         update stream_transform
         set inlong_group_id      = #{inlongGroupId,jdbcType=VARCHAR},

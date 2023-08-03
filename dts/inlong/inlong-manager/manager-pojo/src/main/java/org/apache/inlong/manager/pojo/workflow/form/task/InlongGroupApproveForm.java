@@ -17,13 +17,14 @@
 
 package org.apache.inlong.manager.pojo.workflow.form.task;
 
+import org.apache.inlong.manager.common.exceptions.FormValidateException;
+import org.apache.inlong.manager.common.util.Preconditions;
+import org.apache.inlong.manager.pojo.group.InlongGroupApproveRequest;
+import org.apache.inlong.manager.pojo.stream.InlongStreamApproveRequest;
+
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.apache.inlong.manager.common.exceptions.FormValidateException;
-import org.apache.inlong.manager.pojo.group.InlongGroupApproveRequest;
-import org.apache.inlong.manager.pojo.stream.InlongStreamApproveRequest;
-import org.apache.inlong.manager.common.util.Preconditions;
 
 import java.util.List;
 

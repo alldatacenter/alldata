@@ -17,6 +17,8 @@
 
 package org.apache.inlong.manager.common.util;
 
+import org.apache.inlong.manager.common.exceptions.JsonException;
+
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -31,7 +33,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.inlong.manager.common.exceptions.JsonException;
 import org.reflections.Reflections;
 
 import java.io.IOException;

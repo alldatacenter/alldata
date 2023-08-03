@@ -17,16 +17,20 @@
 
 package org.apache.inlong.manager.pojo.source.pulsar;
 
+import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
+import org.apache.inlong.manager.common.exceptions.BusinessException;
+import org.apache.inlong.manager.common.util.CommonBeanUtils;
+import org.apache.inlong.manager.common.util.JsonUtils;
+
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
-import org.apache.inlong.manager.common.exceptions.BusinessException;
-import org.apache.inlong.manager.common.util.JsonUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.validation.constraints.NotNull;
+
 import java.util.Map;
 
 /**
@@ -39,7 +43,7 @@ import java.util.Map;
 public class PulsarSourceDTO {
 
     @ApiModelProperty("Pulsar tenant")
-    private String tenant;
+    private String pulsarTenant;
 
     @ApiModelProperty("Pulsar namespace")
     private String namespace;
@@ -79,18 +83,11 @@ public class PulsarSourceDTO {
     /**
      * Get the dto instance from the request
      */
-    public static PulsarSourceDTO getFromRequest(PulsarSourceRequest request) {
-        return PulsarSourceDTO.builder()
-                .adminUrl(request.getAdminUrl())
-                .serviceUrl(request.getServiceUrl())
-                .tenant(request.getTenant())
-                .namespace(request.getNamespace())
-                .topic(request.getTopic())
-                .subscription(request.getSubscription())
-                .primaryKey(request.getPrimaryKey())
-                .scanStartupMode(request.getScanStartupMode())
-                .properties(request.getProperties())
-                .build();
+    public static PulsarSourceDTO getFromRequest(PulsarSourceRequest request, String extParams) {
+        PulsarSourceDTO dto = StringUtils.isNotBlank(extParams)
+                ? PulsarSourceDTO.getFromJson(extParams)
+                : new PulsarSourceDTO();
+        return CommonBeanUtils.copyProperties(request, dto, true);
     }
 
     public static PulsarSourceDTO getFromJson(@NotNull String extParams) {

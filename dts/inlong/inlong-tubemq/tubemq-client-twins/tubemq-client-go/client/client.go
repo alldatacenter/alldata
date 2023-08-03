@@ -21,4 +21,6 @@ var clientID uint64
 
 type Producer interface {
 	Publish(topics []string)
+
+	SendMessage(message *Message) (bool, int32, string)
 }

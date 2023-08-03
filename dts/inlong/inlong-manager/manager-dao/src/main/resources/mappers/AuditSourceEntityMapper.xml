@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements. See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership. The ASF licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License. You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied.  See the License for the
+ specific language governing permissions and limitations
+ under the License.
+-->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.apache.inlong.manager.dao.mapper.AuditSourceEntityMapper">
+    <resultMap id="BaseResultMap" type="org.apache.inlong.manager.dao.entity.AuditSourceEntity">
+        <result column="id" jdbcType="INTEGER" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="type" jdbcType="VARCHAR" property="type"/>
+        <result column="url" jdbcType="VARCHAR" property="url"/>
+        <result column="enable_auth" jdbcType="TINYINT" property="enableAuth"/>
+        <result column="username" jdbcType="VARCHAR" property="username"/>
+        <result column="token" jdbcType="VARCHAR" property="token"/>
+        <result column="status" jdbcType="SMALLINT" property="status"/>
+        <result column="is_deleted" jdbcType="INTEGER" property="isDeleted"/>
+        <result column="creator" jdbcType="VARCHAR" property="creator"/>
+        <result column="modifier" jdbcType="VARCHAR" property="modifier"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime"/>
+        <result column="version" jdbcType="INTEGER" property="version"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, name, type, url, enable_auth, username, token, status, is_deleted,
+        creator, modifier, create_time, modify_time, version
+    </sql>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id"
+            parameterType="org.apache.inlong.manager.dao.entity.AuditSourceEntity">
+        insert into audit_source (id, name, type, url,
+                                  enable_auth, username, token,
+                                  status, creator, modifier)
+        values (#{id, jdbcType=INTEGER}, #{name, jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{url, jdbcType=VARCHAR},
+                #{enableAuth, jdbcType=TINYINT}, #{username, jdbcType=VARCHAR}, #{token, jdbcType=VARCHAR},
+                #{status, jdbcType=INTEGER}, #{creator, jdbcType=VARCHAR}, #{modifier, jdbcType=VARCHAR})
+    </insert>
+
+    <select id="selectOnlineSource" resultType="org.apache.inlong.manager.dao.entity.AuditSourceEntity"
+            resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"></include>
+        from audit_source
+        where status = 1
+        and is_deleted = 0
+        limit 1
+    </select>
+
+    <update id="offlineSourceByUrl">
+        update audit_source
+        set status = 0
+        where url = #{offlineUrl, jdbcType=VARCHAR}
+        and is_deleted = 0
+    </update>
+
+</mapper>

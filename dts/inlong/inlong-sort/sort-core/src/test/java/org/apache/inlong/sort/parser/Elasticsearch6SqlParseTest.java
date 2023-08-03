@@ -18,6 +18,7 @@
 package org.apache.inlong.sort.parser;
 
 import org.apache.inlong.sort.protocol.node.Node;
+
 import org.junit.Test;
 
 public class Elasticsearch6SqlParseTest extends ElasticsearchSqlParseTest {

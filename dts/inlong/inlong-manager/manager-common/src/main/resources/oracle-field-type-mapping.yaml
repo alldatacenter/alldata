@@ -1,0 +1,96 @@
+#
+# Licensed to the Apache Software Foundation (ASF) under one or more
+# contributor license agreements.  See the NOTICE file distributed with
+# this work for additional information regarding copyright ownership.
+# The ASF licenses this file to You under the Apache License, Version 2.0
+# (the "License"); you may not use this file except in compliance with
+# the License.  You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
+source.type.to.target.type.converter:
+
+  - source.type: BINARY_FLOAT
+    target.type: FLOAT
+
+  - source.type: FLOAT
+    target.type: FLOAT
+
+  - source.type: BINARY_DOUBLE
+    target.type: DOUBLE
+
+  - source.type: DOUBLE PRECISION
+    target.type: DOUBLE
+
+  - source.type: REAL
+    target.type: DECIMAL
+
+  - source.type: NUMBER
+    target.type: NUMBER
+
+  - source.type: INTEGER
+    target.type: INT
+
+  - source.type: LONG
+    target.type: LONG
+
+  - source.type: INTERVAL DAY TO SECOND
+    target.type: LONG
+
+  - source.type: INTERVAL YEAR TO MONTH
+    target.type: LONG
+
+  - source.type: BOOLEAN
+    target.type: BOOLEAN
+
+  - source.type: DATE
+    target.type: TIMESTAMP
+
+  - source.type: TIMESTAMP
+    target.type: TIMESTAMP
+
+  - source.type: TIMESTAMP WITH TIME ZONE
+    target.type: TIMESTAMP
+
+  - source.type: TIMESTAMP WITH LOCAL TIME ZONE
+    target.type: LOCAL_ZONE_TIMESTAMP
+
+  - source.type: CHAR
+    target.type: STRING
+
+  - source.type: NCHAR
+    target.type: STRING
+
+  - source.type: VARCHAR
+    target.type: STRING
+
+  - source.type: VARCHAR2
+    target.type: STRING
+
+  - source.type: NVARCHAR2
+    target.type: STRING
+
+  - source.type: CLOB
+    target.type: STRING
+
+  - source.type: NCLOB
+    target.type: STRING
+
+  - source.type: XMLTYPE
+    target.type: STRING
+
+  - source.type: SYS.XMLTYPE
+    target.type: STRING
+
+  - source.type: BLOB
+    target.type: VARBINARY
+
+  - source.type: ROWID
+    target.type: VARBINARY

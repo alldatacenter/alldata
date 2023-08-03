@@ -23,6 +23,7 @@ import org.apache.inlong.common.constant.MQType;
 import org.apache.inlong.common.pojo.agent.DataConfig;
 import org.apache.inlong.common.pojo.dataproxy.DataProxyTopicInfo;
 import org.apache.inlong.common.pojo.dataproxy.MQClusterInfo;
+
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;

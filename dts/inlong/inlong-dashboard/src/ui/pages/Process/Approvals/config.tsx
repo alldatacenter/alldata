@@ -22,6 +22,7 @@ import { Link } from 'react-router-dom';
 import i18n from '@/i18n';
 import { statusList, genStatusTag } from './status';
 import { timestampFormat } from '@/core/utils';
+import StatusTag from '@/ui/components/StatusTag';
 
 export const getFilterFormContent = defaultValues => [
   {
@@ -72,6 +73,17 @@ export const getColumns = activedName => [
     title: i18n.t('pages.Approvals.GroupId'),
     dataIndex: 'inlongGroupId',
     render: (text, record) => record.showInList?.inlongGroupId,
+  },
+  {
+    title: i18n.t('pages.Approvals.GroupMode'),
+    dataIndex: 'inlongGroupMode',
+    render: (text, record) => {
+      return record.showInList?.inlongGroupMode === 1 ? (
+        <StatusTag type={'success'} title={i18n.t('pages.Approvals.GroupMode.DataSync')} />
+      ) : (
+        <StatusTag type={'primary'} title={i18n.t('pages.Approvals.GroupMode.Ingestion')} />
+      );
+    },
   },
   {
     title: i18n.t('pages.Approvals.ApplicationTime'),

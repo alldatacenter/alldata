@@ -32,9 +32,15 @@ const { Panel } = Collapse;
 export interface Props extends ModalProps {
   inlongGroupId: string;
   inlongStreamId?: string;
+  inlongGroupMode: boolean;
 }
 
-const Comp: React.FC<Props> = ({ inlongGroupId, inlongStreamId, ...modalProps }) => {
+const Comp: React.FC<Props> = ({
+  inlongGroupId,
+  inlongStreamId,
+  inlongGroupMode,
+  ...modalProps
+}) => {
   const { t } = useTranslation();
 
   const [options, setOptions] = useState({
@@ -194,7 +200,11 @@ const Comp: React.FC<Props> = ({ inlongGroupId, inlongStreamId, ...modalProps })
                     columns,
                     rowKey: 'taskId',
                     size: 'small',
-                    dataSource: item.taskExecuteLogs,
+                    dataSource: inlongGroupMode
+                      ? item.taskExecuteLogs
+                      : item.taskExecuteLogs.filter(
+                          task => task.taskDisplayName !== 'Group-InitMQ',
+                        ),
                   }}
                 />
               </Panel>

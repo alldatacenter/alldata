@@ -17,10 +17,10 @@
 
 package org.apache.inlong.tubemq.manager.service.interfaces;
 
-import java.util.List;
-
 import org.apache.inlong.tubemq.manager.controller.TubeMQResult;
 import org.apache.inlong.tubemq.manager.entry.RegionEntry;
+
+import java.util.List;
 
 public interface RegionService {
 

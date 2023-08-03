@@ -17,6 +17,20 @@
 
 package org.apache.inlong.agent.message;
 
+import org.apache.inlong.agent.conf.JobProfile;
+import org.apache.inlong.agent.utils.AgentUtils;
+import org.apache.inlong.common.msg.AttributeConstants;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.atomic.AtomicLong;
+
 import static org.apache.inlong.agent.constant.CommonConstants.DEFAULT_PROXY_INLONG_STREAM_ID_QUEUE_MAX_NUMBER;
 import static org.apache.inlong.agent.constant.CommonConstants.DEFAULT_PROXY_PACKAGE_MAX_SIZE;
 import static org.apache.inlong.agent.constant.CommonConstants.DEFAULT_PROXY_PACKAGE_MAX_TIMEOUT_MS;
@@ -26,18 +40,6 @@ import static org.apache.inlong.agent.constant.CommonConstants.PROXY_PACKAGE_MAX
 import static org.apache.inlong.common.msg.AttributeConstants.DATA_TIME;
 import static org.apache.inlong.common.msg.AttributeConstants.MESSAGE_TOPIC;
 import static org.apache.inlong.common.msg.AttributeConstants.STREAM_ID;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.atomic.AtomicLong;
-import org.apache.inlong.agent.conf.JobProfile;
-import org.apache.inlong.agent.utils.AgentUtils;
-import org.apache.inlong.common.msg.AttributeConstants;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * Handle List of BusMessage, which belong to the same stream id.
@@ -142,29 +144,23 @@ public class PackProxyMessage {
             while (!messageQueue.isEmpty()) {
                 // pre check message size
                 ProxyMessage peekMessage = messageQueue.peek();
-                if (peekMessage == null) {
-                    break;
-                }
-
-                // if the message size is greater than max pack size,should drop it.
                 int peekMessageLength = peekMessage.getBody().length;
-                if (peekMessageLength > maxPackSize) {
-                    LOGGER.warn("message size is {}, greater than max pack size {}, drop it!",
-                            peekMessage.getBody().length, maxPackSize);
-                    messageQueue.remove();
-                    break;
-                }
                 if (resultBatchSize + peekMessageLength > maxPackSize) {
                     break;
                 }
                 ProxyMessage message = messageQueue.remove();
-                if (message != null) {
-                    int bodySize = message.getBody().length;
-                    resultBatchSize += bodySize;
-                    // decrease queue size.
+                int bodySize = message.getBody().length;
+                if (peekMessageLength > maxPackSize) {
+                    LOGGER.warn("message size is {}, greater than max pack size {}, drop it!",
+                            peekMessage.getBody().length, maxPackSize);
                     queueSize.addAndGet(-bodySize);
-                    result.add(message.getBody());
+                    messageQueue.remove();
+                    break;
                 }
+                resultBatchSize += bodySize;
+                // decrease queue size.
+                queueSize.addAndGet(-bodySize);
+                result.add(message.getBody());
             }
             // make sure result is not empty.
             if (!result.isEmpty()) {

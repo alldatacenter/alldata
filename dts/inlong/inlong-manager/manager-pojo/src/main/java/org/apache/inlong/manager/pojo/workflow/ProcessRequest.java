@@ -17,6 +17,9 @@
 
 package org.apache.inlong.manager.pojo.workflow;
 
+import org.apache.inlong.manager.common.enums.ProcessStatus;
+import org.apache.inlong.manager.pojo.common.PageRequest;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -24,8 +27,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import org.apache.inlong.manager.pojo.common.PageRequest;
-import org.apache.inlong.manager.common.enums.ProcessStatus;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
@@ -53,6 +54,9 @@ public class ProcessRequest extends PageRequest {
 
     @ApiModelProperty("Process display name")
     private String displayName;
+
+    @ApiModelProperty("Inlong tenant name")
+    private String tenant;
 
     @ApiModelProperty("Applicant")
     private String applicant;

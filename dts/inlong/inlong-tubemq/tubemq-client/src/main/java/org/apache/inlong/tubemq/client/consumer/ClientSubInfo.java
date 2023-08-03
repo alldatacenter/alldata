@@ -17,6 +17,8 @@
 
 package org.apache.inlong.tubemq.client.consumer;
 
+import org.apache.inlong.tubemq.corebase.TokenConstants;
+
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -24,7 +26,6 @@ import java.util.Set;
 import java.util.TreeSet;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
-import org.apache.inlong.tubemq.corebase.TokenConstants;
 
 public class ClientSubInfo {
 

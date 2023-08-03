@@ -17,11 +17,12 @@
 
 package org.apache.inlong.sdk.dataproxy.pb.context;
 
-import java.util.Map;
-
-import org.apache.flume.Event;
 import org.apache.inlong.sdk.commons.protocol.SdkEvent;
 import org.apache.inlong.sdk.dataproxy.SendMessageCallback;
+
+import org.apache.flume.Event;
+
+import java.util.Map;
 
 /**
  * 

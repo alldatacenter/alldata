@@ -27,6 +27,7 @@ import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+
 import java.util.Date;
 import java.util.Set;
 
@@ -45,6 +46,9 @@ public class UserInfo {
 
     @ApiModelProperty(value = "Username")
     private String name;
+
+    @ApiModelProperty(value = "Login Tenant")
+    private String tenant;
 
     @ApiModelProperty(value = "User password")
     private String password;

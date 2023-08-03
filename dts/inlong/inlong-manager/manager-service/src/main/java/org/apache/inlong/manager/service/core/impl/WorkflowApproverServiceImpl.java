@@ -17,8 +17,6 @@
 
 package org.apache.inlong.manager.service.core.impl;
 
-import com.github.pagehelper.Page;
-import com.github.pagehelper.PageHelper;
 import org.apache.inlong.manager.common.consts.InlongConstants;
 import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
 import org.apache.inlong.manager.common.exceptions.BusinessException;
@@ -31,10 +29,14 @@ import org.apache.inlong.manager.pojo.workflow.ApproverPageRequest;
 import org.apache.inlong.manager.pojo.workflow.ApproverRequest;
 import org.apache.inlong.manager.pojo.workflow.ApproverResponse;
 import org.apache.inlong.manager.service.core.WorkflowApproverService;
+import org.apache.inlong.manager.service.user.UserService;
 import org.apache.inlong.manager.workflow.core.ProcessDefinitionService;
 import org.apache.inlong.manager.workflow.definition.UserTask;
 import org.apache.inlong.manager.workflow.definition.WorkflowProcess;
 import org.apache.inlong.manager.workflow.definition.WorkflowTask;
+
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,6 +61,8 @@ public class WorkflowApproverServiceImpl implements WorkflowApproverService {
     private WorkflowApproverEntityMapper approverMapper;
     @Autowired
     private ProcessDefinitionService processDefinitionService;
+    @Autowired
+    private UserService userService;
 
     @Override
     public Integer save(ApproverRequest request, String operator) {
@@ -86,13 +90,18 @@ public class WorkflowApproverServiceImpl implements WorkflowApproverService {
     }
 
     @Override
-    public ApproverResponse get(Integer id) {
+    public ApproverResponse get(Integer id, String operator) {
         Preconditions.expectNotNull(id, "approver id cannot be null");
+
         WorkflowApproverEntity approverEntity = approverMapper.selectById(id);
         if (approverEntity == null) {
             LOGGER.error("workflow approver not found by id={}", id);
             throw new BusinessException(ErrorCodeEnum.WORKFLOW_APPROVER_NOT_FOUND);
         }
+
+        userService.checkUser(approverEntity.getApprovers(), operator,
+                "Current user does not have permission to get this workflow approver info");
+
         return CommonBeanUtils.copyProperties(approverEntity, ApproverResponse::new);
     }
 

@@ -68,6 +68,9 @@ class TrinoDataSource(DataSource):
         self.username = data_source_properties.get("username")
         self.authType = data_source_properties.get("auth_type", "BasicAuthentication")
         self.password = data_source_properties.get("password")
+        self.source = data_source_properties.get("source", trino.constants.DEFAULT_SOURCE)
+        self.http_headers = data_source_properties.get("http_headers", None)
+        self.client_tags = data_source_properties.get("client_tags", None)
 
     def connect(self):
         # Default to BasicAuthentication so we don't break current users.
@@ -83,9 +86,6 @@ class TrinoDataSource(DataSource):
             return
 
         self.connection = trino.dbapi.connect(
-            # experimental_python_types is required to recieve values in appropriate python data types
-            # https://github.com/trinodb/trino-python-client#improved-python-types
-            experimental_python_types=True,
             host=self.host,
             port=self.port,
             catalog=self.catalog,
@@ -93,6 +93,9 @@ class TrinoDataSource(DataSource):
             user=self.username,
             http_scheme=self.http_scheme,
             auth=self.auth,
+            http_headers=self.http_headers,
+            source=self.source,
+            client_tags=self.client_tags,
         )
 
     def regex_replace_flags(self) -> str:

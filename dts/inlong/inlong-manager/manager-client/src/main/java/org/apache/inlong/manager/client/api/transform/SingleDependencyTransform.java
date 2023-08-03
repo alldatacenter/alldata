@@ -17,12 +17,13 @@
 
 package org.apache.inlong.manager.client.api.transform;
 
-import io.swagger.annotations.ApiModel;
-import lombok.NoArgsConstructor;
 import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
 import org.apache.inlong.manager.common.util.Preconditions;
 import org.apache.inlong.manager.pojo.stream.StreamTransform;
 import org.apache.inlong.manager.pojo.transform.TransformDefinition;
+
+import io.swagger.annotations.ApiModel;
+import lombok.NoArgsConstructor;
 
 /**
  * StreamTransform with one pre stream node, such as filter, splitter, etc.

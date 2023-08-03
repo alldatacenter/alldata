@@ -17,16 +17,19 @@
 
 package org.apache.inlong.tubemq.server.master.stats;
 
+import org.apache.inlong.tubemq.corebase.metric.MetricMXBean;
+import org.apache.inlong.tubemq.server.common.webbase.WebCallStatsHolder;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import javax.management.MBeanServer;
+import javax.management.ObjectName;
+
 import java.lang.management.ManagementFactory;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
-import javax.management.MBeanServer;
-import javax.management.ObjectName;
-import org.apache.inlong.tubemq.corebase.metric.MetricMXBean;
-import org.apache.inlong.tubemq.server.common.webbase.WebCallStatsHolder;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * MasterJMXHolder

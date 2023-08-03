@@ -17,7 +17,6 @@
 
 package org.apache.inlong.manager.client;
 
-import lombok.Data;
 import org.apache.inlong.manager.common.auth.DefaultAuthentication;
 import org.apache.inlong.manager.common.consts.InlongConstants;
 import org.apache.inlong.manager.common.enums.FieldType;
@@ -28,6 +27,8 @@ import org.apache.inlong.manager.pojo.sink.SinkField;
 import org.apache.inlong.manager.pojo.sink.hive.HiveSink;
 import org.apache.inlong.manager.pojo.sort.FlinkSortConf;
 import org.apache.inlong.manager.pojo.stream.InlongStreamInfo;
+
+import lombok.Data;
 
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -71,13 +72,13 @@ public class BaseExample {
         pulsarInfo.setInCharges("admin");
 
         // pulsar conf
-        pulsarInfo.setTenant(tenant);
+        pulsarInfo.setPulsarTenant(tenant);
         pulsarInfo.setMqResource(namespace);
 
-        // set enable zk, create resource, lightweight mode, and cluster tag
+        // set enable zk, create resource, group mode, and cluster tag
         pulsarInfo.setEnableZookeeper(InlongConstants.DISABLE_ZK);
         pulsarInfo.setEnableCreateResource(InlongConstants.ENABLE_CREATE_RESOURCE);
-        pulsarInfo.setLightweight(InlongConstants.STANDARD_MODE);
+        pulsarInfo.setInlongGroupMode(InlongConstants.STANDARD_MODE);
         pulsarInfo.setInlongClusterTag("default_cluster");
 
         pulsarInfo.setDailyRecords(10000000);

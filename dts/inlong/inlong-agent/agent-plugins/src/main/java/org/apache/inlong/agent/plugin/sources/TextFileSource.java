@@ -23,6 +23,7 @@ import org.apache.inlong.agent.plugin.sources.reader.file.FileReaderOperator;
 import org.apache.inlong.agent.plugin.sources.reader.file.TriggerFileReader;
 import org.apache.inlong.agent.plugin.utils.FileDataUtils;
 import org.apache.inlong.agent.plugin.utils.PluginUtils;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -69,7 +70,6 @@ public class TextFileSource extends AbstractSource {
             FileReaderOperator fileReader = new FileReaderOperator(file, startPosition);
             long waitTimeout = jobConf.getLong(JOB_READ_WAIT_TIMEOUT, DEFAULT_JOB_READ_WAIT_TIMEOUT);
             fileReader.setWaitMillisecond(waitTimeout);
-            addValidator(filterPattern, fileReader);
             result.add(fileReader);
         }
         // increment the count of successful sources
@@ -81,9 +81,5 @@ public class TextFileSource extends AbstractSource {
         int seekPosition;
         seekPosition = jobConf.getInt(file.getAbsolutePath() + POSITION_SUFFIX, 0);
         return seekPosition;
-    }
-
-    private void addValidator(String filterPattern, FileReaderOperator fileReader) {
-        fileReader.addPatternValidator(filterPattern);
     }
 }

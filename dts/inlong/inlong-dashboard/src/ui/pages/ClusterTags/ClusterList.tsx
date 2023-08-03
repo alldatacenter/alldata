@@ -132,7 +132,7 @@ const Comp: React.FC<ClusterListProps> = ({ clusterTag }) => {
     const defaultColumns = [
       {
         title: i18n.t('pages.Clusters.Name'),
-        dataIndex: 'name',
+        dataIndex: 'displayName',
         ellipsisMulti: 2,
       },
       {

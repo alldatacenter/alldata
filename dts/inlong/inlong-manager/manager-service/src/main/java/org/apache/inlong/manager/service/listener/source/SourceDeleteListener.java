@@ -17,12 +17,13 @@
 
 package org.apache.inlong.manager.service.listener.source;
 
-import lombok.extern.slf4j.Slf4j;
 import org.apache.inlong.manager.common.consts.InlongConstants;
 import org.apache.inlong.manager.common.enums.GroupOperateType;
 import org.apache.inlong.manager.pojo.source.SourceRequest;
 import org.apache.inlong.manager.pojo.workflow.form.process.GroupResourceProcessForm;
 import org.apache.inlong.manager.workflow.WorkflowContext;
+
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 /**
@@ -43,7 +44,7 @@ public class SourceDeleteListener extends AbstractSourceOperateListener {
             return false;
         }
         GroupResourceProcessForm processForm = (GroupResourceProcessForm) context.getProcessForm();
-        return InlongConstants.STANDARD_MODE.equals(processForm.getGroupInfo().getLightweight())
+        return InlongConstants.STANDARD_MODE.equals(processForm.getGroupInfo().getInlongGroupMode())
                 && processForm.getGroupOperateType() == GroupOperateType.DELETE;
     }
 

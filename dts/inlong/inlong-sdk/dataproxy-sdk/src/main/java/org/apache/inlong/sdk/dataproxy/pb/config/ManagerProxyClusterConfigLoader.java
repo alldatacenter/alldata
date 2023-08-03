@@ -17,10 +17,14 @@
 
 package org.apache.inlong.sdk.dataproxy.pb.config;
 
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
+import org.apache.inlong.sdk.dataproxy.pb.config.pojo.GetProxyConfigBySdkRequest;
+import org.apache.inlong.sdk.dataproxy.pb.config.pojo.GetProxyConfigBySdkResponse;
+import org.apache.inlong.sdk.dataproxy.pb.config.pojo.GetProxyConfigByStreamResponse;
+import org.apache.inlong.sdk.dataproxy.pb.config.pojo.ProxyClusterConfig;
+import org.apache.inlong.sdk.dataproxy.pb.config.pojo.ProxyClusterResult;
+import org.apache.inlong.sdk.dataproxy.pb.config.pojo.ProxyInfo;
 
+import com.alibaba.fastjson.JSON;
 import org.apache.flume.Context;
 import org.apache.http.HttpHeaders;
 import org.apache.http.client.config.RequestConfig;
@@ -31,16 +35,12 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
-import org.apache.inlong.sdk.dataproxy.pb.config.pojo.GetProxyConfigBySdkRequest;
-import org.apache.inlong.sdk.dataproxy.pb.config.pojo.GetProxyConfigBySdkResponse;
-import org.apache.inlong.sdk.dataproxy.pb.config.pojo.GetProxyConfigByStreamResponse;
-import org.apache.inlong.sdk.dataproxy.pb.config.pojo.ProxyClusterConfig;
-import org.apache.inlong.sdk.dataproxy.pb.config.pojo.ProxyClusterResult;
-import org.apache.inlong.sdk.dataproxy.pb.config.pojo.ProxyInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.alibaba.fastjson.JSON;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 

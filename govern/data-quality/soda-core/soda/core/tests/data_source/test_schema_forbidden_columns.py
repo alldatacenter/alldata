@@ -39,7 +39,7 @@ def test_forbidden_columns_fail(data_source_fixture: DataSourceFixture):
 
     scan.assert_all_checks_fail()
     check: SchemaCheck = scan._checks[0]
-    assert sorted(check.schema_present_column_names) == sorted([default_casify_column_name("id")])
+    assert sorted(check.fail_result.present_column_names) == sorted([default_casify_column_name("id")])
 
 
 def test_forbidden_columns_fail_matching_wildcard(data_source_fixture: DataSourceFixture):
@@ -62,7 +62,7 @@ def test_forbidden_columns_fail_matching_wildcard(data_source_fixture: DataSourc
 
     scan.assert_all_checks_fail()
     check: SchemaCheck = scan._checks[0]
-    assert sorted(check.schema_present_column_names) == sorted(
+    assert sorted(check.fail_result.present_column_names) == sorted(
         [default_casify_column_name("cst_size"), default_casify_column_name("cst_size_txt")]
     )
 
@@ -85,4 +85,4 @@ def test_forbidden_columns_warn(data_source_fixture: DataSourceFixture):
 
     scan.assert_all_checks_warn()
     check: SchemaCheck = scan._checks[0]
-    assert sorted(check.schema_present_column_names) == sorted([default_casify_column_name("id")])
+    assert sorted(check.warn_result.present_column_names) == sorted([default_casify_column_name("id")])

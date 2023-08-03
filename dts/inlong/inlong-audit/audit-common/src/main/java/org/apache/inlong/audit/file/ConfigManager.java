@@ -17,6 +17,11 @@
 
 package org.apache.inlong.audit.file;
 
+import org.apache.inlong.audit.consts.ConfigConstants;
+import org.apache.inlong.audit.file.holder.PropertiesConfigHolder;
+import org.apache.inlong.common.pojo.audit.AuditConfigRequest;
+import org.apache.inlong.common.pojo.audit.MQInfo;
+
 import com.google.gson.Gson;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpHeaders;
@@ -27,10 +32,6 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
-import org.apache.inlong.audit.consts.ConfigConstants;
-import org.apache.inlong.audit.file.holder.PropertiesConfigHolder;
-import org.apache.inlong.common.pojo.audit.AuditConfigRequest;
-import org.apache.inlong.common.pojo.audit.MQInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -159,10 +159,10 @@
     </appenders>
 
     <loggers>
-        <logger name="org.apache.inlong.common.monitor.MonitorIndexExt" level="info" additivity="false">
+        <logger name="org.apache.inlong.dataproxy.metrics.stats.MonitorStats" level="info" additivity="false">
             <appender-ref ref="MonitorFile"/>
         </logger>
-        <logger name="org.apache.inlong.common.monitor.MonitorIndex" level="info" additivity="false">
+        <logger name="org.apache.inlong.dataproxy.metrics.stats.MonitorIndex" level="info" additivity="false">
             <appender-ref ref="IndexFile"/>
         </logger>
         <logger name="org.apache.pulsar" level="info" additivity="false">

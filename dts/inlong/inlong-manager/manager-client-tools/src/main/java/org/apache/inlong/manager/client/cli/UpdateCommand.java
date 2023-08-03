@@ -17,13 +17,11 @@
 
 package org.apache.inlong.manager.client.cli;
 
-import com.beust.jcommander.Parameter;
-import com.beust.jcommander.Parameters;
-import com.beust.jcommander.converters.FileConverter;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.inlong.manager.client.api.InlongClient;
 import org.apache.inlong.manager.client.api.InlongGroup;
 import org.apache.inlong.manager.client.api.inner.client.InlongClusterClient;
+import org.apache.inlong.manager.client.api.inner.client.InlongTenantClient;
+import org.apache.inlong.manager.client.api.inner.client.InlongTenantRoleClient;
 import org.apache.inlong.manager.client.api.inner.client.UserClient;
 import org.apache.inlong.manager.client.cli.util.ClientUtils;
 import org.apache.inlong.manager.common.exceptions.BusinessException;
@@ -32,8 +30,17 @@ import org.apache.inlong.manager.pojo.cluster.ClusterNodeRequest;
 import org.apache.inlong.manager.pojo.cluster.ClusterRequest;
 import org.apache.inlong.manager.pojo.cluster.ClusterTagRequest;
 import org.apache.inlong.manager.pojo.sort.BaseSortConf;
+import org.apache.inlong.manager.pojo.tenant.InlongTenantInfo;
+import org.apache.inlong.manager.pojo.tenant.InlongTenantRequest;
+import org.apache.inlong.manager.pojo.user.TenantRoleInfo;
+import org.apache.inlong.manager.pojo.user.TenantRoleRequest;
 import org.apache.inlong.manager.pojo.user.UserInfo;
 import org.apache.inlong.manager.pojo.user.UserRequest;
+
+import com.beust.jcommander.Parameter;
+import com.beust.jcommander.Parameters;
+import com.beust.jcommander.converters.FileConverter;
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.File;
 import java.util.List;
@@ -55,6 +62,8 @@ public class UpdateCommand extends AbstractCommand {
         jcommander.addCommand("cluster-tag", new UpdateCommand.UpdateClusterTag());
         jcommander.addCommand("cluster-node", new UpdateCommand.UpdateClusterNode());
         jcommander.addCommand("user", new UpdateCommand.UpdateUser());
+        jcommander.addCommand("tenant", new UpdateCommand.UpdateTenant());
+        jcommander.addCommand("tenant-role", new UpdateCommand.UpdateTenantRole());
     }
 
     @Parameters(commandDescription = "Update group by json file")
@@ -197,6 +206,82 @@ public class UpdateCommand extends AbstractCommand {
                 request.setValidDays(validDays);
                 request.setVersion(userInfo.getVersion());
                 if (userClient.update(request) != null) {
+                    System.out.println("Update user success!");
+                }
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
+    @Parameters(commandDescription = "Update Tenant")
+    private static class UpdateTenant extends AbstractCommandRunner {
+
+        @Parameter()
+        private List<String> params;
+
+        @Parameter(names = {"-n", "--name"}, description = "name to be modify")
+        private String name;
+
+        @Parameter(names = {"-d", "--description"}, description = "new description")
+        private String description;
+
+        @Override
+        void run() {
+            try {
+                InlongTenantRequest request = new InlongTenantRequest();
+                request.setName(name);
+                ClientUtils.initClientFactory();
+                InlongTenantClient tenantClient = ClientUtils.clientFactory.getInlongTenantClient();
+                InlongTenantInfo tenantInfo = tenantClient.getTenantByName(name);
+                if (tenantInfo == null) {
+                    throw new BusinessException(name + " not exist, please check.");
+                }
+                request.setId(tenantInfo.getId());
+                request.setDescription(description);
+                request.setVersion(tenantInfo.getVersion());
+                if (tenantClient.update(request)) {
+                    System.out.println("Update user success!");
+                }
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
+    @Parameters(commandDescription = "Update Tenant Role")
+    private static class UpdateTenantRole extends AbstractCommandRunner {
+
+        @Parameter()
+        private List<String> params;
+
+        @Parameter(names = {"-id", "--id"}, description = "id to be modify")
+        private Integer id;
+
+        @Parameter(names = {"-rc", "--role-code"}, description = "new role code")
+        private String roleCode;
+
+        @Override
+        void run() {
+            try {
+                TenantRoleRequest request = new TenantRoleRequest();
+                request.setId(id);
+                ClientUtils.initClientFactory();
+                InlongTenantRoleClient roleClient = ClientUtils.clientFactory.getInlongTenantRoleClient();
+                TenantRoleInfo roleInfo = roleClient.get(id);
+                if (roleInfo == null) {
+                    throw new BusinessException(id + " not exist, please check.");
+                }
+                request.setUsername(roleInfo.getUsername());
+                request.setDisabled(roleInfo.getDisabled());
+                request.setVersion(roleInfo.getVersion());
+                if (StringUtils.isNotEmpty(roleCode)) {
+                    request.setRoleCode(roleCode);
+                } else {
+                    request.setRoleCode(roleInfo.getRoleCode());
+                }
+                request.setTenant(roleInfo.getTenant());
+                if (roleClient.update(request)) {
                     System.out.println("Update user success!");
                 }
             } catch (Exception e) {

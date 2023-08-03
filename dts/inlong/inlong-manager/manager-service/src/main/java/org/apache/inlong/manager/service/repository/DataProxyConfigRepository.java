@@ -17,13 +17,6 @@
 
 package org.apache.inlong.manager.service.repository;
 
-import com.google.common.base.Splitter;
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import org.apache.commons.beanutils.BeanUtils;
-import org.apache.commons.codec.digest.DigestUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.inlong.common.constant.ClusterSwitch;
 import org.apache.inlong.common.pojo.dataproxy.CacheClusterObject;
 import org.apache.inlong.common.pojo.dataproxy.CacheClusterSetObject;
@@ -53,6 +46,15 @@ import org.apache.inlong.manager.pojo.dataproxy.InlongStreamId;
 import org.apache.inlong.manager.pojo.dataproxy.ProxyCluster;
 import org.apache.inlong.manager.pojo.sink.SinkPageRequest;
 import org.apache.inlong.manager.service.core.SortConfigLoader;
+
+import com.google.common.base.Splitter;
+import com.google.common.collect.Sets;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import org.apache.commons.beanutils.BeanUtils;
+import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,6 +63,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
+
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -69,20 +72,25 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Optional;
+import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * DataProxyConfigRepository
+ * This repository was deprecated since version 1.8.0
  */
 @Lazy
+@Deprecated
 @Repository(value = "dataProxyConfigRepository")
 public class DataProxyConfigRepository implements IRepository {
 
     public static final Logger LOGGER = LoggerFactory.getLogger(DataProxyConfigRepository.class);
 
     public static final String KEY_NAMESPACE = "namespace";
+    public static final String KEY_NEW_TENANT_KEY = "pulsarTenant";
+    public static final String KEY_OLD_TENANT_KEY = "tenant";
     public static final String KEY_BACKUP_CLUSTER_TAG = "backup_cluster_tag";
     public static final String KEY_BACKUP_TOPIC = "backup_topic";
     public static final String KEY_SORT_TASK_NAME = "defaultSortTaskName";
@@ -249,9 +257,13 @@ public class DataProxyConfigRepository implements IRepository {
             }
             Map<String, String> tagMap = MAP_SPLITTER.split(cacheCluster.getExtTag());
             String producerTag = tagMap.getOrDefault(CACHE_CLUSTER_PRODUCER_TAG, Boolean.TRUE.toString());
-            if (StringUtils.equalsIgnoreCase(producerTag, Boolean.TRUE.toString())) {
-                cacheClusterMap.computeIfAbsent(cacheCluster.getClusterTags(), k -> new HashMap<>())
-                        .computeIfAbsent(cacheCluster.getExtTag(), k -> new ArrayList<>()).add(cacheCluster);
+            if (StringUtils.equalsIgnoreCase(producerTag, Boolean.TRUE.toString()) && StringUtils.isNotBlank(
+                    cacheCluster.getClusterTags())) {
+                Set<String> clusterTags = Sets.newHashSet(cacheCluster.getClusterTags().split(InlongConstants.COMMA));
+                clusterTags.forEach(clusterTag -> {
+                    cacheClusterMap.computeIfAbsent(clusterTag, k -> new HashMap<>())
+                            .computeIfAbsent(cacheCluster.getExtTag(), k -> new ArrayList<>()).add(cacheCluster);
+                });
             }
         }
         // mark cache cluster to proxy cluster
@@ -308,13 +320,19 @@ public class DataProxyConfigRepository implements IRepository {
                 JsonElement child = obj.get(key);
                 if (child.isJsonPrimitive()) {
                     mapObj.put(key, child.getAsString());
-                } else {
+                } else if (!child.isJsonNull()) {
                     mapObj.put(key, child.toString());
                 }
             }
         } catch (Exception e) {
             LOGGER.error("parse json string to map error", e);
         }
+
+        // to be compatible with multi-tenancy #7914
+        String tenant = mapObj.get(KEY_NEW_TENANT_KEY);
+        mapObj.remove(KEY_NEW_TENANT_KEY);
+        mapObj.put(KEY_OLD_TENANT_KEY, tenant);
+
         return mapObj;
     }
 

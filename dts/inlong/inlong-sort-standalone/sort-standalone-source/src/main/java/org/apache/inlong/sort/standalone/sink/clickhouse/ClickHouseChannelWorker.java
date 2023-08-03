@@ -17,9 +17,10 @@
 
 package org.apache.inlong.sort.standalone.sink.clickhouse;
 
-import org.apache.flume.lifecycle.LifecycleState;
 import org.apache.inlong.sort.standalone.channel.ProfileEvent;
 import org.apache.inlong.sort.standalone.dispatch.DispatchProfile;
+
+import org.apache.flume.lifecycle.LifecycleState;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

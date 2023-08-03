@@ -1,7 +1,7 @@
 version: "3.7"
 services:
   soda-core-vertica:
-    image: vertica/vertica-ce:11.0.2-0
+    image: vertica/vertica-ce:12.0.2-0
     ports:
       - "5433:5433"
     deploy:
@@ -14,7 +14,7 @@ services:
       APP_DB_USER: "dbadmin"
       APP_DB_PASSWORD: "password"
       TZ: "UTC"
-      VERTICA_MEMDEBUG: 2  # https://forum.vertica.com/discussion/242629/support-apple-silicon-m1-for-docker-vertica-ce
+      VERTICA_MEMDEBUG: 2 # https://forum.vertica.com/discussion/242629/support-apple-silicon-m1-for-docker-vertica-ce
     command: >
       bash -c "
         export APP_DB_PASSWORD="password" &&

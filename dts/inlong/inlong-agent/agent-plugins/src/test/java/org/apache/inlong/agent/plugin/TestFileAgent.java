@@ -17,17 +17,22 @@
 
 package org.apache.inlong.agent.plugin;
 
-import static org.apache.inlong.agent.constant.AgentConstants.AGENT_MESSAGE_FILTER_CLASSNAME;
-import static org.apache.inlong.agent.constant.CommonConstants.PROXY_INLONG_GROUP_ID;
-import static org.apache.inlong.agent.constant.CommonConstants.PROXY_INLONG_STREAM_ID;
-import static org.apache.inlong.agent.constant.JobConstants.JOB_CYCLE_UNIT;
-import static org.apache.inlong.agent.constant.JobConstants.JOB_DIR_FILTER_PATTERNS;
-import static org.apache.inlong.agent.constant.JobConstants.JOB_FILE_MAX_WAIT;
-import static org.apache.inlong.agent.constant.JobConstants.JOB_FILE_TIME_OFFSET;
-import static org.apache.inlong.agent.constant.JobConstants.JOB_FILE_TRIGGER_TYPE;
-import static org.apache.inlong.agent.constant.JobConstants.JOB_ID;
-import static org.apache.inlong.agent.constant.JobConstants.JOB_READ_WAIT_TIMEOUT;
-import static org.awaitility.Awaitility.await;
+import org.apache.inlong.agent.conf.JobProfile;
+import org.apache.inlong.agent.conf.TriggerProfile;
+import org.apache.inlong.agent.constant.FileTriggerType;
+import org.apache.inlong.agent.core.job.JobWrapper;
+import org.apache.inlong.agent.db.StateSearchKey;
+import org.apache.inlong.agent.plugin.utils.TestUtils;
+import org.apache.inlong.agent.utils.AgentUtils;
+
+import org.apache.commons.io.IOUtils;
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Assert;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -40,21 +45,18 @@ import java.nio.file.Paths;
 import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
-import org.apache.commons.io.IOUtils;
-import org.apache.inlong.agent.conf.JobProfile;
-import org.apache.inlong.agent.conf.TriggerProfile;
-import org.apache.inlong.agent.constant.FileTriggerType;
-import org.apache.inlong.agent.core.job.JobWrapper;
-import org.apache.inlong.agent.db.StateSearchKey;
-import org.apache.inlong.agent.plugin.utils.TestUtils;
-import org.apache.inlong.agent.utils.AgentUtils;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Assert;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
+import static org.apache.inlong.agent.constant.AgentConstants.AGENT_MESSAGE_FILTER_CLASSNAME;
+import static org.apache.inlong.agent.constant.CommonConstants.PROXY_INLONG_GROUP_ID;
+import static org.apache.inlong.agent.constant.CommonConstants.PROXY_INLONG_STREAM_ID;
+import static org.apache.inlong.agent.constant.JobConstants.JOB_CYCLE_UNIT;
+import static org.apache.inlong.agent.constant.JobConstants.JOB_DIR_FILTER_PATTERNS;
+import static org.apache.inlong.agent.constant.JobConstants.JOB_FILE_MAX_WAIT;
+import static org.apache.inlong.agent.constant.JobConstants.JOB_FILE_TIME_OFFSET;
+import static org.apache.inlong.agent.constant.JobConstants.JOB_FILE_TRIGGER_TYPE;
+import static org.apache.inlong.agent.constant.JobConstants.JOB_ID;
+import static org.apache.inlong.agent.constant.JobConstants.JOB_READ_WAIT_TIMEOUT;
+import static org.awaitility.Awaitility.await;
 
 public class TestFileAgent {
 
@@ -73,7 +75,7 @@ public class TestFileAgent {
             agent.start();
             testRootDir = helper.getTestRootDir();
         } catch (Exception e) {
-            LOGGER.error("setup failure");
+            LOGGER.error("setup failure", e);
         }
     }
 
@@ -129,7 +131,9 @@ public class TestFileAgent {
                 profile.set(JOB_READ_WAIT_TIMEOUT, String.valueOf(readWaitTimeMilliseconds));
                 profile.set(PROXY_INLONG_GROUP_ID, "groupid");
                 profile.set(PROXY_INLONG_STREAM_ID, "streamid");
-                agent.submitJob(profile);
+                synchronized (this) {
+                    agent.submitJob(profile);
+                }
             }
         }
     }
@@ -144,13 +148,15 @@ public class TestFileAgent {
         triggerProfile.set(JOB_DIR_FILTER_PATTERNS, Paths.get(testRootDir.toString(),
                 "test.dat").toString());
         triggerProfile.set(JOB_FILE_MAX_WAIT, "-1");
-        agent.submitTrigger(triggerProfile);
-        TestUtils.createHugeFiles("test.dat", testRootDir.toString(), RECORD);
-        TestUtils.createHugeFiles("te1.dat", testRootDir.toString(), RECORD);
-        await().atMost(10, TimeUnit.SECONDS).until(() -> {
-            Map<String, JobWrapper> jobs = agent.getManager().getJobManager().getJobs();
-            return jobs.size() == 1;
-        });
+        synchronized (this) {
+            agent.submitTrigger(triggerProfile);
+            TestUtils.createHugeFiles("test.dat", testRootDir.toString(), RECORD);
+            TestUtils.createHugeFiles("te1.dat", testRootDir.toString(), RECORD);
+            await().atMost(10, TimeUnit.SECONDS).until(() -> {
+                Map<String, JobWrapper> jobs = agent.getManager().getJobManager().getJobs();
+                return jobs.size() == 1;
+            });
+        }
     }
 
     @Test
@@ -163,11 +169,13 @@ public class TestFileAgent {
         triggerProfile.set(JOB_FILE_MAX_WAIT, "-1");
         triggerProfile.set(JOB_FILE_TRIGGER_TYPE, FileTriggerType.FULL);
         triggerProfile.set(JOB_ID, "10");
-        agent.submitTrigger(triggerProfile);
-        await().atMost(10, TimeUnit.SECONDS).until(() -> {
-            Map<String, JobWrapper> jobs = agent.getManager().getJobManager().getJobs();
-            return jobs.size() == 1;
-        });
+        synchronized (this) {
+            agent.submitTrigger(triggerProfile);
+            await().atMost(10, TimeUnit.SECONDS).until(() -> {
+                Map<String, JobWrapper> jobs = agent.getManager().getJobManager().getJobs();
+                return jobs.size() == 1;
+            });
+        }
     }
 
     @Test
@@ -180,7 +188,9 @@ public class TestFileAgent {
                 profile.set(JOB_DIR_FILTER_PATTERNS, Paths.get(testRootDir.toString(),
                         "YYYYMMDD").toString());
                 profile.set(JOB_CYCLE_UNIT, "D");
-                agent.submitTrigger(TriggerProfile.parseJobProfile(profile));
+                synchronized (this) {
+                    agent.submitTrigger(TriggerProfile.parseJobProfile(profile));
+                }
             }
         }
         createFiles(nowDate);
@@ -199,7 +209,9 @@ public class TestFileAgent {
                 profile.set(JOB_CYCLE_UNIT, "D");
                 profile.set(AGENT_MESSAGE_FILTER_CLASSNAME,
                         "org.apache.inlong.agent.plugin.filter.DefaultMessageFilter");
-                agent.submitTrigger(TriggerProfile.parseJobProfile(profile));
+                synchronized (this) {
+                    agent.submitTrigger(TriggerProfile.parseJobProfile(profile));
+                }
             }
         }
         createFiles(nowDate);
@@ -217,7 +229,9 @@ public class TestFileAgent {
                         "YYYYMMDD").toString());
                 profile.set(JOB_FILE_TIME_OFFSET, "-1d");
                 profile.set(JOB_CYCLE_UNIT, "D");
-                agent.submitTrigger(TriggerProfile.parseJobProfile(profile));
+                synchronized (this) {
+                    agent.submitTrigger(TriggerProfile.parseJobProfile(profile));
+                }
             }
         }
         createFiles(theDateBefore);
@@ -225,10 +239,11 @@ public class TestFileAgent {
     }
 
     private void assertJobSuccess() {
-        JobProfile jobConf = agent.getManager().getJobManager().getJobConfDb().getJob(StateSearchKey.SUCCESS);
-        if (jobConf != null) {
-            Assert.assertEquals(1, jobConf.getInt("job.id"));
+        synchronized (this) {
+            JobProfile jobConf = agent.getManager().getJobManager().getJobConfDb().getJob(StateSearchKey.SUCCESS);
+            if (jobConf != null) {
+                Assert.assertEquals(1, jobConf.getInt("job.id"));
+            }
         }
     }
-
 }

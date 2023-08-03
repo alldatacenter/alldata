@@ -18,6 +18,7 @@
 package org.apache.inlong.sort.standalone.sink.kafka;
 
 import org.apache.inlong.sort.standalone.channel.ProfileEvent;
+
 import org.apache.kafka.clients.producer.ProducerRecord;
 
 import java.io.IOException;

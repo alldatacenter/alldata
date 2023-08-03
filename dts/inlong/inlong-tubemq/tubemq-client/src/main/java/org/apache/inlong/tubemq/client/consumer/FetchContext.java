@@ -17,12 +17,13 @@
 
 package org.apache.inlong.tubemq.client.consumer;
 
-import java.util.ArrayList;
-import java.util.List;
 import org.apache.inlong.tubemq.corebase.Message;
 import org.apache.inlong.tubemq.corebase.TBaseConstants;
 import org.apache.inlong.tubemq.corebase.TErrCodeConstants;
 import org.apache.inlong.tubemq.corebase.cluster.Partition;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class FetchContext {
 

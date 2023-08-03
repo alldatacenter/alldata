@@ -17,12 +17,13 @@
 
 package org.apache.inlong.manager.pojo.group.pulsar;
 
+import org.apache.inlong.common.constant.MQType;
+import org.apache.inlong.manager.common.util.JsonTypeDefine;
+
 import io.swagger.annotations.ApiModel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.apache.inlong.common.constant.MQType;
-import org.apache.inlong.manager.common.util.JsonTypeDefine;
 
 /**
  * Inlong group request for Tdmq Pulsar

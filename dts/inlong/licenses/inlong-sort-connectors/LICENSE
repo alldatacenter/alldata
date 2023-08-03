@@ -326,395 +326,417 @@
 1.3 Third party Apache 2.0 Licenses
 =========
 
-1.3.1 inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/debezium/history/FlinkJsonTableChangeSerializer.java
-      inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/debezium/internal/DebeziumOffset.java
-      inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/debezium/internal/DebeziumOffsetSerializer.java
-      inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/debezium/internal/FlinkDatabaseHistory.java
-      inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/debezium/internal/FlinkDatabaseSchemaHistory.java
-      inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/debezium/internal/FlinkOffsetBackingStore.java
-      inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/debezium/internal/Handover.java
-      inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/debezium/internal/SchemaRecord.java
-      inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/debezium/table/AppendMetadataCollector.java
-      inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/debezium/table/DebeziumOptions.java
-      inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/debezium/table/DeserializationRuntimeConverter.java
-      inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/debezium/table/DeserializationRuntimeConverterFactory.java
-      inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/debezium/table/MetadataConverter.java
-      inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/debezium/table/RowDataDebeziumDeserializeSchema.java
-      inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/debezium/DebeziumDeserializationSchema.java
-      inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/util/DatabaseHistoryUtil.java
-      inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/util/RecordUtils.java
-      inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/util/TemporalConversions.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/split/MySqlSnapshotSplit.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/split/MySqlSchemalessSnapshotSplit.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/reader/MySqlSourceReaderContext.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/schema/MySqlTypeUtils.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/utils/StatementUtils.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/schema/MySqlSchema.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/table/MySqlDeserializationConverterFactory.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/connection/JdbcConnectionFactory.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/events/FinishedSnapshotSplitsReportEvent.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/MySqlSource.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/assigners/state/HybridPendingSplitsState.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/connection/ConnectionPoolId.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/debezium/JsonDebeziumDeserializationSchema.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/connection/ConnectionPools.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/split/MySqlRecords.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/debezium/reader/SnapshotSplitReader.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/enumerator/MySqlSourceEnumerator.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/schema/MySqlTableDefinition.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/events/BinlogSplitMetaRequestEvent.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/debezium/Validator.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/debezium/task/context/StatefulTaskContext.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/debezium/DebeziumUtils.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/split/MySqlSplit.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/assigners/MySqlHybridSplitAssigner.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/config/MySqlSourceConfig.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/table/MySqlReadableMetadata.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/table/MySqlTableSource.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/reader/MySqlSourceReader.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/config/MySqlSourceOptions.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/split/MySqlBinlogSplit.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/split/MySqlSnapshotSplitState.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/utils/ChunkUtils.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/events/LatestFinishedSplitsSizeRequestEvent.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/debezium/dispatcher/EventDispatcherImpl.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/debezium/reader/BinlogSplitReader.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/debezium/task/MySqlSnapshotSplitReadTask.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/offset/BinlogOffsetSerializer.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/assigners/ChunkRange.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/utils/TableDiscoveryUtils.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/utils/RecordUtils.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/metrics/MySqlSourceReaderMetrics.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/assigners/state/PendingSplitsStateSerializer.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/assigners/state/BinlogPendingSplitsState.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/debezium/DebeziumSourceFunction.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/reader/MySqlSplitReader.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/debezium/task/context/MySqlErrorHandler.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/assigners/MySqlBinlogSplitAssigner.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/utils/SerializerUtils.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/MySqlSource.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/assigners/AssignerStatus.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/assigners/state/SnapshotPendingSplitsState.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/assigners/MySqlSnapshotSplitAssigner.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/debezium/StringDebeziumDeserializationSchema.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/assigners/ChunkSplitter.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/events/FinishedSnapshotSplitsAckEvent.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/reader/MySqlRecordEmitter.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/offset/BinlogOffset.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/table/StartupMode.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/table/MySqlTableInlongSourceFactory.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/table/OldFieldMetadataConverter.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/utils/ObjectUtils.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/events/BinlogSplitMetaEvent.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/assigners/state/PendingSplitsState.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/config/MySqlSourceConfigFactory.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/split/MySqlSplitState.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/events/SuspendBinlogReaderEvent.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/events/FinishedSnapshotSplitsRequestEvent.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/split/MySqlSplitSerializer.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/table/StartupOptions.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/table/JdbcUrlUtils.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/config/ServerIdRange.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/debezium/EmbeddedFlinkDatabaseHistory.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/split/MySqlBinlogSplitState.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/MySqlValidator.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/events/WakeupReaderEvent.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/debezium/reader/DebeziumReader.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/debezium/dispatcher/SignalEventDispatcher.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/assigners/MySqlSplitAssigner.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/SeekBinlogToTimestampFilter.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/debezium/task/MySqlBinlogSplitReadTask.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/events/LatestFinishedSplitsSizeEvent.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/connection/PooledDataSourceFactory.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/connection/JdbcConnectionPools.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/MySqlSourceBuilder.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/events/SuspendBinlogReaderAckEvent.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/debezium/task/context/MySqlTaskContextImpl.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/schema/MySqlFieldDefinition.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/split/FinishedSnapshotSplitInfo.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/debezium/internal/DebeziumChangeFetcher.java
-      inlong-sort/sort-connectors/sort-mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/debezium/internal/DebeziumChangeConsumer.java
-      inlong-sort/sort-connectors/postgres-cdc/src/main/java/org/apache/inlong/sort/cdc/postgres/PostgreSQLSource.java
-      inlong-sort/sort-connectors/postgres-cdc/src/main/java/org/apache/inlong/sort/cdc/postgres/DebeziumSourceFunction.java
-      inlong-sort/sort-connectors/postgres-cdc/src/main/java/org/apache/inlong/sort/cdc/postgres/debezium/internal/ColumnImpl.java
-      inlong-sort/sort-connectors/postgres-cdc/src/main/java/org/apache/inlong/sort/cdc/postgres/debezium/internal/DebeziumChangeFetcher.java
-      inlong-sort/sort-connectors/postgres-cdc/src/main/java/org/apache/inlong/sort/cdc/postgres/debezium/internal/TableEditorImpl.java
-      inlong-sort/sort-connectors/postgres-cdc/src/main/java/org/apache/inlong/sort/cdc/postgres/debezium/internal/TableImpl.java
-      inlong-sort/sort-connectors/postgres-cdc/src/main/java/org/apache/inlong/sort/cdc/postgres/table/PostgreSQLTableFactory.java
-      inlong-sort/sort-connectors/postgres-cdc/src/main/java/org/apache/inlong/sort/cdc/postgres/table/PostgreSQLTableSource.java
-      inlong-sort/sort-connectors/postgres-cdc/src/main/java/org/apache/inlong/sort/cdc/postgres/table/PostgreSQLReadableMetaData.java
-      inlong-sort/sort-connectors/mongodb-cdc/src/main/java/org/apache/inlong/sort/cdc/mongodb/MongoDBSource.java
-      inlong-sort/sort-connectors/mongodb-cdc/src/main/java/org/apache/inlong/sort/cdc/mongodb/DebeziumSourceFunction.java
-      inlong-sort/sort-connectors/mongodb-cdc/src/main/java/org/apache/inlong/sort/cdc/mongodb/table/MongoDBTableSource.java
-      inlong-sort/sort-connectors/mongodb-cdc/src/main/java/org/apache/inlong/sort/cdc/mongodb/table/MongoDBTableSourceFactory.java
-      inlong-sort/sort-connectors/oracle-cdc/src/main/java/org/apache/inlong/sort/cdc/oracle/OracleSource.java
-      inlong-sort/sort-connectors/oracle-cdc/src/main/java/org/apache/inlong/sort/cdc/oracle/table/OracleTableSource.java
-      inlong-sort/sort-connectors/oracle-cdc/src/main/java/org/apache/inlong/sort/cdc/oracle/table/OracleTableSourceFactory.java
-      inlong-sort/sort-connectors/oracle-cdc/src/main/java/org/apache/inlong/sort/cdc/oracle/debezium/internal/DebeziumChangeFetcher.java
-      inlong-sort/sort-connectors/oracle-cdc/src/main/java/org/apache/inlong/sort/cdc/oracle/debezium/internal/DebeziumChangeConsumer.java
-      inlong-sort/sort-connectors/oracle-cdc/src/main/java/org/apache/inlong/sort/cdc/oracle/debezium/internal/FlinkDatabaseSchemaHistory.java
-      inlong-sort/sort-connectors/oracle-cdc/src/main/java/org/apache/inlong/sort/cdc/oracle/debezium/table/RowDataDebeziumDeserializeSchema.java
-      inlong-sort/sort-connectors/oracle-cdc/src/main/java/org/apache/inlong/sort/cdc/oracle/debezium/DebeziumSourceFunction.java
-      inlong-sort/sort-connectors/oracle-cdc/src/main/java/org/apache/inlong/sort/cdc/oracle/table/OracleDeserializationConverterFactory.java
-      inlong-sort/sort-connectors/oracle-cdc/src/main/java/org/apache/inlong/sort/cdc/oracle/table/OracleReadableMetaData.java
+1.3.1 inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/debezium/history/FlinkJsonTableChangeSerializer.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/debezium/internal/DebeziumOffset.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/debezium/internal/DebeziumOffsetSerializer.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/debezium/internal/FlinkDatabaseHistory.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/debezium/internal/FlinkDatabaseSchemaHistory.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/debezium/internal/FlinkOffsetBackingStore.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/debezium/internal/Handover.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/debezium/internal/SchemaRecord.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/debezium/table/AppendMetadataCollector.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/debezium/table/DebeziumOptions.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/debezium/table/DeserializationRuntimeConverter.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/debezium/table/DeserializationRuntimeConverterFactory.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/debezium/table/MetadataConverter.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/debezium/table/RowDataDebeziumDeserializeSchema.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/debezium/DebeziumDeserializationSchema.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/util/DatabaseHistoryUtil.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/util/RecordUtils.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/util/TemporalConversions.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/split/MySqlSnapshotSplit.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/split/MySqlSchemalessSnapshotSplit.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/reader/MySqlSourceReaderContext.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/schema/MySqlTypeUtils.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/utils/StatementUtils.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/schema/MySqlSchema.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/table/MySqlDeserializationConverterFactory.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/connection/JdbcConnectionFactory.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/events/FinishedSnapshotSplitsReportEvent.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/MySqlSource.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/assigners/state/HybridPendingSplitsState.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/connection/ConnectionPoolId.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/debezium/JsonDebeziumDeserializationSchema.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/connection/ConnectionPools.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/split/MySqlRecords.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/debezium/reader/SnapshotSplitReader.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/enumerator/MySqlSourceEnumerator.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/schema/MySqlTableDefinition.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/events/BinlogSplitMetaRequestEvent.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/debezium/Validator.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/debezium/task/context/StatefulTaskContext.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/debezium/DebeziumUtils.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/split/MySqlSplit.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/assigners/MySqlHybridSplitAssigner.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/config/MySqlSourceConfig.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/table/MySqlReadableMetadata.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/table/MySqlTableSource.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/reader/MySqlSourceReader.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/config/MySqlSourceOptions.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/split/MySqlBinlogSplit.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/split/MySqlSnapshotSplitState.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/utils/ChunkUtils.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/events/LatestFinishedSplitsSizeRequestEvent.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/debezium/dispatcher/EventDispatcherImpl.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/debezium/reader/BinlogSplitReader.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/debezium/task/MySqlSnapshotSplitReadTask.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/offset/BinlogOffsetSerializer.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/assigners/ChunkRange.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/utils/TableDiscoveryUtils.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/utils/RecordUtils.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/metrics/MySqlSourceReaderMetrics.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/assigners/state/PendingSplitsStateSerializer.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/assigners/state/BinlogPendingSplitsState.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/debezium/DebeziumSourceFunction.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/reader/MySqlSplitReader.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/debezium/task/context/exception/SchemaOutOfSyncException.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/debezium/task/context/MySqlErrorHandler.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/assigners/MySqlBinlogSplitAssigner.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/utils/SerializerUtils.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/MySqlSource.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/assigners/AssignerStatus.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/assigners/state/SnapshotPendingSplitsState.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/assigners/MySqlSnapshotSplitAssigner.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/debezium/StringDebeziumDeserializationSchema.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/assigners/ChunkSplitter.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/events/FinishedSnapshotSplitsAckEvent.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/reader/MySqlRecordEmitter.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/offset/BinlogOffset.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/offset/BinlogOffsetBuilder.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/offset/BinlogOffsetKind.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/offset/BinlogOffsetUtils.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/table/StartupMode.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/table/MySqlTableInlongSourceFactory.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/table/OldFieldMetadataConverter.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/utils/ObjectUtils.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/events/BinlogSplitMetaEvent.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/assigners/state/PendingSplitsState.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/config/MySqlSourceConfigFactory.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/split/MySqlSplitState.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/events/SuspendBinlogReaderEvent.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/events/FinishedSnapshotSplitsRequestEvent.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/split/MySqlSplitSerializer.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/table/StartupOptions.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/table/JdbcUrlUtils.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/config/ServerIdRange.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/debezium/EmbeddedFlinkDatabaseHistory.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/split/MySqlBinlogSplitState.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/MySqlValidator.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/events/WakeupReaderEvent.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/debezium/reader/DebeziumReader.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/debezium/dispatcher/SignalEventDispatcher.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/assigners/MySqlSplitAssigner.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/SeekBinlogToTimestampFilter.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/debezium/task/MySqlBinlogSplitReadTask.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/events/LatestFinishedSplitsSizeEvent.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/connection/PooledDataSourceFactory.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/connection/JdbcConnectionPools.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/MySqlSourceBuilder.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/events/SuspendBinlogReaderAckEvent.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/debezium/task/context/MySqlTaskContextImpl.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/schema/MySqlFieldDefinition.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/mysql/source/split/FinishedSnapshotSplitInfo.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/debezium/internal/DebeziumChangeFetcher.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/org/apache/inlong/sort/cdc/debezium/internal/DebeziumChangeConsumer.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/io/debezium/connector/mysql/GtidUtils.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mysql-cdc/src/main/java/io/debezium/connector/mysql/MySqlStreamingChangeEventSource.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/postgres-cdc/src/main/java/org/apache/inlong/sort/cdc/postgres/PostgreSQLSource.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/postgres-cdc/src/main/java/org/apache/inlong/sort/cdc/postgres/DebeziumSourceFunction.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/postgres-cdc/src/main/java/org/apache/inlong/sort/cdc/postgres/debezium/internal/ColumnImpl.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/postgres-cdc/src/main/java/org/apache/inlong/sort/cdc/postgres/debezium/internal/DebeziumChangeFetcher.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/postgres-cdc/src/main/java/org/apache/inlong/sort/cdc/postgres/debezium/internal/TableEditorImpl.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/postgres-cdc/src/main/java/org/apache/inlong/sort/cdc/postgres/debezium/internal/TableImpl.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/postgres-cdc/src/main/java/org/apache/inlong/sort/cdc/postgres/table/PostgreSQLTableFactory.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/postgres-cdc/src/main/java/org/apache/inlong/sort/cdc/postgres/table/PostgreSQLTableSource.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/postgres-cdc/src/main/java/org/apache/inlong/sort/cdc/postgres/table/PostgreSQLReadableMetaData.java
+      inlong-sort/sort-flink/sort-flink-v1.15/sort-connectors/postgres-cdc/src/main/java/org/apache/inlong/sort/cdc/postgres/table/PostgreSQLTableFactory.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mongodb-cdc/src/main/java/org/apache/inlong/sort/cdc/mongodb/MongoDBSource.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mongodb-cdc/src/main/java/org/apache/inlong/sort/cdc/mongodb/DebeziumSourceFunction.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mongodb-cdc/src/main/java/org/apache/inlong/sort/cdc/mongodb/table/MongoDBTableSource.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mongodb-cdc/src/main/java/org/apache/inlong/sort/cdc/mongodb/table/MongoDBTableSourceFactory.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/oracle-cdc/src/main/java/org/apache/inlong/sort/cdc/oracle/OracleSource.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/oracle-cdc/src/main/java/org/apache/inlong/sort/cdc/oracle/table/OracleTableSource.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/oracle-cdc/src/main/java/org/apache/inlong/sort/cdc/oracle/table/OracleTableSourceFactory.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/oracle-cdc/src/main/java/org/apache/inlong/sort/cdc/oracle/debezium/internal/DebeziumChangeFetcher.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/oracle-cdc/src/main/java/org/apache/inlong/sort/cdc/oracle/debezium/internal/DebeziumChangeConsumer.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/oracle-cdc/src/main/java/org/apache/inlong/sort/cdc/oracle/debezium/internal/FlinkDatabaseSchemaHistory.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/oracle-cdc/src/main/java/org/apache/inlong/sort/cdc/oracle/debezium/table/RowDataDebeziumDeserializeSchema.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/oracle-cdc/src/main/java/org/apache/inlong/sort/cdc/oracle/debezium/DebeziumSourceFunction.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/oracle-cdc/src/main/java/org/apache/inlong/sort/cdc/oracle/table/OracleDeserializationConverterFactory.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/oracle-cdc/src/main/java/org/apache/inlong/sort/cdc/oracle/table/OracleReadableMetaData.java
 
  Source  : flink-cdc-connectors 2.2.1 (Please note that the software have been modified.)
  License : https://github.com/ververica/flink-cdc-connectors/blob/master/LICENSE
 
-1.3.2 inlong-sort/sort-connectors/sort-hive/src/main/java/org/apache/inlong/sort/hive/HiveValidator.java
-      inlong-sort/sort-connectors/sort-hive/src/main/java/org/apache/inlong/sort/hive/HiveTableSink.java
-      inlong-sort/sort-connectors/sort-hive/src/main/java/org/apache/inlong/sort/hive/HiveTableMetaStoreFactory.java
-      inlong-sort/sort-connectors/sort-hive/src/main/java/org/apache/inlong/sort/hive/HiveRowPartitionComputer.java
-      inlong-sort/sort-connectors/sort-hive/src/main/java/org/apache/inlong/sort/hive/HiveRowDataPartitionComputer.java
-      inlong-sort/sort-connectors/sort-hive/src/main/java/org/apache/inlong/sort/hive/HiveOptions.java
-      inlong-sort/sort-connectors/sort-hive/src/main/java/org/apache/inlong/sort/hive/HadoopFileSystemFactory.java
-      inlong-sort/sort-connectors/sort-hive/src/main/java/org/apache/inlong/sort/hive/table/HiveTableInlongFactory.java
+1.3.2 inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/sort-hive/src/main/java/org/apache/inlong/sort/hive/HiveValidator.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/sort-hive/src/main/java/org/apache/inlong/sort/hive/HiveTableSink.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/sort-hive/src/main/java/org/apache/inlong/sort/hive/HiveTableMetaStoreFactory.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/sort-hive/src/main/java/org/apache/inlong/sort/hive/HiveRowPartitionComputer.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/sort-hive/src/main/java/org/apache/inlong/sort/hive/HiveRowDataPartitionComputer.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/sort-hive/src/main/java/org/apache/inlong/sort/hive/HiveOptions.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/sort-hive/src/main/java/org/apache/inlong/sort/hive/HadoopFileSystemFactory.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/sort-hive/src/main/java/org/apache/inlong/sort/hive/table/HiveTableInlongFactory.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/sort-hive/src/main/java/org/apache/inlong/sort/hive/filesystem/DefaultHadoopFileCommitterFactory.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/sort-hive/src/main/java/org/apache/inlong/sort/hive/filesystem/HadoopPathBasedBulkFormatBuilder.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/sort-hive/src/main/java/org/apache/inlong/sort/hive/filesystem/HadoopPathBasedPartFileWriter.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/sort-hive/src/main/java/org/apache/inlong/sort/hive/filesystem/HadoopRenameFileCommitter.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/sort-hive/src/main/java/org/apache/inlong/sort/hive/filesystem/PartitionCommitter.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/sort-hive/src/main/java/org/apache/inlong/sort/hive/HiveBulkWriterFactory.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/sort-hive/src/main/java/org/apache/inlong/sort/hive/HiveOutputFormatFactory.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/sort-hive/src/main/java/org/apache/inlong/sort/hive/HiveWriterFactory.java
  Source  : flink-connector-hive 1.13.5 (Please note that the software have been modified.)
  License : https://github.com/apache/flink/blob/master/LICENSE
 
-1.3.3 inlong-sort/sort-connectors/sort-pulsar/src/main/java/org/apache/inlong/sort/pulsar/table/DynamicPulsarSerializationSchema.java
-      inlong-sort/sort-connectors/sort-pulsar/src/main/java/org/apache/inlong/sort/pulsar/table/PulsarDynamicTableFactory.java
-      inlong-sort/sort-connectors/sort-pulsar/src/main/java/org/apache/inlong/sort/pulsar/table/PulsarDynamicTableSink.java
-      inlong-sort/sort-connectors/sort-pulsar/src/main/java/org/apache/inlong/sort/pulsar/table/UpsertPulsarDynamicTableFactory.java
-      inlong-sort/sort-connectors/sort-pulsar/src/main/java/org/apache/inlong/sort/pulsar/internal/FlinkPulsarSource.java
-      inlong-sort/sort-connectors/sort-pulsar/src/main/java/org/apache/inlong/sort/pulsar/internal/PulsarFetcher.java
-      inlong-sort/sort-connectors/sort-pulsar/src/main/java/org/apache/inlong/sort/pulsar/internal/PulsarMetadataReader.java
-      inlong-sort/sort-connectors/sort-pulsar/src/main/java/org/apache/inlong/sort/pulsar/internal/ReaderThread.java
-      inlong-sort/sort-connectors/sort-pulsar/src/main/java/org/apache/inlong/sort/pulsar/internal/FlinkPulsarSource.java
-      inlong-sort/sort-connectors/sort-pulsar/src/main/java/org/apache/inlong/sort/pulsar/internal/FlinkPulsarSourceWithoutAdmin.java
+1.3.3 inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/sort-pulsar/src/main/java/org/apache/inlong/sort/pulsar/table/DynamicPulsarSerializationSchema.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/sort-pulsar/src/main/java/org/apache/inlong/sort/pulsar/table/PulsarDynamicTableFactory.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/sort-pulsar/src/main/java/org/apache/inlong/sort/pulsar/table/PulsarDynamicTableSink.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/sort-pulsar/src/main/java/org/apache/inlong/sort/pulsar/table/UpsertPulsarDynamicTableFactory.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/sort-pulsar/src/main/java/org/apache/inlong/sort/pulsar/internal/FlinkPulsarSource.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/sort-pulsar/src/main/java/org/apache/inlong/sort/pulsar/internal/PulsarFetcher.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/sort-pulsar/src/main/java/org/apache/inlong/sort/pulsar/internal/PulsarMetadataReader.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/sort-pulsar/src/main/java/org/apache/inlong/sort/pulsar/internal/ReaderThread.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/sort-pulsar/src/main/java/org/apache/inlong/sort/pulsar/internal/FlinkPulsarSource.java
+      inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/sort-pulsar/src/main/java/org/apache/inlong/sort/pulsar/internal/FlinkPulsarSourceWithoutAdmin.java
  Source  : pulsar-flink-connector_2.11 1.13.6.1-rc9 (Please note that the software have been modified.)
  License : https://github.com/streamnative/pulsar-flink/blob/master/LICENSE
 
- 1.3.4 inlong-sort/sort-connectors/elasticsearch-6/src/main/java/org/apache/inlong/sort/elasticsearch6/table/Elasticsearch6Configuration.java
-       inlong-sort/sort-connectors/elasticsearch-6/src/main/java/org/apache/inlong/sort/elasticsearch6/table/Elasticsearch6DynamicSink.java
-       inlong-sort/sort-connectors/elasticsearch-6/src/main/java/org/apache/inlong/sort/elasticsearch6/table/Elasticsearch6DynamicSinkFactory.java
-       inlong-sort/sort-connectors/elasticsearch-6/src/main/java/org/apache/inlong/sort/elasticsearch6/utils/RetryRejectedExecutionFailureHandler.java
-       inlong-sort/sort-connectors/elasticsearch-6/src/test/java/org/apache/inlong/sort/elasticsearch6/table/Elasticsearch6DynamicSinkITCase.java
-       inlong-sort/sort-connectors/elasticsearch-7/src/main/java/org/apache/inlong/sort/elasticsearch7/table/Elasticsearch7Configuration.java
-       inlong-sort/sort-connectors/elasticsearch-7/src/main/java/org/apache/inlong/sort/elasticsearch7/table/Elasticsearch7DynamicSink.java
-       inlong-sort/sort-connectors/elasticsearch-7/src/main/java/org/apache/inlong/sort/elasticsearch7/table/Elasticsearch7DynamicSinkFactory.java
-       inlong-sort/sort-connectors/elasticsearch-7/src/main/java/org/apache/inlong/sort/elasticsearch7/utils/RetryRejectedExecutionFailureHandler.java
-       inlong-sort/sort-connectors/elasticsearch-7/src/test/java/org/apache/inlong/sort/elasticsearch7/table/Elasticsearch7DynamicSinkITCase.java
-       inlong-sort/sort-connectors/elasticsearch-base/src/main/java/org/apache/inlong/sort/elasticsearch/table/AbstractTimeIndexGenerator.java
-       inlong-sort/sort-connectors/elasticsearch-base/src/main/java/org/apache/inlong/sort/elasticsearch/table/IndexGeneratorFactory.java
-       inlong-sort/sort-connectors/elasticsearch-base/src/main/java/org/apache/inlong/sort/elasticsearch/table/ElasticsearchConfiguration.java
-       inlong-sort/sort-connectors/elasticsearch-base/src/main/java/org/apache/inlong/sort/elasticsearch/table/KeyExtractor.java
-       inlong-sort/sort-connectors/elasticsearch-base/src/main/java/org/apache/inlong/sort/elasticsearch/table/ElasticsearchOptions.java
-       inlong-sort/sort-connectors/elasticsearch-base/src/main/java/org/apache/inlong/sort/elasticsearch/table/RequestFactory.java
-       inlong-sort/sort-connectors/elasticsearch-base/src/main/java/org/apache/inlong/sort/elasticsearch/table/ElasticsearchValidationUtils.java
-       inlong-sort/sort-connectors/elasticsearch-base/src/main/java/org/apache/inlong/sort/elasticsearch/table/IndexGenerator.java
-       inlong-sort/sort-connectors/elasticsearch-base/src/main/java/org/apache/inlong/sort/elasticsearch/table/RowElasticsearchSinkFunction.java
-       inlong-sort/sort-connectors/elasticsearch-base/src/main/java/org/apache/inlong/sort/elasticsearch/table/IndexGeneratorBase.java
-       inlong-sort/sort-connectors/elasticsearch-base/src/main/java/org/apache/inlong/sort/elasticsearch/table/StaticIndexGenerator.java
-       inlong-sort/sort-connectors/elasticsearch-base/src/main/java/org/apache/inlong/sort/elasticsearch/RequestIndexer.java
-       inlong-sort/sort-connectors/elasticsearch-base/src/main/java/org/apache/inlong/sort/elasticsearch/ActionRequestFailureHandler.java
-       inlong-sort/sort-connectors/elasticsearch-base/src/main/java/org/apache/inlong/sort/elasticsearch/utils/NoOpFailureHandler.java
-       inlong-sort/sort-connectors/elasticsearch-base/src/main/java/org/apache/inlong/sort/elasticsearch/utils/IgnoringFailureHandler.java
-       inlong-sort/sort-connectors/elasticsearch-base/src/test/java/org/apache/inlong/sort/elasticsearch/table/TestContext.java
+ 1.3.4 inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/elasticsearch-6/src/main/java/org/apache/inlong/sort/elasticsearch6/table/Elasticsearch6Configuration.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/elasticsearch-6/src/main/java/org/apache/inlong/sort/elasticsearch6/table/Elasticsearch6DynamicSink.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/elasticsearch-6/src/main/java/org/apache/inlong/sort/elasticsearch6/table/Elasticsearch6DynamicSinkFactory.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/elasticsearch-6/src/main/java/org/apache/inlong/sort/elasticsearch6/utils/RetryRejectedExecutionFailureHandler.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/elasticsearch-6/src/test/java/org/apache/inlong/sort/elasticsearch6/table/Elasticsearch6DynamicSinkITCase.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/elasticsearch-7/src/main/java/org/apache/inlong/sort/elasticsearch7/table/Elasticsearch7Configuration.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/elasticsearch-7/src/main/java/org/apache/inlong/sort/elasticsearch7/table/Elasticsearch7DynamicSink.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/elasticsearch-7/src/main/java/org/apache/inlong/sort/elasticsearch7/table/Elasticsearch7DynamicSinkFactory.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/elasticsearch-7/src/main/java/org/apache/inlong/sort/elasticsearch7/utils/RetryRejectedExecutionFailureHandler.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/elasticsearch-7/src/test/java/org/apache/inlong/sort/elasticsearch7/table/Elasticsearch7DynamicSinkITCase.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/elasticsearch-base/src/main/java/org/apache/inlong/sort/elasticsearch/table/AbstractTimeIndexGenerator.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/elasticsearch-base/src/main/java/org/apache/inlong/sort/elasticsearch/table/IndexGeneratorFactory.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/elasticsearch-base/src/main/java/org/apache/inlong/sort/elasticsearch/table/ElasticsearchConfiguration.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/elasticsearch-base/src/main/java/org/apache/inlong/sort/elasticsearch/table/KeyExtractor.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/elasticsearch-base/src/main/java/org/apache/inlong/sort/elasticsearch/table/ElasticsearchOptions.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/elasticsearch-base/src/main/java/org/apache/inlong/sort/elasticsearch/table/RequestFactory.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/elasticsearch-base/src/main/java/org/apache/inlong/sort/elasticsearch/table/ElasticsearchValidationUtils.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/elasticsearch-base/src/main/java/org/apache/inlong/sort/elasticsearch/table/IndexGenerator.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/elasticsearch-base/src/main/java/org/apache/inlong/sort/elasticsearch/table/RowElasticsearchSinkFunction.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/elasticsearch-base/src/main/java/org/apache/inlong/sort/elasticsearch/table/IndexGeneratorBase.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/elasticsearch-base/src/main/java/org/apache/inlong/sort/elasticsearch/table/StaticIndexGenerator.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/elasticsearch-base/src/main/java/org/apache/inlong/sort/elasticsearch/RequestIndexer.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/elasticsearch-base/src/main/java/org/apache/inlong/sort/elasticsearch/ActionRequestFailureHandler.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/elasticsearch-base/src/main/java/org/apache/inlong/sort/elasticsearch/utils/NoOpFailureHandler.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/elasticsearch-base/src/main/java/org/apache/inlong/sort/elasticsearch/utils/IgnoringFailureHandler.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/elasticsearch-base/src/test/java/org/apache/inlong/sort/elasticsearch/table/TestContext.java
   source  : flink-connector-elasticsearch 1.13.2 (Please note that the software have been modified.)
   License : https://github.com/apache/flink/blob/release-1.13.2-rc2/LICENSE
 
- 1.3.5 inlong-sort/sort-connectors/hbase/src/main/java/org/apache/inlong/sort/hbase/HBase2DynamicTableFactory.java
-       inlong-sort/sort-connectors/hbase/src/main/java/org/apache/inlong/sort/hbase/sink/HBaseSinkFunction.java
-       inlong-sort/sort-connectors/hbase/src/main/java/org/apache/inlong/sort/hbase/sink/HBaseDynamicTableSink.java
+ 1.3.5 inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/hbase/src/main/java/org/apache/inlong/sort/hbase/HBase2DynamicTableFactory.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/hbase/src/main/java/org/apache/inlong/sort/hbase/sink/HBaseSinkFunction.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/hbase/src/main/java/org/apache/inlong/sort/hbase/sink/HBaseDynamicTableSink.java
   Source  : flink-connector-hbase-2.2 1.13.5 (Please note that the software have been modified.)
   License : https://github.com/apache/flink/blob/master/LICENSE
 
- 1.3.6 inlong-sort/sort-connectors/iceberg/src/main/java/org/apache/inlong/sort/iceberg/FlinkCatalog.java
-       inlong-sort/sort-connectors/iceberg/src/main/java/org/apache/inlong/sort/iceberg/FlinkCatalogFactory.java
-       inlong-sort/sort-connectors/iceberg/src/main/java/org/apache/inlong/sort/iceberg/FlinkConfigOptions.java
-       inlong-sort/sort-connectors/iceberg/src/main/java/org/apache/inlong/sort/iceberg/FlinkDynamicTableFactory.java
-       inlong-sort/sort-connectors/iceberg/src/main/java/org/apache/inlong/sort/iceberg/IcebergTableSink.java
-       inlong-sort/sort-connectors/iceberg/src/main/java/org/apache/inlong/sort/iceberg/sink/BaseDeltaTaskWriter.java
-       inlong-sort/sort-connectors/iceberg/src/main/java/org/apache/inlong/sort/iceberg/sink/DeltaManifests.java
-       inlong-sort/sort-connectors/iceberg/src/main/java/org/apache/inlong/sort/iceberg/sink/DeltaManifestsSerializer.java
-       inlong-sort/sort-connectors/iceberg/src/main/java/org/apache/inlong/sort/iceberg/sink/FlinkManifestUtil.java
-       inlong-sort/sort-connectors/iceberg/src/main/java/org/apache/inlong/sort/iceberg/sink/FlinkSink.java
-       inlong-sort/sort-connectors/iceberg/src/main/java/org/apache/inlong/sort/iceberg/sink/EqualityFieldKeySelector.java
-       inlong-sort/sort-connectors/iceberg/src/main/java/org/apache/inlong/sort/iceberg/sink/IcebergFilesCommitter.java
-       inlong-sort/sort-connectors/iceberg/src/main/java/org/apache/inlong/sort/iceberg/sink/IcebergStreamWriter.java
-       inlong-sort/sort-connectors/iceberg/src/main/java/org/apache/inlong/sort/iceberg/sink/ManifestOutputFileFactory.java
-       inlong-sort/sort-connectors/iceberg/src/main/java/org/apache/inlong/sort/iceberg/sink/PartitionedDeltaWriter.java
-       inlong-sort/sort-connectors/iceberg/src/main/java/org/apache/inlong/sort/iceberg/sink/PartitionKeySelector.java
-       inlong-sort/sort-connectors/iceberg/src/main/java/org/apache/inlong/sort/iceberg/sink/RowDataTaskWriterFactory.java
-       inlong-sort/sort-connectors/iceberg/src/main/java/org/apache/inlong/sort/iceberg/sink/UnpartitionedDeltaWriter.java
+ 1.3.6 inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/iceberg/src/main/java/org/apache/inlong/sort/iceberg/FlinkCatalog.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/iceberg/src/main/java/org/apache/inlong/sort/iceberg/FlinkCatalogFactory.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/iceberg/src/main/java/org/apache/inlong/sort/iceberg/FlinkConfigOptions.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/iceberg/src/main/java/org/apache/inlong/sort/iceberg/FlinkDynamicTableFactory.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/iceberg/src/main/java/org/apache/inlong/sort/iceberg/IcebergTableSink.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/iceberg/src/main/java/org/apache/inlong/sort/iceberg/sink/BaseDeltaTaskWriter.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/iceberg/src/main/java/org/apache/inlong/sort/iceberg/sink/DeltaManifests.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/iceberg/src/main/java/org/apache/inlong/sort/iceberg/sink/DeltaManifestsSerializer.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/iceberg/src/main/java/org/apache/inlong/sort/iceberg/sink/FlinkManifestUtil.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/iceberg/src/main/java/org/apache/inlong/sort/iceberg/sink/FlinkSink.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/iceberg/src/main/java/org/apache/inlong/sort/iceberg/sink/EqualityFieldKeySelector.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/iceberg/src/main/java/org/apache/inlong/sort/iceberg/sink/IcebergFilesCommitter.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/iceberg/src/main/java/org/apache/inlong/sort/iceberg/sink/IcebergStreamWriter.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/iceberg/src/main/java/org/apache/inlong/sort/iceberg/sink/ManifestOutputFileFactory.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/iceberg/src/main/java/org/apache/inlong/sort/iceberg/sink/PartitionedDeltaWriter.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/iceberg/src/main/java/org/apache/inlong/sort/iceberg/sink/PartitionKeySelector.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/iceberg/src/main/java/org/apache/inlong/sort/iceberg/sink/RowDataTaskWriterFactory.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/iceberg/src/main/java/org/apache/inlong/sort/iceberg/sink/UnpartitionedDeltaWriter.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/iceberg/src/test/java/org/apache/inlong/sort/iceberg/sink/util/SimpleDataUtil.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/iceberg/src/test/java/org/apache/inlong/sort/iceberg/sink/util/TestTableLoader.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/iceberg/src/test/java/org/apache/inlong/sort/iceberg/sink/util/TestTables.java
   Source  : iceberg-flink:iceberg-flink-1.13:0.13.2 (Please note that the software have been modified.)
   License : https://github.com/apache/iceberg/LICENSE
 
- 1.3.7 inlong-sort/sort-connectors/jdbc/src/main/java/org/apache/inlong/sort/jdbc/table/AbstractJdbcDialect.java
-       inlong-sort/sort-connectors/jdbc/src/main/java/org/apache/inlong/sort/jdbc/table/JdbcDialects.java
-       inlong-sort/sort-connectors/jdbc/src/main/java/org/apache/inlong/sort/jdbc/table/JdbcDynamicOutputFormatBuilder.java
-       inlong-sort/sort-connectors/jdbc/src/main/java/org/apache/inlong/sort/jdbc/table/JdbcDynamicTableFactory.java
-       inlong-sort/sort-connectors/jdbc/src/main/java/org/apache/inlong/sort/jdbc/table/JdbcDynamicTableSink.java
+ 1.3.7 inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/jdbc/src/main/java/org/apache/inlong/sort/jdbc/table/AbstractJdbcDialect.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/jdbc/src/main/java/org/apache/inlong/sort/jdbc/table/JdbcDialects.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/jdbc/src/main/java/org/apache/inlong/sort/jdbc/table/JdbcDynamicOutputFormatBuilder.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/jdbc/src/main/java/org/apache/inlong/sort/jdbc/table/JdbcDynamicTableFactory.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/jdbc/src/main/java/org/apache/inlong/sort/jdbc/table/JdbcDynamicTableSink.java
   Source  : org.apache.flink:flink-connector-jdbc_2.11:1.13.5 (Please note that the software have been modified.)
   License : https://github.com/apache/flink/blob/master/LICENSE
 
- 1.3.8 inlong-sort/sort-connectors/sqlserver-cdc/src/main/java/org/apache/inlong/sort/cdc/sqlserver/table/DebeziumSourceFunction.java
-       inlong-sort/sort-connectors/sqlserver-cdc/src/main/java/org/apache/inlong/sort/cdc/sqlserver/table/SqlServerTableFactory.java
-       inlong-sort/sort-connectors/sqlserver-cdc/src/main/java/org/apache/inlong/sort/cdc/sqlserver/table/SqlServerTableSource.java
-       inlong-sort/sort-connectors/sqlserver-cdc/src/main/java/org/apache/inlong/sort/cdc/sqlserver/SqlServerSource.java
+ 1.3.8 inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/sqlserver-cdc/src/main/java/org/apache/inlong/sort/cdc/sqlserver/table/DebeziumSourceFunction.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/sqlserver-cdc/src/main/java/org/apache/inlong/sort/cdc/sqlserver/table/SqlServerTableFactory.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/sqlserver-cdc/src/main/java/org/apache/inlong/sort/cdc/sqlserver/table/SqlServerTableSource.java
   Source  : flink-cdc-connectors 2.2.1 (Please note that the software have been modified.)
   License : https://github.com/ververica/flink-cdc-connectors/blob/master/LICENSE
 
- 1.3.9 inlong-sort/sort-connectors/redis/src/main/java/org/apache/inlong/sort/redis/common/config/handler/FlinkJedisClusterConfigHandler.java
-       inlong-sort/sort-connectors/redis/src/main/java/org/apache/inlong/sort/redis/common/config/handler/FlinkJedisSentinelConfigHandler.java
-       inlong-sort/sort-connectors/redis/src/main/java/org/apache/inlong/sort/redis/common/container/RedisCommandsContainerBuilder.java
-       inlong-sort/sort-connectors/redis/src/main/java/org/apache/inlong/sort/redis/common/handler/RedisMapperHandler.java
-       inlong-sort/sort-connectors/redis/src/main/java/org/apache/inlong/sort/redis/common/mapper/RedisCommand.java
-       inlong-sort/sort-connectors/redis/src/main/java/org/apache/inlong/sort/redis/common/mapper/RedisCommandDescription.java
-       inlong-sort/sort-connectors/redis/src/main/java/org/apache/inlong/sort/redis/common/mapper/RedisMapper.java
-       inlong-sort/sort-connectors/redis/src/main/java/org/apache/inlong/sort/redis/common/mapper/row/RowRedisMapper.java
+ 1.3.9 inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/redis/src/main/java/org/apache/inlong/sort/redis/common/config/handler/FlinkJedisClusterConfigHandler.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/redis/src/main/java/org/apache/inlong/sort/redis/common/config/handler/FlinkJedisSentinelConfigHandler.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/redis/src/main/java/org/apache/inlong/sort/redis/common/container/RedisCommandsContainerBuilder.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/redis/src/main/java/org/apache/inlong/sort/redis/common/handler/RedisMapperHandler.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/redis/src/main/java/org/apache/inlong/sort/redis/common/mapper/RedisCommand.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/redis/src/main/java/org/apache/inlong/sort/redis/common/mapper/RedisCommandDescription.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/redis/src/main/java/org/apache/inlong/sort/redis/common/mapper/RedisMapper.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/redis/src/main/java/org/apache/inlong/sort/redis/common/mapper/row/RowRedisMapper.java
   Source  : org.apache.bahir:flink-connector-redis_2.11:1.1-SNAPSHOT (Please note that the software have been modified.)
   License : https://github.com/apache/bahir-flink/blob/master/LICENSE
 
- 1.3.10 inlong-sort/sort-connectors/filesystem/src/main/java/org/apache/inlong/sort/filesystem/FileSystemTableSink.java
-        inlong-sort/sort-connectors/filesystem/src/main/java/org/apache/inlong/sort/filesystem/FileSystemTableFactory.java
-        inlong-sort/sort-connectors/filesystem/src/main/java/org/apache/inlong/sort/filesystem/AbstractFileSystemTable.java
-        inlong-sort/sort-connectors/filesystem/src/main/java/org/apache/inlong/sort/filesystem/stream/StreamingSink.java
-        inlong-sort/sort-connectors/filesystem/src/main/java/org/apache/inlong/sort/filesystem/stream/StreamingFileWriter.java
-        inlong-sort/sort-connectors/filesystem/src/main/java/org/apache/inlong/sort/filesystem/stream/AbstractStreamingWriter.java
-        inlong-sort/sort-connectors/filesystem/src/main/java/org/apache/inlong/sort/filesystem/stream/compact/CompactFileWriter.java
+ 1.3.10 inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/filesystem/src/main/java/org/apache/inlong/sort/filesystem/FileSystemTableSink.java
+        inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/filesystem/src/main/java/org/apache/inlong/sort/filesystem/FileSystemTableFactory.java
+        inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/filesystem/src/main/java/org/apache/inlong/sort/filesystem/AbstractFileSystemTable.java
+        inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/filesystem/src/main/java/org/apache/inlong/sort/filesystem/stream/StreamingSink.java
+        inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/filesystem/src/main/java/org/apache/inlong/sort/filesystem/stream/StreamingFileWriter.java
+        inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/filesystem/src/main/java/org/apache/inlong/sort/filesystem/stream/AbstractStreamingWriter.java
+        inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/filesystem/src/main/java/org/apache/inlong/sort/filesystem/stream/compact/CompactFileWriter.java
   Source  : flink-table-runtime-blink_2.11-13.2-rc2 2.2.1 (Please note that the software have been modified.)
   License : https://github.com/apache/flink/blob/release-1.13.2-rc2/LICENSE
 
- 1.3.11 inlong-sort/sort-connectors/kafka/src/main/java/org/apache/inlong/sort/kafka/table/DynamicKafkaDeserializationSchema.java
-        inlong-sort/sort-connectors/kafka/src/main/java/org/apache/inlong/sort/kafka/table/KafkaDynamicSource.java
-        inlong-sort/sort-connectors/kafka/src/main/java/org/apache/inlong/sort/kafka/table/KafkaDynamicTableFactory.java
-        inlong-sort/sort-connectors/kafka/src/main/java/org/apache/inlong/sort/kafka/table/UpsertKafkaDynamicTableFactory.java
-        inlong-sort/sort-connectors/kafka/src/main/java/org/apache/inlong/sort/kafka/DynamicKafkaSerializationSchema.java
-        inlong-sort/sort-connectors/kafka/src/main/java/org/apache/inlong/sort/kafka/FlinkKafkaConsumer.java
-        inlong-sort/sort-connectors/kafka/src/main/java/org/apache/inlong/sort/kafka/FlinkKafkaConsumerBase.java
-        inlong-sort/sort-connectors/kafka/src/main/java/org/apache/inlong/sort/kafka/FlinkKafkaProducer.java
-        inlong-sort/sort-connectors/kafka/src/main/java/org/apache/inlong/sort/kafka/KafkaDynamicSink.java
+ 1.3.11 inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/kafka/src/main/java/org/apache/inlong/sort/kafka/table/DynamicKafkaDeserializationSchema.java
+        inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/kafka/src/main/java/org/apache/inlong/sort/kafka/table/KafkaDynamicSource.java
+        inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/kafka/src/main/java/org/apache/inlong/sort/kafka/table/KafkaDynamicTableFactory.java
+        inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/kafka/src/main/java/org/apache/inlong/sort/kafka/table/UpsertKafkaDynamicTableFactory.java
+        inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/kafka/src/main/java/org/apache/inlong/sort/kafka/DynamicKafkaSerializationSchema.java
+        inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/kafka/src/main/java/org/apache/inlong/sort/kafka/FlinkKafkaConsumer.java
+        inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/kafka/src/main/java/org/apache/inlong/sort/kafka/FlinkKafkaConsumerBase.java
+        inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/kafka/src/main/java/org/apache/inlong/sort/kafka/FlinkKafkaProducer.java
+        inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/kafka/src/main/java/org/apache/inlong/sort/kafka/KafkaDynamicSink.java
   Source  : org.apache.flink:flink-connector-kafka_2.11:1.13.5 (Please note that the software have been modified.)
   License : https://github.com/apache/flink/blob/master/LICENSE
 
-  1.3.12 inlong-sort/sort-connectors/doris/src/main/java/org/apache/inlong/sort/doris/table/DorisDynamicSchemaOutputFormat.java
-         inlong-sort/sort-connectors/doris/src/main/java/org/apache/inlong/sort/doris/table/DorisDynamicTableFactory.java
-         inlong-sort/sort-connectors/doris/src/main/java/org/apache/inlong/sort/doris/table/DorisDynamicTableSink.java
-         inlong-sort/sort-connectors/doris/src/main/java/org/apache/inlong/sort/doris/table/DorisStreamLoad.java
-         inlong-sort/sort-connectors/doris/src/main/java/org/apache/inlong/sort/doris/model/RespContent.java
+  1.3.12 inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/doris/src/main/java/org/apache/inlong/sort/doris/table/DorisDynamicSchemaOutputFormat.java
+         inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/doris/src/main/java/org/apache/inlong/sort/doris/table/DorisDynamicTableFactory.java
+         inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/doris/src/main/java/org/apache/inlong/sort/doris/table/DorisDynamicTableSink.java
+         inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/doris/src/main/java/org/apache/inlong/sort/doris/table/DorisStreamLoad.java
+         inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/doris/src/main/java/org/apache/inlong/sort/doris/model/RespContent.java
     Source  : org.apache.doris:flink-doris-connector-1.13_2.11:1.0.3 (Please note that the software have been modified.)
     License : https://github.com/apache/doris-flink-connector/blob/1.13_2.11-1.0.3/LICENSE.txt
 
-1.3.13 inlong-sort/sort-connectors/starrocks/src/main/java/org/apache/inlong/sort/starrocks/manager/StarRocksSinkManager.java
-       inlong-sort/sort-connectors/starrocks/src/main/java/org/apache/inlong/sort/starrocks/manager/StarRocksStreamLoadVisitor.java
-       inlong-sort/sort-connectors/starrocks/src/main/java/org/apache/inlong/sort/starrocks/table/sink/StarRocksDynamicSinkFunction.java
-       inlong-sort/sort-connectors/starrocks/src/main/java/org/apache/inlong/sort/starrocks/table/sink/StarRocksDynamicTableSink.java
-       inlong-sort/sort-connectors/starrocks/src/main/java/org/apache/inlong/sort/starrocks/table/sink/StarRocksDynamicTableSinkFactory.java
+1.3.13 inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/starrocks/src/main/java/org/apache/inlong/sort/starrocks/manager/StarRocksSinkManager.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/starrocks/src/main/java/org/apache/inlong/sort/starrocks/manager/StarRocksStreamLoadVisitor.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/starrocks/src/main/java/org/apache/inlong/sort/starrocks/table/sink/StarRocksDynamicSinkFunction.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/starrocks/src/main/java/org/apache/inlong/sort/starrocks/table/sink/StarRocksDynamicTableSink.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/starrocks/src/main/java/org/apache/inlong/sort/starrocks/table/sink/StarRocksDynamicTableSinkFactory.java
 
   Source  : com.starrocks:flink-connector-starrocks:1.2.3_flink-1.13_2.11 (Please note that the software have been modified.)
   License : https://www.apache.org/licenses/LICENSE-2.0.txt
 
-1.3.14 inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/source/jdbc/JdbcIncrementalSource.java
-       inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/source/reader/IncrementalSourceRecordEmitter.java
-       inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/source/IncrementalSource.java
-       inlong-sort/sort-connectors/oracle-cdc/src/main/java/org/apache/inlong/sort/cdc/oracle/source/OracleSourceBuilder.java
-       inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/config/BaseSourceConfig.java
-       inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/config/JdbcSourceConfig.java
-       inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/config/JdbcSourceConfigFactory.java
-       inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/config/SourceConfig.java
-       inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/dialect/DataSourceDialect.java
-       inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/dialect/JdbcDataSourceDialect.java
-       inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/relational/connection/ConnectionPoolId.java
-       inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/relational/connection/ConnectionPools.java
-       inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/relational/connection/JdbcConnectionFactory.java
-       inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/relational/connection/JdbcConnectionPoolFactory.java
-       inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/relational/connection/JdbcConnectionPools.java
-       inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/relational/JdbcSourceEventDispatcher.java
-       inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/source/assigner/splitter/ChunkRange.java
-       inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/source/assigner/splitter/ChunkSplitter.java
-       inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/source/assigner/splitter/JdbcSourceChunkSplitter.java
-       inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/source/assigner/state/HybridPendingSplitsState.java
-       inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/source/assigner/state/PendingSplitsState.java
-       inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/source/assigner/state/PendingSplitsStateSerializer.java
-       inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/source/assigner/state/SnapshotPendingSplitsState.java
-       inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/source/assigner/state/StreamPendingSplitsState.java
-       inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/source/assigner/HybridSplitAssigner.java
-       inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/source/assigner/SnapshotSplitAssigner.java
-       inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/source/assigner/SplitAssigner.java
-       inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/source/assigner/StreamSplitAssigner.java
-       inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/source/enumerator/IncrementalSourceEnumerator.java
-       inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/source/jdbc/JdbcIncrementalSource.java
-       inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/source/meta/events/FinishedSnapshotSplitsAckEvent.java
-       inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/source/meta/events/FinishedSnapshotSplitsReportEvent.java
-       inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/source/meta/events/FinishedSnapshotSplitsRequestEvent.java
-       inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/source/meta/events/StreamSplitMetaEvent.java
-       inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/source/meta/events/StreamSplitMetaRequestEvent.java
-       inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/source/meta/offset/Offset.java
-       inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/source/meta/offset/OffsetDeserializerSerializer.java
-       inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/source/meta/offset/OffsetFactory.java
-       inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/source/meta/split/ChangeEventRecords.java
-       inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/source/meta/split/FinishedSnapshotSplitInfo.java
-       inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/source/meta/split/MetricSplit.java
-       inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/source/meta/split/SchemalessSnapshotSplit.java
-       inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/source/meta/split/SnapshotSplit.java
-       inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/source/meta/split/SnapshotSplitState.java
-       inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/source/meta/split/SourceRecords.java
-       inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/source/meta/split/SourceSplitBase.java
-       inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/source/meta/split/SourceSplitSerializer.java
-       inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/source/meta/split/SourceSplitState.java
-       inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/source/meta/split/StreamSplit.java
-       inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/source/meta/split/StreamSplitState.java
-       inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/source/meta/wartermark/WatermarkEvent.java
-       inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/source/meta/wartermark/WatermarkKind.java
-       inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/source/metrics/SourceReaderMetrics.java
-       inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/source/reader/external/Fetcher.java
-       inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/source/reader/external/FetchTask.java
-       inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/source/reader/external/IncrementalSourceScanFetcher.java
-       inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/source/reader/external/IncrementalSourceStreamFetcher.java
-       inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/source/reader/external/JdbcSourceFetchTaskContext.java
-       inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/source/reader/IncrementalSourceReader.java
-       inlong-sort/sort-connectors/cdc-base/src/main/java/org/apache/inlong/sort/cdc/base/source/reader/IncrementalSourceSplitReader.java
-       inlong-sort/sort-connectors/oracle-cdc/src/main/java/org/apache/inlong/sort/cdc/base/relational/JdbcSourceEventDispatcher.java
-       inlong-sort/sort-connectors/oracle-cdc/src/main/java/org/apache/inlong/sort/cdc/oracle/source/config/OracleSourceConfig.java
-       inlong-sort/sort-connectors/oracle-cdc/src/main/java/org/apache/inlong/sort/cdc/oracle/source/config/OracleSourceConfigFactory.java
-       inlong-sort/sort-connectors/oracle-cdc/src/main/java/org/apache/inlong/sort/cdc/oracle/source/config/OracleSourceOptions.java
-       inlong-sort/sort-connectors/oracle-cdc/src/main/java/org/apache/inlong/sort/cdc/oracle/source/meta/offset/RedoLogOffset.java
-       inlong-sort/sort-connectors/oracle-cdc/src/main/java/org/apache/inlong/sort/cdc/oracle/source/meta/offset/RedoLogOffsetFactory.java
-       inlong-sort/sort-connectors/oracle-cdc/src/main/java/org/apache/inlong/sort/cdc/oracle/source/reader/fetch/OracleScanFetchTask.java
-       inlong-sort/sort-connectors/oracle-cdc/src/main/java/org/apache/inlong/sort/cdc/oracle/source/reader/fetch/OracleSourceFetchTaskContext.java
-       inlong-sort/sort-connectors/oracle-cdc/src/main/java/org/apache/inlong/sort/cdc/oracle/source/reader/fetch/OracleStreamFetchTask.java
-       inlong-sort/sort-connectors/oracle-cdc/src/main/java/org/apache/inlong/sort/cdc/oracle/source/splitter/OracleChunkSplitter.java
-       inlong-sort/sort-connectors/oracle-cdc/src/main/java/org/apache/inlong/sort/cdc/oracle/source/utils/OracleConnectionUtils.java
-       inlong-sort/sort-connectors/oracle-cdc/src/main/java/org/apache/inlong/sort/cdc/oracle/source/utils/OracleSchema.java
-       inlong-sort/sort-connectors/oracle-cdc/src/main/java/org/apache/inlong/sort/cdc/oracle/source/utils/OracleTypeUtils.java
-       inlong-sort/sort-connectors/oracle-cdc/src/main/java/org/apache/inlong/sort/cdc/oracle/source/utils/OracleUtils.java
-       inlong-sort/sort-connectors/oracle-cdc/src/main/java/org/apache/inlong/sort/cdc/oracle/source/OracleDialect.java
-       inlong-sort/sort-connectors/oracle-cdc/src/main/java/org/apache/inlong/sort/cdc/oracle/source/OraclePooledDataSourceFactory.java
-       inlong-sort/sort-connectors/oracle-cdc/src/main/java/org/apache/inlong/sort/cdc/base/source/IncrementalSource.java
-       inlong-sort/sort-connectors/mongodb-cdc/src/main/java/org/apache/inlong/sort/cdc/mongodb/source/assigners/splitters/ShardedSplitStrategy.java
-       inlong-sort/sort-connectors/mongodb-cdc/src/main/java/org/apache/inlong/sort/cdc/mongodb/source/MongoDBSource.java
-       inlong-sort/sort-connectors/mongodb-cdc/src/main/java/org/apache/inlong/sort/cdc/mongodb/source/assigners/splitters/SplitVectorSplitStrategy.java
-       inlong-sort/sort-connectors/mongodb-cdc/src/main/java/org/apache/inlong/sort/cdc/mongodb/source/assigners/splitters/SingleSplitStrategy.java
-       inlong-sort/sort-connectors/mongodb-cdc/src/main/java/org/apache/inlong/sort/cdc/mongodb/source/assigners/splitters/MongoDBChunkSplitter.java
-       inlong-sort/sort-connectors/mongodb-cdc/src/main/java/org/apache/inlong/sort/cdc/mongodb/source/assigners/splitters/SplitContext.java
-       inlong-sort/sort-connectors/mongodb-cdc/src/main/java/org/apache/inlong/sort/cdc/mongodb/source/assigners/splitters/SampleBucketSplitStrategy.java
-       inlong-sort/sort-connectors/mongodb-cdc/src/main/java/org/apache/inlong/sort/cdc/base/source/IncrementalSource.java
-       inlong-sort/sort-connectors/mongodb-cdc/src/main/java/org/apache/inlong/sort/cdc/mongodb/source/assigners/splitters/SplitStrategy.java
-       inlong-sort/sort-connectors/mongodb-cdc/src/main/java/org/apache/inlong/sort/cdc/mongodb/source/MongoDBSourceBuilder.java
-       inlong-sort/sort-connectors/mongodb-cdc/src/main/java/org/apache/inlong/sort/cdc/mongodb/source/config/MongoDBSourceConfig.java
-       inlong-sort/sort-connectors/mongodb-cdc/src/main/java/org/apache/inlong/sort/cdc/mongodb/source/config/MongoDBSourceConfigFactory.java
-       inlong-sort/sort-connectors/mongodb-cdc/src/main/java/org/apache/inlong/sort/cdc/mongodb/source/config/MongoDBSourceOptions.java
-       inlong-sort/sort-connectors/mongodb-cdc/src/main/java/org/apache/inlong/sort/cdc/mongodb/source/connection/MongoClientPool.java
-       inlong-sort/sort-connectors/mongodb-cdc/src/main/java/org/apache/inlong/sort/cdc/mongodb/source/dialect/MongoDBDialect.java
-       inlong-sort/sort-connectors/mongodb-cdc/src/main/java/org/apache/inlong/sort/cdc/mongodb/source/offset/ChangeStreamDescriptor.java
-       inlong-sort/sort-connectors/mongodb-cdc/src/main/java/org/apache/inlong/sort/cdc/mongodb/source/offset/ChangeStreamOffset.java
-       inlong-sort/sort-connectors/mongodb-cdc/src/main/java/org/apache/inlong/sort/cdc/mongodb/source/offset/ChangeStreamOffsetFactory.java
-       inlong-sort/sort-connectors/mongodb-cdc/src/main/java/org/apache/inlong/sort/cdc/mongodb/source/reader/fetch/MongoDBFetchTaskContext.java
-       inlong-sort/sort-connectors/mongodb-cdc/src/main/java/org/apache/inlong/sort/cdc/mongodb/source/reader/fetch/MongoDBScanFetchTask.java
-       inlong-sort/sort-connectors/mongodb-cdc/src/main/java/org/apache/inlong/sort/cdc/mongodb/source/reader/fetch/MongoDBStreamFetchTask.java
-       inlong-sort/sort-connectors/mongodb-cdc/src/main/java/org/apache/inlong/sort/cdc/mongodb/source/reader/MongoDBRecordEmitter.java
-       inlong-sort/sort-connectors/mongodb-cdc/src/main/java/org/apache/inlong/sort/cdc/mongodb/source/utils/MongoUtils.java
+1.3.14 inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/source/jdbc/JdbcIncrementalSource.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/source/reader/IncrementalSourceRecordEmitter.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/source/IncrementalSource.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/oracle-cdc/src/main/java/org/apache/inlong/sort/cdc/oracle/source/OracleSourceBuilder.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/config/BaseSourceConfig.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/config/JdbcSourceConfig.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/config/JdbcSourceConfigFactory.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/config/SourceConfig.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/dialect/DataSourceDialect.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/dialect/JdbcDataSourceDialect.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/relational/connection/ConnectionPoolId.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/relational/connection/ConnectionPools.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/relational/connection/JdbcConnectionFactory.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/relational/connection/JdbcConnectionPoolFactory.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/relational/connection/JdbcConnectionPools.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/relational/JdbcSourceEventDispatcher.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/source/assigner/splitter/ChunkRange.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/source/assigner/splitter/ChunkSplitter.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/source/assigner/splitter/JdbcSourceChunkSplitter.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/source/assigner/state/HybridPendingSplitsState.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/source/assigner/state/PendingSplitsState.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/source/assigner/state/PendingSplitsStateSerializer.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/source/assigner/state/SnapshotPendingSplitsState.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/source/assigner/state/StreamPendingSplitsState.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/source/assigner/HybridSplitAssigner.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/source/assigner/SnapshotSplitAssigner.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/source/assigner/SplitAssigner.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/source/assigner/StreamSplitAssigner.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/source/enumerator/IncrementalSourceEnumerator.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/source/jdbc/JdbcIncrementalSource.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/source/meta/events/FinishedSnapshotSplitsAckEvent.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/source/meta/events/FinishedSnapshotSplitsReportEvent.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/source/meta/events/FinishedSnapshotSplitsRequestEvent.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/source/meta/events/StreamSplitMetaEvent.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/source/meta/events/StreamSplitMetaRequestEvent.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/source/meta/offset/Offset.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/source/meta/offset/OffsetDeserializerSerializer.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/source/meta/offset/OffsetFactory.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/source/meta/split/ChangeEventRecords.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/source/meta/split/FinishedSnapshotSplitInfo.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/source/meta/split/MetricSplit.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/source/meta/split/SchemalessSnapshotSplit.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/source/meta/split/SnapshotSplit.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/source/meta/split/SnapshotSplitState.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/source/meta/split/SourceRecords.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/source/meta/split/SourceSplitBase.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/source/meta/split/SourceSplitSerializer.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/source/meta/split/SourceSplitState.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/source/meta/split/StreamSplit.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/source/meta/split/StreamSplitState.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/source/meta/wartermark/WatermarkEvent.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/source/meta/wartermark/WatermarkKind.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/source/metrics/SourceReaderMetrics.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/source/reader/external/Fetcher.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/source/reader/external/FetchTask.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/source/reader/external/IncrementalSourceScanFetcher.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/source/reader/external/IncrementalSourceStreamFetcher.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/source/reader/external/JdbcSourceFetchTaskContext.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/source/reader/IncrementalSourceReader.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/src/main/java/org/apache/inlong/sort/cdc/base/source/reader/IncrementalSourceSplitReader.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/oracle-cdc/src/main/java/org/apache/inlong/sort/cdc/base/relational/JdbcSourceEventDispatcher.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/oracle-cdc/src/main/java/org/apache/inlong/sort/cdc/oracle/source/config/OracleSourceConfig.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/oracle-cdc/src/main/java/org/apache/inlong/sort/cdc/oracle/source/config/OracleSourceConfigFactory.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/oracle-cdc/src/main/java/org/apache/inlong/sort/cdc/oracle/source/config/OracleSourceOptions.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/oracle-cdc/src/main/java/org/apache/inlong/sort/cdc/oracle/source/meta/offset/RedoLogOffset.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/oracle-cdc/src/main/java/org/apache/inlong/sort/cdc/oracle/source/meta/offset/RedoLogOffsetFactory.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/oracle-cdc/src/main/java/org/apache/inlong/sort/cdc/oracle/source/reader/fetch/OracleScanFetchTask.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/oracle-cdc/src/main/java/org/apache/inlong/sort/cdc/oracle/source/reader/fetch/OracleSourceFetchTaskContext.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/oracle-cdc/src/main/java/org/apache/inlong/sort/cdc/oracle/source/reader/fetch/OracleStreamFetchTask.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/oracle-cdc/src/main/java/org/apache/inlong/sort/cdc/oracle/source/splitter/OracleChunkSplitter.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/oracle-cdc/src/main/java/org/apache/inlong/sort/cdc/oracle/source/utils/OracleConnectionUtils.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/oracle-cdc/src/main/java/org/apache/inlong/sort/cdc/oracle/source/utils/OracleSchema.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/oracle-cdc/src/main/java/org/apache/inlong/sort/cdc/oracle/source/utils/OracleTypeUtils.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/oracle-cdc/src/main/java/org/apache/inlong/sort/cdc/oracle/source/utils/OracleUtils.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/oracle-cdc/src/main/java/org/apache/inlong/sort/cdc/oracle/source/OracleDialect.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/oracle-cdc/src/main/java/org/apache/inlong/sort/cdc/oracle/source/OraclePooledDataSourceFactory.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/oracle-cdc/src/main/java/org/apache/inlong/sort/cdc/base/source/IncrementalSource.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mongodb-cdc/src/main/java/org/apache/inlong/sort/cdc/mongodb/source/assigners/splitters/ShardedSplitStrategy.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mongodb-cdc/src/main/java/org/apache/inlong/sort/cdc/mongodb/source/MongoDBSource.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mongodb-cdc/src/main/java/org/apache/inlong/sort/cdc/mongodb/source/assigners/splitters/SplitVectorSplitStrategy.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mongodb-cdc/src/main/java/org/apache/inlong/sort/cdc/mongodb/source/assigners/splitters/SingleSplitStrategy.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mongodb-cdc/src/main/java/org/apache/inlong/sort/cdc/mongodb/source/assigners/splitters/MongoDBChunkSplitter.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mongodb-cdc/src/main/java/org/apache/inlong/sort/cdc/mongodb/source/assigners/splitters/SplitContext.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mongodb-cdc/src/main/java/org/apache/inlong/sort/cdc/mongodb/source/assigners/splitters/SampleBucketSplitStrategy.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mongodb-cdc/src/main/java/org/apache/inlong/sort/cdc/base/source/IncrementalSource.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mongodb-cdc/src/main/java/org/apache/inlong/sort/cdc/mongodb/source/assigners/splitters/SplitStrategy.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mongodb-cdc/src/main/java/org/apache/inlong/sort/cdc/mongodb/source/MongoDBSourceBuilder.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mongodb-cdc/src/main/java/org/apache/inlong/sort/cdc/mongodb/source/config/MongoDBSourceConfig.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mongodb-cdc/src/main/java/org/apache/inlong/sort/cdc/mongodb/source/config/MongoDBSourceConfigFactory.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mongodb-cdc/src/main/java/org/apache/inlong/sort/cdc/mongodb/source/config/MongoDBSourceOptions.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mongodb-cdc/src/main/java/org/apache/inlong/sort/cdc/mongodb/source/connection/MongoClientPool.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mongodb-cdc/src/main/java/org/apache/inlong/sort/cdc/mongodb/source/dialect/MongoDBDialect.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mongodb-cdc/src/main/java/org/apache/inlong/sort/cdc/mongodb/source/offset/ChangeStreamDescriptor.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mongodb-cdc/src/main/java/org/apache/inlong/sort/cdc/mongodb/source/offset/ChangeStreamOffset.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mongodb-cdc/src/main/java/org/apache/inlong/sort/cdc/mongodb/source/offset/ChangeStreamOffsetFactory.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mongodb-cdc/src/main/java/org/apache/inlong/sort/cdc/mongodb/source/reader/fetch/MongoDBFetchTaskContext.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mongodb-cdc/src/main/java/org/apache/inlong/sort/cdc/mongodb/source/reader/fetch/MongoDBScanFetchTask.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mongodb-cdc/src/main/java/org/apache/inlong/sort/cdc/mongodb/source/reader/fetch/MongoDBStreamFetchTask.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mongodb-cdc/src/main/java/org/apache/inlong/sort/cdc/mongodb/source/reader/MongoDBRecordEmitter.java
+       inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/mongodb-cdc/src/main/java/org/apache/inlong/sort/cdc/mongodb/source/utils/MongoUtils.java
 
  Source  : flink-cdc-connectors 2.3.0 (Please note that the software have been modified.)
  License : https://github.com/ververica/flink-cdc-connectors/blob/master/LICENSE
 
- 1.3.15 inlong-sort/sort-connectors/oracle-cdc/src/main/java/io/debezium/connector/oracle/logminer/LogMinerQueryBuilder.java
-        inlong-sort/sort-connectors/oracle-cdc/src/main/java/io/debezium/connector/oracle/logminer/LogMinerStreamingChangeEventSource.java
+ 1.3.15 inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/oracle-cdc/src/main/java/io/debezium/connector/oracle/logminer/LogMinerQueryBuilder.java
+        inlong-sort/sort-flink/sort-flink-v1.13/sort-connectors/oracle-cdc/src/main/java/io/debezium/connector/oracle/logminer/LogMinerStreamingChangeEventSource.java
 
  Source  : debezium-connector-oracle 1.6.4.Final (Please note that the software have been modified.)
  License : https://github.com/debezium/debezium/blob/main/LICENSE.txt
+
+1.3.16 inlong-sort/sort-flink/sort-flink-v1.15/sort-connectors/starrocks/src/main/java/org/apache/inlong/sort/starrocks/table/sink/StarRocksDynamicTableSinkFactory.java
+
+  Source  : com.starrocks:flink-connector-starrocks:1.2.7_flink-1.15 (Please note that the software have been modified.)
+  License : https://www.apache.org/licenses/LICENSE-2.0.txt
 
 =======================================================================
 Apache InLong Subcomponents:
@@ -879,7 +901,7 @@ The text of each license is the standard Apache 2.0 license.
   net.sf.jpam:jpam:1.1 - JPam (http://jpam.sourceforge.net/), (The Apache Software License, Version 2.0)
   com.cedarsoftware:json-io:2.5.1 - Java JSON serialization (https://github.com/jdereg/json-io), (Apache License, Version 2.0)
   net.minidev:json-smart:2.3 - JSON Small and Fast Parser (https://github.com/netplex/json-smart-v2/tree/v2.3), (The Apache Software License, Version 2.0)
-  com.github.jsqlparser:jsqlparser:4.2 - JSQLParser library (https://github.com/JSQLParser/JSqlParser), (The Apache Software License, Version 2.0;  GNU Library or Lesser General Public License (LGPL) V2.1)
+  com.github.jsqlparser:jsqlparser:4.6 - JSQLParser library (https://github.com/JSQLParser/JSqlParser), (The Apache Software License, Version 2.0;  GNU Library or Lesser General Public License (LGPL) V2.1)
   org.apache.kerby:kerb-admin:1.0.1 - Kerby-kerb Admin (http://directory.apache.org/kerby/kerby-kerb/kerb-admin), (Apache License, Version 2.0)
   org.apache.kerby:kerb-client:1.0.1 - Kerby-kerb Client (http://directory.apache.org/kerby/kerby-kerb/kerb-client), (Apache License, Version 2.0)
   org.apache.kerby:kerb-common:1.0.1 - Kerby-kerb Common (http://directory.apache.org/kerby/kerby-kerb/kerb-common), (Apache License, Version 2.0)
@@ -934,7 +956,7 @@ The text of each license is the standard Apache 2.0 license.
   org.reflections:reflections:0.10.2 - Reflections (https://github.com/ronmamo/reflections/tree/0.10.2), (The Apache Software License, Version 2.0;  WTFPL)
   org.yaml:snakeyaml:1.17 - SnakeYAML (https://bitbucket.org/snakeyaml/snakeyaml/src/v1.17/), (Apache License, Version 2.0)
   org.yaml:snakeyaml:1.26 - SnakeYAML (https://bitbucket.org/snakeyaml/snakeyaml/src/v1.26/), (Apache License, Version 2.0)
-  org.xerial.snappy:snappy-java:1.1.8.4 - snappy-java (https://github.com/xerial/snappy-java), (Apache-2.0)
+  org.xerial.snappy:snappy-java:1.1.10.1 - snappy-java (https://github.com/xerial/snappy-java), (Apache-2.0)
   com.tdunning:t-digest:3.2 - T-Digest (https://github.com/tdunning/t-digest/tree/t-digest-3.2), (The Apache Software License, Version 2.0)
   javax.validation:validation-api:1.1.0.Final - Bean Validation API (http://beanvalidation.org), (The Apache Software License, Version 2.0)
   com.fasterxml.woodstox:woodstox-core:5.0.3 - Woodstox (https://github.com/FasterXML/woodstox/tree/woodstox-core-5.0.3), (The Apache License, Version 2.0)

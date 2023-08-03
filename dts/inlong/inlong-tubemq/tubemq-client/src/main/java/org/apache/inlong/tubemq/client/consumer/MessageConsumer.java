@@ -17,11 +17,12 @@
 
 package org.apache.inlong.tubemq.client.consumer;
 
-import java.util.List;
-import java.util.Map;
 import org.apache.inlong.tubemq.client.config.ConsumerConfig;
 import org.apache.inlong.tubemq.client.exception.TubeClientException;
 import org.apache.inlong.tubemq.corebase.Shutdownable;
+
+import java.util.List;
+import java.util.Map;
 
 public interface MessageConsumer extends Shutdownable {
 

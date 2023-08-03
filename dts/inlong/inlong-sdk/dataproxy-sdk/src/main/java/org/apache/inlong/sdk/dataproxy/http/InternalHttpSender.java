@@ -17,20 +17,20 @@
 
 package org.apache.inlong.sdk.dataproxy.http;
 
+import org.apache.inlong.common.enums.DataProxyErrCode;
+import org.apache.inlong.sdk.dataproxy.ProxyClientConfig;
+import org.apache.inlong.sdk.dataproxy.SendResult;
+import org.apache.inlong.sdk.dataproxy.config.HostInfo;
+import org.apache.inlong.sdk.dataproxy.network.HttpMessage;
+import org.apache.inlong.sdk.dataproxy.network.Utils;
+import org.apache.inlong.sdk.dataproxy.utils.ConcurrentHashSet;
+
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.TimeUnit;
-
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpHeaders;
+import org.apache.http.HttpStatus;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
@@ -40,14 +40,17 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
-import org.apache.inlong.sdk.dataproxy.ProxyClientConfig;
-import org.apache.inlong.sdk.dataproxy.SendResult;
-import org.apache.inlong.sdk.dataproxy.config.HostInfo;
-import org.apache.inlong.sdk.dataproxy.network.HttpMessage;
-import org.apache.inlong.sdk.dataproxy.network.Utils;
-import org.apache.inlong.sdk.dataproxy.utils.ConcurrentHashSet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.TimeUnit;
 
 /**
  * internal http sender
@@ -60,10 +63,8 @@ public class InternalHttpSender {
     private final ConcurrentHashSet<HostInfo> hostList;
 
     private final LinkedBlockingQueue<HttpMessage> messageCache;
-    private final ExecutorService workerServices = Executors
-            .newCachedThreadPool();
+    private final ExecutorService workerServices = Executors.newCachedThreadPool();
     private CloseableHttpClient httpClient;
-    private final JsonParser jsonParser = new JsonParser();
     private boolean bShutDown = false;
 
     public InternalHttpSender(ProxyClientConfig proxyClientConfig,
@@ -83,16 +84,10 @@ public class InternalHttpSender {
 
     /**
      * construct header
-     *
-     * @param bodies
-     * @param groupId
-     * @param streamId
-     * @param dt
-     * @return
      */
     private ArrayList<BasicNameValuePair> getHeaders(List<String> bodies,
             String groupId, String streamId, long dt) {
-        ArrayList<BasicNameValuePair> params = new ArrayList<BasicNameValuePair>();
+        ArrayList<BasicNameValuePair> params = new ArrayList<>();
         params.add(new BasicNameValuePair("groupId", groupId));
         params.add(new BasicNameValuePair("streamId", streamId));
         params.add(new BasicNameValuePair("dt", String.valueOf(dt)));
@@ -104,10 +99,6 @@ public class InternalHttpSender {
 
     /**
      * http client
-     *
-     * @param timeout
-     * @param timeUnit
-     * @return
      */
     private synchronized CloseableHttpClient constructHttpClient(long timeout, TimeUnit timeUnit) {
         if (httpClient != null) {
@@ -165,17 +156,6 @@ public class InternalHttpSender {
 
     /**
      * send request by http
-     *
-     * @param bodies
-     * @param groupId
-     * @param streamId
-     * @param dt
-     * @param timeout
-     * @param timeUnit
-     * @param hostInfo
-     * @return
-     *
-     * @throws Exception
      */
     private SendResult sendByHttp(List<String> bodies, String groupId, String streamId, long dt,
             long timeout, TimeUnit timeUnit, HostInfo hostInfo) throws Exception {
@@ -186,39 +166,33 @@ public class InternalHttpSender {
                 httpClient = constructHttpClient(timeout, timeUnit);
             }
 
-            String url = "http://" + hostInfo.getHostName() + ":" + hostInfo.getPortNumber()
-                    + "/dataproxy/message";
-
+            String url = "http://" + hostInfo.getHostName() + ":" + hostInfo.getPortNumber() + "/dataproxy/message";
             httpPost = new HttpPost(url);
             httpPost.setHeader(HttpHeaders.CONNECTION, "close");
             httpPost.setHeader(HttpHeaders.CONTENT_TYPE, "application/x-www-form-urlencoded");
             ArrayList<BasicNameValuePair> contents = getHeaders(bodies, groupId, streamId, dt);
-            String s = URLEncodedUtils.format(contents, StandardCharsets.UTF_8);
-            logger.info("encode string is {}", s);
-            httpPost.setEntity(new StringEntity(s));
+            String encodedContents = URLEncodedUtils.format(contents, StandardCharsets.UTF_8);
+            httpPost.setEntity(new StringEntity(encodedContents));
 
+            logger.info("begin to post request to {}, encoded content is: {}", url, encodedContents);
             response = httpClient.execute(httpPost);
+
             String returnStr = EntityUtils.toString(response.getEntity());
-
-            if (Utils.isNotBlank(returnStr) && response.getStatusLine().getStatusCode() == 200) {
-                logger.debug("Get configure from manager is " + returnStr);
-                JsonObject jsonRes = jsonParser.parse(returnStr).getAsJsonObject();
-
-                if (jsonRes.has("code")) {
-                    int code = jsonRes.get("code").getAsInt();
-                    if (code == 1) {
-                        return SendResult.OK;
-                    } else {
-                        logger.debug("get error response {}", returnStr);
-                        return SendResult.INVALID_DATA;
-                    }
-                }
-
-            } else {
-                throw new Exception("exception to get response from request " + returnStr + " "
-                        + response.getStatusLine().getStatusCode());
+            int returnCode = response.getStatusLine().getStatusCode();
+            if (Utils.isBlank(returnStr) || HttpStatus.SC_OK != returnCode) {
+                throw new Exception("get config from manager failed, result: " + returnStr + ", code: " + returnCode);
             }
 
+            logger.debug("success to get config from manager, result str: " + returnStr);
+            JsonObject jsonResponse = JsonParser.parseString(returnStr).getAsJsonObject();
+            JsonElement codeElement = jsonResponse.get("code");
+            if (codeElement != null) {
+                if (DataProxyErrCode.SUCCESS.getErrCode() == codeElement.getAsInt()) {
+                    return SendResult.OK;
+                } else {
+                    return SendResult.INVALID_DATA;
+                }
+            }
         } finally {
             if (httpPost != null) {
                 httpPost.releaseConnection();
@@ -227,19 +201,12 @@ public class InternalHttpSender {
                 response.close();
             }
         }
+
         return SendResult.UNKOWN_ERROR;
     }
 
     /**
      * send message with host info
-     *
-     * @param bodies
-     * @param groupId
-     * @param streamId
-     * @param dt
-     * @param timeout
-     * @param timeUnit
-     * @return
      */
     public SendResult sendMessageWithHostInfo(List<String> bodies, String groupId, String streamId, long dt,
             long timeout, TimeUnit timeUnit) {
@@ -261,9 +228,7 @@ public class InternalHttpSender {
     }
 
     /**
-     * close
-     *
-     * @throws Exception
+     * close resources
      */
     public void close() throws Exception {
         bShutDown = true;

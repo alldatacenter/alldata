@@ -17,16 +17,11 @@
 
 package org.apache.inlong.manager.service.heartbeat;
 
-import com.github.pagehelper.Page;
-import com.github.pagehelper.PageHelper;
-import com.google.gson.Gson;
-import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.inlong.common.enums.ComponentTypeEnum;
 import org.apache.inlong.common.heartbeat.GroupHeartbeat;
 import org.apache.inlong.common.heartbeat.StreamHeartbeat;
 import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
+import org.apache.inlong.manager.common.enums.SourceStatus;
 import org.apache.inlong.manager.common.exceptions.BusinessException;
 import org.apache.inlong.manager.common.util.CommonBeanUtils;
 import org.apache.inlong.manager.common.util.Preconditions;
@@ -36,6 +31,7 @@ import org.apache.inlong.manager.dao.entity.StreamHeartbeatEntity;
 import org.apache.inlong.manager.dao.mapper.ComponentHeartbeatEntityMapper;
 import org.apache.inlong.manager.dao.mapper.GroupHeartbeatEntityMapper;
 import org.apache.inlong.manager.dao.mapper.StreamHeartbeatEntityMapper;
+import org.apache.inlong.manager.dao.mapper.StreamSourceEntityMapper;
 import org.apache.inlong.manager.pojo.common.PageResult;
 import org.apache.inlong.manager.pojo.heartbeat.ComponentHeartbeatResponse;
 import org.apache.inlong.manager.pojo.heartbeat.GroupHeartbeatResponse;
@@ -44,6 +40,13 @@ import org.apache.inlong.manager.pojo.heartbeat.HeartbeatQueryRequest;
 import org.apache.inlong.manager.pojo.heartbeat.HeartbeatReportRequest;
 import org.apache.inlong.manager.pojo.heartbeat.StreamHeartbeatResponse;
 import org.apache.inlong.manager.service.core.HeartbeatService;
+
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import com.google.gson.Gson;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
@@ -63,6 +66,8 @@ public class HeartbeatServiceImpl implements HeartbeatService {
     @Lazy
     private HeartbeatManager heartbeatManager;
     @Autowired
+    private StreamSourceEntityMapper sourceMapper;
+    @Autowired
     private ComponentHeartbeatEntityMapper componentHeartbeatMapper;
     @Autowired
     private GroupHeartbeatEntityMapper groupHeartbeatMapper;
@@ -81,9 +86,10 @@ public class HeartbeatServiceImpl implements HeartbeatService {
         heartbeatManager.reportHeartbeat(request);
         ComponentTypeEnum componentType = ComponentTypeEnum.forType(request.getComponentType());
         switch (componentType) {
+            case Agent:
+                return updateAgentHeartbeatOpt(request);
             case Sort:
             case DataProxy:
-            case Agent:
             case Cache:
             case SDK:
                 return updateHeartbeatOpt(request);
@@ -217,6 +223,23 @@ public class HeartbeatServiceImpl implements HeartbeatService {
             default:
                 throw new BusinessException("Unsupported component type for " + component);
         }
+    }
+
+    /**
+     * Update heartbeatMsg for agent , if groupMsg is empty, then logically remove all stream source related.
+     * If type of stream_source is file, change status from heartbeat_timeout
+     *
+     * @param request
+     * @return
+     */
+    private Boolean updateAgentHeartbeatOpt(HeartbeatReportRequest request) {
+        // If heartbeatMsg not contain any group ,just delete
+        if (CollectionUtils.isEmpty(request.getGroupHeartbeats()) && StringUtils.isNotBlank(request.getIp())) {
+            String agentIp = request.getIp();
+            sourceMapper.logicalDeleteByAgentIp(agentIp, SourceStatus.SOURCE_DISABLE.getCode(),
+                    SourceStatus.SOURCE_NORMAL.getCode());
+        }
+        return updateHeartbeatOpt(request);
     }
 
     /**

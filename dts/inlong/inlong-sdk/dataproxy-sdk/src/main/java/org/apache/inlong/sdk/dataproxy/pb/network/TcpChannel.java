@@ -17,11 +17,11 @@
 
 package org.apache.inlong.sdk.dataproxy.pb.network;
 
-import java.util.concurrent.Semaphore;
-
 import org.jboss.netty.channel.Channel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.concurrent.Semaphore;
 
 /**
  * 

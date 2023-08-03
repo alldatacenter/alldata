@@ -17,8 +17,6 @@
 
 package org.apache.inlong.tubemq.server.common.utils;
 
-import java.util.HashSet;
-import java.util.Set;
 import org.apache.inlong.tubemq.corebase.TBaseConstants;
 import org.apache.inlong.tubemq.corebase.TokenConstants;
 import org.apache.inlong.tubemq.corebase.cluster.BrokerInfo;
@@ -27,6 +25,9 @@ import org.apache.inlong.tubemq.corebase.protobuf.generated.ClientMaster;
 import org.apache.inlong.tubemq.corebase.utils.TStringUtils;
 import org.apache.inlong.tubemq.corebase.utils.Tuple2;
 import org.apache.inlong.tubemq.server.master.nodemanage.nodebroker.BrokerRunManager;
+
+import java.util.HashSet;
+import java.util.Set;
 
 public class ClientSyncInfo {
 

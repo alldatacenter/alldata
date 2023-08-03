@@ -17,10 +17,12 @@
 
 package org.apache.inlong.tubemq.corerpc.codec;
 
-import static org.junit.Assert.assertEquals;
 import org.apache.inlong.tubemq.corebase.protobuf.generated.ClientMaster;
 import org.apache.inlong.tubemq.corerpc.RpcConstants;
+
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 public class PbEnDecoderTest {
 

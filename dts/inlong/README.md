@@ -20,7 +20,7 @@
 -->
 
 
-# [A one-stop integration framework for massive data](https://inlong.apache.org/)
+# [A one-stop, full-scenario integration framework for massive data](https://inlong.apache.org/)
 [![GitHub Actions](https://github.com/apache/inlong/actions/workflows/ci_build.yml/badge.svg)](https://github.com/apache/inlong/actions)
 [![CodeCov](https://codecov.io/gh/apache/inlong/branch/master/graph/badge.svg)](https://codecov.io/gh/apache/inlong)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.apache.inlong/inlong/badge.svg)](http://search.maven.org/#search%7Cga%7C1%7Corg.apache.inlong)
@@ -44,7 +44,7 @@
 |:-----------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | [![Stargazers over time](https://starchart.cc/apache/inlong.svg)](https://starchart.cc/apache/inlong) | [![Contributor Over Time](https://contributor-overtime-api.git-contributor.com/contributors-svg?chart=contributorOverTime&repo=apache/inlong)](https://git-contributor.com?chart=contributorOverTime&repo=apache/inlong) |
 
-[Apache InLong](https://inlong.apache.org) is a one-stop integration framework for massive data that provides automatic, secure and reliable data transmission capabilities. InLong supports both batch and stream data processing at the same time, which offers great power to build data analysis, modeling and other real-time  applications based on streaming data.
+[Apache InLong](https://inlong.apache.org) is a one-stop, full-scenario integration framework for massive data that supports `Data Ingestion`, `Data Synchronization` and `Data Subscription`, and it provides automatic, secure and reliable data transmission capabilities. InLong also supports both batch and stream data processing at the same time, which offers great power to build data analysis, modeling and other real-time  applications based on streaming data.
 
 InLong (应龙) is a divine beast in Chinese mythology who guides the river into the sea, and it is regarded as a metaphor of the InLong system for reporting data streams.
 
@@ -64,7 +64,7 @@ Apache InLong offers a variety of features:
 
 
 ## When should I use InLong?
-InLong is based on MQ and aims to provide a one-stop, practice-tested module pluggable integration framework for massive data, based on this system, users can easily build stream-based data applications. It is suitable for environments that need to quickly build a data reporting platform, as well as an ultra-large-scale data reporting environment that InLong is very suitable for, and an environment that needs to automatically sort and land the reported data.
+InLong aims to provide a one-stop, full-scenario integration framework for massive data, users can easily build stream-based data applications. It supports `Data Ingestion`, `Data Synchronization` and `Data Subscription` at the same time, and is suitable for environments that need to quickly build a data reporting platform, as well as an ultra-large-scale data reporting environment that InLong is very suitable for, and an environment that needs to automatically sort and land the reported data.
 
 You can use InLong in the following ways：
 - Integrate InLong, manage data streams through [SDK](https://inlong.apache.org/docs/next/sdk/manager-sdk/example).
@@ -72,38 +72,38 @@ You can use InLong in the following ways：
 - Visualize your operations on [InLong dashboard](https://inlong.apache.org/docs/next/user_guide/dashboard_usage).
 
 ## Supported Data Nodes (Updating)
-| Type         | Name              | Version                      | Architecture          |
-|--------------|-------------------|------------------------------|-----------------------|
-| Extract Node | Auto Push         | None                         | Standard              |
-|              | File              | None                         | Standard              |
-|              | Kafka             | 2.x                          | Lightweight, Standard |
-|              | MongoDB           | >= 3.6                       | Lightweight, Standard |
-|              | MQTT              | >= 3.1                       | Standard              |
-|              | MySQL             | 5.6, 5.7, 8.0.x              | Lightweight, Standard |
-|              | Oracle            | 11,12,19                     | Lightweight           |
-|              | PostgreSQL        | 9.6, 10, 11, 12              | Lightweight, Standard |
-|              | Pulsar            | 2.8.x                        | Lightweight           |
-|              | Redis             | 2.6.x                        | Standard              |
-|              | SQLServer         | 2012, 2014, 2016, 2017, 2019 | Lightweight, Standard |
-| Load Node    | Auto Consumption  | None                         | Standard              |
-|              | ClickHouse        | 20.7+                        | Lightweight, Standard |
-|              | Elasticsearch     | 6.x, 7.x                     | Lightweight, Standard |
-|              | Greenplum         | 4.x, 5.x, 6.x                | Lightweight, Standard |
-|              | HBase             | 2.2.x                        | Lightweight, Standard |
-|              | HDFS              | 2.x, 3.x                     | Lightweight, Standard |
-|              | Hive              | 1.x, 2.x, 3.x                | Lightweight, Standard |
-|              | Iceberg           | 0.12.x                       | Lightweight, Standard |
-|              | Hudi              | 0.12.x                       | Lightweight, Standard |
-|              | Kafka             | 2.x                          | Lightweight, Standard |
-|              | MySQL             | 5.6, 5.7, 8.0.x              | Lightweight, Standard |
-|              | Oracle            | 11, 12, 19                   | Lightweight, Standard |
-|              | PostgreSQL        | 9.6, 10, 11, 12              | Lightweight, Standard |
-|              | SQLServer         | 2012, 2014, 2016, 2017, 2019 | Lightweight, Standard |
-|              | TDSQL-PostgreSQL  | 10.17                        | Lightweight, Standard |
-|              | Doris             | >= 0.13                      | Lightweight, Standard |
-|              | StarRocks         | >= 2.0                       | Lightweight, Standard |
-|              | Kudu              | >= 1.12.0                    | Lightweight, Standard |
-|              | Redis             | >= 3.0                       | Lightweight, Standard |
+| Type         | Name              | Version                      |
+|--------------|-------------------|------------------------------|
+| Extract Node | Auto Push         | None                         |
+|              | File              | None                         |
+|              | Kafka             | 2.x                          |
+|              | MongoDB           | >= 3.6                       |
+|              | MQTT              | >= 3.1                       |
+|              | MySQL             | 5.6, 5.7, 8.0.x              |
+|              | Oracle            | 11,12,19                     |
+|              | PostgreSQL        | 9.6, 10, 11, 12              |
+|              | Pulsar            | 2.8.x                        |
+|              | Redis             | 2.6.x                        |
+|              | SQLServer         | 2012, 2014, 2016, 2017, 2019 |
+| Load Node    | Auto Consumption  | None                         |
+|              | ClickHouse        | 20.7+                        |
+|              | Elasticsearch     | 6.x, 7.x                     |
+|              | Greenplum         | 4.x, 5.x, 6.x                |
+|              | HBase             | 2.2.x                        |
+|              | HDFS              | 2.x, 3.x                     |
+|              | Hive              | 1.x, 2.x, 3.x                |
+|              | Iceberg           | 0.12.x                       |
+|              | Hudi              | 0.12.x                       |
+|              | Kafka             | 2.x                          |
+|              | MySQL             | 5.6, 5.7, 8.0.x              |
+|              | Oracle            | 11, 12, 19                   |
+|              | PostgreSQL        | 9.6, 10, 11, 12              |
+|              | SQLServer         | 2012, 2014, 2016, 2017, 2019 |
+|              | TDSQL-PostgreSQL  | 10.17                        |
+|              | Doris             | >= 0.13                      |
+|              | StarRocks         | >= 2.0                       |
+|              | Kudu              | >= 1.12.0                    |
+|              | Redis             | >= 3.0                       |
 
 ## Build InLong
 More detailed instructions can be found at [Quick Start](https://inlong.apache.org/docs/next/quick_start/how_to_build) section in the documentation.
@@ -112,6 +112,12 @@ Requirements:
 - Java [JDK 8](https://adoptopenjdk.net/?variant=openjdk8)
 - Maven 3.6.1+
 - [Docker](https://docs.docker.com/engine/install/) 19.03.1+
+
+CodeStyle:
+
+```
+mvn spotless:apply
+```
 
 Compile and install:
 ```

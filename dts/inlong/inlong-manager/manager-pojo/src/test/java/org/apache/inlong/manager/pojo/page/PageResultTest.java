@@ -17,12 +17,13 @@
 
 package org.apache.inlong.manager.pojo.page;
 
-import com.fasterxml.jackson.core.type.TypeReference;
 import org.apache.inlong.manager.common.util.JsonUtils;
 import org.apache.inlong.manager.pojo.common.PageResult;
 import org.apache.inlong.manager.pojo.group.InlongGroupInfo;
 import org.apache.inlong.manager.pojo.group.none.InlongNoneMqInfo;
 import org.apache.inlong.manager.pojo.group.pulsar.InlongPulsarInfo;
+
+import com.fasterxml.jackson.core.type.TypeReference;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -39,13 +40,13 @@ class PageResultTest {
 
         String pageInfoJson = "{\"total\":30,\"list\":[{\"id\":null,\"inlongGroupId\":\"22\",\"name\":null,"
                 + "\"description\":null,\"middlewareType\":null,\"mqType\":\"NONE\",\"mqResource\":null,"
-                + "\"enableZookeeper\":0,\"enableCreateResource\":null,\"lightweight\":null,"
+                + "\"enableZookeeper\":0,\"enableCreateResource\":null,\"inlongGroupMode\":null,"
                 + "\"inlongClusterTag\":null,\"dailyRecords\":null,\"dailyStorage\":null,\"peakRecords\":null,"
                 + "\"maxLength\":null,\"inCharges\":null,\"followers\":null,\"status\":null,\"creator\":null,"
                 + "\"modifier\":null,\"createTime\":null,\"modifyTime\":null,\"extList\":null,\"sortConf\":null,"
                 + "\"version\":44},{\"id\":null,\"inlongGroupId\":null,\"name\":null,\"description\":null,"
                 + "\"middlewareType\":null,\"mqType\":\"PULSAR\",\"mqResource\":null,\"enableZookeeper\":0,"
-                + "\"enableCreateResource\":null,\"lightweight\":null,\"inlongClusterTag\":null,"
+                + "\"enableCreateResource\":null,\"inlongGroupMode\":null,\"inlongClusterTag\":null,"
                 + "\"dailyRecords\":null,\"dailyStorage\":null,\"peakRecords\":null,\"maxLength\":null,"
                 + "\"inCharges\":null,\"followers\":null,\"status\":null,\"creator\":null,\"modifier\":null,"
                 + "\"createTime\":null,\"modifyTime\":null,\"extList\":null,\"sortConf\":null,\"version\":null,"

@@ -17,9 +17,9 @@
 
 package org.apache.inlong.common.metric;
 
-import java.util.Map;
-
 import com.google.gson.Gson;
+
+import java.util.Map;
 
 /**
  * 

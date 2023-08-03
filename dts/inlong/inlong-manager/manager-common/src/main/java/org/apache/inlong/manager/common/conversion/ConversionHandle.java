@@ -17,10 +17,11 @@
 
 package org.apache.inlong.manager.common.conversion;
 
-import java.util.HashMap;
-import java.util.Map;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Unit conversion handle.

@@ -17,13 +17,14 @@
 
 package org.apache.inlong.tubemq.server.master.balance;
 
-import java.util.List;
-import java.util.Map;
 import org.apache.inlong.tubemq.corebase.cluster.Partition;
 import org.apache.inlong.tubemq.server.master.metamanage.MetaDataService;
 import org.apache.inlong.tubemq.server.master.nodemanage.nodebroker.BrokerRunManager;
 import org.apache.inlong.tubemq.server.master.nodemanage.nodeconsumer.ConsumerInfo;
 import org.apache.inlong.tubemq.server.master.nodemanage.nodeconsumer.ConsumerInfoHolder;
+
+import java.util.List;
+import java.util.Map;
 
 public interface LoadBalancer {
 

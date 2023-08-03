@@ -307,19 +307,19 @@ class NumericQueryMetric(QueryMetric):
 
             if self.name == "missing_count":
                 where_clauses.append(self.build_missing_condition())
-                passing_where_clauses.append(f"NOT {self.build_missing_condition()}")
+                passing_where_clauses.append(f"NOT ({self.build_missing_condition()})")
             elif self.name == "invalid_count":
-                where_clauses.append(f"NOT {self.build_missing_condition()}")
-                passing_where_clauses.append(f"NOT {self.build_missing_condition()}")
+                where_clauses.append(f"NOT ({self.build_missing_condition()})")
+                passing_where_clauses.append(f"NOT ({self.build_missing_condition()})")
 
                 valid_condition = self.build_valid_condition()
                 if valid_condition:
-                    where_clauses.append(f"NOT {valid_condition}")
+                    where_clauses.append(f"NOT ({valid_condition})")
                     passing_where_clauses.append(valid_condition)
 
                 invalid_condition = self.build_invalid_condition()
                 if invalid_condition:
-                    passing_where_clauses.append(f"NOT {invalid_condition}")
+                    passing_where_clauses.append(f"NOT ({invalid_condition})")
                     where_clauses.append(invalid_condition)
 
             if self.filter:
@@ -333,13 +333,16 @@ class NumericQueryMetric(QueryMetric):
                 self.partition.table.table_name, self.samples_limit, where_sql
             )
 
-            # Store for later use
-            # TODO: this is a workaround for special aggregated queries.
-            self.passing_sql = self.data_source_scan.data_source.sql_select_all(
-                self.partition.table.table_name, filter=passing_where_sql
-            )
-            self.failing_sql = self.data_source_scan.data_source.sql_select_all(
-                self.partition.table.table_name, filter=where_sql
-            )
+            # Passing/failing queries are tied to existence of samples and sample query - this is ok for now as
+            # whole Failed Rows Analysis is tied to existence of a failed rows sample file.
+            if self.samples_limit > 0:
+                sample_query = SampleQuery(self.data_source_scan, self, "failed_rows", sql)
 
-            return SampleQuery(self.data_source_scan, self, "failed_rows", sql)
+                sample_query.passing_sql = self.data_source_scan.data_source.sql_select_all(
+                    self.partition.table.table_name, filter=passing_where_sql
+                )
+                sample_query.failing_sql = self.data_source_scan.data_source.sql_select_all(
+                    self.partition.table.table_name, filter=where_sql
+                )
+
+                return sample_query

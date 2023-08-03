@@ -1,4 +1,0 @@
-insert into userroles (project_name, user_name, role_name, create_by, create_reason, create_time) values ('global', 'abc@microsoft.com','admin', 'test_data@microsoft.com', 'test data',  getutcdate())
-insert into userroles (project_name, user_name, role_name, create_by, create_reason, create_time) values ('global', 'efg@microsoft.com','admin', 'test_data@microsoft.com', 'test data',  getutcdate())
-insert into userroles (project_name, user_name, role_name, create_by, create_reason, create_time) values ('feathr_ci_registry_12_33_182947', 'efg@microsoft.com','admin','test_data@microsoft.com',  'test data',  getutcdate())
-insert into userroles (project_name, user_name, role_name, create_by, create_reason, create_time) values ('feathr_ci_registry_12_33_182947', 'hij@microsoft.com','consumer', 'test_data@microsoft.com', 'test data',  getutcdate())

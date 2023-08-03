@@ -18,6 +18,7 @@
 package org.apache.inlong.audit.service;
 
 import org.apache.inlong.audit.db.entities.ESDataPo;
+
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;

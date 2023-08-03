@@ -17,11 +17,6 @@
 
 package org.apache.inlong.manager.service.source.pulsar;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.common.base.Objects;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.inlong.common.enums.DataTypeEnum;
 import org.apache.inlong.manager.common.consts.SourceType;
 import org.apache.inlong.manager.common.enums.ClusterType;
@@ -46,6 +41,12 @@ import org.apache.inlong.manager.pojo.stream.StreamField;
 import org.apache.inlong.manager.service.cluster.InlongClusterService;
 import org.apache.inlong.manager.service.source.AbstractSourceOperator;
 import org.apache.inlong.sort.protocol.enums.PulsarScanStartupMode;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.common.base.Objects;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -88,7 +89,7 @@ public class PulsarSourceOperator extends AbstractSourceOperator {
         PulsarSourceRequest sourceRequest = (PulsarSourceRequest) request;
         CommonBeanUtils.copyProperties(sourceRequest, targetEntity, true);
         try {
-            PulsarSourceDTO dto = PulsarSourceDTO.getFromRequest(sourceRequest);
+            PulsarSourceDTO dto = PulsarSourceDTO.getFromRequest(sourceRequest, targetEntity.getExtParams());
             targetEntity.setExtParams(objectMapper.writeValueAsString(dto));
         } catch (Exception e) {
             throw new BusinessException(ErrorCodeEnum.SOURCE_INFO_INCORRECT,
@@ -121,9 +122,9 @@ public class PulsarSourceOperator extends AbstractSourceOperator {
         String serviceUrl = pulsarCluster.getUrl();
 
         // First get the tenant from the InlongGroup, and then get it from the PulsarCluster.
-        String tenant = ((InlongPulsarInfo) groupInfo).getTenant();
+        String tenant = ((InlongPulsarInfo) groupInfo).getPulsarTenant();
         if (StringUtils.isBlank(tenant)) {
-            tenant = pulsarCluster.getTenant();
+            tenant = pulsarCluster.getPulsarTenant();
         }
 
         Map<String, List<StreamSource>> sourceMap = Maps.newHashMap();
@@ -131,7 +132,7 @@ public class PulsarSourceOperator extends AbstractSourceOperator {
             PulsarSource pulsarSource = new PulsarSource();
             String streamId = streamInfo.getInlongStreamId();
             pulsarSource.setSourceName(streamId);
-            pulsarSource.setTenant(tenant);
+            pulsarSource.setPulsarTenant(tenant);
             pulsarSource.setNamespace(groupInfo.getMqResource());
             pulsarSource.setTopic(streamInfo.getMqResource());
             pulsarSource.setAdminUrl(adminUrl);

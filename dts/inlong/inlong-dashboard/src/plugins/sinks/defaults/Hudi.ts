@@ -27,7 +27,7 @@ import { SinkInfo } from '../common/SinkInfo';
 import NodeSelect from '@/ui/components/NodeSelect';
 
 const { I18n } = DataWithBackend;
-const { FieldDecorator } = RenderRow;
+const { FieldDecorator, SyncField } = RenderRow;
 const { ColumnDecorator } = RenderList;
 
 const hudiFieldTypes = [
@@ -115,6 +115,7 @@ export default class HudiSink extends SinkInfo implements DataWithBackend, Rende
     }),
   })
   @ColumnDecorator()
+  @SyncField()
   @I18n('meta.Sinks.Hudi.DbName')
   dbName: string;
 
@@ -127,6 +128,7 @@ export default class HudiSink extends SinkInfo implements DataWithBackend, Rende
   })
   @ColumnDecorator()
   @I18n('meta.Sinks.Hudi.TableName')
+  @SyncField()
   tableName: string;
 
   @FieldDecorator({
@@ -149,6 +151,7 @@ export default class HudiSink extends SinkInfo implements DataWithBackend, Rende
     }),
   })
   @I18n('meta.Sinks.EnableCreateResource')
+  @SyncField()
   enableCreateResource: number;
 
   @FieldDecorator({
@@ -160,6 +163,7 @@ export default class HudiSink extends SinkInfo implements DataWithBackend, Rende
     }),
   })
   @I18n('meta.Sinks.DataNodeName')
+  @SyncField()
   dataNodeName: string;
 
   @FieldDecorator({
@@ -186,6 +190,7 @@ export default class HudiSink extends SinkInfo implements DataWithBackend, Rende
   })
   @ColumnDecorator()
   @I18n('meta.Sinks.Hudi.FileFormat')
+  @SyncField()
   fileFormat: string;
 
   @FieldDecorator({
@@ -214,6 +219,7 @@ export default class HudiSink extends SinkInfo implements DataWithBackend, Rende
     }),
   })
   @ColumnDecorator()
+  @SyncField()
   @I18n('meta.Sinks.Hudi.ExtList')
   extList: string;
 
@@ -237,6 +243,7 @@ export default class HudiSink extends SinkInfo implements DataWithBackend, Rende
     }),
   })
   @ColumnDecorator()
+  @SyncField()
   @I18n('meta.Sinks.Hudi.DataConsistency')
   dataConsistency: string;
 
@@ -244,6 +251,8 @@ export default class HudiSink extends SinkInfo implements DataWithBackend, Rende
     type: EditableTable,
     props: values => ({
       size: 'small',
+      canBatchAdd: true,
+      upsetByFieldKey: true,
       editing: ![110, 130].includes(values?.status),
       columns: getFieldListColumns(values),
     }),
@@ -259,6 +268,7 @@ export default class HudiSink extends SinkInfo implements DataWithBackend, Rende
     }),
   })
   @ColumnDecorator()
+  @SyncField()
   @I18n('meta.Sinks.Hudi.PrimaryKey')
   primaryKey: string;
 
@@ -271,6 +281,7 @@ export default class HudiSink extends SinkInfo implements DataWithBackend, Rende
     }),
   })
   @ColumnDecorator()
+  @SyncField()
   @I18n('meta.Sinks.Hudi.PartitionKey')
   partitionKey: string;
 }

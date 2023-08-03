@@ -17,12 +17,13 @@
 
 package org.apache.inlong.manager.web.controller;
 
+import org.apache.inlong.manager.common.enums.TenantUserTypeEnum;
+import org.apache.inlong.manager.common.util.JsonUtils;
 import org.apache.inlong.manager.pojo.common.Response;
-import org.apache.inlong.manager.common.enums.UserTypeEnum;
 import org.apache.inlong.manager.pojo.user.UserLoginRequest;
 import org.apache.inlong.manager.pojo.user.UserRequest;
-import org.apache.inlong.manager.common.util.JsonUtils;
 import org.apache.inlong.manager.web.WebBaseTest;
+
 import org.apache.shiro.SecurityUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -143,7 +144,7 @@ class AnnoControllerTest extends WebBaseTest {
         UserRequest userInfo = UserRequest.builder()
                 .name("test_name")
                 .password(TEST_PWD)
-                .accountType(UserTypeEnum.ADMIN.getCode())
+                .accountType(TenantUserTypeEnum.TENANT_ADMIN.getCode())
                 .validDays(88888)
                 .build();
 
@@ -165,7 +166,7 @@ class AnnoControllerTest extends WebBaseTest {
                 // Username already exists in the init sql
                 .name("admin")
                 .password(TEST_PWD)
-                .accountType(UserTypeEnum.ADMIN.getCode())
+                .accountType(TenantUserTypeEnum.TENANT_ADMIN.getCode())
                 .validDays(88888)
                 .build();
 

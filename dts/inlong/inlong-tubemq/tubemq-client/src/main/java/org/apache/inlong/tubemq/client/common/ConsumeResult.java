@@ -17,11 +17,12 @@
 
 package org.apache.inlong.tubemq.client.common;
 
-import java.util.ArrayList;
-import java.util.List;
 import org.apache.inlong.tubemq.client.consumer.FetchContext;
 import org.apache.inlong.tubemq.corebase.Message;
 import org.apache.inlong.tubemq.corebase.rv.RetValue;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ConsumeResult extends RetValue {
 

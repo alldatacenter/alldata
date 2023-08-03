@@ -17,9 +17,10 @@
 
 package org.apache.inlong.tubemq.corebase.cluster;
 
-import java.io.Serializable;
 import org.apache.inlong.tubemq.corebase.TokenConstants;
 import org.apache.inlong.tubemq.corebase.utils.TStringUtils;
+
+import java.io.Serializable;
 
 public class NodeAddrInfo implements Comparable<NodeAddrInfo>, Serializable {
 

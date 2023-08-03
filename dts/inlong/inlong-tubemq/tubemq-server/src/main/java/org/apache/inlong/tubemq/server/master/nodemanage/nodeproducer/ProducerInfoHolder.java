@@ -17,10 +17,11 @@
 
 package org.apache.inlong.tubemq.server.master.nodemanage.nodeproducer;
 
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
 import org.apache.inlong.tubemq.corebase.cluster.ProducerInfo;
 import org.apache.inlong.tubemq.server.master.stats.MasterSrvStatsHolder;
+
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class ProducerInfoHolder {
 

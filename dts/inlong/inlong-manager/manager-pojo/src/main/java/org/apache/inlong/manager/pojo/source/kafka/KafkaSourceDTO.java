@@ -17,16 +17,20 @@
 
 package org.apache.inlong.manager.pojo.source.kafka;
 
+import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
+import org.apache.inlong.manager.common.exceptions.BusinessException;
+import org.apache.inlong.manager.common.util.CommonBeanUtils;
+import org.apache.inlong.manager.common.util.JsonUtils;
+
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
-import org.apache.inlong.manager.common.exceptions.BusinessException;
-import org.apache.inlong.manager.common.util.JsonUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.validation.constraints.NotNull;
+
 import java.util.Map;
 
 /**
@@ -101,24 +105,11 @@ public class KafkaSourceDTO {
     /**
      * Get the dto instance from the request
      */
-    public static KafkaSourceDTO getFromRequest(KafkaSourceRequest request) {
-        return KafkaSourceDTO.builder()
-                .topic(request.getTopic())
-                .groupId(request.getGroupId())
-                .bootstrapServers(request.getBootstrapServers())
-                .recordSpeedLimit(request.getRecordSpeedLimit())
-                .byteSpeedLimit(request.getByteSpeedLimit())
-                .partitionOffsets(request.getPartitionOffsets())
-                .timestampMillis(request.getTimestampMillis())
-                .autoOffsetReset(request.getAutoOffsetReset())
-                .serializationType(request.getSerializationType())
-                .databasePattern(request.getDatabasePattern())
-                .tablePattern(request.getTablePattern())
-                .ignoreParseErrors(request.isIgnoreParseErrors())
-                .timestampFormatStandard(request.getTimestampFormatStandard())
-                .primaryKey(request.getPrimaryKey())
-                .properties(request.getProperties())
-                .build();
+    public static KafkaSourceDTO getFromRequest(KafkaSourceRequest request, String extParams) {
+        KafkaSourceDTO dto = StringUtils.isNotBlank(extParams)
+                ? KafkaSourceDTO.getFromJson(extParams)
+                : new KafkaSourceDTO();
+        return CommonBeanUtils.copyProperties(request, dto, true);
     }
 
     public static KafkaSourceDTO getFromJson(@NotNull String extParams) {

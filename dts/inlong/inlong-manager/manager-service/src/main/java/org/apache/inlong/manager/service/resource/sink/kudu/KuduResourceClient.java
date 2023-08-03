@@ -20,6 +20,7 @@ package org.apache.inlong.manager.service.resource.sink.kudu;
 import org.apache.inlong.manager.pojo.sink.kudu.KuduColumnInfo;
 import org.apache.inlong.manager.pojo.sink.kudu.KuduTableInfo;
 import org.apache.inlong.manager.pojo.sink.kudu.KuduType;
+
 import org.apache.kudu.ColumnSchema;
 import org.apache.kudu.ColumnSchema.ColumnSchemaBuilder;
 import org.apache.kudu.Schema;

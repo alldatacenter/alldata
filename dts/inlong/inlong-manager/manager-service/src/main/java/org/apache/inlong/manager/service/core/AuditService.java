@@ -18,6 +18,8 @@
 package org.apache.inlong.manager.service.core;
 
 import org.apache.inlong.manager.pojo.audit.AuditRequest;
+import org.apache.inlong.manager.pojo.audit.AuditSourceRequest;
+import org.apache.inlong.manager.pojo.audit.AuditSourceResponse;
 import org.apache.inlong.manager.pojo.audit.AuditVO;
 
 import java.util.List;
@@ -50,5 +52,22 @@ public interface AuditService {
      * @return true if not exception, or false if it has exception
      */
     Boolean refreshBaseItemCache();
+
+    /**
+     * Offline the old audit source through url, and insert and online a new audit source.
+     * If the new url already exists in the table, the insert operation will become an update operation.
+     *
+     * @param operator current operator
+     * @param request audit source request
+     * @return audit source id after updating or saving
+     */
+    Integer updateAuditSource(AuditSourceRequest request, String operator);
+
+    /**
+     * Get audit source that is online.
+     *
+     * @return audit source response.
+     */
+    AuditSourceResponse getAuditSource();
 
 }

@@ -1,1 +1,0 @@
-select * from dual order siblings by a nulls first, b nulls last, c nulls last, d nulls last, e nulls last

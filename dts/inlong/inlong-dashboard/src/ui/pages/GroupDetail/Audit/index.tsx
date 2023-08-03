@@ -39,16 +39,19 @@ const Comp: React.FC<Props> = ({ inlongGroupId }) => {
 
   const [query, setQuery] = useState({
     inlongStreamId: '',
-    dt: +new Date(),
+    startDate: +new Date(),
+    endDate: +new Date(),
     timeStaticsDim: timeStaticsDimList[0].value,
   });
 
   const { data: sourceData = [], run } = useRequest(
     {
       url: '/audit/list',
-      params: {
+      method: 'POST',
+      data: {
         ...query,
-        dt: timestampFormat(query.dt, 'yyyy-MM-dd'),
+        startDate: timestampFormat(query.startDate, 'yyyy-MM-dd'),
+        endDate: timestampFormat(query.endDate, 'yyyy-MM-dd'),
         inlongGroupId,
       },
     },
@@ -113,7 +116,8 @@ const Comp: React.FC<Props> = ({ inlongGroupId }) => {
           onFilter={allValues =>
             setQuery({
               ...allValues,
-              dt: +allValues.dt.$d,
+              startDate: +allValues.startDate.$d,
+              endDate: +allValues.startDate.$d,
             })
           }
         />

@@ -17,9 +17,10 @@
 
 package org.apache.inlong.manager.pojo.workflow.form.task;
 
+import org.apache.inlong.manager.common.exceptions.FormValidateException;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.apache.inlong.manager.common.exceptions.FormValidateException;
 
 /**
  * Taskform of service task

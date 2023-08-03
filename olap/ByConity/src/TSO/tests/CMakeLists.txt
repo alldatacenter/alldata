@@ -1,2 +1,0 @@
-add_executable(tso_leader_test tso_leader_test.cpp)
-target_link_libraries(tso_leader_test tso_lib clickhouse_common_io)

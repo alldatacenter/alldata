@@ -17,15 +17,17 @@
 
 package org.apache.inlong.agent.core.conf;
 
+import org.apache.inlong.agent.conf.JobProfile;
+
 import com.google.gson.Gson;
 import org.apache.commons.io.IOUtils;
-import org.apache.inlong.agent.conf.JobProfile;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;

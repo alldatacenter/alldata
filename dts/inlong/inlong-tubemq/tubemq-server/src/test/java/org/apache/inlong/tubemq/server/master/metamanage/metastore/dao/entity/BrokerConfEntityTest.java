@@ -17,11 +17,13 @@
 
 package org.apache.inlong.tubemq.server.master.metamanage.metastore.dao.entity;
 
-import java.util.Date;
 import org.apache.inlong.tubemq.server.common.statusdef.ManageStatus;
 import org.apache.inlong.tubemq.server.master.bdbstore.bdbentitys.BdbBrokerConfEntity;
+
 import org.junit.Assert;
 import org.junit.Test;
+
+import java.util.Date;
 
 public class BrokerConfEntityTest {
 

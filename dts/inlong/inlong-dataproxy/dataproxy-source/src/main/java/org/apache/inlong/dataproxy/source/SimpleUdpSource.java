@@ -17,35 +17,33 @@
 
 package org.apache.inlong.dataproxy.source;
 
+import org.apache.inlong.dataproxy.config.ConfigManager;
+
 import io.netty.bootstrap.Bootstrap;
-import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelOption;
 import io.netty.channel.socket.nio.NioDatagramChannel;
-import java.net.InetSocketAddress;
 import org.apache.flume.Context;
-import org.apache.flume.EventDrivenSource;
 import org.apache.flume.conf.Configurable;
-import org.apache.inlong.dataproxy.config.ConfigManager;
-import org.apache.inlong.dataproxy.consts.ConfigConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class SimpleUdpSource
-        extends
-            BaseSource
-        implements
-            EventDrivenSource,
-            Configurable {
+import java.net.InetSocketAddress;
+
+public class SimpleUdpSource extends BaseSource implements Configurable {
 
     private static final Logger logger = LoggerFactory
             .getLogger(SimpleUdpSource.class);
-
-    private static int UPD_BUFFER_DEFAULT_SIZE = 8192;
 
     private Bootstrap bootstrap;
 
     public SimpleUdpSource() {
         super();
+    }
+
+    @Override
+    public void configure(Context context) {
+        logger.info("Source {} context is {}", getName(), context);
+        super.configure(context);
     }
 
     @SuppressWarnings({"unchecked", "rawtypes"})
@@ -54,28 +52,29 @@ public class SimpleUdpSource
         // setup Netty server
         logger.info("start " + this.getName());
         bootstrap = new Bootstrap();
-        logger.info("Set max workers : {} ;", maxThreads);
         bootstrap.channel(NioDatagramChannel.class);
-        bootstrap.option(ChannelOption.SO_RCVBUF, receiveBufferSize);
-        bootstrap.option(ChannelOption.SO_SNDBUF, sendBufferSize);
-        ChannelInitializer fac = this.getChannelInitializerFactory();
-        bootstrap.handler(fac);
+        if (conLinger >= 0) {
+            bootstrap.option(ChannelOption.SO_LINGER, conLinger);
+        }
+        bootstrap.option(ChannelOption.SO_BACKLOG, conBacklog);
+        bootstrap.option(ChannelOption.SO_REUSEADDR, reuseAddress);
+        bootstrap.option(ChannelOption.SO_RCVBUF, maxRcvBufferSize);
+        bootstrap.option(ChannelOption.SO_SNDBUF, maxSendBufferSize);
+        bootstrap.handler(this.getChannelInitializerFactory());
         try {
-            if (host == null) {
-                channelFuture = bootstrap.bind(new InetSocketAddress(port)).sync();
+            if (srcHost == null) {
+                channelFuture = bootstrap.bind(new InetSocketAddress(srcPort)).sync();
             } else {
-
-                channelFuture = bootstrap.bind(new InetSocketAddress(host, port)).sync();
+                channelFuture = bootstrap.bind(new InetSocketAddress(srcHost, srcPort)).sync();
             }
         } catch (Exception e) {
-            logger.error("Simple UDP Source error bind host {} port {}, program will exit!",
-                    new Object[]{host, port});
+            logger.error("Source {} bind ({}:{}) error, program will exit! e = {}",
+                    this.getName(), srcHost, srcPort, e);
             System.exit(-1);
-            // throw new FlumeException(e.getMessage());
         }
         ConfigManager.getInstance().addSourceReportInfo(
-                host, String.valueOf(port), getProtocolName().toUpperCase());
-        logger.info("Simple UDP Source started at host {}, port {}", host, port);
+                srcHost, String.valueOf(srcPort), getProtocolName().toUpperCase());
+        logger.info("Source {} started at ({}:{})!", this.getName(), srcHost, srcPort);
     }
 
     @Override
@@ -84,18 +83,7 @@ public class SimpleUdpSource
     }
 
     @Override
-    public void configure(Context context) {
-        super.configure(context);
-        try {
-            maxThreads = context.getInteger(ConfigConstants.MAX_THREADS, 32);
-        } catch (NumberFormatException e) {
-            logger.warn("Simple UDP Source max-threads property must specify an integer value.",
-                    context.getString(ConfigConstants.MAX_THREADS));
-        }
-    }
-
-    @Override
     public String getProtocolName() {
-        return "udp";
+        return SourceConstants.SRC_PROTOCOL_TYPE_UDP;
     }
 }

@@ -17,16 +17,17 @@
 
 package org.apache.inlong.sort.standalone.sink.hive;
 
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import org.apache.inlong.sort.standalone.utils.InlongLoggerFactory;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FSDataOutputStream;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.hdfs.DistributedFileSystem;
-import org.apache.inlong.sort.standalone.utils.InlongLoggerFactory;
 import org.slf4j.Logger;
+
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * 

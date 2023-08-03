@@ -17,25 +17,28 @@
 
 package org.apache.inlong.manager.pojo.consume.tubemq;
 
-import io.swagger.annotations.ApiModel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
 import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
 import org.apache.inlong.manager.common.exceptions.BusinessException;
 import org.apache.inlong.manager.common.util.CommonBeanUtils;
 import org.apache.inlong.manager.common.util.JsonUtils;
 import org.apache.inlong.manager.pojo.consume.BaseInlongConsume;
 
+import io.swagger.annotations.ApiModel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 import javax.validation.constraints.NotNull;
 
 /**
- * Inlong group info of TubeMQ
+ * Inlong consume info of TubeMQ
  */
 @Data
+@EqualsAndHashCode(callSuper = true)
 @Builder
 @AllArgsConstructor
-@ApiModel("Inlong group info of TubeMQ")
+@ApiModel("Inlong consume info of TubeMQ")
 public class ConsumeTubeMQDTO extends BaseInlongConsume {
 
     // no fields

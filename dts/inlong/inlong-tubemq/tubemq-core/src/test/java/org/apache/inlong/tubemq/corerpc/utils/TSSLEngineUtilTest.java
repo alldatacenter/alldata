@@ -17,11 +17,11 @@
 
 package org.apache.inlong.tubemq.corerpc.utils;
 
-import java.io.InputStream;
+import org.junit.Assert;
 
 import javax.net.ssl.SSLEngine;
 
-import org.junit.Assert;
+import java.io.InputStream;
 
 /**
  * TSSLEngineUtil test.

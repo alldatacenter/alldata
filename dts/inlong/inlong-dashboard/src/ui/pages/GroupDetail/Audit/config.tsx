@@ -131,13 +131,62 @@ export const getFormContent = (inlongGroupId, initialValues, onSearch, onDataStr
     rules: [{ required: true }],
   },
   {
+    type: 'select',
+    label: i18n.t('pages.GroupDetail.Audit.Sink'),
+    name: 'sinkId',
+    props: values => ({
+      dropdownMatchSelectWidth: false,
+      options: {
+        requestService: {
+          url: '/sink/list',
+          method: 'POST',
+          data: {
+            pageNum: 1,
+            pageSize: 1000,
+            inlongGroupId,
+            inlongStreamId: values.inlongStreamId,
+          },
+        },
+        requestParams: {
+          formatResult: result =>
+            result?.list.map(item => ({
+              label: item.sinkName + ` ( ${sinks.find(c => c.value === item.sinkType)?.label} )`,
+              value: item.id,
+            })) || [],
+        },
+      },
+    }),
+  },
+  {
     type: 'datepicker',
-    label: i18n.t('pages.GroupDetail.Audit.Date'),
-    name: 'dt',
-    initialValue: dayjs(initialValues.dt),
+    label: i18n.t('pages.GroupDetail.Audit.StartDate'),
+    name: 'startDate',
+    initialValue: dayjs(initialValues.startDate),
     props: {
       allowClear: false,
       format: 'YYYY-MM-DD',
+    },
+  },
+  {
+    type: 'datepicker',
+    label: i18n.t('pages.GroupDetail.Audit.EndDate'),
+    name: 'endDate',
+    initialValues: dayjs(initialValues.endDate),
+    props: {
+      allowClear: false,
+      format: 'YYYY-MM-DD',
+      disabledDate: current => {
+        const start = dayjs(initialValues.startDate);
+        const dim = initialValues.timeStaticsDim;
+        if (dim === 'HOUR' || dim === 'DAY') {
+          const tooLate = current && current <= start.endOf('day');
+          const tooEarly = start && current > start.add(7, 'd').endOf('day');
+          return tooLate || tooEarly;
+        }
+        const tooLate = current && current >= start.endOf('day');
+        const tooEarly = start && current < start.add(-1, 'd').endOf('day');
+        return tooLate || tooEarly;
+      },
     },
   },
   {

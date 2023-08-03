@@ -10,7 +10,7 @@ class DbtCheck(Check):
         self.identity = identity
         self.check_cfg = check_cfg
         self.expression = expression
-        self.cloud_check_type = "metricThreshold"
+        self.cloud_check_type = "generic"
 
     def get_cloud_diagnostics_dict(self) -> dict:
         return {"value": 0}

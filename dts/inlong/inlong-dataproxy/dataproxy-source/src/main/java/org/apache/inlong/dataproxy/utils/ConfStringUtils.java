@@ -17,10 +17,14 @@
 
 package org.apache.inlong.dataproxy.utils;
 
+import org.apache.commons.lang3.StringUtils;
+import org.apache.flume.Context;
+
 public class ConfStringUtils {
 
     /**
      * isValidIp
+     *
      * @param ip
      * @return
      */
@@ -54,13 +58,59 @@ public class ConfStringUtils {
 
     /**
      * isValidPort
+     *
      * @param port
      * @return
      */
     public static boolean isValidPort(int port) {
-        if (port < 0 || port > 65535) {
-            return false;
+        return port >= 0 && port <= 65535;
+    }
+
+    /**
+     * Get the configuration value of integer type from the context
+     *
+     * @param context  the context
+     * @param fieldKey the configure key
+     * @param defVal   the default value
+     * @return the configuration value
+     */
+    public static int getIntValue(Context context, String fieldKey, int defVal) {
+        String tmpVal = context.getString(fieldKey);
+        if (StringUtils.isNotBlank(tmpVal)) {
+            int result;
+            tmpVal = tmpVal.trim();
+            try {
+                result = Integer.parseInt(tmpVal);
+            } catch (Throwable e) {
+                throw new IllegalArgumentException(
+                        fieldKey + "(" + tmpVal + ") must specify an integer value!");
+            }
+            return result;
         }
-        return true;
+        return defVal;
+    }
+
+    /**
+     * Get the configuration value of long type from the context
+     *
+     * @param context  the context
+     * @param fieldKey the configure key
+     * @param defVal   the default value
+     * @return the configuration value
+     */
+    public static long getLongValue(Context context, String fieldKey, long defVal) {
+        String tmpVal = context.getString(fieldKey);
+        if (StringUtils.isNotBlank(tmpVal)) {
+            long result;
+            tmpVal = tmpVal.trim();
+            try {
+                result = Long.parseLong(tmpVal);
+            } catch (Throwable e) {
+                throw new IllegalArgumentException(
+                        fieldKey + "(" + tmpVal + ") must specify an long value!");
+            }
+            return result;
+        }
+        return defVal;
     }
 }

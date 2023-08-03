@@ -23,7 +23,7 @@ import { RenderList } from '@/plugins/RenderList';
 import { SourceInfo } from '../common/SourceInfo';
 
 const { I18n } = DataWithBackend;
-const { FieldDecorator } = RenderRow;
+const { FieldDecorator, SyncField } = RenderRow;
 const { ColumnDecorator } = RenderList;
 
 export default class RedisSource
@@ -38,6 +38,7 @@ export default class RedisSource
       min: 0,
     }),
   })
+  @SyncField()
   @I18n('meta.Sources.Redis.Database')
   database: number;
 
@@ -49,6 +50,7 @@ export default class RedisSource
     }),
   })
   @ColumnDecorator()
+  @SyncField()
   @I18n('meta.Sources.Redis.Username')
   username: string;
 
@@ -59,6 +61,7 @@ export default class RedisSource
       disabled: values?.status === 101,
     }),
   })
+  @SyncField()
   @I18n('meta.Sources.Redis.Password')
   password: string;
 
@@ -88,6 +91,7 @@ export default class RedisSource
       ],
     }),
   })
+  @SyncField()
   @I18n('meta.Sources.Redis.RedisCommand')
   redisCommand: string;
 
@@ -112,6 +116,7 @@ export default class RedisSource
       ],
     }),
   })
+  @SyncField()
   @I18n('meta.Sources.Redis.RedisMode')
   redisMode: string;
 
@@ -123,6 +128,7 @@ export default class RedisSource
       placeholder: '127.0.0.1:6379,127.0.0.1:6378',
     }),
   })
+  @SyncField()
   @I18n('meta.Sources.Redis.ClusterNodes')
   clusterNodes: string;
 
@@ -143,6 +149,7 @@ export default class RedisSource
       disabled: values?.status === 101,
     }),
   })
+  @SyncField()
   @I18n('meta.Sources.Redis.AdditionalKey')
   additionalKey: string;
 
@@ -154,6 +161,7 @@ export default class RedisSource
     }),
   })
   @ColumnDecorator()
+  @SyncField()
   @I18n('meta.Sources.Redis.Hostname')
   host: string;
 
@@ -168,6 +176,7 @@ export default class RedisSource
     }),
   })
   @ColumnDecorator()
+  @SyncField()
   @I18n('meta.Sources.Redis.Port')
   port: number;
 
@@ -177,6 +186,7 @@ export default class RedisSource
       disabled: values?.status === 101,
     }),
   })
+  @SyncField()
   @I18n('meta.Sources.Redis.PrimaryKey')
   primaryKey: string;
 
@@ -187,6 +197,7 @@ export default class RedisSource
       disabled: values?.status === 101,
     }),
   })
+  @SyncField()
   @I18n('meta.Sources.Redis.Timeout')
   timeout: number;
 }

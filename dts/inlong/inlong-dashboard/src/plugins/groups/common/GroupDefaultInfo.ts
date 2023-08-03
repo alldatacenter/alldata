@@ -39,12 +39,12 @@ export class GroupDefaultInfo implements DataWithBackend, RenderRow, RenderList 
   @FieldDecorator({
     type: 'input',
     props: {
-      maxLength: 100,
+      maxLength: 200,
     },
     rules: [
       { required: true },
       {
-        pattern: /^[a-z_0-9]+$/,
+        pattern: /^[a-zA-Z0-9_.-]+$/,
         message: i18n.t('meta.Group.InlongGroupIdRules'),
       },
     ],

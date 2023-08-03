@@ -10,6 +10,7 @@ from textwrap import dedent
 
 from antlr4 import CommonTokenStream, InputStream
 from antlr4.error.ErrorListener import ErrorListener
+from soda.common.file_system import file_system
 from soda.common.logs import Logs
 from soda.common.parser import Parser
 from soda.common.yaml_helper import to_yaml_str
@@ -27,6 +28,10 @@ from soda.sodacl.distribution_check_cfg import DistributionCheckCfg
 from soda.sodacl.for_each_column_cfg import ForEachColumnCfg
 from soda.sodacl.for_each_dataset_cfg import ForEachDatasetCfg
 from soda.sodacl.freshness_check_cfg import FreshnessCheckCfg
+from soda.sodacl.group_evolution_check_cfg import (
+    GroupEvolutionCheckCfg,
+    GroupValidations,
+)
 from soda.sodacl.missing_and_valid_cfg import CFG_MISSING_VALID_ALL, MissingAndValidCfg
 from soda.sodacl.name_filter import NameFilter
 from soda.sodacl.reference_check_cfg import ReferenceCheckCfg
@@ -43,6 +48,7 @@ FAIL = "fail"
 NAME = "name"
 IDENTITY = "identity"
 ATTRIBUTES = "attributes"
+QUERY = "query"
 FAIL_CONDITION = "fail condition"
 FAIL_QUERY = "fail query"
 SAMPLES_LIMIT = "samples limit"
@@ -59,6 +65,15 @@ ALL_SCHEMA_VALIDATIONS = [
     WHEN_SCHEMA_CHANGES,
 ]
 
+WHEN_REQUIRED_GROUP_MISSING = "when required group missing"
+WHEN_FORBIDDEN_GROUP_PRESENT = "when forbidden group present"
+WHEN_GROUPS_CHANGE = "when groups change"
+
+ALL_GROUP_VALIDATIONS = [
+    WHEN_REQUIRED_GROUP_MISSING,
+    WHEN_FORBIDDEN_GROUP_PRESENT,
+    WHEN_GROUPS_CHANGE,
+]
 
 # Generic log messages for SODACL parser
 QUOTE_CHAR_ERROR_LOG = """It looks like quote characters are present in one of more of your {dataset_type}
@@ -110,7 +125,7 @@ class SodaCLParser(Parser):
             # Backwards compatibility warning
             if "for each table" in header_str:
                 self.logs.warning(
-                    f"Please update 'for each table ...' to 'for each dataset ...'.", location=self.location
+                    "Please update 'for each table ...' to 'for each dataset ...'.", location=self.location
                 )
 
             self._push_path_element(header_str, header_content)
@@ -248,8 +263,14 @@ class SodaCLParser(Parser):
         if check_str == "schema":
             return self.__parse_schema_check(header_str, check_str, check_configurations)
 
+        elif check_str == "group evolution":
+            return self.__parse_group_evolution_check(header_str, check_str, check_configurations)
+
         elif check_str == "failed rows":
             return self.parse_user_defined_failed_rows_check_cfg(check_configurations, check_str, header_str)
+
+        elif check_str == "group by":
+            return self.parse_group_by_cfg(check_configurations, check_str, header_str)
 
         else:
             antlr_parser = self.antlr_parse_check(check_str)
@@ -324,6 +345,41 @@ class SodaCLParser(Parser):
                 variables[variable_name] = variable_value
         else:
             self.logs.error(f"Variables content must be a dict.  Was {type(header_content).__name__}")
+
+    def parse_group_by_cfg(self, check_configurations, check_str, header_str):
+        if isinstance(check_configurations, dict):
+            from soda.sodacl.group_by_check_cfg import GroupByCheckCfg
+
+            self._push_path_element(check_str, check_configurations)
+            name = self._get_optional(NAME, str)
+
+            try:
+                group_limit = self._get_optional("group_limit", int) or 1000
+                query = self._get_required("query", str)
+                fields = self._get_required("fields", list)
+                check_cfgs = self._get_required("checks", list)
+                if check_cfgs:
+                    self._push_path_element("checks", check_cfgs)
+                    check_cfgs = self.__parse_checks_in_for_each_section(header_str, check_cfgs)
+                    for check_cfg in check_cfgs:
+                        check_cfg.metric_query = query
+                    self._pop_path_element()
+
+                return GroupByCheckCfg(
+                    source_header=header_str,
+                    source_line=check_str,
+                    source_configurations=check_configurations,
+                    location=self.location,
+                    name=name,
+                    query=query,
+                    fields=fields,
+                    check_cfgs=check_cfgs,
+                    group_limit=group_limit,
+                )
+            finally:
+                self._pop_path_element()
+        else:
+            self.logs.error(f'Check "{check_str}" expects a nested object/dict, but was {check_configurations}')
 
     def parse_user_defined_failed_rows_check_cfg(self, check_configurations, check_str, header_str):
         if isinstance(check_configurations, dict):
@@ -438,7 +494,7 @@ class SodaCLParser(Parser):
                 self._pop_path_element()
         else:
             self.logs.error(
-                f'"failed rows" check must have configurations',
+                '"failed rows" check must have configurations',
                 location=self.location,
             )
 
@@ -460,6 +516,15 @@ class SodaCLParser(Parser):
                 for metric_arg in antlr_metric.metric_args().getChildren()
                 if isinstance(metric_arg, SodaCLAntlrParser.Metric_argContext)
             ]
+
+        if metric_name.startswith("$"):
+            log_msg = "Soda Core does not support check templates."
+            if not self.logs.log_message_present(log_msg):
+                self.logs.error(log_msg)
+                self.logs.error(
+                    "Install Soda Library and sign up for a free trial to use this feature. https://go.soda.io/library"
+                )
+            return None
 
         antlr_threshold = antlr_metric_check.threshold()
         fail_threshold_cfg = None
@@ -510,11 +575,24 @@ class SodaCLParser(Parser):
                             f'In configuration "{configuration_key}" the metric name must match exactly the metric name in the check "{metric_name}"',
                             location=self.location,
                         )
-                elif configuration_key.endswith("query"):
-                    metric_query = dedent(configuration_value).strip()
-                    configuration_metric_name = (
-                        configuration_key[: -len(" query")] if len(configuration_key) > len(" query") else None
-                    )
+                elif configuration_key.endswith("query") or configuration_key.endswith("sql_file"):
+                    if configuration_key.endswith("sql_file"):
+                        fs = file_system()
+                        sql_file_path = fs.join(fs.dirname(self.path_stack.file_path), configuration_value.strip())
+                        metric_query = dedent(fs.file_read_as_str(sql_file_path)).strip()
+                        configuration_metric_name = (
+                            configuration_key[: -len(" sql_file")]
+                            if len(configuration_key) > len(" sql_file")
+                            else None
+                        )
+
+                    else:
+                        metric_query = dedent(configuration_value).strip()
+
+                        configuration_metric_name = (
+                            configuration_key[: -len(" query")] if len(configuration_key) > len(" query") else None
+                        )
+
                     if configuration_metric_name != metric_name:
                         self.logs.error(
                             f'In configuration "{configuration_key}" the metric name must match exactly the metric name in the check "{metric_name}"',
@@ -659,15 +737,15 @@ class SodaCLParser(Parser):
                 )
             else:
                 self.logs.error(
-                    f"""You did not define a `distribution reference file` key. See the docs for more information:\n"""
-                    f"""https://docs.soda.io/soda-cl/distribution.html#define-a-distribution-check""",
+                    """You did not define a `distribution reference file` key. See the docs for more information:\n"""
+                    """https://docs.soda.io/soda-cl/distribution.html#define-a-distribution-check""",
                     location=self.location,
                 )
             if not fail_threshold_cfg and not warn_threshold_cfg:
                 self.logs.error(
-                    f"""You did not define a threshold for your distribution check. Please use the following syntax\n"""
-                    f"""- distribution_difference(column_name, reference_distribution) > threshold: \n"""
-                    f"""    distribution reference file: distribution_reference.yml""",
+                    """You did not define a threshold for your distribution check. Please use the following syntax\n"""
+                    """- distribution_difference(column_name, reference_distribution) > threshold: \n"""
+                    """    distribution reference file: distribution_reference.yml""",
                     location=self.location,
                 )
 
@@ -791,6 +869,132 @@ class SodaCLParser(Parser):
                 location=self.location,
             )
 
+    def __parse_group_evolution_check(
+        self, header_str, check_str, check_configurations
+    ) -> GroupEvolutionCheckCfg | None:
+        if isinstance(check_configurations, dict):
+            self._push_path_element(check_str, check_configurations)
+            for configuration_key in check_configurations:
+                if configuration_key not in [NAME, WARN, FAIL, ATTRIBUTES, QUERY]:
+                    self.logs.error(
+                        f'Invalid group evolution check configuration key "{configuration_key}"', location=self.location
+                    )
+            name = self._get_optional(NAME, str)
+            query = self._get_required("query", str)
+            group_evolution_check_cfg = GroupEvolutionCheckCfg(
+                source_header=header_str,
+                source_line=check_str,
+                source_configurations=check_configurations,
+                location=self.location,
+                name=name,
+                query=query,
+                warn_validations=self.__parse_group_validations(WARN),
+                fail_validations=self.__parse_group_validations(FAIL),
+            )
+            self._pop_path_element()
+            return group_evolution_check_cfg
+        else:
+            self.logs.error(f'Check "{check_str}" expects a nested object/dict, but was {check_configurations}')
+
+    def __parse_group_validations(self, outcome_text: str):
+        validations_dict = self._get_optional(outcome_text, dict)
+        if validations_dict:
+            self._push_path_element(outcome_text, validations_dict)
+
+            is_group_addition_forbidden = False
+            is_group_deletion_forbidden = False
+
+            changes_not_allowed = validations_dict.get(WHEN_GROUPS_CHANGE)
+            if changes_not_allowed == "any":
+                is_group_addition_forbidden = True
+                is_group_deletion_forbidden = True
+
+            elif isinstance(changes_not_allowed, list):
+                for change_not_allowed in changes_not_allowed:
+                    if change_not_allowed == "group add":
+                        is_group_addition_forbidden = True
+                    elif change_not_allowed == "group delete":
+                        is_group_deletion_forbidden = True
+
+                    else:
+                        self.logs.error(f'"{WHEN_GROUPS_CHANGE}" has invalid value {change_not_allowed}')
+            elif changes_not_allowed is not None:
+                self.logs.error(
+                    f'Value for "{WHEN_GROUPS_CHANGE}" must be either "any" or a list of these optional strings: {"group add", "group delete"}. Was {changes_not_allowed}'
+                )
+
+            group_validations = GroupValidations(
+                required_group_names=self.__parse_group_validation(WHEN_REQUIRED_GROUP_MISSING),
+                forbidden_group_names=self.__parse_group_validation(WHEN_FORBIDDEN_GROUP_PRESENT),
+                is_group_addition_forbidden=is_group_addition_forbidden,
+                is_group_deletion_forbidden=is_group_deletion_forbidden,
+            )
+            for invalid_group_validation in [
+                v
+                for v in validations_dict
+                if v
+                not in [
+                    WHEN_REQUIRED_GROUP_MISSING,
+                    WHEN_FORBIDDEN_GROUP_PRESENT,
+                    WHEN_GROUPS_CHANGE,
+                ]
+            ]:
+                hint = f"Available group validations: {ALL_GROUP_VALIDATIONS}"
+                if invalid_group_validation == WHEN_GROUPS_CHANGE:
+                    hint = f'Did you mean "when groups change" (plural)? {hint}'
+                elif invalid_group_validation == "when required groups missing":
+                    hint = f'Did you mean "when required group missing"? (column in singular form) {hint}'
+                elif invalid_group_validation == "when forbidden groups present":
+                    hint = f'Did you mean "when forbidden group present"? (column in singular form) {hint}'
+                self.logs.error(
+                    f'Invalid group validation "{invalid_group_validation}": {hint}',
+                    location=self.location,
+                )
+            self._pop_path_element()
+            return group_validations
+
+    def __parse_group_validation(self, validation_type):
+        value_type = (
+            list
+            if validation_type
+            in [
+                "when required group missing",
+                "when forbidden group present",
+            ]
+            else dict
+        )
+        configuration_value = self._get_optional(validation_type, value_type)
+
+        if configuration_value:
+            if validation_type in [
+                "when required group missing",
+                "when forbidden group present",
+            ]:
+                are_values_valid = all(isinstance(c, str) for c in configuration_value)
+
+            else:
+                are_values_valid = all(
+                    isinstance(k, str) and isinstance(v, int) for k, v in configuration_value.items()
+                )
+            if are_values_valid:
+                return configuration_value
+            else:
+                self._push_path_element(validation_type, None)
+                expected_configuration_type = (
+                    "list of strings"
+                    if validation_type
+                    in [
+                        "when required group missing",
+                        "when forbidden group present",
+                    ]
+                    else "dict with strings for keys and values"
+                )
+                self.logs.error(
+                    f'"{validation_type}" must contain {expected_configuration_type}',
+                    location=self.location,
+                )
+                self._pop_path_element()
+
     def __parse_schema_check(self, header_str, check_str, check_configurations) -> SchemaCheckCfg | None:
         if isinstance(check_configurations, dict):
             self._push_path_element(check_str, check_configurations)
@@ -843,7 +1047,7 @@ class SodaCLParser(Parser):
                         self.logs.error(f'"when schema changes" has invalid value {change_not_allowed}')
             elif changes_not_allowed is not None:
                 self.logs.error(
-                    f'Value for "when schema changes" must be either "any" or a list of these optioonal strings: {"column add", "column delete", "column type change", "column index change"}. Was {changes_not_allowed}'
+                    f'Value for "when schema changes" must be either "any" or a list of these optional strings: {"column add", "column delete", "column type change", "column index change"}. Was {changes_not_allowed}'
                 )
 
             schema_validations = SchemaValidations(
@@ -951,7 +1155,7 @@ class SodaCLParser(Parser):
             self._push_path_element(check_str, check_configurations)
             name = self._get_optional(NAME, str)
             for configuration_key in check_configurations:
-                if configuration_key != NAME:
+                if configuration_key not in [NAME, ATTRIBUTES]:
                     self.logs.error(
                         f"Invalid row count comparison configuration key {configuration_key}", location=self.location
                     )
@@ -991,17 +1195,17 @@ class SodaCLParser(Parser):
 
         if len(source_column_names) == 0:
             self.logs.error(
-                f"No source columns in reference check",
+                "No source columns in reference check",
                 location=self.location,
             )
         if len(target_column_names) == 0:
             self.logs.error(
-                f"No target columns in reference check",
+                "No target columns in reference check",
                 location=self.location,
             )
         if len(source_column_names) != len(target_column_names):
             self.logs.error(
-                f"Number of source and target column names must be equal",
+                "Number of source and target column names must be equal",
                 location=self.location,
             )
 

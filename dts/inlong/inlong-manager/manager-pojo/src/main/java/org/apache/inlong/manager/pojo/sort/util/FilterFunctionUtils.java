@@ -17,8 +17,8 @@
 
 package org.apache.inlong.manager.pojo.sort.util;
 
-import com.google.common.collect.Lists;
 import org.apache.inlong.manager.common.enums.TransformType;
+import org.apache.inlong.manager.common.util.Preconditions;
 import org.apache.inlong.manager.pojo.stream.StreamField;
 import org.apache.inlong.manager.pojo.transform.TransformDefinition;
 import org.apache.inlong.manager.pojo.transform.TransformDefinition.OperationType;
@@ -28,7 +28,6 @@ import org.apache.inlong.manager.pojo.transform.filter.FilterDefinition;
 import org.apache.inlong.manager.pojo.transform.filter.FilterDefinition.FilterMode;
 import org.apache.inlong.manager.pojo.transform.filter.FilterDefinition.FilterRule;
 import org.apache.inlong.manager.pojo.transform.filter.FilterDefinition.TargetValue;
-import org.apache.inlong.manager.common.util.Preconditions;
 import org.apache.inlong.sort.protocol.FieldInfo;
 import org.apache.inlong.sort.protocol.enums.FilterStrategy;
 import org.apache.inlong.sort.protocol.transformation.ConstantParam;
@@ -48,6 +47,8 @@ import org.apache.inlong.sort.protocol.transformation.operator.MoreThanOperator;
 import org.apache.inlong.sort.protocol.transformation.operator.MoreThanOrEqualOperator;
 import org.apache.inlong.sort.protocol.transformation.operator.NotEqualOperator;
 import org.apache.inlong.sort.protocol.transformation.operator.OrOperator;
+
+import com.google.common.collect.Lists;
 
 import java.util.List;
 import java.util.stream.Collectors;

@@ -17,21 +17,22 @@
 
 package org.apache.inlong.manager.client.api;
 
+import org.apache.inlong.manager.client.api.inner.InnerGroupContext;
+import org.apache.inlong.manager.common.enums.SimpleGroupStatus;
+import org.apache.inlong.manager.common.enums.SimpleSourceStatus;
+import org.apache.inlong.manager.common.enums.SortStatus;
+import org.apache.inlong.manager.common.util.Preconditions;
+import org.apache.inlong.manager.pojo.group.InlongGroupExtInfo;
+import org.apache.inlong.manager.pojo.group.InlongGroupInfo;
+import org.apache.inlong.manager.pojo.group.InlongGroupStatusInfo;
+import org.apache.inlong.manager.pojo.source.StreamSource;
+
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.MapUtils;
-import org.apache.inlong.manager.common.enums.SimpleGroupStatus;
-import org.apache.inlong.manager.common.enums.SimpleSourceStatus;
-import org.apache.inlong.manager.client.api.inner.InnerGroupContext;
-import org.apache.inlong.manager.common.enums.SortStatus;
-import org.apache.inlong.manager.pojo.group.InlongGroupExtInfo;
-import org.apache.inlong.manager.pojo.group.InlongGroupInfo;
-import org.apache.inlong.manager.pojo.group.InlongGroupStatusInfo;
-import org.apache.inlong.manager.pojo.source.StreamSource;
-import org.apache.inlong.manager.common.util.Preconditions;
 
 import java.io.Serializable;
 import java.util.List;

@@ -19,6 +19,7 @@ package org.apache.inlong.sdk.sort.fetcher.pulsar;
 
 import org.apache.inlong.sdk.sort.entity.InLongTopic;
 import org.apache.inlong.tubemq.corebase.utils.Tuple2;
+
 import org.apache.pulsar.client.api.Consumer;
 import org.apache.pulsar.client.api.MessageId;
 import org.apache.pulsar.client.api.Messages;

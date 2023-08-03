@@ -21,7 +21,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.apache.inlong.manager.dao.mapper.ComponentHeartbeatEntityMapper">
     <resultMap id="BaseResultMap" type="org.apache.inlong.manager.dao.entity.ComponentHeartbeatEntity">
-        <id column="id" jdbcType="INTEGER" property="id"/>
         <result column="component" jdbcType="VARCHAR" property="component"/>
         <result column="instance" jdbcType="VARCHAR" property="instance"/>
         <result column="status_heartbeat" jdbcType="LONGVARCHAR" property="statusHeartbeat"/>
@@ -31,7 +30,7 @@
         <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime"/>
     </resultMap>
     <sql id="Base_Column_List">
-        id, component, instance, status_heartbeat, metric_heartbeat, report_time, create_time, modify_time
+        component, instance, status_heartbeat, metric_heartbeat, report_time, create_time, modify_time
     </sql>
 
     <insert id="insert" parameterType="org.apache.inlong.manager.dao.entity.ComponentHeartbeatEntity">
@@ -49,17 +48,11 @@
         values (#{component,jdbcType=VARCHAR}, #{instance,jdbcType=VARCHAR},
                 #{statusHeartbeat,jdbcType=LONGVARCHAR}, #{metricHeartbeat,jdbcType=LONGVARCHAR},
                 #{reportTime,jdbcType=BIGINT})
-        ON DUPLICATE KEY UPDATE status_heartbeat = values(status_heartbeat),
-                                metric_heartbeat = values(metric_heartbeat),
-                                report_time      = values(report_time)
+            ON DUPLICATE KEY UPDATE status_heartbeat = values(status_heartbeat),
+            metric_heartbeat = values(metric_heartbeat),
+            report_time      = values(report_time)
     </insert>
 
-    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-        select
-        <include refid="Base_Column_List"/>
-        from component_heartbeat
-        where id = #{id,jdbcType=INTEGER}
-    </select>
     <select id="selectByKey" parameterType="java.lang.String" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
@@ -77,9 +70,13 @@
         order by modify_time desc
     </select>
 
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-        delete
+    <select id="selectTimeOutHeartBeat" resultType="org.apache.inlong.manager.dao.entity.ComponentHeartbeatEntity">
+        select
+        <include refid="Base_Column_List"/>
         from component_heartbeat
-        where id = #{id,jdbcType=INTEGER}
-    </delete>
+        where component = #{component, jdbcType=VARCHAR}
+        and instance = #{instance,jdbcType=VARCHAR}
+        and modify_time &gt;= DATE_ADD(NOW(), INTERVAL -#{beforeSeconds, jdbcType=INTEGER} SECOND)
+    </select>
+
 </mapper>

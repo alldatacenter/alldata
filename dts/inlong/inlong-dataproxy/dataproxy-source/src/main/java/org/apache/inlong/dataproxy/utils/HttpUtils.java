@@ -17,8 +17,12 @@
 
 package org.apache.inlong.dataproxy.utils;
 
+import org.apache.inlong.dataproxy.config.AuthUtils;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import org.apache.http.HttpHeaders;
+import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 
 import java.io.UnsupportedEncodingException;
@@ -34,4 +38,10 @@ public class HttpUtils {
         return se;
     }
 
+    public static HttpPost getHttPost(String url) {
+        HttpPost httpPost = new HttpPost(url);
+        httpPost.addHeader(HttpHeaders.CONNECTION, "close");
+        httpPost.addHeader(HttpHeaders.AUTHORIZATION, AuthUtils.genBasicAuth());
+        return httpPost;
+    }
 }

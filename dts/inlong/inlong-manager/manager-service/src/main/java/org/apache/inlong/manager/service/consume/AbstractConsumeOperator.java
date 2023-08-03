@@ -17,7 +17,6 @@
 
 package org.apache.inlong.manager.service.consume;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.inlong.manager.common.consts.InlongConstants;
 import org.apache.inlong.manager.common.enums.ConsumeStatus;
 import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
@@ -26,6 +25,8 @@ import org.apache.inlong.manager.common.util.CommonBeanUtils;
 import org.apache.inlong.manager.dao.entity.InlongConsumeEntity;
 import org.apache.inlong.manager.dao.mapper.InlongConsumeEntityMapper;
 import org.apache.inlong.manager.pojo.consume.InlongConsumeRequest;
+
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -75,7 +76,7 @@ public abstract class AbstractConsumeOperator implements InlongConsumeOperator {
             this.checkTopicInfo(request);
         }
         // get the entity from request
-        InlongConsumeEntity entity = CommonBeanUtils.copyProperties(request, InlongConsumeEntity::new);
+        InlongConsumeEntity entity = consumeMapper.selectById(request.getId());
         // set the ext params
         this.setTargetEntity(request, entity);
         entity.setModifier(operator);

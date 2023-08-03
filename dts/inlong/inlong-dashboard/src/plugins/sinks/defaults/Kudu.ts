@@ -27,7 +27,7 @@ import { SinkInfo } from '../common/SinkInfo';
 import NodeSelect from '@/ui/components/NodeSelect';
 
 const { I18n } = DataWithBackend;
-const { FieldDecorator } = RenderRow;
+const { FieldDecorator, SyncField } = RenderRow;
 const { ColumnDecorator } = RenderList;
 
 const kuduFieldTypes = [
@@ -82,6 +82,7 @@ export default class KuduSink extends SinkInfo implements DataWithBackend, Rende
     }),
   })
   @I18n('meta.Sinks.DataNodeName')
+  @SyncField()
   dataNodeName: string;
 
   @FieldDecorator({
@@ -93,6 +94,7 @@ export default class KuduSink extends SinkInfo implements DataWithBackend, Rende
   })
   @ColumnDecorator()
   @I18n('meta.Sinks.Kudu.TableName')
+  @SyncField()
   tableName: string;
 
   @FieldDecorator({
@@ -115,6 +117,7 @@ export default class KuduSink extends SinkInfo implements DataWithBackend, Rende
     }),
   })
   @I18n('meta.Sinks.EnableCreateResource')
+  @SyncField()
   enableCreateResource: number;
 
   @FieldDecorator({
@@ -128,6 +131,7 @@ export default class KuduSink extends SinkInfo implements DataWithBackend, Rende
   })
   @ColumnDecorator()
   @I18n('meta.Sinks.Kudu.buckets')
+  @SyncField()
   buckets: number;
 
   @FieldDecorator({
@@ -156,6 +160,7 @@ export default class KuduSink extends SinkInfo implements DataWithBackend, Rende
     }),
   })
   @ColumnDecorator()
+  @SyncField()
   @I18n('meta.Sinks.Kudu.ExtList')
   extList: string;
 
@@ -179,6 +184,7 @@ export default class KuduSink extends SinkInfo implements DataWithBackend, Rende
     }),
   })
   @ColumnDecorator()
+  @SyncField()
   @I18n('meta.Sinks.Kudu.DataConsistency')
   dataConsistency: string;
 
@@ -188,6 +194,8 @@ export default class KuduSink extends SinkInfo implements DataWithBackend, Rende
       size: 'small',
       editing: ![110, 130].includes(values?.status),
       columns: getFieldListColumns(values),
+      canBatchAdd: true,
+      upsertByFieldKey: true,
     }),
   })
   sinkFieldList: Record<string, unknown>[];

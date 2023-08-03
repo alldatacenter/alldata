@@ -17,14 +17,6 @@
 
 package org.apache.inlong.tubemq.manager.service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.stream.Collectors;
-import javax.transaction.Transactional;
-
-import lombok.extern.slf4j.Slf4j;
 import org.apache.inlong.tubemq.manager.controller.TubeMQResult;
 import org.apache.inlong.tubemq.manager.entry.ClusterEntry;
 import org.apache.inlong.tubemq.manager.entry.MasterEntry;
@@ -43,10 +35,20 @@ import org.apache.inlong.tubemq.manager.service.interfaces.TopicService;
 import org.apache.inlong.tubemq.manager.service.tube.TopicView;
 import org.apache.inlong.tubemq.manager.service.tube.TubeHttpBrokerInfoList;
 import org.apache.inlong.tubemq.manager.utils.ValidateUtils;
+
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+
+import javax.transaction.Transactional;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Component

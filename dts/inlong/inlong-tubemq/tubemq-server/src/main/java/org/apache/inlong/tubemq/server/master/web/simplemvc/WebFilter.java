@@ -17,15 +17,17 @@
 
 package org.apache.inlong.tubemq.server.master.web.simplemvc;
 
-import java.io.IOException;
+import org.eclipse.jetty.http.HttpFields;
+import org.eclipse.jetty.http.MimeTypes;
+
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
-import org.eclipse.jetty.http.HttpFields;
-import org.eclipse.jetty.http.MimeTypes;
+
+import java.io.IOException;
 
 public class WebFilter implements Filter {
 

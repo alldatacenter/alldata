@@ -20,6 +20,7 @@ package org.apache.inlong.sdk.sort.fetcher.pulsar;
 import org.apache.inlong.sdk.sort.api.Seeker;
 import org.apache.inlong.sdk.sort.entity.InLongTopic;
 import org.apache.inlong.sdk.sort.util.TimeUtil;
+
 import org.apache.pulsar.client.api.Consumer;
 import org.apache.pulsar.client.api.PulsarClientException;
 import org.slf4j.Logger;

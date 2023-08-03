@@ -17,13 +17,14 @@
 
 package org.apache.inlong.tubemq.client.producer;
 
+import org.apache.inlong.tubemq.corebase.TBaseConstants;
+import org.apache.inlong.tubemq.corebase.protobuf.generated.ClientMaster;
+import org.apache.inlong.tubemq.corebase.utils.SettingValidUtils;
+
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
-import org.apache.inlong.tubemq.corebase.TBaseConstants;
-import org.apache.inlong.tubemq.corebase.protobuf.generated.ClientMaster;
-import org.apache.inlong.tubemq.corebase.utils.SettingValidUtils;
 
 /**
  * The class caches the max msg size settings

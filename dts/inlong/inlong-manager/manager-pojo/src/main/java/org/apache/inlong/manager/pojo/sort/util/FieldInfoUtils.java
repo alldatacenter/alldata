@@ -17,11 +17,9 @@
 
 package org.apache.inlong.manager.pojo.sort.util;
 
-import com.google.common.collect.Lists;
-
-import org.apache.commons.lang3.StringUtils;
 import org.apache.inlong.common.enums.MetaField;
 import org.apache.inlong.manager.common.enums.FieldType;
+import org.apache.inlong.manager.common.fieldtype.strategy.FieldTypeMappingStrategy;
 import org.apache.inlong.manager.pojo.fieldformat.ArrayFormat;
 import org.apache.inlong.manager.pojo.fieldformat.BinaryFormat;
 import org.apache.inlong.manager.pojo.fieldformat.DecimalFormat;
@@ -53,10 +51,13 @@ import org.apache.inlong.sort.formats.common.VarBinaryFormatInfo;
 import org.apache.inlong.sort.protocol.FieldInfo;
 import org.apache.inlong.sort.protocol.MetaFieldInfo;
 
+import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Objects;
 
 import static org.apache.inlong.manager.common.consts.InlongConstants.LEFT_BRACKET;
 
@@ -66,26 +67,48 @@ import static org.apache.inlong.manager.common.consts.InlongConstants.LEFT_BRACK
 @Slf4j
 public class FieldInfoUtils {
 
-    public static FieldInfo parseSinkFieldInfo(SinkField sinkField, String nodeId) {
+    public static FieldInfo parseSinkFieldInfo(SinkField sinkField, String nodeId,
+            FieldTypeMappingStrategy fieldTypeMappingStrategy) {
         boolean isMetaField = sinkField.getIsMetaField() == 1;
+        String fieldType = sinkField.getFieldType();
+        if (Objects.nonNull(fieldTypeMappingStrategy)) {
+            fieldType = fieldTypeMappingStrategy.getFieldTypeMapping(fieldType);
+        }
+
         FieldInfo fieldInfo = getFieldInfo(sinkField.getFieldName(),
-                sinkField.getFieldType(), isMetaField, sinkField.getMetaFieldName(),
+                fieldType, isMetaField, sinkField.getMetaFieldName(),
                 sinkField.getFieldFormat());
         fieldInfo.setNodeId(nodeId);
         return fieldInfo;
     }
 
-    public static FieldInfo parseStreamFieldInfo(StreamField streamField, String nodeId) {
+    public static FieldInfo parseStreamFieldInfo(StreamField streamField, String nodeId,
+            FieldTypeMappingStrategy fieldTypeMappingStrategy) {
         boolean isMetaField = streamField.getIsMetaField() == 1;
-        FieldInfo fieldInfo = getFieldInfo(streamField.getFieldName(), streamField.getFieldType(),
+        String fieldType = streamField.getFieldType();
+        if (Objects.nonNull(fieldTypeMappingStrategy)) {
+            fieldType = fieldTypeMappingStrategy.getFieldTypeMapping(fieldType);
+        }
+
+        FieldInfo fieldInfo = getFieldInfo(streamField.getFieldName(), fieldType,
                 isMetaField, streamField.getMetaFieldName(), streamField.getFieldFormat());
         fieldInfo.setNodeId(nodeId);
         return fieldInfo;
     }
 
     public static FieldInfo parseStreamField(StreamField streamField) {
+        return parseStreamField(streamField, null);
+    }
+
+    public static FieldInfo parseStreamField(StreamField streamField,
+            FieldTypeMappingStrategy fieldTypeMappingStrategy) {
         boolean isMetaField = streamField.getIsMetaField() == 1;
-        FieldInfo fieldInfo = getFieldInfo(streamField.getFieldName(), streamField.getFieldType(),
+        String fieldType = streamField.getFieldType();
+        if (Objects.nonNull(fieldTypeMappingStrategy)) {
+            fieldType = fieldTypeMappingStrategy.getFieldTypeMapping(fieldType);
+        }
+
+        FieldInfo fieldInfo = getFieldInfo(streamField.getFieldName(), fieldType,
                 isMetaField, streamField.getMetaFieldName(), streamField.getFieldFormat());
         fieldInfo.setNodeId(streamField.getOriginNodeName());
         return fieldInfo;

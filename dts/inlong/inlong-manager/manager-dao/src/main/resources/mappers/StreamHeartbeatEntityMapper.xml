@@ -21,7 +21,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.apache.inlong.manager.dao.mapper.StreamHeartbeatEntityMapper">
     <resultMap id="BaseResultMap" type="org.apache.inlong.manager.dao.entity.StreamHeartbeatEntity">
-        <id column="id" jdbcType="INTEGER" property="id"/>
         <result column="component" jdbcType="VARCHAR" property="component"/>
         <result column="instance" jdbcType="VARCHAR" property="instance"/>
         <result column="inlong_group_id" jdbcType="VARCHAR" property="inlongGroupId"/>
@@ -33,7 +32,7 @@
         <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime"/>
     </resultMap>
     <sql id="Base_Column_List">
-        id, component, instance, inlong_group_id, inlong_stream_id, status_heartbeat, metric_heartbeat,
+        component, instance, inlong_group_id, inlong_stream_id, status_heartbeat, metric_heartbeat,
         report_time, create_time, modify_time
     </sql>
 
@@ -65,12 +64,6 @@
         report_time = values(report_time)
     </insert>
 
-    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-        select
-        <include refid="Base_Column_List"/>
-        from stream_heartbeat
-        where id = #{id,jdbcType=INTEGER}
-    </select>
     <select id="selectByKey" parameterType="java.lang.String" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
@@ -99,9 +92,4 @@
         </where>
     </select>
 
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-        delete
-        from stream_heartbeat
-        where id = #{id,jdbcType=INTEGER}
-    </delete>
 </mapper>

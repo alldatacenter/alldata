@@ -17,11 +17,6 @@
 
 package org.apache.inlong.audit.channel;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-
 import org.apache.commons.lang3.StringUtils;
 import org.apache.flume.Channel;
 import org.apache.flume.Context;
@@ -30,6 +25,11 @@ import org.apache.flume.FlumeException;
 import org.apache.flume.channel.AbstractChannelSelector;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 
 public class FailoverChannelSelector extends AbstractChannelSelector {
 

@@ -18,6 +18,7 @@
 package org.apache.inlong.audit.send;
 
 import org.apache.inlong.audit.util.AuditConfig;
+
 import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;

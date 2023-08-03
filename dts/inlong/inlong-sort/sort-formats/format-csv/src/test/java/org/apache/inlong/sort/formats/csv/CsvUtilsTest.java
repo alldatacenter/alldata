@@ -18,6 +18,7 @@
 package org.apache.inlong.sort.formats.csv;
 
 import org.apache.inlong.sort.formats.util.StringUtils;
+
 import org.junit.Assert;
 import org.junit.Test;
 

@@ -76,6 +76,45 @@ func (c *rpcClient) RegisterRequestP2M(ctx context.Context, metadata *metadata.M
 	return rspM2P, nil
 }
 
+// HeartRequestP2M implements the HeartRequestP2M inferface according to TubeMQ RPC protocol.
+func (c *rpcClient) HeartRequestP2M(ctx context.Context, metadata *metadata.Metadata,
+	clientID string, brokerCheckSum int64, topics []string) (*protocol.HeartResponseM2P, error) {
+	reqP2M := &protocol.HeartRequestP2M{
+		ClientId:       proto.String(clientID),
+		HostName:       proto.String(metadata.GetNode().GetAddress()),
+		BrokerCheckSum: proto.Int64(brokerCheckSum),
+	}
+
+	reqP2M.TopicList = make([]string, 0, len(topics))
+	reqP2M.TopicList = append(reqP2M.TopicList, topics...)
+
+	req := codec.NewRPCRequest()
+	req.RpcHeader = &protocol.RpcConnHeader{
+		Flag: proto.Int32(0),
+	}
+	req.RequestHeader = &protocol.RequestHeader{
+		ServiceType: proto.Int32(masterService),
+		ProtocolVer: proto.Int32(2),
+	}
+	req.RequestBody = &protocol.RequestBody{
+		Method:  proto.Int32(masterProducerHeartbeat),
+		Timeout: proto.Int64(c.config.Net.ReadTimeout.Milliseconds()),
+	}
+	req.Body = reqP2M
+
+	rspBody, err := c.doRequest(ctx, metadata.GetNode().GetAddress(), req)
+	if err != nil {
+		return nil, err
+	}
+	rspM2P := &protocol.HeartResponseM2P{}
+	err = proto.Unmarshal(rspBody.Data, rspM2P)
+	if err != nil {
+		return nil, errs.New(errs.RetUnMarshalFailure, err.Error())
+	}
+
+	return rspM2P, nil
+}
+
 // RegisterRequestC2M implements the RegisterRequestRequestC2M interface according to TubeMQ RPC protocol.
 func (c *rpcClient) RegisterRequestC2M(ctx context.Context, metadata *metadata.Metadata, sub *sub.SubInfo,
 	r *remote.RmtDataCache) (*protocol.RegisterResponseM2C, error) {

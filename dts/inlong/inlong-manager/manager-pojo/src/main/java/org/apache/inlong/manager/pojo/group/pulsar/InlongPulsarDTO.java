@@ -17,6 +17,12 @@
 
 package org.apache.inlong.manager.pojo.group.pulsar;
 
+import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
+import org.apache.inlong.manager.common.exceptions.BusinessException;
+import org.apache.inlong.manager.common.util.CommonBeanUtils;
+import org.apache.inlong.manager.common.util.JsonUtils;
+import org.apache.inlong.manager.pojo.group.BaseInlongGroup;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -24,11 +30,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
-import org.apache.inlong.manager.common.exceptions.BusinessException;
-import org.apache.inlong.manager.common.util.CommonBeanUtils;
-import org.apache.inlong.manager.common.util.JsonUtils;
-import org.apache.inlong.manager.pojo.group.BaseInlongGroup;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.validation.constraints.NotNull;
 
@@ -44,7 +46,7 @@ import javax.validation.constraints.NotNull;
 public class InlongPulsarDTO extends BaseInlongGroup {
 
     @ApiModelProperty(value = "Pulsar tenant")
-    private String tenant;
+    private String pulsarTenant;
 
     @ApiModelProperty(value = "Queue model, parallel: multiple partitions, high throughput, out-of-order messages;"
             + "serial: single partition, low throughput, and orderly messages")
@@ -86,8 +88,11 @@ public class InlongPulsarDTO extends BaseInlongGroup {
     /**
      * Get the dto instance from the request
      */
-    public static InlongPulsarDTO getFromRequest(InlongPulsarRequest request) {
-        return CommonBeanUtils.copyProperties(request, InlongPulsarDTO::new, true);
+    public static InlongPulsarDTO getFromRequest(InlongPulsarRequest request, String extParams) {
+        InlongPulsarDTO dto = StringUtils.isNotBlank(extParams)
+                ? InlongPulsarDTO.getFromJson(extParams)
+                : new InlongPulsarDTO();
+        return CommonBeanUtils.copyProperties(request, dto, true);
     }
 
     /**

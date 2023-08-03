@@ -38,7 +38,7 @@
         <!-- Database connection URL, username, password -->
         <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
                 connectionURL="jdbc:mysql://127.0.0.1:3306/apache_inlong_manager?nullCatalogMeansCurrent=true"
-                userId="root" password="123456">
+                userId="root" password="inlong">
         </jdbcConnection>
 
         <javaTypeResolver>

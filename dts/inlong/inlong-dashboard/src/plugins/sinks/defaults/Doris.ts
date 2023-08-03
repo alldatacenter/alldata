@@ -26,7 +26,7 @@ import { SinkInfo } from '../common/SinkInfo';
 import { sourceFields } from '../common/sourceFields';
 
 const { I18n } = DataWithBackend;
-const { FieldDecorator } = RenderRow;
+const { FieldDecorator, SyncField } = RenderRow;
 const { ColumnDecorator } = RenderList;
 
 const dorisTargetTypes = [
@@ -62,6 +62,7 @@ export default class DorisSink extends SinkInfo implements DataWithBackend, Rend
   })
   @ColumnDecorator()
   @I18n('meta.Sinks.Doris.HttpAddress')
+  @SyncField()
   feNodes: string;
 
   @FieldDecorator({
@@ -72,6 +73,7 @@ export default class DorisSink extends SinkInfo implements DataWithBackend, Rend
     }),
   })
   @I18n('meta.Sinks.Username')
+  @SyncField()
   username: string;
 
   @FieldDecorator({
@@ -82,6 +84,7 @@ export default class DorisSink extends SinkInfo implements DataWithBackend, Rend
     }),
   })
   @I18n('meta.Sinks.Password')
+  @SyncField()
   password: string;
 
   @FieldDecorator({
@@ -93,6 +96,7 @@ export default class DorisSink extends SinkInfo implements DataWithBackend, Rend
   })
   @ColumnDecorator()
   @I18n('meta.Sinks.Doris.TableIdentifier')
+  @SyncField()
   tableIdentifier: string;
 
   @FieldDecorator({
@@ -103,6 +107,7 @@ export default class DorisSink extends SinkInfo implements DataWithBackend, Rend
     }),
   })
   @ColumnDecorator()
+  @SyncField()
   @I18n('meta.Sinks.Doris.LabelPrefix')
   labelPrefix: string;
 
@@ -114,6 +119,7 @@ export default class DorisSink extends SinkInfo implements DataWithBackend, Rend
     }),
   })
   @ColumnDecorator()
+  @SyncField()
   @I18n('meta.Sinks.Doris.PrimaryKey')
   primaryKey: string;
 
@@ -136,6 +142,7 @@ export default class DorisSink extends SinkInfo implements DataWithBackend, Rend
     }),
   })
   @I18n('meta.Sinks.Doris.SinkMultipleEnable')
+  @SyncField()
   sinkMultipleEnable: boolean;
 
   @FieldDecorator({
@@ -147,6 +154,7 @@ export default class DorisSink extends SinkInfo implements DataWithBackend, Rend
   })
   @ColumnDecorator()
   @I18n('meta.Sinks.Doris.SinkMultipleFormat')
+  @SyncField()
   sinkMultipleFormat: string;
 
   @FieldDecorator({
@@ -157,6 +165,7 @@ export default class DorisSink extends SinkInfo implements DataWithBackend, Rend
     }),
   })
   @ColumnDecorator()
+  @SyncField()
   @I18n('meta.Sinks.Doris.DatabasePattern')
   databasePattern: string;
 
@@ -168,6 +177,7 @@ export default class DorisSink extends SinkInfo implements DataWithBackend, Rend
     }),
   })
   @ColumnDecorator()
+  @SyncField()
   @I18n('meta.Sinks.Doris.TablePattern')
   tablePattern: string;
 
@@ -177,6 +187,8 @@ export default class DorisSink extends SinkInfo implements DataWithBackend, Rend
       size: 'small',
       editing: ![110, 130].includes(values?.status),
       columns: getFieldListColumns(values),
+      canBatchAdd: true,
+      upsertByFieldKey: true,
     }),
   })
   sinkFieldList: Record<string, unknown>[];

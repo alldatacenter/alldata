@@ -17,8 +17,9 @@
 
 package org.apache.inlong.tubemq.manager.service;
 
-import lombok.Getter;
 import org.apache.inlong.tubemq.manager.entry.TopicEntry;
+
+import lombok.Getter;
 
 import java.util.concurrent.CompletableFuture;
 

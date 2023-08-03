@@ -17,10 +17,10 @@
 
 package org.apache.inlong.sdk.dataproxy.pb.dispatch;
 
+import org.apache.inlong.sdk.dataproxy.pb.context.ProfileEvent;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import org.apache.inlong.sdk.dataproxy.pb.context.ProfileEvent;
 
 /**
  * 

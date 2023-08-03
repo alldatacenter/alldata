@@ -1,1 +1,0 @@
-SELECT toHour(toDateTime(1509138000) + number * 300, 'Asia/Kolkata') AS h, toString(toStartOfHour(toDateTime(1509138000) + number * 300, 'Asia/Kolkata'), 'Asia/Kolkata') AS h_start FROM system.numbers LIMIT 12;

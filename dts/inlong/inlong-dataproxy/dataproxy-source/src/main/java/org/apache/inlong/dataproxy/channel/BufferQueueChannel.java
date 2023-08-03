@@ -17,15 +17,15 @@
 
 package org.apache.inlong.dataproxy.channel;
 
-import com.google.common.base.Preconditions;
+import org.apache.inlong.dataproxy.utils.BufferQueue;
+import org.apache.inlong.sdk.commons.protocol.ProxyEvent;
 
+import com.google.common.base.Preconditions;
 import org.apache.flume.ChannelException;
 import org.apache.flume.Context;
 import org.apache.flume.Event;
 import org.apache.flume.Transaction;
 import org.apache.flume.channel.AbstractChannel;
-import org.apache.inlong.dataproxy.utils.BufferQueue;
-import org.apache.inlong.sdk.commons.protocol.ProxyEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

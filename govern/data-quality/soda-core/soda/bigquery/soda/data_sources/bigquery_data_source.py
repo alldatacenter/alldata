@@ -116,7 +116,6 @@ class BigQueryDataSource(DataSource):
         self.dataset = data_source_properties.get("dataset")
 
         self.location = data_source_properties.get("location")
-        self.client_info = data_source_properties.get("client_info")
         self.client_options = data_source_properties.get("client_options")
 
         # Allow to separate default dataset location from compute (project_id).
@@ -127,6 +126,11 @@ class BigQueryDataSource(DataSource):
 
     def connect(self):
         try:
+            from google.api_core.client_info import ClientInfo
+
+            client_info = ClientInfo(
+                user_agent="soda-library",
+            )
             self.client = bigquery.Client(
                 project=self.project_id,
                 credentials=self.credentials,
@@ -134,7 +138,7 @@ class BigQueryDataSource(DataSource):
                     default_dataset=f"{self.storage_project_id}.{self.dataset}",
                 ),
                 location=self.location,
-                client_info=self.client_info,
+                client_info=client_info,
                 client_options=self.client_options,
             )
             self.connection = dbapi.Connection(self.client)
@@ -223,10 +227,10 @@ class BigQueryDataSource(DataSource):
         return super().get_metric_sql_aggregation_expression(metric_name, metric_args, expr)
 
     def sql_information_schema_tables(self) -> str:
-        return f"{self.dataset}.INFORMATION_SCHEMA.TABLES"
+        return "INFORMATION_SCHEMA.TABLES"
 
     def sql_information_schema_columns(self) -> str:
-        return f"{self.dataset}.INFORMATION_SCHEMA.COLUMNS"
+        return "INFORMATION_SCHEMA.COLUMNS"
 
     def default_casify_type_name(self, identifier: str) -> str:
         return identifier.upper()

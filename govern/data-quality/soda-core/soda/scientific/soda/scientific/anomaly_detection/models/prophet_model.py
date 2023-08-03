@@ -349,30 +349,6 @@ class ProphetDetector(BaseDetector):
         self.predictions = self.model.predict(self.time_series)
         self._is_trained = True
 
-    @staticmethod
-    def _derive_anomaly_probability(
-        predictions: pd.DataFrame,
-        anomaly_flag_col: str = "is_anomaly",
-        real_data_colname: str = "real_data",
-    ) -> pd.DataFrame:
-        predictions["anomaly_probability"] = 0
-        anomaly_directions = {
-            "above": {anomaly_flag_col: 1, "confidence_col_name": "yhat_upper"},
-            "below": {anomaly_flag_col: -1, "confidence_col_name": "yhat_lower"},
-        }
-
-        interval_range = predictions["yhat_upper"] - predictions["yhat_lower"]
-        for _, params in anomaly_directions.items():
-            # TODO: We might want to revisit the maths here. Might make sense to sigmoidize around
-            # a dynamic acceptance threshold.
-            predictions.loc[predictions[anomaly_flag_col] == params[anomaly_flag_col], "anomaly_probability"] = abs(
-                (predictions[real_data_colname] - predictions[params["confidence_col_name"]]) / interval_range
-            )
-        # TODO: Add a failsafe for a case where we might still have an inf value
-        # this means we'll check if any rows has inf and then if so, we replave to prob 0
-        # is_anomaly should then also be 0 etc. Test thoroughly.
-        return predictions
-
     def detect_anomalies(self):
         assert (
             self._is_trained
@@ -403,23 +379,14 @@ class ProphetDetector(BaseDetector):
         self.predictions.loc[self.predictions["real_data"] > self.predictions["yhat_upper"], "is_anomaly"] = 1
         self.predictions.loc[self.predictions["real_data"] < self.predictions["yhat_lower"], "is_anomaly"] = -1
 
-        # derive anomaly probability (by normalising delta between real and predicted)
-        self._derive_anomaly_probability(self.predictions, anomaly_flag_col="is_anomaly", real_data_colname="real_data")
-
-        # business logic to prevent inf at all cost becaue floats are shit
-        self.predictions.loc[np.isinf(self.predictions["anomaly_probability"]), "is_anomaly"] = 0
-        self.predictions.loc[np.isinf(self.predictions["anomaly_probability"]), "anomaly_probability"] = 0.0
-
         self.anomalies = self.predictions
 
     def generate_severity_zones(self):
         assert (
             not self.anomalies.empty
         ), "Anomalies have not been detected yet. Make sure you run `detect_anomalies` first."
-        # generate critical bounds. These are based on some gnarly conversion of the
-        # anomaly probability back into the scale of Y. See criticality_threshold_calc method
-        # the critical zone will always take over and "extend" or replace the extreme to inf points
-        # of the warning zone.
+        # See criticality_threshold_calc method, the critical zone will always take over and
+        # "extend" or replace the extreme to inf points of the warning zone.
         self.anomalies.loc[:, "critical_greater_than_or_equal"] = self.anomalies.apply(
             lambda x: self._criticality_threshold_calc(
                 x, threshold=self._criticality_threshold, directionality="upper"

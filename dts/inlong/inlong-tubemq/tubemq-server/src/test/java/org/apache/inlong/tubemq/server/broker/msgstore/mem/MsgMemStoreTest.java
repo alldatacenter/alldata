@@ -17,11 +17,13 @@
 
 package org.apache.inlong.tubemq.server.broker.msgstore.mem;
 
-import java.nio.ByteBuffer;
 import org.apache.inlong.tubemq.server.broker.stats.MsgStoreStatsHolder;
 import org.apache.inlong.tubemq.server.broker.utils.DataStoreUtils;
 import org.apache.inlong.tubemq.server.common.utils.AppendResult;
+
 import org.junit.Test;
+
+import java.nio.ByteBuffer;
 
 /**
  * MsgMemStore test.

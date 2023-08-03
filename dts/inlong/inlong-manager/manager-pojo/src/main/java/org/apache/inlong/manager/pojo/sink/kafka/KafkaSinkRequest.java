@@ -17,15 +17,16 @@
 
 package org.apache.inlong.manager.pojo.sink.kafka;
 
+import org.apache.inlong.manager.common.consts.SinkType;
+import org.apache.inlong.manager.common.enums.DataFormat;
+import org.apache.inlong.manager.common.util.JsonTypeDefine;
+import org.apache.inlong.manager.pojo.sink.SinkRequest;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.apache.inlong.manager.common.enums.DataFormat;
-import org.apache.inlong.manager.common.consts.SinkType;
-import org.apache.inlong.manager.pojo.sink.SinkRequest;
-import org.apache.inlong.manager.common.util.JsonTypeDefine;
 
 /**
  * Kafka sink request.
@@ -44,7 +45,7 @@ public class KafkaSinkRequest extends SinkRequest {
     private String topicName;
 
     @ApiModelProperty("Partition number of the topic")
-    private String partitionNum;
+    private Integer partitionNum;
 
     @ApiModelProperty("Data Serialization, support: json, canal, avro")
     private String serializationType = DataFormat.CANAL.getName();

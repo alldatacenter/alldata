@@ -17,11 +17,13 @@
 
 package org.apache.inlong.tubemq.server.broker.stats;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
 import org.apache.inlong.tubemq.corebase.TBaseConstants;
+
 import org.junit.Assert;
 import org.junit.Test;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 /**
  * MsgStoreStatsHolder test.

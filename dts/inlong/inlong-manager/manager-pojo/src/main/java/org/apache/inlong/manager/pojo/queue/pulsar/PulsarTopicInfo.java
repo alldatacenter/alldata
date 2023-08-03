@@ -31,7 +31,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class PulsarTopicInfo {
 
-    private String tenant;
+    private String pulsarTenant;
 
     private String namespace;
 

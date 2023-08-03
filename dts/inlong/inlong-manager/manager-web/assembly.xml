@@ -62,6 +62,12 @@
         <fileSet>
             <directory>${build.directory}/lib</directory>
             <outputDirectory>lib</outputDirectory>
+            <excludes>
+                <exclude>*scala*.jar</exclude>
+                <exclude>flink-*.jar</exclude>
+                <exclude>sort-flink-*.jar</exclude>
+                <exclude>manager-plugins-flink-*.jar</exclude>
+            </excludes>
         </fileSet>
 
         <!-- Package the project startup jar into the lib directory -->
@@ -75,7 +81,7 @@
 
         <!-- Package the manager plugins -->
         <fileSet>
-            <directory>../manager-plugins/target/plugins</directory>
+            <directory>../manager-plugins/base/target/plugins</directory>
             <outputDirectory>plugins</outputDirectory>
         </fileSet>
 

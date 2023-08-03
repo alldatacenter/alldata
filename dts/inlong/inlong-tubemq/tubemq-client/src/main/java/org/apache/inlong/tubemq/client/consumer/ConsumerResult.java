@@ -17,12 +17,13 @@
 
 package org.apache.inlong.tubemq.client.consumer;
 
-import java.util.ArrayList;
-import java.util.List;
 import org.apache.inlong.tubemq.client.common.PeerInfo;
 import org.apache.inlong.tubemq.corebase.Message;
 import org.apache.inlong.tubemq.corebase.cluster.Partition;
 import org.apache.inlong.tubemq.corebase.rv.RetValue;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ConsumerResult extends RetValue {
 

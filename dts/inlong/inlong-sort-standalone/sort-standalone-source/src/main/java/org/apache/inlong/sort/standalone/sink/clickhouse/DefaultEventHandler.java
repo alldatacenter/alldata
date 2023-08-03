@@ -17,10 +17,11 @@
 
 package org.apache.inlong.sort.standalone.sink.clickhouse;
 
-import org.apache.commons.math3.util.Pair;
 import org.apache.inlong.sdk.commons.protocol.EventConstants;
 import org.apache.inlong.sort.standalone.channel.ProfileEvent;
 import org.apache.inlong.sort.standalone.utils.UnescapeHelper;
+
+import org.apache.commons.math3.util.Pair;
 import org.apache.pulsar.shade.org.apache.commons.lang3.math.NumberUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

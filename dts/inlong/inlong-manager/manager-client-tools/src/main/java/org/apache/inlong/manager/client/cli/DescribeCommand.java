@@ -17,11 +17,11 @@
 
 package org.apache.inlong.manager.client.cli;
 
-import com.beust.jcommander.Parameter;
-import com.beust.jcommander.Parameters;
 import org.apache.inlong.manager.client.api.inner.client.InlongClusterClient;
 import org.apache.inlong.manager.client.api.inner.client.InlongGroupClient;
 import org.apache.inlong.manager.client.api.inner.client.InlongStreamClient;
+import org.apache.inlong.manager.client.api.inner.client.InlongTenantClient;
+import org.apache.inlong.manager.client.api.inner.client.InlongTenantRoleClient;
 import org.apache.inlong.manager.client.api.inner.client.StreamSinkClient;
 import org.apache.inlong.manager.client.api.inner.client.StreamSourceClient;
 import org.apache.inlong.manager.client.api.inner.client.StreamTransformClient;
@@ -37,8 +37,13 @@ import org.apache.inlong.manager.pojo.group.InlongGroupPageRequest;
 import org.apache.inlong.manager.pojo.sink.StreamSink;
 import org.apache.inlong.manager.pojo.source.StreamSource;
 import org.apache.inlong.manager.pojo.stream.InlongStreamInfo;
+import org.apache.inlong.manager.pojo.tenant.InlongTenantInfo;
 import org.apache.inlong.manager.pojo.transform.TransformResponse;
+import org.apache.inlong.manager.pojo.user.TenantRoleInfo;
 import org.apache.inlong.manager.pojo.user.UserInfo;
+
+import com.beust.jcommander.Parameter;
+import com.beust.jcommander.Parameters;
 
 import java.util.List;
 
@@ -63,6 +68,8 @@ public class DescribeCommand extends AbstractCommand {
         jcommander.addCommand("cluster-tag", new DescribeClusterTag());
         jcommander.addCommand("cluster-node", new DescribeClusterNode());
         jcommander.addCommand("user", new DescribeUser());
+        jcommander.addCommand("tenant", new DescribeTenant());
+        jcommander.addCommand("tenant-role", new DescribeTenantRole());
     }
 
     @Parameters(commandDescription = "Get stream details")
@@ -277,6 +284,50 @@ public class DescribeCommand extends AbstractCommand {
                 UserClient userClient = ClientUtils.clientFactory.getUserClient();
                 UserInfo userInfo = userClient.getById(userId);
                 PrintUtils.printJson(userInfo);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
+    @Parameters(commandDescription = "Get tenant details")
+    private static class DescribeTenant extends AbstractCommandRunner {
+
+        @Parameter()
+        private List<String> params;
+
+        @Parameter(names = {"-name", "--name"}, required = true, description = "tenant name")
+        private String name;
+
+        @Override
+        void run() {
+            try {
+                ClientUtils.initClientFactory();
+                InlongTenantClient tenantClient = ClientUtils.clientFactory.getInlongTenantClient();
+                InlongTenantInfo tenantInfo = tenantClient.getTenantByName(name);
+                PrintUtils.printJson(tenantInfo);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
+    @Parameters(commandDescription = "Get tenant role details")
+    private static class DescribeTenantRole extends AbstractCommandRunner {
+
+        @Parameter()
+        private List<String> params;
+
+        @Parameter(names = {"-id", "--id"}, required = true, description = "tenant role id")
+        private int id;
+
+        @Override
+        void run() {
+            try {
+                ClientUtils.initClientFactory();
+                InlongTenantRoleClient tenantRoleClient = ClientUtils.clientFactory.getInlongTenantRoleClient();
+                TenantRoleInfo tenantRoleInfo = tenantRoleClient.get(id);
+                PrintUtils.printJson(tenantRoleInfo);
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }

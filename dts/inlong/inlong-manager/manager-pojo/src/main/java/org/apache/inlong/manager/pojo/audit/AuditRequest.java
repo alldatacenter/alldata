@@ -17,13 +17,15 @@
 
 package org.apache.inlong.manager.pojo.audit;
 
+import org.apache.inlong.manager.common.enums.TimeStaticsDim;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.apache.inlong.manager.common.enums.TimeStaticsDim;
 
 import javax.validation.constraints.NotBlank;
+
 import java.util.List;
 
 /**
@@ -45,9 +47,14 @@ public class AuditRequest {
     @ApiModelProperty(value = "audit id list", required = true)
     private List<String> auditIds;
 
-    @ApiModelProperty(value = "query date, format by 'yyyy-MM-dd'", required = true, example = "2022-01-01")
-    @NotBlank(message = "dt not be blank")
-    private String dt;
+    @ApiModelProperty(value = "sink id")
+    private Integer sinkId;
+
+    @ApiModelProperty(value = "query start date, format by 'yyyy-MM-dd'", required = true, example = "2022-01-01")
+    private String startDate;
+
+    @ApiModelProperty(value = "query end date, format by 'yyyy-MM-dd'", required = true, example = "2022-01-01")
+    private String endDate;
 
     /**
      * Time statics dim such as MINUTE, HOUR, DAY

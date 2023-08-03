@@ -17,12 +17,13 @@
 
 package org.apache.inlong.sort.standalone.source.sortsdk;
 
-import org.apache.flume.Context;
 import org.apache.inlong.common.metric.MetricRegister;
 import org.apache.inlong.common.pojo.sortstandalone.SortClusterConfig;
 import org.apache.inlong.common.pojo.sortstandalone.SortTaskConfig;
 import org.apache.inlong.sdk.commons.admin.AdminServiceRegister;
 import org.apache.inlong.sort.standalone.config.holder.SortClusterConfigHolder;
+
+import org.apache.flume.Context;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

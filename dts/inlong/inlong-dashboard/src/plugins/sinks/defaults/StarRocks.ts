@@ -25,7 +25,7 @@ import { SinkInfo } from '../common/SinkInfo';
 import NodeSelect from '@/ui/components/NodeSelect';
 
 const { I18n } = DataWithBackend;
-const { FieldDecorator } = RenderRow;
+const { FieldDecorator, SyncField } = RenderRow;
 const { ColumnDecorator } = RenderList;
 
 const fieldTypesConf = {
@@ -69,6 +69,7 @@ export default class StarRocksSink
       nodeType: 'STARROCKS',
     }),
   })
+  @SyncField()
   @I18n('meta.Sinks.DataNodeName')
   dataNodeName: string;
 
@@ -80,6 +81,7 @@ export default class StarRocksSink
     }),
   })
   @ColumnDecorator()
+  @SyncField()
   @I18n('meta.Sinks.StarRocks.DatabaseName')
   databaseName: string;
 
@@ -91,6 +93,7 @@ export default class StarRocksSink
     }),
   })
   @ColumnDecorator()
+  @SyncField()
   @I18n('meta.Sinks.StarRocks.TableName')
   tableName: string;
 
@@ -102,6 +105,7 @@ export default class StarRocksSink
     }),
   })
   @ColumnDecorator()
+  @SyncField()
   @I18n('meta.Sinks.StarRocks.PrimaryKey')
   primaryKey: string;
 
@@ -123,6 +127,7 @@ export default class StarRocksSink
       ],
     }),
   })
+  @SyncField()
   @I18n('meta.Sinks.StarRocks.SinkMultipleEnable')
   sinkMultipleEnable: boolean;
 
@@ -135,6 +140,7 @@ export default class StarRocksSink
     }),
   })
   @ColumnDecorator()
+  @SyncField()
   @I18n('meta.Sinks.StarRocks.SinkMultipleFormat')
   sinkMultipleFormat: string;
 
@@ -147,6 +153,7 @@ export default class StarRocksSink
     }),
   })
   @ColumnDecorator()
+  @SyncField()
   @I18n('meta.Sinks.StarRocks.DatabasePattern')
   databasePattern: string;
 
@@ -159,6 +166,7 @@ export default class StarRocksSink
     }),
   })
   @ColumnDecorator()
+  @SyncField()
   @I18n('meta.Sinks.StarRocks.TablePattern')
   tablePattern: string;
 
@@ -168,6 +176,8 @@ export default class StarRocksSink
       size: 'small',
       editing: ![110, 130].includes(values?.status),
       columns: getFieldListColumns(values),
+      canBatchAdd: true,
+      upsertByFieldKey: true,
     }),
   })
   sinkFieldList: Record<string, unknown>[];

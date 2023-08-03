@@ -17,7 +17,6 @@
 
 package org.apache.inlong.sort.formats.base;
 
-import java.util.Objects;
 import org.apache.flink.api.common.serialization.DeserializationSchema;
 import org.apache.flink.api.common.typeinfo.TypeInformation;
 import org.apache.flink.types.Row;
@@ -25,6 +24,8 @@ import org.apache.flink.util.Collector;
 import org.apache.flink.util.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.Objects;
 
 /**
  * The default implementation of {@link TableFormatDeserializer}.

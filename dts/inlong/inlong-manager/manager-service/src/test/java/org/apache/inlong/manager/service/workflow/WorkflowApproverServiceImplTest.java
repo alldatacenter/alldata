@@ -22,6 +22,7 @@ import org.apache.inlong.manager.pojo.workflow.ApproverPageRequest;
 import org.apache.inlong.manager.pojo.workflow.ApproverResponse;
 import org.apache.inlong.manager.service.ServiceBaseTest;
 import org.apache.inlong.manager.service.core.impl.WorkflowApproverServiceImpl;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +43,7 @@ public class WorkflowApproverServiceImplTest extends ServiceBaseTest {
         Assertions.assertTrue(approverList.getList().size() > 0);
 
         Integer id = approverList.getList().get(0).getId();
-        ApproverResponse approverResponse = workflowApproverService.get(id);
+        ApproverResponse approverResponse = workflowApproverService.get(id, "admin");
         Assertions.assertEquals(id, approverResponse.getId());
     }
 

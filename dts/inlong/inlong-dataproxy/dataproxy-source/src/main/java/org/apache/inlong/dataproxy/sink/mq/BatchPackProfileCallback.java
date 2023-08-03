@@ -28,8 +28,8 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class BatchPackProfileCallback {
 
-    private AtomicInteger ackingCount;
-    private SourceCallback callback;
+    private final AtomicInteger ackingCount;
+    private final SourceCallback callback;
 
     /**
      * Constructor

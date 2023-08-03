@@ -17,6 +17,18 @@
 
 package org.apache.inlong.sort.protocol.node.load;
 
+import org.apache.inlong.sort.protocol.FieldInfo;
+import org.apache.inlong.sort.protocol.InlongMetric;
+import org.apache.inlong.sort.protocol.constant.DorisConstant;
+import org.apache.inlong.sort.protocol.enums.FilterStrategy;
+import org.apache.inlong.sort.protocol.enums.SchemaChangePolicy;
+import org.apache.inlong.sort.protocol.enums.SchemaChangeType;
+import org.apache.inlong.sort.protocol.node.LoadNode;
+import org.apache.inlong.sort.protocol.node.format.Format;
+import org.apache.inlong.sort.protocol.transformation.FieldRelation;
+import org.apache.inlong.sort.protocol.transformation.FilterFunction;
+import org.apache.inlong.sort.util.SchemaChangeUtils;
+
 import com.google.common.base.Preconditions;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -26,21 +38,15 @@ import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonInc
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonInclude.Include;
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonProperty;
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonTypeName;
-import org.apache.inlong.sort.protocol.FieldInfo;
-import org.apache.inlong.sort.protocol.InlongMetric;
-import org.apache.inlong.sort.protocol.constant.DorisConstant;
-import org.apache.inlong.sort.protocol.enums.FilterStrategy;
-import org.apache.inlong.sort.protocol.node.LoadNode;
-import org.apache.inlong.sort.protocol.node.format.Format;
-import org.apache.inlong.sort.protocol.transformation.FieldRelation;
-import org.apache.inlong.sort.protocol.transformation.FilterFunction;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+
 import static org.apache.inlong.sort.protocol.constant.DorisConstant.SINK_MULTIPLE_DATABASE_PATTERN;
 import static org.apache.inlong.sort.protocol.constant.DorisConstant.SINK_MULTIPLE_ENABLE;
 import static org.apache.inlong.sort.protocol.constant.DorisConstant.SINK_MULTIPLE_FORMAT;
@@ -92,6 +98,11 @@ public class DorisLoadNode extends LoadNode implements InlongMetric, Serializabl
     @Nullable
     @JsonProperty("tablePattern")
     private String tablePattern;
+    @JsonProperty("enableSchemaChange")
+    private boolean enableSchemaChange;
+    @Nullable
+    @JsonProperty("policyMap")
+    private Map<SchemaChangeType, SchemaChangePolicy> policyMap;
 
     public DorisLoadNode(@JsonProperty("id") String id,
             @JsonProperty("name") String name,
@@ -111,7 +122,6 @@ public class DorisLoadNode extends LoadNode implements InlongMetric, Serializabl
                 null, null);
     }
 
-    @JsonCreator
     public DorisLoadNode(@JsonProperty("id") String id,
             @JsonProperty("name") String name,
             @JsonProperty("fields") List<FieldInfo> fields,
@@ -129,6 +139,31 @@ public class DorisLoadNode extends LoadNode implements InlongMetric, Serializabl
             @Nullable @JsonProperty("sinkMultipleFormat") Format sinkMultipleFormat,
             @Nullable @JsonProperty("databasePattern") String databasePattern,
             @Nullable @JsonProperty("tablePattern") String tablePattern) {
+        this(id, name, fields, fieldRelations, filters, filterStrategy, sinkParallelism, properties, feNodes, userName,
+                password, tableIdentifier, primaryKey, sinkMultipleEnable, sinkMultipleFormat, databasePattern,
+                tablePattern, false, null);
+    }
+
+    @JsonCreator
+    public DorisLoadNode(@JsonProperty("id") String id,
+            @JsonProperty("name") String name,
+            @JsonProperty("fields") List<FieldInfo> fields,
+            @JsonProperty("fieldRelations") List<FieldRelation> fieldRelations,
+            @JsonProperty("filters") List<FilterFunction> filters,
+            @JsonProperty("filterStrategy") FilterStrategy filterStrategy,
+            @Nullable @JsonProperty("sinkParallelism") Integer sinkParallelism,
+            @JsonProperty("properties") Map<String, String> properties,
+            @Nonnull @JsonProperty("feNodes") String feNodes,
+            @Nonnull @JsonProperty("username") String userName,
+            @Nonnull @JsonProperty("password") String password,
+            @Nullable @JsonProperty("tableIdentifier") String tableIdentifier,
+            @JsonProperty("primaryKey") String primaryKey,
+            @Nullable @JsonProperty(value = "sinkMultipleEnable", defaultValue = "false") Boolean sinkMultipleEnable,
+            @Nullable @JsonProperty("sinkMultipleFormat") Format sinkMultipleFormat,
+            @Nullable @JsonProperty("databasePattern") String databasePattern,
+            @Nullable @JsonProperty("tablePattern") String tablePattern,
+            @JsonProperty("enableSchemaChange") boolean enableSchemaChange,
+            @Nullable @JsonProperty("policyMap") Map<SchemaChangeType, SchemaChangePolicy> policyMap) {
         super(id, name, fields, fieldRelations, filters, filterStrategy, sinkParallelism, properties);
         this.feNodes = Preconditions.checkNotNull(feNodes, "feNodes is null");
         this.userName = Preconditions.checkNotNull(userName, "username is null");
@@ -143,6 +178,10 @@ public class DorisLoadNode extends LoadNode implements InlongMetric, Serializabl
             this.sinkMultipleFormat = Preconditions.checkNotNull(sinkMultipleFormat,
                     "sinkMultipleFormat is null");
         }
+        this.enableSchemaChange = enableSchemaChange;
+        this.policyMap = policyMap;
+        Preconditions.checkState(!enableSchemaChange || policyMap != null && !policyMap.isEmpty(),
+                "policyMap is empty when enableSchemaChange is 'true'");
     }
 
     @Override
@@ -157,6 +196,10 @@ public class DorisLoadNode extends LoadNode implements InlongMetric, Serializabl
             options.put(SINK_MULTIPLE_FORMAT, Objects.requireNonNull(sinkMultipleFormat).identifier());
             options.put(SINK_MULTIPLE_DATABASE_PATTERN, databasePattern);
             options.put(SINK_MULTIPLE_TABLE_PATTERN, tablePattern);
+            if (enableSchemaChange) {
+                options.put("sink.schema-change.enable", "true");
+                options.put("sink.schema-change.policies", SchemaChangeUtils.serialize(policyMap));
+            }
         } else {
             options.put(SINK_MULTIPLE_ENABLE, "false");
             options.put(DorisConstant.TABLE_IDENTIFIER, tableIdentifier);

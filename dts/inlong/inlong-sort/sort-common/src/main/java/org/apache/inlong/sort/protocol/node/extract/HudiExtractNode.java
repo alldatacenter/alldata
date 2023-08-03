@@ -17,6 +17,28 @@
 
 package org.apache.inlong.sort.protocol.node.extract;
 
+import org.apache.inlong.sort.protocol.FieldInfo;
+import org.apache.inlong.sort.protocol.constant.HudiConstant.CatalogType;
+import org.apache.inlong.sort.protocol.node.ExtractNode;
+import org.apache.inlong.sort.protocol.transformation.WatermarkField;
+
+import com.google.common.base.Preconditions;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonInclude;
+import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonInclude.Include;
+import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonProperty;
+import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonTypeName;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import static org.apache.inlong.sort.protocol.constant.HudiConstant.CONNECTOR;
 import static org.apache.inlong.sort.protocol.constant.HudiConstant.CONNECTOR_KEY;
 import static org.apache.inlong.sort.protocol.constant.HudiConstant.DDL_ATTR_PREFIX;
@@ -36,25 +58,6 @@ import static org.apache.inlong.sort.protocol.constant.HudiConstant.READ_AS_STRE
 import static org.apache.inlong.sort.protocol.constant.HudiConstant.READ_START_COMMIT;
 import static org.apache.inlong.sort.protocol.constant.HudiConstant.READ_STREAMING_CHECK_INTERVAL;
 import static org.apache.inlong.sort.protocol.constant.HudiConstant.READ_STREAMING_SKIP_COMPACT;
-
-import com.google.common.base.Preconditions;
-import java.io.Serializable;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonInclude;
-import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonInclude.Include;
-import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonProperty;
-import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonTypeName;
-import org.apache.inlong.sort.protocol.FieldInfo;
-import org.apache.inlong.sort.protocol.constant.HudiConstant.CatalogType;
-import org.apache.inlong.sort.protocol.node.ExtractNode;
-import org.apache.inlong.sort.protocol.transformation.WatermarkField;
 
 /**
  * Hudi extract node for extract data from hudi

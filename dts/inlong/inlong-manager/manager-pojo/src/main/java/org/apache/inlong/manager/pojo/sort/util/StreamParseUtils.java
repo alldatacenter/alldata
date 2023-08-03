@@ -17,8 +17,6 @@
 
 package org.apache.inlong.manager.pojo.sort.util;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
 import org.apache.inlong.manager.common.enums.TransformType;
 import org.apache.inlong.manager.common.util.Preconditions;
@@ -37,6 +35,9 @@ import org.apache.inlong.manager.pojo.transform.joiner.LookUpJoinerDefinition;
 import org.apache.inlong.manager.pojo.transform.joiner.TemporalJoinerDefinition;
 import org.apache.inlong.manager.pojo.transform.replacer.StringReplacerDefinition;
 import org.apache.inlong.manager.pojo.transform.splitter.SplitterDefinition;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 
 /**
  * Utils of stream parse.

@@ -17,12 +17,14 @@
 
 package org.apache.inlong.tubemq.server.broker.msgstore.disk;
 
+import org.apache.inlong.tubemq.server.broker.utils.DataStoreUtils;
+
+import org.junit.Assert;
+import org.junit.Test;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.ByteBuffer;
-import org.apache.inlong.tubemq.server.broker.utils.DataStoreUtils;
-import org.junit.Assert;
-import org.junit.Test;
 
 /**
  * FileSegmentList test

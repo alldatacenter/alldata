@@ -17,12 +17,13 @@
 
 package org.apache.inlong.audit.source;
 
+import org.apache.inlong.audit.consts.ConfigConstants;
+import org.apache.inlong.audit.protocol.AuditApi.BaseCommand;
+
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.Channel;
-import org.apache.inlong.audit.consts.ConfigConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.apache.inlong.audit.protocol.AuditApi.BaseCommand;
 
 public class DefaultServiceDecoder implements ServiceDecoder {
 

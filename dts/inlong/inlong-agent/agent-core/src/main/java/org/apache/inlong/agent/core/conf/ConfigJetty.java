@@ -17,10 +17,6 @@
 
 package org.apache.inlong.agent.core.conf;
 
-import static org.apache.inlong.agent.constant.JobConstants.JOB_SOURCE_TYPE;
-import static org.apache.inlong.agent.constant.JobConstants.JOB_TRIGGER;
-
-import java.io.Closeable;
 import org.apache.inlong.agent.conf.AgentConfiguration;
 import org.apache.inlong.agent.conf.JobProfile;
 import org.apache.inlong.agent.conf.TriggerProfile;
@@ -28,6 +24,7 @@ import org.apache.inlong.agent.constant.AgentConstants;
 import org.apache.inlong.agent.core.job.JobManager;
 import org.apache.inlong.agent.core.trigger.TriggerManager;
 import org.apache.inlong.common.enums.TaskTypeEnum;
+
 import org.eclipse.jetty.server.Connector;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.ServerConnector;
@@ -35,6 +32,11 @@ import org.eclipse.jetty.servlet.ServletHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.io.Closeable;
+
+import static org.apache.inlong.agent.constant.JobConstants.JOB_SOURCE_TYPE;
+import static org.apache.inlong.agent.constant.JobConstants.JOB_TRIGGER;
 
 /**
  * start http server and get job/agent config via http

@@ -27,7 +27,7 @@ import { SinkInfo } from '../common/SinkInfo';
 import NodeSelect from '@/ui/components/NodeSelect';
 
 const { I18n } = DataWithBackend;
-const { FieldDecorator } = RenderRow;
+const { FieldDecorator, SyncField } = RenderRow;
 const { ColumnDecorator } = RenderList;
 
 const icebergFieldTypes = [
@@ -118,6 +118,7 @@ export default class IcebergSink
     }),
   })
   @ColumnDecorator()
+  @SyncField()
   @I18n('meta.Sinks.Iceberg.DbName')
   dbName: string;
 
@@ -129,6 +130,7 @@ export default class IcebergSink
     }),
   })
   @ColumnDecorator()
+  @SyncField()
   @I18n('meta.Sinks.Iceberg.TableName')
   tableName: string;
 
@@ -152,6 +154,7 @@ export default class IcebergSink
     }),
   })
   @I18n('meta.Sinks.EnableCreateResource')
+  @SyncField()
   enableCreateResource: number;
 
   @FieldDecorator({
@@ -163,6 +166,7 @@ export default class IcebergSink
     }),
   })
   @I18n('meta.Sinks.DataNodeName')
+  @SyncField()
   dataNodeName: string;
 
   @FieldDecorator({
@@ -188,6 +192,7 @@ export default class IcebergSink
     }),
   })
   @ColumnDecorator()
+  @SyncField()
   @I18n('meta.Sinks.Iceberg.FileFormat')
   fileFormat: string;
 
@@ -215,6 +220,7 @@ export default class IcebergSink
     }),
   })
   @ColumnDecorator()
+  @SyncField()
   @I18n('meta.Sinks.Iceberg.ExtList')
   extList: string;
 
@@ -238,6 +244,7 @@ export default class IcebergSink
     }),
   })
   @ColumnDecorator()
+  @SyncField()
   @I18n('meta.Sinks.Iceberg.DataConsistency')
   dataConsistency: string;
 
@@ -247,6 +254,8 @@ export default class IcebergSink
       size: 'small',
       editing: ![110, 130].includes(values?.status),
       columns: getFieldListColumns(values),
+      canBatchAdd: true,
+      upsertByFieldKey: true,
     }),
   })
   sinkFieldList: Record<string, unknown>[];

@@ -17,10 +17,11 @@
 
 package org.apache.inlong.manager.common.exceptions;
 
+import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
 
 /**
  * Business exception.

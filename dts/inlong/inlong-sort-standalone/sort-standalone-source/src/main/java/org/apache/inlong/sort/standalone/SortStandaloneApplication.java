@@ -17,11 +17,12 @@
 
 package org.apache.inlong.sort.standalone;
 
-import org.apache.flume.node.Application;
 import org.apache.inlong.common.metric.MetricObserver;
 import org.apache.inlong.sort.standalone.config.holder.CommonPropertiesHolder;
 import org.apache.inlong.sort.standalone.metrics.audit.AuditUtils;
 import org.apache.inlong.sort.standalone.utils.InlongLoggerFactory;
+
+import org.apache.flume.node.Application;
 import org.slf4j.Logger;
 
 /**

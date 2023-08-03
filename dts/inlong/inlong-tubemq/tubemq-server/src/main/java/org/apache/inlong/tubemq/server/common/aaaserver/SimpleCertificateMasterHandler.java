@@ -17,14 +17,15 @@
 
 package org.apache.inlong.tubemq.server.common.aaaserver;
 
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeSet;
 import org.apache.inlong.tubemq.corebase.TErrCodeConstants;
 import org.apache.inlong.tubemq.corebase.protobuf.generated.ClientMaster;
 import org.apache.inlong.tubemq.corebase.rv.ProcessResult;
 import org.apache.inlong.tubemq.corebase.utils.TStringUtils;
 import org.apache.inlong.tubemq.server.master.MasterConfig;
+
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class SimpleCertificateMasterHandler implements CertificateMasterHandler {
 

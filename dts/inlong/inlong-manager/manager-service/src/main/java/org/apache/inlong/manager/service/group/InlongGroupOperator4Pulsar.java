@@ -17,7 +17,6 @@
 
 package org.apache.inlong.manager.service.group;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.inlong.common.constant.MQType;
 import org.apache.inlong.manager.common.enums.ClusterType;
 import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
@@ -35,6 +34,8 @@ import org.apache.inlong.manager.pojo.group.pulsar.InlongPulsarInfo;
 import org.apache.inlong.manager.pojo.group.pulsar.InlongPulsarRequest;
 import org.apache.inlong.manager.pojo.group.pulsar.InlongPulsarTopicInfo;
 import org.apache.inlong.manager.pojo.stream.InlongStreamBriefInfo;
+
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -109,7 +110,7 @@ public class InlongGroupOperator4Pulsar extends AbstractGroupOperator {
         pulsarRequest.setEnsemble(writeQuorum);
         CommonBeanUtils.copyProperties(pulsarRequest, targetEntity, true);
         try {
-            InlongPulsarDTO dto = InlongPulsarDTO.getFromRequest(pulsarRequest);
+            InlongPulsarDTO dto = InlongPulsarDTO.getFromRequest(pulsarRequest, targetEntity.getExtParams());
             targetEntity.setExtParams(objectMapper.writeValueAsString(dto));
         } catch (Exception e) {
             throw new BusinessException(ErrorCodeEnum.SOURCE_INFO_INCORRECT,
@@ -123,9 +124,9 @@ public class InlongGroupOperator4Pulsar extends AbstractGroupOperator {
                 groupInfo.getInlongClusterTag(), null, ClusterType.PULSAR);
 
         // First get the tenant from the InlongGroup, and then get it from the PulsarCluster.
-        String tenant = ((InlongPulsarInfo) groupInfo).getTenant();
+        String tenant = ((InlongPulsarInfo) groupInfo).getPulsarTenant();
         if (StringUtils.isBlank(tenant)) {
-            tenant = pulsarCluster.getTenant();
+            tenant = pulsarCluster.getPulsarTenant();
         }
         InlongPulsarTopicInfo topicInfo = new InlongPulsarTopicInfo();
         topicInfo.setTenant(tenant);

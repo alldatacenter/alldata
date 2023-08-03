@@ -17,13 +17,16 @@
 
 package org.apache.inlong.manager.web;
 
+import org.apache.inlong.manager.common.util.JsonUtils;
+import org.apache.inlong.manager.pojo.common.Response;
+import org.apache.inlong.manager.pojo.user.LoginUserUtils;
+import org.apache.inlong.manager.pojo.user.UserLoginRequest;
+import org.apache.inlong.manager.pojo.user.UserRoleCode;
+import org.apache.inlong.manager.test.BaseTest;
+
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.SneakyThrows;
-import org.apache.inlong.manager.pojo.common.Response;
-import org.apache.inlong.manager.pojo.user.UserLoginRequest;
-import org.apache.inlong.manager.common.util.JsonUtils;
-import org.apache.inlong.manager.test.BaseTest;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.mgt.SecurityManager;
 import org.junit.jupiter.api.Assertions;
@@ -40,10 +43,13 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 
 import javax.annotation.Resource;
+
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -99,6 +105,13 @@ public abstract class WebBaseTest extends BaseTest {
         Assertions.assertNotNull(resBodyObj);
 
         Assertions.assertTrue(SecurityUtils.getSubject().isAuthenticated());
+        LoginUserUtils.getLoginUser().setTenant("public");
+        Set<String> roles = new HashSet<>();
+        roles.add(UserRoleCode.INLONG_ADMIN);
+        roles.add(UserRoleCode.INLONG_OPERATOR);
+        roles.add(UserRoleCode.TENANT_ADMIN);
+        roles.add(UserRoleCode.TENANT_OPERATOR);
+        LoginUserUtils.getLoginUser().setRoles(roles);
     }
 
     @SneakyThrows

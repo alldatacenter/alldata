@@ -17,11 +17,12 @@
 
 package org.apache.inlong.tubemq.server.broker.metadata;
 
+import org.junit.Assert;
+import org.junit.Test;
+
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import org.junit.Assert;
-import org.junit.Test;
 
 /**
  * BrokerMetadataManage test

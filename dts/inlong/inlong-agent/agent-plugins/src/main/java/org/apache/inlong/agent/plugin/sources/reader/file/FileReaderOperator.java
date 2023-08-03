@@ -17,11 +17,55 @@
 
 package org.apache.inlong.agent.plugin.sources.reader.file;
 
+import org.apache.inlong.agent.conf.AgentConfiguration;
+import org.apache.inlong.agent.conf.JobProfile;
+import org.apache.inlong.agent.constant.AgentConstants;
+import org.apache.inlong.agent.constant.DataCollectType;
+import org.apache.inlong.agent.constant.JobConstants;
+import org.apache.inlong.agent.core.task.MemoryManager;
+import org.apache.inlong.agent.core.task.PositionManager;
+import org.apache.inlong.agent.except.FileException;
+import org.apache.inlong.agent.message.DefaultMessage;
+import org.apache.inlong.agent.metrics.audit.AuditUtils;
+import org.apache.inlong.agent.plugin.Message;
+import org.apache.inlong.agent.plugin.sources.reader.AbstractReader;
+import org.apache.inlong.agent.plugin.utils.FileDataUtils;
+import org.apache.inlong.agent.utils.AgentUtils;
+
+import com.google.gson.Gson;
+import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.LineNumberReader;
+import java.io.RandomAccessFile;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.TimeUnit;
+
 import static org.apache.inlong.agent.constant.CommonConstants.COMMA;
+import static org.apache.inlong.agent.constant.CommonConstants.DEFAULT_PROXY_PACKAGE_MAX_SIZE;
 import static org.apache.inlong.agent.constant.CommonConstants.PROXY_KEY_DATA;
+import static org.apache.inlong.agent.constant.CommonConstants.PROXY_PACKAGE_MAX_SIZE;
 import static org.apache.inlong.agent.constant.CommonConstants.PROXY_SEND_PARTITION_KEY;
+import static org.apache.inlong.agent.constant.FetcherConstants.AGENT_GLOBAL_CHANNEL_PERMIT;
+import static org.apache.inlong.agent.constant.FetcherConstants.AGENT_GLOBAL_READER_QUEUE_PERMIT;
+import static org.apache.inlong.agent.constant.FetcherConstants.AGENT_GLOBAL_READER_SOURCE_PERMIT;
 import static org.apache.inlong.agent.constant.JobConstants.DEFAULT_JOB_READ_WAIT_TIMEOUT;
-import static org.apache.inlong.agent.constant.JobConstants.JOB_FILE_LINE_END_PATTERN;
 import static org.apache.inlong.agent.constant.JobConstants.JOB_FILE_MAX_WAIT;
 import static org.apache.inlong.agent.constant.JobConstants.JOB_FILE_META_ENV_LIST;
 import static org.apache.inlong.agent.constant.JobConstants.JOB_FILE_MONITOR_DEFAULT_STATUS;
@@ -34,51 +78,6 @@ import static org.apache.inlong.agent.constant.MetadataConstants.METADATA_FILE_N
 import static org.apache.inlong.agent.constant.MetadataConstants.METADATA_HOST_NAME;
 import static org.apache.inlong.agent.constant.MetadataConstants.METADATA_SOURCE_IP;
 
-import com.google.gson.Gson;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.LineNumberReader;
-import java.io.RandomAccessFile;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.TimeUnit;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
-import org.apache.commons.codec.digest.DigestUtils;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.inlong.agent.conf.AgentConfiguration;
-import org.apache.inlong.agent.conf.JobProfile;
-import org.apache.inlong.agent.constant.AgentConstants;
-import org.apache.inlong.agent.constant.DataCollectType;
-import org.apache.inlong.agent.constant.JobConstants;
-import org.apache.inlong.agent.core.task.TaskPositionManager;
-import org.apache.inlong.agent.except.FileException;
-import org.apache.inlong.agent.message.DefaultMessage;
-import org.apache.inlong.agent.metrics.audit.AuditUtils;
-import org.apache.inlong.agent.plugin.Message;
-import org.apache.inlong.agent.plugin.Validator;
-import org.apache.inlong.agent.plugin.sources.reader.AbstractReader;
-import org.apache.inlong.agent.plugin.utils.FileDataUtils;
-import org.apache.inlong.agent.plugin.validator.PatternValidator;
-import org.apache.inlong.agent.utils.AgentUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 /**
  * File reader entrance
  */
@@ -87,15 +86,16 @@ public class FileReaderOperator extends AbstractReader {
     private static final Logger LOGGER = LoggerFactory.getLogger(FileReaderOperator.class);
 
     public static final int NEVER_STOP_SIGN = -1;
-    public static final int BATCH_READ_SIZE = 10000;
-    public static final int CACHE_QUEUE_SIZE = 10 * BATCH_READ_SIZE;
-    private static final int LINE_SEPARATOR_SIZE = System.lineSeparator().getBytes(StandardCharsets.UTF_8).length;
-    private static final SimpleDateFormat RECORD_TIME_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
-    private static final Gson GSON = new Gson();
+    public static final int BATCH_READ_LINE_COUNT = 10000;
+    public static final int BATCH_READ_LINE_TOTAL_LEN = 1024 * 1024;
+    public static final int CACHE_QUEUE_SIZE = 10 * BATCH_READ_LINE_COUNT;
+    public static int DEFAULT_BUFFER_SIZE = 64 * 1024;
+    private final SimpleDateFormat RECORD_TIME_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+    private final Gson GSON = new Gson();
 
     public File file;
-    public int position = 0;
-    public int bytePosition = 0;
+    public long position = 0;
+    public long bytePosition = 0;
     private long readEndpoint = Long.MAX_VALUE;
     public String md5;
     public Map<String, String> metadata;
@@ -106,12 +106,14 @@ public class FileReaderOperator extends AbstractReader {
     public String fileKey = null;
     private long timeout;
     private long waitTimeout;
+    public volatile long monitorUpdateTime;
     private long lastTime = 0;
-    private List<Validator> validators = new ArrayList<>();
-    public boolean firstStored = false;
-
+    private final byte[] inBuf = new byte[DEFAULT_BUFFER_SIZE];
+    private int maxPackSize;
+    private final long monitorActiveInterval = 60 * 1000;
     private final BlockingQueue<String> queue = new LinkedBlockingQueue<>(CACHE_QUEUE_SIZE);
     private final StringBuffer sb = new StringBuffer();
+    private boolean needMetadata = false;
 
     public FileReaderOperator(File file, int position) {
         this(file, position, "");
@@ -125,32 +127,67 @@ public class FileReaderOperator extends AbstractReader {
         this.metadata = new HashMap<>();
     }
 
-    public FileReaderOperator(File file) {
-        this(file, 0);
-    }
-
     @Override
     public Message read() {
         String data = null;
         try {
             data = queue.poll(DEFAULT_JOB_READ_WAIT_TIMEOUT, TimeUnit.SECONDS);
         } catch (InterruptedException e) {
-            LOGGER.warn("poll {} data get interruptted.", file.getPath(), e);
+            LOGGER.warn("poll {} data get interrupted.", file.getPath(), e);
         }
+        if (data == null) {
+            keepMonitorActive();
+            return null;
+        } else {
+            MemoryManager.getInstance().release(AGENT_GLOBAL_READER_QUEUE_PERMIT, data.length());
+        }
+        Message finalMsg = createMessage(data);
+        if (finalMsg == null) {
+            return null;
+        }
+        boolean channelPermit = MemoryManager.getInstance()
+                .tryAcquire(AGENT_GLOBAL_CHANNEL_PERMIT, finalMsg.getBody().length);
+        if (channelPermit == false) {
+            LOGGER.warn("channel tryAcquire failed");
+            MemoryManager.getInstance().printDetail(AGENT_GLOBAL_CHANNEL_PERMIT);
+            AgentUtils.silenceSleepInSeconds(1);
+            return null;
+        }
+        return finalMsg;
+    }
 
-        return Optional.ofNullable(data)
-                .map(this::metadataMessage)
-                .filter(this::filterMessage)
-                .map(message -> {
-                    AuditUtils.add(AuditUtils.AUDIT_ID_AGENT_READ_SUCCESS, inlongGroupId, inlongStreamId,
-                            System.currentTimeMillis(), 1, message.length());
-                    readerMetric.pluginReadSuccessCount.incrementAndGet();
-                    readerMetric.pluginReadCount.incrementAndGet();
-                    String proxyPartitionKey = jobConf.get(PROXY_SEND_PARTITION_KEY, DigestUtils.md5Hex(inlongGroupId));
-                    Map<String, String> header = new HashMap<>();
-                    header.put(PROXY_KEY_DATA, proxyPartitionKey);
-                    return new DefaultMessage(message.getBytes(StandardCharsets.UTF_8), header);
-                }).orElse(null);
+    private Message createMessage(String data) {
+        String msgWithMetaData = fillMetaData(data);
+        AuditUtils.add(AuditUtils.AUDIT_ID_AGENT_READ_SUCCESS, inlongGroupId, inlongStreamId,
+                System.currentTimeMillis(), 1, msgWithMetaData.length());
+        readerMetric.pluginReadSuccessCount.incrementAndGet();
+        readerMetric.pluginReadCount.incrementAndGet();
+        String proxyPartitionKey = jobConf.get(PROXY_SEND_PARTITION_KEY, DigestUtils.md5Hex(inlongGroupId));
+        Map<String, String> header = new HashMap<>();
+        header.put(PROXY_KEY_DATA, proxyPartitionKey);
+        Message finalMsg = new DefaultMessage(msgWithMetaData.getBytes(StandardCharsets.UTF_8), header);
+        // if the message size is greater than max pack size,should drop it.
+        if (finalMsg.getBody().length > maxPackSize) {
+            LOGGER.warn("message size is {}, greater than max pack size {}, drop it!",
+                    finalMsg.getBody().length, maxPackSize);
+            return null;
+        }
+        return finalMsg;
+    }
+
+    public void keepMonitorActive() {
+        if (!isMonitorActive()) {
+            LOGGER.error("monitor not active, create a new one");
+            MonitorTextFile.getInstance().monitor(this);
+        }
+    }
+
+    private boolean isMonitorActive() {
+        long currentTime = System.currentTimeMillis();
+        if (currentTime - monitorUpdateTime > monitorActiveInterval) {
+            return false;
+        }
+        return true;
     }
 
     @Override
@@ -209,13 +246,6 @@ public class FileReaderOperator extends AbstractReader {
         return true;
     }
 
-    public void addPatternValidator(String pattern) {
-        if (pattern.isEmpty()) {
-            return;
-        }
-        validators.add(new PatternValidator(pattern));
-    }
-
     @Override
     public void init(JobProfile jobConf) {
         try {
@@ -223,35 +253,47 @@ public class FileReaderOperator extends AbstractReader {
             this.jobConf = jobConf;
             super.init(jobConf);
             this.instanceId = jobConf.getInstanceId();
+            this.maxPackSize = jobConf.getInt(PROXY_PACKAGE_MAX_SIZE, DEFAULT_PROXY_PACKAGE_MAX_SIZE);
             initReadTimeout(jobConf);
             String md5 = AgentUtils.getFileMd5(file);
             if (StringUtils.isNotBlank(this.md5) && !this.md5.equals(md5)) {
                 LOGGER.warn("md5 is differ from origin, origin: {}, new {}", this.md5, md5);
             }
             LOGGER.info("file name for task is {}, md5 is {}", file, md5);
-
+            monitorUpdateTime = System.currentTimeMillis();
             MonitorTextFile.getInstance().monitor(this);
             if (!jobConf.get(JOB_FILE_MONITOR_STATUS, JOB_FILE_MONITOR_DEFAULT_STATUS)
                     .equals(JOB_FILE_MONITOR_DEFAULT_STATUS)) {
                 readEndpoint = Files.lines(file.toPath()).count();
             }
-
-            this.bytePosition = getStartBytePosition(this.position);
-
-            isFirstStore();
-
-            if (jobConf.hasKey(JobConstants.JOB_FILE_CONTENT_COLLECT_TYPE) && DataCollectType.INCREMENT
-                    .equalsIgnoreCase(jobConf.get(JobConstants.JOB_FILE_CONTENT_COLLECT_TYPE))
-                    && this.firstStored) {
+            try {
+                position = PositionManager.getInstance().getPosition(getReadSource(), instanceId);
+            } catch (Exception ex) {
+                position = 0;
+                LOGGER.error("get position from position manager error, only occur in ut: {}", ex.getMessage());
+            }
+            this.bytePosition = getStartBytePosition(position);
+            LOGGER.info("FileReaderOperator init file {} instanceId {} history position {} readEndpoint {}",
+                    getReadSource(),
+                    instanceId,
+                    position, readEndpoint);
+            if (isIncrement(jobConf)) {
                 LOGGER.info("FileReaderOperator DataCollectType INCREMENT: start bytePosition {},{}",
                         file.length(), file.getAbsolutePath());
-                this.bytePosition = (int) file.length();
+                this.bytePosition = file.length();
+                try (LineNumberReader lineNumberReader = new LineNumberReader(new FileReader(file.getPath()))) {
+                    lineNumberReader.skip(Long.MAX_VALUE);
+                    position = lineNumberReader.getLineNumber();
+                    PositionManager.getInstance().updateSinkPosition(
+                            getJobInstanceId(), getReadSource(), position, true);
+                    LOGGER.info("for increment update {}, position to {}", file.getAbsolutePath(), position);
 
-                storeRocksDB();
+                } catch (IOException ex) {
+                    LOGGER.error("get position error, file absolute path: {}", file.getAbsolutePath());
+                }
             }
-
             try {
-                resiterMeta(jobConf);
+                registerMeta(jobConf);
             } catch (Exception ex) {
                 LOGGER.error("init metadata error", ex);
             }
@@ -259,6 +301,42 @@ public class FileReaderOperator extends AbstractReader {
         } catch (Exception ex) {
             throw new FileException("error init stream for " + file.getPath(), ex);
         }
+    }
+
+    private long getStartBytePosition(long lineNum) throws IOException {
+        long pos = 0;
+        long readCount = 0;
+        RandomAccessFile input = null;
+        try {
+            input = new RandomAccessFile(file, "r");
+            while (readCount < lineNum) {
+                List<String> lines = new ArrayList<>();
+                pos = readLines(input, pos, lines, Math.min((int) (lineNum - readCount), BATCH_READ_LINE_COUNT),
+                        BATCH_READ_LINE_TOTAL_LEN, true);
+                readCount += lines.size();
+                if (lines.size() == 0) {
+                    LOGGER.error("getStartBytePosition LineNum {} larger than the real file");
+                    break;
+                }
+            }
+        } catch (Exception e) {
+            LOGGER.error("getStartBytePosition error {}", e.getMessage());
+        } finally {
+            if (input != null) {
+                input.close();
+            }
+        }
+        LOGGER.info("getStartBytePosition {} LineNum {} position {}", getReadSource(), lineNum, pos);
+        return pos;
+    }
+
+    private boolean isIncrement(JobProfile jobConf) {
+        if (jobConf.hasKey(JobConstants.JOB_FILE_CONTENT_COLLECT_TYPE) && DataCollectType.INCREMENT
+                .equalsIgnoreCase(jobConf.get(JobConstants.JOB_FILE_CONTENT_COLLECT_TYPE))
+                && isFirstStore(jobConf)) {
+            return true;
+        }
+        return false;
     }
 
     // default value is -1 and never stop task
@@ -274,23 +352,29 @@ public class FileReaderOperator extends AbstractReader {
 
     @Override
     public void destroy() {
+        LOGGER.info("destroy read source name {}", getReadSource());
         finished = true;
+        while (!queue.isEmpty()) {
+            String data = null;
+            try {
+                data = queue.poll(DEFAULT_JOB_READ_WAIT_TIMEOUT, TimeUnit.SECONDS);
+            } catch (InterruptedException e) {
+                LOGGER.warn("poll {} data get interrupted.", file.getPath(), e);
+            }
+            if (data != null) {
+                MemoryManager.getInstance().release(AGENT_GLOBAL_READER_QUEUE_PERMIT, data.length());
+            }
+        }
         queue.clear();
+        LOGGER.info("destroy read source name {} end", getReadSource());
         LOGGER.info("destroy reader with read {} num {}",
                 metricName, readerMetric == null ? 0 : readerMetric.pluginReadCount.get());
     }
 
-    public boolean filterMessage(String message) {
-        if (StringUtils.isBlank(message)) {
-            return false;
+    public String fillMetaData(String message) {
+        if (!needMetadata) {
+            return message;
         }
-        if (validators.isEmpty()) {
-            return true;
-        }
-        return validators.stream().allMatch(v -> v.validate(message));
-    }
-
-    public String metadataMessage(String message) {
         long timestamp = System.currentTimeMillis();
         boolean isJson = FileDataUtils.isJSON(message);
         Map<String, String> mergeData = new HashMap<>(metadata);
@@ -303,15 +387,17 @@ public class FileReaderOperator extends AbstractReader {
         return !queue.isEmpty();
     }
 
-    public void resiterMeta(JobProfile jobConf) {
+    public void registerMeta(JobProfile jobConf) {
         if (!jobConf.hasKey(JOB_FILE_META_ENV_LIST)) {
             return;
         }
         String[] env = jobConf.get(JOB_FILE_META_ENV_LIST).split(COMMA);
         Arrays.stream(env).forEach(data -> {
             if (data.equalsIgnoreCase(KUBERNETES)) {
+                needMetadata = true;
                 new KubernetesMetadataProvider(this).getData();
             } else if (data.equalsIgnoreCase(ENV_CVM)) {
+                needMetadata = true;
                 metadata.put(METADATA_HOST_NAME, AgentUtils.getLocalHost());
                 metadata.put(METADATA_SOURCE_IP, AgentUtils.fetchLocalIp());
                 metadata.put(METADATA_FILE_NAME, file.getName());
@@ -320,101 +406,58 @@ public class FileReaderOperator extends AbstractReader {
     }
 
     public void fetchData() throws IOException {
-        // todo: TaskPositionManager stored position should be changed to byte position.Now it store msg sent, so here
-        // every line (include empty line) should be sent, otherwise the read position will be offset when
-        // restarting and recovering. In the same time, Regex end line spiltted line also has this problem, because
-        // recovering is based on line position.
-        List<String> lines = bytePosition == 0 ? readFromLine(position) : readFromPos(bytePosition);
+        boolean readFromPosPermit = false;
+        while (readFromPosPermit == false) {
+            readFromPosPermit = MemoryManager.getInstance()
+                    .tryAcquire(AGENT_GLOBAL_READER_SOURCE_PERMIT, BATCH_READ_LINE_TOTAL_LEN);
+            if (readFromPosPermit == false) {
+                LOGGER.warn("fetchData tryAcquire failed");
+                MemoryManager.getInstance().printDetail(AGENT_GLOBAL_READER_SOURCE_PERMIT);
+                AgentUtils.silenceSleepInSeconds(1);
+            }
+        }
+        List<String> lines = readFromPos(bytePosition);
         if (!lines.isEmpty()) {
             LOGGER.info("path is {}, line is {}, byte position is {}, reads data lines {}",
                     file.getName(), position, bytePosition, lines.size());
         }
         List<String> resultLines = lines;
-        // TODO line regular expression matching
-        if (jobConf.hasKey(JOB_FILE_LINE_END_PATTERN)) {
-            Pattern pattern = Pattern.compile(jobConf.get(JOB_FILE_LINE_END_PATTERN));
-            resultLines = lines.stream().flatMap(line -> {
-                sb.append(line + System.lineSeparator());
-                String data = sb.toString();
-                Matcher matcher = pattern.matcher(data);
-                List<String> tmpResultLines = new ArrayList<>();
-                int beginPos = 0;
-                while (matcher.find()) {
-                    String endLineStr = matcher.group();
-                    int endPos = data.indexOf(endLineStr, beginPos);
-                    tmpResultLines.add(data.substring(beginPos, endPos));
-                    beginPos = endPos + endLineStr.length();
-                }
-                String lastWord = data.substring(beginPos);
-                sb.setLength(0);
-                sb.append(lastWord);
-                return tmpResultLines.stream();
-            }).collect(Collectors.toList());
-        }
-
         resultLines.forEach(line -> {
+            boolean offerPermit = false;
+            while (offerPermit != true) {
+                offerPermit = MemoryManager.getInstance().tryAcquire(AGENT_GLOBAL_READER_QUEUE_PERMIT, line.length());
+                if (offerPermit != true) {
+                    LOGGER.warn("offerPermit tryAcquire failed");
+                    MemoryManager.getInstance().printDetail(AGENT_GLOBAL_READER_QUEUE_PERMIT);
+                    AgentUtils.silenceSleepInSeconds(1);
+                }
+            }
             try {
-                boolean offerSuc = queue.offer(line, 1, TimeUnit.SECONDS);
+                boolean offerSuc = false;
                 while (offerSuc != true) {
                     offerSuc = queue.offer(line, 1, TimeUnit.SECONDS);
                 }
+                LOGGER.debug("Read from file {} for {}", getReadSource(), line);
             } catch (InterruptedException e) {
                 LOGGER.error("fetchData offer failed {}", e.getMessage());
             }
         });
-        bytePosition += lines.stream()
-                .mapToInt(line -> line.getBytes(StandardCharsets.UTF_8).length + LINE_SEPARATOR_SIZE)
-                .sum();
-        position += lines.size();
+        MemoryManager.getInstance().release(AGENT_GLOBAL_READER_SOURCE_PERMIT, BATCH_READ_LINE_TOTAL_LEN);
         if (position >= readEndpoint) {
+            LOGGER.info("read to the end, set finished position {} readEndpoint {}", position, readEndpoint);
             finished = true;
         }
     }
 
-    private List<String> readFromLine(int lineNum) throws IOException {
-        String line = null;
-        List<String> lines = new ArrayList<>();
-        BufferedReader reader = null;
-        try {
-            reader = new BufferedReader(new InputStreamReader(new FileInputStream(file),
-                    StandardCharsets.UTF_8));
-            int count = 0;
-            while ((line = reader.readLine()) != null) {
-                if (++count > lineNum) {
-                    LOGGER.debug("read from line line-num {},  data {}", lineNum, line);
-                    lines.add(line);
-                }
-                if (lines.size() >= FileReaderOperator.BATCH_READ_SIZE) {
-                    break;
-                }
-            }
-        } catch (Exception e) {
-            LOGGER.error("readFromLine error  {}", e.getMessage());
-        } finally {
-            if (reader != null) {
-                reader.close();
-            }
-        }
-        return lines;
-    }
-
-    private List<String> readFromPos(int pos) throws IOException {
-        String line = null;
+    private List<String> readFromPos(long pos) throws IOException {
         List<String> lines = new ArrayList<>();
         RandomAccessFile input = null;
         try {
             input = new RandomAccessFile(file, "r");
-            input.skipBytes(pos);
-            while ((line = input.readLine()) != null) {
-                String lineChart = new String(line.getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8);
-                LOGGER.debug("read from pos pos-num {}, data {}", pos, lineChart);
-                lines.add(lineChart);
-                if (lines.size() >= FileReaderOperator.BATCH_READ_SIZE) {
-                    break;
-                }
-            }
+            bytePosition = readLines(input, pos, lines, BATCH_READ_LINE_COUNT, BATCH_READ_LINE_TOTAL_LEN, false);
+            position += lines.size();
         } catch (Exception e) {
-            LOGGER.error("readFromPos error  {}", e.getMessage());
+            LOGGER.error("readFromPos error {}", e.getMessage());
         } finally {
             if (input != null) {
                 input.close();
@@ -423,67 +466,83 @@ public class FileReaderOperator extends AbstractReader {
         return lines;
     }
 
-    private int getStartBytePosition(int lineNum) throws IOException {
-        int startBytePosition = 0;
-        BufferedReader reader = null;
-        try {
-            LOGGER.info("get start line {}", lineNum);
-            String line = null;
-            List<String> lines = new ArrayList<>();
-            reader = new BufferedReader(new InputStreamReader(new FileInputStream(file),
-                    StandardCharsets.UTF_8));
-            int count = 0;
-            while ((line = reader.readLine()) != null) {
-                if (++count > lineNum) {
-                    LOGGER.info("get startBytePosition end at line {}", count);
+    /**
+     * Read new lines.
+     *
+     * @param reader The file to read
+     * @return The new position after the lines have been read
+     * @throws java.io.IOException if an I/O error occurs.
+     */
+    private long readLines(RandomAccessFile reader, long pos, List<String> lines, int maxLineCount, int maxLineTotalLen,
+            boolean isCounting)
+            throws IOException {
+        if (maxLineCount == 0) {
+            return pos;
+        }
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        reader.seek(pos);
+        long rePos = pos; // position to re-read
+        int num;
+        int lineTotalLen = 0;
+        LOGGER.debug("readLines from {}", pos);
+        boolean overLen = false;
+        while ((num = reader.read(inBuf)) != -1) {
+            int i = 0;
+            for (; i < num; i++) {
+                byte ch = inBuf[i];
+                switch (ch) {
+                    case '\n':
+                        if (isCounting) {
+                            lines.add(new String(""));
+                        } else {
+                            String temp = new String(baos.toByteArray(), StandardCharsets.UTF_8);
+                            lines.add(temp);
+                            lineTotalLen += temp.length();
+                        }
+                        rePos = pos + i + 1;
+                        if (overLen) {
+                            LOGGER.warn("readLines over len finally string len {}",
+                                    new String(baos.toByteArray()).length());
+                        }
+                        baos.reset();
+                        overLen = false;
+                        break;
+                    case '\r':
+                        break;
+                    default:
+                        if (baos.size() < maxPackSize) {
+                            baos.write(ch);
+                        } else {
+                            overLen = true;
+                        }
+                }
+                if (lines.size() >= maxLineCount || lineTotalLen >= maxLineTotalLen) {
                     break;
                 }
-                startBytePosition = startBytePosition
-                        + line.getBytes(StandardCharsets.UTF_8).length + LINE_SEPARATOR_SIZE;
             }
-        } catch (Exception e) {
-            LOGGER.error("getStartPositon err {}", e);
-        } finally {
-            if (reader != null) {
-                reader.close();
+            if (lines.size() >= maxLineCount || lineTotalLen >= maxLineTotalLen) {
+                break;
+            }
+            if (i == num) {
+                pos = reader.getFilePointer();
             }
         }
-        LOGGER.info("getStartPositon bytePosition {}", startBytePosition);
-        return startBytePosition;
+        baos.close();
+        reader.seek(rePos); // Ensure we can re-read if necessary
+        return rePos;
     }
 
-    private void isFirstStore() {
-        if (!jobConf.hasKey(JobConstants.JOB_STORE_TIME)) {
-            LOGGER.info("isFirstStore {},{}", file.getAbsolutePath(), this.firstStored);
-            this.firstStored = true;
-            return;
-        }
-        long jobStoreTime = Long.parseLong(jobConf.get(JobConstants.JOB_STORE_TIME));
-        LOGGER.info("jobStoreTime {},{}", file.getAbsolutePath(), jobStoreTime);
-        long storeTime = AgentConfiguration.getAgentConf().getLong(
-                AgentConstants.AGENT_JOB_STORE_TIME, AgentConstants.DEFAULT_JOB_STORE_TIME);
-
-        if (System.currentTimeMillis() - jobStoreTime > storeTime) {
-            this.firstStored = false;
-        } else {
-            this.firstStored = true;
-        }
-        LOGGER.info("isFirstStore {},{}", file.getAbsolutePath(), this.firstStored);
-    }
-
-    private void storeRocksDB() {
-        try (LineNumberReader lineNumberReader = new LineNumberReader(new FileReader(file.getPath()))) {
-            lineNumberReader.skip(Long.MAX_VALUE);
-            int seekPosition = lineNumberReader.getLineNumber();
-
-            String jobInstanceId = getJobInstanceId();
-            if (jobInstanceId != null) {
-                TaskPositionManager.getInstance().updateSinkPosition(
-                        jobInstanceId, getReadSource(), seekPosition, true);
-                LOGGER.info("storeRocksDB {},{}", file.getAbsolutePath(), seekPosition);
+    private boolean isFirstStore(JobProfile jobConf) {
+        boolean isFirst = true;
+        if (jobConf.hasKey(JobConstants.JOB_STORE_TIME)) {
+            long jobStoreTime = Long.parseLong(jobConf.get(JobConstants.JOB_STORE_TIME));
+            long storeTime = AgentConfiguration.getAgentConf().getLong(
+                    AgentConstants.AGENT_JOB_STORE_TIME, AgentConstants.DEFAULT_JOB_STORE_TIME);
+            if (System.currentTimeMillis() - jobStoreTime > storeTime) {
+                isFirst = false;
             }
-        } catch (IOException ex) {
-            LOGGER.error("get position error, file absolute path: {}", file.getAbsolutePath());
         }
+        LOGGER.info("isFirst {}, {}", file.getAbsolutePath(), isFirst);
+        return isFirst;
     }
 }

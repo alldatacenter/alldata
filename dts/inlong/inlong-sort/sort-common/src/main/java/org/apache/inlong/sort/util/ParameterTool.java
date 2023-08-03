@@ -17,8 +17,11 @@
 
 package org.apache.inlong.sort.util;
 
-import com.google.common.base.Preconditions;
 import org.apache.inlong.sort.configuration.Configuration;
+
+import com.google.common.base.Preconditions;
+import org.apache.commons.lang3.math.NumberUtils;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -37,7 +40,6 @@ import java.util.Objects;
 import java.util.Properties;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import org.apache.commons.lang3.math.NumberUtils;
 
 /**
  * This class provides simple utility methods for reading and parsing program arguments from

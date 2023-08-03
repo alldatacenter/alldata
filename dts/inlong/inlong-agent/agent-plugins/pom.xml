@@ -23,10 +23,16 @@
     <parent>
         <groupId>org.apache.inlong</groupId>
         <artifactId>inlong-agent</artifactId>
-        <version>1.7.0</version>
+        <version>1.8.0</version>
     </parent>
+
     <artifactId>agent-plugins</artifactId>
     <name>Apache InLong - Agent Plugins</name>
+
+    <properties>
+        <inlong.root.dir>${project.parent.parent.basedir}</inlong.root.dir>
+        <debezium.version>1.8.0.Final</debezium.version>
+    </properties>
 
     <dependencies>
         <dependency>
@@ -57,10 +63,12 @@
         <dependency>
             <groupId>io.debezium</groupId>
             <artifactId>debezium-api</artifactId>
+            <version>${debezium.version}</version>
         </dependency>
         <dependency>
             <groupId>io.debezium</groupId>
             <artifactId>debezium-embedded</artifactId>
+            <version>${debezium.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.slf4j</groupId>
@@ -76,6 +84,7 @@
         <dependency>
             <groupId>io.debezium</groupId>
             <artifactId>debezium-connector-mysql</artifactId>
+            <version>${debezium.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>mysql</groupId>
@@ -87,16 +96,19 @@
         <dependency>
             <groupId>io.debezium</groupId>
             <artifactId>debezium-connector-oracle</artifactId>
+            <version>${debezium.version}</version>
         </dependency>
 
         <dependency>
             <groupId>io.debezium</groupId>
             <artifactId>debezium-connector-sqlserver</artifactId>
+            <version>${debezium.version}</version>
         </dependency>
 
         <dependency>
             <groupId>io.debezium</groupId>
             <artifactId>debezium-connector-mongodb</artifactId>
+            <version>${debezium.version}</version>
         </dependency>
 
         <dependency>
@@ -106,6 +118,7 @@
         <dependency>
             <groupId>io.debezium</groupId>
             <artifactId>debezium-connector-postgres</artifactId>
+            <version>${debezium.version}</version>
         </dependency>
         <dependency>
             <groupId>com.moilioncircle</groupId>

@@ -17,8 +17,9 @@
 
 package org.apache.inlong.tubemq.corebase.metric.impl;
 
-import java.util.concurrent.atomic.LongAdder;
 import org.apache.inlong.tubemq.corebase.metric.Counter;
+
+import java.util.concurrent.atomic.LongAdder;
 
 /**
  * LongStatsCounter, store current value information.

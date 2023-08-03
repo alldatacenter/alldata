@@ -17,7 +17,6 @@
 
 package org.apache.inlong.manager.client.api.inner;
 
-import com.google.common.collect.Lists;
 import org.apache.inlong.common.enums.ComponentTypeEnum;
 import org.apache.inlong.manager.client.api.inner.client.HeartbeatClient;
 import org.apache.inlong.manager.common.util.JsonUtils;
@@ -28,6 +27,8 @@ import org.apache.inlong.manager.pojo.heartbeat.GroupHeartbeatResponse;
 import org.apache.inlong.manager.pojo.heartbeat.HeartbeatPageRequest;
 import org.apache.inlong.manager.pojo.heartbeat.HeartbeatQueryRequest;
 import org.apache.inlong.manager.pojo.heartbeat.StreamHeartbeatResponse;
+
+import com.google.common.collect.Lists;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

@@ -37,6 +37,9 @@ export default class PulsarSource
     rules: [{ required: true }],
     props: values => ({
       disabled: values?.status === 101,
+      showSearch: true,
+      allowClear: true,
+      filterOption: false,
       options: {
         requestTrigger: ['onOpen', 'onSearch'],
         requestService: keyword => ({
@@ -87,17 +90,21 @@ export default class PulsarSource
     ],
     props: values => ({
       disabled: values?.status === 101,
+      showSearch: true,
+      allowClear: true,
+      filterOption: false,
       options: {
         requestTrigger: ['onOpen', 'onSearch'],
-        requestService: {
+        requestService: keyword => ({
           url: '/cluster/node/list',
           method: 'POST',
           data: {
+            keyword,
             parentId: values.clusterId,
             pageNum: 1,
             pageSize: 10,
           },
-        },
+        }),
         requestParams: {
           formatResult: result =>
             result?.list?.map(item => ({

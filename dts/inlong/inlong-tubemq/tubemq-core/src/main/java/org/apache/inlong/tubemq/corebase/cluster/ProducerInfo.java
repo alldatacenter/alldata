@@ -17,9 +17,10 @@
 
 package org.apache.inlong.tubemq.corebase.cluster;
 
+import org.apache.inlong.tubemq.corebase.TokenConstants;
+
 import java.io.Serializable;
 import java.util.Set;
-import org.apache.inlong.tubemq.corebase.TokenConstants;
 
 public class ProducerInfo implements Serializable {
 

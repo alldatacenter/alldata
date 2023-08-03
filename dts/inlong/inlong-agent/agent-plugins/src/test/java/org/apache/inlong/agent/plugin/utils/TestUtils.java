@@ -17,8 +17,9 @@
 
 package org.apache.inlong.agent.plugin.utils;
 
-import org.apache.commons.io.FileUtils;
 import org.apache.inlong.common.metric.MetricRegister;
+
+import org.apache.commons.io.FileUtils;
 import org.powermock.api.mockito.PowerMockito;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

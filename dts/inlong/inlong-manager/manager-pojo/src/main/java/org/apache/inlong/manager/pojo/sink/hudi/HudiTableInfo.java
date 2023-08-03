@@ -17,9 +17,10 @@
 
 package org.apache.inlong.manager.pojo.sink.hudi;
 
+import lombok.Data;
+
 import java.util.List;
 import java.util.Map;
-import lombok.Data;
 
 /**
  * Hudi table info

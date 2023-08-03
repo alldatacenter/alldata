@@ -25,10 +25,12 @@ import { useTranslation } from 'react-i18next';
 import request from '@/core/utils/request';
 import PasswordModal from './PasswordModal';
 import KeyModal from './KeyModal';
+import { useLocalStorage } from '@/core/utils/localStorage';
 
 const Comp: React.FC = () => {
   const { t } = useTranslation();
   const userName = useSelector<State, State['userName']>(state => state.userName);
+  const [getLocalStorage, setLocalStorage, removeLocalStorage] = useLocalStorage('tenant');
 
   const [createModal, setCreateModal] = useState<Record<string, unknown>>({
     open: false,
@@ -40,6 +42,7 @@ const Comp: React.FC = () => {
 
   const runLogout = async () => {
     await request('/anno/logout');
+    removeLocalStorage('tenant');
     window.location.href = '/';
   };
 

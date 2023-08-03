@@ -21,12 +21,13 @@
     <parent>
         <groupId>org.apache.inlong</groupId>
         <artifactId>tubemq-connectors</artifactId>
-        <version>1.7.0</version>
+        <version>1.8.0</version>
     </parent>
     <artifactId>tubemq-connector-flume</artifactId>
     <name>Apache InLong - TubeMQ Connectors-flume</name>
 
     <properties>
+        <inlong.root.dir>${project.parent.parent.parent.basedir}</inlong.root.dir>
         <flume.version>1.9.0</flume.version>
         <mockito.version>1.9.0</mockito.version>
         <junit.version>4.11</junit.version>

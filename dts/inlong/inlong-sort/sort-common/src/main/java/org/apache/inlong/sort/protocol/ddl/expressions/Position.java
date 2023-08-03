@@ -17,12 +17,13 @@
 
 package org.apache.inlong.sort.protocol.ddl.expressions;
 
+import org.apache.inlong.sort.protocol.ddl.enums.PositionType;
+
 import lombok.Data;
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonCreator;
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonInclude;
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonInclude.Include;
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonProperty;
-import org.apache.inlong.sort.protocol.ddl.enums.PositionType;
 
 /**
  * Position represents the position of a column in a table.

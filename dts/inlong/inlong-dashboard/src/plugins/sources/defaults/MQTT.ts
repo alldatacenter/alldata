@@ -23,7 +23,7 @@ import { RenderList } from '@/plugins/RenderList';
 import { SourceInfo } from '../common/SourceInfo';
 
 const { I18n } = DataWithBackend;
-const { FieldDecorator } = RenderRow;
+const { FieldDecorator, SyncField } = RenderRow;
 
 export default class MQTTSource
   extends SourceInfo
@@ -37,6 +37,7 @@ export default class MQTTSource
       disabled: values?.status === 101,
     }),
   })
+  @SyncField()
   @I18n('Server URI')
   serverURI: string;
 
@@ -47,6 +48,7 @@ export default class MQTTSource
       disabled: values?.status === 101,
     }),
   })
+  @SyncField()
   @I18n('meta.Sources.MQTT.Username')
   username: string;
 
@@ -57,6 +59,7 @@ export default class MQTTSource
       disabled: values?.status === 101,
     }),
   })
+  @SyncField()
   @I18n('meta.Sources.MQTT.Password')
   password: string;
 
@@ -67,6 +70,7 @@ export default class MQTTSource
       disabled: values?.status === 101,
     }),
   })
+  @SyncField()
   @I18n('Topic')
   topic: string;
 
@@ -77,6 +81,7 @@ export default class MQTTSource
       disabled: values?.status === 101,
     }),
   })
+  @SyncField()
   @I18n('Client ID')
   clientId: string;
 
@@ -89,6 +94,7 @@ export default class MQTTSource
       max: 2,
     }),
   })
+  @SyncField()
   @I18n('QoS')
   qos: number;
 
@@ -98,6 +104,7 @@ export default class MQTTSource
       disabled: values?.status === 101,
     }),
   })
+  @SyncField()
   @I18n('meta.Sources.MQTT.MqttVersion')
   mqttVersion: string;
 }

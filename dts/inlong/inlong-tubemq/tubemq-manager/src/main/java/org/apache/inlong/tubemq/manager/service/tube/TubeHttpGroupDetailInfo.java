@@ -18,10 +18,9 @@
 package org.apache.inlong.tubemq.manager.service.tube;
 
 import com.google.common.collect.Lists;
+import lombok.Data;
 
 import java.util.List;
-
-import lombok.Data;
 
 @Data
 public class TubeHttpGroupDetailInfo {

@@ -17,15 +17,16 @@
 
 package org.apache.inlong.sdk.commons.protocol;
 
-import static org.junit.Assert.assertEquals;
+import org.apache.inlong.sdk.commons.protocol.ProxySdk.INLONG_COMPRESSED_TYPE;
+import org.apache.inlong.sdk.commons.protocol.ProxySdk.MessagePack;
+
+import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.inlong.sdk.commons.protocol.ProxySdk.INLONG_COMPRESSED_TYPE;
-import org.apache.inlong.sdk.commons.protocol.ProxySdk.MessagePack;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 /**
  * 

@@ -17,11 +17,14 @@
 
 package org.apache.inlong.manager.service.resource.queue;
 
+import org.apache.inlong.manager.pojo.consume.BriefMQMessage;
 import org.apache.inlong.manager.pojo.group.InlongGroupInfo;
 import org.apache.inlong.manager.pojo.stream.InlongStreamInfo;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+
+import java.util.List;
 
 /**
  * Interface of the message queue resource operator
@@ -69,6 +72,20 @@ public interface QueueResourceOperator {
      * @param operator operator name
      */
     default void deleteQueueForStream(InlongGroupInfo groupInfo, InlongStreamInfo streamInfo, String operator) {
+    }
+
+    /**
+     * Query latest messages from MQ.
+     *
+     * @param groupInfo inlong group info
+     * @param streamInfo inlong stream info
+     * @param messageCount count of messages to query
+     * @throws Exception any exception if occurred
+     * @return query brief mq message info
+     */
+    default List<BriefMQMessage> queryLatestMessages(InlongGroupInfo groupInfo, InlongStreamInfo streamInfo,
+            Integer messageCount) throws Exception {
+        return null;
     }
 
 }

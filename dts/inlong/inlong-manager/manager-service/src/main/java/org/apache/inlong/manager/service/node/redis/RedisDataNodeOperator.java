@@ -17,8 +17,6 @@
 
 package org.apache.inlong.manager.service.node.redis;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.inlong.manager.common.consts.DataNodeType;
 import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
 import org.apache.inlong.manager.common.exceptions.BusinessException;
@@ -33,6 +31,9 @@ import org.apache.inlong.manager.pojo.node.redis.RedisDataNodeRequest;
 import org.apache.inlong.manager.pojo.sink.redis.RedisClusterMode;
 import org.apache.inlong.manager.service.node.AbstractDataNodeOperator;
 import org.apache.inlong.manager.service.resource.sink.redis.RedisResourceClient;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -77,29 +78,25 @@ public class RedisDataNodeOperator extends AbstractDataNodeOperator {
 
     @Override
     protected void setTargetEntity(DataNodeRequest request, DataNodeEntity targetEntity) {
-        RedisDataNodeRequest redisDataNodeRequest = (RedisDataNodeRequest) request;
+        RedisDataNodeRequest redisNodeRequest = (RedisDataNodeRequest) request;
 
-        RedisClusterMode clusterMode = RedisClusterMode.of(redisDataNodeRequest.getClusterMode());
-
+        RedisClusterMode clusterMode = RedisClusterMode.of(redisNodeRequest.getClusterMode());
         switch (clusterMode) {
             case STANDALONE:
-                String host = redisDataNodeRequest.getHost();
+                String host = redisNodeRequest.getHost();
                 Preconditions.expectNotBlank(host, "Redis host cannot be empty");
-                Integer port = redisDataNodeRequest.getPort();
-                expectTrue(
-                        port != null && port > 1 && port < PORT_MAX_VALUE,
-                        "The port of the redis server must be greater than 1 and less than " + PORT_MAX_VALUE +
-                                "!");
-
+                Integer port = redisNodeRequest.getPort();
+                expectTrue(port != null && port > 1 && port < PORT_MAX_VALUE,
+                        "The port of the redis server must be greater than 1 and less than " + PORT_MAX_VALUE);
                 break;
             case SENTINEL:
-                String sentinelMasterName = redisDataNodeRequest.getMasterName();
+                String sentinelMasterName = redisNodeRequest.getMasterName();
                 Preconditions.expectNotBlank(sentinelMasterName, "Redis sentinel masterName cannot be empty");
-                String sentinelsInfo = redisDataNodeRequest.getSentinelsInfo();
+                String sentinelsInfo = redisNodeRequest.getSentinelsInfo();
                 Preconditions.expectNotBlank(sentinelsInfo, "Redis sentinelsInfo cannot be empty");
                 break;
             case CLUSTER:
-                String clusterNodes = redisDataNodeRequest.getClusterNodes();
+                String clusterNodes = redisNodeRequest.getClusterNodes();
                 Preconditions.expectNotBlank(clusterNodes, "Redis clusterNodes cannot be empty");
                 break;
 
@@ -107,9 +104,9 @@ public class RedisDataNodeOperator extends AbstractDataNodeOperator {
                 throw new BusinessException(ErrorCodeEnum.SOURCE_INFO_INCORRECT, "Unknown Redis cluster mode");
         }
 
-        CommonBeanUtils.copyProperties(redisDataNodeRequest, targetEntity, true);
+        CommonBeanUtils.copyProperties(redisNodeRequest, targetEntity, true);
         try {
-            RedisDataNodeDTO dto = RedisDataNodeDTO.getFromRequest(redisDataNodeRequest);
+            RedisDataNodeDTO dto = RedisDataNodeDTO.getFromRequest(redisNodeRequest, targetEntity.getExtParams());
             targetEntity.setExtParams(objectMapper.writeValueAsString(dto));
         } catch (Exception e) {
             throw new BusinessException(ErrorCodeEnum.SOURCE_INFO_INCORRECT,
@@ -124,7 +121,6 @@ public class RedisDataNodeOperator extends AbstractDataNodeOperator {
             return RedisResourceClient.testConnection(redisDataNodeRequest);
         } catch (Exception e) {
             String errMsg = String.format("redis connection failed: %s ", e.getMessage());
-
             throw new BusinessException(errMsg);
         }
     }

@@ -17,9 +17,16 @@
 
 package org.apache.inlong.tubemq.server.master.web.simplemvc;
 
-import java.io.File;
-import java.io.IOException;
-import java.net.URL;
+import org.apache.inlong.tubemq.corebase.TBaseConstants;
+import org.apache.inlong.tubemq.corebase.utils.TStringUtils;
+import org.apache.inlong.tubemq.server.master.web.simplemvc.conf.ConfigFileParser;
+import org.apache.inlong.tubemq.server.master.web.simplemvc.conf.WebConfig;
+
+import org.apache.log4j.PropertyConfigurator;
+import org.eclipse.jetty.server.Request;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.servlet.MultipartConfigElement;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
@@ -27,14 +34,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.apache.inlong.tubemq.corebase.TBaseConstants;
-import org.apache.inlong.tubemq.corebase.utils.TStringUtils;
-import org.apache.inlong.tubemq.server.master.web.simplemvc.conf.ConfigFileParser;
-import org.apache.inlong.tubemq.server.master.web.simplemvc.conf.WebConfig;
-import org.apache.log4j.PropertyConfigurator;
-import org.eclipse.jetty.server.Request;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
 
 public class WebApiServlet extends HttpServlet {
 

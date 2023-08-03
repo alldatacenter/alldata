@@ -17,8 +17,6 @@
 
 package org.apache.inlong.manager.service.consume;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.inlong.common.constant.MQType;
 import org.apache.inlong.manager.common.consts.InlongConstants;
 import org.apache.inlong.manager.common.enums.ClusterType;
@@ -42,6 +40,9 @@ import org.apache.inlong.manager.pojo.group.pulsar.InlongPulsarTopicInfo;
 import org.apache.inlong.manager.service.cluster.InlongClusterService;
 import org.apache.inlong.manager.service.group.InlongGroupService;
 import org.apache.inlong.manager.service.stream.InlongStreamService;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -118,12 +119,12 @@ public class ConsumePulsarOperator extends AbstractConsumeOperator {
         consumeInfo.setClusterInfos(clusterInfos);
 
         // First get the tenant from the InlongGroup, and then get it from the PulsarCluster.
-        String tenant = ((InlongPulsarInfo) groupInfo).getTenant();
+        String tenant = ((InlongPulsarInfo) groupInfo).getPulsarTenant();
         if (StringUtils.isBlank(tenant)) {
             // If there are multiple Pulsar clusters, take the first one.
             // Note that the tenants in multiple Pulsar clusters must be identical.
             PulsarClusterInfo pulsarCluster = (PulsarClusterInfo) clusterInfos.get(0);
-            tenant = pulsarCluster.getTenant();
+            tenant = pulsarCluster.getPulsarTenant();
         }
 
         consumeInfo.setTopic(getFullPulsarTopic(groupInfo, tenant, entity.getTopic()));
@@ -164,7 +165,8 @@ public class ConsumePulsarOperator extends AbstractConsumeOperator {
         }
 
         try {
-            targetEntity.setExtParams(objectMapper.writeValueAsString(ConsumePulsarDTO.getFromRequest(pulsarRequest)));
+            ConsumePulsarDTO dto = ConsumePulsarDTO.getFromRequest(pulsarRequest, targetEntity.getExtParams());
+            targetEntity.setExtParams(objectMapper.writeValueAsString(dto));
         } catch (Exception e) {
             throw new BusinessException(ErrorCodeEnum.CONSUME_INFO_INCORRECT.getMessage() + ": " + e.getMessage());
         }

@@ -18,6 +18,7 @@
 package org.apache.inlong.sdk.sort.util;
 
 import org.apache.inlong.sdk.sort.entity.InLongTopic;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

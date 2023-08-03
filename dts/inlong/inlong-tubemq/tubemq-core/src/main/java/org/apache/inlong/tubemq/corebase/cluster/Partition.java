@@ -17,9 +17,10 @@
 
 package org.apache.inlong.tubemq.corebase.cluster;
 
-import java.io.Serializable;
 import org.apache.inlong.tubemq.corebase.TBaseConstants;
 import org.apache.inlong.tubemq.corebase.TokenConstants;
+
+import java.io.Serializable;
 
 public class Partition implements Comparable<Partition>, Serializable {
 

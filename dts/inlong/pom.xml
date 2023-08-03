@@ -28,11 +28,11 @@
 
     <groupId>org.apache.inlong</groupId>
     <artifactId>inlong</artifactId>
-    <version>1.7.0</version>
+    <version>1.8.0</version>
     <packaging>pom</packaging>
     <name>Apache InLong</name>
 
-    <description>InLong is a one-stop integration framework for massive data donated by Tencent to
+    <description>InLong is a one-stop, full-scenario integration framework for massive data donated by Tencent to
         the Apache community.
         It provides automatic, safe, reliable, and high-performance data transmission capabilities
         to facilitate the construction of streaming-based data analysis, modeling, and applications.</description>
@@ -52,6 +52,9 @@
     </modules>
 
     <properties>
+        <!-- the root directory of the inlong project -->
+        <inlong.root.dir>${project.basedir}</inlong.root.dir>
+
         <project.build.encoding>UTF-8</project.build.encoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -81,18 +84,18 @@
         <okhttp.version>3.14.9</okhttp.version>
         <retrofit.version>2.9.0</retrofit.version>
 
-        <spring.boot.version>2.6.6</spring.boot.version>
+        <spring.boot.version>2.6.15</spring.boot.version>
         <spring.version>5.3.27</spring.version>
         <spring.autoconfigure.version>2.4.3</spring.autoconfigure.version>
         <spring.plugin.version>2.6.6</spring.plugin.version>
         <spring.fox.version>3.0.0</spring.fox.version>
         <pagehelper.springboot.version>1.4.2</pagehelper.springboot.version>
         <pagehelper.version>5.3.1</pagehelper.version>
+        <jsqlparser.version>4.6</jsqlparser.version>
 
         <h2.version>2.1.214</h2.version>
         <h2.mysql.version>2.0.0</h2.mysql.version>
-        <debezium.version>1.8.0.Final</debezium.version>
-        <rocksdb.version>6.14.6</rocksdb.version>
+        <rocksdb.version>6.29.4.1</rocksdb.version>
         <redis-replicator.version>3.6.4</redis-replicator.version>
         <hadoop.version>2.10.2</hadoop.version>
         <postgresql.version>42.4.1</postgresql.version>
@@ -106,7 +109,7 @@
         <elasticsearch7.version>7.9.2</elasticsearch7.version>
         <shiro.version>1.10.1</shiro.version>
 
-        <snappy.version>1.1.8.4</snappy.version>
+        <snappy.version>1.1.10.1</snappy.version>
         <protobuf.version>3.19.6</protobuf.version>
         <bytebuddy.version>1.12.9</bytebuddy.version>
         <reflections.version>0.10.2</reflections.version>
@@ -134,8 +137,8 @@
         <fastjson.version>1.2.83</fastjson.version>
 
         <clickhouse-jdbc.version>0.3.1</clickhouse-jdbc.version>
-        <hive.version>3.1.3</hive.version>
-        <thrift.version>0.9.3</thrift.version>
+        <hive2x.version>2.3.7</hive2x.version>
+        <hive3x.version>3.1.3</hive3x.version>
         <flume.version>1.10.0</flume.version>
         <hbase.version>2.4.12</hbase.version>
 
@@ -148,23 +151,14 @@
         <aws.sdk.version>1.12.346</aws.sdk.version>
         <zookeeper.version>3.6.3</zookeeper.version>
         <pulsar.version>2.8.1</pulsar.version>
-        <pulsar.testcontainers.version>1.15.3</pulsar.testcontainers.version>
         <kafka.version>2.4.1</kafka.version>
         <iceberg.version>1.1.0</iceberg.version>
-        <hudi.version>0.12.1</hudi.version>
-        <flink.version>1.13.5</flink.version>
+        <flink.version.v1.13>1.13.5</flink.version.v1.13>
+        <flink.version.v1.15>1.15.4</flink.version.v1.15>
         <flink.minor.version>1.13</flink.minor.version>
-        <flink.connector.mysql.cdc.version>2.2.1</flink.connector.mysql.cdc.version>
         <flink.scala.binary.version>2.11</flink.scala.binary.version>
         <flink.jackson.version>2.12.1-13.0</flink.jackson.version>
-        <flink.connector.postgres.cdc.version>2.2.1</flink.connector.postgres.cdc.version>
-        <flink.connector.sqlserver.cdc.version>2.2.1</flink.connector.sqlserver.cdc.version>
-        <flink.pulsar.version>1.13.6.2</flink.pulsar.version>
         <flink.protobuf.version>2.7.6</flink.protobuf.version>
-        <flink.connector.mongodb.cdc.version>2.3.0</flink.connector.mongodb.cdc.version>
-        <flink.connector.oracle.cdc.version>2.3.0</flink.connector.oracle.cdc.version>
-        <flink.connector.doris.version>1.0.3</flink.connector.doris.version>
-        <flink.connector.redis>1.1.0</flink.connector.redis>
         <flink.cdc.base.version>2.3.0</flink.cdc.base.version>
 
         <curator.version>2.12.0</curator.version>
@@ -195,7 +189,6 @@
         <jcommander.version>1.78</jcommander.version>
         <je.version>7.3.7</je.version>
         <tencentcloud.cls.version>1.0.9</tencentcloud.cls.version>
-        <esri-geometry-api.version>2.0.0</esri-geometry-api.version>
         <HikariCP.version>4.0.3</HikariCP.version>
         <caffeine.version>2.9.3</caffeine.version>
         <kafka.clients.version>3.0.0</kafka.clients.version>
@@ -208,7 +201,6 @@
         <tomcat.version>8.5.53</tomcat.version>
         <jedis.version>2.9.0</jedis.version>
         <poi.version>5.2.3</poi.version>
-        <jsqlparser.version>4.2</jsqlparser.version>
     </properties>
 
     <dependencyManagement>
@@ -235,22 +227,6 @@
                 <version>${flume.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.github.jsqlparser</groupId>
-                <artifactId>jsqlparser</artifactId>
-                <version>${jsqlparser.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.zaxxer</groupId>
-                <artifactId>HikariCP</artifactId>
-                <version>${HikariCP.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>org.slf4j</groupId>
-                        <artifactId>slf4j-api</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-            <dependency>
                 <groupId>org.apache.flume.flume-ng-sinks</groupId>
                 <artifactId>flume-hdfs-sink</artifactId>
                 <version>${flume.version}</version>
@@ -271,23 +247,11 @@
                 </exclusions>
             </dependency>
 
-            <dependency>
-                <groupId>com.ververica</groupId>
-                <artifactId>flink-connector-mongodb-cdc</artifactId>
-                <version>${flink.connector.mongodb.cdc.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.apache.bahir</groupId>
-                <artifactId>flink-connector-redis_${flink.scala.binary.version}</artifactId>
-                <version>${flink.connector.redis}</version>
-            </dependency>
-
             <!-- hive -->
             <dependency>
                 <groupId>org.apache.hive</groupId>
                 <artifactId>hive-jdbc</artifactId>
-                <version>${hive.version}</version>
+                <version>${hive3x.version}</version>
                 <exclusions>
                     <exclusion>
                         <groupId>xml-apis</groupId>
@@ -314,7 +278,7 @@
             <dependency>
                 <groupId>org.apache.hive</groupId>
                 <artifactId>hive-metastore</artifactId>
-                <version>${hive.version}</version>
+                <version>${hive3x.version}</version>
                 <exclusions>
                     <exclusion>
                         <groupId>org.apache.logging.log4j</groupId>
@@ -333,7 +297,7 @@
             <dependency>
                 <groupId>org.apache.hive</groupId>
                 <artifactId>hive-exec</artifactId>
-                <version>${hive.version}</version>
+                <version>${hive3x.version}</version>
                 <exclusions>
                     <exclusion>
                         <groupId>org.pentaho</groupId>
@@ -373,11 +337,6 @@
                     </exclusion>
                 </exclusions>
             </dependency>
-            <dependency>
-                <groupId>org.apache.thrift</groupId>
-                <artifactId>libfb303</artifactId>
-                <version>${thrift.version}</version>
-            </dependency>
 
             <!-- hadoop -->
             <dependency>
@@ -412,22 +371,6 @@
                     <exclusion>
                         <groupId>org.slf4j</groupId>
                         <artifactId>slf4j-reload4j</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.hadoop</groupId>
-                <artifactId>hadoop-minicluster</artifactId>
-                <version>${hadoop.version}</version>
-                <scope>test</scope>
-                <exclusions>
-                    <exclusion>
-                        <groupId>xml-apis</groupId>
-                        <artifactId>xml-apis</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>org.apache.avro</groupId>
-                        <artifactId>avro</artifactId>
                     </exclusion>
                 </exclusions>
             </dependency>
@@ -501,11 +444,6 @@
                 <version>${mybatis.starter.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.mybatis</groupId>
-                <artifactId>mybatis</artifactId>
-                <version>${mybatis.version}</version>
-            </dependency>
-            <dependency>
                 <groupId>org.postgresql</groupId>
                 <artifactId>postgresql</artifactId>
                 <version>${postgresql.version}</version>
@@ -538,51 +476,6 @@
                 <groupId>org.rocksdb</groupId>
                 <artifactId>rocksdbjni</artifactId>
                 <version>${rocksdb.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.debezium</groupId>
-                <artifactId>debezium-api</artifactId>
-                <version>${debezium.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.debezium</groupId>
-                <artifactId>debezium-embedded</artifactId>
-                <version>${debezium.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>org.slf4j</groupId>
-                        <artifactId>slf4j-log4j12</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-            <dependency>
-                <groupId>io.debezium</groupId>
-                <artifactId>debezium-connector-mysql</artifactId>
-                <version>${debezium.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>io.debezium</groupId>
-                <artifactId>debezium-connector-sqlserver</artifactId>
-                <version>${debezium.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>io.debezium</groupId>
-                <artifactId>debezium-connector-mongodb</artifactId>
-                <version>${debezium.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>io.debezium</groupId>
-                <artifactId>debezium-connector-postgres</artifactId>
-                <version>${debezium.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>io.debezium</groupId>
-                <artifactId>debezium-connector-oracle</artifactId>
-                <version>${debezium.version}</version>
             </dependency>
 
             <dependency>
@@ -736,13 +629,13 @@
             <!-- pagehelper -->
             <dependency>
                 <groupId>com.github.pagehelper</groupId>
-                <artifactId>pagehelper</artifactId>
-                <version>${pagehelper.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.github.pagehelper</groupId>
                 <artifactId>pagehelper-spring-boot-starter</artifactId>
                 <version>${pagehelper.springboot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.jsqlparser</groupId>
+                <artifactId>jsqlparser</artifactId>
+                <version>${jsqlparser.version}</version>
             </dependency>
 
             <!--netty dependency-->
@@ -882,12 +775,6 @@
                 <artifactId>pulsar-client-all</artifactId>
                 <version>${pulsar.version}</version>
             </dependency>
-            <dependency>
-                <groupId>org.testcontainers</groupId>
-                <artifactId>pulsar</artifactId>
-                <version>${pulsar.testcontainers.version}</version>
-                <scope>test</scope>
-            </dependency>
 
             <!-- kafka dependency-->
             <dependency>
@@ -904,52 +791,12 @@
             <!-- flink -->
             <dependency>
                 <groupId>org.apache.flink</groupId>
-                <artifactId>flink-clients_${flink.scala.binary.version}</artifactId>
-                <version>${flink.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.flink</groupId>
                 <artifactId>flink-core</artifactId>
                 <version>${flink.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.flink</groupId>
-                <artifactId>flink-streaming-java_${flink.scala.binary.version}</artifactId>
-                <version>${flink.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.flink</groupId>
                 <artifactId>flink-table-common</artifactId>
-                <version>${flink.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.flink</groupId>
-                <artifactId>flink-table-runtime-blink_${flink.scala.binary.version}</artifactId>
-                <version>${flink.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.flink</groupId>
-                <artifactId>flink-parquet_${flink.scala.binary.version}</artifactId>
-                <version>${flink.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.flink</groupId>
-                <artifactId>flink-connector-kafka_${flink.scala.binary.version}</artifactId>
-                <version>${flink.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.flink</groupId>
-                <artifactId>flink-connector-hive_${flink.scala.binary.version}</artifactId>
-                <version>${flink.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.flink</groupId>
-                <artifactId>flink-connector-hbase-2.2_${flink.scala.binary.version}</artifactId>
-                <version>${flink.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.flink</groupId>
-                <artifactId>flink-table-api-java-bridge_${flink.scala.binary.version}</artifactId>
                 <version>${flink.version}</version>
             </dependency>
             <dependency>
@@ -969,22 +816,7 @@
             </dependency>
             <dependency>
                 <groupId>org.apache.flink</groupId>
-                <artifactId>flink-orc_${scala.binary.version}</artifactId>
-                <version>${flink.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.flink</groupId>
                 <artifactId>flink-sql-avro</artifactId>
-                <version>${flink.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.flink</groupId>
-                <artifactId>flink-sql-parquet_${scala.binary.version}</artifactId>
-                <version>${flink.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.flink</groupId>
-                <artifactId>flink-sql-orc_${scala.binary.version}</artifactId>
                 <version>${flink.version}</version>
             </dependency>
             <dependency>
@@ -1008,54 +840,6 @@
                     </exclusion>
                 </exclusions>
             </dependency>
-            <dependency>
-                <groupId>org.apache.iceberg</groupId>
-                <artifactId>iceberg-flink-runtime-1.14</artifactId>
-                <version>${iceberg.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.flink</groupId>
-                <artifactId>flink-table-planner-blink_${flink.scala.binary.version}</artifactId>
-                <version>${flink.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.ververica</groupId>
-                <artifactId>flink-connector-mysql-cdc</artifactId>
-                <version>${flink.connector.mysql.cdc.version}</version>
-                <!-- mysql-connector-java is LGPL license and needs to be excluded -->
-                <exclusions>
-                    <exclusion>
-                        <groupId>mysql</groupId>
-                        <artifactId>mysql-connector-java</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-
-            <dependency>
-                <groupId>com.ververica</groupId>
-                <artifactId>flink-connector-postgres-cdc</artifactId>
-                <version>${flink.connector.postgres.cdc.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.ververica</groupId>
-                <artifactId>flink-connector-oracle-cdc</artifactId>
-                <version>${flink.connector.oracle.cdc.version}</version>
-                <!-- ojdbc8 is FUTC license and needs to be excluded -->
-                <exclusions>
-                    <exclusion>
-                        <groupId>com.oracle.ojdbc</groupId>
-                        <artifactId>ojdbc8</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-
-            <dependency>
-                <groupId>com.ververica</groupId>
-                <artifactId>flink-connector-sqlserver-cdc</artifactId>
-                <version>${flink.connector.sqlserver.cdc.version}</version>
-            </dependency>
 
             <dependency>
                 <groupId>com.ververica</groupId>
@@ -1064,27 +848,11 @@
             </dependency>
 
             <dependency>
-                <groupId>org.apache.flink</groupId>
-                <artifactId>flink-connector-jdbc_${flink.scala.binary.version}</artifactId>
-                <version>${flink.version}</version>
-            </dependency>
-
-            <dependency>
                 <groupId>com.amazonaws</groupId>
                 <artifactId>aws-java-sdk-s3</artifactId>
                 <version>${aws.sdk.version}</version>
             </dependency>
 
-            <dependency>
-                <groupId>io.streamnative.connectors</groupId>
-                <artifactId>pulsar-flink-connector_${scala.binary.version}</artifactId>
-                <version>${flink.pulsar.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.streamnative.connectors</groupId>
-                <artifactId>pulsar-flink-connector-origin</artifactId>
-                <version>${flink.pulsar.version}</version>
-            </dependency>
             <dependency>
                 <groupId>io.streamnative.connectors</groupId>
                 <artifactId>flink-protobuf</artifactId>
@@ -1113,13 +881,6 @@
                 <groupId>org.apache.iceberg</groupId>
                 <artifactId>iceberg-core</artifactId>
                 <version>${iceberg.version}</version>
-            </dependency>
-
-            <!-- hudi -->
-            <dependency>
-                <groupId>org.apache.hudi</groupId>
-                <artifactId>hudi-flink1.13-bundle</artifactId>
-                <version>${hudi.version}</version>
             </dependency>
 
             <!-- kudu -->
@@ -1170,40 +931,9 @@
 
             <!-- format -->
             <dependency>
-                <groupId>org.apache.avro</groupId>
-                <artifactId>avro</artifactId>
-                <version>${avro.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.avro</groupId>
-                <artifactId>avro-ipc</artifactId>
-                <version>${avro.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>oro</groupId>
-                <artifactId>oro</artifactId>
-                <version>${oro.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.orc</groupId>
-                <artifactId>orc-core</artifactId>
-                <version>${orc.core.version}</version>
-                <classifier>nohive</classifier>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.parquet</groupId>
-                <artifactId>parquet-hadoop</artifactId>
-                <version>${parquet.version}</version>
-            </dependency>
-            <dependency>
                 <groupId>com.typesafe.akka</groupId>
                 <artifactId>akka-stream_2.11</artifactId>
                 <version>${akka.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.antlr</groupId>
-                <artifactId>ST4</artifactId>
-                <version>${antlr.verison}</version>
             </dependency>
 
             <!-- protobuf -->
@@ -1261,22 +991,6 @@
                         <artifactId>spotbugs-annotations</artifactId>
                     </exclusion>
                 </exclusions>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.curator</groupId>
-                <artifactId>curator-framework</artifactId>
-                <version>${curator.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.curator</groupId>
-                <artifactId>curator-recipes</artifactId>
-                <version>${curator.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.curator</groupId>
-                <artifactId>curator-test</artifactId>
-                <version>${curator.version}</version>
-                <scope>test</scope>
             </dependency>
 
             <!-- reflections -->
@@ -1385,12 +1099,6 @@
             </dependency>
             <dependency>
                 <groupId>org.apache.logging.log4j</groupId>
-                <artifactId>log4j-1.2-api</artifactId>
-                <version>${log4j2.version}</version>
-                <scope>provided</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.logging.log4j</groupId>
                 <artifactId>log4j-jcl</artifactId>
                 <version>${log4j2.version}</version>
             </dependency>
@@ -1404,22 +1112,6 @@
                 <artifactId>slf4j-log4j12</artifactId>
                 <version>${slf4j.version}</version>
                 <scope>provided</scope>
-            </dependency>
-            <!-- logback -->
-            <dependency>
-                <groupId>ch.qos.logback</groupId>
-                <artifactId>logback-classic</artifactId>
-                <version>${logback.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>ch.qos.logback</groupId>
-                <artifactId>logback-core</artifactId>
-                <version>${logback.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>ch.qos.logback</groupId>
-                <artifactId>logback-access</artifactId>
-                <version>${logback.version}</version>
             </dependency>
 
             <!-- test -->
@@ -1528,11 +1220,6 @@
                 <version>${jcommander.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.esri.geometry</groupId>
-                <artifactId>esri-geometry-api</artifactId>
-                <version>${esri-geometry-api.version}</version>
-            </dependency>
-            <dependency>
                 <groupId>com.tencentcloudapi.cls</groupId>
                 <artifactId>tencentcloud-cls-sdk-java</artifactId>
                 <version>${tencentcloud.cls.version}</version>
@@ -1591,6 +1278,7 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
             </plugin>
+
             <plugin>
                 <groupId>com.diffplug.spotless</groupId>
                 <artifactId>spotless-maven-plugin</artifactId>
@@ -1598,11 +1286,18 @@
                 <configuration>
                     <java>
                         <eclipse>
-                            <file>codestyle/spotless_inlong_formatter.xml</file>
+                            <file>${inlong.root.dir}/codestyle/spotless_inlong_formatter.xml</file>
                         </eclipse>
                         <licenseHeader>
-                            <file>codestyle/license-header</file>
+                            <file>${inlong.root.dir}/codestyle/license-header</file>
                         </licenseHeader>
+
+                        <importOrder>
+                            <!-- you can use an empty string for all the imports you didn't specify explicitly, '|' to join group without blank line, and '\#` prefix for static imports. -->
+                            <order>org.apache.inlong,org.apache.inlong.shaded,,javax,java,\#</order>
+                        </importOrder>
+
+                        <!-- remove unused imports -->
                         <removeUnusedImports />
                         <replaceRegex>
                             <name>Remove wildcard imports</name>
@@ -1642,13 +1337,16 @@
                 </configuration>
                 <executions>
                     <execution>
+                        <id>compile-apply-format</id>
                         <goals>
+                            <!-- apply the format when compile the project  -->
                             <goal>apply</goal>
                         </goals>
                         <phase>compile</phase>
                     </execution>
                 </executions>
             </plugin>
+
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>license-maven-plugin</artifactId>
@@ -1657,6 +1355,7 @@
                     <!-- here add configures -->
                 </configuration>
             </plugin>
+
             <plugin>
                 <groupId>org.apache.rat</groupId>
                 <artifactId>apache-rat-plugin</artifactId>
@@ -1746,6 +1445,7 @@
                         <exclude>**/tubemq-client-go/go.mod</exclude>
                         <!-- Go sum -->
                         <exclude>**/tubemq-client-go/go.sum</exclude>
+                        <exclude>**/dataproxy-sdk-golang/go.sum</exclude>
                         <!-- Docker build-->
                         <exclude>**/docker/docker-compose/**/**</exclude>
 
@@ -1762,6 +1462,7 @@
             </plugin>
         </plugins>
     </build>
+
     <url>https://github.com/apache/inlong</url>
     <inceptionYear>2013</inceptionYear>
 
@@ -1809,5 +1510,25 @@
         <system>GitHub Actions</system>
         <url>https://github.com/apache/inlong/actions</url>
     </ciManagement>
+
+    <profiles>
+        <profile>
+            <id>v1.13</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <flink.version>1.13.5</flink.version>
+                <sort.flink.version>v1.13</sort.flink.version>
+            </properties>
+        </profile>
+        <profile>
+            <id>v1.15</id>
+            <properties>
+                <flink.version>1.15.4</flink.version>
+                <sort.flink.version>v1.15</sort.flink.version>
+            </properties>
+        </profile>
+    </profiles>
 
 </project>

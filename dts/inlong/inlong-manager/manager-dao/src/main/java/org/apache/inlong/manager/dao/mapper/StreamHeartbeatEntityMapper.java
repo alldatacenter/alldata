@@ -17,10 +17,11 @@
 
 package org.apache.inlong.manager.dao.mapper;
 
-import org.apache.ibatis.annotations.Param;
 import org.apache.inlong.common.heartbeat.StreamHeartbeat;
 import org.apache.inlong.manager.dao.entity.StreamHeartbeatEntity;
 import org.apache.inlong.manager.pojo.heartbeat.HeartbeatPageRequest;
+
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -33,13 +34,9 @@ public interface StreamHeartbeatEntityMapper {
     int insertOrUpdateAll(@Param("component") String component, @Param("instance") String instance,
             @Param("reportTime") Long reportTime, @Param("list") List<StreamHeartbeat> list);
 
-    StreamHeartbeatEntity selectByPrimaryKey(Integer id);
-
     StreamHeartbeatEntity selectByKey(@Param("component") String component, @Param("instance") String instance,
             @Param("inlongGroupId") String inlongGroupId, @Param("inlongStreamId") String inlongStreamId);
 
     List<StreamHeartbeatEntity> selectByCondition(@Param("request") HeartbeatPageRequest request);
-
-    int deleteByPrimaryKey(Integer id);
 
 }

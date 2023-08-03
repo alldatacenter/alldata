@@ -24,6 +24,7 @@
         <id column="id" jdbcType="INTEGER" property="id"/>
         <result column="process_name" jdbcType="VARCHAR" property="processName"/>
         <result column="task_name" jdbcType="VARCHAR" property="taskName"/>
+        <result column="tenant" jdbcType="VARCHAR" property="tenant"/>
         <result column="approvers" jdbcType="VARCHAR" property="approvers"/>
         <result column="creator" jdbcType="VARCHAR" property="creator"/>
         <result column="modifier" jdbcType="VARCHAR" property="modifier"/>
@@ -33,22 +34,27 @@
         <result column="version" jdbcType="INTEGER" property="version"/>
     </resultMap>
     <sql id="Base_Column_List">
-        id, process_name, task_name, approvers, creator, modifier, create_time, modify_time, is_deleted, version
+        id, process_name, task_name, tenant, approvers, creator, modifier,
+        create_time, modify_time, is_deleted, version
     </sql>
 
     <insert id="insert" useGeneratedKeys="true" keyProperty="id"
             parameterType="org.apache.inlong.manager.dao.entity.WorkflowApproverEntity">
         insert into workflow_approver (id, process_name, task_name,
-                                       approvers, creator, modifier)
+                                       tenant, approvers,
+                                       creator, modifier)
         values (#{id, jdbcType=INTEGER}, #{processName, jdbcType=VARCHAR}, #{taskName, jdbcType=VARCHAR},
-                #{approvers, jdbcType=VARCHAR}, #{creator, jdbcType=VARCHAR}, #{modifier, jdbcType=VARCHAR})
+                #{tenant,jdbcType=VARCHAR}, #{approvers, jdbcType=VARCHAR},
+                #{creator, jdbcType=VARCHAR}, #{modifier, jdbcType=VARCHAR})
     </insert>
 
-    <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <select id="selectById" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
         from workflow_approver
-        where id = #{id, jdbcType=INTEGER} and is_deleted=0
+        where tenant = #{tenant,jdbcType=VARCHAR}
+        and id = #{id, jdbcType=INTEGER}
+        and is_deleted = 0
     </select>
     <select id="selectByCondition" resultMap="BaseResultMap"
             parameterType="org.apache.inlong.manager.pojo.workflow.ApproverPageRequest">
@@ -56,7 +62,8 @@
         <include refid="Base_Column_List"/>
         from workflow_approver
         <where>
-            is_deleted = 0
+            tenant = #{tenant,jdbcType=VARCHAR}
+            and is_deleted = 0
             <if test="currentUser != null and currentUser != '' and isAdminRole == false">
                 and (
                 creator = #{currentUser, jdbcType=VARCHAR} or find_in_set(#{currentUser, jdbcType=VARCHAR}, approvers)
@@ -86,7 +93,8 @@
             modifier     = #{modifier, jdbcType=VARCHAR},
             is_deleted   = #{isDeleted, jdbcType=INTEGER},
             version      = #{version, jdbcType=INTEGER} + 1
-        where id = #{id, jdbcType=INTEGER}
+        where tenant = #{tenant,jdbcType=VARCHAR}
+          and id = #{id, jdbcType=INTEGER}
           and is_deleted = 0
           and version = #{version, jdbcType=INTEGER}
     </update>
@@ -95,6 +103,7 @@
         update workflow_approver
         set is_deleted = id,
             modifier=#{modifier, jdbcType=VARCHAR}
-        where id = #{id, jdbcType=INTEGER}
+        where tenant = #{tenant,jdbcType=VARCHAR}
+        and id = #{id, jdbcType=INTEGER}
     </delete>
 </mapper>

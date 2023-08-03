@@ -19,6 +19,8 @@ package org.apache.inlong.dataproxy.sink.mq;
 
 import org.apache.inlong.dataproxy.config.pojo.CacheClusterConfig;
 
+import java.util.Set;
+
 /**
  * MessageQueueHandler
  */
@@ -43,8 +45,10 @@ public interface MessageQueueHandler {
 
     /**
      * send
-     * @param event
+     * @param profile
      * @return
      */
-    boolean send(BatchPackProfile event);
+    boolean send(PackProfile profile);
+
+    void publishTopic(Set<String> topicSet);
 }

@@ -17,6 +17,14 @@
 
 package org.apache.inlong.audit.source;
 
+import org.apache.inlong.audit.protocol.AuditApi.AuditMessageBody;
+import org.apache.inlong.audit.protocol.AuditApi.AuditReply;
+import org.apache.inlong.audit.protocol.AuditApi.AuditReply.RSP_CODE;
+import org.apache.inlong.audit.protocol.AuditApi.AuditRequest;
+import org.apache.inlong.audit.protocol.AuditApi.BaseCommand;
+import org.apache.inlong.audit.protocol.AuditData;
+import org.apache.inlong.audit.protocol.Commands;
+
 import com.google.gson.Gson;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.Channel;
@@ -27,13 +35,6 @@ import org.apache.flume.Event;
 import org.apache.flume.channel.ChannelProcessor;
 import org.apache.flume.event.EventBuilder;
 import org.apache.flume.source.AbstractSource;
-import org.apache.inlong.audit.protocol.AuditApi.AuditMessageBody;
-import org.apache.inlong.audit.protocol.AuditApi.AuditReply;
-import org.apache.inlong.audit.protocol.AuditApi.AuditReply.RSP_CODE;
-import org.apache.inlong.audit.protocol.AuditApi.AuditRequest;
-import org.apache.inlong.audit.protocol.AuditApi.BaseCommand;
-import org.apache.inlong.audit.protocol.AuditData;
-import org.apache.inlong.audit.protocol.Commands;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -46,6 +47,7 @@ import static com.google.common.base.Preconditions.checkArgument;
 /**
  * Server message handler
  */
+
 public class ServerMessageHandler extends ChannelInboundHandlerAdapter {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ServerMessageHandler.class);
@@ -55,13 +57,16 @@ public class ServerMessageHandler extends ChannelInboundHandlerAdapter {
     private final ChannelProcessor processor;
     private final ServiceDecoder serviceDecoder;
     private final int maxConnections;
+    private final long msgValidThresholdDays;
+    private final long ONE_DAY_MS = 24 * 60 * 60 * 1000;
 
     public ServerMessageHandler(AbstractSource source, ServiceDecoder serviceDecoder,
-            ChannelGroup allChannels, Integer maxCons) {
+            ChannelGroup allChannels, Integer maxCons, Long msgValidThresholdDays) {
         this.processor = source.getChannelProcessor();
         this.serviceDecoder = serviceDecoder;
         this.allChannels = allChannels;
         this.maxConnections = maxCons;
+        this.msgValidThresholdDays = msgValidThresholdDays;
     }
 
     @Override
@@ -102,6 +107,8 @@ public class ServerMessageHandler extends ChannelInboundHandlerAdapter {
         } catch (Exception ex) {
             LOGGER.error("extract data error: ", ex);
             throw new IOException(ex);
+        } finally {
+            buf.release();
         }
         if (cmd == null) {
             LOGGER.warn("extract data from received msg is null");
@@ -144,6 +151,12 @@ public class ServerMessageHandler extends ChannelInboundHandlerAdapter {
         List<AuditMessageBody> bodyList = auditRequest.getMsgBodyList();
         int errorMsgBody = 0;
         for (AuditMessageBody auditMessageBody : bodyList) {
+            long msgDays = messageDays(auditMessageBody.getLogTs());
+            if (msgDays >= this.msgValidThresholdDays) {
+                LOGGER.warn("Discard the data as it is from {} days ago, only the data with a log timestamp"
+                        + " less than {} days is valid", msgDays, this.msgValidThresholdDays);
+                continue;
+            }
             AuditData auditData = new AuditData();
             auditData.setIp(auditRequest.getMsgHeader().getIp());
             auditData.setThreadId(auditRequest.getMsgHeader().getThreadId());
@@ -179,6 +192,12 @@ public class ServerMessageHandler extends ChannelInboundHandlerAdapter {
         return reply;
     }
 
+    public long messageDays(long logTs) {
+        long currentTime = System.currentTimeMillis();
+        long timeDiff = currentTime - logTs;
+        return timeDiff / ONE_DAY_MS;
+    }
+
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
         LOGGER.error("exception caught", cause);
@@ -189,6 +208,8 @@ public class ServerMessageHandler extends ChannelInboundHandlerAdapter {
             channel.writeAndFlush(buffer);
             return;
         }
+
+        buffer.release();
 
         String msg = String.format("remote channel=%s is not writable, please check remote client!", channel);
         LOGGER.warn(msg);

@@ -5,13 +5,13 @@ from dataclasses import dataclass
 from datetime import datetime, timedelta, timezone
 
 from requests import Response
-from soda.common.json_helper import JsonHelper
-from soda.soda_cloud.historic_descriptor import (
+from soda.cloud.historic_descriptor import (
     HistoricChangeOverTimeDescriptor,
     HistoricDescriptor,
     HistoricMeasurementsDescriptor,
 )
-from soda.soda_cloud.soda_cloud import SodaCloud
+from soda.cloud.soda_cloud import SodaCloud
+from soda.common.json_helper import JsonHelper
 
 logger = logging.getLogger(__name__)
 

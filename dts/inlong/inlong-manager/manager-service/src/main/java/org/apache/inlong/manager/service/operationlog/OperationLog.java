@@ -17,11 +17,12 @@
 
 package org.apache.inlong.manager.service.operationlog;
 
+import org.apache.inlong.manager.common.enums.OperationType;
+
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
-import org.apache.inlong.manager.common.enums.OperationType;
 
 /**
  * The interface of operation log

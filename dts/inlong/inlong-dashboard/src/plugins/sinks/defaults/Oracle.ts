@@ -24,7 +24,7 @@ import { sourceFields } from '../common/sourceFields';
 import EditableTable from '@/ui/components/EditableTable';
 
 const { I18n } = DataWithBackend;
-const { FieldDecorator } = RenderRow;
+const { FieldDecorator, SyncField } = RenderRow;
 const { ColumnDecorator } = RenderList;
 
 const fieldTypesConf = {
@@ -69,6 +69,7 @@ export default class OracleSink extends SinkInfo implements DataWithBackend, Ren
   })
   @ColumnDecorator()
   @I18n('JDBC URL')
+  @SyncField()
   jdbcUrl: string;
 
   @FieldDecorator({
@@ -79,6 +80,7 @@ export default class OracleSink extends SinkInfo implements DataWithBackend, Ren
     }),
   })
   @ColumnDecorator()
+  @SyncField()
   @I18n('meta.Sinks.Oracle.TableName')
   tableName: string;
 
@@ -91,6 +93,7 @@ export default class OracleSink extends SinkInfo implements DataWithBackend, Ren
   })
   @ColumnDecorator()
   @I18n('meta.Sinks.Oracle.PrimaryKey')
+  @SyncField()
   primaryKey: string;
 
   @FieldDecorator({
@@ -113,6 +116,7 @@ export default class OracleSink extends SinkInfo implements DataWithBackend, Ren
     }),
   })
   @I18n('meta.Sinks.EnableCreateResource')
+  @SyncField()
   enableCreateResource: number;
 
   @FieldDecorator({
@@ -124,6 +128,7 @@ export default class OracleSink extends SinkInfo implements DataWithBackend, Ren
   })
   @ColumnDecorator()
   @I18n('meta.Sinks.Username')
+  @SyncField()
   username: string;
 
   @FieldDecorator({
@@ -134,6 +139,7 @@ export default class OracleSink extends SinkInfo implements DataWithBackend, Ren
     }),
   })
   @ColumnDecorator()
+  @SyncField()
   @I18n('meta.Sinks.Password')
   password: string;
 
@@ -143,6 +149,8 @@ export default class OracleSink extends SinkInfo implements DataWithBackend, Ren
       size: 'small',
       editing: ![110, 130].includes(values?.status),
       columns: getFieldListColumns(values),
+      canBatchAdd: true,
+      upsertByFieldKey: true,
     }),
   })
   sinkFieldList: Record<string, unknown>[];

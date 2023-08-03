@@ -21,11 +21,13 @@ import org.apache.inlong.common.metric.MetricItemMBean;
 import org.apache.inlong.common.metric.MetricRegister;
 import org.apache.inlong.common.metric.MetricUtils;
 import org.apache.inlong.common.metric.MetricValue;
+
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 import javax.management.MBeanServer;
 import javax.management.ObjectName;
+
 import java.lang.management.ManagementFactory;
 import java.util.Map;
 

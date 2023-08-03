@@ -17,13 +17,14 @@
 
 package org.apache.inlong.sort.protocol.ddl.expressions;
 
-import java.util.List;
 import lombok.Builder;
 import lombok.Data;
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonCreator;
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonInclude;
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonInclude.Include;
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.util.List;
 
 /**
  * Column represents a column in a table.

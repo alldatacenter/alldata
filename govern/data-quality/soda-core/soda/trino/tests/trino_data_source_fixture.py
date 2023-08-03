@@ -12,7 +12,7 @@ class TrinoDataSourceFixture(DataSourceFixture):
     def __init__(self, test_data_source: str):
         super().__init__(test_data_source)
 
-    def _build_configuration_dict(self, schema_name: str | None = None) -> dict:
+    def _build_configuration_dict(self, schema_name: str | None = None, http_headers: dict | None = None) -> dict:
         return {
             "data_source trino": {
                 "type": "trino",
@@ -21,6 +21,7 @@ class TrinoDataSourceFixture(DataSourceFixture):
                 "password": os.getenv("TRINO_PASSWORD"),
                 "catalog": os.getenv("TRINO_CATALOG", "test_soda"),
                 "schema": schema_name if schema_name else os.getenv("TRINO_SCHEMA", "soda_core"),
+                "http_headers": http_headers if http_headers is not None else {},
             }
         }
 

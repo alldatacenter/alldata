@@ -17,16 +17,19 @@
 
 package org.apache.inlong.sort.formats.inlongmsg;
 
+import org.apache.inlong.common.msg.InLongMsg;
+import org.apache.inlong.sort.formats.base.TableFormatDeserializer;
+
+import org.apache.flink.types.Row;
+import org.apache.flink.util.Collector;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import javax.annotation.Nonnull;
+
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Objects;
-import javax.annotation.Nonnull;
-import org.apache.flink.types.Row;
-import org.apache.flink.util.Collector;
-import org.apache.inlong.common.msg.InLongMsg;
-import org.apache.inlong.sort.formats.base.TableFormatDeserializer;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * The base for all inlongmsg format deserializers.

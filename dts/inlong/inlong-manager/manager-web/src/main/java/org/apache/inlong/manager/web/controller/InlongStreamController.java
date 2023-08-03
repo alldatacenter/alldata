@@ -17,13 +17,6 @@
 
 package org.apache.inlong.manager.web.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
-import io.swagger.annotations.ApiOperation;
-import lombok.extern.slf4j.Slf4j;
-import org.apache.http.HttpHeaders;
 import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
 import org.apache.inlong.manager.common.enums.OperationType;
 import org.apache.inlong.manager.common.exceptions.BusinessException;
@@ -31,17 +24,25 @@ import org.apache.inlong.manager.common.tool.excel.ExcelTool;
 import org.apache.inlong.manager.common.validation.UpdateValidation;
 import org.apache.inlong.manager.pojo.common.PageResult;
 import org.apache.inlong.manager.pojo.common.Response;
+import org.apache.inlong.manager.pojo.consume.BriefMQMessage;
 import org.apache.inlong.manager.pojo.sink.ParseFieldRequest;
 import org.apache.inlong.manager.pojo.stream.InlongStreamBriefInfo;
 import org.apache.inlong.manager.pojo.stream.InlongStreamInfo;
 import org.apache.inlong.manager.pojo.stream.InlongStreamPageRequest;
 import org.apache.inlong.manager.pojo.stream.InlongStreamRequest;
 import org.apache.inlong.manager.pojo.stream.StreamField;
+import org.apache.inlong.manager.pojo.user.LoginUserUtils;
 import org.apache.inlong.manager.pojo.user.UserRoleCode;
 import org.apache.inlong.manager.service.operationlog.OperationLog;
 import org.apache.inlong.manager.service.stream.InlongStreamProcessService;
 import org.apache.inlong.manager.service.stream.InlongStreamService;
-import org.apache.inlong.manager.service.user.LoginUserUtils;
+
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.http.HttpHeaders;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
@@ -55,6 +56,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
+
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -68,9 +70,6 @@ import java.util.List;
 @RequestMapping("/api")
 @Api(tags = "Inlong-Stream-API")
 public class InlongStreamController {
-
-    @Autowired
-    private ObjectMapper objectMapper;
 
     @Autowired
     private InlongStreamService streamService;
@@ -102,14 +101,25 @@ public class InlongStreamController {
             @ApiImplicitParam(name = "streamId", dataTypeClass = String.class, required = true)
     })
     public Response<InlongStreamInfo> get(@RequestParam String groupId, @RequestParam String streamId) {
-        return Response.success(streamService.get(groupId, streamId));
+        return Response.success(streamService.get(groupId, streamId, LoginUserUtils.getLoginUser()));
+    }
+
+    @RequestMapping(value = "/stream/getBrief", method = RequestMethod.GET)
+    @ApiOperation(value = "Get inlong stream brief")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "groupId", dataTypeClass = String.class, required = true),
+            @ApiImplicitParam(name = "streamId", dataTypeClass = String.class, required = true)
+    })
+    public Response<InlongStreamBriefInfo> getBrief(@RequestParam String groupId, @RequestParam String streamId) {
+        String operator = LoginUserUtils.getLoginUser().getName();
+        return Response.success(streamService.getBrief(groupId, streamId, operator));
     }
 
     @RequestMapping(value = "/stream/list", method = RequestMethod.POST)
     @ApiOperation(value = "List inlong stream briefs by paginating")
     public Response<PageResult<InlongStreamBriefInfo>> listByCondition(@RequestBody InlongStreamPageRequest request) {
         request.setCurrentUser(LoginUserUtils.getLoginUser().getName());
-        request.setIsAdminRole(LoginUserUtils.getLoginUser().getRoles().contains(UserRoleCode.ADMIN));
+        request.setIsAdminRole(LoginUserUtils.getLoginUser().getRoles().contains(UserRoleCode.TENANT_ADMIN));
         return Response.success(streamService.listBrief(request));
     }
 
@@ -117,7 +127,7 @@ public class InlongStreamController {
     @ApiOperation(value = "List inlong streams with sources and sinks by paginating")
     public Response<PageResult<InlongStreamInfo>> listAllWithGroupId(@RequestBody InlongStreamPageRequest request) {
         request.setCurrentUser(LoginUserUtils.getLoginUser().getName());
-        request.setIsAdminRole(LoginUserUtils.getLoginUser().getRoles().contains(UserRoleCode.ADMIN));
+        request.setIsAdminRole(LoginUserUtils.getLoginUser().getRoles().contains(UserRoleCode.TENANT_ADMIN));
         return Response.success(streamService.listAll(request));
     }
 
@@ -223,6 +233,19 @@ public class InlongStreamController {
             throw new BusinessException(ErrorCodeEnum.INVALID_PARAMETER,
                     String.format("can not properly download template file: %s", e.getMessage()));
         }
+    }
+
+    @RequestMapping(value = "/stream/listMessages", method = RequestMethod.GET)
+    @ApiOperation(value = "Get inlong stream message")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "groupId", dataTypeClass = String.class, required = true),
+            @ApiImplicitParam(name = "streamId", dataTypeClass = String.class, required = true),
+            @ApiImplicitParam(name = "messageCount", dataTypeClass = String.class, required = true)
+    })
+    public Response<List<BriefMQMessage>> listMessages(@RequestParam String groupId, @RequestParam String streamId,
+            @RequestParam Integer messageCount) {
+        String username = LoginUserUtils.getLoginUser().getName();
+        return Response.success(streamService.listMessages(groupId, streamId, messageCount, username));
     }
 
 }

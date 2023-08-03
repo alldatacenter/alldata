@@ -17,6 +17,8 @@
 
 package org.apache.inlong.agent.plugin.utils;
 
+import org.apache.inlong.agent.plugin.message.SchemaRecord;
+
 import io.debezium.config.Configuration;
 import io.debezium.config.Field;
 import io.debezium.document.DocumentReader;
@@ -29,7 +31,6 @@ import io.debezium.relational.history.HistoryRecord;
 import io.debezium.relational.history.HistoryRecordComparator;
 import io.debezium.util.Collect;
 import io.debezium.util.FunctionalReadWriteLock;
-import org.apache.inlong.agent.plugin.message.SchemaRecord;
 import org.apache.kafka.connect.errors.ConnectException;
 import org.slf4j.Logger;
 

@@ -24,7 +24,7 @@ import { SinkInfo } from '../common/SinkInfo';
 import { sourceFields } from '../common/sourceFields';
 
 const { I18n } = DataWithBackend;
-const { FieldDecorator } = RenderRow;
+const { FieldDecorator, SyncField } = RenderRow;
 const { ColumnDecorator } = RenderList;
 
 const fieldTypesConf = {
@@ -76,6 +76,7 @@ export default class SqlServerSink
     }),
   })
   @ColumnDecorator()
+  @SyncField()
   @I18n('JDBC URL')
   jdbcUrl: string;
 
@@ -87,6 +88,7 @@ export default class SqlServerSink
     }),
   })
   @ColumnDecorator()
+  @SyncField()
   @I18n('meta.Sinks.SQLServer.SchemaName')
   schemaName: string;
 
@@ -99,6 +101,7 @@ export default class SqlServerSink
     }),
   })
   @ColumnDecorator()
+  @SyncField()
   @I18n('meta.Sinks.SQLServer.ServerTimezone')
   serverTimezone: string;
 
@@ -111,6 +114,7 @@ export default class SqlServerSink
     }),
   })
   @ColumnDecorator()
+  @SyncField()
   @I18n('meta.Sinks.SQLServer.TableName')
   tableName: string;
 
@@ -123,6 +127,7 @@ export default class SqlServerSink
     }),
   })
   @ColumnDecorator()
+  @SyncField()
   @I18n('meta.Sinks.SQLServer.PrimaryKey')
   primaryKey: string;
 
@@ -145,6 +150,7 @@ export default class SqlServerSink
       ],
     }),
   })
+  @SyncField()
   @I18n('meta.Sinks.EnableCreateResource')
   enableCreateResource: number;
 
@@ -166,6 +172,7 @@ export default class SqlServerSink
       ],
     }),
   })
+  @SyncField()
   @I18n('meta.Sinks.SQLServer.AllMigration')
   allMigration: boolean;
 
@@ -176,6 +183,7 @@ export default class SqlServerSink
       disabled: [110, 130].includes(values?.status),
     }),
   })
+  @SyncField()
   @I18n('meta.Sinks.Username')
   username: string;
 
@@ -186,6 +194,7 @@ export default class SqlServerSink
       disabled: [110, 130].includes(values?.status),
     }),
   })
+  @SyncField()
   @I18n('meta.Sinks.Password')
   password: string;
 
@@ -195,6 +204,8 @@ export default class SqlServerSink
       size: 'small',
       editing: ![110, 130].includes(values?.status),
       columns: getFieldListColumns(values),
+      canBatchAdd: true,
+      upsertByFieldKey: true,
     }),
   })
   sinkFieldList: Record<string, unknown>[];

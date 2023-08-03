@@ -19,6 +19,7 @@ package org.apache.inlong.manager.pojo.sort;
 
 import org.apache.inlong.manager.common.util.JsonUtils;
 import org.apache.inlong.manager.pojo.sort.BaseSortConf.SortType;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

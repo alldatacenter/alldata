@@ -17,6 +17,12 @@
 
 package org.apache.inlong.manager.pojo.sink.hive;
 
+import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
+import org.apache.inlong.manager.common.exceptions.BusinessException;
+import org.apache.inlong.manager.common.util.AESUtils;
+import org.apache.inlong.manager.common.util.CommonBeanUtils;
+import org.apache.inlong.manager.common.util.JsonUtils;
+
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,12 +30,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
-import org.apache.inlong.manager.common.exceptions.BusinessException;
-import org.apache.inlong.manager.common.util.AESUtils;
-import org.apache.inlong.manager.common.util.JsonUtils;
 
 import javax.validation.constraints.NotNull;
+
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Map;
@@ -94,31 +97,18 @@ public class HiveSinkDTO {
     /**
      * Get the dto instance from the request
      */
-    public static HiveSinkDTO getFromRequest(HiveSinkRequest request) throws Exception {
+    public static HiveSinkDTO getFromRequest(HiveSinkRequest request, String extParams) throws Exception {
         Integer encryptVersion = AESUtils.getCurrentVersion(null);
         String passwd = null;
         if (StringUtils.isNotEmpty(request.getPassword())) {
             passwd = AESUtils.encryptToString(request.getPassword().getBytes(StandardCharsets.UTF_8),
                     encryptVersion);
         }
-        return HiveSinkDTO.builder()
-                .jdbcUrl(request.getJdbcUrl())
-                .username(request.getUsername())
-                .password(passwd)
-                .dbName(request.getDbName())
-                .tableName(request.getTableName())
-                .dataPath(request.getDataPath())
-                .partitionInterval(request.getPartitionInterval())
-                .partitionFieldList(request.getPartitionFieldList())
-                .partitionCreationStrategy(request.getPartitionCreationStrategy())
-                .fileFormat(request.getFileFormat())
-                .dataEncoding(request.getDataEncoding())
-                .dataSeparator(request.getDataSeparator())
-                .hiveVersion(request.getHiveVersion())
-                .hiveConfDir(request.getHiveConfDir())
-                .encryptVersion(encryptVersion)
-                .properties(request.getProperties())
-                .build();
+
+        HiveSinkDTO dto = StringUtils.isNotBlank(extParams) ? HiveSinkDTO.getFromJson(extParams) : new HiveSinkDTO();
+        CommonBeanUtils.copyProperties(request, dto, true);
+        dto.setPassword(passwd);
+        return dto;
     }
 
     /**

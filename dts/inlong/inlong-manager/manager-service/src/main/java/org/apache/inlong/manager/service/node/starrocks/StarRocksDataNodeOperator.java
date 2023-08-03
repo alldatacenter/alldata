@@ -17,8 +17,6 @@
 
 package org.apache.inlong.manager.service.node.starrocks;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.inlong.manager.common.consts.DataNodeType;
 import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
 import org.apache.inlong.manager.common.exceptions.BusinessException;
@@ -32,6 +30,9 @@ import org.apache.inlong.manager.pojo.node.starrocks.StarRocksDataNodeInfo;
 import org.apache.inlong.manager.pojo.node.starrocks.StarRocksDataNodeRequest;
 import org.apache.inlong.manager.service.node.AbstractDataNodeOperator;
 import org.apache.inlong.manager.service.resource.sink.starrocks.StarRocksJdbcUtils;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,10 +75,10 @@ public class StarRocksDataNodeOperator extends AbstractDataNodeOperator {
 
     @Override
     protected void setTargetEntity(DataNodeRequest request, DataNodeEntity targetEntity) {
-        StarRocksDataNodeRequest starRocksDataNodeRequest = (StarRocksDataNodeRequest) request;
-        CommonBeanUtils.copyProperties(starRocksDataNodeRequest, targetEntity, true);
+        StarRocksDataNodeRequest nodeRequest = (StarRocksDataNodeRequest) request;
+        CommonBeanUtils.copyProperties(nodeRequest, targetEntity, true);
         try {
-            StarRocksDataNodeDTO dto = StarRocksDataNodeDTO.getFromRequest(starRocksDataNodeRequest);
+            StarRocksDataNodeDTO dto = StarRocksDataNodeDTO.getFromRequest(nodeRequest, targetEntity.getExtParams());
             targetEntity.setExtParams(objectMapper.writeValueAsString(dto));
         } catch (Exception e) {
             throw new BusinessException(ErrorCodeEnum.SOURCE_INFO_INCORRECT,
@@ -92,13 +93,12 @@ public class StarRocksDataNodeOperator extends AbstractDataNodeOperator {
         String password = request.getToken();
         Preconditions.expectNotBlank(jdbcUrl, ErrorCodeEnum.INVALID_PARAMETER, "connection jdbcUrl cannot be empty");
         try (Connection ignored = StarRocksJdbcUtils.getConnection(jdbcUrl, username, password)) {
-            LOGGER.info("starRocks connection not null - connection success for jdbcUrl={}, username={}, password={}",
+            LOGGER.info("StarRocks connection not null - connection success for jdbcUrl={}, username={}, password={}",
                     jdbcUrl, username, password);
             return true;
         } catch (Exception e) {
-            String errMsg = String.format("starRocks connection failed for jdbcUrl=%s, username=%s, password=%s",
-                    jdbcUrl,
-                    username, password);
+            String errMsg = String.format("StarRocks connection failed for jdbcUrl=%s, username=%s, password=%s",
+                    jdbcUrl, username, password);
             LOGGER.error(errMsg, e);
             throw new BusinessException(errMsg);
         }

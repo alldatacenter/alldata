@@ -1,1 +1,0 @@
-DESCRIBE INPUT myquery;

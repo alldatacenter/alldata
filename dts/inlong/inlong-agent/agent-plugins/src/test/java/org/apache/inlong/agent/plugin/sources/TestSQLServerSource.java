@@ -22,6 +22,7 @@ import org.apache.inlong.agent.metrics.AgentMetricItem;
 import org.apache.inlong.agent.metrics.AgentMetricItemSet;
 import org.apache.inlong.common.metric.MetricItem;
 import org.apache.inlong.common.metric.MetricRegister;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

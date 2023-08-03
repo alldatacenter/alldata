@@ -109,6 +109,7 @@ const FieldParseModule: React.FC<FieldParseModuleProps> = ({
     name: 'file',
     action: config.requestPrefix + '/stream/parseFieldsByExcel',
     accept: '.xlsx',
+    showUploadList: false,
     headers: {
       authorization: 'authorization-text',
     },
@@ -211,12 +212,6 @@ user_age,int,age of user`);
     <>
       <Modal
         key={'field-parse-module'}
-        title={
-          <>
-            <FileAddOutlined />
-            {t('components.FieldParseModule.BatchAddField')}
-          </>
-        }
         open={visible}
         onCancel={handleCancel}
         footer={[
@@ -343,12 +338,24 @@ user_age,int,age of user`);
         </div>
 
         {selectedFormat === 'excel' && (
-          <div>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              border: '1px solid #ccc',
+              borderRadius: '5px',
+              backgroundColor: 'rgba(245,245,245,0.32)',
+              padding: '15px',
+              marginTop: '10px',
+              marginBottom: '20px',
+            }}
+          >
             <Upload {...uploadProps}>
               <Button key="upload" type={'primary'} icon={<UploadOutlined />} size={'small'}>
                 {t('components.FieldParseModule.Upload')}
               </Button>
             </Upload>
+            <span style={{ marginRight: '20px' }} />
             <Button
               key="downloadTemplate"
               onClick={downloadTemplate}

@@ -17,10 +17,11 @@
 
 package org.apache.inlong.agent.utils;
 
+import org.apache.inlong.agent.conf.AgentConfiguration;
+
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.tuple.Pair;
-import org.apache.inlong.agent.conf.AgentConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

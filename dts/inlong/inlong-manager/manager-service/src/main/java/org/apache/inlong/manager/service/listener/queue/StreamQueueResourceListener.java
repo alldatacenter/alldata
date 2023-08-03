@@ -17,7 +17,6 @@
 
 package org.apache.inlong.manager.service.listener.queue;
 
-import lombok.extern.slf4j.Slf4j;
 import org.apache.inlong.manager.common.consts.InlongConstants;
 import org.apache.inlong.manager.common.enums.GroupOperateType;
 import org.apache.inlong.manager.common.enums.GroupStatus;
@@ -35,6 +34,8 @@ import org.apache.inlong.manager.service.stream.InlongStreamService;
 import org.apache.inlong.manager.workflow.WorkflowContext;
 import org.apache.inlong.manager.workflow.event.ListenerResult;
 import org.apache.inlong.manager.workflow.event.task.QueueOperateListener;
+
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -64,7 +65,7 @@ public class StreamQueueResourceListener implements QueueOperateListener {
             return false;
         }
         StreamResourceProcessForm streamProcessForm = (StreamResourceProcessForm) processForm;
-        return InlongConstants.STANDARD_MODE.equals(streamProcessForm.getGroupInfo().getLightweight());
+        return InlongConstants.STANDARD_MODE.equals(streamProcessForm.getGroupInfo().getInlongGroupMode());
     }
 
     @Override

@@ -17,16 +17,18 @@
 
 package org.apache.inlong.tubemq.server.tools.cli;
 
-import com.google.gson.JsonObject;
-import java.util.HashMap;
-import java.util.Map;
-import org.apache.commons.cli.CommandLine;
-import org.apache.commons.cli.ParseException;
 import org.apache.inlong.tubemq.corebase.utils.TStringUtils;
 import org.apache.inlong.tubemq.server.common.fielddef.CliArgDef;
 import org.apache.inlong.tubemq.server.common.utils.HttpUtils;
+
+import com.google.gson.JsonObject;
+import org.apache.commons.cli.CommandLine;
+import org.apache.commons.cli.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * This class is use to process CLI Broker Admin process for script #{bin/tubemq-broker-admin.sh}.

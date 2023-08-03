@@ -25,6 +25,7 @@
         <result column="inlong_group_id" jdbcType="VARCHAR" property="inlongGroupId"/>
         <result column="name" jdbcType="VARCHAR" property="name"/>
         <result column="description" jdbcType="VARCHAR" property="description"/>
+        <result column="tenant" jdbcType="VARCHAR" property="tenant"/>
         <result column="mq_type" jdbcType="VARCHAR" property="mqType"/>
         <result column="mq_resource" jdbcType="VARCHAR" property="mqResource"/>
         <result column="daily_records" jdbcType="INTEGER" property="dailyRecords"/>
@@ -33,7 +34,7 @@
         <result column="max_length" jdbcType="INTEGER" property="maxLength"/>
         <result column="enable_zookeeper" jdbcType="INTEGER" property="enableZookeeper"/>
         <result column="enable_create_resource" jdbcType="INTEGER" property="enableCreateResource"/>
-        <result column="lightweight" jdbcType="INTEGER" property="lightweight"/>
+        <result column="inlong_group_mode" jdbcType="INTEGER" property="inlongGroupMode"/>
         <result column="data_report_type" jdbcType="INTEGER" property="dataReportType"/>
         <result column="inlong_cluster_tag" jdbcType="VARCHAR" property="inlongClusterTag"/>
         <result column="ext_params" jdbcType="LONGVARCHAR" property="extParams"/>
@@ -56,80 +57,221 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        id, inlong_group_id, name, description, mq_type, mq_resource, daily_records, daily_storage,
-        peak_records, max_length, enable_zookeeper, enable_create_resource, lightweight, data_report_type,
+        id, inlong_group_id, name, description, tenant, mq_type, mq_resource, daily_records, daily_storage,
+        peak_records, max_length, enable_zookeeper, enable_create_resource, inlong_group_mode, data_report_type,
         inlong_cluster_tag, ext_params, in_charges, followers, status, previous_status, is_deleted,
         creator, modifier, create_time, modify_time, version
     </sql>
 
     <insert id="insert" useGeneratedKeys="true" keyProperty="id"
             parameterType="org.apache.inlong.manager.dao.entity.InlongGroupEntity">
-        insert into inlong_group (id, inlong_group_id,
-                                  name, description,
-                                  mq_type, mq_resource,
-                                  daily_records, daily_storage,
-                                  peak_records, max_length,
-                                  enable_zookeeper, enable_create_resource,
-                                  lightweight, data_report_type,
-                                  inlong_cluster_tag, ext_params,
-                                  in_charges, followers,
-                                  status, previous_status,
-                                  creator, modifier)
-        values (#{id,jdbcType=INTEGER}, #{inlongGroupId,jdbcType=VARCHAR},
-                #{name,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR},
-                #{mqType,jdbcType=VARCHAR}, #{mqResource,jdbcType=VARCHAR},
-                #{dailyRecords,jdbcType=INTEGER}, #{dailyStorage,jdbcType=INTEGER},
-                #{peakRecords,jdbcType=INTEGER}, #{maxLength,jdbcType=INTEGER},
-                #{enableZookeeper,jdbcType=INTEGER}, #{enableCreateResource,jdbcType=INTEGER},
-                #{lightweight,jdbcType=INTEGER}, #{dataReportType,jdbcType=INTEGER},
-                #{inlongClusterTag,jdbcType=VARCHAR}, #{extParams,jdbcType=LONGVARCHAR},
-                #{inCharges,jdbcType=VARCHAR}, #{followers,jdbcType=VARCHAR},
-                #{status,jdbcType=INTEGER}, #{previousStatus,jdbcType=INTEGER},
-                #{creator,jdbcType=VARCHAR}, #{modifier,jdbcType=VARCHAR})
+        insert into inlong_group
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            tenant,
+            <if test="id != null">
+                id,
+            </if>
+            <if test="inlongGroupId != null and inlongGroupId != ''">
+                inlong_group_id,
+            </if>
+            <if test="name != null and name != ''">
+                name,
+            </if>
+            <if test="description != null and description != ''">
+                description,
+            </if>
+            <if test="mqType != null and mqType != ''">
+                mq_type,
+            </if>
+            <if test="mqResource != null and mqResource != ''">
+                mq_resource,
+            </if>
+            <if test="dailyRecords != null">
+                daily_records,
+            </if>
+            <if test="dailyStorage != null">
+                daily_storage,
+            </if>
+            <if test="peakRecords != null">
+                peak_records,
+            </if>
+            <if test="maxLength != null">
+                max_length,
+            </if>
+            <if test="enableZookeeper != null">
+                enable_zookeeper,
+            </if>
+            <if test="enableCreateResource != null">
+                enable_create_resource,
+            </if>
+            <if test="inlongGroupMode != null">
+                inlong_group_mode,
+            </if>
+            <if test="dataReportType != null">
+                data_report_type,
+            </if>
+            <if test="inlongClusterTag != null and inlongClusterTag != ''">
+                inlong_cluster_tag,
+            </if>
+            <if test="extParams != null and extParams != ''">
+                ext_params,
+            </if>
+            <if test="inCharges != null and inCharges != ''">
+                in_charges,
+            </if>
+            <if test="followers != null and followers != ''">
+                followers,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="previousStatus != null">
+                previous_status,
+            </if>
+            <if test="creator != null and creator != ''">
+                creator,
+            </if>
+            <if test="modifier != null and modifier != ''">
+                modifier
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            #{tenant,jdbcType=VARCHAR},
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="inlongGroupId != null and inlongGroupId != ''">
+                #{inlongGroupId,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null and name != ''">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="description != null and description != ''">
+                #{description,jdbcType=VARCHAR},
+            </if>
+            <if test="mqType != null and mqType != ''">
+                #{mqType,jdbcType=VARCHAR},
+            </if>
+            <if test="mqResource != null and mqResource != ''">
+                #{mqResource,jdbcType=VARCHAR},
+            </if>
+            <if test="dailyRecords != null">
+                #{dailyRecords,jdbcType=INTEGER},
+            </if>
+            <if test="dailyStorage != null">
+                #{dailyStorage,jdbcType=INTEGER},
+            </if>
+            <if test="peakRecords != null">
+                #{peakRecords,jdbcType=INTEGER},
+            </if>
+            <if test="maxLength != null">
+                #{maxLength,jdbcType=INTEGER},
+            </if>
+            <if test="enableZookeeper != null">
+                #{enableZookeeper,jdbcType=INTEGER},
+            </if>
+            <if test="enableCreateResource != null">
+                #{enableCreateResource,jdbcType=INTEGER},
+            </if>
+            <if test="inlongGroupMode != null">
+                #{inlongGroupMode,jdbcType=INTEGER},
+            </if>
+            <if test="dataReportType != null">
+                #{dataReportType,jdbcType=INTEGER},
+            </if>
+            <if test="inlongClusterTag != null and inlongClusterTag != ''">
+                #{inlongClusterTag,jdbcType=VARCHAR},
+            </if>
+            <if test="extParams != null and extParams != ''">
+                #{extParams,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="inCharges != null and inCharges != ''">
+                #{inCharges,jdbcType=VARCHAR},
+            </if>
+            <if test="followers != null and followers != ''">
+                #{followers,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=INTEGER},
+            </if>
+            <if test="previousStatus != null">
+                #{previousStatus,jdbcType=INTEGER},
+            </if>
+            <if test="creator != null and creator != ''">
+                #{creator,jdbcType=VARCHAR},
+            </if>
+            <if test="modifier != null and modifier != ''">
+                #{modifier,jdbcType=VARCHAR}
+            </if>
+        </trim>
     </insert>
 
-    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-        select
-        <include refid="Base_Column_List"/>
-        from inlong_group
-        where id = #{id,jdbcType=INTEGER}
-    </select>
-    <select id="countGroupByUser" resultMap="statusCountMap">
-        select count(*) as total, status
-        from inlong_group
-        where is_deleted = 0
-          <if test="lightweight != null">
-              and lightweight = #{lightweight,jdbcType=TINYINT}
-          </if>
-          and (creator = #{username,jdbcType=VARCHAR} or find_in_set(#{username,jdbcType=VARCHAR}, in_charges))
-        group by status
-    </select>
-    <select id="selectByGroupId" resultMap="BaseResultMap">
-        select
-        <include refid="Base_Column_List"/>
-        from inlong_group
-        where inlong_group_id = #{groupId, jdbcType=VARCHAR}
-        and is_deleted = 0
-    </select>
-    <select id="selectByGroupIdForUpdate" resultMap="BaseResultMap">
-        select
-        <include refid="Base_Column_List"/>
-        from inlong_group
-        where inlong_group_id = #{groupId, jdbcType=VARCHAR}
-        and is_deleted = 0 for update
-    </select>
-    <select id="selectByCondition" resultMap="BaseResultMap"
-            parameterType="org.apache.inlong.manager.pojo.group.InlongGroupPageRequest">
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap">
+        <bind name="_isInlongService" value="LoginUser.InlongService"/>
         select
         <include refid="Base_Column_List"/>
         from inlong_group
         <where>
-            is_deleted = 0
-            <if test="isAdminRole == false">
-                and (
-                creator = #{currentUser, jdbcType=VARCHAR} or find_in_set(#{currentUser, jdbcType=VARCHAR}, in_charges)
-                )
+            id = #{id,jdbcType=INTEGER}
+            <if test="_isInlongService == false">
+                and tenant = #{tenant,jdbcType=VARCHAR}
             </if>
+        </where>
+    </select>
+    <select id="countGroupByUser" resultMap="statusCountMap">
+        <bind name="_isInlongService" value="LoginUser.InlongService"/>
+        select count(*) as total, status
+        from inlong_group
+        <where>
+            <if test="_isInlongService == false">
+                tenant = #{tenant,jdbcType=VARCHAR}
+            </if>
+            and is_deleted = 0
+            <if test="inlongGroupMode != null">
+                and inlong_group_mode = #{inlongGroupMode,jdbcType=TINYINT}
+            </if>
+            and (creator = #{username,jdbcType=VARCHAR} or find_in_set(#{username,jdbcType=VARCHAR}, in_charges))
+        </where>
+        group by status
+    </select>
+    <select id="selectByGroupId" resultMap="BaseResultMap">
+        <bind name="_isInlongService" value="LoginUser.InlongService"/>
+        select
+        <include refid="Base_Column_List"/>
+        from inlong_group
+        <where>
+            inlong_group_id = #{groupId, jdbcType=VARCHAR}
+            <if test="_isInlongService == false">
+                and tenant = #{tenant,jdbcType=VARCHAR}
+            </if>
+            and is_deleted = 0
+        </where>
+    </select>
+    <select id="selectByGroupIdForUpdate" resultMap="BaseResultMap">
+        <bind name="_isInlongService" value="LoginUser.InlongService"/>
+        select
+        <include refid="Base_Column_List"/>
+        from inlong_group
+        <where>
+            inlong_group_id = #{groupId, jdbcType=VARCHAR}
+            <if test="_isInlongService == false">
+                and tenant = #{tenant,jdbcType=VARCHAR}
+            </if>
+            and is_deleted = 0
+        </where>
+         for update
+    </select>
+    <select id="selectByCondition" resultMap="BaseResultMap"
+            parameterType="org.apache.inlong.manager.pojo.group.InlongGroupPageRequest">
+        <bind name="_isInlongService" value="LoginUser.InlongService"/>
+        select
+        <include refid="Base_Column_List"/>
+        from inlong_group
+        <where>
+            <if test="_isInlongService == false">
+                tenant = #{tenant,jdbcType=VARCHAR}
+            </if>
+            and is_deleted = 0
             <if test="keyword != null and keyword != ''">
                 and (inlong_group_id like CONCAT('%',#{keyword},'%') or name like CONCAT('%',#{keyword},'%'))
             </if>
@@ -157,8 +299,8 @@
                     #{tag}
                 </foreach>
             </if>
-            <if test="lightweight != null">
-                and lightweight = #{lightweight,jdbcType=TINYINT}
+            <if test="inlongGroupMode != null">
+                and inlong_group_mode = #{inlongGroupMode,jdbcType=TINYINT}
             </if>
         </where>
         <choose>
@@ -172,11 +314,15 @@
     </select>
     <select id="selectBriefList" parameterType="org.apache.inlong.manager.pojo.group.InlongGroupPageRequest"
             resultType="org.apache.inlong.manager.pojo.group.InlongGroupBriefInfo">
+        <bind name="_isInlongService" value="LoginUser.InlongService"/>
         select id, inlong_group_id, name, mq_type, mq_resource, inlong_cluster_tag, ext_params,
                in_charges, status, creator, modifier, create_time, modify_time
         from inlong_group
         <where>
-            is_deleted = 0
+            <if test="_isInlongService == false">
+            tenant = #{tenant,jdbcType=VARCHAR}
+            </if>
+            and is_deleted = 0
             <if test="mqType != null and mqType != ''">
                 and mq_type = #{mqType, jdbcType=VARCHAR}
             </if>
@@ -198,11 +344,15 @@
         </where>
     </select>
     <select id="selectByTopicRequest" resultType="org.apache.inlong.manager.dao.entity.InlongGroupEntity">
+        <bind name="_isInlongService" value="LoginUser.InlongService"/>
         select
         <include refid="Base_Column_List"/>
         from inlong_group
         <where>
-            is_deleted = 0
+            <if test="_isInlongService == false">
+            tenant = #{tenant,jdbcType=VARCHAR}
+            </if>
+            and is_deleted = 0
             <if test="groupIdList != null and groupIdList.size() > 0">
                 and inlong_group_id in
                 <foreach collection="groupIdList" item="inlongGroupId" index="index" open="(" close=")" separator=",">
@@ -212,32 +362,51 @@
         </where>
     </select>
     <select id="selectByClusterTag" resultType="org.apache.inlong.manager.dao.entity.InlongGroupEntity">
+        <bind name="_isInlongService" value="LoginUser.InlongService"/>
         select
         <include refid="Base_Column_List"/>
         from inlong_group
-        where is_deleted = 0
-        and inlong_cluster_tag = #{inlongClusterTag, jdbcType=VARCHAR}
+        <where>
+            <if test="_isInlongService == false">
+                tenant = #{tenant,jdbcType=VARCHAR}
+            </if>
+            and is_deleted = 0
+            and inlong_cluster_tag = #{inlongClusterTag, jdbcType=VARCHAR}
+        </where>
         limit 10
     </select>
     <select id="selectAllGroups" resultType="org.apache.inlong.manager.pojo.sort.standalone.SortSourceGroupInfo">
+        <bind name="_isInlongService" value="LoginUser.InlongService"/>
         select inlong_group_id    as groupId,
                inlong_cluster_tag as clusterTag,
                mq_resource        as mqResource,
                ext_params         as extParams,
                mq_type            as mqType
         from inlong_group
-        where is_deleted = 0
+        <where>
+            <if test="_isInlongService == false">
+               tenant = #{tenant,jdbcType=VARCHAR}
+            </if>
+            and is_deleted = 0
+        </where>
     </select>
     <select id="selectDeletedGroupIds" resultType="java.lang.String">
+        <bind name="_isInlongService" value="LoginUser.InlongService"/>
         select inlong_group_id
         from inlong_group
-        where modify_time &lt;= #{timeBefore, jdbcType=TIMESTAMP}
+        <where>
+            <if test="_isInlongService == false">
+                tenant = #{tenant,jdbcType=VARCHAR}
+            </if>
+            and modify_time &lt;= #{timeBefore, jdbcType=TIMESTAMP}
+        </where>
         group by inlong_group_id
         having min(is_deleted) > 0
         limit #{limit, jdbcType=INTEGER}
     </select>
 
     <update id="updateByPrimaryKey" parameterType="org.apache.inlong.manager.dao.entity.InlongGroupEntity">
+        <bind name="_isInlongService" value="LoginUser.InlongService"/>
         update inlong_group
         set inlong_group_id        = #{inlongGroupId,jdbcType=VARCHAR},
             name                   = #{name,jdbcType=VARCHAR},
@@ -251,7 +420,7 @@
 
             enable_zookeeper       = #{enableZookeeper,jdbcType=INTEGER},
             enable_create_resource = #{enableCreateResource,jdbcType=INTEGER},
-            lightweight            = #{lightweight,jdbcType=INTEGER},
+            inlong_group_mode      = #{inlongGroupMode,jdbcType=INTEGER},
             data_report_type       = #{dataReportType,jdbcType=INTEGER},
             inlong_cluster_tag     = #{inlongClusterTag,jdbcType=VARCHAR},
 
@@ -263,10 +432,16 @@
             is_deleted             = #{isDeleted,jdbcType=INTEGER},
             modifier               = #{modifier,jdbcType=VARCHAR},
             version                = #{version,jdbcType=INTEGER} + 1
-        where id = #{id,jdbcType=INTEGER}
-          and version = #{version,jdbcType=INTEGER}
+        <where>
+            <if test="_isInlongService == false">
+                tenant = #{tenant,jdbcType=VARCHAR}
+            </if>
+            and id = #{id,jdbcType=INTEGER}
+            and version = #{version,jdbcType=INTEGER}
+        </where>
     </update>
     <update id="updateByIdentifierSelective" parameterType="org.apache.inlong.manager.dao.entity.InlongGroupEntity">
+        <bind name="_isInlongService" value="LoginUser.InlongService"/>
         update inlong_group
         <set>
             <if test="name != null">
@@ -299,8 +474,8 @@
             <if test="enableCreateResource != null">
                 enable_create_resource = #{enableCreateResource,jdbcType=INTEGER},
             </if>
-            <if test="lightweight != null">
-                lightweight = #{lightweight,jdbcType=INTEGER},
+            <if test="inlongGroupMode != null">
+                inlong_group_mode = #{inlongGroupMode,jdbcType=INTEGER},
             </if>
             <if test="dataReportType != null">
                 data_report_type = #{dataReportType,jdbcType=INTEGER},
@@ -331,30 +506,53 @@
             </if>
             version = #{version,jdbcType=INTEGER} + 1
         </set>
-        where inlong_group_id = #{inlongGroupId, jdbcType=VARCHAR}
-        and is_deleted = 0
-        and version = #{version, jdbcType=INTEGER}
+        <where>
+            inlong_group_id = #{inlongGroupId, jdbcType=VARCHAR}
+            <if test="_isInlongService == false">
+                and tenant = #{tenant,jdbcType=VARCHAR}
+            </if>
+            and is_deleted = 0
+            and version = #{version, jdbcType=INTEGER}
+        </where>
     </update>
     <update id="updateStatus">
+        <bind name="_isInlongService" value="LoginUser.InlongService"/>
         update inlong_group
         set previous_status = status,
             status          = #{status, jdbcType=INTEGER},
             modifier        = #{modifier, jdbcType=VARCHAR}
-        where inlong_group_id = #{groupId, jdbcType=VARCHAR}
-          and is_deleted = 0
+        <where>
+            inlong_group_id = #{groupId, jdbcType=VARCHAR}
+            <if test="_isInlongService == false">
+                and tenant = #{tenant,jdbcType=VARCHAR}
+            </if>
+            and is_deleted = 0
+        </where>
     </update>
 
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <delete id="deleteByPrimaryKey">
+        <bind name="_isInlongService" value="LoginUser.InlongService"/>
         delete
         from inlong_group
-        where id = #{id,jdbcType=INTEGER}
+        <where>
+            id = #{id,jdbcType=INTEGER}
+            <if test="_isInlongService == false">
+                and tenant = #{tenant,jdbcType=VARCHAR}
+            </if>
+        </where>
     </delete>
     <delete id="deleteByInlongGroupIds">
+        <bind name="_isInlongService" value="LoginUser.InlongService"/>
         delete
         from inlong_group
-        where inlong_group_id in
-        <foreach item="item" index="index" collection="groupIdList" open="(" close=")" separator=",">
-            #{item}
-        </foreach>
+        <where>
+            inlong_group_id in
+            <foreach item="item" index="index" collection="groupIdList" open="(" close=")" separator=",">
+                #{item}
+            </foreach>
+            <if test="_isInlongService == false">
+                and tenant = #{tenant,jdbcType=VARCHAR}
+            </if>
+        </where>
     </delete>
 </mapper>

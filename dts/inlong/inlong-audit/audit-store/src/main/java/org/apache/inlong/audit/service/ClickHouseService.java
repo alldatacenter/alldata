@@ -20,6 +20,7 @@ package org.apache.inlong.audit.service;
 import org.apache.inlong.audit.config.ClickHouseConfig;
 import org.apache.inlong.audit.db.entities.ClickHouseDataPo;
 import org.apache.inlong.audit.protocol.AuditData;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

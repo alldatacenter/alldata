@@ -37,6 +37,7 @@ type heartbeatMetadata struct {
 }
 
 type heartbeatManager struct {
+	producer   *producer
 	consumer   *consumer
 	heartbeats map[string]*heartbeatMetadata
 	mu         sync.Mutex
@@ -54,10 +55,21 @@ func (h *heartbeatManager) registerMaster(address string) {
 	defer h.mu.Unlock()
 	hm, ok := h.heartbeats[address]
 	log.Infof("register master heartbeat address:%v, heartbeat:%+v", address, hm)
+
+	var heartbeatInterval time.Duration
+	var heartbeatFunc func()
+	if h.producer != nil {
+		heartbeatInterval = h.producer.config.Heartbeat.Interval / 2
+		heartbeatFunc = h.producerHB2Master
+	} else if h.consumer != nil {
+		heartbeatInterval = h.consumer.config.Heartbeat.Interval / 2
+		heartbeatFunc = h.consumerHB2Master
+	}
+
 	if !ok {
 		h.heartbeats[address] = &heartbeatMetadata{
 			numConnections: 1,
-			timer:          time.AfterFunc(h.consumer.config.Heartbeat.Interval/2, h.consumerHB2Master),
+			timer:          time.AfterFunc(heartbeatInterval, heartbeatFunc),
 		}
 		return
 	}
@@ -90,6 +102,35 @@ func (h *heartbeatManager) registerBroker(broker *metadata.Node) {
 		return
 	}
 	hm.numConnections++
+}
+
+func (h *heartbeatManager) producerHB2Master() {
+	m := &metadata.Metadata{}
+	node := &metadata.Node{}
+	node.SetHost(util.GetLocalHost())
+	node.SetAddress(h.producer.master.Address)
+	m.SetNode(node)
+
+	auth := &protocol.AuthenticateInfo{}
+	if h.producer.needGenMasterCertificateInfo(true) {
+		util.GenMasterAuthenticateToken(auth, h.producer.config.Net.Auth.UserName, h.producer.config.Net.Auth.Password)
+	}
+
+	h.producer.unreportedTimes++
+	if h.producer.unreportedTimes > h.producer.config.Producer.MaxPubInfoInterval {
+		m.SetReportTimes(true)
+		h.producer.unreportedTimes = 0
+	}
+
+	rsp, err := h.sendHeartbeatP2M(m)
+	if err == nil {
+		h.producer.masterHBRetry = 0
+		h.processHBResponseM2P(rsp)
+		h.resetMasterHeartbeat()
+		return
+	}
+	h.producer.masterHBRetry++
+	h.resetMasterHeartbeat()
 }
 
 func (h *heartbeatManager) consumerHB2Master() {
@@ -147,8 +188,21 @@ func (h *heartbeatManager) consumerHB2Master() {
 func (h *heartbeatManager) resetMasterHeartbeat() {
 	h.mu.Lock()
 	defer h.mu.Unlock()
-	hm := h.heartbeats[h.consumer.master.Address]
+	var address string
+	if h.producer != nil {
+		address = h.producer.master.Address
+	} else {
+		address = h.consumer.master.Address
+	}
+	hm := h.heartbeats[address]
 	hm.timer.Reset(h.nextHeartbeatInterval())
+}
+
+func (h *heartbeatManager) sendHeartbeatP2M(m *metadata.Metadata) (*protocol.HeartResponseM2P, error) {
+	ctx, cancel := context.WithTimeout(context.Background(), h.producer.config.Net.ReadTimeout)
+	defer cancel()
+	rsp, err := h.producer.client.HeartRequestP2M(ctx, m, h.producer.clientID, h.producer.brokerCheckSum, h.producer.publishTopics)
+	return rsp, err
 }
 
 func (h *heartbeatManager) sendHeartbeatC2M(m *metadata.Metadata) (*protocol.HeartResponseM2C, error) {
@@ -156,6 +210,18 @@ func (h *heartbeatManager) sendHeartbeatC2M(m *metadata.Metadata) (*protocol.Hea
 	defer cancel()
 	rsp, err := h.consumer.client.HeartRequestC2M(ctx, m, h.consumer.subInfo, h.consumer.rmtDataCache)
 	return rsp, err
+}
+
+func (h *heartbeatManager) processHBResponseM2P(rsp *protocol.HeartResponseM2P) {
+	h.producer.masterHBRetry = 0
+	topicInfos := rsp.GetTopicInfos()
+	brokerInfos := rsp.GetBrokerInfos()
+
+	// update broker meta
+	h.producer.updateBrokerInfoList(brokerInfos)
+
+	// update topic meta
+	h.producer.updateTopicConfigure(topicInfos)
 }
 
 func (h *heartbeatManager) processHBResponseM2C(rsp *protocol.HeartResponseM2C) {
@@ -195,9 +261,17 @@ func (h *heartbeatManager) processHBResponseM2C(rsp *protocol.HeartResponseM2C) 
 }
 
 func (h *heartbeatManager) nextHeartbeatInterval() time.Duration {
-	interval := h.consumer.config.Heartbeat.Interval
-	if h.consumer.masterHBRetry >= h.consumer.config.Heartbeat.MaxRetryTimes {
-		interval = h.consumer.config.Heartbeat.AfterFail
+	var interval time.Duration
+	if h.producer != nil {
+		interval = h.producer.config.Heartbeat.Interval
+		if h.producer.masterHBRetry >= h.producer.config.Heartbeat.MaxRetryTimes {
+			interval = h.producer.config.Heartbeat.AfterFail
+		}
+	} else {
+		interval = h.consumer.config.Heartbeat.Interval
+		if h.consumer.masterHBRetry >= h.consumer.config.Heartbeat.MaxRetryTimes {
+			interval = h.consumer.config.Heartbeat.AfterFail
+		}
 	}
 	return interval
 }

@@ -20,6 +20,7 @@ package org.apache.inlong.sdk.sort.fetcher.kafka;
 import org.apache.inlong.sdk.sort.api.Seeker;
 import org.apache.inlong.sdk.sort.entity.InLongTopic;
 import org.apache.inlong.sdk.sort.util.TimeUtil;
+
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.clients.consumer.OffsetAndTimestamp;
 import org.apache.kafka.common.TopicPartition;

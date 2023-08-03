@@ -17,27 +17,32 @@
 
 package org.apache.inlong.sort.formats.kv;
 
-import static org.apache.flink.table.descriptors.FormatDescriptorValidator.FORMAT_DERIVE_SCHEMA;
-import static org.apache.flink.util.Preconditions.checkNotNull;
+import org.apache.inlong.sort.formats.base.TableFormatConstants;
+
+import org.apache.flink.table.descriptors.Descriptor;
+import org.apache.flink.table.descriptors.DescriptorProperties;
 
 import java.nio.charset.Charset;
 import java.util.Map;
-import org.apache.flink.table.descriptors.DescriptorProperties;
-import org.apache.flink.table.descriptors.FormatDescriptor;
-import org.apache.inlong.sort.formats.base.TableFormatConstants;
+
+import static org.apache.flink.util.Preconditions.checkNotNull;
+import static org.apache.inlong.sort.formats.base.TableFormatConstants.FORMAT_DERIVE_SCHEMA;
 
 /**
  * Format descriptor for KVs.
  */
-public class Kv extends FormatDescriptor {
+public class Kv implements Descriptor {
 
     public static final String FORMAT_TYPE_VALUE = "tdkv";
+    private final String type;
+    private final int version;
 
     private DescriptorProperties internalProperties =
             new DescriptorProperties(true);
 
     public Kv() {
-        super(FORMAT_TYPE_VALUE, 1);
+        this.type = FORMAT_TYPE_VALUE;
+        this.version = 1;
     }
 
     /**
@@ -139,7 +144,15 @@ public class Kv extends FormatDescriptor {
         return this;
     }
 
-    @Override
+    /** Converts this descriptor into a set of properties. */
+    public final Map<String, String> toProperties() {
+        final DescriptorProperties properties = new DescriptorProperties();
+        properties.putString(TableFormatConstants.FORMAT_TYPE, type);
+        properties.putInt(TableFormatConstants.FORMAT_PROPERTY_VERSION, version);
+        properties.putProperties(toFormatProperties());
+        return properties.asMap();
+    }
+
     protected Map<String, String> toFormatProperties() {
         final DescriptorProperties properties = new DescriptorProperties();
         properties.putProperties(internalProperties);

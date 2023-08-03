@@ -66,8 +66,8 @@ def test_columns_types_fail(data_source_fixture: DataSourceFixture):
     data_source = data_source_fixture.data_source
     default_casify_column_name = data_source.default_casify_column_name
 
-    assert check.schema_missing_column_names == [default_casify_column_name("does_not_exist")]
-    assert check.schema_column_type_mismatches == {
+    assert check.fail_result.missing_column_names == [default_casify_column_name("does_not_exist")]
+    assert check.fail_result.column_type_mismatches == {
         default_casify_column_name("id"): {
             "expected_type": data_source.default_casify_type_name("integer"),
             "actual_type": data_source.get_sql_type_for_schema_check(DataType.TEXT),
@@ -102,8 +102,8 @@ def test_columns_types_warn(data_source_fixture: DataSourceFixture):
     data_source = data_source_fixture.data_source
     default_casify_column_name = data_source.default_casify_column_name
 
-    assert check.schema_missing_column_names == [default_casify_column_name("does_not_exist")]
-    assert check.schema_column_type_mismatches == {
+    assert check.warn_result.missing_column_names == [default_casify_column_name("does_not_exist")]
+    assert check.warn_result.column_type_mismatches == {
         default_casify_column_name("id"): {
             "expected_type": data_source.default_casify_type_name("integer"),
             "actual_type": data_source.get_sql_type_for_schema_check(DataType.TEXT),

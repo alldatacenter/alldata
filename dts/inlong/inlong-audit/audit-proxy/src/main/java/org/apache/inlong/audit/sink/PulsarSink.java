@@ -17,6 +17,12 @@
 
 package org.apache.inlong.audit.sink;
 
+import org.apache.inlong.audit.base.HighPriorityThreadFactory;
+import org.apache.inlong.audit.sink.pulsar.CreatePulsarClientCallBack;
+import org.apache.inlong.audit.sink.pulsar.PulsarClientService;
+import org.apache.inlong.audit.sink.pulsar.SendMessageCallBack;
+import org.apache.inlong.audit.utils.FailoverChannelProcessorHolder;
+
 import com.google.common.base.Preconditions;
 import com.google.common.util.concurrent.RateLimiter;
 import io.netty.handler.codec.TooLongFrameException;
@@ -28,11 +34,6 @@ import org.apache.flume.Transaction;
 import org.apache.flume.conf.Configurable;
 import org.apache.flume.instrumentation.SinkCounter;
 import org.apache.flume.sink.AbstractSink;
-import org.apache.inlong.audit.base.HighPriorityThreadFactory;
-import org.apache.inlong.audit.sink.pulsar.CreatePulsarClientCallBack;
-import org.apache.inlong.audit.sink.pulsar.PulsarClientService;
-import org.apache.inlong.audit.sink.pulsar.SendMessageCallBack;
-import org.apache.inlong.audit.utils.FailoverChannelProcessorHolder;
 import org.apache.pulsar.client.api.PulsarClientException;
 import org.apache.pulsar.client.api.PulsarClientException.AlreadyClosedException;
 import org.apache.pulsar.client.api.PulsarClientException.NotConnectedException;

@@ -17,11 +17,13 @@
 
 package org.apache.inlong.tubemq.corebase.aaaclient;
 
-import java.security.SecureRandom;
-import org.apache.commons.codec.binary.StringUtils;
 import org.apache.inlong.tubemq.corebase.TokenConstants;
 import org.apache.inlong.tubemq.corebase.protobuf.generated.ClientMaster;
 import org.apache.inlong.tubemq.corebase.utils.TStringUtils;
+
+import org.apache.commons.codec.binary.StringUtils;
+
+import java.security.SecureRandom;
 
 public class SimpleClientAuthenticateHandler implements ClientAuthenticateHandler {
 

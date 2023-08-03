@@ -17,22 +17,23 @@
 
 package org.apache.inlong.sort.standalone.config.holder;
 
-import static org.apache.inlong.sort.standalone.utils.Constants.RELOAD_INTERVAL;
-
-import java.util.Date;
-import java.util.Timer;
-import java.util.TimerTask;
-
-import org.apache.commons.lang3.ClassUtils;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.flume.Context;
 import org.apache.inlong.common.pojo.sortstandalone.SortClusterConfig;
 import org.apache.inlong.common.pojo.sortstandalone.SortTaskConfig;
 import org.apache.inlong.sort.standalone.config.loader.ClassResourceSortClusterConfigLoader;
 import org.apache.inlong.sort.standalone.config.loader.ManagerSortClusterConfigLoader;
 import org.apache.inlong.sort.standalone.config.loader.SortClusterConfigLoader;
 import org.apache.inlong.sort.standalone.utils.InlongLoggerFactory;
+
+import org.apache.commons.lang3.ClassUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.flume.Context;
 import org.slf4j.Logger;
+
+import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import static org.apache.inlong.sort.standalone.utils.Constants.RELOAD_INTERVAL;
 
 /**
  * 

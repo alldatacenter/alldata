@@ -17,12 +17,13 @@
 
 package org.apache.inlong.sort.formats.kv;
 
+import org.junit.Test;
+
+import java.util.HashMap;
+
 import static org.apache.inlong.sort.formats.util.StringUtils.concatKv;
 import static org.apache.inlong.sort.formats.util.StringUtils.splitKv;
 import static org.junit.Assert.assertEquals;
-
-import java.util.HashMap;
-import org.junit.Test;
 
 /**
  * Unit tests for kv splitting and concating.

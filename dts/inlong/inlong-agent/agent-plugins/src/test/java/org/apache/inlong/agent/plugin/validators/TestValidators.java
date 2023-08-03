@@ -17,12 +17,13 @@
 
 package org.apache.inlong.agent.plugin.validators;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
 import org.apache.inlong.agent.plugin.validator.PatternValidator;
 import org.apache.inlong.agent.plugin.validator.PrefixValidator;
+
 import org.junit.Test;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class TestValidators {
 

@@ -17,10 +17,11 @@
 
 package org.apache.inlong.manager.client.cli.validator;
 
+import org.apache.inlong.manager.common.enums.SimpleGroupStatus;
+
 import com.beust.jcommander.IParameterValidator;
 import com.beust.jcommander.ParameterException;
 import org.apache.commons.lang3.EnumUtils;
-import org.apache.inlong.manager.common.enums.SimpleGroupStatus;
 
 /**
  * Class for inlong group status verification.

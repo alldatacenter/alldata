@@ -17,10 +17,11 @@
 
 package org.apache.inlong.manager.pojo.stream;
 
+import org.apache.inlong.manager.pojo.sink.SinkApproveDTO;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-import org.apache.inlong.manager.pojo.sink.SinkApproveDTO;
 
 import java.util.List;
 

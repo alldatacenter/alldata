@@ -21,6 +21,7 @@ import org.apache.inlong.agent.conf.AgentConfiguration;
 import org.apache.inlong.common.metric.MetricItem;
 import org.apache.inlong.common.metric.MetricObserver;
 import org.apache.inlong.common.metric.MetricRegister;
+
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;

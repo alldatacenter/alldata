@@ -1,9 +1,0 @@
-SELECT materialize(toFixedString('', 1)) AS x FROM system.one GROUP BY materialize(toFixedString('', 1));
-SELECT materialize(toFixedString('', 2)) AS x FROM system.one GROUP BY materialize(toFixedString('', 2));
-SELECT materialize(toFixedString('', 3)) AS x FROM system.one GROUP BY materialize(toFixedString('', 3));
-SELECT materialize(toFixedString('', 4)) AS x FROM system.one GROUP BY materialize(toFixedString('', 4));
-SELECT materialize(toFixedString('', 5)) AS x FROM system.one GROUP BY materialize(toFixedString('', 5));
-SELECT materialize(toFixedString('', 6)) AS x FROM system.one GROUP BY materialize(toFixedString('', 6));
-SELECT materialize(toFixedString('', 7)) AS x FROM system.one GROUP BY materialize(toFixedString('', 7));
-SELECT materialize(toFixedString('', 8)) AS x FROM system.one GROUP BY materialize(toFixedString('', 8));
-SELECT materialize(toFixedString('', 9)) AS x FROM system.one GROUP BY materialize(toFixedString('', 9));

@@ -1,3 +1,4 @@
+from soda.common.undefined_instance import undefined
 from soda.execution.metric.query_metric import QueryMetric
 
 
@@ -33,7 +34,9 @@ class SchemaMetric(QueryMetric):
             "tableName": Partition.get_table_name(self.partition),
             "partitionName": Partition.get_partition_name(self.partition),
             "columnName": Column.get_partition_name(self.column),
-            "value": [{"columnName": c["name"], "sourceDataType": c["type"]} for c in self.value],
+            "value": [{"columnName": c["name"], "sourceDataType": c["type"]} for c in self.value]
+            if self.value is not undefined
+            else self.value,
         }
 
     def get_dict(self):
@@ -47,5 +50,7 @@ class SchemaMetric(QueryMetric):
             "tableName": Partition.get_table_name(self.partition),
             "partitionName": Partition.get_partition_name(self.partition),
             "columnName": Column.get_partition_name(self.column),
-            "value": [{"columnName": c["name"], "sourceDataType": c["type"]} for c in self.value],
+            "value": [{"columnName": c["name"], "sourceDataType": c["type"]} for c in self.value]
+            if self.value is not undefined
+            else self.value,
         }

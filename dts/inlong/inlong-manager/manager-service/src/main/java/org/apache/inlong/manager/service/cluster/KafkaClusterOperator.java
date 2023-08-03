@@ -17,8 +17,6 @@
 
 package org.apache.inlong.manager.service.cluster;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.inlong.manager.common.enums.ClusterType;
 import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
 import org.apache.inlong.manager.common.exceptions.BusinessException;
@@ -30,6 +28,9 @@ import org.apache.inlong.manager.pojo.cluster.ClusterRequest;
 import org.apache.inlong.manager.pojo.cluster.kafka.KafkaClusterDTO;
 import org.apache.inlong.manager.pojo.cluster.kafka.KafkaClusterInfo;
 import org.apache.inlong.manager.pojo.cluster.kafka.KafkaClusterRequest;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.kafka.clients.admin.Admin;
 import org.apache.kafka.clients.admin.AdminClientConfig;
 import org.apache.kafka.clients.admin.ListTopicsOptions;
@@ -39,6 +40,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 
 /**
@@ -83,7 +86,7 @@ public class KafkaClusterOperator extends AbstractClusterOperator {
         KafkaClusterRequest kafkaRequest = (KafkaClusterRequest) request;
         CommonBeanUtils.copyProperties(kafkaRequest, targetEntity, true);
         try {
-            KafkaClusterDTO dto = KafkaClusterDTO.getFromRequest(kafkaRequest);
+            KafkaClusterDTO dto = KafkaClusterDTO.getFromRequest(kafkaRequest, targetEntity.getExtParams());
             targetEntity.setExtParams(objectMapper.writeValueAsString(dto));
             LOGGER.debug("success to set entity for kafka cluster");
         } catch (Exception e) {
@@ -109,6 +112,14 @@ public class KafkaClusterOperator extends AbstractClusterOperator {
             LOGGER.error(errMsg, e);
             throw new BusinessException(errMsg);
         }
+    }
+
+    @Override
+    public Object getClusterInfo(InlongClusterEntity entity) {
+        KafkaClusterInfo kafkaClusterInfo = (KafkaClusterInfo) this.getFromEntity(entity);
+        Map<String, String> map = new HashMap<>();
+        map.put("url", kafkaClusterInfo.getUrl());
+        return map;
     }
 
 }

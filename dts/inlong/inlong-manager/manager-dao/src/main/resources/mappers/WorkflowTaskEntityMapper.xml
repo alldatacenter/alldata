@@ -28,6 +28,7 @@
         <result column="process_display_name" jdbcType="VARCHAR" property="processDisplayName"/>
         <result column="name" jdbcType="VARCHAR" property="name"/>
         <result column="display_name" jdbcType="VARCHAR" property="displayName"/>
+        <result column="tenant" jdbcType="VARCHAR" property="tenant"/>
         <result column="applicant" jdbcType="VARCHAR" property="applicant"/>
         <result column="approvers" jdbcType="VARCHAR" property="approvers"/>
         <result column="status" jdbcType="VARCHAR" property="status"/>
@@ -40,35 +41,39 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        id, type, process_id, process_name, process_display_name, name, display_name, applicant, approvers,
+        id, type, process_id, process_name, process_display_name, name, display_name, tenant, applicant, approvers,
         status, operator, remark, start_time, end_time, form_data, ext_params
     </sql>
 
     <insert id="insert" useGeneratedKeys="true" keyProperty="id"
             parameterType="org.apache.inlong.manager.dao.entity.WorkflowTaskEntity">
-        insert into workflow_task (id, type, process_id, process_name, process_display_name, name,
-                                   display_name, applicant, approvers, status,
+        insert into workflow_task (id, type, process_id,
+                                   process_name, process_display_name,
+                                   name, display_name, tenant,
+                                   applicant, approvers, status,
                                    operator, remark, start_time,
                                    end_time, form_data, ext_params)
         values (#{id,jdbcType=INTEGER}, #{type,jdbcType=VARCHAR}, #{processId,jdbcType=INTEGER},
-                #{processName,jdbcType=VARCHAR}, #{processDisplayName,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR},
-                #{displayName,jdbcType=VARCHAR}, #{applicant,jdbcType=VARCHAR}, #{approvers,jdbcType=VARCHAR},
-                #{status,jdbcType=VARCHAR},
+                #{processName,jdbcType=VARCHAR}, #{processDisplayName,jdbcType=VARCHAR},
+                #{name,jdbcType=VARCHAR}, #{displayName,jdbcType=VARCHAR},  #{tenant,jdbcType=VARCHAR},
+                #{applicant,jdbcType=VARCHAR}, #{approvers,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR},
                 #{operator,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{startTime,jdbcType=TIMESTAMP},
                 #{endTime,jdbcType=TIMESTAMP}, #{formData,jdbcType=LONGVARCHAR}, #{extParams,jdbcType=LONGVARCHAR})
     </insert>
 
-    <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <select id="selectById" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
         from workflow_task
-        where id = #{id,jdbcType=INTEGER}
+        where tenant = #{tenant,jdbcType=VARCHAR}
+        and id = #{id,jdbcType=INTEGER}
     </select>
     <select id="selectByProcess" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
         from workflow_task
-        where process_id = #{processId,jdbcType=INTEGER}
+        where tenant = #{tenant,jdbcType=VARCHAR}
+        and process_id = #{processId,jdbcType=INTEGER}
         and status = #{status,jdbcType=VARCHAR}
     </select>
     <select id="selectByQuery"
@@ -78,6 +83,7 @@
         <include refid="Base_Column_List"/>
         from workflow_task
         <where>
+            tenant = #{tenant,jdbcType=VARCHAR}
             <if test="id != null">
                 and id = #{id,jdbcType=INTEGER}
             </if>
@@ -126,10 +132,11 @@
         </where>
         order by id desc
     </select>
-    <select id="countByStatus" resultType="java.lang.Integer">
+    <select id="countByStatus">
         select count(1)
         from workflow_task
-        where process_id = #{processId, jdbcType=INTEGER}
+        where tenant = #{tenant,jdbcType=VARCHAR}
+          and process_id = #{processId, jdbcType=INTEGER}
           and name = #{name, jdbcType=VARCHAR}
           and status = #{status, jdbcType=VARCHAR}
     </select>
@@ -139,6 +146,7 @@
         select status as `key`, count(1) as `value`
         from workflow_task
         <where>
+            tenant = #{tenant,jdbcType=VARCHAR}
             <if test="processId != null">
                 and process_id = #{processId,jdbcType=INTEGER}
             </if>
@@ -184,7 +192,8 @@
             form_data  = #{formData,jdbcType=LONGVARCHAR},
             ext_params = #{extParams,jdbcType=LONGVARCHAR},
             end_time   = #{endTime,jdbcType=TIMESTAMP}
-        where id = #{id,jdbcType=INTEGER}
+        where tenant = #{tenant,jdbcType=VARCHAR}
+        and id = #{id,jdbcType=INTEGER}
     </update>
 
     <delete id="deleteByProcessIds">
@@ -194,5 +203,6 @@
         <foreach item="item" index="index" collection="processIdList" open="(" close=")" separator=",">
             #{item}
         </foreach>
+        and tenant = #{tenant,jdbcType=VARCHAR}
     </delete>
 </mapper>

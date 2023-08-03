@@ -20,21 +20,16 @@ package org.apache.inlong.manager.common.consts;
 /**
  * Constants of sink type.
  */
-public class SinkType {
+public class SinkType extends StreamType {
 
     public static final String HIVE = "HIVE";
-    public static final String KAFKA = "KAFKA";
     public static final String ICEBERG = "ICEBERG";
-    public static final String HUDI = "HUDI";
     public static final String CLICKHOUSE = "CLICKHOUSE";
     public static final String HBASE = "HBASE";
-    public static final String POSTGRESQL = "POSTGRESQL";
     public static final String ELASTICSEARCH = "ELASTICSEARCH";
-    public static final String SQLSERVER = "SQLSERVER";
     public static final String HDFS = "HDFS";
     public static final String GREENPLUM = "GREENPLUM";
     public static final String MYSQL = "MYSQL";
-    public static final String ORACLE = "ORACLE";
     public static final String TDSQLPOSTGRESQL = "TDSQLPOSTGRESQL";
     public static final String DORIS = "DORIS";
     public static final String STARROCKS = "STARROCKS";

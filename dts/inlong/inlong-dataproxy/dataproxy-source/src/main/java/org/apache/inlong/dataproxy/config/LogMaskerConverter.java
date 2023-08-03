@@ -18,6 +18,7 @@
 package org.apache.inlong.dataproxy.config;
 
 import org.apache.inlong.common.util.MaskDataUtils;
+
 import org.apache.logging.log4j.core.LogEvent;
 import org.apache.logging.log4j.core.config.plugins.Plugin;
 import org.apache.logging.log4j.core.pattern.ConverterKeys;

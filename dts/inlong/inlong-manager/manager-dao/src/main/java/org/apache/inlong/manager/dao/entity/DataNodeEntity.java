@@ -38,6 +38,7 @@ public class DataNodeEntity implements Serializable {
     private String token;
     private String extParams;
     private String description;
+    private String tenant;
     private String inCharges;
     private Integer status;
     private Integer isDeleted;

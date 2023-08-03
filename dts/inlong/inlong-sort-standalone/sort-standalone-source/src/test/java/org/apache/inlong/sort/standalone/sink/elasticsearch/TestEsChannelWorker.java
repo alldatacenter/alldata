@@ -17,11 +17,12 @@
 
 package org.apache.inlong.sort.standalone.sink.elasticsearch;
 
-import org.apache.flume.Transaction;
 import org.apache.inlong.common.metric.MetricRegister;
 import org.apache.inlong.sort.standalone.channel.ProfileEvent;
 import org.apache.inlong.sort.standalone.sink.SinkContext;
 import org.apache.inlong.sort.standalone.utils.BufferQueue;
+
+import org.apache.flume.Transaction;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

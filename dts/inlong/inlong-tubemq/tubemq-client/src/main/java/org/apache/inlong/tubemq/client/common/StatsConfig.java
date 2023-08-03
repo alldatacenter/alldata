@@ -17,8 +17,9 @@
 
 package org.apache.inlong.tubemq.client.common;
 
-import java.util.Objects;
 import org.apache.inlong.tubemq.corebase.utils.MixedUtils;
+
+import java.util.Objects;
 
 /**
  * StatsConfig, configuration settings related to client statistics

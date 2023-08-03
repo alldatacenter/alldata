@@ -20,11 +20,15 @@ package org.apache.inlong.manager.dao.mapper;
 import org.apache.inlong.manager.common.consts.InlongConstants;
 import org.apache.inlong.manager.dao.DaoBaseTest;
 import org.apache.inlong.manager.dao.entity.InlongGroupEntity;
+import org.apache.inlong.manager.pojo.group.InlongGroupPageRequest;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Inlong group entity mapper test for {@link InlongGroupEntityMapper}
@@ -38,8 +42,21 @@ public class InlongGroupEntityMapperTest extends DaoBaseTest {
     public void deleteByPrimaryKey() {
         InlongGroupEntity entity = createGroupEntity();
         groupEntityMapper.insert(entity);
-        groupEntityMapper.deleteByPrimaryKey(entity.getId());
+        int delete = groupEntityMapper.deleteByPrimaryKey(entity.getId());
+        Assertions.assertEquals(1, delete);
         Assertions.assertNull(groupEntityMapper.selectByGroupId(entity.getInlongGroupId()));
+    }
+
+    @Test
+    public void deleteByPrimaryKeyWithOtherTenant() {
+        InlongGroupEntity entity = createGroupEntity();
+        groupEntityMapper.insert(entity);
+        setOtherTenant(ANOTHER_TENANT);
+        int delete = groupEntityMapper.deleteByPrimaryKey(entity.getId());
+        setOtherTenant(PUBLIC_TENANT);
+        InlongGroupEntity select = groupEntityMapper.selectByGroupId(entity.getInlongGroupId());
+        Assertions.assertEquals(0, delete);
+        Assertions.assertNotNull(select);
     }
 
     @Test
@@ -48,6 +65,40 @@ public class InlongGroupEntityMapperTest extends DaoBaseTest {
         groupEntityMapper.insert(entity);
         InlongGroupEntity groupEntity = groupEntityMapper.selectByPrimaryKey(entity.getId());
         Assertions.assertEquals(entity.getInlongGroupId(), groupEntity.getInlongGroupId());
+    }
+
+    @Test
+    public void selectByPrimaryKeyWithOtherTenant() {
+        InlongGroupEntity entity = createGroupEntity();
+        groupEntityMapper.insert(entity);
+        setOtherTenant(ANOTHER_TENANT);
+        InlongGroupEntity groupEntity = groupEntityMapper.selectByPrimaryKey(entity.getId());
+        Assertions.assertNull(groupEntity);
+    }
+
+    @Test
+    public void selectByCondition() {
+        InlongGroupEntity entity = createGroupEntity();
+        groupEntityMapper.insert(entity);
+        InlongGroupPageRequest request = new InlongGroupPageRequest();
+        List<String> groups = new LinkedList<>();
+        request.setGroupIdList(groups);
+        groups.add(entity.getInlongGroupId());
+        List<InlongGroupEntity> entities = groupEntityMapper.selectByCondition(request);
+        Assertions.assertEquals(1, entities.size());
+    }
+
+    @Test
+    public void selectByConditionWithOtherTenant() {
+        InlongGroupEntity entity = createGroupEntity();
+        groupEntityMapper.insert(entity);
+        setOtherTenant(ANOTHER_TENANT);
+        InlongGroupPageRequest request = new InlongGroupPageRequest();
+        List<String> groups = new LinkedList<>();
+        request.setGroupIdList(groups);
+        groups.add(entity.getInlongGroupId());
+        List<InlongGroupEntity> entities = groupEntityMapper.selectByCondition(request);
+        Assertions.assertEquals(0, entities.size());
     }
 
     private InlongGroupEntity createGroupEntity() {

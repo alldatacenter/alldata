@@ -17,10 +17,11 @@
 
 package org.apache.inlong.audit.send;
 
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelFuture;
 import org.apache.inlong.audit.util.IpPort;
 import org.apache.inlong.audit.util.SenderResult;
+
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelFuture;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -17,16 +17,16 @@
 
 package org.apache.inlong.manager.pojo.cluster;
 
+import org.apache.inlong.manager.common.validation.SaveValidation;
+import org.apache.inlong.manager.common.validation.UpdateByIdValidation;
+import org.apache.inlong.manager.common.validation.UpdateByKeyValidation;
+
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import org.apache.inlong.manager.common.validation.SaveValidation;
-import org.apache.inlong.manager.common.validation.UpdateByIdValidation;
-import org.apache.inlong.manager.common.validation.UpdateByKeyValidation;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotBlank;
@@ -89,6 +89,10 @@ public abstract class ClusterRequest {
     @ApiModelProperty(value = "Description of the cluster")
     @Length(max = 256, message = "length must be less than or equal to 256")
     private String description;
+
+    @ApiModelProperty(value = "Inlong tenant of cluster", hidden = true)
+    @Length(max = 256, message = "length must be less than or equal to 256")
+    private String tenant;
 
     @ApiModelProperty(value = "Name of responsible person, separated by commas")
     @Length(max = 512, message = "length must be less than or equal to 512")

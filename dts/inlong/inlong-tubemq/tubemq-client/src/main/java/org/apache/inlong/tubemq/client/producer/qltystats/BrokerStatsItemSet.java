@@ -17,8 +17,9 @@
 
 package org.apache.inlong.tubemq.client.producer.qltystats;
 
-import java.util.concurrent.atomic.AtomicLong;
 import org.apache.inlong.tubemq.corebase.TokenConstants;
+
+import java.util.concurrent.atomic.AtomicLong;
 
 public class BrokerStatsItemSet {
 

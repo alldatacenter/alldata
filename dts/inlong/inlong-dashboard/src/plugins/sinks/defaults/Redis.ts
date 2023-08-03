@@ -27,7 +27,7 @@ import { SinkInfo } from '../common/SinkInfo';
 import NodeSelect from '@/ui/components/NodeSelect';
 
 const { I18n } = DataWithBackend;
-const { FieldDecorator } = RenderRow;
+const { FieldDecorator, SyncField } = RenderRow;
 const { ColumnDecorator } = RenderList;
 
 const redisTargetTypes = [
@@ -77,6 +77,7 @@ export default class RedisSink extends SinkInfo implements DataWithBackend, Rend
       nodeType: 'Redis',
     }),
   })
+  @SyncField()
   @I18n('meta.Sinks.DataNodeName')
   dataNodeName: string;
 
@@ -103,6 +104,7 @@ export default class RedisSink extends SinkInfo implements DataWithBackend, Rend
     }),
   })
   @ColumnDecorator()
+  @SyncField()
   @I18n('meta.Sinks.Redis.DataType')
   dataType: string;
 
@@ -115,6 +117,7 @@ export default class RedisSink extends SinkInfo implements DataWithBackend, Rend
     }),
   })
   @ColumnDecorator()
+  @SyncField()
   @I18n('meta.Sinks.Redis.SchemaMapMode')
   schemaMapMode: string;
 
@@ -145,6 +148,7 @@ export default class RedisSink extends SinkInfo implements DataWithBackend, Rend
     }),
     rules: [{ required: true }],
   })
+  @SyncField()
   @I18n('meta.Sinks.Redis.FormatDataType')
   formatDataType: string;
 
@@ -167,6 +171,7 @@ export default class RedisSink extends SinkInfo implements DataWithBackend, Rend
       ],
     }),
   })
+  @SyncField()
   @I18n('meta.Sinks.Redis.FormatIgnoreParseError')
   formatIgnoreParseError: boolean;
 
@@ -189,6 +194,7 @@ export default class RedisSink extends SinkInfo implements DataWithBackend, Rend
     }),
     rules: [{ required: true }],
   })
+  @SyncField()
   @I18n('meta.Sinks.Redis.FormatDataEncoding')
   formatDataEncoding: string;
 
@@ -241,6 +247,7 @@ export default class RedisSink extends SinkInfo implements DataWithBackend, Rend
       },
     ],
   })
+  @SyncField()
   @I18n('meta.Sinks.Redis.FormatDataSeparator')
   formatDataSeparator: string;
 
@@ -254,6 +261,7 @@ export default class RedisSink extends SinkInfo implements DataWithBackend, Rend
     }),
   })
   @ColumnDecorator()
+  @SyncField()
   @I18n('meta.Sinks.Redis.Database')
   database: number;
 
@@ -267,6 +275,7 @@ export default class RedisSink extends SinkInfo implements DataWithBackend, Rend
     rules: [{ required: false }],
     suffix: i18n.t('meta.Sinks.Redis.TtlUnit'),
   })
+  @SyncField()
   @I18n('meta.Sinks.Redis.Ttl')
   ttl: number;
 
@@ -276,6 +285,8 @@ export default class RedisSink extends SinkInfo implements DataWithBackend, Rend
       size: 'small',
       editing: ![110, 130].includes(values?.status),
       columns: getFieldListColumns(values),
+      canBatchAdd: true,
+      upsertByFieldKey: true,
     }),
   })
   sinkFieldList: Record<string, unknown>[];
@@ -304,6 +315,7 @@ export default class RedisSink extends SinkInfo implements DataWithBackend, Rend
       ],
     }),
   })
+  @SyncField()
   @I18n('meta.Sinks.Redis.ExtList')
   properties: string;
 
@@ -317,6 +329,7 @@ export default class RedisSink extends SinkInfo implements DataWithBackend, Rend
     }),
     suffix: i18n.t('meta.Sinks.Redis.TimeoutUnit'),
   })
+  @SyncField()
   @I18n('meta.Sinks.Redis.Timeout')
   timeout: number;
 
@@ -330,6 +343,7 @@ export default class RedisSink extends SinkInfo implements DataWithBackend, Rend
     }),
     suffix: i18n.t('meta.Sinks.Redis.SoTimeoutUnit'),
   })
+  @SyncField()
   @I18n('meta.Sinks.Redis.SoTimeout')
   soTimeout: number;
 
@@ -342,6 +356,7 @@ export default class RedisSink extends SinkInfo implements DataWithBackend, Rend
       disabled: values?.status === 101,
     }),
   })
+  @SyncField()
   @I18n('meta.Sinks.Redis.MaxTotal')
   maxTotal: number;
 
@@ -354,6 +369,7 @@ export default class RedisSink extends SinkInfo implements DataWithBackend, Rend
       disabled: values?.status === 101,
     }),
   })
+  @SyncField()
   @I18n('meta.Sinks.Redis.MaxIdle')
   maxIdle: number;
 
@@ -366,6 +382,7 @@ export default class RedisSink extends SinkInfo implements DataWithBackend, Rend
       disabled: values?.status === 101,
     }),
   })
+  @SyncField()
   @I18n('meta.Sinks.Redis.MinIdle')
   minIdle: number;
 
@@ -379,6 +396,7 @@ export default class RedisSink extends SinkInfo implements DataWithBackend, Rend
       min: 1,
     }),
   })
+  @SyncField()
   @I18n('meta.Sinks.Redis.MaxRetries')
   maxRetries: number;
 }

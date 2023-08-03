@@ -17,13 +17,13 @@
 
 package org.apache.inlong.manager.pojo.source;
 
+import org.apache.inlong.manager.pojo.common.PageRequest;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.apache.inlong.manager.pojo.common.PageRequest;
 
-import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 /**
@@ -34,7 +34,6 @@ import java.util.List;
 @ApiModel("Paging query request for Source")
 public class SourcePageRequest extends PageRequest {
 
-    @NotBlank(message = "inlongGroupId cannot be blank")
     @ApiModelProperty(value = "Inlong group id", required = true)
     private String inlongGroupId;
 

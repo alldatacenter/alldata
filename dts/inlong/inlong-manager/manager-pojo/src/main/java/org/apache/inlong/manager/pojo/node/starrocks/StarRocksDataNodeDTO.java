@@ -17,16 +17,18 @@
 
 package org.apache.inlong.manager.pojo.node.starrocks;
 
+import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
+import org.apache.inlong.manager.common.exceptions.BusinessException;
+import org.apache.inlong.manager.common.util.CommonBeanUtils;
+import org.apache.inlong.manager.common.util.JsonUtils;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
-import org.apache.inlong.manager.common.exceptions.BusinessException;
-import org.apache.inlong.manager.common.util.CommonBeanUtils;
-import org.apache.inlong.manager.common.util.JsonUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.validation.constraints.NotNull;
 
@@ -46,8 +48,11 @@ public class StarRocksDataNodeDTO {
     /**
      * Get the dto instance from the request
      */
-    public static StarRocksDataNodeDTO getFromRequest(StarRocksDataNodeRequest request) throws Exception {
-        return CommonBeanUtils.copyProperties(request, StarRocksDataNodeDTO::new, true);
+    public static StarRocksDataNodeDTO getFromRequest(StarRocksDataNodeRequest request, String extParams) {
+        StarRocksDataNodeDTO dto = StringUtils.isNotBlank(extParams)
+                ? StarRocksDataNodeDTO.getFromJson(extParams)
+                : new StarRocksDataNodeDTO();
+        return CommonBeanUtils.copyProperties(request, dto, true);
     }
 
     /**

@@ -17,8 +17,6 @@
 
 package org.apache.inlong.manager.service.node.hudi;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.inlong.manager.common.consts.DataNodeType;
 import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
 import org.apache.inlong.manager.common.exceptions.BusinessException;
@@ -32,6 +30,9 @@ import org.apache.inlong.manager.pojo.node.hudi.HudiDataNodeInfo;
 import org.apache.inlong.manager.pojo.node.hudi.HudiDataNodeRequest;
 import org.apache.inlong.manager.service.node.AbstractDataNodeOperator;
 import org.apache.inlong.manager.service.resource.sink.hudi.HudiCatalogClient;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,10 +73,10 @@ public class HudiDataNodeOperator extends AbstractDataNodeOperator {
 
     @Override
     protected void setTargetEntity(DataNodeRequest request, DataNodeEntity targetEntity) {
-        HudiDataNodeRequest hudiDataNodeRequest = (HudiDataNodeRequest) request;
-        CommonBeanUtils.copyProperties(hudiDataNodeRequest, targetEntity, true);
+        HudiDataNodeRequest hudiNodeRequest = (HudiDataNodeRequest) request;
+        CommonBeanUtils.copyProperties(hudiNodeRequest, targetEntity, true);
         try {
-            HudiDataNodeDTO dto = HudiDataNodeDTO.getFromRequest(hudiDataNodeRequest);
+            HudiDataNodeDTO dto = HudiDataNodeDTO.getFromRequest(hudiNodeRequest, targetEntity.getExtParams());
             targetEntity.setExtParams(objectMapper.writeValueAsString(dto));
         } catch (Exception e) {
             throw new BusinessException(ErrorCodeEnum.SOURCE_INFO_INCORRECT,

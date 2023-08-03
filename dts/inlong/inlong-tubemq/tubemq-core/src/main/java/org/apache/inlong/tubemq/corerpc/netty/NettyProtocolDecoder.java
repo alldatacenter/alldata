@@ -17,7 +17,9 @@
 
 package org.apache.inlong.tubemq.corerpc.netty;
 
-import static org.apache.inlong.tubemq.corebase.utils.AddressUtils.getRemoteAddressIP;
+import org.apache.inlong.tubemq.corerpc.RpcConstants;
+import org.apache.inlong.tubemq.corerpc.RpcDataPack;
+import org.apache.inlong.tubemq.corerpc.exception.UnknownProtocolException;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
@@ -25,16 +27,16 @@ import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToMessageDecoder;
 import io.netty.util.ReferenceCountUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
-import org.apache.inlong.tubemq.corerpc.RpcConstants;
-import org.apache.inlong.tubemq.corerpc.RpcDataPack;
-import org.apache.inlong.tubemq.corerpc.exception.UnknownProtocolException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
+import static org.apache.inlong.tubemq.corebase.utils.AddressUtils.getRemoteAddressIP;
 
 public class NettyProtocolDecoder extends MessageToMessageDecoder<ByteBuf> {
 

@@ -17,9 +17,10 @@
 
 package org.apache.inlong.agent.plugin.sources.reader.file;
 
-import com.google.common.annotations.VisibleForTesting;
 import org.apache.inlong.agent.common.AgentThreadFactory;
-import org.apache.inlong.agent.core.task.TaskPositionManager;
+import org.apache.inlong.agent.core.task.PositionManager;
+
+import com.google.common.annotations.VisibleForTesting;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -115,13 +116,17 @@ public final class MonitorTextFile {
                     long currentTime = System.currentTimeMillis();
                     if (expireTime != Long.parseLong(JOB_FILE_MONITOR_DEFAULT_EXPIRE)
                             && currentTime - this.startTime > expireTime) {
+                        LOGGER.info("monitor expire in {}", expireTime);
                         break;
                     }
                     if (fileReaderOperator.inited) {
                         listen();
                     }
+                    fileReaderOperator.monitorUpdateTime = currentTime;
                     TimeUnit.MILLISECONDS.sleep(interval);
                 }
+                LOGGER.info("Job {} stop monitor {}",
+                        fileReaderOperator.instanceId, fileReaderOperator.file.getAbsolutePath());
             } catch (Exception e) {
                 LOGGER.error(String.format("monitor %s error", fileReaderOperator.file.getName()), e);
             }
@@ -135,12 +140,9 @@ public final class MonitorTextFile {
                 attributesAfter = Files.readAttributes(file.toPath(), BasicFileAttributes.class);
                 currentPath = file.getCanonicalPath();
 
-                if (attributesAfter.fileKey() == null) {
-                    return;
-                }
-
                 // Determine whether the inode has changed
                 if (isInodeChanged(attributesAfter.fileKey().toString())) {
+                    LOGGER.info("{} inode changed resetPosition", fileReaderOperator.file.toPath());
                     resetPosition();
                 }
                 fileReaderOperator.fileKey = attributesAfter.fileKey().toString();
@@ -153,6 +155,7 @@ public final class MonitorTextFile {
 
             // if change symbolic links
             if (attributesAfter.isSymbolicLink() && !path.equals(currentPath)) {
+                LOGGER.info("{} symbolicLink changed resetPosition", fileReaderOperator.file.toPath());
                 resetPosition();
                 path = currentPath;
             }
@@ -176,7 +179,7 @@ public final class MonitorTextFile {
 
             String jobInstanceId = fileReaderOperator.getJobInstanceId();
             if (jobInstanceId != null) {
-                TaskPositionManager.getInstance().updateSinkPosition(
+                PositionManager.getInstance().updateSinkPosition(
                         jobInstanceId, fileReaderOperator.getReadSource(), 0, true);
             }
         }

@@ -78,8 +78,8 @@ jobs:
           path: |
             ~/.m2/repository
             !~/.m2/repository/org/apache/inlong
-          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-          restore-keys: ${{ runner.os }}-m2
+          key: ${{ runner.os }}-inlong-docker-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-inlong-docker
 
       - name: Set up swapfile path
         run: |

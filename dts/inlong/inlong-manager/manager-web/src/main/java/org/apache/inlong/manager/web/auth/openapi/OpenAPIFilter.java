@@ -17,12 +17,13 @@
 
 package org.apache.inlong.manager.web.auth.openapi;
 
+import org.apache.inlong.common.util.BasicAuth;
+import org.apache.inlong.manager.pojo.user.LoginUserUtils;
+import org.apache.inlong.manager.pojo.user.UserInfo;
+
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
-import org.apache.inlong.common.util.BasicAuth;
-import org.apache.inlong.manager.pojo.user.UserInfo;
-import org.apache.inlong.manager.service.user.LoginUserUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
@@ -36,6 +37,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import java.io.IOException;
 import java.util.Base64;
 
@@ -46,8 +48,10 @@ import java.util.Base64;
 public class OpenAPIFilter implements Filter {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(OpenAPIFilter.class);
+    private final boolean openAPIAuthEnabled;
 
-    public OpenAPIFilter() {
+    public OpenAPIFilter(boolean openAPIAuthEnabled) {
+        this.openAPIAuthEnabled = openAPIAuthEnabled;
     }
 
     @Override
@@ -64,7 +68,7 @@ public class OpenAPIFilter implements Filter {
             SecretToken token = parseBasicAuth(httpServletRequest);
             subject.login(token);
         } catch (Exception ex) {
-            LOGGER.error("login error: {}", ex.getMessage());
+            LOGGER.error("login error", ex);
             ((HttpServletResponse) servletResponse).sendError(HttpServletResponse.SC_FORBIDDEN, ex.getMessage());
             return;
         }
@@ -84,6 +88,11 @@ public class OpenAPIFilter implements Filter {
     }
 
     private SecretToken parseBasicAuth(HttpServletRequest servletRequest) {
+        // return empty token if openapi auth is disabled. The realm will pass the request and use default user.
+        if (!openAPIAuthEnabled) {
+            return new SecretToken();
+        }
+
         String basicAuth = servletRequest.getHeader(BasicAuth.BASIC_AUTH_HEADER);
         if (StringUtils.isBlank(basicAuth)) {
             log.error("basic auth header is empty");

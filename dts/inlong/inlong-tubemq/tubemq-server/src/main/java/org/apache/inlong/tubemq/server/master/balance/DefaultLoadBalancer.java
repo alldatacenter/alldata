@@ -17,6 +17,21 @@
 
 package org.apache.inlong.tubemq.server.master.balance;
 
+import org.apache.inlong.tubemq.corebase.cluster.Partition;
+import org.apache.inlong.tubemq.server.master.metamanage.MetaDataService;
+import org.apache.inlong.tubemq.server.master.metamanage.metastore.dao.entity.GroupResCtrlEntity;
+import org.apache.inlong.tubemq.server.master.nodemanage.nodebroker.BrokerRunManager;
+import org.apache.inlong.tubemq.server.master.nodemanage.nodeconsumer.ConsumeGroupInfo;
+import org.apache.inlong.tubemq.server.master.nodemanage.nodeconsumer.ConsumerInfo;
+import org.apache.inlong.tubemq.server.master.nodemanage.nodeconsumer.ConsumerInfoHolder;
+import org.apache.inlong.tubemq.server.master.nodemanage.nodeconsumer.NodeRebInfo;
+import org.apache.inlong.tubemq.server.master.nodemanage.nodeconsumer.RebProcessInfo;
+import org.apache.inlong.tubemq.server.master.stats.MasterSrvStatsHolder;
+
+import org.apache.commons.collections.CollectionUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -29,19 +44,6 @@ import java.util.Random;
 import java.util.Set;
 import java.util.TreeMap;
 import java.util.concurrent.LinkedBlockingQueue;
-import org.apache.commons.collections.CollectionUtils;
-import org.apache.inlong.tubemq.corebase.cluster.Partition;
-import org.apache.inlong.tubemq.server.master.metamanage.MetaDataService;
-import org.apache.inlong.tubemq.server.master.metamanage.metastore.dao.entity.GroupResCtrlEntity;
-import org.apache.inlong.tubemq.server.master.nodemanage.nodebroker.BrokerRunManager;
-import org.apache.inlong.tubemq.server.master.nodemanage.nodeconsumer.ConsumeGroupInfo;
-import org.apache.inlong.tubemq.server.master.nodemanage.nodeconsumer.ConsumerInfo;
-import org.apache.inlong.tubemq.server.master.nodemanage.nodeconsumer.ConsumerInfoHolder;
-import org.apache.inlong.tubemq.server.master.nodemanage.nodeconsumer.NodeRebInfo;
-import org.apache.inlong.tubemq.server.master.nodemanage.nodeconsumer.RebProcessInfo;
-import org.apache.inlong.tubemq.server.master.stats.MasterSrvStatsHolder;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /* Load balance class for server side load balance, (partition size) mod (consumer size) */
 public class DefaultLoadBalancer implements LoadBalancer {

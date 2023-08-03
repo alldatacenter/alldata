@@ -22,6 +22,7 @@ def test_parse_environment_yaml(monkeypatch):
 
         soda_cloud:
           api_key_id: s09d8fs09d8f09sd
+          scheme: http
     """
         )
     )
@@ -36,6 +37,7 @@ def test_parse_environment_yaml(monkeypatch):
     assert lpsp_properties.get("password") is None
 
     assert scan._configuration.soda_cloud.api_key_id == "s09d8fs09d8f09sd"
+    assert scan._configuration.soda_cloud.scheme == "http"
 
 
 def test_parse_configuration_yaml_env_var_resolving(monkeypatch):
@@ -73,6 +75,7 @@ def test_parse_configuration_yaml_env_var_resolving(monkeypatch):
     assert lpsp_properties["password"] == "x"
 
     assert scan._configuration.soda_cloud.api_key_id == "x"
+    assert scan._configuration.soda_cloud.scheme == "https"
 
 
 def test_no_data_source_type():

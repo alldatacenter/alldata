@@ -18,14 +18,15 @@
 package org.apache.inlong.agent.plugin.sources.snapshot;
 
 import org.apache.inlong.agent.utils.ThreadUtils;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.BufferedInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.OutputStream;
-import java.io.ByteArrayOutputStream;
 import java.nio.file.Files;
 import java.util.Base64;
 

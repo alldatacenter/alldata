@@ -20,10 +20,10 @@ package org.apache.inlong.sdk.commons.admin;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.lang.management.ManagementFactory;
-
 import javax.management.MBeanServer;
 import javax.management.ObjectName;
+
+import java.lang.management.ManagementFactory;
 
 import static org.apache.inlong.sdk.commons.admin.AdminEventHandler.DOMAIN_SEPARATOR;
 import static org.apache.inlong.sdk.commons.admin.AdminEventHandler.JMX_DOMAIN;

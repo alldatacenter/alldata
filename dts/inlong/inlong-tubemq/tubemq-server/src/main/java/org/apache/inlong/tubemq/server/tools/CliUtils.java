@@ -17,14 +17,16 @@
 
 package org.apache.inlong.tubemq.server.tools;
 
-import static org.apache.inlong.tubemq.server.common.fielddef.CliArgDef.FILEPATH;
+import org.apache.inlong.tubemq.corebase.rv.ProcessResult;
+import org.apache.inlong.tubemq.corebase.utils.TStringUtils;
+
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.DefaultParser;
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
-import org.apache.inlong.tubemq.corebase.rv.ProcessResult;
-import org.apache.inlong.tubemq.corebase.utils.TStringUtils;
+
+import static org.apache.inlong.tubemq.server.common.fielddef.CliArgDef.FILEPATH;
 
 /**
  * Cli related utils

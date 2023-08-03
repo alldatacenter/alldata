@@ -17,7 +17,6 @@
 
 package org.apache.inlong.tubemq.client.factory;
 
-import java.util.concurrent.atomic.AtomicBoolean;
 import org.apache.inlong.tubemq.client.config.ConsumerConfig;
 import org.apache.inlong.tubemq.client.config.TubeClientConfig;
 import org.apache.inlong.tubemq.client.config.TubeClientConfigUtils;
@@ -29,6 +28,8 @@ import org.apache.inlong.tubemq.client.producer.MessageProducer;
 import org.apache.inlong.tubemq.corebase.Shutdownable;
 import org.apache.inlong.tubemq.corerpc.RpcConfig;
 import org.apache.inlong.tubemq.corerpc.netty.NettyClientFactory;
+
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class TubeMultiSessionFactory implements MessageSessionFactory {
 

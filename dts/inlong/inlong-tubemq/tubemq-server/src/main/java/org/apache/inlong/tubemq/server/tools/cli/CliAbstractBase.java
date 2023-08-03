@@ -17,13 +17,14 @@
 
 package org.apache.inlong.tubemq.server.tools.cli;
 
+import org.apache.inlong.tubemq.server.common.TubeServerVersion;
+import org.apache.inlong.tubemq.server.common.fielddef.CliArgDef;
+
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.DefaultParser;
 import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
-import org.apache.inlong.tubemq.server.common.TubeServerVersion;
-import org.apache.inlong.tubemq.server.common.fielddef.CliArgDef;
 
 public abstract class CliAbstractBase {
 

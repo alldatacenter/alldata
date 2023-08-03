@@ -17,13 +17,14 @@
 
 package org.apache.inlong.sdk.dataproxy.codec;
 
-import com.google.common.base.Splitter;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.inlong.common.enums.DataProxyErrCode;
 import org.apache.inlong.common.msg.AttributeConstants;
 import org.apache.inlong.common.msg.MsgType;
 import org.apache.inlong.sdk.dataproxy.SendResult;
 import org.apache.inlong.sdk.dataproxy.config.EncryptConfigEntry;
+
+import com.google.common.base.Splitter;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.HashMap;
 import java.util.List;

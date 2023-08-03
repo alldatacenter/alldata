@@ -17,15 +17,16 @@
 
 package org.apache.inlong.sdk.dataproxy.pb.channel;
 
+import org.apache.inlong.sdk.commons.protocol.SdkEvent;
+import org.apache.inlong.sdk.dataproxy.pb.context.CallbackProfile;
+
+import org.apache.flume.Transaction;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
-
-import org.apache.flume.Transaction;
-import org.apache.inlong.sdk.commons.protocol.SdkEvent;
-import org.apache.inlong.sdk.dataproxy.pb.context.CallbackProfile;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * ProfileTransaction

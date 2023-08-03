@@ -30,6 +30,7 @@
         <result column="token" jdbcType="VARCHAR" property="token"/>
         <result column="ext_params" jdbcType="LONGVARCHAR" property="extParams"/>
         <result column="description" jdbcType="VARCHAR" property="description"/>
+        <result column="tenant" jdbcType="VARCHAR" property="tenant"/>
         <result column="in_charges" jdbcType="VARCHAR" property="inCharges"/>
         <result column="status" jdbcType="INTEGER" property="status"/>
         <result column="is_deleted" jdbcType="INTEGER" property="isDeleted"/>
@@ -40,46 +41,63 @@
         <result column="version" jdbcType="INTEGER" property="version"/>
     </resultMap>
     <sql id="Base_Column_List">
-        id, name, display_name, type, url, username, token, ext_params, description, in_charges, status, is_deleted,
-        creator, modifier, create_time, modify_time, version
+        id, name, display_name, type, url, username, token, ext_params, description, tenant, in_charges,
+        status, is_deleted, creator, modifier, create_time, modify_time, version
     </sql>
 
     <insert id="insert" useGeneratedKeys="true" keyProperty="id"
             parameterType="org.apache.inlong.manager.dao.entity.DataNodeEntity">
-        insert into data_node (id, name, display_name, type,
-                               url, username, token,
-                               ext_params, description, in_charges,
-                               status, creator, modifier)
+        insert into data_node (id, name, display_name,
+                               type, url, username,
+                               token, ext_params, description,
+                               tenant, in_charges, status,
+                               creator, modifier)
         values (#{id, jdbcType=INTEGER}, #{name, jdbcType=VARCHAR}, #{displayName,jdbcType=VARCHAR},
                 #{type, jdbcType=VARCHAR}, #{url, jdbcType=VARCHAR}, #{username, jdbcType=VARCHAR},
                 #{token, jdbcType=VARCHAR}, #{extParams,jdbcType=LONGVARCHAR}, #{description, jdbcType=VARCHAR},
-                #{inCharges, jdbcType=VARCHAR}, #{status, jdbcType=INTEGER}, #{creator, jdbcType=VARCHAR},
-                #{modifier, jdbcType=VARCHAR})
+                #{tenant, jdbcType=VARCHAR}, #{inCharges, jdbcType=VARCHAR}, #{status, jdbcType=INTEGER},
+                #{creator, jdbcType=VARCHAR}, #{modifier, jdbcType=VARCHAR})
     </insert>
 
-    <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-        select
-        <include refid="Base_Column_List"/>
-        from data_node
-        where is_deleted = 0
-        and id = #{id, jdbcType=INTEGER}
-    </select>
-    <select id="selectByUniqueKey" resultType="org.apache.inlong.manager.dao.entity.DataNodeEntity">
-        select
-        <include refid="Base_Column_List"/>
-        from data_node
-        where is_deleted = 0
-        and name = #{name, jdbcType=VARCHAR}
-        and type = #{type, jdbcType=VARCHAR}
-    </select>
-    <select id="selectByCondition"
-            parameterType="org.apache.inlong.manager.pojo.node.DataNodePageRequest"
-            resultType="org.apache.inlong.manager.dao.entity.DataNodeEntity">
+    <select id="selectById" resultMap="BaseResultMap">
+        <bind name="_isInlongService" value="LoginUser.InlongService"/>
         select
         <include refid="Base_Column_List"/>
         from data_node
         <where>
-            is_deleted = 0
+            <if test="_isInlongService == false">
+                tenant = #{tenant,jdbcType=VARCHAR}
+            </if>
+            and is_deleted = 0
+            and id = #{id, jdbcType=INTEGER}
+        </where>
+    </select>
+    <select id="selectByUniqueKey" resultType="org.apache.inlong.manager.dao.entity.DataNodeEntity">
+        <bind name="_isInlongService" value="LoginUser.InlongService"/>
+        select
+        <include refid="Base_Column_List"/>
+        from data_node
+        <where>
+            <if test="_isInlongService == false">
+                tenant = #{tenant,jdbcType=VARCHAR}
+            </if>
+            and is_deleted = 0
+            and name = #{name, jdbcType=VARCHAR}
+            and type = #{type, jdbcType=VARCHAR}
+        </where>
+    </select>
+    <select id="selectByCondition"
+            parameterType="org.apache.inlong.manager.pojo.node.DataNodePageRequest"
+            resultType="org.apache.inlong.manager.dao.entity.DataNodeEntity">
+        <bind name="_isInlongService" value="LoginUser.InlongService"/>
+        select
+        <include refid="Base_Column_List"/>
+        from data_node
+        <where>
+            <if test="_isInlongService == false">
+                tenant = #{tenant,jdbcType=VARCHAR}
+            </if>
+            and is_deleted = 0
             <if test="name != null and name != ''">
                 and name = #{name, jdbcType=VARCHAR}
             </if>
@@ -94,29 +112,26 @@
                 or url like CONCAT('%', #{keyword}, '%')
                 )
             </if>
-            <if test="isAdminRole == false">
-                and (
-                creator = #{currentUser, jdbcType=VARCHAR} or find_in_set(#{currentUser, jdbcType=VARCHAR}, in_charges)
-                )
-            </if>
             <if test="status != null and status != ''">
                 and status = #{status, jdbcType=INTEGER}
             </if>
         </where>
         order by modify_time desc
     </select>
-    <select id="selectAllSinkParams" resultType="org.apache.inlong.manager.pojo.sort.standalone.SortSinkInfo">
-        select name, type, ext_params
-        from data_node
-        where is_deleted = 0
-    </select>
     <select id="selectAllDataNodes" resultType="org.apache.inlong.manager.dao.entity.DataNodeEntity">
+        <bind name="_isInlongService" value="LoginUser.InlongService"/>
         select
         <include refid="Base_Column_List"/>
         from data_node
-        where is_deleted = 0
+        <where>
+            <if test="_isInlongService == false">
+                tenant = #{tenant,jdbcType=VARCHAR}
+            </if>
+            and is_deleted = 0
+        </where>
     </select>
     <update id="updateById" parameterType="org.apache.inlong.manager.dao.entity.DataNodeEntity">
+        <bind name="_isInlongService" value="LoginUser.InlongService"/>
         update data_node
         set name         = #{name, jdbcType=VARCHAR},
             display_name = #{displayName, jdbcType=VARCHAR},
@@ -131,10 +146,16 @@
             is_deleted   = #{isDeleted, jdbcType=INTEGER},
             modifier     = #{modifier, jdbcType=VARCHAR},
             version      = #{version, jdbcType=INTEGER} + 1
-        where id = #{id, jdbcType=INTEGER}
-          and version = #{version, jdbcType=INTEGER}
+        <where>
+            id = #{id, jdbcType=INTEGER}
+            <if test="_isInlongService == false">
+                and tenant = #{tenant,jdbcType=VARCHAR}
+            </if>
+            and version = #{version, jdbcType=INTEGER}
+        </where>
     </update>
     <update id="updateByIdSelective" parameterType="org.apache.inlong.manager.dao.entity.DataNodeEntity">
+        <bind name="_isInlongService" value="LoginUser.InlongService"/>
         update data_node
         <set>
             <if test="name != null">
@@ -175,14 +196,25 @@
             </if>
             version = #{version, jdbcType=INTEGER} + 1
         </set>
-        where id = #{id, jdbcType=INTEGER}
-        and version = #{version, jdbcType=INTEGER}
+        <where>
+            id = #{id, jdbcType=INTEGER}
+            <if test="_isInlongService == false">
+                and tenant = #{tenant, jdbcType=VARCHAR}
+            </if>
+            and version = #{version, jdbcType=INTEGER}
+        </where>
     </update>
 
-    <delete id="deleteById" parameterType="java.lang.Integer">
+    <delete id="deleteById">
+        <bind name="_isInlongService" value="LoginUser.InlongService"/>
         delete
         from data_node
-        where id = #{id, jdbcType=INTEGER}
+        <where>
+            id = #{id, jdbcType=INTEGER}
+            <if test="_isInlongService == false">
+                and tenant = #{tenant, jdbcType=VARCHAR}
+            </if>
+        </where>
     </delete>
 
 </mapper>
