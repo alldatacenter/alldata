@@ -17,8 +17,6 @@
 
 package org.apache.inlong.sdk.sort.impl.tube;
 
-import static org.powermock.api.mockito.PowerMockito.when;
-
 import org.apache.inlong.sdk.sort.api.ClientContext;
 import org.apache.inlong.sdk.sort.api.SortClientConfig;
 import org.apache.inlong.sdk.sort.api.TopicFetcher;
@@ -26,12 +24,15 @@ import org.apache.inlong.sdk.sort.entity.CacheZoneCluster;
 import org.apache.inlong.sdk.sort.entity.InLongTopic;
 import org.apache.inlong.sdk.sort.fetcher.tube.TubeSingleTopicFetcher;
 import org.apache.inlong.sdk.sort.impl.ClientContextImpl;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.powermock.api.mockito.PowerMockito;
 
 import java.util.HashMap;
+
+import static org.powermock.api.mockito.PowerMockito.when;
 
 public class InLongTubeFetcherImplTest {
 

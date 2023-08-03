@@ -27,6 +27,7 @@ import org.apache.inlong.sdk.sort.entity.CacheZoneCluster;
 import org.apache.inlong.sdk.sort.entity.InLongTopic;
 import org.apache.inlong.sdk.sort.impl.ClientContextImpl;
 import org.apache.inlong.sdk.sort.impl.QueryConsumeConfigImpl;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

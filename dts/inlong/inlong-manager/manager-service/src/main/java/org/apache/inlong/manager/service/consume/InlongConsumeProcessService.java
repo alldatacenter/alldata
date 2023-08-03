@@ -17,12 +17,13 @@
 
 package org.apache.inlong.manager.service.consume;
 
-import lombok.extern.slf4j.Slf4j;
 import org.apache.inlong.manager.common.enums.ConsumeStatus;
 import org.apache.inlong.manager.common.enums.ProcessName;
 import org.apache.inlong.manager.pojo.workflow.WorkflowResult;
 import org.apache.inlong.manager.pojo.workflow.form.process.ApplyConsumeProcessForm;
 import org.apache.inlong.manager.service.workflow.WorkflowService;
+
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

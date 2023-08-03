@@ -17,11 +17,6 @@
 
 package org.apache.inlong.audit.sink.pulsar;
 
-import com.google.common.base.Preconditions;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.flume.Context;
-import org.apache.flume.Event;
-import org.apache.flume.FlumeException;
 import org.apache.inlong.audit.consts.AttributeConstants;
 import org.apache.inlong.audit.file.ConfigManager;
 import org.apache.inlong.audit.sink.EventStat;
@@ -29,6 +24,12 @@ import org.apache.inlong.audit.utils.LogCounter;
 import org.apache.inlong.common.constant.MQType;
 import org.apache.inlong.common.pojo.audit.MQInfo;
 import org.apache.inlong.common.util.NetworkUtils;
+
+import com.google.common.base.Preconditions;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.flume.Context;
+import org.apache.flume.Event;
+import org.apache.flume.FlumeException;
 import org.apache.pulsar.client.api.AuthenticationFactory;
 import org.apache.pulsar.client.api.ClientBuilder;
 import org.apache.pulsar.client.api.Producer;

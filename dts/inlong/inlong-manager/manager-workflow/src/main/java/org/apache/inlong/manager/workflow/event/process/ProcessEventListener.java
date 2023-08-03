@@ -17,10 +17,11 @@
 
 package org.apache.inlong.manager.workflow.event.process;
 
-import com.google.common.collect.Lists;
-import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import org.apache.inlong.manager.common.enums.ProcessEvent;
 import org.apache.inlong.manager.workflow.event.EventListener;
+
+import com.google.common.collect.Lists;
+import com.google.common.util.concurrent.ThreadFactoryBuilder;
 
 import java.util.List;
 import java.util.concurrent.ExecutorService;

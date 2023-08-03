@@ -17,6 +17,8 @@
 
 package org.apache.inlong.dataproxy.sink.mq;
 
+import org.apache.inlong.common.monitor.LogCounter;
+
 import org.apache.flume.lifecycle.LifecycleState;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,22 +28,24 @@ import org.slf4j.LoggerFactory;
  */
 public class MessageQueueZoneWorker extends Thread {
 
-    public static final Logger LOG = LoggerFactory.getLogger(MessageQueueZoneWorker.class);
-
+    private static final Logger logger = LoggerFactory.getLogger(MessageQueueZoneWorker.class);
+    // log print count
+    private static final LogCounter logCounter = new LogCounter(10, 100000, 30 * 1000);
     private final String workerName;
-    private final MessageQueueZoneSinkContext context;
-
-    private MessageQueueZoneProducer zoneProducer;
+    private final long fetchWaitMs;
+    private final MessageQueueZoneSink mqZoneSink;
+    private final MessageQueueZoneProducer zoneProducer;
     private LifecycleState status;
 
     /**
      * Constructor
      */
-    public MessageQueueZoneWorker(String sinkName, int workerIndex, MessageQueueZoneSinkContext context,
-            MessageQueueZoneProducer zoneProducer) {
+    public MessageQueueZoneWorker(MessageQueueZoneSink mqZoneSink, int workerIndex,
+            long fetchWaitMs, MessageQueueZoneProducer zoneProducer) {
         super();
-        this.workerName = sinkName + "-worker-" + workerIndex;
-        this.context = context;
+        this.mqZoneSink = mqZoneSink;
+        this.workerName = mqZoneSink.getName() + "-worker-" + workerIndex;
+        this.fetchWaitMs = fetchWaitMs;
         this.zoneProducer = zoneProducer;
         this.status = LifecycleState.IDLE;
     }
@@ -70,25 +74,28 @@ public class MessageQueueZoneWorker extends Thread {
      */
     @Override
     public void run() {
-        LOG.info(String.format("start MessageQueueZoneWorker:%s", this.workerName));
+        logger.info("{} start message zone worker", this.workerName);
+        PackProfile profile = null;
         while (status != LifecycleState.STOP) {
-            BatchPackProfile event = null;
             try {
-                event = context.getDispatchQueue().pollRecord();
-                if (event == null) {
+                profile = this.mqZoneSink.takeDispatchedRecord();
+                if (profile == null) {
                     this.sleepOneInterval();
                     continue;
                 }
                 // send
-                this.zoneProducer.send(event);
-            } catch (Throwable e) {
-                LOG.error(e.getMessage(), e);
-                if (event != null) {
-                    context.getDispatchQueue().offer(event);
+                this.zoneProducer.send(profile);
+            } catch (Throwable e1) {
+                if (profile != null) {
+                    this.mqZoneSink.offerDispatchRecord(profile);
+                }
+                if (logCounter.shouldPrint()) {
+                    logger.error("{} send message failure", workerName, e1);
                 }
                 this.sleepOneInterval();
             }
         }
+        logger.info("{} exit message zone worker", this.workerName);
     }
 
     /**
@@ -96,9 +103,11 @@ public class MessageQueueZoneWorker extends Thread {
      */
     private void sleepOneInterval() {
         try {
-            Thread.sleep(context.getProcessInterval());
+            Thread.sleep(fetchWaitMs);
         } catch (InterruptedException e1) {
-            LOG.error(e1.getMessage(), e1);
+            if (logCounter.shouldPrint()) {
+                logger.error("{} wait poll record interrupted", workerName, e1);
+            }
         }
     }
 }

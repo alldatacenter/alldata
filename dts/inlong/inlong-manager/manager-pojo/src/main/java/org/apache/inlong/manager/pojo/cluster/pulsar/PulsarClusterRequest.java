@@ -17,15 +17,16 @@
 
 package org.apache.inlong.manager.pojo.cluster.pulsar;
 
+import org.apache.inlong.manager.common.consts.InlongConstants;
+import org.apache.inlong.manager.common.enums.ClusterType;
+import org.apache.inlong.manager.common.util.JsonTypeDefine;
+import org.apache.inlong.manager.pojo.cluster.ClusterRequest;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.apache.inlong.manager.common.consts.InlongConstants;
-import org.apache.inlong.manager.common.enums.ClusterType;
-import org.apache.inlong.manager.common.util.JsonTypeDefine;
-import org.apache.inlong.manager.pojo.cluster.ClusterRequest;
 
 import javax.validation.constraints.Pattern;
 
@@ -44,7 +45,7 @@ public class PulsarClusterRequest extends ClusterRequest {
     private String adminUrl;
 
     @ApiModelProperty(value = "Pulsar tenant, default is 'public'")
-    private String tenant = InlongConstants.DEFAULT_PULSAR_TENANT;
+    private String pulsarTenant = InlongConstants.DEFAULT_PULSAR_TENANT;
 
     public PulsarClusterRequest() {
         this.setType(ClusterType.PULSAR);

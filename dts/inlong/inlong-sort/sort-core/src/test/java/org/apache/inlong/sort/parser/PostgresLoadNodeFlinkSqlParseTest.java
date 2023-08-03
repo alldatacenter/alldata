@@ -17,10 +17,6 @@
 
 package org.apache.inlong.sort.parser;
 
-import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
-import org.apache.flink.table.api.EnvironmentSettings;
-import org.apache.flink.table.api.bridge.java.StreamTableEnvironment;
-import org.apache.flink.test.util.AbstractTestBase;
 import org.apache.inlong.sort.formats.common.IntFormatInfo;
 import org.apache.inlong.sort.formats.common.StringFormatInfo;
 import org.apache.inlong.sort.parser.impl.FlinkSqlParser;
@@ -33,6 +29,11 @@ import org.apache.inlong.sort.protocol.node.extract.MySqlExtractNode;
 import org.apache.inlong.sort.protocol.node.load.PostgresLoadNode;
 import org.apache.inlong.sort.protocol.transformation.FieldRelation;
 import org.apache.inlong.sort.protocol.transformation.relation.NodeRelation;
+
+import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
+import org.apache.flink.table.api.EnvironmentSettings;
+import org.apache.flink.table.api.bridge.java.StreamTableEnvironment;
+import org.apache.flink.test.util.AbstractTestBase;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -118,7 +119,6 @@ public class PostgresLoadNodeFlinkSqlParseTest extends AbstractTestBase {
         env.disableOperatorChaining();
         EnvironmentSettings settings = EnvironmentSettings
                 .newInstance()
-                .useBlinkPlanner()
                 .inStreamingMode()
                 .build();
         StreamTableEnvironment tableEnv = StreamTableEnvironment.create(env, settings);

@@ -44,6 +44,7 @@ import org.testcontainers.images.builder.Transferable;
 import org.testcontainers.lifecycle.Startables;
 
 import javax.annotation.Nullable;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -106,7 +107,6 @@ public abstract class FlinkContainerTestEnv extends TestLogger {
 
     private static GenericContainer<?> jobManager;
     private static GenericContainer<?> taskManager;
-
     // ----------------------------------------------------------------------------------------
     // MYSQL Variables
     // ----------------------------------------------------------------------------------------
@@ -238,6 +238,7 @@ public abstract class FlinkContainerTestEnv extends TestLogger {
 
     /**
      * Polling to detect task status until the task successfully into {@link JobStatus.RUNNING}
+     *
      * @param timeout
      */
     public void waitUntilJobRunning(Duration timeout) {

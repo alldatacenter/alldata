@@ -17,35 +17,33 @@
 
 package org.apache.inlong.dataproxy.sink.common;
 
-import org.apache.commons.lang.ClassUtils;
-import org.apache.flume.Channel;
-import org.apache.flume.Context;
 import org.apache.inlong.common.metric.MetricRegister;
 import org.apache.inlong.dataproxy.config.CommonConfigHolder;
 import org.apache.inlong.dataproxy.config.pojo.CacheClusterConfig;
+import org.apache.inlong.dataproxy.consts.AttrConstants;
 import org.apache.inlong.dataproxy.metrics.DataProxyMetricItemSet;
-import org.apache.inlong.dataproxy.sink.mq.BatchPackProfile;
+import org.apache.inlong.dataproxy.metrics.stats.MonitorIndex;
+import org.apache.inlong.dataproxy.metrics.stats.MonitorStats;
 import org.apache.inlong.dataproxy.sink.mq.MessageQueueHandler;
 import org.apache.inlong.dataproxy.sink.mq.pulsar.PulsarHandler;
-import org.apache.inlong.dataproxy.utils.BufferQueue;
+
+import org.apache.commons.lang.ClassUtils;
+import org.apache.flume.Channel;
+import org.apache.flume.Context;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.Date;
-import java.util.Timer;
-import java.util.TimerTask;
 
 /**
  * SinkContext
  */
 public class SinkContext {
 
-    public static final Logger LOG = LoggerFactory.getLogger(SinkContext.class);
-
     public static final String KEY_MAX_THREADS = "maxThreads";
     public static final String KEY_PROCESSINTERVAL = "processInterval";
     public static final String KEY_RELOADINTERVAL = "reloadInterval";
     public static final String KEY_MESSAGE_QUEUE_HANDLER = "messageQueueHandler";
+
+    protected static final Logger logger = LoggerFactory.getLogger(SinkContext.class);
 
     protected final String clusterId;
     protected final String sinkName;
@@ -58,7 +56,9 @@ public class SinkContext {
     protected final long reloadInterval;
     //
     protected final DataProxyMetricItemSet metricItemSet;
-    protected Timer reloadTimer;
+    // file metric statistic
+    protected MonitorIndex monitorIndex = null;
+    private MonitorStats monitorStats = null;
 
     /**
      * Constructor
@@ -80,11 +80,18 @@ public class SinkContext {
      * start
      */
     public void start() {
-        try {
-            this.reload();
-            this.setReloadTimer();
-        } catch (Exception e) {
-            LOG.error(e.getMessage(), e);
+        // init monitor logic
+        if (CommonConfigHolder.getInstance().isEnableFileMetric()) {
+            this.monitorIndex = new MonitorIndex(CommonConfigHolder.getInstance().getFileMetricSinkOutName(),
+                    CommonConfigHolder.getInstance().getFileMetricStatInvlSec() * 1000L,
+                    CommonConfigHolder.getInstance().getFileMetricStatCacheCnt());
+            this.monitorStats = new MonitorStats(
+                    CommonConfigHolder.getInstance().getFileMetricEventOutName()
+                            + AttrConstants.SEP_HASHTAG + this.getSinkName(),
+                    CommonConfigHolder.getInstance().getFileMetricStatInvlSec() * 1000L,
+                    CommonConfigHolder.getInstance().getFileMetricStatCacheCnt());
+            this.monitorIndex.start();
+            this.monitorStats.start();
         }
     }
 
@@ -92,31 +99,40 @@ public class SinkContext {
      * close
      */
     public void close() {
-        try {
-            this.reloadTimer.cancel();
-        } catch (Exception e) {
-            LOG.error(e.getMessage(), e);
+        // stop file statistic index
+        if (CommonConfigHolder.getInstance().isEnableFileMetric()) {
+            if (monitorIndex != null) {
+                monitorIndex.stop();
+            }
+            if (monitorStats != null) {
+                monitorStats.stop();
+            }
         }
     }
 
-    /**
-     * setReloadTimer
-     */
-    protected void setReloadTimer() {
-        reloadTimer = new Timer(true);
-        TimerTask task = new TimerTask() {
-
-            public void run() {
-                reload();
-            }
-        };
-        reloadTimer.schedule(task, new Date(System.currentTimeMillis() + reloadInterval), reloadInterval);
+    public void fileMetricIncSumStats(String eventKey) {
+        if (CommonConfigHolder.getInstance().isEnableFileMetric()) {
+            monitorStats.incSumStats(eventKey);
+        }
     }
 
-    /**
-     * reload
-     */
-    public void reload() {
+    public void fileMetricIncWithDetailStats(String eventKey, String detailInfoKey) {
+        if (CommonConfigHolder.getInstance().isEnableFileMetric()) {
+            monitorStats.incSumStats(eventKey);
+            monitorStats.incDetailStats(eventKey + "#" + detailInfoKey);
+        }
+    }
+
+    public void fileMetricAddSuccCnt(String key, int cnt, int packCnt, long packSize) {
+        if (CommonConfigHolder.getInstance().isEnableFileMetric()) {
+            monitorIndex.addSuccStats(key, cnt, packCnt, packSize);
+        }
+    }
+
+    public void fileMetricAddFailCnt(String key, int failCnt) {
+        if (CommonConfigHolder.getInstance().isEnableFileMetric()) {
+            monitorIndex.addFailStats(key, failCnt);
+        }
     }
 
     /**
@@ -148,7 +164,7 @@ public class SinkContext {
 
     /**
      * get channel
-     * 
+     *
      * @return the channel
      */
     public Channel getChannel() {
@@ -201,12 +217,11 @@ public class SinkContext {
             Class<?> handlerClass = ClassUtils.getClass(eventHandlerClass);
             Object handlerObject = handlerClass.getDeclaredConstructor().newInstance();
             if (handlerObject instanceof EventHandler) {
-                EventHandler handler = (EventHandler) handlerObject;
-                return handler;
+                return (EventHandler) handlerObject;
             }
         } catch (Throwable t) {
-            LOG.error("Fail to init EventHandler,handlerClass:{},error:{}",
-                    eventHandlerClass, t.getMessage(), t);
+            logger.error("{} fail to init EventHandler,handlerClass:{},error:{}",
+                    this.sinkName, eventHandlerClass, t.getMessage(), t);
         }
         return null;
     }
@@ -217,26 +232,17 @@ public class SinkContext {
     public MessageQueueHandler createMessageQueueHandler(CacheClusterConfig config) {
         String strHandlerClass = config.getParams().getOrDefault(KEY_MESSAGE_QUEUE_HANDLER,
                 PulsarHandler.class.getName());
-        LOG.info("mq handler class = {}", strHandlerClass);
+        logger.info("{}'s mq handler class = {}", this.sinkName, strHandlerClass);
         try {
             Class<?> handlerClass = ClassUtils.getClass(strHandlerClass);
             Object handlerObject = handlerClass.getDeclaredConstructor().newInstance();
             if (handlerObject instanceof MessageQueueHandler) {
-                MessageQueueHandler handler = (MessageQueueHandler) handlerObject;
-                return handler;
+                return (MessageQueueHandler) handlerObject;
             }
         } catch (Throwable t) {
-            LOG.error("Fail to init MessageQueueHandler,handlerClass:{},error:{}",
-                    strHandlerClass, t.getMessage(), t);
+            logger.error("{} fail to init MessageQueueHandler,handlerClass:{},error:{}",
+                    this.sinkName, strHandlerClass, t.getMessage(), t);
         }
         return null;
-    }
-
-    /**
-     * createBufferQueue
-     * @return
-     */
-    public static BufferQueue<BatchPackProfile> createBufferQueue() {
-        return new BufferQueue<>(CommonConfigHolder.getInstance().getMaxBufferQueueSizeKb());
     }
 }

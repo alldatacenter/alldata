@@ -17,18 +17,21 @@
 
 package org.apache.inlong.sort.formats.kv;
 
-import static org.apache.inlong.sort.formats.util.StringUtils.concatKv;
-
-import java.nio.charset.Charset;
-import java.util.Objects;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import org.apache.flink.api.common.serialization.SerializationSchema;
-import org.apache.flink.types.Row;
 import org.apache.inlong.sort.formats.base.TableFormatConstants;
 import org.apache.inlong.sort.formats.base.TableFormatUtils;
 import org.apache.inlong.sort.formats.common.FormatInfo;
 import org.apache.inlong.sort.formats.common.RowFormatInfo;
+
+import org.apache.flink.api.common.serialization.SerializationSchema;
+import org.apache.flink.types.Row;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
+import java.nio.charset.Charset;
+import java.util.Objects;
+
+import static org.apache.inlong.sort.formats.util.StringUtils.concatKv;
 
 /**
  * The serializer for the records in kv format.

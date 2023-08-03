@@ -17,10 +17,11 @@
 
 package org.apache.inlong.tubemq.manager.controller.region.request;
 
-import java.util.Set;
+import org.apache.inlong.tubemq.manager.entry.RegionEntry;
 
 import lombok.Data;
-import org.apache.inlong.tubemq.manager.entry.RegionEntry;
+
+import java.util.Set;
 
 @Data
 public class ModifyRegionReq {

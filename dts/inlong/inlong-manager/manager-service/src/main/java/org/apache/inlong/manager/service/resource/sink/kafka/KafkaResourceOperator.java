@@ -26,6 +26,7 @@ import org.apache.inlong.manager.pojo.sink.SinkInfo;
 import org.apache.inlong.manager.pojo.sink.kafka.KafkaSinkDTO;
 import org.apache.inlong.manager.service.resource.sink.SinkResourceOperator;
 import org.apache.inlong.manager.service.sink.StreamSinkService;
+
 import org.apache.kafka.clients.admin.Admin;
 import org.apache.kafka.clients.admin.AdminClientConfig;
 import org.apache.kafka.clients.admin.CreateTopicsResult;
@@ -64,15 +65,15 @@ public class KafkaResourceOperator implements SinkResourceOperator {
 
         KafkaSinkDTO kafkaInfo = KafkaSinkDTO.getFromJson(sinkInfo.getExtParams());
         String topicName = kafkaInfo.getTopicName();
-        String partitionNum = kafkaInfo.getPartitionNum();
+        Integer partitionNum = kafkaInfo.getPartitionNum();
         Preconditions.expectNotBlank(topicName, ErrorCodeEnum.INVALID_PARAMETER, "topic name cannot be empty");
-        Preconditions.expectNotBlank(partitionNum, ErrorCodeEnum.INVALID_PARAMETER, "partition cannot be empty");
+        Preconditions.expectNotNull(partitionNum, ErrorCodeEnum.INVALID_PARAMETER, "partition cannot be empty");
 
         try (Admin admin = getKafkaAdmin(kafkaInfo.getBootstrapServers())) {
             boolean topicExists = isTopicExists(admin, topicName, partitionNum);
             if (!topicExists) {
                 CreateTopicsResult result = admin.createTopics(Collections.singleton(
-                        new NewTopic(topicName, Optional.of(Integer.parseInt(partitionNum)), Optional.empty())));
+                        new NewTopic(topicName, Optional.of(partitionNum), Optional.empty())));
                 result.values().get(topicName).get();
             }
 
@@ -89,7 +90,7 @@ public class KafkaResourceOperator implements SinkResourceOperator {
     /**
      * Check whether the topic exists in the Kafka MQ
      */
-    private boolean isTopicExists(Admin admin, String topicName, String partitionNum) throws Exception {
+    private boolean isTopicExists(Admin admin, String topicName, Integer partitionNum) throws Exception {
         ListTopicsResult listResult = admin.listTopics();
         if (!listResult.namesToListings().get().containsKey(topicName)) {
             LOGGER.info("kafka topic {} not existed", topicName);
@@ -99,7 +100,7 @@ public class KafkaResourceOperator implements SinkResourceOperator {
         DescribeTopicsResult result = admin.describeTopics(Collections.singletonList(topicName));
         TopicDescription desc = result.values().get(topicName).get();
         String info = "kafka topic=%s already exist with partition num=%s";
-        if (desc.partitions().size() != Integer.parseInt(partitionNum)) {
+        if (desc.partitions().size() != partitionNum) {
             String errMsg = String.format(info + ", but the requested partition num=%s", topicName,
                     desc.partitions().size(), partitionNum);
             LOGGER.error(errMsg);

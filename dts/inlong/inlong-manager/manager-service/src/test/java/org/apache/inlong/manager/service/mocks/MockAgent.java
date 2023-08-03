@@ -17,7 +17,6 @@
 
 package org.apache.inlong.manager.service.mocks;
 
-import com.google.common.collect.Sets;
 import org.apache.inlong.common.constant.Constants;
 import org.apache.inlong.common.db.CommandEntity;
 import org.apache.inlong.common.enums.ComponentTypeEnum;
@@ -28,6 +27,8 @@ import org.apache.inlong.manager.common.consts.InlongConstants;
 import org.apache.inlong.manager.pojo.heartbeat.HeartbeatReportRequest;
 import org.apache.inlong.manager.service.core.AgentService;
 import org.apache.inlong.manager.service.core.HeartbeatService;
+
+import com.google.common.collect.Sets;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

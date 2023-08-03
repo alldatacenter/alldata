@@ -17,19 +17,22 @@
 
 package org.apache.inlong.sort.formats.inlongmsgcsv;
 
+import org.apache.inlong.sort.formats.common.RowFormatInfo;
+import org.apache.inlong.sort.formats.inlongmsg.InLongMsgMixedFormatConverter;
+import org.apache.inlong.sort.formats.inlongmsg.InLongMsgUtils;
+
+import org.apache.flink.api.common.typeinfo.TypeInformation;
+import org.apache.flink.types.Row;
+import org.apache.flink.util.Collector;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import javax.annotation.Nonnull;
+
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import javax.annotation.Nonnull;
-import org.apache.flink.api.common.typeinfo.TypeInformation;
-import org.apache.flink.types.Row;
-import org.apache.flink.util.Collector;
-import org.apache.inlong.sort.formats.common.RowFormatInfo;
-import org.apache.inlong.sort.formats.inlongmsg.InLongMsgMixedFormatConverter;
-import org.apache.inlong.sort.formats.inlongmsg.InLongMsgUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * Converter used to deserialize a mixed row in inlongmsg-csv format.

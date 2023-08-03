@@ -17,8 +17,9 @@
 
 package org.apache.inlong.tubemq.corebase.metric.impl;
 
-import java.util.concurrent.atomic.AtomicLong;
 import org.apache.inlong.tubemq.corebase.utils.DateTimeConvertUtils;
+
+import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * SinceTime, store the start time of the metric items set

@@ -17,8 +17,9 @@
 
 package org.apache.inlong.sdk.sort.api;
 
-import java.util.Set;
 import org.apache.inlong.sdk.sort.entity.InLongTopic;
+
+import java.util.Set;
 
 public class EmptyListener implements InLongTopicChangeListener {
 

@@ -17,8 +17,6 @@
 
 package org.apache.inlong.manager.service.source.hudi;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.List;
 import org.apache.inlong.manager.common.consts.SourceType;
 import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
 import org.apache.inlong.manager.common.exceptions.BusinessException;
@@ -31,8 +29,12 @@ import org.apache.inlong.manager.pojo.source.hudi.HudiSourceDTO;
 import org.apache.inlong.manager.pojo.source.hudi.HudiSourceRequest;
 import org.apache.inlong.manager.pojo.stream.StreamField;
 import org.apache.inlong.manager.service.source.AbstractSourceOperator;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * Hudi source operator
@@ -58,7 +60,7 @@ public class HudiSourceOperator extends AbstractSourceOperator {
         HudiSourceRequest sourceRequest = (HudiSourceRequest) request;
         CommonBeanUtils.copyProperties(sourceRequest, targetEntity, true);
         try {
-            HudiSourceDTO dto = HudiSourceDTO.getFromRequest(sourceRequest);
+            HudiSourceDTO dto = HudiSourceDTO.getFromRequest(sourceRequest, targetEntity.getExtParams());
             targetEntity.setExtParams(objectMapper.writeValueAsString(dto));
         } catch (Exception e) {
             throw new BusinessException(ErrorCodeEnum.SOURCE_INFO_INCORRECT,

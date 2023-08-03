@@ -25,6 +25,7 @@ import org.apache.inlong.manager.pojo.sink.hudi.HudiSink;
 import org.apache.inlong.manager.pojo.sink.hudi.HudiSinkRequest;
 import org.apache.inlong.manager.service.ServiceBaseTest;
 import org.apache.inlong.manager.service.core.impl.InlongStreamServiceTest;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

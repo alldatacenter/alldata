@@ -17,13 +17,14 @@
 
 package org.apache.inlong.manager.web.controller.openapi;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 import org.apache.inlong.manager.pojo.common.Response;
 import org.apache.inlong.manager.pojo.dbcollector.DBCollectorReportTaskRequest;
 import org.apache.inlong.manager.pojo.dbcollector.DBCollectorTaskInfo;
 import org.apache.inlong.manager.pojo.dbcollector.DBCollectorTaskRequest;
 import org.apache.inlong.manager.service.core.DBCollectorTaskService;
+
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

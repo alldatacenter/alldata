@@ -17,21 +17,23 @@
 
 package org.apache.inlong.manager.service.operationlog;
 
+import org.apache.inlong.manager.common.enums.OperationType;
+import org.apache.inlong.manager.common.util.NetworkUtils;
+import org.apache.inlong.manager.dao.entity.OperationLogEntity;
+import org.apache.inlong.manager.pojo.user.LoginUserUtils;
+import org.apache.inlong.manager.pojo.user.UserInfo;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.inlong.manager.common.enums.OperationType;
-import org.apache.inlong.manager.common.util.NetworkUtils;
-import org.apache.inlong.manager.dao.entity.OperationLogEntity;
-import org.apache.inlong.manager.pojo.user.UserInfo;
-import org.apache.inlong.manager.service.user.LoginUserUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+
 import java.util.Date;
 import java.util.Optional;
 

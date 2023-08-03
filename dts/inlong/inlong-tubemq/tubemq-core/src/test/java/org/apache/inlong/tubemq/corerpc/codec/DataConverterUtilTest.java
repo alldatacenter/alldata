@@ -17,18 +17,21 @@
 
 package org.apache.inlong.tubemq.corerpc.codec;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 import org.apache.inlong.tubemq.corebase.cluster.BrokerInfo;
 import org.apache.inlong.tubemq.corebase.cluster.Partition;
 import org.apache.inlong.tubemq.corebase.cluster.SubscribeInfo;
 import org.apache.inlong.tubemq.corebase.cluster.TopicInfo;
 import org.apache.inlong.tubemq.corebase.utils.DataConverterUtil;
 import org.apache.inlong.tubemq.corebase.utils.Tuple2;
+
 import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class DataConverterUtilTest {
 

@@ -17,9 +17,6 @@
 
 package org.apache.inlong.sort.standalone.config.loader;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import org.apache.commons.io.IOUtils;
 import org.apache.inlong.common.pojo.sdk.CacheZone;
 import org.apache.inlong.common.pojo.sdk.CacheZoneConfig;
 import org.apache.inlong.common.pojo.sdk.Topic;
@@ -28,6 +25,9 @@ import org.apache.inlong.sdk.sort.api.QueryConsumeConfig;
 import org.apache.inlong.sdk.sort.entity.CacheZoneCluster;
 import org.apache.inlong.sdk.sort.entity.ConsumeConfig;
 import org.apache.inlong.sdk.sort.entity.InLongTopic;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

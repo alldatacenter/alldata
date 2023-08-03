@@ -17,10 +17,6 @@
 
 package org.apache.inlong.tubemq.server.master.nodemanage.nodebroker;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
 import org.apache.inlong.tubemq.corebase.cluster.BrokerInfo;
 import org.apache.inlong.tubemq.corebase.cluster.Partition;
 import org.apache.inlong.tubemq.corebase.cluster.TopicInfo;
@@ -31,6 +27,10 @@ import org.apache.inlong.tubemq.corebase.utils.Tuple2;
 import org.apache.inlong.tubemq.corebase.utils.Tuple3;
 import org.apache.inlong.tubemq.server.common.statusdef.ManageStatus;
 import org.apache.inlong.tubemq.server.master.metamanage.metastore.dao.entity.BrokerConfEntity;
+
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /*
  * Broker operation management class

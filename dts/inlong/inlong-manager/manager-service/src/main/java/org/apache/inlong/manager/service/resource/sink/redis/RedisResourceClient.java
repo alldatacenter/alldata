@@ -17,9 +17,10 @@
 
 package org.apache.inlong.manager.service.resource.sink.redis;
 
+import org.apache.inlong.manager.pojo.node.redis.RedisDataNodeRequest;
+
 import lombok.Builder;
 import org.apache.hadoop.hbase.exceptions.IllegalArgumentIOException;
-import org.apache.inlong.manager.pojo.node.redis.RedisDataNodeRequest;
 import redis.clients.jedis.HostAndPort;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisCluster;

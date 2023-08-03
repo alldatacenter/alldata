@@ -21,6 +21,7 @@ import org.apache.inlong.agent.conf.JobProfile;
 import org.apache.inlong.agent.message.ProxyMessage;
 import org.apache.inlong.agent.plugin.AgentBaseTestsHelper;
 import org.apache.inlong.agent.plugin.MiniAgent;
+
 import org.junit.BeforeClass;
 import org.junit.Test;
 

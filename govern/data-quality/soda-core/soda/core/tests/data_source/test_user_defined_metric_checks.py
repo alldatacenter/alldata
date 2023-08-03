@@ -1,3 +1,6 @@
+import os
+import tempfile
+
 from helpers.common_test_tables import customers_test_table
 from helpers.data_source_fixture import DataSourceFixture
 from soda.execution.check_outcome import CheckOutcome
@@ -105,3 +108,30 @@ def test_user_defined_data_source_query_metric_check_with_variable(data_source_f
     avg_surface = scan._checks[0].check_value
     assert isinstance(avg_surface, float)
     assert 1068 < avg_surface < 1069
+
+
+def test_user_defined_data_source_query_metric_with_sql_file(data_source_fixture: DataSourceFixture):
+    fd, path = tempfile.mkstemp()
+    table_name = data_source_fixture.ensure_test_table(customers_test_table)
+    qualified_table_name = data_source_fixture.data_source.qualified_table_name(table_name)
+
+    scan = data_source_fixture.create_test_scan()
+    try:
+        with os.fdopen(fd, "w") as tmp:
+            tmp.write(f"SELECT AVG(cst_size * distance) as avg_surface \n" f"FROM {qualified_table_name}")
+
+        scan.add_sodacl_yaml_str(
+            f"""
+              checks:
+                - avg_surface between 1068 and 1069:
+                    avg_surface sql_file: "{path}"
+                """
+        )
+        scan.execute()
+        scan.assert_all_checks_pass()
+        avg_surface = scan._checks[0].check_value
+        assert isinstance(avg_surface, float)
+        assert 1068 < avg_surface < 1069
+
+    finally:
+        os.remove(path)

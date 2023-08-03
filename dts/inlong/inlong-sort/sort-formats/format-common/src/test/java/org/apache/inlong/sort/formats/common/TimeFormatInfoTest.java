@@ -17,13 +17,14 @@
 
 package org.apache.inlong.sort.formats.common;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.Test;
 
 import java.sql.Time;
 import java.text.ParseException;
 import java.util.Collection;
 import java.util.Collections;
-import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * Unit tests for {@link TimeFormatInfo}.

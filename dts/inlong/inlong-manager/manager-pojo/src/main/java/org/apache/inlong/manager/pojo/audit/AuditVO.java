@@ -18,8 +18,9 @@
 package org.apache.inlong.manager.pojo.audit;
 
 import io.swagger.annotations.ApiModelProperty;
-import java.util.List;
 import lombok.Data;
+
+import java.util.List;
 
 /**
  * The VO of audit.

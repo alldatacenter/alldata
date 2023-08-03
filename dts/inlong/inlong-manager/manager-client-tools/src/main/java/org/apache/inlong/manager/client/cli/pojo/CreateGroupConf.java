@@ -17,10 +17,11 @@
 
 package org.apache.inlong.manager.client.cli.pojo;
 
-import lombok.Data;
 import org.apache.inlong.manager.client.api.transform.MultiDependencyTransform;
 import org.apache.inlong.manager.pojo.group.InlongGroupInfo;
 import org.apache.inlong.manager.pojo.stream.InlongStreamInfo;
+
+import lombok.Data;
 
 /**
  * The config of group, including inlong stream, stream source, stream sink, etc.

@@ -17,9 +17,6 @@
 
 package org.apache.inlong.manager.service.sink.es;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.inlong.manager.common.consts.DataNodeType;
 import org.apache.inlong.manager.common.consts.InlongConstants;
 import org.apache.inlong.manager.common.consts.SinkType;
@@ -38,6 +35,10 @@ import org.apache.inlong.manager.pojo.sink.es.ElasticsearchSink;
 import org.apache.inlong.manager.pojo.sink.es.ElasticsearchSinkDTO;
 import org.apache.inlong.manager.pojo.sink.es.ElasticsearchSinkRequest;
 import org.apache.inlong.manager.service.sink.AbstractSinkOperator;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -78,7 +79,7 @@ public class ElasticsearchSinkOperator extends AbstractSinkOperator {
         }
         ElasticsearchSinkRequest sinkRequest = (ElasticsearchSinkRequest) request;
         try {
-            ElasticsearchSinkDTO dto = ElasticsearchSinkDTO.getFromRequest(sinkRequest);
+            ElasticsearchSinkDTO dto = ElasticsearchSinkDTO.getFromRequest(sinkRequest, targetEntity.getExtParams());
 
             DataNodeInfo dataNodeInfo =
                     dataNodeHelper.getDataNodeInfo(request.getDataNodeName(), DataNodeType.ELASTICSEARCH);

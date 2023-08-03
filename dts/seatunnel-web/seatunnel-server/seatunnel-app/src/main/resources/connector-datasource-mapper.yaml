@@ -1,0 +1,255 @@
+#
+# Licensed to the Apache Software Foundation (ASF) under one or more
+# contributor license agreements.  See the NOTICE file distributed with
+# this work for additional information regarding copyright ownership.
+# The ASF licenses this file to You under the Apache License, Version 2.0
+# (the "License"); you may not use this file except in compliance with
+# the License.  You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+connector-datasource-mapper:
+
+  connectorDatasourceMappers:
+    Jdbc:
+      dataSources:
+        - JDBC-Mysql
+        - JDBC-Redshift
+        - JDBC-Postgres
+        - JDBC-TiDB
+        - JDBC-StarRocks
+        - JDBC-SQLServer
+        - JDBC-KingBase
+        - JDBC-Oracle
+
+    MySQL-CDC:
+      dataSources:
+        - MySQL-CDC
+
+    Kafka:
+      dataSources:
+        - Kafka
+        - Kafka-Kingbase
+
+    StarRocks:
+      dataSources:
+        - StarRocks
+
+    Elasticsearch:
+      dataSources:
+        - ElasticSearch
+
+    S3File:
+      dataSources:
+        - S3
+
+    S3Redshift:
+      dataSources:
+        - S3-Redshift
+
+    SqlServer-CDC:
+      dataSources:
+        - SqlServer-CDC
+
+    Oracle-CDC:
+      dataSources:
+        - Oracle-CDC
+
+    Postgres-CDC:
+      dataSources:
+        - Postgres-CDC
+
+  sourceDatasourceFeatures:
+    JDBC-Mysql:
+      businessMode:
+        - DATA_INTEGRATION
+      sceneMode:
+        - SINGLE_TABLE
+    JDBC-Redshift:
+      businessMode:
+        - DATA_INTEGRATION
+      sceneMode:
+        - SINGLE_TABLE
+    JDBC-Postgres:
+      businessMode:
+        - DATA_INTEGRATION
+      sceneMode:
+        - SINGLE_TABLE
+    JDBC-TiDB:
+      businessMode:
+        - DATA_INTEGRATION
+      sceneMode:
+        - SINGLE_TABLE
+    JDBC-StarRocks:
+      businessMode:
+        - DATA_INTEGRATION
+      sceneMode:
+        - SINGLE_TABLE
+    JDBC-SQLServer:
+      businessMode:
+        - DATA_INTEGRATION
+      sceneMode:
+        - SINGLE_TABLE
+    JDBC-KingBase:
+      businessMode:
+        - DATA_INTEGRATION
+      sceneMode:
+        - SINGLE_TABLE
+    JDBC-Oracle:
+      businessMode:
+        - DATA_INTEGRATION
+      sceneMode:
+        - SINGLE_TABLE
+    MySQL-CDC:
+      businessMode:
+        - DATA_INTEGRATION
+        - DATA_REPLICA
+      sceneMode:
+        - SINGLE_TABLE
+        - MULTIPLE_TABLE
+        - SPLIT_TABLE
+
+    Postgres-CDC:
+      businessMode:
+        - DATA_INTEGRATION
+        - DATA_REPLICA
+      sceneMode:
+        - SINGLE_TABLE
+        - MULTIPLE_TABLE
+        - SPLIT_TABLE
+
+    Kafka:
+      businessMode:
+        - DATA_INTEGRATION
+      sceneMode:
+        - SINGLE_TABLE
+
+    ElasticSearch:
+      businessMode:
+        - DATA_INTEGRATION
+      sceneMode:
+        - SINGLE_TABLE
+
+    S3:
+      businessMode:
+        - DATA_INTEGRATION
+      sceneMode:
+        - SINGLE_TABLE
+
+    S3-Redshift:
+      businessMode:
+        - DATA_INTEGRATION
+      sceneMode:
+        - SINGLE_TABLE
+
+    SqlServer-CDC:
+      businessMode:
+        - DATA_INTEGRATION
+        - DATA_REPLICA
+      sceneMode:
+        - SINGLE_TABLE
+        - MULTIPLE_TABLE
+        - SPLIT_TABLE
+
+    Kafka-Kingbase:
+      businessMode:
+        - DATA_INTEGRATION
+        - DATA_REPLICA
+      sceneMode:
+        - SINGLE_TABLE
+        - MULTIPLE_TABLE
+        - SPLIT_TABLE
+
+    Oracle-CDC:
+      businessMode:
+        - DATA_INTEGRATION
+        - DATA_REPLICA
+      sceneMode:
+        - SINGLE_TABLE
+        - MULTIPLE_TABLE
+        - SPLIT_TABLE
+
+  sinkDatasourceFeatures:
+    JDBC-Mysql:
+      businessMode:
+        - DATA_INTEGRATION
+      sceneMode:
+        - SINGLE_TABLE
+    JDBC-Redshift:
+      businessMode:
+        - DATA_INTEGRATION
+      sceneMode:
+        - SINGLE_TABLE
+    JDBC-Postgres:
+      businessMode:
+        - DATA_INTEGRATION
+      sceneMode:
+        - SINGLE_TABLE
+    JDBC-TiDB:
+      businessMode:
+        - DATA_INTEGRATION
+        - DATA_REPLICA
+      sceneMode:
+        - SINGLE_TABLE
+        - MULTIPLE_TABLE
+        - SPLIT_TABLE
+    JDBC-StarRocks:
+      businessMode:
+        - DATA_INTEGRATION
+      sceneMode:
+        - SINGLE_TABLE
+    JDBC-SQLServer:
+      businessMode:
+        - DATA_INTEGRATION
+      sceneMode:
+        - SINGLE_TABLE
+    JDBC-KingBase:
+      businessMode:
+        - DATA_INTEGRATION
+      sceneMode:
+        - SINGLE_TABLE
+    JDBC-Oracle:
+      businessMode:
+        - DATA_INTEGRATION
+      sceneMode:
+        - SINGLE_TABLE
+    Kafka:
+      businessMode:
+        - DATA_REPLICA
+        - DATA_INTEGRATION
+      sceneMode:
+        - SINGLE_TABLE
+        - MULTIPLE_TABLE
+
+    StarRocks:
+      businessMode:
+        - DATA_INTEGRATION
+        - DATA_REPLICA
+      sceneMode:
+        - SINGLE_TABLE
+        - MULTIPLE_TABLE
+        - SPLIT_TABLE
+
+    ElasticSearch:
+      businessMode:
+        - DATA_INTEGRATION
+      sceneMode:
+        - SINGLE_TABLE
+
+    S3:
+      businessMode:
+        - DATA_INTEGRATION
+      sceneMode:
+        - SINGLE_TABLE
+
+    S3-Redshift:
+      businessMode:
+        - DATA_INTEGRATION
+      sceneMode:
+        - SINGLE_TABLE

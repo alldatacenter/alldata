@@ -17,11 +17,13 @@
 
 package org.apache.inlong.tubemq.client.consumer;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 import org.apache.inlong.tubemq.corebase.cluster.BrokerInfo;
 import org.apache.inlong.tubemq.corebase.policies.FlowCtrlRuleHandler;
+
 import org.junit.Test;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class PartitionExtTest {
 

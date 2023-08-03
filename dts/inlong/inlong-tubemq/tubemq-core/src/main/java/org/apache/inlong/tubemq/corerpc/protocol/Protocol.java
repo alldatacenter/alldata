@@ -17,8 +17,9 @@
 
 package org.apache.inlong.tubemq.corerpc.protocol;
 
-import java.util.concurrent.ExecutorService;
 import org.apache.inlong.tubemq.corerpc.server.RequestContext;
+
+import java.util.concurrent.ExecutorService;
 
 public interface Protocol {
 

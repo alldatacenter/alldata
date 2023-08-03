@@ -1,0 +1,151 @@
+name: PR pipeline
+
+on:
+  pull_request:
+
+env:
+  telemetry_local_debug_mode: true
+  python-version: "3.9"
+
+jobs:
+  pre-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v3
+      - uses: pre-commit/action@v3.0.0
+        with:
+          extra_args: --all-files
+
+  run-tests:
+    runs-on: ubuntu-22.04
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version:
+          - "3.9"
+
+        data-source:
+          - "postgres"
+          - "snowflake"
+          - "bigquery"
+          - "spark_df"
+          - "sqlserver"
+          - "mysql"
+          - "duckdb"
+          - "dask"
+          - "vertica"
+
+    env:
+      DATA_SOURCE: ${{ matrix.data-source }}
+      PYTHON_VERSION: ${{ matrix.python-version }}
+      SNOWFLAKE_HOST: ${{ secrets.SNOWFLAKE_HOST }}
+      SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
+      SNOWFLAKE_USERNAME: ${{ secrets.SNOWFLAKE_USERNAME }}
+      SNOWFLAKE_PASSWORD: ${{ secrets.SNOWFLAKE_PASSWORD }}
+      SNOWFLAKE_DATABASE: ${{ secrets.SNOWFLAKE_DATABASE }}
+      SNOWFLAKE_SCHEMA: "public"
+      BIGQUERY_ACCOUNT_INFO_JSON: ${{ secrets.BIGQUERY_ACCOUNT_INFO_JSON }}
+      BIGQUERY_DATASET: "test"
+      REDSHIFT_HOST: ${{ secrets.REDSHIFT_HOST }}
+      SPARK_HOST: ${{ secrets.SPARK_HOST }}
+      SPARK_USERNAME: ${{ secrets.SPARK_USERNAME }}
+      SPARK_PASSWORD: ${{ secrets.SPARK_PASSWORD }}
+      SPARK_DATABASE: ${{ secrets.SPARK_DATABASE }}
+      SQLSERVER_USERNAME: SA
+      SQLSERVER_PASSWORD: Password1!
+      SQLSERVER_DATABASE: master
+      SQLSERVER_SCHEMA: dbo
+      MYSQL_USER: sodacore
+      MYSQL_DATABASE: sodacore
+      MYSQL_PASSWORD: sodacore
+      MYSQL_ROOT_PASSWORD: sodacore
+      SPARK_DF_HOST: ${{ secrets.SPARK_DF_HOST }}
+      VERTICA_USERNAME: dbadmin
+      VERTICA_PASSWORD: password
+      VERTICA_DATABASE: vmart
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run: |
+          curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+          curl https://packages.microsoft.com/config/ubuntu/21.04/prod.list | sudo tee /etc/apt/sources.list.d/mssql-release.list > /dev/null
+          sudo apt-get update
+          ACCEPT_EULA=Y sudo apt-get install -y libsasl2-dev msodbcsql18
+          python -m pip install --upgrade pip
+          cat dev-requirements.in | grep tox | xargs pip install
+
+      - name: Test with tox
+        run: |
+          tox -- soda -k soda/core
+          tox -- soda -k soda/${{ matrix.data-source }}
+        env:
+          test_data_source: ${{ matrix.data-source }}
+
+  test-cloud-integration:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version:
+          - "3.9"
+
+    env:
+      PYTHON_VERSION: ${{ matrix.python-version }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libsasl2-dev
+          python -m pip install --upgrade pip
+          cat dev-requirements.in | grep tox | xargs pip install
+
+      - name: Test with tox
+        run: |
+          tox -- soda -k soda/core
+        env:
+          test_data_source: postgres
+          WESTMALLE: BETTER_THAN_LA_TRAPPE
+
+  test-scientific:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version:
+          - "3.9"
+
+    env:
+      PYTHON_VERSION: ${{ matrix.python-version }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libsasl2-dev
+          python -m pip install --upgrade pip
+          cat dev-requirements.in | grep tox | xargs pip install
+
+      - name: Test with tox
+        run: |
+          tox -- soda -k soda/scientific

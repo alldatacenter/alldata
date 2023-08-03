@@ -73,12 +73,12 @@ jobs:
             ~/.m2/repository
             !~/.m2/repository/org/apache/inlong
             !~/.m2/repository/com/github/eirslett
-          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-          restore-keys: ${{ runner.os }}-m2
+          key: ${{ runner.os }}-inlong-build-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-inlong-build
 
       - name: Build with Maven
         run: |
-          mvn --batch-mode --update-snapshots -e -V clean install -DskipTests -Dhttp.keepAlive=false -Dmaven.wagon.http.pool=false -Dmaven.wagon.httpconnectionManager.ttlSeconds=120
+          mvn --batch-mode --update-snapshots -e -V clean install -DskipTests -Dhttp.keepAlive=false -Dmaven.wagon.http.pool=false -Dmaven.wagon.httpconnectionManager.ttlSeconds=120 -Daether.connector.http.reuseConnections=false -Daether.connector.requestTimeout=60000
         env:
           CI: false
 
@@ -95,9 +95,17 @@ jobs:
           name: apache-inlong-${{ env.VERSION }}-bin.tar.gz
           path: ./inlong-distribution/target/apache-inlong-${{ env.VERSION }}-bin.tar.gz
 
-      - name: Upload sort connectors package
+      - name: Upload sort connectors package for flink v1.13
         if: ${{ success() }}
         uses: actions/upload-artifact@v3
         with:
-          name: apache-inlong-${{ env.VERSION }}-sort-connectors.tar.gz
-          path: ./inlong-distribution/target/apache-inlong-${{ env.VERSION }}-sort-connectors.tar.gz
+          name: apache-inlong-${{ env.VERSION }}-sort-connectors-flink-v1.13.tar.gz
+          path: ./inlong-distribution/target/apache-inlong-${{ env.VERSION }}-sort-connectors-flink-v1.13.tar.gz
+
+      - name: Upload sort connectors package for flink v1.15
+        if: ${{ success() }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: apache-inlong-${{ env.VERSION }}-sort-connectors-flink-v1.15.tar.gz
+          path: ./inlong-distribution/target/apache-inlong-${{ env.VERSION }}-sort-connectors-flink-v1.15.tar.gz
+

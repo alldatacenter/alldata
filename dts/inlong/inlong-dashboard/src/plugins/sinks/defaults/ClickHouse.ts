@@ -27,7 +27,7 @@ import { sourceFields } from '../common/sourceFields';
 import NodeSelect from '@/ui/components/NodeSelect';
 
 const { I18n } = DataWithBackend;
-const { FieldDecorator } = RenderRow;
+const { FieldDecorator, SyncField } = RenderRow;
 const { ColumnDecorator } = RenderList;
 
 const clickHouseTargetTypes = [
@@ -57,6 +57,7 @@ export default class ClickHouseSink
     }),
   })
   @ColumnDecorator()
+  @SyncField()
   @I18n('meta.Sinks.ClickHouse.DbName')
   dbName: string;
 
@@ -68,6 +69,7 @@ export default class ClickHouseSink
     }),
   })
   @ColumnDecorator()
+  @SyncField()
   @I18n('meta.Sinks.ClickHouse.TableName')
   tableName: string;
 
@@ -102,6 +104,8 @@ export default class ClickHouseSink
     }),
   })
   @I18n('meta.Sinks.DataNodeName')
+  @SyncField()
+  @ColumnDecorator()
   dataNodeName: string;
 
   @FieldDecorator({
@@ -115,6 +119,7 @@ export default class ClickHouseSink
     suffix: i18n.t('meta.Sinks.ClickHouse.FlushIntervalUnit'),
   })
   @I18n('meta.Sinks.ClickHouse.FlushInterval')
+  @ColumnDecorator()
   flushInterval: number;
 
   @FieldDecorator({
@@ -128,6 +133,7 @@ export default class ClickHouseSink
     suffix: i18n.t('meta.Sinks.ClickHouse.FlushRecordUnit'),
   })
   @I18n('meta.Sinks.ClickHouse.FlushRecord')
+  @ColumnDecorator()
   flushRecord: number;
 
   @FieldDecorator({
@@ -141,6 +147,7 @@ export default class ClickHouseSink
     suffix: i18n.t('meta.Sinks.ClickHouse.RetryTimesUnit'),
   })
   @I18n('meta.Sinks.ClickHouse.RetryTimes')
+  @ColumnDecorator()
   retryTime: number;
 
   @FieldDecorator({
@@ -162,6 +169,7 @@ export default class ClickHouseSink
     rules: [{ required: true }],
   })
   @I18n('meta.Sinks.ClickHouse.IsDistributed')
+  @ColumnDecorator()
   isDistributed: number;
 
   @FieldDecorator({
@@ -188,6 +196,7 @@ export default class ClickHouseSink
     visible: values => values.isDistributed,
   })
   @I18n('meta.Sinks.ClickHouse.PartitionStrategy')
+  @ColumnDecorator()
   partitionStrategy: string;
 
   @FieldDecorator({
@@ -199,6 +208,7 @@ export default class ClickHouseSink
     }),
   })
   @I18n('meta.Sinks.ClickHouse.PartitionFields')
+  @ColumnDecorator()
   partitionFields: string;
 
   @FieldDecorator({
@@ -224,6 +234,7 @@ export default class ClickHouseSink
     }),
   })
   @I18n('meta.Sinks.ClickHouse.Engine')
+  @ColumnDecorator()
   engine: string;
 
   @FieldDecorator({
@@ -242,6 +253,7 @@ export default class ClickHouseSink
     }),
   })
   @I18n('meta.Sinks.ClickHouse.PartitionBy')
+  @ColumnDecorator()
   partitionBy: string;
 
   @FieldDecorator({
@@ -251,6 +263,7 @@ export default class ClickHouseSink
     }),
   })
   @I18n('meta.Sinks.ClickHouse.PrimaryKey')
+  @SyncField()
   primaryKey: string;
 
   @FieldDecorator({
@@ -260,6 +273,7 @@ export default class ClickHouseSink
     }),
   })
   @I18n('meta.Sinks.ClickHouse.Cluster')
+  @ColumnDecorator()
   cluster: string;
 
   @FieldDecorator({
@@ -313,6 +327,7 @@ export default class ClickHouseSink
     }),
   })
   @I18n('Time To Live')
+  @ColumnDecorator()
   ttl: number;
 
   @FieldDecorator({
@@ -321,6 +336,8 @@ export default class ClickHouseSink
       size: 'small',
       editing: ![110, 130].includes(values?.status),
       columns: getFieldListColumns(values),
+      canBatchAdd: true,
+      upsertByFieldKey: true,
     }),
   })
   sinkFieldList: Record<string, unknown>[];

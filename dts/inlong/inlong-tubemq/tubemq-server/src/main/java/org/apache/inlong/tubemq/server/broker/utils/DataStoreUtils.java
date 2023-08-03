@@ -17,17 +17,19 @@
 
 package org.apache.inlong.tubemq.server.broker.utils;
 
-import com.google.protobuf.ByteString;
-import java.io.UnsupportedEncodingException;
-import java.nio.ByteBuffer;
-import java.text.NumberFormat;
-import java.util.HashMap;
 import org.apache.inlong.tubemq.corebase.TBaseConstants;
 import org.apache.inlong.tubemq.corebase.TokenConstants;
 import org.apache.inlong.tubemq.corebase.protobuf.generated.ClientBroker;
 import org.apache.inlong.tubemq.corebase.utils.MessageFlagUtils;
 import org.apache.inlong.tubemq.corebase.utils.TStringUtils;
 import org.apache.inlong.tubemq.server.broker.stats.TrafficInfo;
+
+import com.google.protobuf.ByteString;
+
+import java.io.UnsupportedEncodingException;
+import java.nio.ByteBuffer;
+import java.text.NumberFormat;
+import java.util.HashMap;
 
 /**
  * Storage util. Used for data and index file storage format.

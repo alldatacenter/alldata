@@ -17,7 +17,6 @@
 
 package org.apache.inlong.tubemq.corerpc;
 
-import java.util.concurrent.TimeUnit;
 import org.apache.inlong.tubemq.corebase.cluster.NodeAddrInfo;
 import org.apache.inlong.tubemq.corerpc.client.Callback;
 import org.apache.inlong.tubemq.corerpc.client.Client;
@@ -27,6 +26,8 @@ import org.apache.inlong.tubemq.corerpc.exception.NetworkException;
 import org.apache.inlong.tubemq.corerpc.exception.OverflowException;
 import org.apache.inlong.tubemq.corerpc.protocol.RpcProtocol;
 import org.apache.inlong.tubemq.corerpc.utils.MixUtils;
+
+import java.util.concurrent.TimeUnit;
 
 public class RpcServiceInvoker extends AbstractServiceInvoker {
 

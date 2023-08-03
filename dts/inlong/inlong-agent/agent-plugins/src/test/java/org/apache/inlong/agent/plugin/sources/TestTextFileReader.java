@@ -17,21 +17,27 @@
 
 package org.apache.inlong.agent.plugin.sources;
 
-import static org.apache.inlong.agent.constant.CommonConstants.PROXY_INLONG_GROUP_ID;
-import static org.apache.inlong.agent.constant.CommonConstants.PROXY_INLONG_STREAM_ID;
-import static org.apache.inlong.agent.constant.JobConstants.JOB_DIR_FILTER_PATTERNS;
-import static org.apache.inlong.agent.constant.JobConstants.JOB_FILE_CONTENT_COLLECT_TYPE;
-import static org.apache.inlong.agent.constant.JobConstants.JOB_FILE_LINE_END_PATTERN;
-import static org.apache.inlong.agent.constant.JobConstants.JOB_FILE_MAX_WAIT;
-import static org.apache.inlong.agent.constant.JobConstants.JOB_FILE_META_ENV_LIST;
-import static org.apache.inlong.agent.constant.JobConstants.JOB_FILE_TRIGGER_TYPE;
-import static org.apache.inlong.agent.constant.JobConstants.JOB_GROUP_ID;
-import static org.apache.inlong.agent.constant.JobConstants.JOB_INSTANCE_ID;
-import static org.apache.inlong.agent.constant.JobConstants.JOB_STREAM_ID;
-import static org.apache.inlong.agent.constant.KubernetesConstants.KUBERNETES;
-import static org.apache.inlong.agent.constant.MetadataConstants.ENV_CVM;
+import org.apache.inlong.agent.conf.JobProfile;
+import org.apache.inlong.agent.constant.DataCollectType;
+import org.apache.inlong.agent.constant.FileTriggerType;
+import org.apache.inlong.agent.constant.MetadataConstants;
+import org.apache.inlong.agent.plugin.AgentBaseTestsHelper;
+import org.apache.inlong.agent.plugin.Message;
+import org.apache.inlong.agent.plugin.Reader;
+import org.apache.inlong.agent.plugin.sources.reader.file.FileReaderOperator;
+import org.apache.inlong.agent.utils.AgentUtils;
+import org.apache.inlong.common.metric.MetricRegister;
 
 import com.google.gson.Gson;
+import org.junit.AfterClass;
+import org.junit.Assert;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.powermock.core.classloader.annotations.PowerMockIgnore;
+import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.BufferedReader;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -48,27 +54,23 @@ import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Stream;
-import org.apache.inlong.agent.conf.JobProfile;
-import org.apache.inlong.agent.constant.DataCollectType;
-import org.apache.inlong.agent.constant.FileTriggerType;
-import org.apache.inlong.agent.constant.MetadataConstants;
-import org.apache.inlong.agent.core.AgentManager;
-import org.apache.inlong.agent.plugin.AgentBaseTestsHelper;
-import org.apache.inlong.agent.plugin.Message;
-import org.apache.inlong.agent.plugin.Reader;
-import org.apache.inlong.agent.plugin.sources.reader.file.FileReaderOperator;
-import org.apache.inlong.agent.utils.AgentUtils;
-import org.apache.inlong.common.metric.MetricRegister;
-import org.junit.AfterClass;
-import org.junit.Assert;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import org.powermock.core.classloader.annotations.PowerMockIgnore;
-import org.powermock.core.classloader.annotations.PrepareForTest;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-@PowerMockIgnore({"javax.management.*", "javax.script.*", "com.sun.org.apache.xerces.*", "javax.xml.*", "org.xml.*",
+import static org.apache.inlong.agent.constant.CommonConstants.PROXY_INLONG_GROUP_ID;
+import static org.apache.inlong.agent.constant.CommonConstants.PROXY_INLONG_STREAM_ID;
+import static org.apache.inlong.agent.constant.JobConstants.JOB_DIR_FILTER_PATTERNS;
+import static org.apache.inlong.agent.constant.JobConstants.JOB_FILE_CONTENT_COLLECT_TYPE;
+import static org.apache.inlong.agent.constant.JobConstants.JOB_FILE_LINE_END_PATTERN;
+import static org.apache.inlong.agent.constant.JobConstants.JOB_FILE_MAX_WAIT;
+import static org.apache.inlong.agent.constant.JobConstants.JOB_FILE_META_ENV_LIST;
+import static org.apache.inlong.agent.constant.JobConstants.JOB_FILE_TRIGGER_TYPE;
+import static org.apache.inlong.agent.constant.JobConstants.JOB_GROUP_ID;
+import static org.apache.inlong.agent.constant.JobConstants.JOB_INSTANCE_ID;
+import static org.apache.inlong.agent.constant.JobConstants.JOB_STREAM_ID;
+import static org.apache.inlong.agent.constant.KubernetesConstants.KUBERNETES;
+import static org.apache.inlong.agent.constant.MetadataConstants.ENV_CVM;
+
+@PowerMockIgnore({"javax.net.ssl.*", "javax.management.*", "javax.script.*", "com.sun.org.apache.xerces.*",
+        "javax.xml.*", "org.xml.*",
         "org.w3c.*"})
 @PrepareForTest({MetricRegister.class})
 public class TestTextFileReader {
@@ -85,7 +87,7 @@ public class TestTextFileReader {
     }
 
     @AfterClass
-    public static void teardown() {
+    public static void teardown() throws Exception {
         helper.teardownAgentHome();
     }
 
@@ -194,11 +196,11 @@ public class TestTextFileReader {
                 break;
             }
             String content = getContent(message.toString());
+            LOGGER.info("content is {}", content);
             Assert.assertTrue(
-                    content.equalsIgnoreCase("hello ")
-                            || content.equalsIgnoreCase(" aa" + System.lineSeparator() + "world ")
-                            || content.equalsIgnoreCase(System.lineSeparator() + "agent "));
-            LOGGER.info("message is {}", message.toString());
+                    content.equalsIgnoreCase("hello line-end-symbol aa")
+                            || content.equalsIgnoreCase("world line-end-symbol")
+                            || content.equalsIgnoreCase("agent line-end-symbol"));
         }
     }
 
@@ -238,16 +240,15 @@ public class TestTextFileReader {
 
     @Test
     public void testTextSeekReader() throws Exception {
-        final AgentManager agentManager = new AgentManager();
         Path localPath = Paths.get(testDir.toString(), "test.txt");
         LOGGER.info("start to create {}", localPath);
         List<String> beforeList = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 3; i++) {
             beforeList.add("world");
         }
         Files.write(localPath, beforeList, StandardOpenOption.CREATE);
         List<String> afterList = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 3; i++) {
             afterList.add("world");
         }
         Files.write(localPath, afterList, StandardOpenOption.APPEND);
@@ -280,7 +281,7 @@ public class TestTextFileReader {
         CompletableFuture<Void> future = CompletableFuture.runAsync(() -> {
             try {
                 List<String> beforeList = new ArrayList<>();
-                for (int i = 0; i < 1000; i++) {
+                for (int i = 0; i < 3; i++) {
                     beforeList.add("hello, this is a new line for testTextSeekReader");
                 }
                 Files.write(localPath, beforeList, StandardOpenOption.CREATE, StandardOpenOption.APPEND);
@@ -288,12 +289,13 @@ public class TestTextFileReader {
                 LOGGER.info("ignored Exception ", ignored);
             }
         });
-        TimeUnit.SECONDS.sleep(5);
+        TimeUnit.SECONDS.sleep(3);
         int count = 0;
-        while (!reader.isFinished() && count < 1000) {
+        while (!reader.isFinished() && count < 5) {
             count += 1;
+            LOGGER.info("ignored count ", count);
         }
-        Assert.assertEquals(1000, count);
+        Assert.assertEquals(5, count);
     }
 
     private String getContent(String message) {

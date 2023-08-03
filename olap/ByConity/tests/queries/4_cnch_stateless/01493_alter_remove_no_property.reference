@@ -1,2 +1,0 @@
-CREATE TABLE default.no_prop_table\n(\n    `some_column` UInt64\n)\nENGINE = CnchMergeTree\nORDER BY tuple()\nSETTINGS storage_policy = \'cnch_default_hdfs\', index_granularity = 8192
-CREATE TABLE default.no_prop_table\n(\n    `some_column` UInt64\n)\nENGINE = CnchMergeTree\nORDER BY tuple()\nSETTINGS storage_policy = \'cnch_default_hdfs\', index_granularity = 8192

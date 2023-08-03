@@ -17,8 +17,6 @@
 
 package org.apache.inlong.manager.service.cluster;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.inlong.manager.common.consts.InlongConstants;
 import org.apache.inlong.manager.common.enums.ClusterType;
 import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
@@ -33,11 +31,16 @@ import org.apache.inlong.manager.pojo.cluster.tubemq.TubeClusterDTO;
 import org.apache.inlong.manager.pojo.cluster.tubemq.TubeClusterInfo;
 import org.apache.inlong.manager.pojo.cluster.tubemq.TubeClusterRequest;
 import org.apache.inlong.manager.service.group.InlongGroupOperator4NoneMQ;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -66,7 +69,7 @@ public class TubeClusterOperator extends AbstractClusterOperator {
         TubeClusterRequest tubeRequest = (TubeClusterRequest) request;
         CommonBeanUtils.copyProperties(tubeRequest, targetEntity, true);
         try {
-            TubeClusterDTO dto = objectMapper.convertValue(tubeRequest, TubeClusterDTO.class);
+            TubeClusterDTO dto = TubeClusterDTO.getFromRequest(tubeRequest, targetEntity.getExtParams());
             dto.setMasterIpPortList(request.getUrl());
             targetEntity.setExtParams(objectMapper.writeValueAsString(dto));
             LOGGER.debug("success to set entity for tubemq cluster");
@@ -110,6 +113,15 @@ public class TubeClusterOperator extends AbstractClusterOperator {
             LOGGER.error(errMsg, e);
             throw new BusinessException(errMsg);
         }
+    }
+
+    @Override
+    public Object getClusterInfo(InlongClusterEntity entity) {
+        TubeClusterInfo tubeClusterInfo = (TubeClusterInfo) this.getFromEntity(entity);
+        Map<String, String> map = new HashMap<>();
+        map.put("RPC Url", tubeClusterInfo.getUrl());
+        map.put("Web url", tubeClusterInfo.getMasterWebUrl());
+        return map;
     }
 
 }

@@ -20,6 +20,7 @@ package org.apache.inlong.sdk.dataproxy;
 import org.apache.inlong.sdk.dataproxy.config.ProxyConfigEntry;
 import org.apache.inlong.sdk.dataproxy.config.ProxyConfigManager;
 import org.apache.inlong.sdk.dataproxy.network.ClientMgr;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.powermock.api.mockito.PowerMockito;

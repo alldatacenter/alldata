@@ -120,8 +120,8 @@ export class ConsumeDefaultInfo implements DataWithBackend, RenderRow, RenderLis
             result.mqType === 'TUBEMQ'
               ? [
                   {
-                    label: result,
-                    value: result,
+                    label: result.topic,
+                    value: result.topic,
                   },
                 ]
               : result.topics?.map(item => ({

@@ -563,6 +563,20 @@
             and status not in (99, 201, 301)
         </where>
     </update>
+    <update id="logicalDeleteByAgentIp">
+        update stream_source
+        <set>
+            is_deleted = id,
+            previous_status = status,
+            status = #{status, jdbcType=INTEGER},
+            version = version + 1
+        </set>
+        where is_deleted = 0
+        and agent_ip = #{agentIp, jdbcType=VARCHAR}
+        <if test="targetStatus != null">
+            and status = #{targetStatus, jdbcType=INTEGER}
+        </if>
+    </update>
     <delete id="deleteByRelatedId">
         delete
         from stream_source

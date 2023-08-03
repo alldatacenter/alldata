@@ -17,10 +17,11 @@
 
 package org.apache.inlong.sdk.dataproxy.pb;
 
-import org.apache.flume.Context;
 import org.apache.inlong.sdk.commons.protocol.ProxySdk.INLONG_COMPRESSED_TYPE;
 import org.apache.inlong.sdk.dataproxy.MessageSender;
 import org.apache.inlong.sdk.dataproxy.pb.config.LoaderType;
+
+import org.apache.flume.Context;
 
 /**
  * MessageSenderBuilder

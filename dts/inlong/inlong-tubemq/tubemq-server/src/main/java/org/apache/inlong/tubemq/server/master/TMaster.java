@@ -17,23 +17,6 @@
 
 package org.apache.inlong.tubemq.server.master;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeSet;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicLong;
-import org.apache.commons.codec.binary.StringUtils;
-import org.apache.commons.collections.CollectionUtils;
 import org.apache.inlong.tubemq.corebase.TBaseConstants;
 import org.apache.inlong.tubemq.corebase.TErrCodeConstants;
 import org.apache.inlong.tubemq.corebase.TokenConstants;
@@ -125,9 +108,28 @@ import org.apache.inlong.tubemq.server.master.stats.prometheus.MasterPromMetricS
 import org.apache.inlong.tubemq.server.master.utils.Chore;
 import org.apache.inlong.tubemq.server.master.utils.SimpleVisitTokenManager;
 import org.apache.inlong.tubemq.server.master.web.WebServer;
+
+import org.apache.commons.codec.binary.StringUtils;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.zookeeper.client.ZKClientConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class TMaster extends HasThread implements MasterService, Stoppable {
 

@@ -18,6 +18,7 @@
 package org.apache.inlong.sort.util;
 
 import com.google.common.base.Preconditions;
+
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;

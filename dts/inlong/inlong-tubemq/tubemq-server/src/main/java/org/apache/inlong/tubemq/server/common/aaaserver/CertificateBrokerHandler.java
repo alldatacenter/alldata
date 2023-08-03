@@ -17,10 +17,11 @@
 
 package org.apache.inlong.tubemq.server.common.aaaserver;
 
-import java.util.Set;
 import org.apache.inlong.tubemq.corebase.protobuf.generated.ClientBroker;
 import org.apache.inlong.tubemq.corebase.protobuf.generated.ClientMaster;
 import org.apache.inlong.tubemq.corebase.rv.ProcessResult;
+
+import java.util.Set;
 
 public interface CertificateBrokerHandler {
 

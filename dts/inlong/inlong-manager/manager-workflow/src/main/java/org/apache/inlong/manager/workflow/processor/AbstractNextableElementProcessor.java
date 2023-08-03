@@ -23,6 +23,7 @@ import org.apache.inlong.manager.workflow.WorkflowContext;
 import org.apache.inlong.manager.workflow.definition.Element;
 import org.apache.inlong.manager.workflow.definition.EndEvent;
 import org.apache.inlong.manager.workflow.definition.NextableElement;
+
 import org.springframework.util.CollectionUtils;
 
 import java.util.Collections;

@@ -17,11 +17,12 @@
 
 package org.apache.inlong.manager.workflow.definition;
 
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import org.apache.inlong.manager.common.util.Preconditions;
 import org.apache.inlong.manager.workflow.WorkflowAction;
 import org.apache.inlong.manager.workflow.WorkflowContext;
+
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 
 import java.util.List;
 import java.util.Map;

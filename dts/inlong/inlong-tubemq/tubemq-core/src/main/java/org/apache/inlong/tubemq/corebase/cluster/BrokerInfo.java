@@ -17,12 +17,13 @@
 
 package org.apache.inlong.tubemq.corebase.cluster;
 
-import java.io.Serializable;
-import java.net.URI;
-import java.net.URISyntaxException;
 import org.apache.inlong.tubemq.corebase.TBaseConstants;
 import org.apache.inlong.tubemq.corebase.TokenConstants;
 import org.apache.inlong.tubemq.corebase.utils.TStringUtils;
+
+import java.io.Serializable;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 /**
  * The BrokerInfo hold basic info of an tube broker the brokerId, the broker host

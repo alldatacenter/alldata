@@ -17,20 +17,19 @@
 
 package org.apache.inlong.tubemq.manager.service.tube;
 
-import static org.apache.inlong.tubemq.manager.service.TubeConst.BATCH_ADD_TOPIC;
-import static org.apache.inlong.tubemq.manager.service.TubeConst.OP_MODIFY;
-import static org.apache.inlong.tubemq.manager.service.TubeConst.WEB_API;
+import org.apache.inlong.tubemq.manager.controller.node.request.AddTopicReq;
 
 import com.google.common.collect.Lists;
+import lombok.Data;
+import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import lombok.Data;
-import org.apache.commons.collections4.CollectionUtils;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.inlong.tubemq.manager.controller.node.request.AddTopicReq;
-import org.apache.inlong.tubemq.manager.service.tube.TubeHttpTopicInfoList.TopicInfoList.TopicInfo;
+import static org.apache.inlong.tubemq.manager.service.TubeConst.BATCH_ADD_TOPIC;
+import static org.apache.inlong.tubemq.manager.service.TubeConst.OP_MODIFY;
+import static org.apache.inlong.tubemq.manager.service.TubeConst.WEB_API;
 
 /**
  * json class for topic info list from master http service.
@@ -96,7 +95,7 @@ public class TubeHttpTopicInfoList {
         if (data != null) {
             for (TopicInfoList topicInfoList : data) {
                 if (topicInfoList.getTopicInfo() != null) {
-                    for (TopicInfo topicInfo : topicInfoList.getTopicInfo()) {
+                    for (TopicInfoList.TopicInfo topicInfo : topicInfoList.getTopicInfo()) {
                         tmpBrokerIdList.add(topicInfo.getBrokerId());
                     }
                 }
@@ -105,7 +104,7 @@ public class TubeHttpTopicInfoList {
         return tmpBrokerIdList;
     }
 
-    public List<TopicInfo> getTopicInfo() {
+    public List<TopicInfoList.TopicInfo> getTopicInfo() {
         if (CollectionUtils.isEmpty(data)) {
             return Lists.newArrayList();
         }
@@ -127,12 +126,12 @@ public class TubeHttpTopicInfoList {
         if (topicInfoList == null) {
             return req;
         }
-        List<TopicInfo> topicInfos = topicInfoList.getTopicInfo();
+        List<TopicInfoList.TopicInfo> topicInfos = topicInfoList.getTopicInfo();
         if (CollectionUtils.isEmpty(topicInfos)) {
             return req;
         }
 
-        TopicInfo topicInfo = topicInfos.get(0);
+        TopicInfoList.TopicInfo topicInfo = topicInfos.get(0);
         String brokerStr = StringUtils.join(brokerIds, ",");
         String topic = StringUtils.join(targetTopicNames, ",");
 
@@ -140,7 +139,7 @@ public class TubeHttpTopicInfoList {
         return req;
     }
 
-    private void setAttributes(String token, AddTopicReq req, TopicInfo topicInfo, String brokerStr,
+    private void setAttributes(String token, AddTopicReq req, TopicInfoList.TopicInfo topicInfo, String brokerStr,
             String topic) {
         req.setBrokerId(brokerStr);
         req.setTopicName(topic);

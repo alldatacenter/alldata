@@ -17,9 +17,10 @@
 
 package org.apache.inlong.audit.source;
 
+import org.apache.inlong.audit.protocol.AuditApi.BaseCommand;
+
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.Channel;
-import org.apache.inlong.audit.protocol.AuditApi.BaseCommand;
 
 /**
  * decoder interface definition

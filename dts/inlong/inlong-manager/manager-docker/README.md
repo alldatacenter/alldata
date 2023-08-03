@@ -5,7 +5,7 @@ InLong Manager is available for development and experience.
 ### Pull Image
 
 ```
-docker pull inlong/manager:1.7.0
+docker pull inlong/manager:1.8.0
 ```
 
 ### Start Container
@@ -16,5 +16,5 @@ docker run -d --name manager -p 8083:8083 \
 -e JDBC_URL=127.0.0.1:3306 \
 -e USERNAME=root \
 -e PASSWORD=inlong \
-inlong/manager:1.7.0
+inlong/manager:1.8.0
 ```

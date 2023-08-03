@@ -39,6 +39,8 @@ import org.apache.inlong.manager.pojo.sink.SinkRequest;
 import org.apache.inlong.manager.pojo.sink.hive.HiveSinkRequest;
 import org.apache.inlong.manager.pojo.stream.InlongStreamExtInfo;
 import org.apache.inlong.manager.pojo.stream.InlongStreamRequest;
+import org.apache.inlong.manager.pojo.user.LoginUserUtils;
+import org.apache.inlong.manager.pojo.user.UserInfo;
 import org.apache.inlong.manager.service.ServiceBaseTest;
 import org.apache.inlong.manager.service.cluster.InlongClusterService;
 import org.apache.inlong.manager.service.core.SortService;
@@ -46,8 +48,10 @@ import org.apache.inlong.manager.service.group.InlongGroupService;
 import org.apache.inlong.manager.service.node.DataNodeService;
 import org.apache.inlong.manager.service.sink.StreamSinkService;
 import org.apache.inlong.manager.service.stream.InlongStreamService;
+
 import org.json.JSONObject;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
@@ -59,8 +63,12 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+
+import static org.apache.inlong.manager.pojo.user.UserRoleCode.INLONG_SERVICE;
 
 /**
  * Sort service test for {@link SortService}
@@ -104,6 +112,17 @@ public class SortServiceImplTest extends ServiceBaseTest {
     private DataNodeService dataNodeService;
     @Autowired
     private StreamSinkService streamSinkService;
+
+    @BeforeAll
+    public static void login() {
+        UserInfo userInfo = new UserInfo();
+        userInfo.setTenant(PUBLIC_TENANT);
+        userInfo.setName(GLOBAL_OPERATOR);
+        Set<String> roles = new HashSet<>();
+        roles.add(INLONG_SERVICE);
+        userInfo.setRoles(roles);
+        LoginUserUtils.setUserLoginInfo(userInfo);
+    }
 
     @Test
     @Order(1)
@@ -354,7 +373,7 @@ public class SortServiceImplTest extends ServiceBaseTest {
                 + "&producer=true"
                 + "&consumer=" + (isConsumable ? "true" : "false");
         request.setExtTag(extTag);
-        request.setExtParams("{\"tenant\":\"testTenant\","
+        request.setExtParams("{\"pulsarTenant\":\"testTenant\","
                 + "\"authentication\":\"testAuth\",\"adminUrl\":\"testAdmin\"}");
         clusterService.save(request, "test operator");
     }

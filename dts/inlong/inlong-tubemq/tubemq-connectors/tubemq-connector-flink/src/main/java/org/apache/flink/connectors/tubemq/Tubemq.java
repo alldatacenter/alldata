@@ -17,6 +17,15 @@
 
 package org.apache.flink.connectors.tubemq;
 
+import org.apache.flink.table.descriptors.ConnectorDescriptor;
+import org.apache.flink.table.descriptors.DescriptorProperties;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import static org.apache.flink.connectors.tubemq.TubemqValidator.CONNECTOR_GROUP;
 import static org.apache.flink.connectors.tubemq.TubemqValidator.CONNECTOR_MASTER;
 import static org.apache.flink.connectors.tubemq.TubemqValidator.CONNECTOR_PROPERTIES;
@@ -24,12 +33,6 @@ import static org.apache.flink.connectors.tubemq.TubemqValidator.CONNECTOR_TIDS;
 import static org.apache.flink.connectors.tubemq.TubemqValidator.CONNECTOR_TOPIC;
 import static org.apache.flink.connectors.tubemq.TubemqValidator.CONNECTOR_TYPE_VALUE_TUBEMQ;
 import static org.apache.flink.util.Preconditions.checkNotNull;
-import java.util.HashMap;
-import java.util.Map;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import org.apache.flink.table.descriptors.ConnectorDescriptor;
-import org.apache.flink.table.descriptors.DescriptorProperties;
 
 /**
  * The {@link ConnectorDescriptor} for tubemq sources and sinks.

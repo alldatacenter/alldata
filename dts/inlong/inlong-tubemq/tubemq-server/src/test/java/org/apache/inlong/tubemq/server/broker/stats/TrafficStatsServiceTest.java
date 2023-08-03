@@ -17,10 +17,11 @@
 
 package org.apache.inlong.tubemq.server.broker.stats;
 
-import java.util.HashMap;
-import java.util.Map;
 import org.junit.Assert;
 import org.junit.Test;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * TrafficStatsService test.

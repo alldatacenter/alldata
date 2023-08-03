@@ -42,6 +42,12 @@ type RPCClient interface {
 	// RegisterRequestP2M is the rpc request for a producer to register to master.
 	RegisterRequestP2M(ctx context.Context, metadata *metadata.Metadata,
 		clientID string) (*protocol.RegisterResponseM2P, error)
+	// HeartRequestP2M is the rpc request for a producer to send heartbeat to master.
+	HeartRequestP2M(ctx context.Context, metadata *metadata.Metadata,
+		clientID string, brokerCheckSum int64, topics []string) (*protocol.HeartResponseM2P, error)
+	// SendMessageRequestP2B is the rpc request for a producer to send message to broker.
+	SendMessageRequestP2B(ctx context.Context, metadta *metadata.Metadata,
+		clientID string, partition *metadata.Partition, messageData []byte, flag int32) (*protocol.SendMessageResponseB2P, error)
 	// RegisterRequestC2B is the rpc request for a consumer to register to a broker.
 	RegisterRequestC2B(ctx context.Context, metadata *metadata.Metadata, sub *sub.SubInfo,
 		r *remote.RmtDataCache) (*protocol.RegisterResponseB2C, error)

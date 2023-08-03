@@ -20,6 +20,7 @@ package org.apache.inlong.agent.plugin.sources.snapshot;
 import org.apache.inlong.agent.conf.AgentConfiguration;
 import org.apache.inlong.agent.constant.AgentConstants;
 import org.apache.inlong.agent.utils.AgentUtils;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

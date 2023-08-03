@@ -18,6 +18,7 @@
 package org.apache.inlong.tubemq.server.master.utils;
 
 import org.apache.inlong.tubemq.corebase.utils.AbstractSamplePrint;
+
 import org.slf4j.Logger;
 
 public class BrokerStatusSamplePrint extends AbstractSamplePrint {

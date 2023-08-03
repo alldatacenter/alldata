@@ -17,8 +17,6 @@
 
 package org.apache.inlong.tubemq.server.master;
 
-import java.util.Set;
-import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.inlong.tubemq.corebase.TBaseConstants;
 import org.apache.inlong.tubemq.corebase.config.TLSConfig;
 import org.apache.inlong.tubemq.corebase.utils.AddressUtils;
@@ -30,10 +28,14 @@ import org.apache.inlong.tubemq.server.common.fileconfig.AbstractFileConfig;
 import org.apache.inlong.tubemq.server.common.fileconfig.BdbMetaConfig;
 import org.apache.inlong.tubemq.server.common.fileconfig.PrometheusConfig;
 import org.apache.inlong.tubemq.server.common.fileconfig.ZKMetaConfig;
+
+import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.ini4j.Ini;
 import org.ini4j.Profile;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.Set;
 
 /**
  * Basic config for master service

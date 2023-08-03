@@ -25,11 +25,13 @@ import { State } from '@/core/stores';
 import { localesConfig } from '@/configs/locales';
 import i18n from '@/i18n';
 import './antd.cover.less';
+import { useLocalStorage } from '@/core/utils/localStorage';
 
 const Provider = ({ children }) => {
   const dispatch = useDispatch();
 
   const locale = useSelector<State, State['locale']>(state => state.locale);
+  const [getLocalStorage, setLocalStorage, removeLocalStorage] = useLocalStorage('tenant');
 
   const [antdMessages, setAntdMessages] = useState();
 
@@ -40,12 +42,14 @@ const Provider = ({ children }) => {
     },
     {
       onSuccess: result => {
+        setLocalStorage({ name: result.tenant });
         dispatch({
           type: 'setUserInfo',
           payload: {
             userName: result.name,
             userId: result.userId,
             roles: result.roles,
+            tenant: result.tenant,
           },
         });
       },

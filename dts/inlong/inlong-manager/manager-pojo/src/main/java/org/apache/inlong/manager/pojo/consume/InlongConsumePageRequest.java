@@ -17,6 +17,8 @@
 
 package org.apache.inlong.manager.pojo.consume;
 
+import org.apache.inlong.manager.pojo.common.PageRequest;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -24,7 +26,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import org.apache.inlong.manager.pojo.common.PageRequest;
 
 import java.util.List;
 
@@ -59,6 +60,9 @@ public class InlongConsumePageRequest extends PageRequest {
 
     @ApiModelProperty(value = "Consume status list")
     private List<Integer> statusList;
+
+    @ApiModelProperty(value = "Inlong tenant", hidden = true)
+    private String tenant;
 
     @ApiModelProperty(value = "Current user", hidden = true)
     private String currentUser;

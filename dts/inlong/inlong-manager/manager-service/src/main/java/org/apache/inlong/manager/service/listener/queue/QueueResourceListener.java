@@ -17,8 +17,6 @@
 
 package org.apache.inlong.manager.service.listener.queue;
 
-import com.google.common.util.concurrent.ThreadFactoryBuilder;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.inlong.manager.common.consts.InlongConstants;
 import org.apache.inlong.manager.common.enums.GroupOperateType;
 import org.apache.inlong.manager.common.enums.GroupStatus;
@@ -27,6 +25,8 @@ import org.apache.inlong.manager.common.enums.TaskStatus;
 import org.apache.inlong.manager.common.exceptions.WorkflowListenerException;
 import org.apache.inlong.manager.pojo.group.InlongGroupInfo;
 import org.apache.inlong.manager.pojo.stream.InlongStreamInfo;
+import org.apache.inlong.manager.pojo.user.LoginUserUtils;
+import org.apache.inlong.manager.pojo.user.UserInfo;
 import org.apache.inlong.manager.pojo.workflow.TaskResponse;
 import org.apache.inlong.manager.pojo.workflow.WorkflowResult;
 import org.apache.inlong.manager.pojo.workflow.form.process.GroupResourceProcessForm;
@@ -39,6 +39,9 @@ import org.apache.inlong.manager.service.workflow.WorkflowService;
 import org.apache.inlong.manager.workflow.WorkflowContext;
 import org.apache.inlong.manager.workflow.event.ListenerResult;
 import org.apache.inlong.manager.workflow.event.task.QueueOperateListener;
+
+import com.google.common.util.concurrent.ThreadFactoryBuilder;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -96,7 +99,7 @@ public class QueueResourceListener implements QueueOperateListener {
             return false;
         }
         GroupResourceProcessForm processForm = (GroupResourceProcessForm) context.getProcessForm();
-        return InlongConstants.STANDARD_MODE.equals(processForm.getGroupInfo().getLightweight());
+        return InlongConstants.STANDARD_MODE.equals(processForm.getGroupInfo().getInlongGroupMode());
     }
 
     @Override
@@ -151,9 +154,10 @@ public class QueueResourceListener implements QueueOperateListener {
             StreamResourceProcessForm form = StreamResourceProcessForm.getProcessForm(groupInfo, stream, INIT);
             String streamId = stream.getInlongStreamId();
             final String errMsg = "failed to start stream process for groupId=" + groupId + " streamId=" + streamId;
-
+            UserInfo userInfo = LoginUserUtils.getLoginUser();
             CompletableFuture<WorkflowResult> future = CompletableFuture
-                    .supplyAsync(() -> workflowService.start(CREATE_STREAM_RESOURCE, operator, form), EXECUTOR_SERVICE)
+                    .supplyAsync(() -> workflowService.startAsync(CREATE_STREAM_RESOURCE, userInfo, form),
+                            EXECUTOR_SERVICE)
                     .whenComplete((result, ex) -> {
                         if (ex != null) {
                             log.error(errMsg + ": " + ex.getMessage());

@@ -25,6 +25,7 @@ import org.apache.inlong.sdk.sort.fetcher.kafka.KafkaSingleTopicFetcher;
 import org.apache.inlong.sdk.sort.impl.ClientContextImpl;
 import org.apache.inlong.sdk.sort.impl.decode.MessageDeserializer;
 import org.apache.inlong.sdk.sort.interceptor.MsgTimeInterceptor;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

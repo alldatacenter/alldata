@@ -17,12 +17,19 @@
 
 package org.apache.inlong.agent.plugin.filter;
 
-import static org.apache.inlong.agent.constant.JobConstants.JOB_DIR_FILTER_PATTERNS;
-import static org.apache.inlong.agent.constant.JobConstants.JOB_GROUP_ID;
-import static org.apache.inlong.agent.constant.JobConstants.JOB_INSTANCE_ID;
-import static org.apache.inlong.agent.constant.JobConstants.JOB_STREAM_ID;
+import org.apache.inlong.agent.conf.JobProfile;
+import org.apache.inlong.agent.plugin.AgentBaseTestsHelper;
+import org.apache.inlong.agent.plugin.Reader;
+import org.apache.inlong.agent.plugin.sources.TextFileSource;
+import org.apache.inlong.agent.plugin.trigger.PathPattern;
+import org.apache.inlong.agent.utils.AgentUtils;
 
 import com.google.common.collect.Sets;
+import org.junit.AfterClass;
+import org.junit.Assert;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
@@ -32,16 +39,11 @@ import java.time.format.DateTimeFormatter;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
-import org.apache.inlong.agent.conf.JobProfile;
-import org.apache.inlong.agent.plugin.AgentBaseTestsHelper;
-import org.apache.inlong.agent.plugin.Reader;
-import org.apache.inlong.agent.plugin.sources.TextFileSource;
-import org.apache.inlong.agent.plugin.trigger.PathPattern;
-import org.apache.inlong.agent.utils.AgentUtils;
-import org.junit.AfterClass;
-import org.junit.Assert;
-import org.junit.BeforeClass;
-import org.junit.Test;
+
+import static org.apache.inlong.agent.constant.JobConstants.JOB_DIR_FILTER_PATTERNS;
+import static org.apache.inlong.agent.constant.JobConstants.JOB_GROUP_ID;
+import static org.apache.inlong.agent.constant.JobConstants.JOB_INSTANCE_ID;
+import static org.apache.inlong.agent.constant.JobConstants.JOB_STREAM_ID;
 
 public class TestDateFormatRegex {
 

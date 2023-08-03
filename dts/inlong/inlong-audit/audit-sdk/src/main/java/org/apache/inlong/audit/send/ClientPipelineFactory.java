@@ -17,9 +17,10 @@
 
 package org.apache.inlong.audit.send;
 
+import org.apache.inlong.audit.util.Decoder;
+
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.socket.SocketChannel;
-import org.apache.inlong.audit.util.Decoder;
 
 public class ClientPipelineFactory extends ChannelInitializer<SocketChannel> {
 

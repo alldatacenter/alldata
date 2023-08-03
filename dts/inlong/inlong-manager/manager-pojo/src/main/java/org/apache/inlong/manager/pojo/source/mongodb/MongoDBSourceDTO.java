@@ -17,16 +17,20 @@
 
 package org.apache.inlong.manager.pojo.source.mongodb;
 
+import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
+import org.apache.inlong.manager.common.exceptions.BusinessException;
+import org.apache.inlong.manager.common.util.CommonBeanUtils;
+import org.apache.inlong.manager.common.util.JsonUtils;
+
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
-import org.apache.inlong.manager.common.exceptions.BusinessException;
-import org.apache.inlong.manager.common.util.JsonUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.validation.constraints.NotNull;
+
 import java.util.Map;
 
 /**
@@ -62,16 +66,11 @@ public class MongoDBSourceDTO {
     /**
      * Get the dto instance from the request
      */
-    public static MongoDBSourceDTO getFromRequest(MongoDBSourceRequest request) {
-        return MongoDBSourceDTO.builder()
-                .primaryKey(request.getPrimaryKey())
-                .hosts(request.getHosts())
-                .username(request.getUsername())
-                .password(request.getPassword())
-                .database(request.getDatabase())
-                .collection(request.getCollection())
-                .properties(request.getProperties())
-                .build();
+    public static MongoDBSourceDTO getFromRequest(MongoDBSourceRequest request, String extParams) {
+        MongoDBSourceDTO dto = StringUtils.isNotBlank(extParams)
+                ? MongoDBSourceDTO.getFromJson(extParams)
+                : new MongoDBSourceDTO();
+        return CommonBeanUtils.copyProperties(request, dto, true);
     }
 
     /**

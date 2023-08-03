@@ -17,17 +17,18 @@
 
 package org.apache.inlong.sort.protocol.transformation.function;
 
+import org.apache.inlong.sort.protocol.FieldInfo;
+import org.apache.inlong.sort.protocol.transformation.FunctionParam;
+import org.apache.inlong.sort.protocol.transformation.GroupTimeWindowFunction;
+import org.apache.inlong.sort.protocol.transformation.StringConstantParam;
+import org.apache.inlong.sort.protocol.transformation.TimeUnitConstantParam;
+
 import com.google.common.base.Preconditions;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonCreator;
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonProperty;
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonTypeName;
-import org.apache.inlong.sort.protocol.FieldInfo;
-import org.apache.inlong.sort.protocol.transformation.FunctionParam;
-import org.apache.inlong.sort.protocol.transformation.GroupTimeWindowFunction;
-import org.apache.inlong.sort.protocol.transformation.StringConstantParam;
-import org.apache.inlong.sort.protocol.transformation.TimeUnitConstantParam;
 
 import java.util.Arrays;
 import java.util.List;

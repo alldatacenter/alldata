@@ -17,9 +17,10 @@
 
 package org.apache.inlong.tubemq.corerpc;
 
+import org.apache.inlong.tubemq.corebase.utils.TStringUtils;
+
 import java.util.HashMap;
 import java.util.Map;
-import org.apache.inlong.tubemq.corebase.utils.TStringUtils;
 
 public class RpcConfig {
 

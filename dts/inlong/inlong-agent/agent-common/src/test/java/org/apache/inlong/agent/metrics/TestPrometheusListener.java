@@ -22,6 +22,7 @@ import org.apache.inlong.common.metric.MetricListener;
 import org.apache.inlong.common.metric.MetricListenerRunnable;
 import org.apache.inlong.common.metric.MetricRegister;
 import org.apache.inlong.common.metric.MetricValue;
+
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;

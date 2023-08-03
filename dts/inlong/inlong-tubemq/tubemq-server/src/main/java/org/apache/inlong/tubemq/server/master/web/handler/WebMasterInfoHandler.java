@@ -17,12 +17,6 @@
 
 package org.apache.inlong.tubemq.server.master.web.handler;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import javax.servlet.http.HttpServletRequest;
 import org.apache.inlong.tubemq.corebase.TBaseConstants;
 import org.apache.inlong.tubemq.corebase.cluster.TopicInfo;
 import org.apache.inlong.tubemq.corebase.rv.ProcessResult;
@@ -42,6 +36,14 @@ import org.apache.inlong.tubemq.server.master.metamanage.metastore.dao.entity.To
 import org.apache.inlong.tubemq.server.master.nodemanage.nodebroker.BrokerRunManager;
 import org.apache.inlong.tubemq.server.master.web.model.ClusterGroupVO;
 import org.apache.inlong.tubemq.server.master.web.model.ClusterNodeVO;
+
+import javax.servlet.http.HttpServletRequest;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class WebMasterInfoHandler extends AbstractWebHandler {
 

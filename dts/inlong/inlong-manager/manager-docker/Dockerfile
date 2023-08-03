@@ -52,6 +52,7 @@ ADD target/sort-connector-pulsar-${VERSION}.jar /opt/inlong-sort/connectors/
 ADD target/sort-connector-kafka-${VERSION}.jar /opt/inlong-sort/connectors/
 ADD target/sort-connector-jdbc-${VERSION}.jar /opt/inlong-sort/connectors/
 ADD target/sort-connector-hive-${VERSION}.jar /opt/inlong-sort/connectors/
+ADD target/sort-connector-mysql-cdc-${VERSION}.jar /opt/inlong-sort/connectors/
 # audit clickhouse
 ENV AUDIT_CK_URL=127.0.0.1:8123
 ENV AUDIT_CK_USERNAME=default

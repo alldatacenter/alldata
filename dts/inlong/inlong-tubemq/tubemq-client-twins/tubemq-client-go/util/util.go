@@ -164,3 +164,36 @@ func NewClientID(group string, clientID *uint64, tubeMQClientVersion string) str
 		tubeMQClientVersion)
 	return res
 }
+
+// Build test data, only for demo.
+func BuildTestData(bodySize int) string {
+	transmitData := "This is a test data!"
+	transmitSize := len(transmitData)
+	testData := ""
+	for (len(testData) + transmitSize) <= bodySize {
+		testData += transmitData
+	}
+	if len(testData) < bodySize {
+		testData += transmitData[:(bodySize - len(testData))]
+	}
+	return testData
+}
+
+// Get timestamp
+func CurrentTimeMillis() int64 {
+	return time.Now().UnixMilli()
+}
+
+func Ipv4ToInt(ipv4Addr string) int32 {
+	ipv4Vec := strings.Split(ipv4Addr, ".")
+	var res uint32
+	res = 0
+	andNums := [4]uint32{0xFF000000, 0xFF0000, 0xFF00, 0xFF}
+
+	for i := 3; i >= 0; i-- {
+		ipNum, _ := strconv.Atoi(ipv4Vec[i])
+		res |= (uint32(ipNum) << (8 * (3 - i))) & andNums[i]
+	}
+
+	return int32(res)
+}

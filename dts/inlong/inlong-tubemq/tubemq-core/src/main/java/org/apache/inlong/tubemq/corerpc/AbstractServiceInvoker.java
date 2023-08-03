@@ -17,11 +17,12 @@
 
 package org.apache.inlong.tubemq.corerpc;
 
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
 import org.apache.inlong.tubemq.corerpc.client.Callback;
 import org.apache.inlong.tubemq.corerpc.client.ClientFactory;
 import org.apache.inlong.tubemq.corerpc.utils.MixUtils;
+
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
 
 public abstract class AbstractServiceInvoker implements InvocationHandler {
 

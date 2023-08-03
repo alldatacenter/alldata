@@ -17,8 +17,6 @@
 
 package org.apache.inlong.manager.client.api.inner.client;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.inlong.manager.client.api.ClientConfiguration;
 import org.apache.inlong.manager.client.api.service.WorkflowApproverApi;
 import org.apache.inlong.manager.client.api.util.ClientUtils;
@@ -30,6 +28,9 @@ import org.apache.inlong.manager.pojo.common.Response;
 import org.apache.inlong.manager.pojo.workflow.ApproverPageRequest;
 import org.apache.inlong.manager.pojo.workflow.ApproverRequest;
 import org.apache.inlong.manager.pojo.workflow.ApproverResponse;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
 import java.util.Map;

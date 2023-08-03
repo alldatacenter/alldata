@@ -17,13 +17,14 @@
 
 package org.apache.inlong.sort.protocol.transformation;
 
+import org.apache.inlong.sort.protocol.FieldInfo;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonCreator;
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonProperty;
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonTypeName;
-import org.apache.inlong.sort.protocol.FieldInfo;
 
 /**
  * Defines the relation between fields from input to output field

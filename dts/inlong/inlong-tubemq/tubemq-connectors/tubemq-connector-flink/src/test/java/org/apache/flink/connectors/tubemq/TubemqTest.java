@@ -17,15 +17,16 @@
 
 package org.apache.flink.connectors.tubemq;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import org.apache.flink.table.descriptors.Descriptor;
 import org.apache.flink.table.descriptors.DescriptorProperties;
 import org.apache.flink.table.descriptors.DescriptorTestBase;
 import org.apache.flink.table.descriptors.DescriptorValidator;
 import org.junit.Test;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Unit tests for {@link Tubemq}.

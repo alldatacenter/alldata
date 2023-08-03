@@ -17,11 +17,12 @@
 
 package org.apache.inlong.manager.pojo.workflow;
 
+import org.apache.inlong.manager.common.enums.ProcessName;
+import org.apache.inlong.manager.pojo.workflow.form.process.BaseProcessForm;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-import org.apache.inlong.manager.common.enums.ProcessName;
-import org.apache.inlong.manager.pojo.workflow.form.process.BaseProcessForm;
 
 /**
  * Workflow operation request

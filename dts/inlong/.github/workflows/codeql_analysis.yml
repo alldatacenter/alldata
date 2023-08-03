@@ -58,12 +58,32 @@ jobs:
             ~/.m2/repository
             !~/.m2/repository/org/apache/inlong
             !~/.m2/repository/com/github/eirslett
-          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-          restore-keys: ${{ runner.os }}-m2
+          key: ${{ runner.os }}-inlong-codesql-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-inlong-codesql
 
+      - name: Set up swapfile path
+        run: |
+          sudo sysctl -w vm.max_map_count=262144
+          sudo sysctl -w fs.file-max=65536
+          sudo fallocate -l 5G /swapfile
+          sudo chmod 600 /swapfile
+          sudo mkswap /swapfile
+          sudo swapon /swapfile
+
+      - name: Remove unnecessary packages
+        run: |
+          echo "=== Before pruning ==="
+          df -h
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /usr/local/lib/android
+          sudo rm -rf /opt/ghc
+          echo
+          echo "=== After pruning ==="
+          df -h
+          
       - name: Build with Maven
         run: |
-          mvn --batch-mode --update-snapshots -e -V clean install -DskipTests -Dhttp.keepAlive=false -Dmaven.wagon.http.pool=false -Dmaven.wagon.httpconnectionManager.ttlSeconds=120
+          mvn --batch-mode --update-snapshots -e -V clean install -DskipTests -Dhttp.keepAlive=false -Dmaven.wagon.http.pool=false -Dmaven.wagon.httpconnectionManager.ttlSeconds=120 -Daether.connector.http.reuseConnections=false -Daether.connector.requestTimeout=60000
         env:
           CI: false
 

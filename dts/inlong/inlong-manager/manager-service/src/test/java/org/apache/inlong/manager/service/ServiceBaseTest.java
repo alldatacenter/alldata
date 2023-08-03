@@ -26,9 +26,14 @@ import org.apache.inlong.manager.pojo.group.pulsar.InlongPulsarInfo;
 import org.apache.inlong.manager.pojo.stream.InlongStreamInfo;
 import org.apache.inlong.manager.pojo.stream.InlongStreamRequest;
 import org.apache.inlong.manager.pojo.stream.StreamField;
+import org.apache.inlong.manager.pojo.user.LoginUserUtils;
+import org.apache.inlong.manager.pojo.user.UserInfo;
 import org.apache.inlong.manager.service.group.InlongGroupService;
 import org.apache.inlong.manager.service.stream.InlongStreamService;
 import org.apache.inlong.manager.test.BaseTest;
+
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -49,6 +54,7 @@ public class ServiceBaseTest extends BaseTest {
     public static final String GLOBAL_GROUP_ID = "global_group";
     public static final String GLOBAL_STREAM_ID = "global_stream";
     public static final String GLOBAL_OPERATOR = "admin";
+    public static final String PUBLIC_TENANT = "public";
     public static final String GLOBAL_CLUSTER_NAME = "global_cluster";
     private static final Logger LOGGER = LoggerFactory.getLogger(ServiceBaseTest.class);
 
@@ -56,6 +62,19 @@ public class ServiceBaseTest extends BaseTest {
     protected InlongGroupService groupService;
     @Autowired
     protected InlongStreamService streamService;
+
+    @BeforeAll
+    public static void login() {
+        UserInfo userInfo = new UserInfo();
+        userInfo.setTenant(PUBLIC_TENANT);
+        userInfo.setName(GLOBAL_OPERATOR);
+        LoginUserUtils.setUserLoginInfo(userInfo);
+    }
+
+    @AfterAll
+    public static void logout() {
+        LoginUserUtils.removeUserLoginInfo();
+    }
 
     @Test
     public void test() {

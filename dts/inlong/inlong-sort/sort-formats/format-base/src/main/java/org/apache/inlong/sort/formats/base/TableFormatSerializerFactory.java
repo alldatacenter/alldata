@@ -17,9 +17,10 @@
 
 package org.apache.inlong.sort.formats.base;
 
-import java.util.Map;
 import org.apache.flink.table.factories.TableFormatFactory;
 import org.apache.flink.types.Row;
+
+import java.util.Map;
 
 /**
  * Factory for creating configured instances of {@link TableFormatSerializer}.

@@ -17,14 +17,15 @@
 
 package org.apache.inlong.sort.standalone.config.loader;
 
+import org.apache.inlong.sort.standalone.utils.InlongLoggerFactory;
+
+import org.slf4j.Logger;
+
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.ConcurrentHashMap;
-
-import org.slf4j.Logger;
-import org.apache.inlong.sort.standalone.utils.InlongLoggerFactory;
 
 /**
  * 

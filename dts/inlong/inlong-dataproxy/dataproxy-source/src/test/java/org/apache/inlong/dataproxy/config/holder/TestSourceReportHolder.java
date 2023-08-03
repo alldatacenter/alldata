@@ -18,6 +18,7 @@
 package org.apache.inlong.dataproxy.config.holder;
 
 import org.apache.inlong.dataproxy.config.ConfigManager;
+
 import org.junit.Assert;
 import org.junit.Test;
 

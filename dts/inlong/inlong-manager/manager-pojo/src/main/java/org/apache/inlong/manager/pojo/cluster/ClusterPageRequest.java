@@ -17,6 +17,8 @@
 
 package org.apache.inlong.manager.pojo.cluster;
 
+import org.apache.inlong.manager.pojo.common.PageRequest;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -24,7 +26,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import org.apache.inlong.manager.pojo.common.PageRequest;
 
 import java.util.List;
 
@@ -53,6 +54,9 @@ public class ClusterPageRequest extends PageRequest {
 
     @ApiModelProperty(value = "Parent cluster ID, used for cluster node")
     private Integer parentId;
+
+    @ApiModelProperty(value = "Inlong tenant of cluster", hidden = true)
+    private String tenant;
 
     @ApiModelProperty(value = "Keywords, name, url, cluster tag, etc.")
     private String keyword;

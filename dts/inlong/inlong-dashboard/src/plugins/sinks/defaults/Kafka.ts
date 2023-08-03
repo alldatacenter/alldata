@@ -23,7 +23,7 @@ import { RenderList } from '@/plugins/RenderList';
 import { SinkInfo } from '../common/SinkInfo';
 
 const { I18n } = DataWithBackend;
-const { FieldDecorator } = RenderRow;
+const { FieldDecorator, SyncField } = RenderRow;
 const { ColumnDecorator } = RenderList;
 
 export default class KafkaSink extends SinkInfo implements DataWithBackend, RenderRow, RenderList {
@@ -37,6 +37,7 @@ export default class KafkaSink extends SinkInfo implements DataWithBackend, Rend
   })
   @ColumnDecorator()
   @I18n('meta.Sinks.Kafka.Server')
+  @SyncField()
   bootstrapServers: string;
 
   @FieldDecorator({
@@ -48,6 +49,7 @@ export default class KafkaSink extends SinkInfo implements DataWithBackend, Rend
   })
   @ColumnDecorator()
   @I18n('Topic')
+  @SyncField()
   topicName: string;
 
   @FieldDecorator({
@@ -74,6 +76,7 @@ export default class KafkaSink extends SinkInfo implements DataWithBackend, Rend
   })
   @ColumnDecorator()
   @I18n('meta.Sinks.Kafka.SerializationType')
+  @SyncField()
   serializationType: string;
 
   @FieldDecorator({
@@ -87,6 +90,7 @@ export default class KafkaSink extends SinkInfo implements DataWithBackend, Rend
     rules: [{ required: true }],
   })
   @I18n('meta.Sinks.Kafka.PartitionNum')
+  @SyncField()
   partitionNum: number;
 
   @FieldDecorator({
@@ -112,5 +116,6 @@ export default class KafkaSink extends SinkInfo implements DataWithBackend, Rend
     }),
   })
   @I18n('meta.Sinks.Kafka.AutoOffsetReset')
+  @SyncField()
   autoOffsetReset: string;
 }

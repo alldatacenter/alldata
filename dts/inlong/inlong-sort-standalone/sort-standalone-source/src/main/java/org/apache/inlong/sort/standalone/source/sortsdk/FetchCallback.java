@@ -17,9 +17,6 @@
 
 package org.apache.inlong.sort.standalone.source.sortsdk;
 
-import com.google.common.base.Preconditions;
-
-import org.apache.flume.channel.ChannelProcessor;
 import org.apache.inlong.sdk.sort.api.ReadCallback;
 import org.apache.inlong.sdk.sort.api.SortClient;
 import org.apache.inlong.sdk.sort.entity.InLongMessage;
@@ -27,13 +24,16 @@ import org.apache.inlong.sdk.sort.entity.MessageRecord;
 import org.apache.inlong.sort.standalone.channel.CacheMessageRecord;
 import org.apache.inlong.sort.standalone.channel.ProfileEvent;
 import org.apache.inlong.sort.standalone.config.holder.CommonPropertiesHolder;
+
+import com.google.common.base.Preconditions;
+import org.apache.flume.channel.ChannelProcessor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.List;
-
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+
+import java.util.List;
 
 /**
  * Implementation of {@link ReadCallback}.

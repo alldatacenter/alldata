@@ -20,6 +20,7 @@ package org.apache.inlong.manager.service.group;
 import org.apache.inlong.manager.pojo.group.InlongGroupApproveRequest;
 import org.apache.inlong.manager.pojo.group.tubemq.InlongTubeMQRequest;
 import org.apache.inlong.manager.service.ServiceBaseTest;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

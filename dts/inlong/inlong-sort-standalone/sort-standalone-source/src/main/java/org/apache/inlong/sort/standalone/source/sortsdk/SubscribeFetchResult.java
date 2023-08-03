@@ -17,13 +17,15 @@
 
 package org.apache.inlong.sort.standalone.source.sortsdk;
 
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import org.apache.inlong.sdk.sort.entity.MessageRecord;
 import org.apache.inlong.sort.standalone.metrics.SortMetricItem;
 import org.apache.inlong.sort.standalone.utils.Constants;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * SubscribeFetchResult is the wrapper of {@link MessageRecord}.

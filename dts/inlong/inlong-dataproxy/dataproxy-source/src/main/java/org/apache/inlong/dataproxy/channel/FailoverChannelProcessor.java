@@ -17,12 +17,14 @@
 
 package org.apache.inlong.dataproxy.channel;
 
+import org.apache.inlong.common.monitor.LogCounter;
+import org.apache.inlong.dataproxy.consts.ConfigConstants;
+import org.apache.inlong.dataproxy.exception.MainChannelFullException;
+import org.apache.inlong.dataproxy.utils.MessageUtils;
+import org.apache.inlong.sdk.commons.protocol.ProxyPackEvent;
+
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
 import org.apache.flume.Channel;
 import org.apache.flume.ChannelException;
 import org.apache.flume.ChannelSelector;
@@ -34,13 +36,13 @@ import org.apache.flume.channel.ChannelProcessor;
 import org.apache.flume.interceptor.Interceptor;
 import org.apache.flume.interceptor.InterceptorBuilderFactory;
 import org.apache.flume.interceptor.InterceptorChain;
-import org.apache.inlong.common.enums.DataProxyErrCode;
-import org.apache.inlong.dataproxy.base.SinkRspEvent;
-import org.apache.inlong.dataproxy.consts.ConfigConstants;
-import org.apache.inlong.common.monitor.LogCounter;
-import org.apache.inlong.dataproxy.utils.MessageUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 public class FailoverChannelProcessor
         extends
@@ -256,7 +258,7 @@ public class FailoverChannelProcessor
                 tx.commit();
 
             } catch (Throwable t) {
-                errMsg = "Unable to put event on channel" + reqChannel.getName()
+                errMsg = "Unable to put event on channel " + reqChannel.getName()
                         + ", error message is " + t.getMessage();
                 if (logPrinter.shouldPrint()) {
                     LOG.error("FailoverChannelProcessor Unable to put event on required channel: "
@@ -276,10 +278,9 @@ public class FailoverChannelProcessor
             }
         }
         if (!success) {
-            if (MessageUtils.isSyncSendForOrder(event)) {
-                MessageUtils.sinkReturnRspPackage((SinkRspEvent) event,
-                        DataProxyErrCode.PUT_EVENT_TO_CHANNEL_FAILURE, errMsg);
-                return;
+            if (MessageUtils.isSyncSendForOrder(event)
+                    || event instanceof ProxyPackEvent) {
+                throw new MainChannelFullException(errMsg);
             }
             List<Channel> optionalChannels = selector.getOptionalChannels(event);
             for (Channel optChannel : optionalChannels) {

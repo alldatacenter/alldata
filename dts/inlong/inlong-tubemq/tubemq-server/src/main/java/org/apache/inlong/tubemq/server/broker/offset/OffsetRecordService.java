@@ -17,7 +17,6 @@
 
 package org.apache.inlong.tubemq.server.broker.offset;
 
-import java.util.Map;
 import org.apache.inlong.tubemq.corebase.daemon.AbstractDaemonService;
 import org.apache.inlong.tubemq.corebase.utils.AddressUtils;
 import org.apache.inlong.tubemq.corebase.utils.ServiceStatusHolder;
@@ -25,8 +24,11 @@ import org.apache.inlong.tubemq.server.broker.TubeBroker;
 import org.apache.inlong.tubemq.server.broker.metadata.TopicMetadata;
 import org.apache.inlong.tubemq.server.broker.msgstore.MessageStoreManager;
 import org.apache.inlong.tubemq.server.common.TServerConstants;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.Map;
 
 /**
  * History offset service

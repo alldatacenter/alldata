@@ -17,10 +17,10 @@
 
 package org.apache.inlong.tubemq.manager.service.tube;
 
+import lombok.Data;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import lombok.Data;
 
 /**
  * json class for broker info list from master http service.

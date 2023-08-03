@@ -17,13 +17,6 @@
 
 package org.apache.inlong.agent.plugin.sources.reader;
 
-import com.google.common.base.Preconditions;
-import com.google.gson.Gson;
-import io.debezium.connector.mysql.MySqlConnector;
-import io.debezium.engine.ChangeEvent;
-import io.debezium.engine.DebeziumEngine;
-import io.debezium.relational.history.FileDatabaseHistory;
-import org.apache.commons.lang3.tuple.Pair;
 import org.apache.inlong.agent.conf.AgentConfiguration;
 import org.apache.inlong.agent.conf.JobProfile;
 import org.apache.inlong.agent.constant.AgentConstants;
@@ -36,6 +29,14 @@ import org.apache.inlong.agent.plugin.utils.InLongDatabaseHistory;
 import org.apache.inlong.agent.plugin.utils.InLongFileOffsetBackingStore;
 import org.apache.inlong.agent.pojo.DebeziumFormat;
 import org.apache.inlong.agent.utils.AgentUtils;
+
+import com.google.common.base.Preconditions;
+import com.google.gson.Gson;
+import io.debezium.connector.mysql.MySqlConnector;
+import io.debezium.engine.ChangeEvent;
+import io.debezium.engine.DebeziumEngine;
+import io.debezium.relational.history.FileDatabaseHistory;
+import org.apache.commons.lang3.tuple.Pair;
 import org.apache.kafka.connect.storage.FileOffsetBackingStore;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

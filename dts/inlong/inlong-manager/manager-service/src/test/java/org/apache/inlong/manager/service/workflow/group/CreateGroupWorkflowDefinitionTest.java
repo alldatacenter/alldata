@@ -19,6 +19,7 @@ package org.apache.inlong.manager.service.workflow.group;
 
 import org.apache.inlong.manager.service.ServiceBaseTest;
 import org.apache.inlong.manager.workflow.definition.WorkflowProcess;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

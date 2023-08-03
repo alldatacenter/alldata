@@ -17,12 +17,13 @@
 
 package org.apache.inlong.agent.conf;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.inlong.agent.constant.JobConstants;
 import org.apache.inlong.common.pojo.dataproxy.DataProxyTopicInfo;
 import org.apache.inlong.common.pojo.dataproxy.MQClusterInfo;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
 

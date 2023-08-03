@@ -17,18 +17,21 @@
 
 package org.apache.inlong.manager.pojo.sink.starrocks;
 
+import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
+import org.apache.inlong.manager.common.exceptions.BusinessException;
+import org.apache.inlong.manager.common.util.AESUtils;
+import org.apache.inlong.manager.common.util.CommonBeanUtils;
+import org.apache.inlong.manager.common.util.JsonUtils;
+
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
-import org.apache.inlong.manager.common.exceptions.BusinessException;
-import org.apache.inlong.manager.common.util.AESUtils;
-import org.apache.inlong.manager.common.util.JsonUtils;
 
 import javax.validation.constraints.NotNull;
+
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Map;
@@ -94,30 +97,20 @@ public class StarRocksSinkDTO {
     /**
      * Get the dto instance from the request
      */
-    public static StarRocksSinkDTO getFromRequest(StarRocksSinkRequest request) throws Exception {
+    public static StarRocksSinkDTO getFromRequest(StarRocksSinkRequest request, String extParams) throws Exception {
         Integer encryptVersion = AESUtils.getCurrentVersion(null);
         String passwd = null;
         if (StringUtils.isNotEmpty(request.getPassword())) {
             passwd = AESUtils.encryptToString(request.getPassword().getBytes(StandardCharsets.UTF_8),
                     encryptVersion);
         }
-        return StarRocksSinkDTO.builder()
-                .jdbcUrl(request.getJdbcUrl())
-                .loadUrl(request.getLoadUrl())
-                .username(request.getUsername())
-                .password(passwd)
-                .databaseName(request.getDatabaseName())
-                .tableName(request.getTableName())
-                .sinkMultipleEnable(request.getSinkMultipleEnable())
-                .sinkMultipleFormat(request.getSinkMultipleFormat())
-                .databasePattern(request.getDatabasePattern())
-                .tablePattern(request.getTablePattern())
-                .tableEngine(request.getTableEngine())
-                .replicationNum(request.getReplicationNum())
-                .barrelSize(request.getBarrelSize())
-                .encryptVersion(encryptVersion)
-                .properties(request.getProperties())
-                .build();
+
+        StarRocksSinkDTO dto = StringUtils.isNotBlank(extParams)
+                ? StarRocksSinkDTO.getFromJson(extParams)
+                : new StarRocksSinkDTO();
+        CommonBeanUtils.copyProperties(request, dto, true);
+        dto.setPassword(passwd);
+        return dto;
     }
 
     public static StarRocksSinkDTO getFromJson(@NotNull String extParams) {

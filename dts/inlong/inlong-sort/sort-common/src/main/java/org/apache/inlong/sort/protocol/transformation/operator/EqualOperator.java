@@ -17,11 +17,12 @@
 
 package org.apache.inlong.sort.protocol.transformation.operator;
 
+import org.apache.inlong.sort.protocol.transformation.SingleValueCompareOperator;
+
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonTypeName;
-import org.apache.inlong.sort.protocol.transformation.SingleValueCompareOperator;
 
 import java.io.Serializable;
 

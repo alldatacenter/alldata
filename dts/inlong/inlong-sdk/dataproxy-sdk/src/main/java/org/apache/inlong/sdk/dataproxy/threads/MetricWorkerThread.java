@@ -26,6 +26,7 @@ import org.apache.inlong.sdk.dataproxy.metric.MetricTimeNumSummary;
 import org.apache.inlong.sdk.dataproxy.network.Sender;
 import org.apache.inlong.sdk.dataproxy.network.SequentialID;
 import org.apache.inlong.sdk.dataproxy.network.Utils;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -173,7 +174,7 @@ public class MetricWorkerThread extends Thread implements Closeable {
 
     @Override
     public void close() {
-        bShutdown = false;
+        bShutdown = true;
         flushMetric(true);
     }
 

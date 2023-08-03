@@ -1,5 +1,5 @@
 [version]
-current = "3.0.26"
+current = "3.0.47"
 
 regex = '''
   (?P<major>\d+)\.(?P<minor>\d+)\.(?P<patch>\d+)((?P<prerelease>[a-z]+)(?P<build>\d+))?
@@ -92,4 +92,8 @@ search = 'package_version = "{current_version}"'
 
 [[file]]
 src = "soda/vertica/setup.py"
+search = 'package_version = "{current_version}"'
+
+[[file]]
+src = "soda/teradata/setup.py"
 search = 'package_version = "{current_version}"'

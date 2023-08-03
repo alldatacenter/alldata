@@ -17,6 +17,9 @@
 
 package org.apache.inlong.manager.pojo.group;
 
+import org.apache.inlong.manager.common.auth.Authentication;
+import org.apache.inlong.manager.pojo.sort.BaseSortConf;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -26,8 +29,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import org.apache.inlong.manager.common.auth.Authentication;
-import org.apache.inlong.manager.pojo.sort.BaseSortConf;
 
 import java.util.Date;
 import java.util.List;
@@ -66,19 +67,19 @@ public abstract class InlongGroupInfo extends BaseInlongGroup {
     private String mqResource;
 
     @ApiModelProperty(value = "Whether to enable zookeeper? 0: disable, 1: enable")
-    private Integer enableZookeeper = 0;
+    private Integer enableZookeeper;
 
     @ApiModelProperty(value = "Whether to enable create resource? 0: disable, 1: enable")
-    private Integer enableCreateResource = 0;
+    private Integer enableCreateResource;
 
-    @ApiModelProperty(value = "Whether to use lightweight mode, 0: no, 1: yes")
-    private Integer lightweight;
+    @ApiModelProperty(value = "Standard mode(include Data Ingestion and Synchronization): 0, DataSync mode(only Data Synchronization): 1")
+    private Integer inlongGroupMode;
 
     @ApiModelProperty(value = "Data report type, default is 0.\n"
             + " 0: report to DataProxy and respond when the DataProxy received data.\n"
             + " 1: report to DataProxy and respond after DataProxy sends data.\n"
             + " 2: report to MQ and respond when the MQ received data.", notes = "Current constraint is that all InLong Agents under one InlongGroup use the same type")
-    private Integer dataReportType = 0;
+    private Integer dataReportType;
 
     @ApiModelProperty(value = "Inlong cluster tag, which links to inlong_cluster table")
     private String inlongClusterTag;

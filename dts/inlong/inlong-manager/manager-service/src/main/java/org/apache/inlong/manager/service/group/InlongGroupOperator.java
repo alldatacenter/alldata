@@ -22,6 +22,8 @@ import org.apache.inlong.manager.pojo.group.InlongGroupInfo;
 import org.apache.inlong.manager.pojo.group.InlongGroupRequest;
 import org.apache.inlong.manager.pojo.group.InlongGroupTopicInfo;
 
+import java.util.Map;
+
 /**
  * Interface of the inlong group operator.
  */
@@ -71,6 +73,24 @@ public interface InlongGroupOperator {
      * @return topic info
      */
     InlongGroupTopicInfo getTopic(InlongGroupInfo groupInfo);
+
+    /**
+     * Get the detail info for the given inlong group.
+     *
+     * @param groupInfo inlong group which need to get topic info
+     * @return detail info
+     */
+    Map<String, Object> getDetailInfo(InlongGroupInfo groupInfo);
+
+    /**
+     * Get the cluster info by cluster tag
+     *
+     * @param clusterTag cluster tag
+     * @return cluster info
+     */
+    Map<String, Object> getClusterInfoByTag(String clusterTag);
+
+    Object getMqInfo(InlongGroupInfo groupInfo);
 
     /**
      * Get backup topic info for the given inlong group if exists.

@@ -17,13 +17,6 @@
 
 package org.apache.inlong.tubemq.server.broker.offset.offsetstorage;
 
-import java.net.BindException;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
 import org.apache.inlong.tubemq.corebase.TokenConstants;
 import org.apache.inlong.tubemq.server.broker.exception.OffsetStoreException;
 import org.apache.inlong.tubemq.server.broker.stats.BrokerSrvStatsHolder;
@@ -31,9 +24,18 @@ import org.apache.inlong.tubemq.server.common.TServerConstants;
 import org.apache.inlong.tubemq.server.common.fileconfig.ZKConfig;
 import org.apache.inlong.tubemq.server.common.zookeeper.ZKUtil;
 import org.apache.inlong.tubemq.server.common.zookeeper.ZooKeeperWatcher;
+
 import org.apache.zookeeper.KeeperException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.net.BindException;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * A offset storage implementation with zookeeper

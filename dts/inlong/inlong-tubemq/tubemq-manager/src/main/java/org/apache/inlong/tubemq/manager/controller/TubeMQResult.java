@@ -17,12 +17,13 @@
 
 package org.apache.inlong.tubemq.manager.controller;
 
+import org.apache.inlong.tubemq.manager.enums.ErrorCode;
+
 import com.google.gson.Gson;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.apache.inlong.tubemq.manager.enums.ErrorCode;
 
 @Data
 @Builder

@@ -17,9 +17,6 @@
 
 package org.apache.inlong.tubemq.server.broker;
 
-import static java.lang.Math.abs;
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
 import org.apache.inlong.tubemq.corebase.TBaseConstants;
 import org.apache.inlong.tubemq.corebase.config.TLSConfig;
 import org.apache.inlong.tubemq.corebase.utils.AddressUtils;
@@ -31,10 +28,15 @@ import org.apache.inlong.tubemq.server.common.fileconfig.ADConfig;
 import org.apache.inlong.tubemq.server.common.fileconfig.AbstractFileConfig;
 import org.apache.inlong.tubemq.server.common.fileconfig.PrometheusConfig;
 import org.apache.inlong.tubemq.server.common.fileconfig.ZKConfig;
+
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 import org.ini4j.Ini;
 import org.ini4j.Profile.Section;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import static java.lang.Math.abs;
 
 /**
  * Config of broker. Read from broker.ini config file.

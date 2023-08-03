@@ -17,7 +17,6 @@
 
 package org.apache.inlong.manager.service.sink;
 
-import com.github.pagehelper.Page;
 import org.apache.inlong.manager.common.enums.SinkStatus;
 import org.apache.inlong.manager.dao.entity.StreamSinkEntity;
 import org.apache.inlong.manager.pojo.common.PageResult;
@@ -25,7 +24,10 @@ import org.apache.inlong.manager.pojo.sink.SinkField;
 import org.apache.inlong.manager.pojo.sink.SinkRequest;
 import org.apache.inlong.manager.pojo.sink.StreamSink;
 
+import com.github.pagehelper.Page;
+
 import javax.validation.constraints.NotNull;
+
 import java.util.List;
 import java.util.Map;
 

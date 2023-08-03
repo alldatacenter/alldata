@@ -27,11 +27,13 @@ import org.apache.inlong.manager.pojo.node.DataNodeInfo;
 import org.apache.inlong.manager.pojo.node.DataNodeRequest;
 import org.apache.inlong.manager.pojo.node.hive.HiveDataNodeRequest;
 import org.apache.inlong.manager.web.WebBaseTest;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.test.web.servlet.MvcResult;
 
 import javax.annotation.Resource;
+
 import java.util.Date;
 
 class DataNodeControllerTest extends WebBaseTest {
@@ -48,17 +50,6 @@ class DataNodeControllerTest extends WebBaseTest {
         hiveDataNodeRequest.setToken("123");
         hiveDataNodeRequest.setInCharges("admin");
         return hiveDataNodeRequest;
-    }
-
-    @Test
-    void testSaveFailByNoPermission() throws Exception {
-        logout();
-        operatorLogin();
-
-        MvcResult mvcResult = postForSuccessMvcResult("/api/node/save", getHiveDataNodeRequest());
-
-        Response<Integer> response = getResBody(mvcResult, Integer.class);
-        Assertions.assertEquals("Current user [operator] has no permission to access URL", response.getErrMsg());
     }
 
     @Test

@@ -17,10 +17,11 @@
 
 package org.apache.inlong.sort.standalone.sink.cls;
 
-import com.tencentcloudapi.cls.producer.common.LogItem;
 import org.apache.inlong.sort.standalone.channel.ProfileEvent;
 import org.apache.inlong.sort.standalone.utils.InlongLoggerFactory;
 import org.apache.inlong.sort.standalone.utils.UnescapeHelper;
+
+import com.tencentcloudapi.cls.producer.common.LogItem;
 import org.slf4j.Logger;
 
 import java.nio.charset.Charset;

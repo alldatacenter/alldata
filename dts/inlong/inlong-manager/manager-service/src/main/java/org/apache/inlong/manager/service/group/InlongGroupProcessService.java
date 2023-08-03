@@ -17,14 +17,13 @@
 
 package org.apache.inlong.manager.service.group;
 
-import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import org.apache.inlong.manager.common.consts.InlongConstants;
 import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
 import org.apache.inlong.manager.common.enums.GroupOperateType;
 import org.apache.inlong.manager.common.enums.GroupStatus;
 import org.apache.inlong.manager.common.enums.ProcessName;
 import org.apache.inlong.manager.common.enums.TaskStatus;
-import org.apache.inlong.manager.common.enums.UserTypeEnum;
+import org.apache.inlong.manager.common.enums.TenantUserTypeEnum;
 import org.apache.inlong.manager.common.exceptions.BusinessException;
 import org.apache.inlong.manager.common.exceptions.WorkflowListenerException;
 import org.apache.inlong.manager.common.util.Preconditions;
@@ -35,6 +34,7 @@ import org.apache.inlong.manager.pojo.group.InlongGroupInfo;
 import org.apache.inlong.manager.pojo.group.InlongGroupResetRequest;
 import org.apache.inlong.manager.pojo.stream.InlongStreamBriefInfo;
 import org.apache.inlong.manager.pojo.stream.InlongStreamInfo;
+import org.apache.inlong.manager.pojo.user.LoginUserUtils;
 import org.apache.inlong.manager.pojo.user.UserInfo;
 import org.apache.inlong.manager.pojo.workflow.ProcessRequest;
 import org.apache.inlong.manager.pojo.workflow.TaskResponse;
@@ -44,6 +44,8 @@ import org.apache.inlong.manager.pojo.workflow.form.process.GroupResourceProcess
 import org.apache.inlong.manager.service.stream.InlongStreamService;
 import org.apache.inlong.manager.service.workflow.WorkflowService;
 import org.apache.inlong.manager.workflow.core.WorkflowQueryService;
+
+import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -129,7 +131,9 @@ public class InlongGroupProcessService {
         groupService.updateStatus(groupId, GroupStatus.SUSPENDING.getCode(), operator);
         InlongGroupInfo groupInfo = groupService.get(groupId);
         GroupResourceProcessForm form = genGroupResourceProcessForm(groupInfo, GroupOperateType.SUSPEND);
-        EXECUTOR_SERVICE.execute(() -> workflowService.start(ProcessName.SUSPEND_GROUP_PROCESS, operator, form));
+        UserInfo userInfo = LoginUserUtils.getLoginUser();
+        EXECUTOR_SERVICE.execute(
+                () -> workflowService.startAsync(ProcessName.SUSPEND_GROUP_PROCESS, userInfo, form));
 
         LOGGER.info("success to suspend process asynchronously for groupId={} by operator={}", groupId, operator);
         return groupId;
@@ -174,7 +178,9 @@ public class InlongGroupProcessService {
         groupService.updateStatus(groupId, GroupStatus.RESTARTING.getCode(), operator);
         InlongGroupInfo groupInfo = groupService.get(groupId);
         GroupResourceProcessForm form = genGroupResourceProcessForm(groupInfo, GroupOperateType.RESTART);
-        EXECUTOR_SERVICE.execute(() -> workflowService.start(ProcessName.RESTART_GROUP_PROCESS, operator, form));
+        UserInfo userInfo = LoginUserUtils.getLoginUser();
+        EXECUTOR_SERVICE.execute(
+                () -> workflowService.startAsync(ProcessName.RESTART_GROUP_PROCESS, userInfo, form));
 
         LOGGER.info("success to restart process asynchronously for groupId={} by operator={}", groupId, operator);
         return groupId;
@@ -249,7 +255,7 @@ public class InlongGroupProcessService {
         InlongGroupEntity entity = groupMapper.selectByGroupId(groupId);
         Preconditions.expectNotNull(entity, ErrorCodeEnum.GROUP_NOT_FOUND, ErrorCodeEnum.GROUP_NOT_FOUND.getMessage());
         // only the person in charges can delete
-        if (!opInfo.getAccountType().equals(UserTypeEnum.ADMIN.getCode())) {
+        if (!opInfo.getAccountType().equals(TenantUserTypeEnum.TENANT_ADMIN.getCode())) {
             List<String> inCharges = Arrays.asList(entity.getInCharges().split(InlongConstants.COMMA));
             if (!inCharges.contains(opInfo.getName())) {
                 throw new BusinessException(ErrorCodeEnum.GROUP_PERMISSION_DENIED);
@@ -311,9 +317,9 @@ public class InlongGroupProcessService {
             List<WorkflowProcessEntity> entities = workflowQueryService.listProcessEntity(processQuery);
             entities.sort(Comparator.comparingInt(WorkflowProcessEntity::getId));
             WorkflowProcessEntity lastProcess = entities.get(entities.size() - 1);
-            EXECUTOR_SERVICE.execute(() -> {
-                workflowService.continueProcess(lastProcess.getId(), operator, "Reset group status");
-            });
+            UserInfo userInfo = LoginUserUtils.getLoginUser();
+            EXECUTOR_SERVICE.execute(
+                    () -> workflowService.continueProcessAsync(lastProcess.getId(), userInfo, "Reset group status"));
             return true;
         }
         if (resetFinalStatus == 1) {

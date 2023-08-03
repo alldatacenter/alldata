@@ -17,14 +17,13 @@
 
 package org.apache.inlong.sdk.dataproxy.pb.config.pojo;
 
+import com.alibaba.fastjson.JSON;
+import org.apache.commons.codec.digest.DigestUtils;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import org.apache.commons.codec.digest.DigestUtils;
-
-import com.alibaba.fastjson.JSON;
 
 /**
  * 

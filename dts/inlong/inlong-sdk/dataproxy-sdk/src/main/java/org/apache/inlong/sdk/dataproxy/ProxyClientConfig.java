@@ -17,10 +17,11 @@
 
 package org.apache.inlong.sdk.dataproxy;
 
-import lombok.Data;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.inlong.sdk.dataproxy.network.ProxysdkException;
 import org.apache.inlong.sdk.dataproxy.network.Utils;
+
+import lombok.Data;
+import org.apache.commons.lang3.StringUtils;
 
 @Data
 public class ProxyClientConfig {

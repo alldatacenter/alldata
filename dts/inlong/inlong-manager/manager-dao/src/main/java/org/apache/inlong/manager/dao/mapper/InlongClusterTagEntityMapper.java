@@ -17,13 +17,16 @@
 
 package org.apache.inlong.manager.dao.mapper;
 
-import org.apache.ibatis.annotations.Param;
+import org.apache.inlong.manager.common.tenant.MultiTenantQuery;
 import org.apache.inlong.manager.dao.entity.InlongClusterTagEntity;
 import org.apache.inlong.manager.pojo.cluster.ClusterTagPageRequest;
+
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@MultiTenantQuery
 @Repository
 public interface InlongClusterTagEntityMapper {
 

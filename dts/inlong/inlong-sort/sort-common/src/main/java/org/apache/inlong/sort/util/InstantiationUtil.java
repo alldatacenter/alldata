@@ -17,6 +17,9 @@
 
 package org.apache.inlong.sort.util;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -30,8 +33,6 @@ import java.lang.reflect.Proxy;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * Utility class to create instances from class objects and checking failure reasons.

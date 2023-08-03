@@ -17,8 +17,9 @@
 
 package org.apache.inlong.sort.formats.inlongmsg;
 
-import java.util.Map;
 import org.apache.inlong.sort.formats.base.TableFormatDeserializer;
+
+import java.util.Map;
 
 /**
  * Factory for creating configured instances of {@link InLongMsgMixedFormatConverter}.

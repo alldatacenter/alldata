@@ -17,8 +17,9 @@
 
 package org.apache.inlong.manager.pojo.group;
 
-import org.apache.commons.collections.CollectionUtils;
 import org.apache.inlong.manager.common.consts.InlongConstants;
+
+import org.apache.commons.collections.CollectionUtils;
 
 import java.util.List;
 

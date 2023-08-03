@@ -17,6 +17,10 @@
 
 package org.apache.inlong.manager.service.plugin;
 
+import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
+import org.apache.inlong.manager.common.plugin.PluginDefinition;
+import org.apache.inlong.manager.common.util.Preconditions;
+
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -24,9 +28,6 @@ import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
-import org.apache.inlong.manager.common.plugin.PluginDefinition;
-import org.apache.inlong.manager.common.util.Preconditions;
 
 import java.io.File;
 import java.io.IOException;
@@ -143,7 +144,8 @@ public class PluginClassLoader extends URLClassLoader {
 
         List<PluginDefinition> definitions = new ArrayList<>();
         for (File jarFile : files) {
-            if (!jarFile.getName().endsWith(".jar")) {
+            String jarName = jarFile.getName();
+            if (!jarName.endsWith(".jar") || !jarName.contains("plugins-base")) {
                 log.warn("invalid plugin jar {}, skip to load", jarFile);
                 continue;
             }

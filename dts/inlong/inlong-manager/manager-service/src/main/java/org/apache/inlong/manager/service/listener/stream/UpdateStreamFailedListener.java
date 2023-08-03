@@ -17,7 +17,6 @@
 
 package org.apache.inlong.manager.service.listener.stream;
 
-import lombok.extern.slf4j.Slf4j;
 import org.apache.inlong.manager.common.enums.ProcessEvent;
 import org.apache.inlong.manager.common.enums.StreamStatus;
 import org.apache.inlong.manager.pojo.stream.InlongStreamInfo;
@@ -26,6 +25,8 @@ import org.apache.inlong.manager.service.stream.InlongStreamService;
 import org.apache.inlong.manager.workflow.WorkflowContext;
 import org.apache.inlong.manager.workflow.event.ListenerResult;
 import org.apache.inlong.manager.workflow.event.process.ProcessEventListener;
+
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

@@ -17,17 +17,18 @@
 
 package org.apache.inlong.sdk.dataproxy.pb.metrics;
 
-import java.util.Map;
-import java.util.concurrent.atomic.AtomicLong;
-
-import org.apache.commons.lang3.math.NumberUtils;
-import org.apache.flume.Event;
 import org.apache.inlong.common.metric.CountMetric;
 import org.apache.inlong.common.metric.Dimension;
 import org.apache.inlong.common.metric.MetricDomain;
 import org.apache.inlong.common.metric.MetricItem;
 import org.apache.inlong.common.msg.AttributeConstants;
 import org.apache.inlong.sdk.dataproxy.pb.context.Constants;
+
+import org.apache.commons.lang3.math.NumberUtils;
+import org.apache.flume.Event;
+
+import java.util.Map;
+import java.util.concurrent.atomic.AtomicLong;
 
 /**
  *

@@ -18,6 +18,7 @@
 package org.apache.inlong.sdk.dataproxy;
 
 import org.apache.inlong.sdk.dataproxy.utils.EncryptUtil;
+
 import org.junit.Assert;
 import org.junit.Test;
 

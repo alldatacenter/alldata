@@ -17,11 +17,12 @@
 
 package org.apache.inlong.sort.standalone.config.holder;
 
-import org.apache.commons.lang3.ClassUtils;
-import org.apache.flume.Context;
 import org.apache.inlong.sort.standalone.config.loader.CommonPropertiesManagerUrlLoader;
 import org.apache.inlong.sort.standalone.config.loader.ManagerUrlLoader;
 import org.apache.inlong.sort.standalone.utils.InlongLoggerFactory;
+
+import org.apache.commons.lang3.ClassUtils;
+import org.apache.flume.Context;
 import org.slf4j.Logger;
 
 import java.util.Optional;

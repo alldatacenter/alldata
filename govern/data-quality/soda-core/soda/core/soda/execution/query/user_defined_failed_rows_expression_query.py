@@ -11,6 +11,7 @@ class UserDefinedFailedRowsExpressionQuery(Query):
         sql: str,
         partition: Partition,
         samples_limit: int | None = None,
+        metric: Metric = None,
     ):
         super().__init__(
             data_source_scan=data_source_scan,
@@ -19,6 +20,7 @@ class UserDefinedFailedRowsExpressionQuery(Query):
             partition=partition,
         )
         self.samples_limit = samples_limit
+        self.metric = metric
 
     def execute(self):
         self.store()

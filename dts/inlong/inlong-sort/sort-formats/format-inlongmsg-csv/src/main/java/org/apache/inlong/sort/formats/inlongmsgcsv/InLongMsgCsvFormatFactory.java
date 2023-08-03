@@ -17,6 +17,23 @@
 
 package org.apache.inlong.sort.formats.inlongmsgcsv;
 
+import org.apache.inlong.sort.formats.base.TableFormatConstants;
+import org.apache.inlong.sort.formats.base.TableFormatDeserializer;
+import org.apache.inlong.sort.formats.base.TableFormatDeserializerFactory;
+import org.apache.inlong.sort.formats.common.RowFormatInfo;
+import org.apache.inlong.sort.formats.inlongmsg.InLongMsgMixedFormatFactory;
+import org.apache.inlong.sort.formats.inlongmsg.InLongMsgMixedValidator;
+import org.apache.inlong.sort.formats.inlongmsg.InLongMsgUtils;
+import org.apache.inlong.sort.formats.inlongmsg.InLongMsgValidator;
+
+import org.apache.flink.table.descriptors.DescriptorProperties;
+import org.apache.flink.table.factories.TableFormatFactoryBase;
+import org.apache.flink.types.Row;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 import static org.apache.inlong.sort.formats.base.TableFormatConstants.DEFAULT_CHARSET;
 import static org.apache.inlong.sort.formats.base.TableFormatConstants.DEFAULT_DELIMITER;
 import static org.apache.inlong.sort.formats.base.TableFormatConstants.DEFAULT_IGNORE_ERRORS;
@@ -31,21 +48,6 @@ import static org.apache.inlong.sort.formats.inlongmsg.InLongMsgUtils.FORMAT_TIM
 import static org.apache.inlong.sort.formats.inlongmsg.InLongMsgUtils.getDataFormatInfo;
 import static org.apache.inlong.sort.formats.inlongmsg.InLongMsgUtils.validateFieldNames;
 import static org.apache.inlong.sort.formats.inlongmsgcsv.InLongMsgCsvUtils.FORMAT_DELETE_HEAD_DELIMITER;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import org.apache.flink.table.descriptors.DescriptorProperties;
-import org.apache.flink.table.factories.TableFormatFactoryBase;
-import org.apache.flink.types.Row;
-import org.apache.inlong.sort.formats.base.TableFormatConstants;
-import org.apache.inlong.sort.formats.base.TableFormatDeserializer;
-import org.apache.inlong.sort.formats.base.TableFormatDeserializerFactory;
-import org.apache.inlong.sort.formats.common.RowFormatInfo;
-import org.apache.inlong.sort.formats.inlongmsg.InLongMsgMixedFormatFactory;
-import org.apache.inlong.sort.formats.inlongmsg.InLongMsgMixedValidator;
-import org.apache.inlong.sort.formats.inlongmsg.InLongMsgUtils;
-import org.apache.inlong.sort.formats.inlongmsg.InLongMsgValidator;
 
 /**
  * Table format factory for providing configured instances of InLongMsgCsv-to-row

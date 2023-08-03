@@ -17,7 +17,6 @@
 
 package org.apache.inlong.manager.client.api.inner;
 
-import com.google.common.collect.Lists;
 import org.apache.inlong.manager.client.api.inner.client.WorkflowClient;
 import org.apache.inlong.manager.common.enums.ProcessName;
 import org.apache.inlong.manager.common.util.JsonUtils;
@@ -29,6 +28,8 @@ import org.apache.inlong.manager.pojo.workflow.ProcessResponse;
 import org.apache.inlong.manager.pojo.workflow.WorkflowOperationRequest;
 import org.apache.inlong.manager.pojo.workflow.WorkflowResult;
 import org.apache.inlong.manager.pojo.workflow.form.process.ApplyGroupProcessForm;
+
+import com.google.common.collect.Lists;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

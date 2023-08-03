@@ -17,9 +17,6 @@
 
 package org.apache.inlong.manager.service.consume;
 
-import com.github.pagehelper.Page;
-import com.github.pagehelper.PageHelper;
-import org.apache.commons.collections.CollectionUtils;
 import org.apache.inlong.manager.common.consts.InlongConstants;
 import org.apache.inlong.manager.common.enums.ConsumeStatus;
 import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
@@ -38,6 +35,10 @@ import org.apache.inlong.manager.pojo.consume.InlongConsumePageRequest;
 import org.apache.inlong.manager.pojo.consume.InlongConsumeRequest;
 import org.apache.inlong.manager.pojo.group.InlongGroupInfo;
 import org.apache.inlong.manager.service.user.UserService;
+
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import org.apache.commons.collections.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

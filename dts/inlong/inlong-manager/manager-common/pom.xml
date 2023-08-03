@@ -21,11 +21,15 @@
     <parent>
         <groupId>org.apache.inlong</groupId>
         <artifactId>inlong-manager</artifactId>
-        <version>1.7.0</version>
+        <version>1.8.0</version>
     </parent>
 
     <artifactId>manager-common</artifactId>
     <name>Apache InLong - Manager Common</name>
+
+    <properties>
+        <inlong.root.dir>${project.parent.parent.basedir}</inlong.root.dir>
+    </properties>
 
     <dependencies>
         <dependency>
@@ -119,6 +123,9 @@
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-yaml</artifactId>
+        </dependency>
     </dependencies>
-
 </project>

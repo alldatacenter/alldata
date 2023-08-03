@@ -17,6 +17,12 @@
 
 package org.apache.inlong.manager.pojo.node.mysql;
 
+import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
+import org.apache.inlong.manager.common.exceptions.BusinessException;
+import org.apache.inlong.manager.common.util.CommonBeanUtils;
+import org.apache.inlong.manager.common.util.JsonUtils;
+import org.apache.inlong.manager.pojo.sink.mysql.MySQLSinkDTO;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -24,10 +30,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
-import org.apache.inlong.manager.common.exceptions.BusinessException;
-import org.apache.inlong.manager.common.util.JsonUtils;
-import org.apache.inlong.manager.pojo.sink.mysql.MySQLSinkDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -52,10 +54,11 @@ public class MySQLDataNodeDTO {
     /**
      * Get the dto instance from the request
      */
-    public static MySQLDataNodeDTO getFromRequest(MySQLDataNodeRequest request) throws Exception {
-        return MySQLDataNodeDTO.builder()
-                .backupUrl(request.getBackupUrl())
-                .build();
+    public static MySQLDataNodeDTO getFromRequest(MySQLDataNodeRequest request, String extParams) {
+        MySQLDataNodeDTO dto = StringUtils.isNotBlank(extParams)
+                ? MySQLDataNodeDTO.getFromJson(extParams)
+                : new MySQLDataNodeDTO();
+        return CommonBeanUtils.copyProperties(request, dto, true);
     }
 
     /**

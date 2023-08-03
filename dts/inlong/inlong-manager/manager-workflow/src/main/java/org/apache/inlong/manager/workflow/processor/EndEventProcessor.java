@@ -17,7 +17,6 @@
 
 package org.apache.inlong.manager.workflow.processor;
 
-import lombok.extern.slf4j.Slf4j;
 import org.apache.inlong.manager.common.enums.ProcessEvent;
 import org.apache.inlong.manager.common.enums.ProcessStatus;
 import org.apache.inlong.manager.common.enums.TaskStatus;
@@ -32,6 +31,8 @@ import org.apache.inlong.manager.workflow.definition.Element;
 import org.apache.inlong.manager.workflow.definition.EndEvent;
 import org.apache.inlong.manager.workflow.event.ListenerResult;
 import org.apache.inlong.manager.workflow.event.process.ProcessEventNotifier;
+
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;

@@ -21,6 +21,7 @@ import org.apache.inlong.agent.AgentBaseTestsHelper;
 import org.apache.inlong.agent.conf.JobProfile;
 import org.apache.inlong.agent.utils.AgentUtils;
 import org.apache.inlong.common.db.CommandEntity;
+
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;

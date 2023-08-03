@@ -17,10 +17,11 @@
 
 package org.apache.inlong.tubemq.server.broker.offset.offsetstorage;
 
-import java.io.Serializable;
-import java.util.concurrent.atomic.AtomicLong;
 import org.apache.inlong.tubemq.corebase.TokenConstants;
 import org.apache.inlong.tubemq.server.broker.utils.DataStoreUtils;
+
+import java.io.Serializable;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class OffsetStorageInfo implements Serializable {
 

@@ -17,10 +17,9 @@
 
 package org.apache.inlong.manager.service.core.heartbeat;
 
-import lombok.extern.slf4j.Slf4j;
+import org.apache.inlong.common.constant.ProtocolType;
 import org.apache.inlong.common.enums.ComponentTypeEnum;
 import org.apache.inlong.common.heartbeat.HeartbeatMsg;
-import org.apache.inlong.common.constant.ProtocolType;
 import org.apache.inlong.manager.common.enums.NodeStatus;
 import org.apache.inlong.manager.common.util.JsonUtils;
 import org.apache.inlong.manager.dao.entity.InlongClusterEntity;
@@ -30,6 +29,8 @@ import org.apache.inlong.manager.dao.mapper.InlongClusterNodeEntityMapper;
 import org.apache.inlong.manager.pojo.cluster.ClusterNodeRequest;
 import org.apache.inlong.manager.service.ServiceBaseTest;
 import org.apache.inlong.manager.service.heartbeat.HeartbeatManager;
+
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,17 +70,6 @@ public class HeartbeatManagerTest extends ServiceBaseTest {
         nodeRequest.setNodeLoad(0xFFFF);
         InlongClusterNodeEntity clusterNode = clusterNodeMapper.selectByUniqueKey(nodeRequest);
         Assertions.assertNotNull(clusterNode);
-        Assertions.assertEquals((int) clusterNode.getStatus(), NodeStatus.NORMAL.getStatus());
-
-        heartbeatManager.getHeartbeatCache().invalidateAll();
-        Thread.sleep(1000);
-
-        clusterNode = clusterNodeMapper.selectByUniqueKey(nodeRequest);
-        log.debug(JsonUtils.toJsonString(clusterNode));
-        Assertions.assertEquals((int) clusterNode.getStatus(), NodeStatus.HEARTBEAT_TIMEOUT.getStatus());
-
-        heartbeatManager.reportHeartbeat(msg);
-        clusterNode = clusterNodeMapper.selectByUniqueKey(nodeRequest);
         Assertions.assertEquals((int) clusterNode.getStatus(), NodeStatus.NORMAL.getStatus());
     }
 

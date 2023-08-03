@@ -21,11 +21,15 @@
     <parent>
         <groupId>org.apache.inlong</groupId>
         <artifactId>inlong-manager</artifactId>
-        <version>1.7.0</version>
+        <version>1.8.0</version>
     </parent>
 
     <artifactId>manager-dao</artifactId>
     <name>Apache InLong - Manager DAO</name>
+
+    <properties>
+        <inlong.root.dir>${project.parent.parent.basedir}</inlong.root.dir>
+    </properties>
 
     <dependencies>
         <dependency>
@@ -84,6 +88,10 @@
         <dependency>
             <groupId>com.github.pagehelper</groupId>
             <artifactId>pagehelper-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.jsqlparser</groupId>
+            <artifactId>jsqlparser</artifactId>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>

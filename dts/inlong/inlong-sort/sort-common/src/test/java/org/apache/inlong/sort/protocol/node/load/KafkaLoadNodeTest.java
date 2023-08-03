@@ -23,6 +23,7 @@ import org.apache.inlong.sort.formats.common.StringFormatInfo;
 import org.apache.inlong.sort.protocol.FieldInfo;
 import org.apache.inlong.sort.protocol.node.format.CanalJsonFormat;
 import org.apache.inlong.sort.protocol.transformation.FieldRelation;
+
 import org.junit.Assert;
 import org.junit.Test;
 

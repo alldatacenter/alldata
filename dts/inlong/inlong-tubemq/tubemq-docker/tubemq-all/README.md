@@ -3,12 +3,12 @@ TubeMQ standalone is available for development and experience.
 
 ##### Pull Image
 ```
-docker pull inlong/tubemq-all:1.7.0
+docker pull inlong/tubemq-all:1.8.0
 ```
 
 ##### Start Standalone Container
 ```
-docker run -p 8080:8080 -p 8715:8715 -p 8123:8123 -p 2181:2181 --name tubemq -d inlong/tubemq-all:1.7.0
+docker run -p 8080:8080 -p 8715:8715 -p 8123:8123 -p 2181:2181 --name tubemq -d inlong/tubemq-all:1.8.0
 ```
 this command will start zookeeper/master/broker service in one container.
 #### Add Topic

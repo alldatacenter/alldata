@@ -30,7 +30,7 @@ class Metric(ABC):
         self.name: str = name
         # identity will be used to resolve the same metric and bind it to different checks.
         # Unique within an organisation, but cannot be used as global id in Soda Cloud.
-        if hasattr(check.check_cfg, "is_automated_monitoring"):
+        if check is not None and hasattr(check.check_cfg, "is_automated_monitoring"):
             is_automated_monitoring = check.check_cfg.is_automated_monitoring
         else:
             is_automated_monitoring = False
@@ -47,7 +47,20 @@ class Metric(ABC):
         self.queries: list[Query] = []
         self.formula_values: dict[str, object] = None
         self.failed_rows_sample_ref: SampleRef | None = None
-        self.samples_limit = check.check_cfg.samples_limit or DEFAULT_FAILED_ROWS_SAMPLE_LIMIT
+
+        # Samples limit (in order):
+        # - use default global limit
+        # - use configured global limit from sampler config
+        # - use check specific config
+        samples_limit = DEFAULT_FAILED_ROWS_SAMPLE_LIMIT
+
+        if isinstance(self.data_source_scan.scan._configuration.samples_limit, int):
+            samples_limit = self.data_source_scan.scan._configuration.samples_limit
+
+        if check is not None and isinstance(check.check_cfg.samples_limit, int):
+            samples_limit = check.check_cfg.samples_limit
+
+        self.samples_limit: int = samples_limit
 
     def __eq__(self, other: Metric) -> bool:
         if self is other:

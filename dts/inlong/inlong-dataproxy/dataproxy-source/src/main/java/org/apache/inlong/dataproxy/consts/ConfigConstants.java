@@ -124,7 +124,6 @@ public class ConfigConstants {
     public static final String RECOVER_THREAD_COUNT = "recover_thread_count";
 
     public static final String MANAGER_PATH = "/inlong/manager/openapi";
-    public static final String MANAGER_GET_CONFIG_PATH = "/dataproxy/getConfig";
     public static final String MANAGER_GET_ALL_CONFIG_PATH = "/dataproxy/getAllConfig";
     public static final String MANAGER_HEARTBEAT_REPORT = "/heartbeat/report";
 

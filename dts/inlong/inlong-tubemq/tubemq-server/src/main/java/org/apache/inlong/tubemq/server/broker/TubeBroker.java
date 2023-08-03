@@ -17,14 +17,6 @@
 
 package org.apache.inlong.tubemq.server.broker;
 
-import java.io.IOException;
-import java.util.List;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicLong;
 import org.apache.inlong.tubemq.corebase.TErrCodeConstants;
 import org.apache.inlong.tubemq.corebase.aaaclient.ClientAuthenticateHandler;
 import org.apache.inlong.tubemq.corebase.aaaclient.SimpleClientAuthenticateHandler;
@@ -60,10 +52,20 @@ import org.apache.inlong.tubemq.server.broker.utils.BrokerSamplePrint;
 import org.apache.inlong.tubemq.server.broker.web.WebServer;
 import org.apache.inlong.tubemq.server.common.TubeServerVersion;
 import org.apache.inlong.tubemq.server.common.aaaserver.SimpleCertificateBrokerHandler;
+
 import org.apache.log4j.LogManager;
 import org.apache.zookeeper.client.ZKClientConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * Tube broker server. In charge of init each components, and communicating to master.

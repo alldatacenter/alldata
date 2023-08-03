@@ -17,14 +17,11 @@
 
 package org.apache.inlong.manager.service.resource.sort;
 
-import org.apache.commons.collections.CollectionUtils;
-import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.inlong.manager.common.consts.InlongConstants;
 import org.apache.inlong.manager.pojo.group.InlongGroupExtInfo;
 import org.apache.inlong.manager.pojo.group.InlongGroupInfo;
 import org.apache.inlong.manager.pojo.sink.StreamSink;
-import org.apache.inlong.manager.pojo.sort.util.ExtractNodeUtils;
-import org.apache.inlong.manager.pojo.sort.util.LoadNodeUtils;
+import org.apache.inlong.manager.pojo.sort.node.NodeFactory;
 import org.apache.inlong.manager.pojo.sort.util.NodeRelationUtils;
 import org.apache.inlong.manager.pojo.sort.util.TransformNodeUtils;
 import org.apache.inlong.manager.pojo.source.StreamSource;
@@ -39,6 +36,9 @@ import org.apache.inlong.sort.protocol.GroupInfo;
 import org.apache.inlong.sort.protocol.StreamInfo;
 import org.apache.inlong.sort.protocol.node.Node;
 import org.apache.inlong.sort.protocol.transformation.relation.NodeRelation;
+
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -102,7 +102,6 @@ public class DefaultSortConfigOperator implements SortConfigOperator {
         Map<String, List<StreamSource>> sourceMap = sourceService.getSourcesMap(groupInfo, streamInfoList);
         // get sink info
         Map<String, List<StreamSink>> sinkMap = sinkService.getSinksMap(groupInfo, streamInfoList);
-
         List<TransformResponse> transformList = transformService.listTransform(groupInfo.getInlongGroupId(), null);
         Map<String, List<TransformResponse>> transformMap = transformList.stream()
                 .collect(Collectors.groupingBy(TransformResponse::getInlongStreamId, HashMap::new,
@@ -136,11 +135,11 @@ public class DefaultSortConfigOperator implements SortConfigOperator {
             }
             List<NodeRelation> relations;
 
-            if (InlongConstants.STANDARD_MODE.equals(groupInfo.getLightweight())) {
+            if (InlongConstants.STANDARD_MODE.equals(groupInfo.getInlongGroupMode())) {
                 if (CollectionUtils.isNotEmpty(transformResponses)) {
                     relations = NodeRelationUtils.createNodeRelations(inlongStream);
-                    // in standard mode, replace upstream source node and transform input fields node
-                    // to MQ node (which is inlong stream id)
+                    // in standard mode(include Data Ingestion and Synchronization), replace upstream source node and
+                    // transform input fields node to MQ node (which is InLong stream id)
                     String mqNodeName = sources.get(0).getSourceName();
                     Set<String> nodeNameSet = getInputNodeNames(sources, transformResponses);
                     adjustTransformField(transformResponses, nodeNameSet, mqNodeName);
@@ -182,7 +181,7 @@ public class DefaultSortConfigOperator implements SortConfigOperator {
     /**
      * Set origin node to mq node for transform fields if necessary.
      *
-     * In standard mode for InlongGroup, transform input node must either be
+     * In standard mode(include Data Ingestion and Synchronization) for InlongGroup, transform input node must either be
      * mq source node or transform node, otherwise replace it with mq node name.
      */
     private void adjustTransformField(List<TransformResponse> transforms, Set<String> nodeNameSet, String mqNodeName) {
@@ -212,9 +211,9 @@ public class DefaultSortConfigOperator implements SortConfigOperator {
     private List<Node> createNodes(List<StreamSource> sources, List<TransformResponse> transformResponses,
             List<StreamSink> sinks, Map<String, StreamField> constantFieldMap) {
         List<Node> nodes = new ArrayList<>();
-        nodes.addAll(ExtractNodeUtils.createExtractNodes(sources));
+        nodes.addAll(NodeFactory.createExtractNodes(sources));
         nodes.addAll(TransformNodeUtils.createTransformNodes(transformResponses, constantFieldMap));
-        nodes.addAll(LoadNodeUtils.createLoadNodes(sinks, constantFieldMap));
+        nodes.addAll(NodeFactory.createLoadNodes(sinks, constantFieldMap));
         return nodes;
     }
 

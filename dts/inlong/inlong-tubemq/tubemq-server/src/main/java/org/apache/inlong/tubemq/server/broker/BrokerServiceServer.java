@@ -17,18 +17,6 @@
 
 package org.apache.inlong.tubemq.server.broker;
 
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicBoolean;
-import org.apache.commons.codec.binary.Base64;
-import org.apache.commons.codec.binary.StringUtils;
 import org.apache.inlong.tubemq.corebase.Message;
 import org.apache.inlong.tubemq.corebase.TBaseConstants;
 import org.apache.inlong.tubemq.corebase.TErrCodeConstants;
@@ -66,6 +54,7 @@ import org.apache.inlong.tubemq.server.broker.msgstore.disk.GetMessageResult;
 import org.apache.inlong.tubemq.server.broker.nodeinfo.ConsumerNodeInfo;
 import org.apache.inlong.tubemq.server.broker.offset.OffsetHistoryInfo;
 import org.apache.inlong.tubemq.server.broker.offset.OffsetService;
+import org.apache.inlong.tubemq.server.broker.offset.offsetstorage.OffsetStorageInfo;
 import org.apache.inlong.tubemq.server.broker.stats.BrokerSrvStatsHolder;
 import org.apache.inlong.tubemq.server.broker.stats.TrafficStatsService;
 import org.apache.inlong.tubemq.server.broker.stats.audit.AuditUtils;
@@ -77,12 +66,25 @@ import org.apache.inlong.tubemq.server.common.exception.HeartbeatException;
 import org.apache.inlong.tubemq.server.common.heartbeat.HeartbeatManager;
 import org.apache.inlong.tubemq.server.common.heartbeat.TimeoutInfo;
 import org.apache.inlong.tubemq.server.common.heartbeat.TimeoutListener;
-import org.apache.inlong.tubemq.server.broker.offset.offsetstorage.OffsetStorageInfo;
 import org.apache.inlong.tubemq.server.common.paramcheck.PBParameterUtils;
 import org.apache.inlong.tubemq.server.common.utils.AppendResult;
 import org.apache.inlong.tubemq.server.common.utils.RowLock;
+
+import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.codec.binary.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * Broker service. Receive and conduct client's request, store messages, query messages, print statistics, etc.
@@ -555,23 +557,19 @@ public class BrokerServiceServer implements BrokerReadService, BrokerWriteServic
                         .append(topicName).append(")!\"}");
                 return sb;
             } else {
-                List<String> transferMessageList = new ArrayList<>();
                 List<TransferedMessage> tmpMsgList = getMessageResult.transferedMessageList;
                 List<Message> messageList = DataConverterUtil.convertMessage(topicName, tmpMsgList);
-                int startPos = Math.max(messageList.size() - msgCount, 0);
-                for (; startPos < messageList.size(); startPos++) {
-                    String msgItem = new String(
-                            Base64.encodeBase64(messageList.get(startPos).getData()));
-                    transferMessageList.add(msgItem);
-                }
                 int i = 0;
+                int startPos = Math.max(messageList.size() - msgCount, 0);
                 sb.append("{\"result\":true,\"errCode\":200,\"errMsg\":\"Success!\",\"dataSet\":[");
-                for (String msgData : transferMessageList) {
+                for (; startPos < messageList.size(); startPos++) {
                     if (i > 0) {
                         sb.append(",");
                     }
-                    sb.append("{\"index\":").append(i++)
-                            .append(",\"data\":\"").append(msgData).append("\"}");
+                    sb.append("{\"index\":").append(i++).append(",\"data\":\"")
+                            .append(new String(Base64.encodeBase64(messageList.get(startPos).getData())))
+                            .append("\",\"attr\":\"").append(messageList.get(startPos).getAttribute())
+                            .append("\"}");
                 }
                 sb.append("]}");
                 return sb;

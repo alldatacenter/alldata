@@ -17,10 +17,6 @@
 
 package org.apache.inlong.sdk.commons.protocol;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 import org.apache.inlong.sdk.commons.protocol.ProxySdk.INLONG_COMPRESSED_TYPE;
 import org.apache.inlong.sdk.commons.protocol.ProxySdk.MapFieldEntry;
 import org.apache.inlong.sdk.commons.protocol.ProxySdk.MessageObj;
@@ -28,9 +24,13 @@ import org.apache.inlong.sdk.commons.protocol.ProxySdk.MessageObjs;
 import org.apache.inlong.sdk.commons.protocol.ProxySdk.MessagePack;
 import org.apache.inlong.sdk.commons.protocol.ProxySdk.MessagePackHeader;
 import org.apache.inlong.sdk.commons.utils.GzipUtils;
-import org.xerial.snappy.Snappy;
 
 import com.google.protobuf.ByteString;
+import org.xerial.snappy.Snappy;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * EventUtils

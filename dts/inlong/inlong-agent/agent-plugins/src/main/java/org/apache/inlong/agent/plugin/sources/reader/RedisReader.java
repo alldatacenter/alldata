@@ -17,6 +17,11 @@
 
 package org.apache.inlong.agent.plugin.sources.reader;
 
+import org.apache.inlong.agent.conf.JobProfile;
+import org.apache.inlong.agent.message.DefaultMessage;
+import org.apache.inlong.agent.metrics.audit.AuditUtils;
+import org.apache.inlong.agent.plugin.Message;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.TypeAdapter;
@@ -38,10 +43,6 @@ import com.moilioncircle.redis.replicator.rdb.datatype.KeyStringValueZSet;
 import com.moilioncircle.redis.replicator.rdb.datatype.KeyValuePair;
 import com.moilioncircle.redis.replicator.rdb.datatype.ZSetEntry;
 import org.apache.commons.lang.StringUtils;
-import org.apache.inlong.agent.conf.JobProfile;
-import org.apache.inlong.agent.message.DefaultMessage;
-import org.apache.inlong.agent.metrics.audit.AuditUtils;
-import org.apache.inlong.agent.plugin.Message;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

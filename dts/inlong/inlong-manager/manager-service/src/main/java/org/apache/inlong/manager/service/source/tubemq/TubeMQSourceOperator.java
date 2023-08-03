@@ -17,9 +17,6 @@
 
 package org.apache.inlong.manager.service.source.tubemq;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import org.apache.inlong.manager.common.consts.SourceType;
 import org.apache.inlong.manager.common.enums.ClusterType;
 import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
@@ -38,6 +35,10 @@ import org.apache.inlong.manager.pojo.stream.InlongStreamInfo;
 import org.apache.inlong.manager.pojo.stream.StreamField;
 import org.apache.inlong.manager.service.cluster.InlongClusterService;
 import org.apache.inlong.manager.service.source.AbstractSourceOperator;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -71,7 +72,7 @@ public class TubeMQSourceOperator extends AbstractSourceOperator {
         TubeMQSourceRequest sourceRequest = (TubeMQSourceRequest) request;
         CommonBeanUtils.copyProperties(sourceRequest, targetEntity, true);
         try {
-            TubeMQSourceDTO dto = TubeMQSourceDTO.getFromRequest(sourceRequest);
+            TubeMQSourceDTO dto = TubeMQSourceDTO.getFromRequest(sourceRequest, targetEntity.getExtParams());
             targetEntity.setExtParams(objectMapper.writeValueAsString(dto));
         } catch (Exception e) {
             throw new BusinessException(ErrorCodeEnum.SOURCE_INFO_INCORRECT,

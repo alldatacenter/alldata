@@ -18,6 +18,7 @@
 package org.apache.inlong.audit.util;
 
 import org.apache.inlong.audit.protocol.AuditApi;
+
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

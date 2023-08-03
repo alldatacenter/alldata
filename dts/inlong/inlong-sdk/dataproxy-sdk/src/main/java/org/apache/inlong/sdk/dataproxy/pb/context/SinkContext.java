@@ -17,20 +17,21 @@
 
 package org.apache.inlong.sdk.dataproxy.pb.context;
 
-import java.util.Date;
-import java.util.Map;
-import java.util.Timer;
-import java.util.TimerTask;
-
-import org.apache.flume.Channel;
-import org.apache.flume.Context;
-import org.apache.flume.Event;
 import org.apache.inlong.common.metric.MetricRegister;
 import org.apache.inlong.sdk.dataproxy.pb.metrics.SdkMetricItem;
 import org.apache.inlong.sdk.dataproxy.pb.metrics.SdkMetricItemSet;
 import org.apache.inlong.sdk.dataproxy.utils.IpUtils;
+
+import org.apache.flume.Channel;
+import org.apache.flume.Context;
+import org.apache.flume.Event;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.Date;
+import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * SinkContext

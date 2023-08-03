@@ -17,10 +17,11 @@
 
 package org.apache.inlong.sort.standalone.rollback;
 
+import org.apache.inlong.sort.standalone.channel.ProfileEvent;
+
 import org.apache.flume.Context;
 import org.apache.flume.Event;
 import org.apache.flume.interceptor.Interceptor;
-import org.apache.inlong.sort.standalone.channel.ProfileEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

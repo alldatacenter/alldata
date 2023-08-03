@@ -17,8 +17,6 @@
 
 package org.apache.inlong.sort.parser.impl;
 
-import com.google.common.base.Preconditions;
-import org.apache.flink.table.api.TableEnvironment;
 import org.apache.inlong.sort.function.EncryptFunction;
 import org.apache.inlong.sort.function.JsonGetterFunction;
 import org.apache.inlong.sort.function.RegexpReplaceFirstFunction;
@@ -26,6 +24,9 @@ import org.apache.inlong.sort.function.RegexpReplaceFunction;
 import org.apache.inlong.sort.parser.Parser;
 import org.apache.inlong.sort.parser.result.FlinkSqlParseResult;
 import org.apache.inlong.sort.parser.result.ParseResult;
+
+import com.google.common.base.Preconditions;
+import org.apache.flink.table.api.TableEnvironment;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

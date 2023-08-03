@@ -17,6 +17,19 @@
 
 package org.apache.inlong.sdk.sort.impl.decode;
 
+import org.apache.inlong.common.enums.DataProxyMsgEncType;
+import org.apache.inlong.common.msg.InLongMsg;
+import org.apache.inlong.common.util.StringUtil;
+import org.apache.inlong.common.util.Utils;
+import org.apache.inlong.sdk.commons.protocol.EventConstants;
+import org.apache.inlong.sdk.commons.protocol.ProxySdk.MapFieldEntry;
+import org.apache.inlong.sdk.commons.protocol.ProxySdk.MessageObj;
+import org.apache.inlong.sdk.commons.protocol.ProxySdk.MessageObjs;
+import org.apache.inlong.sdk.sort.api.ClientContext;
+import org.apache.inlong.sdk.sort.api.Deserializer;
+import org.apache.inlong.sdk.sort.entity.InLongMessage;
+import org.apache.inlong.sdk.sort.entity.InLongTopic;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -27,26 +40,11 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 
-import org.apache.inlong.common.msg.InLongMsg;
-import org.apache.inlong.sdk.commons.protocol.ProxySdk.MapFieldEntry;
-import org.apache.inlong.sdk.commons.protocol.ProxySdk.MessageObj;
-import org.apache.inlong.sdk.commons.protocol.ProxySdk.MessageObjs;
-import org.apache.inlong.sdk.sort.api.ClientContext;
-import org.apache.inlong.sdk.sort.api.Deserializer;
-import org.apache.inlong.sdk.sort.entity.InLongMessage;
-import org.apache.inlong.sdk.sort.entity.InLongTopic;
-import org.apache.inlong.sdk.sort.util.StringUtil;
-import org.apache.inlong.sdk.sort.util.Utils;
-
 public class MessageDeserializer implements Deserializer {
 
-    private static final int MESSAGE_VERSION_NONE = 0;
-    private static final int MESSAGE_VERSION_PB = 1;
-    private static final int MESSAGE_VERSION_INLONG_MSG = 2;
     private static final int COMPRESS_TYPE_NONE = 0;
     private static final int COMPRESS_TYPE_GZIP = 1;
     private static final int COMPRESS_TYPE_SNAPPY = 2;
-    private static final String VERSION_KEY = "version";
     private static final String COMPRESS_TYPE_KEY = "compressType";
     private static final String MSG_TIME_KEY = "msgTime";
     private static final String SOURCE_IP_KEY = "sourceIp";
@@ -57,7 +55,7 @@ public class MessageDeserializer implements Deserializer {
     private static final String INLONGMSG_ATTR_GROUP_ID = "groupId";
     private static final String INLONGMSG_ATTR_TIME_T = "t";
     private static final String INLONGMSG_ATTR_TIME_DT = "dt";
-    private static final String INLONGMSG_ATTR_NODE_IP = "NodeIP";
+    private static final String INLONGMSG_ATTR_CLIENT_IP = "clientIp";
     private static final char INLONGMSG_ATTR_ENTRY_DELIMITER = '&';
     private static final char INLONGMSG_ATTR_KV_DELIMITER = '=';
     private static final String DEFAULT_IP = "127.0.0.1";
@@ -75,19 +73,16 @@ public class MessageDeserializer implements Deserializer {
             byte[] data) throws Exception {
 
         // 1. version
-        int version = Integer.parseInt(headers.getOrDefault(VERSION_KEY, Integer.toString(MESSAGE_VERSION_INLONG_MSG)));
-        switch (version) {
-            case MESSAGE_VERSION_NONE: {
-                return decode(context, inLongTopic, data, headers);
-            }
-            case MESSAGE_VERSION_PB: {
-                return decodePB(context, inLongTopic, data, headers);
-            }
-            case MESSAGE_VERSION_INLONG_MSG: {
-                return decodeInlongMsg(context, inLongTopic, data, headers);
-            }
-            default:
-                throw new IllegalArgumentException("Unknown version type:" + version);
+        int version = Integer.parseInt(headers.getOrDefault(EventConstants.HEADER_KEY_VERSION,
+                Integer.toString(DataProxyMsgEncType.MSG_ENCODE_TYPE_INLONGMSG.getId())));
+        if (version == DataProxyMsgEncType.MSG_ENCODE_TYPE_RAW.getId()) {
+            return decode(context, inLongTopic, data, headers);
+        } else if (version == DataProxyMsgEncType.MSG_ENCODE_TYPE_PB.getId()) {
+            return decodePB(context, inLongTopic, data, headers);
+        } else if (version == DataProxyMsgEncType.MSG_ENCODE_TYPE_INLONGMSG.getId()) {
+            return decodeInlongMsg(context, inLongTopic, data, headers);
+        } else {
+            throw new IllegalArgumentException("Unknown version type:" + version);
         }
     }
 
@@ -199,7 +194,7 @@ public class MessageDeserializer implements Deserializer {
                         INLONGMSG_ATTR_TIME_T + " or " + INLONGMSG_ATTR_TIME_DT));
             }
 
-            String srcIp = Optional.ofNullable(attributes.get(INLONGMSG_ATTR_NODE_IP))
+            String srcIp = Optional.ofNullable(attributes.get(INLONGMSG_ATTR_CLIENT_IP))
                     .orElse(DEFAULT_IP);
 
             Iterator<byte[]> iterator = inLongMsg.getIterator(attr);

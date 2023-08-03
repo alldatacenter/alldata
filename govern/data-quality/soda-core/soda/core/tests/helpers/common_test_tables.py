@@ -174,3 +174,44 @@ customers_profiling_capitalized = TestTable(
     ],
     values=[(1, 2), (2, 1), (0, 1), (2, 1), (6, 1), (6, 1), (3, 2)],
 )
+
+dro_categorical_test_table = TestTable(
+    name="CategoricalDROTable",
+    create_view=os.getenv("TEST_WITH_VIEWS", False),
+    columns=[
+        ("categorical_value", DataType.INTEGER),
+    ],
+    values=[
+        (1,),
+        (2,),
+        (0,),
+        (2,),
+        (6,),
+        (6,),
+        (3,),
+        (1,),
+        (2,),
+        (0,),
+        (2,),
+        (6,),
+        (6,),
+        (3,),
+        (1,),
+        (2,),
+        (0,),
+        (2,),
+        (6,),
+        (6,),
+        (3,),
+        (3,),
+    ],
+)
+
+null_test_table = TestTable(
+    name="NullTable",
+    create_view=os.getenv("TEST_WITH_VIEWS", False),
+    columns=[
+        ("column_with_null_values", DataType.INTEGER),
+    ],
+    values=[(None,), (None,), (None,), (None,), (None,), (None,), (None,), (None,), (None,)],
+)

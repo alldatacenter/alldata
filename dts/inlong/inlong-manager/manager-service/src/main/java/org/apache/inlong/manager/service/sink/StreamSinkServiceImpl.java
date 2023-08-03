@@ -17,27 +17,12 @@
 
 package org.apache.inlong.manager.service.sink;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.pagehelper.Page;
-import com.github.pagehelper.PageHelper;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import net.sf.jsqlparser.JSQLParserException;
-import net.sf.jsqlparser.parser.CCJSqlParserManager;
-import net.sf.jsqlparser.statement.Statement;
-import net.sf.jsqlparser.statement.create.table.ColDataType;
-import net.sf.jsqlparser.statement.create.table.ColumnDefinition;
-import net.sf.jsqlparser.statement.create.table.CreateTable;
-import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.inlong.manager.common.consts.InlongConstants;
 import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
 import org.apache.inlong.manager.common.enums.GroupStatus;
 import org.apache.inlong.manager.common.enums.SinkStatus;
 import org.apache.inlong.manager.common.enums.StreamStatus;
-import org.apache.inlong.manager.common.enums.UserTypeEnum;
+import org.apache.inlong.manager.common.enums.TenantUserTypeEnum;
 import org.apache.inlong.manager.common.exceptions.BusinessException;
 import org.apache.inlong.manager.common.util.Preconditions;
 import org.apache.inlong.manager.dao.entity.InlongGroupEntity;
@@ -64,6 +49,22 @@ import org.apache.inlong.manager.pojo.user.UserInfo;
 import org.apache.inlong.manager.service.group.GroupCheckService;
 import org.apache.inlong.manager.service.stream.InlongStreamProcessService;
 import org.apache.inlong.manager.service.user.UserService;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import net.sf.jsqlparser.JSQLParserException;
+import net.sf.jsqlparser.parser.CCJSqlParserManager;
+import net.sf.jsqlparser.statement.Statement;
+import net.sf.jsqlparser.statement.create.table.ColDataType;
+import net.sf.jsqlparser.statement.create.table.ColumnDefinition;
+import net.sf.jsqlparser.statement.create.table.CreateTable;
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -318,11 +319,11 @@ public class StreamSinkServiceImpl implements StreamSinkService {
     public PageResult<? extends StreamSink> listByCondition(SinkPageRequest request, String operator) {
         Preconditions.expectNotBlank(request.getInlongGroupId(), ErrorCodeEnum.GROUP_ID_IS_EMPTY);
         UserInfo userInfo = userService.getByName(operator);
-        boolean isAdmin = UserTypeEnum.ADMIN.getCode().equals(userInfo.getAccountType());
+        boolean isAdmin = TenantUserTypeEnum.TENANT_ADMIN.getCode().equals(userInfo.getAccountType());
         PageHelper.startPage(request.getPageNum(), request.getPageSize());
         OrderFieldEnum.checkOrderField(request);
         OrderTypeEnum.checkOrderType(request);
-        List<StreamSinkEntity> entityPage = sinkMapper.selectByCondition(request);
+        Page<StreamSinkEntity> entityPage = (Page<StreamSinkEntity>) sinkMapper.selectByCondition(request);
         Map<String, Page<StreamSinkEntity>> sinkMap = Maps.newHashMap();
         for (StreamSinkEntity streamSink : entityPage) {
             InlongGroupEntity groupEntity =
@@ -346,7 +347,8 @@ public class StreamSinkServiceImpl implements StreamSinkService {
             responseList.addAll(pageInfo.getList());
         }
         // Encapsulate the paging query results into the PageInfo object to obtain related paging information
-        PageResult<StreamSink> pageResult = new PageResult<>(responseList);
+        PageResult<StreamSink> pageResult = new PageResult<>(responseList, entityPage.getTotal(),
+                entityPage.getPageNum(), entityPage.getPageSize());
 
         LOGGER.debug("success to list sink page, result size {}", pageResult.getList().size());
         return pageResult;
@@ -377,7 +379,7 @@ public class StreamSinkServiceImpl implements StreamSinkService {
                     continue;
                 }
                 // only the person in charges can query
-                if (!opInfo.getAccountType().equals(UserTypeEnum.ADMIN.getCode())) {
+                if (!opInfo.getAccountType().equals(TenantUserTypeEnum.TENANT_ADMIN.getCode())) {
                     List<String> inCharges = Arrays.asList(groupEntity.getInCharges().split(InlongConstants.COMMA));
                     if (!inCharges.contains(opInfo.getName())) {
                         continue;

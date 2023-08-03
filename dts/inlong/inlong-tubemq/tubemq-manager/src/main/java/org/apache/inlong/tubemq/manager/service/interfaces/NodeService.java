@@ -17,11 +17,6 @@
 
 package org.apache.inlong.tubemq.manager.service.interfaces;
 
-import java.io.IOException;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
 import org.apache.inlong.tubemq.manager.controller.TubeMQResult;
 import org.apache.inlong.tubemq.manager.controller.node.dto.MasterDto;
 import org.apache.inlong.tubemq.manager.controller.node.request.AddTopicReq;
@@ -31,6 +26,11 @@ import org.apache.inlong.tubemq.manager.entry.ClusterEntry;
 import org.apache.inlong.tubemq.manager.entry.MasterEntry;
 import org.apache.inlong.tubemq.manager.service.TopicFuture;
 import org.apache.inlong.tubemq.manager.service.tube.TubeHttpBrokerInfoList;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public interface NodeService {
 

@@ -17,12 +17,14 @@
 
 package org.apache.inlong.dataproxy.source;
 
-import java.util.HashMap;
-import java.util.Map;
-import org.apache.flume.Context;
 import org.apache.inlong.dataproxy.consts.ConfigConstants;
+
+import org.apache.flume.Context;
 import org.junit.Assert;
 import org.junit.Test;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class UdpSourceTest {
 

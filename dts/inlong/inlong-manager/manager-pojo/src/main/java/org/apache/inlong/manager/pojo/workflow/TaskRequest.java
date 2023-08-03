@@ -17,6 +17,9 @@
 
 package org.apache.inlong.manager.pojo.workflow;
 
+import org.apache.inlong.manager.common.enums.TaskStatus;
+import org.apache.inlong.manager.pojo.common.PageRequest;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -24,8 +27,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import org.apache.inlong.manager.pojo.common.PageRequest;
-import org.apache.inlong.manager.common.enums.TaskStatus;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
@@ -56,6 +57,9 @@ public class TaskRequest extends PageRequest {
 
     @ApiModelProperty("Task display name")
     private String displayName;
+
+    @ApiModelProperty("Inlong tenant of workflow")
+    private String tenant;
 
     @ApiModelProperty("Applicant name")
     private String applicant;

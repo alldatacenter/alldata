@@ -17,15 +17,6 @@
 
 package org.apache.inlong.sdk.sort.impl.pulsar;
 
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyInt;
-import static org.mockito.ArgumentMatchers.anyLong;
-import static org.mockito.ArgumentMatchers.anyString;
-import static org.powermock.api.mockito.PowerMockito.doNothing;
-import static org.powermock.api.mockito.PowerMockito.when;
-
-import java.util.HashMap;
-import java.util.concurrent.ConcurrentHashMap;
 import org.apache.inlong.sdk.sort.api.ClientContext;
 import org.apache.inlong.sdk.sort.api.SortClientConfig;
 import org.apache.inlong.sdk.sort.api.TopicFetcher;
@@ -35,6 +26,7 @@ import org.apache.inlong.sdk.sort.fetcher.pulsar.PulsarSingleTopicFetcher;
 import org.apache.inlong.sdk.sort.impl.ClientContextImpl;
 import org.apache.inlong.sdk.sort.impl.decode.MessageDeserializer;
 import org.apache.inlong.sdk.sort.interceptor.MsgTimeInterceptor;
+
 import org.apache.pulsar.client.api.Consumer;
 import org.apache.pulsar.client.api.ConsumerBuilder;
 import org.apache.pulsar.client.api.MessageId;
@@ -48,6 +40,16 @@ import org.powermock.core.classloader.annotations.PowerMockIgnore;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 import org.powermock.reflect.Whitebox;
+
+import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
+
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.powermock.api.mockito.PowerMockito.doNothing;
+import static org.powermock.api.mockito.PowerMockito.when;
 
 @PowerMockIgnore("javax.management.*")
 @RunWith(PowerMockRunner.class)

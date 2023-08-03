@@ -28,6 +28,8 @@ export interface State {
   userName: string;
   userId: number;
   roles: string[];
+  tenant: string;
+  tenantList: string[];
   currentMenu: null | Omit<MenuItemType, 'children'>;
 }
 
@@ -36,6 +38,8 @@ const state: State = {
   userName: '',
   userId: 0,
   roles: [],
+  tenant: '',
+  tenantList: [],
   currentMenu: null,
 };
 
@@ -46,6 +50,7 @@ const reducers = {
       userName: payload.userName,
       userId: payload.userId,
       roles: payload.roles,
+      tenant: payload.tenant,
     };
   },
 
@@ -53,6 +58,13 @@ const reducers = {
     return {
       ...state,
       locale: payload.locale,
+    };
+  },
+
+  setTenantInfo(state, payload) {
+    return {
+      ...state,
+      tenantList: payload.tenantList,
     };
   },
 

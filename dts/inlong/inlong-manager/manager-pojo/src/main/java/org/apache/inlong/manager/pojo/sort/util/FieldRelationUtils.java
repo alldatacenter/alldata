@@ -17,9 +17,6 @@
 
 package org.apache.inlong.manager.pojo.sort.util;
 
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
 import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
 import org.apache.inlong.manager.common.enums.FieldType;
 import org.apache.inlong.manager.common.enums.TransformType;
@@ -47,6 +44,10 @@ import org.apache.inlong.sort.protocol.transformation.function.EncryptFunction;
 import org.apache.inlong.sort.protocol.transformation.function.RegexpReplaceFirstFunction;
 import org.apache.inlong.sort.protocol.transformation.function.RegexpReplaceFunction;
 import org.apache.inlong.sort.protocol.transformation.function.SplitIndexFunction;
+
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
 
 import java.util.List;
 import java.util.Map;

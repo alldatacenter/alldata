@@ -19,11 +19,13 @@ package org.apache.inlong.manager.client.api.service;
 
 import org.apache.inlong.manager.pojo.common.PageResult;
 import org.apache.inlong.manager.pojo.common.Response;
+import org.apache.inlong.manager.pojo.consume.BriefMQMessage;
 import org.apache.inlong.manager.pojo.sink.ParseFieldRequest;
 import org.apache.inlong.manager.pojo.stream.InlongStreamBriefInfo;
 import org.apache.inlong.manager.pojo.stream.InlongStreamInfo;
 import org.apache.inlong.manager.pojo.stream.InlongStreamPageRequest;
 import org.apache.inlong.manager.pojo.stream.StreamField;
+
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -72,4 +74,8 @@ public interface InlongStreamApi {
 
     @POST("stream/parseFields")
     Call<Response<List<StreamField>>> parseFields(@Body ParseFieldRequest parseFieldRequest);
+
+    @GET("stream/listMessages")
+    Call<Response<List<BriefMQMessage>>> listMessages(@Query("groupId") String groupId,
+            @Query("streamId") String streamId, @Query("messageCount") Integer messageCount);
 }

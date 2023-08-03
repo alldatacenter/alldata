@@ -17,9 +17,10 @@
 
 package org.apache.inlong.tubemq.corebase.balance;
 
+import org.apache.inlong.tubemq.corebase.cluster.SubscribeInfo;
+
 import java.util.ArrayList;
 import java.util.List;
-import org.apache.inlong.tubemq.corebase.cluster.SubscribeInfo;
 
 public class ConsumerEvent {
 

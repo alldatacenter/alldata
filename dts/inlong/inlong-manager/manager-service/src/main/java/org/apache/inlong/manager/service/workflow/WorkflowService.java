@@ -19,6 +19,8 @@ package org.apache.inlong.manager.service.workflow;
 
 import org.apache.inlong.manager.common.enums.ProcessName;
 import org.apache.inlong.manager.pojo.common.PageResult;
+import org.apache.inlong.manager.pojo.user.LoginUserUtils;
+import org.apache.inlong.manager.pojo.user.UserInfo;
 import org.apache.inlong.manager.pojo.workflow.ProcessCountRequest;
 import org.apache.inlong.manager.pojo.workflow.ProcessCountResponse;
 import org.apache.inlong.manager.pojo.workflow.ProcessDetailResponse;
@@ -44,12 +46,27 @@ public interface WorkflowService {
     /**
      * Initiation process
      *
-     * @param process Process name
-     * @param applicant Applicant
-     * @param form Process form
-     * @return result
+     * @param process process name
+     * @param applicant applicant name
+     * @param form process form
+     * @return workflow result
      */
     WorkflowResult start(ProcessName process, String applicant, ProcessForm form);
+
+    /**
+     * Initiation process async
+     *
+     * @param process process name
+     * @param userInfo login user info
+     * @param form process form
+     * @return workflow result
+     */
+    default WorkflowResult startAsync(ProcessName process, UserInfo userInfo, ProcessForm form) {
+        LoginUserUtils.setUserLoginInfo(userInfo);
+        WorkflowResult result = start(process, userInfo.getName(), form);
+        LoginUserUtils.removeUserLoginInfo();
+        return result;
+    }
 
     /**
      * Continue process when pending or failed
@@ -60,6 +77,21 @@ public interface WorkflowService {
      * @return Workflow result.
      */
     WorkflowResult continueProcess(Integer processId, String operator, String remark);
+
+    /**
+     * Continue process when pending or failed
+     *
+     * @param processId Process id.
+     * @param userInfo userInfo.
+     * @param remark Remarks information.
+     * @return Workflow result.
+     */
+    default WorkflowResult continueProcessAsync(Integer processId, UserInfo userInfo, String remark) {
+        LoginUserUtils.setUserLoginInfo(userInfo);
+        WorkflowResult result = continueProcess(processId, userInfo.getName(), remark);
+        LoginUserUtils.removeUserLoginInfo();
+        return result;
+    }
 
     /**
      * Cancellation process application

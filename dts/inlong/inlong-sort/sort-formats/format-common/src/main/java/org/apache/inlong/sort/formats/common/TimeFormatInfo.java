@@ -23,6 +23,7 @@ import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonPro
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+
 import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

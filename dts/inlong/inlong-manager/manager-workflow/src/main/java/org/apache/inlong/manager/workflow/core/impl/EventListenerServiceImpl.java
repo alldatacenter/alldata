@@ -34,6 +34,7 @@ import org.apache.inlong.manager.workflow.event.process.ProcessEventListener;
 import org.apache.inlong.manager.workflow.event.process.ProcessEventNotifier;
 import org.apache.inlong.manager.workflow.event.task.TaskEventListener;
 import org.apache.inlong.manager.workflow.event.task.TaskEventNotifier;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

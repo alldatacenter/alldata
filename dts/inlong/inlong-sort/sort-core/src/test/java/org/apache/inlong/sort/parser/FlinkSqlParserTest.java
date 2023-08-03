@@ -17,10 +17,6 @@
 
 package org.apache.inlong.sort.parser;
 
-import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
-import org.apache.flink.table.api.EnvironmentSettings;
-import org.apache.flink.table.api.bridge.java.StreamTableEnvironment;
-import org.apache.flink.test.util.AbstractTestBase;
 import org.apache.inlong.sort.formats.common.FloatFormatInfo;
 import org.apache.inlong.sort.formats.common.IntFormatInfo;
 import org.apache.inlong.sort.formats.common.LongFormatInfo;
@@ -45,6 +41,11 @@ import org.apache.inlong.sort.protocol.transformation.TimeUnitConstantParam;
 import org.apache.inlong.sort.protocol.transformation.TimeUnitConstantParam.TimeUnit;
 import org.apache.inlong.sort.protocol.transformation.WatermarkField;
 import org.apache.inlong.sort.protocol.transformation.relation.NodeRelation;
+
+import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
+import org.apache.flink.table.api.EnvironmentSettings;
+import org.apache.flink.table.api.bridge.java.StreamTableEnvironment;
+import org.apache.flink.test.util.AbstractTestBase;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -183,7 +184,6 @@ public class FlinkSqlParserTest extends AbstractTestBase {
     public void testMysqlToHive() {
         EnvironmentSettings settings = EnvironmentSettings
                 .newInstance()
-                .useBlinkPlanner()
                 .inStreamingMode()
                 .build();
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
@@ -221,7 +221,6 @@ public class FlinkSqlParserTest extends AbstractTestBase {
     public void testToFileSystem() {
         EnvironmentSettings settings = EnvironmentSettings
                 .newInstance()
-                .useBlinkPlanner()
                 .inStreamingMode()
                 .build();
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
@@ -248,7 +247,6 @@ public class FlinkSqlParserTest extends AbstractTestBase {
     public void testFlinkSqlParse() throws Exception {
         EnvironmentSettings settings = EnvironmentSettings
                 .newInstance()
-                .useBlinkPlanner()
                 .inStreamingMode()
                 .build();
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();

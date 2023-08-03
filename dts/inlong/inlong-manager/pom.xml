@@ -21,8 +21,9 @@
     <parent>
         <groupId>org.apache.inlong</groupId>
         <artifactId>inlong</artifactId>
-        <version>1.7.0</version>
+        <version>1.8.0</version>
     </parent>
+
     <artifactId>inlong-manager</artifactId>
     <packaging>pom</packaging>
     <name>Apache InLong - Manager</name>
@@ -35,12 +36,16 @@
         <module>manager-client-examples</module>
         <module>manager-client-tools</module>
         <module>manager-dao</module>
+        <module>manager-plugins</module>
         <module>manager-service</module>
         <module>manager-workflow</module>
-        <module>manager-plugins</module>
         <module>manager-web</module>
         <module>manager-docker</module>
     </modules>
+
+    <properties>
+        <inlong.root.dir>${project.parent.basedir}</inlong.root.dir>
+    </properties>
 
     <dependencies>
         <dependency>

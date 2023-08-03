@@ -17,21 +17,23 @@
 
 package org.apache.inlong.dataproxy.base;
 
-import io.netty.channel.ChannelHandlerContext;
-import java.util.Map;
-import org.apache.flume.Event;
 import org.apache.inlong.common.msg.MsgType;
+
+import io.netty.channel.Channel;
+import org.apache.flume.Event;
+
+import java.util.Map;
 
 public class SinkRspEvent implements Event {
 
-    private ChannelHandlerContext ctx;
+    private Channel channel;
     private MsgType msgType;
     private Event event;
 
-    public SinkRspEvent(Event event, MsgType msgType, ChannelHandlerContext ctx) {
+    public SinkRspEvent(Event event, MsgType msgType, Channel channel) {
         this.event = event;
         this.msgType = msgType;
-        this.ctx = ctx;
+        this.channel = channel;
     }
 
     @Override
@@ -54,13 +56,17 @@ public class SinkRspEvent implements Event {
         event.setBody(bytes);
     }
 
+    public Event getEvent() {
+        return this.event;
+    }
+
     /**
      * Get event reported channel context
      *
      * @return ctx
      */
-    public ChannelHandlerContext getCtx() {
-        return ctx;
+    public Channel getChannel() {
+        return channel;
     }
 
     /**

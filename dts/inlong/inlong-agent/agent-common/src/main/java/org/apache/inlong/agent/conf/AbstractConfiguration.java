@@ -17,13 +17,14 @@
 
 package org.apache.inlong.agent.conf;
 
+import org.apache.inlong.agent.utils.AgentUtils;
+
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.JsonPrimitive;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.inlong.agent.utils.AgentUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

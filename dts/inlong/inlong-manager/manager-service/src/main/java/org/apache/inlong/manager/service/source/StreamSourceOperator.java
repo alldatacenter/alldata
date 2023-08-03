@@ -17,7 +17,6 @@
 
 package org.apache.inlong.manager.service.source;
 
-import com.github.pagehelper.Page;
 import org.apache.inlong.manager.dao.entity.StreamSourceEntity;
 import org.apache.inlong.manager.pojo.common.PageResult;
 import org.apache.inlong.manager.pojo.group.InlongGroupInfo;
@@ -26,7 +25,10 @@ import org.apache.inlong.manager.pojo.source.StreamSource;
 import org.apache.inlong.manager.pojo.stream.InlongStreamInfo;
 import org.apache.inlong.manager.pojo.stream.StreamField;
 
+import com.github.pagehelper.Page;
+
 import javax.validation.constraints.NotNull;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

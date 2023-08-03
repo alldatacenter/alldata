@@ -17,16 +17,6 @@
 
 package org.apache.inlong.agent.core;
 
-import static org.apache.inlong.agent.constant.AgentConstants.AGENT_CONF_PARENT;
-import static org.apache.inlong.agent.constant.AgentConstants.DEFAULT_AGENT_CONF_PARENT;
-import static org.apache.inlong.agent.constant.JobConstants.JOB_TRIGGER;
-
-import java.io.File;
-import java.lang.reflect.Constructor;
-import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
 import org.apache.inlong.agent.common.AbstractDaemon;
 import org.apache.inlong.agent.conf.AgentConfiguration;
 import org.apache.inlong.agent.conf.JobProfile;
@@ -35,16 +25,27 @@ import org.apache.inlong.agent.conf.TriggerProfile;
 import org.apache.inlong.agent.constant.AgentConstants;
 import org.apache.inlong.agent.core.conf.ConfigJetty;
 import org.apache.inlong.agent.core.job.JobManager;
+import org.apache.inlong.agent.core.task.PositionManager;
 import org.apache.inlong.agent.core.task.TaskManager;
-import org.apache.inlong.agent.core.task.TaskPositionManager;
 import org.apache.inlong.agent.core.trigger.TriggerManager;
 import org.apache.inlong.agent.db.CommandDb;
 import org.apache.inlong.agent.db.Db;
 import org.apache.inlong.agent.db.JobProfileDb;
 import org.apache.inlong.agent.db.LocalProfile;
 import org.apache.inlong.agent.db.TriggerProfileDb;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.io.File;
+import java.lang.reflect.Constructor;
+import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+import static org.apache.inlong.agent.constant.AgentConstants.AGENT_CONF_PARENT;
+import static org.apache.inlong.agent.constant.AgentConstants.DEFAULT_AGENT_CONF_PARENT;
+import static org.apache.inlong.agent.constant.JobConstants.JOB_TRIGGER;
 
 /**
  * Agent Manager, the bridge for job manager, task manager, db e.t.c it manages agent level operations and communicates
@@ -56,7 +57,7 @@ public class AgentManager extends AbstractDaemon {
     private final JobManager jobManager;
     private final TaskManager taskManager;
     private final TriggerManager triggerManager;
-    private final TaskPositionManager taskPositionManager;
+    private final PositionManager positionManager;
     private final HeartbeatManager heartbeatManager;
     private final ProfileFetcher fetcher;
     private final AgentConfiguration conf;
@@ -81,7 +82,7 @@ public class AgentManager extends AbstractDaemon {
         taskManager = new TaskManager(this);
         fetcher = initFetcher(this);
         heartbeatManager = HeartbeatManager.getInstance(this);
-        taskPositionManager = TaskPositionManager.getInstance(this);
+        positionManager = PositionManager.getInstance(this);
         // need to be an option.
         if (conf.getBoolean(
                 AgentConstants.AGENT_ENABLE_HTTP, AgentConstants.DEFAULT_AGENT_ENABLE_HTTP)) {
@@ -173,8 +174,8 @@ public class AgentManager extends AbstractDaemon {
         return triggerManager;
     }
 
-    public TaskPositionManager getTaskPositionManager() {
-        return taskPositionManager;
+    public PositionManager getTaskPositionManager() {
+        return positionManager;
     }
 
     public TaskManager getTaskManager() {
@@ -205,7 +206,7 @@ public class AgentManager extends AbstractDaemon {
         LOGGER.info("starting heartbeat manager");
         heartbeatManager.start();
         LOGGER.info("starting task position manager");
-        taskPositionManager.start();
+        positionManager.start();
         LOGGER.info("starting read job from local");
         // read job profiles from local
         List<JobProfile> profileList = localProfile.readFromLocal();
@@ -248,7 +249,7 @@ public class AgentManager extends AbstractDaemon {
         jobManager.stop();
         taskManager.stop();
         heartbeatManager.stop();
-        taskPositionManager.stop();
+        positionManager.stop();
         agentConfMonitor.shutdown();
         this.db.close();
     }

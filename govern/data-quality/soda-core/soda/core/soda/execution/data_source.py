@@ -7,6 +7,7 @@ import json
 import re
 from collections import defaultdict
 from datetime import date, datetime
+from functools import lru_cache
 from numbers import Number
 from textwrap import dedent
 
@@ -14,7 +15,6 @@ from soda.common.exceptions import DataSourceError
 from soda.common.logs import Logs
 from soda.common.string_helper import string_matches_simple_pattern
 from soda.execution.data_type import DataType
-from soda.execution.query.partition_queries import PartitionQueries
 from soda.execution.query.query import Query
 from soda.execution.query.schema_query import TableColumnsQuery
 from soda.sampler.sample_ref import SampleRef
@@ -159,7 +159,7 @@ class DataSource:
         "bigserial",
     ]
     TEXT_TYPES_FOR_PROFILING = ["character varying", "varchar", "text", "character", "char"]
-    LIMIT_KEYWORD = "LIMIT"
+    LIMIT_KEYWORD: str = "LIMIT"
 
     # Building up format queries normally works with regexp expression + a set of formats,
     # but some use cases require whole completely custom format expressions.
@@ -200,7 +200,7 @@ class DataSource:
             data_source_class = f"{DataSource.camel_case_data_source_type(data_source_type)}DataSource"
             class_ = getattr(module, data_source_class)
             return class_(logs, data_source_name, data_source_properties)
-        except ModuleNotFoundError as e:
+        except ModuleNotFoundError:
             if data_source_type == "postgresql":
                 logs.error(f'Data source type "{data_source_type}" not found. Did you mean postgres?')
             else:
@@ -256,9 +256,6 @@ class DataSource:
 
     def get_type_name(self, type_code):
         return str(type_code)
-
-    def create_partition_queries(self, partition):
-        return PartitionQueries(partition)
 
     def is_supported_metric_name(self, metric_name: str) -> bool:
         return (
@@ -545,6 +542,7 @@ class DataSource:
     # For a table, get the columns metadata
     ############################################
 
+    @lru_cache(maxsize=None)
     def get_table_columns(
         self,
         table_name: str,
@@ -556,7 +554,6 @@ class DataSource:
         :return: A dict mapping column names to data source data types.  Like eg
         {"id": "varchar", "cst_size": "int8", ...}
         """
-        # TODO: save/cache the result for later use.
         query = Query(
             data_source_scan=self.data_source_scan,
             unqualified_query_name=query_name,
@@ -643,8 +640,8 @@ class DataSource:
         self,
         table_column_name: str,
         schema_column_name: str | None = None,
-        include_tables: list[str] = [],
-        exclude_tables: list[str] = [],
+        include_tables: list[str] | None = [],
+        exclude_tables: list[str] | None = [],
     ) -> str | None:
         tablename_filter_clauses = []
 
@@ -716,10 +713,10 @@ class DataSource:
         sql = dedent(
             f"""
             WITH frequencies AS (
-              SELECT COUNT(*) AS frequency
-              FROM {table_name}
-              WHERE {filter}
-              GROUP BY {column_names})
+                SELECT COUNT(*) AS frequency
+                FROM {table_name}
+                WHERE {filter}
+                GROUP BY {column_names})
             SELECT count(*)
             FROM frequencies
             WHERE frequency > 1"""
@@ -727,7 +724,7 @@ class DataSource:
 
         return sql
 
-    def sql_get_duplicates(
+    def sql_get_duplicates_aggregated(
         self,
         column_names: str,
         table_name: str,
@@ -748,6 +745,40 @@ class DataSource:
             FROM frequencies
             WHERE frequency {'<=' if invert_condition else '>'} 1
             ORDER BY frequency DESC"""
+        )
+
+        if limit:
+            sql += f"\nLIMIT {limit}"
+
+        return sql
+
+    def sql_get_duplicates(
+        self,
+        column_names: str,
+        table_name: str,
+        filter: str,
+        limit: str | None = None,
+        invert_condition: bool = False,
+        exclude_patterns: list[str] | None = None,
+    ) -> str | None:
+        columns = column_names.split(", ")
+
+        qualified_main_query_columns = ", ".join([f"main.{c}" for c in columns])
+        main_query_columns = qualified_main_query_columns if exclude_patterns else "main.*"
+        join = " AND ".join([f"main.{c} = frequencies.{c}" for c in columns])
+
+        sql = dedent(
+            f"""
+            WITH frequencies AS (
+                SELECT {column_names}
+                FROM {table_name}
+                WHERE {filter}
+                GROUP BY {column_names}
+                HAVING count(*) {'<=' if invert_condition else '>'} 1)
+            SELECT {main_query_columns}
+            FROM {table_name} main
+            JOIN frequencies ON {join}
+            """
         )
 
         if limit:

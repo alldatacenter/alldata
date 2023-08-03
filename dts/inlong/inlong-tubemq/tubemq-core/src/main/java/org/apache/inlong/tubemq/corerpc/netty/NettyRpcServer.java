@@ -17,29 +17,6 @@
 
 package org.apache.inlong.tubemq.corerpc.netty;
 
-import static org.apache.inlong.tubemq.corebase.utils.AddressUtils.getRemoteAddressIP;
-import com.google.protobuf.Message;
-import io.netty.bootstrap.ServerBootstrap;
-import io.netty.channel.Channel;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelInboundHandlerAdapter;
-import io.netty.channel.ChannelInitializer;
-import io.netty.channel.ChannelOption;
-import io.netty.channel.EventLoopGroup;
-import io.netty.channel.WriteBufferWaterMark;
-import io.netty.channel.socket.SocketChannel;
-import io.netty.handler.ssl.SslHandler;
-import io.netty.util.concurrent.DefaultThreadFactory;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.net.InetSocketAddress;
-import java.nio.ByteBuffer;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicLong;
-import javax.net.ssl.SSLEngine;
 import org.apache.inlong.tubemq.corebase.protobuf.generated.RPCProtos;
 import org.apache.inlong.tubemq.corerpc.RequestWrapper;
 import org.apache.inlong.tubemq.corerpc.RpcConfig;
@@ -54,8 +31,35 @@ import org.apache.inlong.tubemq.corerpc.server.RequestContext;
 import org.apache.inlong.tubemq.corerpc.server.ServiceRpcServer;
 import org.apache.inlong.tubemq.corerpc.utils.MixUtils;
 import org.apache.inlong.tubemq.corerpc.utils.TSSLEngineUtil;
+
+import com.google.protobuf.Message;
+import io.netty.bootstrap.ServerBootstrap;
+import io.netty.channel.Channel;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInboundHandlerAdapter;
+import io.netty.channel.ChannelInitializer;
+import io.netty.channel.ChannelOption;
+import io.netty.channel.EventLoopGroup;
+import io.netty.channel.WriteBufferWaterMark;
+import io.netty.channel.socket.SocketChannel;
+import io.netty.handler.ssl.SslHandler;
+import io.netty.util.concurrent.DefaultThreadFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import javax.net.ssl.SSLEngine;
+
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.InetSocketAddress;
+import java.nio.ByteBuffer;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicLong;
+
+import static org.apache.inlong.tubemq.corebase.utils.AddressUtils.getRemoteAddressIP;
 
 /**
  * Netty Rpc Server

@@ -17,12 +17,6 @@
 
 package org.apache.inlong.tubemq.manager.controller.task;
 
-import com.google.gson.Gson;
-
-import java.util.Set;
-import java.util.stream.Collectors;
-
-import lombok.extern.slf4j.Slf4j;
 import org.apache.inlong.tubemq.manager.controller.TubeMQResult;
 import org.apache.inlong.tubemq.manager.controller.topic.request.AddTopicTask;
 import org.apache.inlong.tubemq.manager.controller.topic.request.BatchAddTopicTaskReq;
@@ -31,12 +25,18 @@ import org.apache.inlong.tubemq.manager.service.TubeConst;
 import org.apache.inlong.tubemq.manager.service.TubeMQErrorConst;
 import org.apache.inlong.tubemq.manager.service.interfaces.ClusterService;
 import org.apache.inlong.tubemq.manager.service.interfaces.TaskService;
+
+import com.google.gson.Gson;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(path = "/v1/task")

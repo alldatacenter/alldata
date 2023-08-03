@@ -20,34 +20,33 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <parent>
         <groupId>org.apache.inlong</groupId>
         <artifactId>inlong</artifactId>
-        <version>1.7.0</version>
+        <version>1.8.0</version>
     </parent>
+
     <artifactId>inlong-sort</artifactId>
     <packaging>pom</packaging>
-
     <name>Apache InLong - Sort</name>
 
     <modules>
         <module>sort-api</module>
         <module>sort-common</module>
         <module>sort-formats</module>
-        <module>sort-connectors</module>
         <module>sort-core</module>
         <module>sort-dist</module>
-        <module>sort-end-to-end-tests</module>
+        <module>sort-flink</module>
     </modules>
+
     <properties>
+        <inlong.root.dir>${project.parent.basedir}</inlong.root.dir>
         <debezium.version>1.5.4.Final</debezium.version>
         <kafka.clients.version>2.7.0</kafka.clients.version>
         <rat.basedir>${basedir}</rat.basedir>
         <hbase.version>2.2.3</hbase.version>
-        <iceberg.hive.version>2.3.7</iceberg.hive.version>
-        <hudi.hive.version>2.3.7</hudi.hive.version>
     </properties>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -64,16 +63,6 @@
                 <groupId>io.debezium</groupId>
                 <artifactId>debezium-core</artifactId>
                 <version>${debezium.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.kafka</groupId>
-                <artifactId>kafka-clients</artifactId>
-                <version>${kafka.clients.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.hbase</groupId>
-                <artifactId>hbase-client</artifactId>
-                <version>${hbase.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.kudu</groupId>
@@ -169,4 +158,46 @@
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>v1.13</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <!-- End-To-End after refactoring, you need to mention this module under modules. -->
+            <modules>
+                <module>sort-end-to-end-tests</module>
+            </modules>
+            <properties>
+                <sort.flink.version>v1.13</sort.flink.version>
+                <flink.version>1.13.5</flink.version>
+                <flink.minor.version>1.13</flink.minor.version>
+                <flink.scala.binary.version>2.11</flink.scala.binary.version>
+                <flink.jackson.version>2.12.1-13.0</flink.jackson.version>
+                <flink.protobuf.version>2.7.6</flink.protobuf.version>
+                <flink.cdc.base.version>2.3.0</flink.cdc.base.version>
+                <flink.streaming.artifactId>flink-streaming-java_${flink.scala.binary.version}</flink.streaming.artifactId>
+                <flink.test.utils.artifactId>flink-test-utils_${flink.scala.binary.version}</flink.test.utils.artifactId>
+                <flink.runtime.artifactId>flink-runtime_${scala.binary.version}</flink.runtime.artifactId>
+                <flink.docker.image.name>flink:1.13.5-scala_2.11</flink.docker.image.name>
+            </properties>
+        </profile>
+        <profile>
+            <id>v1.15</id>
+            <properties>
+                <sort.flink.version>v1.15</sort.flink.version>
+                <flink.version>1.15.4</flink.version>
+                <flink.minor.version>1.15</flink.minor.version>
+                <flink.scala.binary.version>2.12</flink.scala.binary.version>
+                <flink.jackson.version>2.12.1-13.0</flink.jackson.version>
+                <flink.protobuf.version>2.7.6</flink.protobuf.version>
+                <flink.cdc.base.version>2.3.0</flink.cdc.base.version>
+                <flink.streaming.artifactId>flink-streaming-java</flink.streaming.artifactId>
+                <flink.test.utils.artifactId>flink-test-utils</flink.test.utils.artifactId>
+                <flink.runtime.artifactId>flink-runtime</flink.runtime.artifactId>
+                <flink.docker.image.name>flink:1.15.4-scala_2.12</flink.docker.image.name>
+            </properties>
+        </profile>
+    </profiles>
 </project>

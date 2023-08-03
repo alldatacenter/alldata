@@ -17,13 +17,13 @@
 
 package org.apache.inlong.sort.standalone.config.loader;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import org.apache.commons.io.IOUtils;
-import org.apache.flume.Context;
 import org.apache.inlong.common.pojo.sortstandalone.SortClusterConfig;
 import org.apache.inlong.sort.standalone.config.holder.SortClusterConfigType;
 import org.apache.inlong.sort.standalone.utils.InlongLoggerFactory;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.commons.io.IOUtils;
+import org.apache.flume.Context;
 import org.slf4j.Logger;
 
 import java.io.UnsupportedEncodingException;

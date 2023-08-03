@@ -41,18 +41,19 @@ const Comp: React.FC = () => {
     // mqType: '',
     pageSize: defaultSize,
     pageNum: 1,
-    lightweight: 0,
+    inlongGroupMode: 0,
   });
 
   const [groupLogs, setGroupLogs] = useState({
     open: false,
     inlongGroupId: '',
+    inlongGroupMode: true,
   });
 
   const { data: summary = {} } = useRequest({
     url: '/group/countByStatus',
     params: {
-      lightweight: 0,
+      inlongGroupMode: 0,
     },
   });
 
@@ -86,7 +87,7 @@ const Comp: React.FC = () => {
   };
 
   const openModal = ({ inlongGroupId }) => {
-    setGroupLogs({ open: true, inlongGroupId: inlongGroupId });
+    setGroupLogs({ open: true, inlongGroupId: inlongGroupId, inlongGroupMode: true });
   };
 
   const onRestart = ({ inlongGroupId }) => {
@@ -220,8 +221,8 @@ const Comp: React.FC = () => {
 
       <GroupLogs
         {...groupLogs}
-        onOk={() => setGroupLogs({ open: false, inlongGroupId: '' })}
-        onCancel={() => setGroupLogs({ open: false, inlongGroupId: '' })}
+        onOk={() => setGroupLogs({ open: false, inlongGroupId: '', inlongGroupMode: true })}
+        onCancel={() => setGroupLogs({ open: false, inlongGroupId: '', inlongGroupMode: true })}
       />
     </PageContainer>
   );

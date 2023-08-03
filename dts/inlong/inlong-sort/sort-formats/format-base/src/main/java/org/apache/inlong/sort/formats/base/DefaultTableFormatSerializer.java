@@ -17,14 +17,15 @@
 
 package org.apache.inlong.sort.formats.base;
 
-import static org.apache.inlong.sort.formats.base.TableFormatConstants.DEFAULT_IGNORE_ERRORS;
-
-import java.util.Objects;
 import org.apache.flink.api.common.serialization.SerializationSchema;
 import org.apache.flink.types.Row;
 import org.apache.flink.util.Collector;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.Objects;
+
+import static org.apache.inlong.sort.formats.base.TableFormatConstants.DEFAULT_IGNORE_ERRORS;
 
 /**
  * The default implementation of {@link TableFormatSerializer}.

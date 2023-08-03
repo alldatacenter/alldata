@@ -17,7 +17,6 @@
 
 package org.apache.inlong.manager.service.core.impl;
 
-import org.apache.ibatis.cursor.Cursor;
 import org.apache.inlong.manager.dao.entity.DataNodeEntity;
 import org.apache.inlong.manager.dao.entity.InlongGroupExtEntity;
 import org.apache.inlong.manager.dao.entity.InlongStreamExtEntity;
@@ -37,6 +36,8 @@ import org.apache.inlong.manager.pojo.sort.standalone.SortSourceStreamInfo;
 import org.apache.inlong.manager.pojo.sort.standalone.SortSourceStreamSinkInfo;
 import org.apache.inlong.manager.pojo.sort.standalone.SortTaskInfo;
 import org.apache.inlong.manager.service.core.SortConfigLoader;
+
+import org.apache.ibatis.cursor.Cursor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

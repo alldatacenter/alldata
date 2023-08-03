@@ -17,10 +17,9 @@
 
 package org.apache.inlong.dataproxy.channel;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import org.apache.inlong.common.msg.AttributeConstants;
+import org.apache.inlong.dataproxy.consts.ConfigConstants;
+import org.apache.inlong.dataproxy.utils.MessageUtils;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.flume.Channel;
@@ -28,11 +27,13 @@ import org.apache.flume.Context;
 import org.apache.flume.Event;
 import org.apache.flume.FlumeException;
 import org.apache.flume.channel.AbstractChannelSelector;
-import org.apache.inlong.common.msg.AttributeConstants;
-import org.apache.inlong.dataproxy.consts.ConfigConstants;
-import org.apache.inlong.dataproxy.utils.MessageUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 
 public class FailoverChannelSelector extends AbstractChannelSelector {
 
@@ -102,9 +103,7 @@ public class FailoverChannelSelector extends AbstractChannelSelector {
      */
     private List<String> splitChannelName(String channelName) {
         List<String> fileMetricList = new ArrayList<String>();
-        if (StringUtils.isEmpty(channelName)) {
-            LOG.info("channel name is null!");
-        } else {
+        if (StringUtils.isNotBlank(channelName)) {
             fileMetricList = Arrays.asList(channelName.split("\\s+"));
         }
         return fileMetricList;
@@ -144,11 +143,9 @@ public class FailoverChannelSelector extends AbstractChannelSelector {
                 this.slaveChannels.add(channel);
             }
         }
-        LOG.info("masters:" + this.masterChannels);
-        LOG.info("orders:" + this.orderChannels);
-        LOG.info("slaves:" + this.slaveChannels);
-        LOG.info("transfers:" + this.transferChannels);
-        LOG.info("agentFileMetrics:" + this.agentFileMetricChannels);
-        LOG.info("slaMetrics:" + this.slaMetricChannels);
+        LOG.info(
+                "Configure channels, masters={}, orders={}, slaves={}, transfers={}, agentFileMetrics={}, slaMetrics={}",
+                this.masterChannels, this.orderChannels, this.slaveChannels,
+                this.transferChannels, this.agentFileMetricChannels, this.slaMetricChannels);
     }
 }

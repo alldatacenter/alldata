@@ -1,7 +1,0 @@
-apiVersion: scheduling.k8s.io/v1
-description: Nearline computation jobs whose SLO weaker than koord-prod.
-kind: PriorityClass
-metadata:
-  name: mid
-preemptionPolicy: PreemptLowerPriority
-value: 7000

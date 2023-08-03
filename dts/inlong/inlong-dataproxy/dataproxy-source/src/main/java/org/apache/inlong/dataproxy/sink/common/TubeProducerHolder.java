@@ -17,7 +17,18 @@
 
 package org.apache.inlong.dataproxy.sink.common;
 
+import org.apache.inlong.dataproxy.config.pojo.MQClusterConfig;
+import org.apache.inlong.tubemq.client.config.TubeClientConfig;
+import org.apache.inlong.tubemq.client.exception.TubeClientException;
+import org.apache.inlong.tubemq.client.factory.TubeMultiSessionFactory;
+import org.apache.inlong.tubemq.client.producer.MessageProducer;
+
 import com.google.common.base.Preconditions;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.flume.FlumeException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
@@ -28,15 +39,6 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.flume.FlumeException;
-import org.apache.inlong.dataproxy.config.pojo.MQClusterConfig;
-import org.apache.inlong.tubemq.client.config.TubeClientConfig;
-import org.apache.inlong.tubemq.client.exception.TubeClientException;
-import org.apache.inlong.tubemq.client.factory.TubeMultiSessionFactory;
-import org.apache.inlong.tubemq.client.producer.MessageProducer;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class TubeProducerHolder {
 

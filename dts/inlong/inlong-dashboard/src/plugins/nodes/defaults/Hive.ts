@@ -30,6 +30,20 @@ export default class HiveNode extends NodeInfo implements DataWithBackend, Rende
   @FieldDecorator({
     type: 'input',
     rules: [{ required: true }],
+  })
+  @I18n('meta.Nodes.Hive.Username')
+  username: string;
+
+  @FieldDecorator({
+    type: 'password',
+    rules: [{ required: true }],
+  })
+  @I18n('meta.Nodes.Hive.Password')
+  token: string;
+
+  @FieldDecorator({
+    type: 'input',
+    rules: [{ required: true }],
     props: {
       placeholder: 'jdbc:hive2://127.0.0.1:10000',
     },

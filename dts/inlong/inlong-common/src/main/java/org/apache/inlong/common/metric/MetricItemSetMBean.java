@@ -18,6 +18,7 @@
 package org.apache.inlong.common.metric;
 
 import javax.management.MXBean;
+
 import java.util.List;
 
 /**

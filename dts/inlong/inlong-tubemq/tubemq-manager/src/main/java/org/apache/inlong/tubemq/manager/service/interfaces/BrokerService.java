@@ -17,13 +17,13 @@
 
 package org.apache.inlong.tubemq.manager.service.interfaces;
 
-import java.util.List;
-
 import org.apache.inlong.tubemq.manager.controller.TubeMQResult;
 import org.apache.inlong.tubemq.manager.controller.group.request.DeleteOffsetReq;
 import org.apache.inlong.tubemq.manager.controller.group.request.QueryOffsetReq;
 import org.apache.inlong.tubemq.manager.controller.group.result.OffsetQueryRes;
 import org.apache.inlong.tubemq.manager.controller.node.request.CloneOffsetReq;
+
+import java.util.List;
 
 public interface BrokerService {
 

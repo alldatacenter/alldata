@@ -17,10 +17,10 @@
 
 package org.apache.inlong.tubemq.manager.controller.group.result;
 
+import lombok.Data;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import lombok.Data;
 
 @Data
 public class AllBrokersOffsetRes {

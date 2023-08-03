@@ -17,6 +17,8 @@
 
 package org.apache.inlong.manager.pojo.consume;
 
+import org.apache.inlong.manager.pojo.cluster.ClusterInfo;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import io.swagger.annotations.ApiModel;
@@ -25,7 +27,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import org.apache.inlong.manager.pojo.cluster.ClusterInfo;
 
 import java.util.Date;
 import java.util.List;

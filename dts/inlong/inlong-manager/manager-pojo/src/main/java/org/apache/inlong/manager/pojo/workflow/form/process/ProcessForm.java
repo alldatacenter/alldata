@@ -17,8 +17,9 @@
 
 package org.apache.inlong.manager.pojo.workflow.form.process;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.apache.inlong.manager.pojo.workflow.form.Form;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.Map;
 

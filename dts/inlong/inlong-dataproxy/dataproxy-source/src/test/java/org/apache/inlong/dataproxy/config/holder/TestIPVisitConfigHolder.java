@@ -18,6 +18,7 @@
 package org.apache.inlong.dataproxy.config.holder;
 
 import org.apache.inlong.dataproxy.config.ConfigManager;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -32,5 +33,17 @@ public class TestIPVisitConfigHolder {
         Assert.assertFalse(ConfigManager.getInstance().isIllegalIP("127.0.0.1"));
         Assert.assertTrue(ConfigManager.getInstance().isIllegalIP("127.0.0.5"));
         Assert.assertTrue(ConfigManager.getInstance().isIllegalIP("127.0.0.2"));
+        Assert.assertTrue(ConfigManager.getInstance().isIllegalIP("1.2.53.3"));
+        Assert.assertFalse(ConfigManager.getInstance().isIllegalIP("192.187.0.1"));
+        Assert.assertFalse(ConfigManager.getInstance().isIllegalIP("192.168.1.64"));
+        Assert.assertTrue(ConfigManager.getInstance().isIllegalIP("192.168.1.192"));
+        Assert.assertTrue(ConfigManager.getInstance().isIllegalIP("192.168.1.224"));
+        Assert.assertTrue(ConfigManager.getInstance().isIllegalIP("192.168.1.192"));
+        Assert.assertTrue(ConfigManager.getInstance().isIllegalIP("192.168.1.193"));
+        Assert.assertTrue(ConfigManager.getInstance().isIllegalIP("192.168.1.200"));
+        Assert.assertFalse(ConfigManager.getInstance().isIllegalIP("192.168.1.178"));
+        Assert.assertFalse(ConfigManager.getInstance().isIllegalIP("192.165.1.0"));
+        Assert.assertFalse(ConfigManager.getInstance().isIllegalIP("192.165.2.0"));
+        Assert.assertFalse(ConfigManager.getInstance().isIllegalIP("192.165.2.105"));
     }
 }

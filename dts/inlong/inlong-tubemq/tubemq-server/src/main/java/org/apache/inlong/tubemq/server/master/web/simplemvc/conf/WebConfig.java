@@ -17,13 +17,14 @@
 
 package org.apache.inlong.tubemq.server.master.web.simplemvc.conf;
 
+import org.apache.inlong.tubemq.corebase.utils.TStringUtils;
+import org.apache.inlong.tubemq.server.master.web.simplemvc.Action;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import org.apache.inlong.tubemq.corebase.utils.TStringUtils;
-import org.apache.inlong.tubemq.server.master.web.simplemvc.Action;
 
 public class WebConfig {
 

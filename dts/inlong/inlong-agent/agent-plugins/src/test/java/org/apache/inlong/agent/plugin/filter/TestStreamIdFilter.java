@@ -17,21 +17,23 @@
 
 package org.apache.inlong.agent.plugin.filter;
 
-import static org.apache.inlong.agent.constant.AgentConstants.AGENT_MESSAGE_FILTER_CLASSNAME;
-
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Path;
-import java.util.HashMap;
 import org.apache.inlong.agent.conf.JobProfile;
 import org.apache.inlong.agent.message.ProxyMessage;
 import org.apache.inlong.agent.plugin.AgentBaseTestsHelper;
 import org.apache.inlong.agent.plugin.Message;
 import org.apache.inlong.agent.plugin.MessageFilter;
 import org.apache.inlong.agent.plugin.sinks.AbstractSink;
+
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Path;
+import java.util.HashMap;
+
+import static org.apache.inlong.agent.constant.AgentConstants.AGENT_MESSAGE_FILTER_CLASSNAME;
 
 public class TestStreamIdFilter {
 

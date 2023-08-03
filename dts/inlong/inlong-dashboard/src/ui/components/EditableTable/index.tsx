@@ -69,6 +69,10 @@ export interface EditableTableProps
   // Can add a new line? Default: true.
   canAdd?: boolean;
   canBatchAdd?: boolean;
+  upsetByFieldKey?: boolean;
+  fieldNameKey?: string;
+  fieldTypeKey?: string;
+  fieldCommentKey?: string;
 }
 
 const getRowInitialValue = (columns: EditableTableProps['columns']) =>
@@ -106,6 +110,10 @@ const EditableTable = ({
   canDelete = true,
   canAdd = true,
   canBatchAdd = false,
+  upsetByFieldKey = false,
+  fieldNameKey = 'fieldName',
+  fieldTypeKey = 'fieldType',
+  fieldCommentKey = 'fieldComment',
   ...rest
 }: EditableTableProps) => {
   if (!id) {
@@ -169,23 +177,54 @@ const EditableTable = ({
   };
 
   const onAppendByParseField = (fields: RowType[]) => {
-    const newRecord: RecordType[] = fields?.map((field: RowType) => ({
-      _etid: Math.random().toString(),
-      ...field,
-    }));
-    const newData = data.concat(newRecord);
-    setData(newData);
-    triggerChange(newData);
+    // append empty row if upsertKey not null
+    if (upsetByFieldKey) {
+      let index: number = 0;
+      data.forEach(item => {
+        if (item[fieldNameKey] === '') {
+          item[fieldNameKey] = fields[index]['fieldName'];
+          item[fieldTypeKey] = fields[index]['fieldType'];
+          item[fieldCommentKey] = fields[index]['fieldComment'];
+          index++;
+        }
+      });
+
+      setData(data);
+      triggerChange(data);
+    } else {
+      const newRecord: RecordType[] = fields?.map((field: RowType) => ({
+        _etid: Math.random().toString(),
+        ...field,
+      }));
+      const newData = data.concat(newRecord);
+
+      setData(newData);
+      triggerChange(newData);
+    }
   };
 
   const onOverrideByParseField = (fields: RowType[]) => {
-    const newData = fields?.map(field => ({
-      _etid: Math.random().toString(),
-      ...field,
-    }));
+    // append empty row if upsertKey not null
+    if (upsetByFieldKey) {
+      let index: number = 0;
+      data.forEach(item => {
+        item[fieldNameKey] = fields[index]['fieldName'];
+        item[fieldTypeKey] = fields[index]['fieldType'];
+        item[fieldCommentKey] = fields[index]['fieldComment'];
+        index++;
+      });
 
-    setData(newData);
-    triggerChange(newData);
+      setData(data);
+      triggerChange(data);
+    } else {
+      const newData = fields?.map(field => ({
+        _etid: Math.random().toString(),
+        ...field,
+      }));
+
+      setData(newData);
+      triggerChange(newData);
+    }
   };
 
   const onTextChange = (object: Record<string, unknown>, { _etid }: RecordType) => {

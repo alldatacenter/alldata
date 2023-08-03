@@ -17,16 +17,19 @@
 
 package org.apache.inlong.sort.formats.inlongmsgcsv;
 
-import java.util.Objects;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import org.apache.flink.api.common.typeinfo.TypeInformation;
-import org.apache.flink.types.Row;
 import org.apache.inlong.sort.formats.base.TableFormatConstants;
 import org.apache.inlong.sort.formats.inlongmsg.AbstractInLongMsgMixedFormatDeserializer;
 import org.apache.inlong.sort.formats.inlongmsg.InLongMsgBody;
 import org.apache.inlong.sort.formats.inlongmsg.InLongMsgHead;
 import org.apache.inlong.sort.formats.inlongmsg.InLongMsgUtils;
+
+import org.apache.flink.api.common.typeinfo.TypeInformation;
+import org.apache.flink.types.Row;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
+import java.util.Objects;
 
 /**
  * The deserializer for the records in InLongMsgCsv format.

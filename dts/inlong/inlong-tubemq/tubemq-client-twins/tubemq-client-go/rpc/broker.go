@@ -48,6 +48,47 @@ const (
 	brokerConsumerClose
 )
 
+// SendMessageRequestP2B implements the SendMessageRequestP2B interface according to TubeMQ RPC protocol.
+func (c *rpcClient) SendMessageRequestP2B(ctx context.Context, metadata *metadata.Metadata,
+	clientID string, partition *metadata.Partition, messageData []byte, flag int32) (*protocol.SendMessageResponseB2P, error) {
+	reqP2B := &protocol.SendMessageRequestP2B{
+		ClientId:    proto.String(clientID),
+		TopicName:   proto.String(partition.GetTopic()),
+		PartitionId: proto.Int32(partition.GetPartitionID()),
+		Data:        messageData,
+		Flag:        &flag,
+		CheckSum:    proto.Int32(-1),
+		SentAddr:    proto.Int32(util.Ipv4ToInt(util.GetLocalHost())),
+	}
+
+	req := codec.NewRPCRequest()
+	req.RpcHeader = &protocol.RpcConnHeader{
+		Flag: proto.Int32(0),
+	}
+	req.RequestHeader = &protocol.RequestHeader{
+		ServiceType: proto.Int32(brokerReadService),
+		ProtocolVer: proto.Int32(2),
+	}
+	req.RequestBody = &protocol.RequestBody{
+		Method:  proto.Int32(brokerProducerSendMsg),
+		Timeout: proto.Int64(c.config.Net.ReadTimeout.Milliseconds()),
+	}
+	req.Body = reqP2B
+
+	rspBody, err := c.doRequest(ctx, metadata.GetNode().GetAddress(), req)
+	if err != nil {
+		return nil, err
+	}
+
+	rspB2P := &protocol.SendMessageResponseB2P{}
+	err = proto.Unmarshal(rspBody.Data, rspB2P)
+	if err != nil {
+		return nil, errs.New(errs.RetUnMarshalFailure, err.Error())
+	}
+
+	return rspB2P, nil
+}
+
 // RegisterRequestC2B implements the RegisterRequestC2B interface according to TubeMQ RPC protocol.
 func (c *rpcClient) RegisterRequestC2B(ctx context.Context, metadata *metadata.Metadata,
 	sub *sub.SubInfo, r *remote.RmtDataCache) (*protocol.RegisterResponseB2C, error) {

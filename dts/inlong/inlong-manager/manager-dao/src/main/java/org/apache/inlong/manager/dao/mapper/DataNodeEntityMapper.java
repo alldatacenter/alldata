@@ -17,18 +17,20 @@
 
 package org.apache.inlong.manager.dao.mapper;
 
+import org.apache.inlong.manager.common.tenant.MultiTenantQuery;
+import org.apache.inlong.manager.dao.entity.DataNodeEntity;
+import org.apache.inlong.manager.pojo.node.DataNodePageRequest;
+
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.cursor.Cursor;
 import org.apache.ibatis.mapping.ResultSetType;
-import org.apache.inlong.manager.dao.entity.DataNodeEntity;
-import org.apache.inlong.manager.pojo.node.DataNodePageRequest;
-import org.apache.inlong.manager.pojo.sort.standalone.SortSinkInfo;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
+@MultiTenantQuery
 public interface DataNodeEntityMapper {
 
     int insert(DataNodeEntity record);
@@ -39,10 +41,9 @@ public interface DataNodeEntityMapper {
 
     List<DataNodeEntity> selectByCondition(DataNodePageRequest request);
 
+    @MultiTenantQuery(with = false)
     @Options(resultSetType = ResultSetType.FORWARD_ONLY, fetchSize = Integer.MIN_VALUE)
     Cursor<DataNodeEntity> selectAllDataNodes();
-
-    List<SortSinkInfo> selectAllSinkParams();
 
     int updateById(DataNodeEntity record);
 

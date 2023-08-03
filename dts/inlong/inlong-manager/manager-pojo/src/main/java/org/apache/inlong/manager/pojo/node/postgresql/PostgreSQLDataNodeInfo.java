@@ -17,15 +17,16 @@
 
 package org.apache.inlong.manager.pojo.node.postgresql;
 
-import io.swagger.annotations.ApiModel;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
 import org.apache.inlong.manager.common.consts.DataNodeType;
 import org.apache.inlong.manager.common.util.CommonBeanUtils;
 import org.apache.inlong.manager.common.util.JsonTypeDefine;
 import org.apache.inlong.manager.pojo.node.DataNodeInfo;
 import org.apache.inlong.manager.pojo.node.DataNodeRequest;
+
+import io.swagger.annotations.ApiModel;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 /**
  * PostgreSQL data node info

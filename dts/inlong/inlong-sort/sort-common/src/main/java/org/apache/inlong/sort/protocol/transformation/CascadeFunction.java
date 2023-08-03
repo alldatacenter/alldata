@@ -17,10 +17,11 @@
 
 package org.apache.inlong.sort.protocol.transformation;
 
-import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonSubTypes;
-import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.apache.inlong.sort.protocol.transformation.function.RegexpReplaceFirstFunction;
 import org.apache.inlong.sort.protocol.transformation.function.RegexpReplaceFunction;
+
+import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonSubTypes;
+import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 /**
  * CascadeFunction is the top-level interface abstraction for cascading function

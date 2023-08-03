@@ -17,6 +17,16 @@
 
 package org.apache.inlong.agent.plugin.sources.reader;
 
+import org.apache.inlong.agent.conf.JobProfile;
+import org.apache.inlong.agent.constant.SnapshotModeConstants;
+import org.apache.inlong.agent.message.DefaultMessage;
+import org.apache.inlong.agent.metrics.audit.AuditUtils;
+import org.apache.inlong.agent.plugin.Message;
+import org.apache.inlong.agent.plugin.sources.snapshot.MongoDBSnapshotBase;
+import org.apache.inlong.agent.plugin.utils.InLongFileOffsetBackingStore;
+import org.apache.inlong.agent.pojo.DebeziumFormat;
+import org.apache.inlong.agent.utils.GsonUtil;
+
 import com.alibaba.fastjson.JSONPath;
 import com.google.common.base.Preconditions;
 import io.debezium.config.Configuration;
@@ -27,15 +37,6 @@ import io.debezium.engine.DebeziumEngine;
 import io.debezium.engine.format.Json;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.tuple.Pair;
-import org.apache.inlong.agent.conf.JobProfile;
-import org.apache.inlong.agent.constant.SnapshotModeConstants;
-import org.apache.inlong.agent.message.DefaultMessage;
-import org.apache.inlong.agent.metrics.audit.AuditUtils;
-import org.apache.inlong.agent.plugin.Message;
-import org.apache.inlong.agent.plugin.sources.snapshot.MongoDBSnapshotBase;
-import org.apache.inlong.agent.plugin.utils.InLongFileOffsetBackingStore;
-import org.apache.inlong.agent.pojo.DebeziumFormat;
-import org.apache.inlong.agent.utils.GsonUtil;
 import org.apache.kafka.connect.storage.FileOffsetBackingStore;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

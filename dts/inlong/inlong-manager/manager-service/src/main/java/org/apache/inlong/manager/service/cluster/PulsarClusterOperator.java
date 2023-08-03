@@ -17,8 +17,6 @@
 
 package org.apache.inlong.manager.service.cluster;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.inlong.manager.common.consts.InlongConstants;
 import org.apache.inlong.manager.common.enums.ClusterType;
 import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
@@ -32,6 +30,9 @@ import org.apache.inlong.manager.pojo.cluster.pulsar.PulsarClusterDTO;
 import org.apache.inlong.manager.pojo.cluster.pulsar.PulsarClusterInfo;
 import org.apache.inlong.manager.pojo.cluster.pulsar.PulsarClusterRequest;
 import org.apache.inlong.manager.service.resource.queue.pulsar.PulsarUtils;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.pulsar.client.admin.PulsarAdmin;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -43,6 +44,8 @@ import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.SocketAddress;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Pulsar cluster operator.
@@ -88,7 +91,7 @@ public class PulsarClusterOperator extends AbstractClusterOperator {
         PulsarClusterRequest pulsarRequest = (PulsarClusterRequest) request;
         CommonBeanUtils.copyProperties(pulsarRequest, targetEntity, true);
         try {
-            PulsarClusterDTO dto = PulsarClusterDTO.getFromRequest(pulsarRequest);
+            PulsarClusterDTO dto = PulsarClusterDTO.getFromRequest(pulsarRequest, targetEntity.getExtParams());
             targetEntity.setExtParams(objectMapper.writeValueAsString(dto));
             LOGGER.debug("success to set entity for pulsar cluster");
         } catch (Exception e) {
@@ -105,6 +108,16 @@ public class PulsarClusterOperator extends AbstractClusterOperator {
 
         testConnectServiceUrl(pulsarInfo.getUrl());
         return testConnectAdminUrl(pulsarInfo);
+    }
+
+    @Override
+    public Object getClusterInfo(InlongClusterEntity entity) {
+        PulsarClusterInfo pulsarClusterInfo = (PulsarClusterInfo) this.getFromEntity(entity);
+        Map<String, String> map = new HashMap<>();
+        map.put("serverUrl", pulsarClusterInfo.getUrl());
+        map.put("adminUrl", pulsarClusterInfo.getAdminUrl());
+        map.put("defaultTenant", pulsarClusterInfo.getPulsarTenant());
+        return map;
     }
 
     /**

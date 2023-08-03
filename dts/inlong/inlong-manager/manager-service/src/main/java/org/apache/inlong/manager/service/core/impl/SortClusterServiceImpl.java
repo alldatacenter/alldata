@@ -17,9 +17,6 @@
 
 package org.apache.inlong.manager.service.core.impl;
 
-import com.google.gson.Gson;
-import org.apache.commons.codec.digest.DigestUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.inlong.common.pojo.sortstandalone.SortClusterConfig;
 import org.apache.inlong.common.pojo.sortstandalone.SortClusterResponse;
 import org.apache.inlong.common.pojo.sortstandalone.SortTaskConfig;
@@ -34,6 +31,10 @@ import org.apache.inlong.manager.service.node.DataNodeOperator;
 import org.apache.inlong.manager.service.node.DataNodeOperatorFactory;
 import org.apache.inlong.manager.service.sink.SinkOperatorFactory;
 import org.apache.inlong.manager.service.sink.StreamSinkOperator;
+
+import com.google.gson.Gson;
+import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +43,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -184,6 +186,8 @@ public class SortClusterServiceImpl implements SortClusterService {
         // get all stream sinks
         Map<String, List<StreamSinkEntity>> task2AllStreams = sinkEntities.stream()
                 .filter(entity -> StringUtils.isNotBlank(entity.getInlongClusterName()))
+                .filter(entity -> StringUtils.isNotBlank(entity.getSortTaskName()))
+                .filter(entity -> StringUtils.isNotBlank(entity.getDataNodeName()))
                 .collect(Collectors.groupingBy(StreamSinkEntity::getSortTaskName));
 
         // get all data nodes and group by node name

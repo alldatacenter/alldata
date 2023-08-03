@@ -19,6 +19,7 @@ package org.apache.inlong.manager.service.plugin;
 
 import org.apache.inlong.manager.common.plugin.Plugin;
 import org.apache.inlong.manager.service.ServiceBaseTest;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

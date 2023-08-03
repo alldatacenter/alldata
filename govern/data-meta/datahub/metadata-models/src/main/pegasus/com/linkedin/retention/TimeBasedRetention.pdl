@@ -1,8 +1,0 @@
-namespace com.linkedin.retention
-
-/**
- * Keep records that are less than X seconds old
- */
-record TimeBasedRetention {
-  maxAgeInSeconds: int
-}

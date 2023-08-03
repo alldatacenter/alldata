@@ -17,14 +17,13 @@
 
 package org.apache.inlong.agent.core;
 
-import com.google.common.collect.Lists;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.inlong.agent.common.AbstractDaemon;
 import org.apache.inlong.agent.conf.AgentConfiguration;
 import org.apache.inlong.agent.conf.JobProfile;
 import org.apache.inlong.agent.core.job.Job;
 import org.apache.inlong.agent.core.job.JobManager;
 import org.apache.inlong.agent.core.job.JobWrapper;
+import org.apache.inlong.agent.core.task.MemoryManager;
 import org.apache.inlong.agent.state.State;
 import org.apache.inlong.agent.utils.AgentUtils;
 import org.apache.inlong.agent.utils.HttpManager;
@@ -37,6 +36,9 @@ import org.apache.inlong.common.heartbeat.HeartbeatMsg;
 import org.apache.inlong.common.heartbeat.StreamHeartbeat;
 import org.apache.inlong.common.pojo.agent.TaskSnapshotMessage;
 import org.apache.inlong.common.pojo.agent.TaskSnapshotRequest;
+
+import com.google.common.collect.Lists;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -68,6 +70,7 @@ import static org.apache.inlong.agent.constant.JobConstants.JOB_STREAM_ID;
 public class HeartbeatManager extends AbstractDaemon implements AbstractHeartbeatManager {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(HeartbeatManager.class);
+    public static final int PRINT_MEMORY_PERMIT_INTERVAL_SECOND = 60;
     private static HeartbeatManager heartbeatManager = null;
     private final JobManager jobmanager;
     private final AgentConfiguration conf;
@@ -121,6 +124,16 @@ public class HeartbeatManager extends AbstractDaemon implements AbstractHeartbea
     public void start() throws Exception {
         submitWorker(snapshotReportThread());
         submitWorker(heartbeatReportThread());
+        submitWorker(printMemoryPermitThread());
+    }
+
+    private Runnable printMemoryPermitThread() {
+        return () -> {
+            while (isRunnable()) {
+                MemoryManager.getInstance().printAll();
+                AgentUtils.silenceSleepInSeconds(PRINT_MEMORY_PERMIT_INTERVAL_SECOND);
+            }
+        };
     }
 
     private Runnable snapshotReportThread() {

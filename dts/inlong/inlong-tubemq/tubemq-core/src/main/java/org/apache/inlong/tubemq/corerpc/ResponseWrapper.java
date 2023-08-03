@@ -17,9 +17,10 @@
 
 package org.apache.inlong.tubemq.corerpc;
 
-import java.io.Serializable;
 import org.apache.inlong.tubemq.corerpc.exception.StandbyException;
 import org.apache.inlong.tubemq.corerpc.utils.MixUtils;
+
+import java.io.Serializable;
 
 /**
  *  Response message wrapper class.

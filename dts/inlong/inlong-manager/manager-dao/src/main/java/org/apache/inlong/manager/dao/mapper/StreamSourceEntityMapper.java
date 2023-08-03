@@ -17,9 +17,10 @@
 
 package org.apache.inlong.manager.dao.mapper;
 
-import org.apache.ibatis.annotations.Param;
 import org.apache.inlong.manager.dao.entity.StreamSourceEntity;
 import org.apache.inlong.manager.pojo.source.SourcePageRequest;
+
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -191,6 +192,17 @@ public interface StreamSourceEntityMapper {
      *
      */
     void updateStatusByDeleted();
+
+    /**
+     * Logical delete stream source by agentIp, change status at same time.
+     *
+     * @param agentIp ip of agent cluster node
+     * @param status  status to change
+     * @param targetStatus status of stream source now
+     *
+     */
+    void logicalDeleteByAgentIp(@Param("agentIp") String agentIp, @Param("status") Integer status,
+            @Param("targetStatus") Integer targetStatus);
 
     /**
      * Physical delete stream sources by group id and stream id

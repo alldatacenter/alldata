@@ -17,20 +17,22 @@
 
 package org.apache.inlong.tubemq.corerpc.netty;
 
+import org.apache.inlong.tubemq.corerpc.RpcConstants;
+import org.apache.inlong.tubemq.corerpc.RpcDataPack;
+
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufAllocator;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToMessageEncoder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
-import org.apache.inlong.tubemq.corerpc.RpcConstants;
-import org.apache.inlong.tubemq.corerpc.RpcDataPack;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class NettyProtocolEncoder extends MessageToMessageEncoder<RpcDataPack> {
 

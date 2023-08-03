@@ -17,8 +17,9 @@
 
 package org.apache.inlong.manager.client.api.impl;
 
-import org.apache.inlong.manager.pojo.workflow.form.process.ApplyGroupProcessForm;
 import org.apache.inlong.manager.common.util.JsonUtils;
+import org.apache.inlong.manager.pojo.workflow.form.process.ApplyGroupProcessForm;
+
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -41,7 +42,7 @@ class InlongGroupImplTest {
                 + "    \"mqResource\" : \"test_namespace\",\n"
                 + "    \"enableZookeeper\" : 0,\n"
                 + "    \"enableCreateResource\" : 1,\n"
-                + "    \"lightweight\" : 1,\n"
+                + "    \"inlongGroupMode\" : 1,\n"
                 + "    \"inlongClusterTag\" : \"default_cluster\",\n"
                 + "    \"dailyRecords\" : 10000000,\n"
                 + "    \"dailyStorage\" : 10000,\n"

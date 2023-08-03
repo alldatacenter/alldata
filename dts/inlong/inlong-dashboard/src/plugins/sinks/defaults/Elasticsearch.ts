@@ -27,7 +27,7 @@ import { SinkInfo } from '../common/SinkInfo';
 import NodeSelect from '@/ui/components/NodeSelect';
 
 const { I18n } = DataWithBackend;
-const { FieldDecorator } = RenderRow;
+const { FieldDecorator, SyncField } = RenderRow;
 const { ColumnDecorator } = RenderList;
 
 const esTypes = [
@@ -61,6 +61,7 @@ export default class ElasticsearchSink
     }),
   })
   @I18n('meta.Sinks.DataNodeName')
+  @SyncField()
   dataNodeName: string;
 
   @FieldDecorator({
@@ -72,6 +73,7 @@ export default class ElasticsearchSink
   })
   @ColumnDecorator()
   @I18n('meta.Sinks.ES.IndexName')
+  @SyncField()
   indexName: string;
 
   @FieldDecorator({
@@ -83,6 +85,7 @@ export default class ElasticsearchSink
     }),
   })
   @ColumnDecorator()
+  @SyncField()
   @I18n('meta.Sinks.ES.PrimaryKey')
   primaryKey: string;
 
@@ -94,6 +97,7 @@ export default class ElasticsearchSink
     }),
   })
   @ColumnDecorator()
+  @SyncField()
   @I18n('meta.Sinks.ES.DocumentType')
   documentType: string;
 
@@ -117,6 +121,7 @@ export default class ElasticsearchSink
     }),
   })
   @I18n('meta.Sinks.EnableCreateResource')
+  @SyncField()
   enableCreateResource: number;
 
   @FieldDecorator({
@@ -130,6 +135,7 @@ export default class ElasticsearchSink
     }),
   })
   @ColumnDecorator()
+  @SyncField()
   @I18n('meta.Sinks.ES.FlushRecord')
   flushRecord: number;
 
@@ -144,6 +150,7 @@ export default class ElasticsearchSink
     }),
   })
   @ColumnDecorator()
+  @SyncField()
   @I18n('meta.Sinks.ES.RetryTimes')
   retryTime: number;
 
@@ -157,6 +164,7 @@ export default class ElasticsearchSink
     }),
   })
   @ColumnDecorator()
+  @SyncField()
   @I18n('meta.Sinks.ES.EsVersion')
   esVersion: number;
 
@@ -166,6 +174,8 @@ export default class ElasticsearchSink
       size: 'small',
       editing: ![110, 130].includes(values?.status),
       columns: getFieldListColumns(values),
+      canBatchAdd: true,
+      upsertByFieldKey: true,
     }),
   })
   sinkFieldList: Record<string, unknown>[];

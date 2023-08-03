@@ -17,10 +17,6 @@
 
 package org.apache.inlong.tubemq.server.master.metamanage.metastore.impl.zkimpl;
 
-import java.lang.reflect.Type;
-import java.util.List;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import org.apache.inlong.tubemq.corebase.TokenConstants;
 import org.apache.inlong.tubemq.corebase.rv.ProcessResult;
 import org.apache.inlong.tubemq.corebase.utils.TStringUtils;
@@ -32,7 +28,13 @@ import org.apache.inlong.tubemq.server.master.metamanage.DataOpErrCode;
 import org.apache.inlong.tubemq.server.master.metamanage.metastore.TStoreConstants;
 import org.apache.inlong.tubemq.server.master.metamanage.metastore.dao.entity.ClusterSettingEntity;
 import org.apache.inlong.tubemq.server.master.metamanage.metastore.impl.AbsClusterConfigMapperImpl;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import org.apache.zookeeper.KeeperException;
+
+import java.lang.reflect.Type;
+import java.util.List;
 
 public class ZKClusterConfigMapperImpl extends AbsClusterConfigMapperImpl {
 

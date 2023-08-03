@@ -17,30 +17,38 @@
 
 package org.apache.inlong.manager.service.core.impl;
 
-import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.ibatis.jdbc.SQL;
+import org.apache.inlong.manager.common.consts.InlongConstants;
 import org.apache.inlong.manager.common.consts.SourceType;
 import org.apache.inlong.manager.common.enums.AuditQuerySource;
 import org.apache.inlong.manager.common.enums.ClusterType;
 import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
 import org.apache.inlong.manager.common.enums.TimeStaticsDim;
+import org.apache.inlong.manager.common.exceptions.BusinessException;
+import org.apache.inlong.manager.common.util.CommonBeanUtils;
 import org.apache.inlong.manager.common.util.Preconditions;
 import org.apache.inlong.manager.dao.entity.AuditBaseEntity;
+import org.apache.inlong.manager.dao.entity.AuditSourceEntity;
 import org.apache.inlong.manager.dao.entity.StreamSinkEntity;
 import org.apache.inlong.manager.dao.entity.StreamSourceEntity;
 import org.apache.inlong.manager.dao.mapper.AuditBaseEntityMapper;
 import org.apache.inlong.manager.dao.mapper.AuditEntityMapper;
+import org.apache.inlong.manager.dao.mapper.AuditSourceEntityMapper;
 import org.apache.inlong.manager.dao.mapper.StreamSinkEntityMapper;
 import org.apache.inlong.manager.dao.mapper.StreamSourceEntityMapper;
 import org.apache.inlong.manager.pojo.audit.AuditInfo;
 import org.apache.inlong.manager.pojo.audit.AuditRequest;
+import org.apache.inlong.manager.pojo.audit.AuditSourceRequest;
+import org.apache.inlong.manager.pojo.audit.AuditSourceResponse;
 import org.apache.inlong.manager.pojo.audit.AuditVO;
+import org.apache.inlong.manager.pojo.user.LoginUserUtils;
 import org.apache.inlong.manager.pojo.user.UserRoleCode;
 import org.apache.inlong.manager.service.core.AuditService;
 import org.apache.inlong.manager.service.resource.sink.ck.ClickHouseConfig;
 import org.apache.inlong.manager.service.resource.sink.es.ElasticsearchApi;
-import org.apache.inlong.manager.service.user.LoginUserUtils;
+
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.ibatis.jdbc.SQL;
 import org.elasticsearch.action.search.SearchRequest;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.index.query.BoolQueryBuilder;
@@ -60,16 +68,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
+
 import java.math.BigDecimal;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -92,6 +102,9 @@ public class AuditServiceImpl implements AuditService {
     private static final String SECOND_FORMAT = "yyyy-MM-dd HH:mm:ss";
     private static final String HOUR_FORMAT = "yyyy-MM-dd HH";
     private static final String DAY_FORMAT = "yyyy-MM-dd";
+    private static final DateTimeFormatter SECOND_DATE_FORMATTER = DateTimeFormat.forPattern(SECOND_FORMAT);
+    private static final DateTimeFormatter HOUR_DATE_FORMATTER = DateTimeFormat.forPattern(HOUR_FORMAT);
+    private static final DateTimeFormatter DAY_DATE_FORMATTER = DateTimeFormat.forPattern(DAY_FORMAT);
 
     // key: type of audit base item, value: entity of audit base item
     private final Map<String, AuditBaseEntity> auditSentItemMap = new ConcurrentHashMap<>();
@@ -106,7 +119,7 @@ public class AuditServiceImpl implements AuditService {
     private List<String> auditIdListForUser;
 
     @Value("${audit.query.source}")
-    private String auditQuerySource = AuditQuerySource.MYSQL.name();
+    private String auditQuerySource;
 
     @Autowired
     private AuditBaseEntityMapper auditBaseMapper;
@@ -118,6 +131,10 @@ public class AuditServiceImpl implements AuditService {
     private StreamSinkEntityMapper sinkEntityMapper;
     @Autowired
     private StreamSourceEntityMapper sourceEntityMapper;
+    @Autowired
+    private ClickHouseConfig config;
+    @Autowired
+    private AuditSourceEntityMapper auditSourceMapper;
 
     @PostConstruct
     public void initialize() {
@@ -130,7 +147,6 @@ public class AuditServiceImpl implements AuditService {
     }
 
     @Override
-    @Transactional(rollbackFor = Exception.class)
     public Boolean refreshBaseItemCache() {
         LOGGER.debug("start to reload audit base item info");
         try {
@@ -150,6 +166,41 @@ public class AuditServiceImpl implements AuditService {
 
         LOGGER.debug("success to reload audit base item info");
         return true;
+    }
+
+    @Override
+    public Integer updateAuditSource(AuditSourceRequest request, String operator) {
+        String offlineUrl = request.getOfflineUrl();
+        if (StringUtils.isNotBlank(offlineUrl)) {
+            auditSourceMapper.offlineSourceByUrl(offlineUrl);
+            LOGGER.info("success offline the audit source with url: {}", offlineUrl);
+        }
+
+        // TODO firstly we should check to see if it exists, updated if it exists, and created if it doesn't exist
+        AuditSourceEntity entity = CommonBeanUtils.copyProperties(request, AuditSourceEntity::new);
+        entity.setStatus(InlongConstants.DEFAULT_ENABLE_VALUE);
+        entity.setCreator(operator);
+        entity.setModifier(operator);
+        auditSourceMapper.insert(entity);
+        Integer id = entity.getId();
+        LOGGER.info("success to insert audit source with id={}", id);
+
+        // TODO we should select the config that needs to be updated according to the source type
+        config.updateRuntimeConfig();
+        LOGGER.info("success to update audit source with id={}", id);
+
+        return id;
+    }
+
+    @Override
+    public AuditSourceResponse getAuditSource() {
+        AuditSourceEntity entity = auditSourceMapper.selectOnlineSource();
+        if (entity == null) {
+            throw new BusinessException(ErrorCodeEnum.RECORD_NOT_FOUND);
+        }
+
+        LOGGER.debug("success to get audit source, id={}", entity.getId());
+        return CommonBeanUtils.copyProperties(entity, AuditSourceResponse::new);
     }
 
     @Override
@@ -182,10 +233,19 @@ public class AuditServiceImpl implements AuditService {
 
         // for now, we use the first sink type only.
         // this is temporary behavior before multiple sinks in one stream is fully supported.
-        List<StreamSinkEntity> sinkEntityList = sinkEntityMapper.selectByRelatedId(groupId, streamId);
         String sinkNodeType = null;
-        if (CollectionUtils.isNotEmpty(sinkEntityList)) {
-            sinkNodeType = sinkEntityList.get(0).getSinkType();
+        Integer sinkId = request.getSinkId();
+        StreamSinkEntity sinkEntity = null;
+        List<StreamSinkEntity> sinkEntityList = sinkEntityMapper.selectByRelatedId(groupId, streamId);
+        if (sinkId != null) {
+            sinkEntity = sinkEntityMapper.selectByPrimaryKey(sinkId);
+        } else if (CollectionUtils.isNotEmpty(sinkEntityList)) {
+            sinkEntity = sinkEntityList.get(0);
+        }
+
+        // if sink info is existed, get sink type for query audit info.
+        if (sinkEntity != null) {
+            sinkNodeType = sinkEntity.getSinkType();
         }
 
         // properly overwrite audit ids by role and stream config
@@ -197,21 +257,21 @@ public class AuditServiceImpl implements AuditService {
             if (AuditQuerySource.MYSQL == querySource) {
                 String format = "%Y-%m-%d %H:%i:00";
                 // Support min agg at now
-                DateTimeFormatter forPattern = DateTimeFormat.forPattern("yyyy-MM-dd");
-                DateTime dtDate = forPattern.parseDateTime(request.getDt());
-                String eDate = dtDate.plusDays(1).toString(forPattern);
+                DateTime endDate = DAY_DATE_FORMATTER.parseDateTime(request.getEndDate());
+                String endDateStr = endDate.plusDays(1).toString(DAY_DATE_FORMATTER);
                 List<Map<String, Object>> sumList = auditEntityMapper.sumByLogTs(
-                        groupId, streamId, auditId, request.getDt(), eDate, format);
+                        groupId, streamId, auditId, request.getStartDate(), endDateStr, format);
                 List<AuditInfo> auditSet = sumList.stream().map(s -> {
                     AuditInfo vo = new AuditInfo();
                     vo.setLogTs((String) s.get("logTs"));
                     vo.setCount(((BigDecimal) s.get("total")).longValue());
+                    vo.setCount(((BigDecimal) s.get("totalDelay")).longValue());
                     return vo;
                 }).collect(Collectors.toList());
                 result.add(new AuditVO(auditId, auditSet,
                         auditId.equals(getAuditId(sinkNodeType, true)) ? sinkNodeType : null));
             } else if (AuditQuerySource.ELASTICSEARCH == querySource) {
-                String index = String.format("%s_%s", request.getDt().replaceAll("-", ""), auditId);
+                String index = String.format("%s_%s", request.getStartDate().replaceAll("-", ""), auditId);
                 if (!elasticsearchApi.indexExists(index)) {
                     LOGGER.warn("elasticsearch index={} not exists", index);
                     continue;
@@ -225,6 +285,7 @@ public class AuditServiceImpl implements AuditService {
                             AuditInfo vo = new AuditInfo();
                             vo.setLogTs(bucket.getKeyAsString());
                             vo.setCount((long) ((ParsedSum) bucket.getAggregations().asList().get(0)).getValue());
+                            vo.setDelay((long) ((ParsedSum) bucket.getAggregations().asList().get(1)).getValue());
                             return vo;
                         }).collect(Collectors.toList());
                         result.add(new AuditVO(auditId, auditSet,
@@ -232,15 +293,17 @@ public class AuditServiceImpl implements AuditService {
                     }
                 }
             } else if (AuditQuerySource.CLICKHOUSE == querySource) {
-                try (Connection connection = ClickHouseConfig.getCkConnection();
-                        Statement statement = connection.createStatement();
-                        ResultSet resultSet = statement.executeQuery(
-                                toAuditCkSql(groupId, streamId, auditId, request.getDt()))) {
+                try (Connection connection = config.getCkConnection();
+                        PreparedStatement statement = getAuditCkStatement(connection, groupId, streamId, auditId,
+                                request.getStartDate(), request.getEndDate());
+
+                        ResultSet resultSet = statement.executeQuery()) {
                     List<AuditInfo> auditSet = new ArrayList<>();
                     while (resultSet.next()) {
                         AuditInfo vo = new AuditInfo();
                         vo.setLogTs(resultSet.getString("log_ts"));
                         vo.setCount(resultSet.getLong("total"));
+                        vo.setDelay(resultSet.getLong("total_delay"));
                         auditSet.add(vo);
                     }
                     result.add(new AuditVO(auditId, auditSet,
@@ -253,7 +316,7 @@ public class AuditServiceImpl implements AuditService {
     }
 
     private List<String> getAuditIds(String groupId, String streamId, String sinkNodeType) {
-        Set<String> auditSet = LoginUserUtils.getLoginUser().getRoles().contains(UserRoleCode.ADMIN)
+        Set<String> auditSet = LoginUserUtils.getLoginUser().getRoles().contains(UserRoleCode.TENANT_ADMIN)
                 ? new HashSet<>(auditIdListForAdmin)
                 : new HashSet<>(auditIdListForUser);
 
@@ -288,7 +351,8 @@ public class AuditServiceImpl implements AuditService {
      */
     private SearchRequest toAuditSearchRequest(String index, String groupId, String streamId) {
         TermsAggregationBuilder builder = AggregationBuilders.terms("log_ts").field("log_ts")
-                .size(Integer.MAX_VALUE).subAggregation(AggregationBuilders.sum("count").field("count"));
+                .size(Integer.MAX_VALUE).subAggregation(AggregationBuilders.sum("count").field("count"))
+                .subAggregation(AggregationBuilders.sum("delay").field("delay"));
         BoolQueryBuilder filterBuilder = new BoolQueryBuilder();
         filterBuilder.must(termQuery("inlong_group_id", groupId));
         filterBuilder.must(termQuery("inlong_stream_id", streamId));
@@ -302,28 +366,46 @@ public class AuditServiceImpl implements AuditService {
     }
 
     /**
-     * Convert to clickhouse search sql
+     * Get clickhouse Statement
      *
      * @param groupId The groupId of inlong
      * @param streamId The streamId of inlong
      * @param auditId The auditId of request
-     * @param dt The datetime of request
-     * @return clickhouse sql
+     * @param startDate The start datetime of request
+     * @param endDate The en datetime of request
+     * @return The clickhouse Statement
      */
-    private String toAuditCkSql(String groupId, String streamId, String auditId, String dt) {
-        DateTimeFormatter formatter = DateTimeFormat.forPattern(DAY_FORMAT);
-        DateTime date = formatter.parseDateTime(dt);
-        String startDate = date.toString(SECOND_FORMAT);
-        String endDate = date.plusDays(1).toString(SECOND_FORMAT);
-        return new SQL()
-                .SELECT("log_ts", "sum(count) as total")
+    private PreparedStatement getAuditCkStatement(Connection connection, String groupId, String streamId,
+            String auditId, String startDate, String endDate) throws SQLException {
+        String start = DAY_DATE_FORMATTER.parseDateTime(startDate).toString(SECOND_FORMAT);
+        String end = DAY_DATE_FORMATTER.parseDateTime(endDate).plusDays(1).toString(SECOND_FORMAT);
+
+        // Query results are duplicated according to all fields.
+        String subQuery = new SQL()
+                .SELECT_DISTINCT("ip", "docker_id", "thread_id", "sdk_ts", "packet_id", "log_ts", "inlong_group_id",
+                        "inlong_stream_id", "audit_id", "count", "size", "delay")
                 .FROM("audit_data")
-                .WHERE("inlong_group_id = '" + groupId + "'", "inlong_stream_id = '" + streamId + "'",
-                        "audit_id = '" + auditId + "'")
-                .WHERE("log_ts >= '" + startDate + "'", "log_ts < '" + endDate + "'")
+                .WHERE("inlong_group_id = ?")
+                .WHERE("inlong_stream_id = ?")
+                .WHERE("audit_id = ?")
+                .WHERE("log_ts >= ?")
+                .WHERE("log_ts < ?")
+                .toString();
+
+        String sql = new SQL()
+                .SELECT("log_ts", "sum(count) as total", "sum(delay) as total_delay")
+                .FROM("(" + subQuery + ") as sub")
                 .GROUP_BY("log_ts")
                 .ORDER_BY("log_ts")
                 .toString();
+
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setString(1, groupId);
+        statement.setString(2, streamId);
+        statement.setString(3, auditId);
+        statement.setString(4, start);
+        statement.setString(5, end);
+        return statement;
     }
 
     /**
@@ -339,7 +421,7 @@ public class AuditServiceImpl implements AuditService {
                 result = doAggregate(auditVOList, DAY_FORMAT);
                 break;
             default:
-                result = auditVOList;
+                result = doAggregate(auditVOList, SECOND_FORMAT);
                 break;
         }
         return result;
@@ -352,7 +434,8 @@ public class AuditServiceImpl implements AuditService {
         List<AuditVO> result = new ArrayList<>();
         for (AuditVO auditVO : auditVOList) {
             AuditVO statInfo = new AuditVO();
-            ConcurrentHashMap<String, AtomicLong> countMap = new ConcurrentHashMap<>();
+            HashMap<String, AtomicLong> countMap = new HashMap<>();
+            HashMap<String, AtomicLong> delayMap = new HashMap<>();
             statInfo.setAuditId(auditVO.getAuditId());
             statInfo.setNodeType(auditVO.getNodeType());
             for (AuditInfo auditInfo : auditVO.getAuditSet()) {
@@ -363,14 +446,20 @@ public class AuditServiceImpl implements AuditService {
                 if (countMap.get(statKey) == null) {
                     countMap.put(statKey, new AtomicLong(0));
                 }
+                if (delayMap.get(statKey) == null) {
+                    delayMap.put(statKey, new AtomicLong(0));
+                }
                 countMap.get(statKey).addAndGet(auditInfo.getCount());
+                delayMap.get(statKey).addAndGet(auditInfo.getDelay());
             }
 
             List<AuditInfo> auditInfoList = new LinkedList<>();
             for (Map.Entry<String, AtomicLong> entry : countMap.entrySet()) {
                 AuditInfo auditInfoStat = new AuditInfo();
                 auditInfoStat.setLogTs(entry.getKey());
+                long count = entry.getValue().get();
                 auditInfoStat.setCount(entry.getValue().get());
+                auditInfoStat.setDelay(count == 0 ? 0 : delayMap.get(entry.getKey()).get() / count);
                 auditInfoList.add(auditInfoStat);
             }
             statInfo.setAuditSet(auditInfoList);
@@ -393,4 +482,5 @@ public class AuditServiceImpl implements AuditService {
         }
         return formatDateString;
     }
+
 }

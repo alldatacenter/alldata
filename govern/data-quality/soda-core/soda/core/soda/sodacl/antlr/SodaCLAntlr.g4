@@ -8,6 +8,7 @@ check
  | metric_check
  | reference_check
  | freshness_check
+ | group_by_check
  ;
 
 freshness_check
@@ -22,7 +23,10 @@ warn_qualifier
  : S 'warn'
  ;
 
-failed_rows_check: IDENTIFIER_DOUBLE_QUOTE EOF;
+
+failed_rows_check: 'failed rows' EOF;
+
+group_by_check: 'group by' EOF;
 
 row_count_comparison_check: 'row_count same as' S identifier (S partition_name)? (S IN S identifier)? EOF;
 

@@ -17,14 +17,14 @@
 
 package org.apache.inlong.tubemq.server.broker.offset;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
 import org.apache.inlong.tubemq.corebase.utils.Tuple2;
 import org.apache.inlong.tubemq.corebase.utils.Tuple3;
 import org.apache.inlong.tubemq.server.broker.msgstore.MessageStore;
 import org.apache.inlong.tubemq.server.broker.offset.offsetstorage.OffsetStorageInfo;
+
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Offset manager service interface.

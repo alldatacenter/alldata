@@ -17,9 +17,11 @@
 
 package org.apache.inlong.sort.protocol.ddl.indexes;
 
-import java.util.List;
-import lombok.Data;
 import org.apache.inlong.sort.protocol.ddl.enums.IndexType;
+
+import lombok.Data;
+
+import java.util.List;
 
 /**
  * Index for create table operation

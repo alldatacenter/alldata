@@ -17,15 +17,16 @@
 
 package org.apache.inlong.manager.web.auth.openapi;
 
-import com.google.common.collect.Sets;
-
-import lombok.extern.slf4j.Slf4j;
-
-import org.apache.inlong.manager.common.enums.UserTypeEnum;
-import org.apache.inlong.manager.pojo.user.UserInfo;
+import org.apache.inlong.common.util.BasicAuth;
+import org.apache.inlong.manager.common.enums.InlongUserTypeEnum;
+import org.apache.inlong.manager.common.enums.TenantUserTypeEnum;
 import org.apache.inlong.manager.common.util.AESUtils;
 import org.apache.inlong.manager.common.util.Preconditions;
+import org.apache.inlong.manager.pojo.user.UserInfo;
 import org.apache.inlong.manager.service.user.UserService;
+
+import com.google.common.collect.Sets;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -41,9 +42,11 @@ import java.util.Date;
 public class OpenAPIAuthenticatingRealm extends AuthenticatingRealm {
 
     private final UserService userService;
+    private final boolean openAPIAuthEnabled;
 
-    public OpenAPIAuthenticatingRealm(UserService userService) {
+    public OpenAPIAuthenticatingRealm(UserService userService, boolean openAPIAuthEnabled) {
         this.userService = userService;
+        this.openAPIAuthEnabled = openAPIAuthEnabled;
     }
 
     /**
@@ -52,6 +55,29 @@ public class OpenAPIAuthenticatingRealm extends AuthenticatingRealm {
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken)
             throws AuthenticationException {
+        if (openAPIAuthEnabled) {
+            return doRealAuth(authenticationToken);
+        } else {
+            return doDefaultAuth(authenticationToken);
+        }
+    }
+
+    private AuthenticationInfo doDefaultAuth(AuthenticationToken authenticationToken) {
+        try {
+            UserInfo userInfo = userService.getByName(BasicAuth.DEFAULT_USER);
+            userInfo.setRoles(Sets.newHashSet(
+                    InlongUserTypeEnum.INLONG_ADMIN.name(),
+                    InlongUserTypeEnum.INLONG_OPERATOR.name(),
+                    TenantUserTypeEnum.TENANT_ADMIN.name(),
+                    TenantUserTypeEnum.TENANT_OPERATOR.name()));
+            return new SimpleAuthenticationInfo(userInfo, authenticationToken.getCredentials(), getName());
+        } catch (Exception e) {
+            log.error("got some exception when do default openapi auth", e);
+            throw new AuthenticationException("internal error: " + e.getMessage());
+        }
+    }
+
+    private AuthenticationInfo doRealAuth(AuthenticationToken authenticationToken) {
         SecretToken upToken = (SecretToken) authenticationToken;
         String username = upToken.getSecretId();
         UserInfo userInfo = userService.getByName(username);
@@ -61,11 +87,11 @@ public class OpenAPIAuthenticatingRealm extends AuthenticatingRealm {
             String secretKey = new String(
                     AESUtils.decryptAsString(userInfo.getSecretKey(), userInfo.getEncryptVersion()));
             userInfo.setRoles(Sets.newHashSet(userInfo.getAccountType() == 0
-                    ? UserTypeEnum.ADMIN.name()
-                    : UserTypeEnum.OPERATOR.name()));
+                    ? TenantUserTypeEnum.TENANT_ADMIN.name()
+                    : TenantUserTypeEnum.TENANT_OPERATOR.name()));
             return new SimpleAuthenticationInfo(userInfo, secretKey, getName());
         } catch (Exception e) {
-            log.error("decrypt secret key fail: ", e);
+            log.error("when do real openapi auth, decrypt secret key fail: ", e);
             throw new AuthenticationException("internal error: " + e.getMessage());
         }
     }

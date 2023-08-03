@@ -17,11 +17,12 @@
 
 package org.apache.inlong.tubemq.server.master.web.simplemvc;
 
+import org.apache.inlong.tubemq.corebase.utils.TStringUtils;
+import org.apache.inlong.tubemq.server.master.web.simplemvc.conf.WebConfig;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.apache.inlong.tubemq.corebase.utils.TStringUtils;
-import org.apache.inlong.tubemq.server.master.web.simplemvc.conf.WebConfig;
 
 public class RequestContext extends MappedContext {
 

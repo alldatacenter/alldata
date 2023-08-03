@@ -17,9 +17,6 @@
 
 package org.apache.inlong.manager.client.ut;
 
-import com.github.tomakehurst.wiremock.WireMockServer;
-import com.github.tomakehurst.wiremock.client.WireMock;
-import com.google.common.collect.Lists;
 import org.apache.inlong.manager.client.api.ClientConfiguration;
 import org.apache.inlong.manager.client.api.InlongClient;
 import org.apache.inlong.manager.common.auth.DefaultAuthentication;
@@ -32,6 +29,10 @@ import org.apache.inlong.manager.pojo.sink.SinkField;
 import org.apache.inlong.manager.pojo.sink.hive.HiveSink;
 import org.apache.inlong.manager.pojo.sort.FlinkSortConf;
 import org.apache.inlong.manager.pojo.stream.InlongStreamInfo;
+
+import com.github.tomakehurst.wiremock.WireMockServer;
+import com.github.tomakehurst.wiremock.client.WireMock;
+import com.google.common.collect.Lists;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 
@@ -103,13 +104,13 @@ public class BaseTest {
         pulsarInfo.setInCharges(IN_CHARGES);
 
         // pulsar conf
-        pulsarInfo.setTenant(TENANT);
+        pulsarInfo.setPulsarTenant(TENANT);
         pulsarInfo.setMqResource(NAMESPACE);
 
-        // set enable zk, create resource, lightweight mode, and cluster tag
+        // set enable zk, create resource, group mode, and cluster tag
         pulsarInfo.setEnableZookeeper(InlongConstants.DISABLE_ZK);
         pulsarInfo.setEnableCreateResource(InlongConstants.ENABLE_CREATE_RESOURCE);
-        pulsarInfo.setLightweight(InlongConstants.LIGHTWEIGHT_MODE);
+        pulsarInfo.setInlongGroupMode(InlongConstants.DATASYNC_MODE);
         pulsarInfo.setInlongClusterTag("default_cluster");
 
         pulsarInfo.setDailyRecords(10000000);

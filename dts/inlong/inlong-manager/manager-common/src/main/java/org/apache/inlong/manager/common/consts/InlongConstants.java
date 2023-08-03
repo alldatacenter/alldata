@@ -17,6 +17,8 @@
 
 package org.apache.inlong.manager.common.consts;
 
+import org.apache.inlong.common.enums.DataProxyMsgEncType;
+
 import com.google.common.collect.Sets;
 
 import java.util.Set;
@@ -48,7 +50,13 @@ public class InlongConstants {
 
     public static final String COLON = ":";
 
+    public static final String EQUAL = "=";
+
     public static final String SEMICOLON = ";";
+
+    public static final String HYPHEN = "-";
+
+    public static final String UNDERSCORE = "_";
 
     public static final String LEFT_BRACKET = "(";
 
@@ -69,7 +77,7 @@ public class InlongConstants {
     public static final Integer DELETED_STATUS = 10;
 
     public static final Integer STANDARD_MODE = 0;
-    public static final Integer LIGHTWEIGHT_MODE = 1;
+    public static final Integer DATASYNC_MODE = 1;
 
     public static final Integer DISABLE_ZK = 0;
     public static final Integer ENABLE_ZK = 1;
@@ -182,5 +190,12 @@ public class InlongConstants {
      * The comment prop when batch parsing fields in JSON mode
      */
     public static final String BATCH_PARSING_FILED_JSON_COMMENT_PROP = "desc";
+
+    /**
+     * Message compression type, 0: Raw message without any InLong format, 1: InlongMsgPb, 2: InlongMsg
+     * <p/>
+     * See more: {@link DataProxyMsgEncType}
+     */
+    public static final String MSG_ENCODE_VER = "msgEnType";
 
 }

@@ -17,12 +17,13 @@
 
 package org.apache.inlong.sort.protocol.ddl.operations;
 
+import org.apache.inlong.sort.protocol.ddl.enums.OperationType;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonProperty;
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonSubTypes;
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonTypeInfo;
-import org.apache.inlong.sort.protocol.ddl.enums.OperationType;
 
 /**
  * Operation represents a ddl operation.
@@ -33,7 +34,8 @@ import org.apache.inlong.sort.protocol.ddl.enums.OperationType;
         @JsonSubTypes.Type(value = CreateTableOperation.class, name = "createTableOperation"),
         @JsonSubTypes.Type(value = DropTableOperation.class, name = "dropTableOperation"),
         @JsonSubTypes.Type(value = TruncateTableOperation.class, name = "truncateTableOperation"),
-        @JsonSubTypes.Type(value = RenameTableOperation.class, name = "renameTableOperation")
+        @JsonSubTypes.Type(value = RenameTableOperation.class, name = "renameTableOperation"),
+        @JsonSubTypes.Type(value = UnsupportedOperation.class, name = "unsupportedOperation")
 })
 @Data
 @NoArgsConstructor

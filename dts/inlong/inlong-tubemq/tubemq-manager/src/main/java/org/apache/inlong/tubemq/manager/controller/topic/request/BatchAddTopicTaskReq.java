@@ -17,10 +17,10 @@
 
 package org.apache.inlong.tubemq.manager.controller.topic.request;
 
-import java.util.List;
-
 import lombok.Data;
 import org.apache.commons.collections4.CollectionUtils;
+
+import java.util.List;
 
 @Data
 public class BatchAddTopicTaskReq {

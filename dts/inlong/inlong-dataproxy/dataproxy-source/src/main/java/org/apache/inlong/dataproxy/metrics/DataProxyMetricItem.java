@@ -17,10 +17,6 @@
 
 package org.apache.inlong.dataproxy.metrics;
 
-import java.util.Map;
-import java.util.concurrent.atomic.AtomicLong;
-
-import org.apache.flume.Event;
 import org.apache.inlong.common.metric.CountMetric;
 import org.apache.inlong.common.metric.Dimension;
 import org.apache.inlong.common.metric.MetricDomain;
@@ -29,6 +25,11 @@ import org.apache.inlong.common.msg.AttributeConstants;
 import org.apache.inlong.dataproxy.config.CommonConfigHolder;
 import org.apache.inlong.dataproxy.metrics.audit.AuditUtils;
 import org.apache.inlong.dataproxy.utils.Constants;
+
+import org.apache.flume.Event;
+
+import java.util.Map;
+import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * DataProxyMetricItem

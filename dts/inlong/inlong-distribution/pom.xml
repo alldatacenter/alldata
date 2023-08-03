@@ -22,12 +22,16 @@
     <parent>
         <groupId>org.apache.inlong</groupId>
         <artifactId>inlong</artifactId>
-        <version>1.7.0</version>
+        <version>1.8.0</version>
     </parent>
 
     <artifactId>inlong-distribution</artifactId>
     <packaging>pom</packaging>
     <name>Apache InLong - Distribution</name>
+
+    <properties>
+        <inlong.root.dir>${project.parent.basedir}</inlong.root.dir>
+    </properties>
 
     <build>
         <plugins>
@@ -59,7 +63,8 @@
                         <phase>package</phase>
                         <configuration>
                             <descriptors>
-                                <descriptor>src/main/assemblies/sort-connectors.xml</descriptor>
+                                <descriptor>src/main/assemblies/sort-connectors-v1.13.xml</descriptor>
+                                <descriptor>src/main/assemblies/sort-connectors-v1.15.xml</descriptor>
                             </descriptors>
                         </configuration>
                     </execution>

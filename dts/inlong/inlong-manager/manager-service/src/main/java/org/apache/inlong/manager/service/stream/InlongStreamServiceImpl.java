@@ -17,13 +17,6 @@
 
 package org.apache.inlong.manager.service.stream;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.pagehelper.Page;
-import com.github.pagehelper.PageHelper;
-import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.inlong.manager.common.consts.InlongConstants;
 import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
 import org.apache.inlong.manager.common.enums.GroupStatus;
@@ -43,6 +36,8 @@ import org.apache.inlong.manager.dao.mapper.InlongStreamFieldEntityMapper;
 import org.apache.inlong.manager.pojo.common.OrderFieldEnum;
 import org.apache.inlong.manager.pojo.common.OrderTypeEnum;
 import org.apache.inlong.manager.pojo.common.PageResult;
+import org.apache.inlong.manager.pojo.consume.BriefMQMessage;
+import org.apache.inlong.manager.pojo.group.InlongGroupInfo;
 import org.apache.inlong.manager.pojo.sink.ParseFieldRequest;
 import org.apache.inlong.manager.pojo.sink.SinkBriefInfo;
 import org.apache.inlong.manager.pojo.sink.StreamSink;
@@ -57,22 +52,34 @@ import org.apache.inlong.manager.pojo.stream.InlongStreamRequest;
 import org.apache.inlong.manager.pojo.stream.StreamField;
 import org.apache.inlong.manager.pojo.user.UserInfo;
 import org.apache.inlong.manager.pojo.user.UserRoleCode;
+import org.apache.inlong.manager.service.group.InlongGroupOperator;
+import org.apache.inlong.manager.service.group.InlongGroupOperatorFactory;
+import org.apache.inlong.manager.service.resource.queue.QueueResourceOperator;
+import org.apache.inlong.manager.service.resource.queue.QueueResourceOperatorFactory;
 import org.apache.inlong.manager.service.sink.StreamSinkService;
 import org.apache.inlong.manager.service.source.StreamSourceService;
 import org.apache.inlong.manager.service.user.UserService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import net.sf.jsqlparser.JSQLParserException;
 import net.sf.jsqlparser.parser.CCJSqlParserManager;
 import net.sf.jsqlparser.statement.Statement;
 import net.sf.jsqlparser.statement.create.table.ColDataType;
 import net.sf.jsqlparser.statement.create.table.ColumnDefinition;
 import net.sf.jsqlparser.statement.create.table.CreateTable;
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -86,14 +93,14 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+import static org.apache.inlong.manager.common.consts.InlongConstants.BATCH_PARSING_FILED_JSON_COMMENT_PROP;
+import static org.apache.inlong.manager.common.consts.InlongConstants.BATCH_PARSING_FILED_JSON_NAME_PROP;
+import static org.apache.inlong.manager.common.consts.InlongConstants.BATCH_PARSING_FILED_JSON_TYPE_PROP;
 import static org.apache.inlong.manager.common.consts.InlongConstants.PATTERN_NORMAL_CHARACTERS;
 import static org.apache.inlong.manager.common.consts.InlongConstants.STATEMENT_TYPE_CSV;
 import static org.apache.inlong.manager.common.consts.InlongConstants.STATEMENT_TYPE_JSON;
 import static org.apache.inlong.manager.common.consts.InlongConstants.STATEMENT_TYPE_SQL;
 import static org.apache.inlong.manager.common.consts.InlongConstants.STREAM_FIELD_TYPES;
-import static org.apache.inlong.manager.common.consts.InlongConstants.BATCH_PARSING_FILED_JSON_COMMENT_PROP;
-import static org.apache.inlong.manager.common.consts.InlongConstants.BATCH_PARSING_FILED_JSON_NAME_PROP;
-import static org.apache.inlong.manager.common.consts.InlongConstants.BATCH_PARSING_FILED_JSON_TYPE_PROP;
 import static org.apache.inlong.manager.pojo.stream.InlongStreamExtParam.packExtParams;
 import static org.apache.inlong.manager.pojo.stream.InlongStreamExtParam.unpackExtParams;
 
@@ -124,6 +131,12 @@ public class InlongStreamServiceImpl implements InlongStreamService {
     private ObjectMapper objectMapper;
     @Autowired
     private UserService userService;
+    @Autowired
+    @Lazy
+    private QueueResourceOperatorFactory queueOperatorFactory;
+    @Autowired
+    @Lazy
+    private InlongGroupOperatorFactory groupOperatorFactory;
 
     @Transactional(rollbackFor = Throwable.class)
     @Override
@@ -278,6 +291,34 @@ public class InlongStreamServiceImpl implements InlongStreamService {
     }
 
     @Override
+    public InlongStreamBriefInfo getBrief(String groupId, String streamId, String operator) {
+        InlongGroupEntity entity = groupMapper.selectByGroupId(groupId);
+        if (entity == null) {
+            throw new BusinessException(ErrorCodeEnum.GROUP_NOT_FOUND);
+        }
+
+        // only the person in charges can query
+        userService.checkUser(entity.getInCharges(), operator,
+                ErrorCodeEnum.GROUP_PERMISSION_DENIED.getMessage());
+        // get stream information
+        InlongStreamEntity streamEntity = streamMapper.selectByIdentifier(groupId, streamId);
+        if (streamEntity == null) {
+            throw new BusinessException(ErrorCodeEnum.STREAM_NOT_FOUND);
+        }
+
+        InlongStreamBriefInfo streamInfo = CommonBeanUtils.copyProperties(streamEntity, InlongStreamBriefInfo::new);
+        // Processing extParams
+        unpackExtParams(streamEntity.getExtParams(), streamInfo);
+        // Load fields
+        List<StreamField> streamFields = getStreamFields(groupId, streamId);
+        streamInfo.setFieldList(streamFields);
+        List<InlongStreamExtEntity> extEntities = streamExtMapper.selectByRelatedId(groupId, streamId);
+        List<InlongStreamExtInfo> extInfos = CommonBeanUtils.copyListProperties(extEntities, InlongStreamExtInfo::new);
+        streamInfo.setExtList(extInfos);
+        return streamInfo;
+    }
+
+    @Override
     public List<InlongStreamInfo> list(String groupId) {
         LOGGER.debug("begin to list inlong streams by groupId={}", groupId);
         List<InlongStreamEntity> inlongStreamEntityList = streamMapper.selectByGroupId(groupId);
@@ -342,7 +383,7 @@ public class InlongStreamServiceImpl implements InlongStreamService {
     @Override
     public List<InlongStreamBriefInfo> listBrief(InlongStreamPageRequest request, UserInfo opInfo) {
         request.setCurrentUser(opInfo.getName());
-        request.setIsAdminRole(opInfo.getRoles().contains(UserRoleCode.ADMIN));
+        request.setIsAdminRole(opInfo.getRoles().contains(UserRoleCode.TENANT_ADMIN));
         OrderFieldEnum.checkOrderField(request);
         OrderTypeEnum.checkOrderType(request);
         return CommonBeanUtils.copyListProperties(streamMapper.selectByCondition(request), InlongStreamBriefInfo::new);
@@ -436,11 +477,7 @@ public class InlongStreamServiceImpl implements InlongStreamService {
         if (entity == null) {
             throw new BusinessException(ErrorCodeEnum.GROUP_NOT_FOUND);
         }
-        // check record version
-        Preconditions.expectEquals(entity.getVersion(), request.getVersion(),
-                ErrorCodeEnum.CONFIG_EXPIRED,
-                String.format("record has expired with record version=%d, request version=%d",
-                        entity.getVersion(), request.getVersion()));
+
         // only the person in charges can query
         userService.checkUser(entity.getInCharges(), opInfo.getName(),
                 ErrorCodeEnum.GROUP_PERMISSION_DENIED.getMessage());
@@ -785,6 +822,7 @@ public class InlongStreamServiceImpl implements InlongStreamService {
 
     /**
      * Parse fields from CSV format
+     *
      * @param statement CSV statement
      * @return List of StreamField
      */
@@ -826,6 +864,7 @@ public class InlongStreamServiceImpl implements InlongStreamService {
         }
         return fields;
     }
+
     private List<StreamField> parseFieldsBySql(String sql) throws JSQLParserException {
         CCJSqlParserManager pm = new CCJSqlParserManager();
         Statement statement = pm.parse(new StringReader(sql));
@@ -962,4 +1001,21 @@ public class InlongStreamServiceImpl implements InlongStreamService {
         return entity;
     }
 
+    @Override
+    public List<BriefMQMessage> listMessages(String groupId, String streamId, Integer messageCount, String operator) {
+        InlongGroupEntity groupEntity = groupMapper.selectByGroupId(groupId);
+        // check user
+        userService.checkUser(groupEntity.getInCharges(), operator, ErrorCodeEnum.GROUP_PERMISSION_DENIED.getMessage());
+        InlongGroupOperator instance = groupOperatorFactory.getInstance(groupEntity.getMqType());
+        InlongGroupInfo groupInfo = instance.getFromEntity(groupEntity);
+        InlongStreamInfo inlongStreamInfo = get(groupId, streamId);
+        List<BriefMQMessage> messageList = new ArrayList<>();
+        QueueResourceOperator queueOperator = queueOperatorFactory.getInstance(groupEntity.getMqType());
+        try {
+            messageList = queueOperator.queryLatestMessages(groupInfo, inlongStreamInfo, messageCount);
+        } catch (Exception e) {
+            LOGGER.error("query message error ", e);
+        }
+        return messageList;
+    }
 }

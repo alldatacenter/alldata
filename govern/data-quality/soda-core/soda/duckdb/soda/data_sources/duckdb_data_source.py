@@ -98,6 +98,7 @@ class DuckDBDataSource(DataSource):
         self.path = data_source_properties.get("path")
         self.read_only = data_source_properties.get("read_only", False)
         self.duckdb_connection = data_source_properties.get("duckdb_connection")
+        self.configuration = data_source_properties.get("configuration", dict())
 
     def connect(self):
         import duckdb
@@ -107,7 +108,11 @@ class DuckDBDataSource(DataSource):
                 self.connection = DuckDBDataSourceConnectionWrapper(self.duckdb_connection)
             else:
                 self.connection = DuckDBDataSourceConnectionWrapper(
-                    duckdb.connect(database=self.path if self.path else ":memory:", read_only=self.read_only)
+                    duckdb.connect(
+                        database=self.path if self.path else ":memory:",
+                        read_only=self.read_only,
+                        config=self.configuration,
+                    )
                 )
         except Exception as e:
             raise DataSourceConnectionError(self.TYPE, e)

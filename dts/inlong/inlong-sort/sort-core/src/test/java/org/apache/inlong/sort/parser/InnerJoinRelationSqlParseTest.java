@@ -17,10 +17,6 @@
 
 package org.apache.inlong.sort.parser;
 
-import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
-import org.apache.flink.table.api.EnvironmentSettings;
-import org.apache.flink.table.api.bridge.java.StreamTableEnvironment;
-import org.apache.flink.test.util.AbstractTestBase;
 import org.apache.inlong.sort.formats.common.FloatFormatInfo;
 import org.apache.inlong.sort.formats.common.IntFormatInfo;
 import org.apache.inlong.sort.formats.common.LongFormatInfo;
@@ -50,6 +46,11 @@ import org.apache.inlong.sort.protocol.transformation.operator.MoreThanOrEqualOp
 import org.apache.inlong.sort.protocol.transformation.operator.NotEqualOperator;
 import org.apache.inlong.sort.protocol.transformation.relation.InnerJoinNodeRelation;
 import org.apache.inlong.sort.protocol.transformation.relation.NodeRelation;
+
+import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
+import org.apache.flink.table.api.EnvironmentSettings;
+import org.apache.flink.table.api.bridge.java.StreamTableEnvironment;
+import org.apache.flink.test.util.AbstractTestBase;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -270,7 +271,6 @@ public class InnerJoinRelationSqlParseTest extends AbstractTestBase {
     public void testInnerJoin() throws Exception {
         EnvironmentSettings settings = EnvironmentSettings
                 .newInstance()
-                .useBlinkPlanner()
                 .inStreamingMode()
                 .build();
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
@@ -306,7 +306,6 @@ public class InnerJoinRelationSqlParseTest extends AbstractTestBase {
     public void testInnerJoinWithUpsertKafka() throws Exception {
         EnvironmentSettings settings = EnvironmentSettings
                 .newInstance()
-                .useBlinkPlanner()
                 .inStreamingMode()
                 .build();
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
@@ -343,7 +342,6 @@ public class InnerJoinRelationSqlParseTest extends AbstractTestBase {
     public void testInnerJoinWithDistinctAndFilter() throws Exception {
         EnvironmentSettings settings = EnvironmentSettings
                 .newInstance()
-                .useBlinkPlanner()
                 .inStreamingMode()
                 .build();
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();

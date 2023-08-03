@@ -17,18 +17,6 @@
 
 package org.apache.inlong.tubemq.server.master.metamanage;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeSet;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.TimeUnit;
 import org.apache.inlong.tubemq.corebase.TBaseConstants;
 import org.apache.inlong.tubemq.corebase.TErrCodeConstants;
 import org.apache.inlong.tubemq.corebase.TokenConstants;
@@ -61,8 +49,22 @@ import org.apache.inlong.tubemq.server.master.web.handler.BrokerProcessResult;
 import org.apache.inlong.tubemq.server.master.web.handler.GroupProcessResult;
 import org.apache.inlong.tubemq.server.master.web.handler.TopicProcessResult;
 import org.apache.inlong.tubemq.server.master.web.model.ClusterGroupVO;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.TimeUnit;
 
 public class DefaultMetaDataService implements MetaDataService {
 

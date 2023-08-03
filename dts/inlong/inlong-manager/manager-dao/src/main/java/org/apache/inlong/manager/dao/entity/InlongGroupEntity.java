@@ -33,6 +33,7 @@ public class InlongGroupEntity implements Serializable {
     private String inlongGroupId;
     private String name;
     private String description;
+    private String tenant;
     private String mqType;
     private String mqResource;
     private Integer dailyRecords;
@@ -42,7 +43,7 @@ public class InlongGroupEntity implements Serializable {
 
     private Integer enableZookeeper;
     private Integer enableCreateResource;
-    private Integer lightweight;
+    private Integer inlongGroupMode;
     private Integer dataReportType;
     private String inlongClusterTag;
 

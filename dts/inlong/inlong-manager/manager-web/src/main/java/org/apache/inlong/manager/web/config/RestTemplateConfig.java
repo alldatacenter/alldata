@@ -17,6 +17,8 @@
 
 package org.apache.inlong.manager.web.config;
 
+import org.apache.inlong.common.constant.ProtocolType;
+
 import lombok.Data;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -29,7 +31,6 @@ import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.protocol.HttpContext;
-import org.apache.inlong.common.constant.ProtocolType;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.ConfigurationProperties;

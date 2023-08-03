@@ -17,15 +17,17 @@
 
 package org.apache.inlong.dataproxy.metrics;
 
-import java.util.HashMap;
-import java.util.Map;
-import org.apache.commons.lang3.math.NumberUtils;
-import org.apache.flume.Event;
 import org.apache.inlong.common.metric.MetricDomain;
 import org.apache.inlong.common.metric.MetricItemSet;
 import org.apache.inlong.common.msg.AttributeConstants;
 import org.apache.inlong.dataproxy.config.CommonConfigHolder;
 import org.apache.inlong.dataproxy.consts.ConfigConstants;
+
+import org.apache.commons.lang3.math.NumberUtils;
+import org.apache.flume.Event;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 

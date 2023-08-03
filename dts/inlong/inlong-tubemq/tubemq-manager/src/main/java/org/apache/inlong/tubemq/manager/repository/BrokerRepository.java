@@ -17,10 +17,11 @@
 
 package org.apache.inlong.tubemq.manager.repository;
 
-import java.util.List;
-
 import org.apache.inlong.tubemq.manager.entry.BrokerEntry;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
 
 public interface BrokerRepository extends JpaRepository<BrokerEntry, Long> {
 

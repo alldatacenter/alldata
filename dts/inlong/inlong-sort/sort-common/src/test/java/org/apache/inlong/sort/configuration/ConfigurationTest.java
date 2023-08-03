@@ -17,6 +17,11 @@
 
 package org.apache.inlong.sort.configuration;
 
+import org.apache.inlong.sort.util.InstantiationUtil;
+import org.apache.inlong.sort.util.TestLogger;
+
+import org.junit.Test;
+
 import static org.hamcrest.Matchers.containsString;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
@@ -25,10 +30,6 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
-
-import org.apache.inlong.sort.util.InstantiationUtil;
-import org.apache.inlong.sort.util.TestLogger;
-import org.junit.Test;
 
 /**
  * This class contains test for the configuration package. In particular, the serialization of

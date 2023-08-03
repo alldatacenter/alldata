@@ -17,9 +17,10 @@
 
 package org.apache.inlong.agent.plugin.sources;
 
-import org.apache.commons.codec.binary.Base64;
 import org.apache.inlong.agent.plugin.AgentBaseTestsHelper;
 import org.apache.inlong.agent.plugin.sources.snapshot.BinlogSnapshotBase;
+
+import org.apache.commons.codec.binary.Base64;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;

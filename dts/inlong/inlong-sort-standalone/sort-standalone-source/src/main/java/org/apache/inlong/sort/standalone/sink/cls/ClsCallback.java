@@ -17,13 +17,14 @@
 
 package org.apache.inlong.sort.standalone.sink.cls;
 
+import org.apache.inlong.sort.standalone.channel.ProfileEvent;
+import org.apache.inlong.sort.standalone.utils.InlongLoggerFactory;
+
 import com.tencentcloudapi.cls.producer.Callback;
 import com.tencentcloudapi.cls.producer.Result;
 import com.tencentcloudapi.cls.producer.common.Attempt;
 import com.tencentcloudapi.cls.producer.common.ErrorCodes;
 import org.apache.flume.Transaction;
-import org.apache.inlong.sort.standalone.channel.ProfileEvent;
-import org.apache.inlong.sort.standalone.utils.InlongLoggerFactory;
 import org.slf4j.Logger;
 
 import java.util.List;

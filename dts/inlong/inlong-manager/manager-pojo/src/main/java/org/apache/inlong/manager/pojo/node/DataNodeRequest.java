@@ -17,16 +17,16 @@
 
 package org.apache.inlong.manager.pojo.node;
 
+import org.apache.inlong.manager.common.validation.SaveValidation;
+import org.apache.inlong.manager.common.validation.UpdateByIdValidation;
+import org.apache.inlong.manager.common.validation.UpdateByKeyValidation;
+
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import org.apache.inlong.manager.common.validation.SaveValidation;
-import org.apache.inlong.manager.common.validation.UpdateByIdValidation;
-import org.apache.inlong.manager.common.validation.UpdateByKeyValidation;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotBlank;
@@ -80,6 +80,9 @@ public abstract class DataNodeRequest {
     @ApiModelProperty(value = "Description of the data node")
     @Length(max = 256, message = "length must be less than or equal to 256")
     private String description;
+
+    @ApiModelProperty(value = "Inlong tenant to which the data node belongs", hidden = true)
+    private String tenant;
 
     @ApiModelProperty(value = "Name of responsible person, separated by commas")
     @NotBlank(groups = SaveValidation.class, message = "inCharges cannot be blank")

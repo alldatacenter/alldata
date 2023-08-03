@@ -17,17 +17,6 @@
 
 package org.apache.inlong.tubemq.server.master.web.handler;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeSet;
-import java.util.concurrent.ConcurrentHashMap;
-import javax.servlet.http.HttpServletRequest;
-
 import org.apache.inlong.tubemq.corebase.cluster.Partition;
 import org.apache.inlong.tubemq.corebase.rv.ProcessResult;
 import org.apache.inlong.tubemq.corebase.utils.DateTimeConvertUtils;
@@ -46,6 +35,18 @@ import org.apache.inlong.tubemq.server.master.nodemanage.nodeconsumer.ConsumerIn
 import org.apache.inlong.tubemq.server.master.nodemanage.nodeconsumer.NodeRebInfo;
 import org.apache.inlong.tubemq.server.master.stats.MasterSrvStatsHolder;
 import org.apache.inlong.tubemq.server.master.stats.MasterStatsType;
+
+import javax.servlet.http.HttpServletRequest;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class WebOtherInfoHandler extends AbstractWebHandler {
 

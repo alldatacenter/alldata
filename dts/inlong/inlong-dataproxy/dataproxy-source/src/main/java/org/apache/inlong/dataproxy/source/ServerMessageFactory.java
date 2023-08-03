@@ -19,135 +19,66 @@ package org.apache.inlong.dataproxy.source;
 
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.channel.ChannelInitializer;
-import io.netty.channel.group.ChannelGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
+import io.netty.handler.codec.http.HttpObjectAggregator;
+import io.netty.handler.codec.http.HttpServerCodec;
 import io.netty.handler.timeout.ReadTimeoutHandler;
-import java.lang.reflect.Constructor;
-import java.util.concurrent.TimeUnit;
-import org.apache.flume.channel.ChannelProcessor;
-import org.apache.inlong.dataproxy.consts.ConfigConstants;
-import org.apache.inlong.common.monitor.MonitorIndex;
-import org.apache.inlong.common.monitor.MonitorIndexExt;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ServerMessageFactory
-        extends
-            ChannelInitializer<SocketChannel> {
+import java.lang.reflect.Constructor;
+import java.util.concurrent.TimeUnit;
 
+public class ServerMessageFactory extends ChannelInitializer<SocketChannel> {
+
+    public static final int INLONG_LENGTH_FIELD_OFFSET = 0;
+    public static final int INLONG_LENGTH_FIELD_LENGTH = 4;
+    public static final int INLONG_LENGTH_ADJUSTMENT = 0;
+    public static final int INLONG_INITIAL_BYTES_TO_STRIP = 0;
+    public static final boolean DEFAULT_FAIL_FAST = true;
     private static final Logger LOG = LoggerFactory.getLogger(ServerMessageFactory.class);
-
-    private static final int DEFAULT_READ_IDLE_TIME = 70 * 60 * 1000;
-
-    private static long MAX_CHANNEL_MEMORY_SIZE = 1024 * 1024;
-
-    private static long MAX_TOTAL_MEMORY_SIZE = 1024 * 1024;
-
-    private static int MSG_LENGTH_LEN = 4;
-
-    private BaseSource source;
-
-    private ChannelProcessor processor;
-
-    private ChannelGroup allChannels;
-
-    private String protocolType;
-
-    private ServiceDecoder serviceDecoder;
-
-    private String messageHandlerName;
-
-    private int maxConnections = Integer.MAX_VALUE;
-
-    private int maxMsgLength;
-
-    private boolean isCompressed;
-
-    private String name;
-
-    private String topic;
-
-    private String attr;
-
-    private boolean filterEmptyMsg;
-
-    private MonitorIndex monitorIndex;
-
-    private MonitorIndexExt monitorIndexExt;
+    private final BaseSource source;
 
     /**
      * get server factory
      *
      * @param source
-     * @param allChannels
-     * @param protocol
-     * @param serviceDecoder
-     * @param messageHandlerName
-     * @param topic
-     * @param attr
-     * @param filterEmptyMsg
-     * @param maxCons
-     * @param isCompressed
-     * @param monitorIndex
-     * @param monitorIndexExt
-     * @param name
      */
-    public ServerMessageFactory(BaseSource source, ChannelGroup allChannels, String protocol,
-            ServiceDecoder serviceDecoder, String messageHandlerName, Integer maxMsgLength,
-            String topic, String attr, Boolean filterEmptyMsg, Integer maxCons,
-            Boolean isCompressed, MonitorIndex monitorIndex, MonitorIndexExt monitorIndexExt,
-            String name) {
+    public ServerMessageFactory(BaseSource source) {
         this.source = source;
-        this.processor = source.getChannelProcessor();
-        this.allChannels = allChannels;
-        this.topic = topic;
-        this.attr = attr;
-        this.filterEmptyMsg = filterEmptyMsg;
-        int cores = Runtime.getRuntime().availableProcessors();
-        this.protocolType = protocol;
-        this.serviceDecoder = serviceDecoder;
-        this.messageHandlerName = messageHandlerName;
-        this.name = name;
-        this.maxConnections = maxCons;
-        this.maxMsgLength = maxMsgLength;
-        this.isCompressed = isCompressed;
-        this.monitorIndex = monitorIndex;
-        this.monitorIndexExt = monitorIndexExt;
     }
 
     @Override
     protected void initChannel(SocketChannel ch) throws Exception {
 
-        if (this.protocolType
-                .equalsIgnoreCase(ConfigConstants.TCP_PROTOCOL)) {
+        if (source.getProtocolName()
+                .equalsIgnoreCase(SourceConstants.SRC_PROTOCOL_TYPE_TCP)) {
             ch.pipeline().addLast("messageDecoder", new LengthFieldBasedFrameDecoder(
-                    this.maxMsgLength, 0,
-                    MSG_LENGTH_LEN, 0, 0, true));
+                    source.getMaxMsgLength(), INLONG_LENGTH_FIELD_OFFSET, INLONG_LENGTH_FIELD_LENGTH,
+                    INLONG_LENGTH_ADJUSTMENT, INLONG_INITIAL_BYTES_TO_STRIP, DEFAULT_FAIL_FAST));
             ch.pipeline().addLast("readTimeoutHandler",
-                    new ReadTimeoutHandler(DEFAULT_READ_IDLE_TIME, TimeUnit.MILLISECONDS));
-        }
+                    new ReadTimeoutHandler(source.getMaxReadIdleTimeMs(), TimeUnit.MILLISECONDS));
+        } else if (source.getProtocolName().equalsIgnoreCase(SourceConstants.SRC_PROTOCOL_TYPE_HTTP)) {
+            // add http message codec
+            ch.pipeline().addLast("msgCodec", new HttpServerCodec());
+            ch.pipeline().addLast("msgAggregator", new HttpObjectAggregator(source.getMaxMsgLength()));
+            ch.pipeline().addLast("readTimeoutHandler",
+                    new ReadTimeoutHandler(source.getMaxReadIdleTimeMs(), TimeUnit.MILLISECONDS));
 
-        if (processor != null) {
+        }
+        // build message handler
+        if (source.getChannelProcessor() != null) {
             try {
                 Class<? extends ChannelInboundHandlerAdapter> clazz =
-                        (Class<? extends ChannelInboundHandlerAdapter>) Class
-                                .forName(messageHandlerName);
-
-                Constructor<?> ctor = clazz.getConstructor(
-                        BaseSource.class, ServiceDecoder.class, ChannelGroup.class,
-                        String.class, String.class, Boolean.class,
-                        Integer.class, Boolean.class, MonitorIndex.class,
-                        MonitorIndexExt.class, String.class);
-
-                ChannelInboundHandlerAdapter messageHandler = (ChannelInboundHandlerAdapter) ctor
-                        .newInstance(source, serviceDecoder, allChannels, topic, attr,
-                                filterEmptyMsg, maxConnections,
-                                isCompressed, monitorIndex, monitorIndexExt, protocolType);
-
+                        (Class<? extends ChannelInboundHandlerAdapter>) Class.forName(source.getMessageHandlerName());
+                Constructor<?> ctor = clazz.getConstructor(BaseSource.class);
+                ChannelInboundHandlerAdapter messageHandler =
+                        (ChannelInboundHandlerAdapter) ctor.newInstance(source);
                 ch.pipeline().addLast("messageHandler", messageHandler);
             } catch (Exception e) {
-                LOG.info("SimpleChannelHandler.newInstance  has error:" + name, e);
+                LOG.error("{} newInstance {} failure!", source.getName(),
+                        source.getMessageHandlerName(), e);
             }
         }
     }

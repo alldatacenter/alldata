@@ -20,6 +20,7 @@ package org.apache.inlong.agent.db;
 import org.apache.inlong.common.db.CommandEntity;
 
 import javax.management.openmbean.KeyAlreadyExistsException;
+
 import java.io.Closeable;
 import java.util.List;
 

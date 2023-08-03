@@ -17,8 +17,6 @@
 
 package org.apache.inlong.manager.client.api.util;
 
-import org.apache.commons.collections.MapUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.inlong.manager.common.auth.Authentication;
 import org.apache.inlong.manager.common.auth.Authentication.AuthType;
 import org.apache.inlong.manager.common.auth.SecretTokenAuthentication;
@@ -33,6 +31,9 @@ import org.apache.inlong.manager.pojo.sort.BaseSortConf;
 import org.apache.inlong.manager.pojo.sort.BaseSortConf.SortType;
 import org.apache.inlong.manager.pojo.sort.FlinkSortConf;
 import org.apache.inlong.manager.pojo.sort.UserDefinedSortConf;
+
+import org.apache.commons.collections.MapUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;

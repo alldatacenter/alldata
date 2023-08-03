@@ -17,13 +17,14 @@
 
 package org.apache.inlong.tubemq.server.master.metamanage.metastore.dao.mapper;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
 import org.apache.inlong.tubemq.corebase.rv.ProcessResult;
 import org.apache.inlong.tubemq.server.common.statusdef.TopicStatus;
 import org.apache.inlong.tubemq.server.master.metamanage.metastore.dao.entity.BaseEntity;
 import org.apache.inlong.tubemq.server.master.metamanage.metastore.dao.entity.TopicDeployEntity;
+
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public interface TopicDeployMapper extends AbstractMapper {
 

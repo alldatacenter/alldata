@@ -19,6 +19,7 @@ package org.apache.inlong.agent.db;
 
 import org.apache.inlong.agent.conf.JobProfile;
 import org.apache.inlong.agent.constant.JobConstants;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

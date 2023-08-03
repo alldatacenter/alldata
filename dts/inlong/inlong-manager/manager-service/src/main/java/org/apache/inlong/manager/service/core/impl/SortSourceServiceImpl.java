@@ -17,15 +17,12 @@
 
 package org.apache.inlong.manager.service.core.impl;
 
-import com.google.gson.Gson;
-import org.apache.commons.codec.digest.DigestUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.inlong.common.constant.ClusterSwitch;
+import org.apache.inlong.common.constant.MQType;
 import org.apache.inlong.common.pojo.sdk.CacheZone;
 import org.apache.inlong.common.pojo.sdk.CacheZoneConfig;
 import org.apache.inlong.common.pojo.sdk.SortSourceConfigResponse;
 import org.apache.inlong.common.pojo.sdk.Topic;
-import org.apache.inlong.common.constant.MQType;
 import org.apache.inlong.manager.common.enums.ClusterType;
 import org.apache.inlong.manager.common.exceptions.BusinessException;
 import org.apache.inlong.manager.common.util.Preconditions;
@@ -37,6 +34,10 @@ import org.apache.inlong.manager.pojo.sort.standalone.SortSourceStreamInfo;
 import org.apache.inlong.manager.pojo.sort.standalone.SortSourceStreamSinkInfo;
 import org.apache.inlong.manager.service.core.SortConfigLoader;
 import org.apache.inlong.manager.service.core.SortSourceService;
+
+import com.google.gson.Gson;
+import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +46,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -79,7 +81,7 @@ public class SortSourceServiceImpl implements SortSourceService {
         }
     };
     private static final String KEY_AUTH = "authentication";
-    private static final String KEY_TENANT = "tenant";
+    private static final String KEY_TENANT = "pulsarTenant";
 
     private static final int RESPONSE_CODE_SUCCESS = 0;
     private static final int RESPONSE_CODE_NO_UPDATE = 1;
@@ -270,7 +272,7 @@ public class SortSourceServiceImpl implements SortSourceService {
                     task2Md5.put(taskName, md5);
                 } catch (Throwable t) {
                     LOGGER.warn("failed to parse sort source config of sortCluster={}, task={}",
-                            sortClusterName, taskName);
+                            sortClusterName, taskName, t);
                 }
             });
             newConfigMap.put(sortClusterName, task2Config);

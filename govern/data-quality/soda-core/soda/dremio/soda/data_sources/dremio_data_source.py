@@ -69,6 +69,7 @@ class DremioDataSource(DataSource):
         self.password = data_source_properties.get("password")
         self.schema = data_source_properties.get("schema")
         self.use_encryption = data_source_properties.get("use_encryption", "false")
+        self.routing_queue = data_source_properties.get("routing_queue", "")
 
     def connect(self):
         try:
@@ -84,7 +85,9 @@ class DremioDataSource(DataSource):
                 + ";PWD="
                 + self.password
                 + ";useEncryption="
-                + self.use_encryption,
+                + self.use_encryption
+                + ";routing_queue="
+                + self.routing_queue,
                 autocommit=True,
             )
         except Exception as e:

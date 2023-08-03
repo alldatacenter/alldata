@@ -23,8 +23,9 @@
     <parent>
         <groupId>org.apache.inlong</groupId>
         <artifactId>inlong</artifactId>
-        <version>1.7.0</version>
+        <version>1.8.0</version>
     </parent>
+
     <artifactId>inlong-sort-standalone</artifactId>
     <packaging>pom</packaging>
     <name>Apache InLong - Sort Standalone</name>
@@ -34,6 +35,10 @@
         <module>sort-standalone-source</module>
         <module>sort-standalone-dist</module>
     </modules>
+
+    <properties>
+        <inlong.root.dir>${project.parent.basedir}</inlong.root.dir>
+    </properties>
 
     <dependencies>
         <dependency>
@@ -191,7 +196,7 @@
         <dependency>
             <groupId>org.apache.hive</groupId>
             <artifactId>hive-jdbc</artifactId>
-            <version>${hive.version}</version>
+            <version>${hive3x.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.eclipse.jetty.orbit</groupId>

@@ -17,10 +17,11 @@
 
 package org.apache.inlong.tubemq.manager.controller.node.request;
 
-import java.util.List;
+import org.apache.inlong.tubemq.manager.service.tube.BrokerConf;
 
 import lombok.Data;
-import org.apache.inlong.tubemq.manager.service.tube.BrokerConf;
+
+import java.util.List;
 
 @Data
 public class CloneBrokersReq {

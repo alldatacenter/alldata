@@ -132,7 +132,7 @@ class DaskDataSource(DataSource):
             dd_show_columns_tmp.columns = ["column_name", "data_type", "extra", "comment"]
             dd_show_columns_tmp["table_name"] = table_name
             dd_show_columns_tmp["ordinal_position"] = dd_show_columns_tmp.index + 1
-            dd_show_columns = dd_show_columns.append(dd_show_columns_tmp, ignore_index=True)
+            dd_show_columns = pd.concat([dd_show_columns, dd_show_columns_tmp], ignore_index=True)
 
         self.context.create_table(self.sql_information_schema_columns(), dd_show_columns)
         return super().sql_get_tables_columns_metadata(include_patterns, exclude_patterns, table_names_only)

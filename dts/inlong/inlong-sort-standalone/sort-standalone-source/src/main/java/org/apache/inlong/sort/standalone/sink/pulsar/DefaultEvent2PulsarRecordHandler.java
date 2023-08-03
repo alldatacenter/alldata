@@ -20,6 +20,7 @@ package org.apache.inlong.sort.standalone.sink.pulsar;
 import org.apache.inlong.sdk.commons.protocol.EventConstants;
 import org.apache.inlong.sort.standalone.channel.ProfileEvent;
 import org.apache.inlong.sort.standalone.utils.InlongLoggerFactory;
+
 import org.slf4j.Logger;
 
 import java.io.ByteArrayOutputStream;

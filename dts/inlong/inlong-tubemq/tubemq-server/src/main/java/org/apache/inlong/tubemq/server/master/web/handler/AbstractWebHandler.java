@@ -17,10 +17,11 @@
 
 package org.apache.inlong.tubemq.server.master.web.handler;
 
-import static org.apache.inlong.tubemq.server.common.webbase.WebMethodMapper.getRegisteredWebMethod;
-import static org.apache.inlong.tubemq.server.common.webbase.WebMethodMapper.registerWebMethod;
 import org.apache.inlong.tubemq.server.master.TMaster;
 import org.apache.inlong.tubemq.server.master.metamanage.MetaDataService;
+
+import static org.apache.inlong.tubemq.server.common.webbase.WebMethodMapper.getRegisteredWebMethod;
+import static org.apache.inlong.tubemq.server.common.webbase.WebMethodMapper.registerWebMethod;
 
 public abstract class AbstractWebHandler {
 

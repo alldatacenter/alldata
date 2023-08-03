@@ -18,6 +18,7 @@
 package org.apache.inlong.sort.protocol.transformation;
 
 import org.apache.inlong.sort.SerializeBaseTest;
+
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

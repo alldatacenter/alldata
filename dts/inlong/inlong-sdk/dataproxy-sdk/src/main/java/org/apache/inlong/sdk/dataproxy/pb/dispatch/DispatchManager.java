@@ -17,18 +17,19 @@
 
 package org.apache.inlong.sdk.dataproxy.pb.dispatch;
 
+import org.apache.inlong.sdk.commons.protocol.SdkEvent;
+import org.apache.inlong.sdk.dataproxy.pb.context.ProfileEvent;
+
+import org.apache.flume.Context;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.atomic.AtomicBoolean;
-
-import org.apache.flume.Context;
-import org.apache.inlong.sdk.commons.protocol.SdkEvent;
-import org.apache.inlong.sdk.dataproxy.pb.context.ProfileEvent;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * DispatchManager

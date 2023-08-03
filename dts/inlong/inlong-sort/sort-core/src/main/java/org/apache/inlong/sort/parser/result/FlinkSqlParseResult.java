@@ -17,8 +17,6 @@
 
 package org.apache.inlong.sort.parser.result;
 
-import static org.apache.inlong.common.util.MaskDataUtils.maskSensitiveMessage;
-
 import com.google.common.base.Preconditions;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
@@ -28,6 +26,8 @@ import org.apache.flink.table.api.TableResult;
 
 import java.io.Serializable;
 import java.util.List;
+
+import static org.apache.inlong.common.util.MaskDataUtils.maskSensitiveMessage;
 
 /**
  * Flink sql parse result, It is a concrete implementation of ParseResult

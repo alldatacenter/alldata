@@ -17,7 +17,6 @@
 
 package org.apache.inlong.manager.service.listener.group;
 
-import lombok.extern.slf4j.Slf4j;
 import org.apache.inlong.manager.common.consts.InlongConstants;
 import org.apache.inlong.manager.common.enums.GroupStatus;
 import org.apache.inlong.manager.common.enums.ProcessEvent;
@@ -36,6 +35,8 @@ import org.apache.inlong.manager.service.stream.InlongStreamService;
 import org.apache.inlong.manager.workflow.WorkflowContext;
 import org.apache.inlong.manager.workflow.event.ListenerResult;
 import org.apache.inlong.manager.workflow.event.process.ProcessEventListener;
+
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -89,7 +90,7 @@ public class InitGroupCompleteListener implements ProcessEventListener {
 
             // update status of other related configs
             if (InlongConstants.DISABLE_CREATE_RESOURCE.equals(groupInfo.getEnableCreateResource())) {
-                if (InlongConstants.LIGHTWEIGHT_MODE.equals(groupInfo.getLightweight())) {
+                if (InlongConstants.DATASYNC_MODE.equals(groupInfo.getInlongGroupMode())) {
                     sourceService.updateStatus(groupId, null, SourceStatus.SOURCE_NORMAL.getCode(), operator);
                 } else {
                     sourceService.updateStatus(groupId, null, SourceStatus.TO_BE_ISSUED_ADD.getCode(), operator);

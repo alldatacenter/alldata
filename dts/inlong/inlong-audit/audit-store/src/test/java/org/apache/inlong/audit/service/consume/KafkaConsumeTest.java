@@ -25,6 +25,7 @@ import org.apache.inlong.audit.service.ClickHouseService;
 import org.apache.inlong.audit.service.ElasticsearchService;
 import org.apache.inlong.audit.service.InsertData;
 import org.apache.inlong.audit.service.MySqlService;
+
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.junit.Before;

@@ -72,11 +72,11 @@ jobs:
           path: |
             ~/.m2/repository
             !~/.m2/repository/org/apache/inlong
-          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-          restore-keys: ${{ runner.os }}-m2
+          key: ${{ runner.os }}-inlong-ut-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-inlong-ut
 
       - name: Build with Maven
-        run: mvn --batch-mode --update-snapshots -e -V clean install -DskipTests -Dhttp.keepAlive=false -Dmaven.wagon.http.pool=false -Dmaven.wagon.httpconnectionManager.ttlSeconds=120
+        run: mvn --batch-mode --update-snapshots -e -V clean install -DskipTests -Dhttp.keepAlive=false -Dmaven.wagon.http.pool=false -Dmaven.wagon.httpconnectionManager.ttlSeconds=120 -Daether.connector.http.reuseConnections=false -Daether.connector.requestTimeout=60000
         env:
           CI: false
 

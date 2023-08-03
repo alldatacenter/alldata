@@ -19,6 +19,7 @@ package org.apache.inlong.manager.web.auth.openapi;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.apache.shiro.authc.AuthenticationToken;
 
 /**
@@ -26,10 +27,11 @@ import org.apache.shiro.authc.AuthenticationToken;
  */
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class SecretToken implements AuthenticationToken {
 
     private String secretId;
-    private String secretKey;
+    private String secretKey = "defaultKey";
 
     @Override
     public Object getPrincipal() {

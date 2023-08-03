@@ -18,7 +18,7 @@
     <parent>
         <groupId>org.apache.seatunnel</groupId>
         <artifactId>connector-jdbc-e2e</artifactId>
-        <version>2.3.1</version>
+        <version>2.3.2</version>
     </parent>
 
     <artifactId>connector-jdbc-e2e-part-3</artifactId>
@@ -41,6 +41,11 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>net.snowflake</groupId>
+            <artifactId>snowflake-jdbc</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>org.testcontainers</groupId>
             <artifactId>mssqlserver</artifactId>
             <version>${testcontainer.version}</version>
@@ -58,10 +63,15 @@
             <artifactId>mssql-jdbc</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.vertica.jdbc</groupId>
+            <artifactId>vertica-jdbc</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
 
   <scm>
-    <tag>2.3.1</tag>
+    <tag>2.3.2</tag>
   </scm>
 </project>

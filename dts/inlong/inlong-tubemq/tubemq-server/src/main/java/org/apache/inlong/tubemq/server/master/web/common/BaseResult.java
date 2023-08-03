@@ -17,14 +17,16 @@
 
 package org.apache.inlong.tubemq.server.master.web.common;
 
+import org.apache.inlong.tubemq.corebase.utils.TStringUtils;
+
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.inlong.tubemq.corebase.utils.TStringUtils;
 
 /**
  * Paging algorithm package.

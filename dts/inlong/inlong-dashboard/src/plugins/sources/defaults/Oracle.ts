@@ -24,7 +24,7 @@ import { SourceInfo } from '../common/SourceInfo';
 import i18n from '@/i18n';
 
 const { I18n } = DataWithBackend;
-const { FieldDecorator } = RenderRow;
+const { FieldDecorator, SyncField } = RenderRow;
 const { ColumnDecorator } = RenderList;
 
 export default class OracleSource
@@ -39,6 +39,7 @@ export default class OracleSource
     }),
   })
   @ColumnDecorator()
+  @SyncField()
   @I18n('meta.Sources.Oracle.Hostname')
   hostname: string;
 
@@ -53,6 +54,7 @@ export default class OracleSource
     }),
   })
   @ColumnDecorator()
+  @SyncField()
   @I18n('meta.Sources.Oracle.Port')
   port: number;
 
@@ -64,6 +66,7 @@ export default class OracleSource
     }),
   })
   @ColumnDecorator()
+  @SyncField()
   @I18n('meta.Sources.Oracle.Username')
   username: string;
 
@@ -74,6 +77,7 @@ export default class OracleSource
       disabled: values?.status === 101,
     }),
   })
+  @SyncField()
   @I18n('meta.Sources.Oracle.Password')
   password: string;
 
@@ -84,6 +88,7 @@ export default class OracleSource
       disabled: values?.status === 101,
     }),
   })
+  @SyncField()
   @I18n('meta.Sources.Oracle.Database')
   database: string;
 
@@ -94,6 +99,7 @@ export default class OracleSource
       disabled: values?.status === 101,
     }),
   })
+  @SyncField()
   @I18n('meta.Sources.Oracle.SchemaName')
   schemaName: string;
 
@@ -104,6 +110,7 @@ export default class OracleSource
       disabled: values?.status === 101,
     }),
   })
+  @SyncField()
   @I18n('meta.Sources.Oracle.TableName')
   tableName: string;
 
@@ -125,6 +132,7 @@ export default class OracleSource
       ],
     }),
   })
+  @SyncField()
   @I18n('meta.Sources.Oracle.AllMigration')
   allMigration: boolean;
 
@@ -146,6 +154,7 @@ export default class OracleSource
       ],
     }),
   })
+  @SyncField()
   @I18n('meta.Sources.Oracle.ScanStartupMode')
   scanStartupMode: string;
 
@@ -155,6 +164,7 @@ export default class OracleSource
       disabled: values?.status === 101,
     }),
   })
+  @SyncField()
   @I18n('meta.Sources.Oracle.PrimaryKey')
   primaryKey: string;
 }

@@ -17,17 +17,6 @@
 
 package org.apache.inlong.sdk.dataproxy.pb;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicReference;
-
-import org.apache.flume.Context;
-import org.apache.flume.Transaction;
-import org.apache.flume.conf.Configurable;
-import org.apache.flume.lifecycle.LifecycleState;
 import org.apache.inlong.common.util.NetworkUtils;
 import org.apache.inlong.sdk.commons.protocol.SdkEvent;
 import org.apache.inlong.sdk.dataproxy.MessageSender;
@@ -36,8 +25,20 @@ import org.apache.inlong.sdk.dataproxy.SendResult;
 import org.apache.inlong.sdk.dataproxy.network.ProxysdkException;
 import org.apache.inlong.sdk.dataproxy.pb.channel.BufferQueueChannel;
 import org.apache.inlong.sdk.dataproxy.pb.context.CallbackProfile;
+
+import org.apache.flume.Context;
+import org.apache.flume.Transaction;
+import org.apache.flume.conf.Configurable;
+import org.apache.flume.lifecycle.LifecycleState;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * PbProtocolMessageSender

@@ -30,17 +30,18 @@ import (
 
 // Partition represents the metadata of a partition.
 type Partition struct {
-	topic        string
-	broker       *Node
-	partitionID  int32
-	partitionKey string
-	offset       int64
-	lastConsumed bool
-	consumeData  *ConsumeData
-	flowCtrl     *flowctrl.Result
-	freqCtrl     *flowctrl.Item
-	strategyData *strategyData
-	totalZeroCnt int32
+	topic          string
+	broker         *Node
+	partitionID    int32
+	partitionKey   string
+	offset         int64
+	lastConsumed   bool
+	consumeData    *ConsumeData
+	flowCtrl       *flowctrl.Result
+	freqCtrl       *flowctrl.Item
+	strategyData   *strategyData
+	totalZeroCnt   int32
+	delayTimestamp int64
 }
 
 // ConsumeData represents the consumption metadata of a partition.
@@ -108,7 +109,8 @@ func NewPartition(partition string) (*Partition, error) {
 		consumeData: &ConsumeData{
 			curDataDlt: util.InvalidValue,
 		},
-		freqCtrl: item,
+		freqCtrl:       item,
+		delayTimestamp: -2,
 	}, nil
 }
 
@@ -135,6 +137,10 @@ func (p *Partition) GetTopic() string {
 // GetBroker returns the broker.
 func (p *Partition) GetBroker() *Node {
 	return p.broker
+}
+
+func (p *Partition) GetDelayTimestamp() int64 {
+	return p.delayTimestamp
 }
 
 // String returns the metadata of a Partition as a string.

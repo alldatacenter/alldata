@@ -17,16 +17,18 @@
 
 package org.apache.inlong.dataproxy.metrics.audit;
 
-import org.apache.commons.lang3.math.NumberUtils;
-import org.apache.flume.Event;
 import org.apache.inlong.audit.AuditOperator;
 import org.apache.inlong.audit.util.AuditConfig;
+import org.apache.inlong.common.enums.DataProxyMsgEncType;
 import org.apache.inlong.common.msg.AttributeConstants;
 import org.apache.inlong.dataproxy.config.CommonConfigHolder;
 import org.apache.inlong.dataproxy.consts.ConfigConstants;
 import org.apache.inlong.dataproxy.metrics.DataProxyMetricItem;
 import org.apache.inlong.dataproxy.utils.Constants;
-import org.apache.inlong.dataproxy.utils.InLongMsgVer;
+
+import org.apache.commons.lang3.math.NumberUtils;
+import org.apache.flume.Event;
+
 import java.util.Map;
 
 /**
@@ -62,7 +64,7 @@ public class AuditUtils {
         }
         Map<String, String> headers = event.getHeaders();
         String pkgVersion = headers.get(ConfigConstants.MSG_ENCODE_VER);
-        if (InLongMsgVer.INLONG_V1.getName().equalsIgnoreCase(pkgVersion)) {
+        if (DataProxyMsgEncType.MSG_ENCODE_TYPE_PB.getStrId().equalsIgnoreCase(pkgVersion)) {
             String inlongGroupId = DataProxyMetricItem.getInlongGroupId(headers);
             String inlongStreamId = DataProxyMetricItem.getInlongStreamId(headers);
             long logTime = getLogTime(headers);
@@ -105,8 +107,7 @@ public class AuditUtils {
      */
     public static long getLogTime(Event event) {
         if (event != null) {
-            Map<String, String> headers = event.getHeaders();
-            return getLogTime(headers);
+            return getLogTime(event.getHeaders());
         }
         return System.currentTimeMillis();
     }

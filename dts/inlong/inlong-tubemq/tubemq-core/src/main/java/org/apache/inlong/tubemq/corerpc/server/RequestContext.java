@@ -17,9 +17,10 @@
 
 package org.apache.inlong.tubemq.corerpc.server;
 
-import java.net.SocketAddress;
 import org.apache.inlong.tubemq.corerpc.RequestWrapper;
 import org.apache.inlong.tubemq.corerpc.ResponseWrapper;
+
+import java.net.SocketAddress;
 
 public interface RequestContext {
 

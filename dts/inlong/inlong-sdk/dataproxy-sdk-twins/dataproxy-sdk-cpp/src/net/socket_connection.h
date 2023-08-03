@@ -118,6 +118,7 @@ namespace dataproxy_sdk
     bool parseBinaryAck(uint32_t total_len);   
     bool parseBinaryHB(uint32_t total_len);
     uint32_t parseAttr(char *attr, int32_t attr_len);
+    int parseErrorCode(char *attr, int32_t attr_len);
   };
 
 } // namespace dataproxy_sdk

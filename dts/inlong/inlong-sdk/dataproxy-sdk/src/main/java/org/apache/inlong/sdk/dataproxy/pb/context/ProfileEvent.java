@@ -17,10 +17,11 @@
 
 package org.apache.inlong.sdk.dataproxy.pb.context;
 
-import java.util.Map;
+import org.apache.inlong.sdk.dataproxy.pb.channel.ProfileTransaction;
 
 import org.apache.flume.Event;
-import org.apache.inlong.sdk.dataproxy.pb.channel.ProfileTransaction;
+
+import java.util.Map;
 
 /**
  * 

@@ -17,10 +17,11 @@
 
 package org.apache.inlong.manager.workflow.event.task;
 
-import com.google.common.collect.Lists;
 import org.apache.inlong.manager.common.enums.TaskEvent;
 import org.apache.inlong.manager.workflow.WorkflowContext;
 import org.apache.inlong.manager.workflow.event.EventListener;
+
+import com.google.common.collect.Lists;
 
 import java.util.List;
 

@@ -19,6 +19,7 @@ package org.apache.inlong.agent.plugin.message;
 
 import org.apache.inlong.agent.utils.AgentUtils;
 import org.apache.inlong.common.util.SnowFlake;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

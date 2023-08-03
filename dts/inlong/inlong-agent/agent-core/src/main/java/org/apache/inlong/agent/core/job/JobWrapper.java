@@ -17,9 +17,6 @@
 
 package org.apache.inlong.agent.core.job;
 
-import com.google.common.base.Preconditions;
-import com.google.common.base.Predicate;
-import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.inlong.agent.common.AgentThreadFactory;
 import org.apache.inlong.agent.conf.AgentConfiguration;
 import org.apache.inlong.agent.conf.JobProfile;
@@ -38,6 +35,10 @@ import org.apache.inlong.agent.state.State;
 import org.apache.inlong.agent.utils.ThreadUtils;
 import org.apache.inlong.common.constant.Constants;
 import org.apache.inlong.common.db.CommandEntity;
+
+import com.google.common.base.Preconditions;
+import com.google.common.base.Predicate;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

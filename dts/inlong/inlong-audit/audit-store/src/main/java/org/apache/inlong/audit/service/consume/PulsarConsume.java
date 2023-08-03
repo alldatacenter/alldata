@@ -17,12 +17,12 @@
 
 package org.apache.inlong.audit.service.consume;
 
-import com.google.common.base.Preconditions;
-
-import org.apache.commons.lang3.StringUtils;
 import org.apache.inlong.audit.config.MessageQueueConfig;
 import org.apache.inlong.audit.config.StoreConfig;
 import org.apache.inlong.audit.service.InsertData;
+
+import com.google.common.base.Preconditions;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.pulsar.client.api.AuthenticationFactory;
 import org.apache.pulsar.client.api.ClientBuilder;
 import org.apache.pulsar.client.api.Consumer;

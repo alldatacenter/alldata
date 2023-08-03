@@ -17,11 +17,12 @@
 
 package org.apache.inlong.tubemq.manager.controller.group.request;
 
+import org.apache.inlong.tubemq.manager.controller.node.request.BaseReq;
+import org.apache.inlong.tubemq.manager.controller.topic.request.GroupAuthItem;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.apache.inlong.tubemq.manager.controller.node.request.BaseReq;
-import org.apache.inlong.tubemq.manager.controller.topic.request.GroupAuthItem;
 
 import java.util.List;
 

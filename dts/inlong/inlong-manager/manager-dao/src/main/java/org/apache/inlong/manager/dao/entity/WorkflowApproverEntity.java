@@ -32,6 +32,7 @@ public class WorkflowApproverEntity implements Serializable {
     private Integer id;
     private String processName;
     private String taskName;
+    private String tenant;
     private String approvers;
     private String creator;
     private String modifier;

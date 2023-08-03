@@ -24,7 +24,7 @@ import { SinkInfo } from '../common/SinkInfo';
 import { sourceFields } from '../common/sourceFields';
 
 const { I18n } = DataWithBackend;
-const { FieldDecorator } = RenderRow;
+const { FieldDecorator, SyncField } = RenderRow;
 const { ColumnDecorator } = RenderList;
 
 const fieldTypesConf = {
@@ -72,6 +72,7 @@ export default class HiveSink extends SinkInfo implements DataWithBackend, Rende
     }),
   })
   @ColumnDecorator()
+  @SyncField()
   @I18n('JDBC URL')
   jdbcUrl: string;
 
@@ -83,6 +84,7 @@ export default class HiveSink extends SinkInfo implements DataWithBackend, Rende
     }),
   })
   @ColumnDecorator()
+  @SyncField()
   @I18n('meta.Sinks.PostgreSQL.DbName')
   dbName: string;
 
@@ -94,6 +96,7 @@ export default class HiveSink extends SinkInfo implements DataWithBackend, Rende
     }),
   })
   @ColumnDecorator()
+  @SyncField()
   @I18n('meta.Sinks.PostgreSQL.TableName')
   tableName: string;
 
@@ -105,6 +108,7 @@ export default class HiveSink extends SinkInfo implements DataWithBackend, Rende
     }),
   })
   @ColumnDecorator()
+  @SyncField()
   @I18n('meta.Sinks.PostgreSQL.PrimaryKey')
   primaryKey: string;
 
@@ -127,6 +131,7 @@ export default class HiveSink extends SinkInfo implements DataWithBackend, Rende
       ],
     }),
   })
+  @SyncField()
   @I18n('meta.Sinks.EnableCreateResource')
   enableCreateResource: number;
 
@@ -138,6 +143,7 @@ export default class HiveSink extends SinkInfo implements DataWithBackend, Rende
     }),
   })
   @ColumnDecorator()
+  @SyncField()
   @I18n('meta.Sinks.Username')
   username: string;
 
@@ -149,6 +155,7 @@ export default class HiveSink extends SinkInfo implements DataWithBackend, Rende
     }),
   })
   @ColumnDecorator()
+  @SyncField()
   @I18n('meta.Sinks.Password')
   password: string;
 
@@ -158,6 +165,8 @@ export default class HiveSink extends SinkInfo implements DataWithBackend, Rende
       size: 'small',
       editing: ![110, 130].includes(values?.status),
       columns: getFieldListColumns(values),
+      canBatchAdd: true,
+      upsertByFieldKey: true,
     }),
   })
   sinkFieldList: Record<string, unknown>[];

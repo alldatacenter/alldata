@@ -17,10 +17,12 @@
 
 package org.apache.inlong.sort.formats.common;
 
-import java.util.Objects;
-import javax.annotation.Nonnull;
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonCreator;
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonProperty;
+
+import javax.annotation.Nonnull;
+
+import java.util.Objects;
 
 /**
  * The format information for maps.

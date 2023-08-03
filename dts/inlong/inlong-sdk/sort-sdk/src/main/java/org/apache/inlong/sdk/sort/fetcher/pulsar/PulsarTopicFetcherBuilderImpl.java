@@ -17,12 +17,13 @@
 
 package org.apache.inlong.sdk.sort.fetcher.pulsar;
 
-import org.apache.commons.collections.CollectionUtils;
 import org.apache.inlong.sdk.sort.api.AbstractTopicFetcherBuilder;
 import org.apache.inlong.sdk.sort.api.TopicFetcher;
 import org.apache.inlong.sdk.sort.entity.InLongTopic;
 import org.apache.inlong.sdk.sort.impl.decode.MessageDeserializer;
 import org.apache.inlong.sdk.sort.interceptor.MsgTimeInterceptor;
+
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.pulsar.client.api.PulsarClient;
 
 import java.util.Objects;

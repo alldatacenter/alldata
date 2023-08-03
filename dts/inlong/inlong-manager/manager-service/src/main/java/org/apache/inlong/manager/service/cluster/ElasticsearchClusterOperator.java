@@ -17,8 +17,6 @@
 
 package org.apache.inlong.manager.service.cluster;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.inlong.manager.common.enums.ClusterType;
 import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
 import org.apache.inlong.manager.common.exceptions.BusinessException;
@@ -26,11 +24,17 @@ import org.apache.inlong.manager.common.util.CommonBeanUtils;
 import org.apache.inlong.manager.dao.entity.InlongClusterEntity;
 import org.apache.inlong.manager.pojo.cluster.ClusterInfo;
 import org.apache.inlong.manager.pojo.cluster.ClusterRequest;
+import org.apache.inlong.manager.pojo.cluster.es.ElasticsearchClusterDTO;
 import org.apache.inlong.manager.pojo.cluster.es.ElasticsearchClusterInfo;
 import org.apache.inlong.manager.pojo.cluster.es.ElasticsearchClusterRequest;
-import org.apache.inlong.manager.pojo.cluster.es.ElasticsearchClusterDTO;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Elasticsearch cluster operator.
@@ -56,7 +60,8 @@ public class ElasticsearchClusterOperator extends AbstractClusterOperator {
         ElasticsearchClusterRequest esRequest = (ElasticsearchClusterRequest) request;
         CommonBeanUtils.copyProperties(esRequest, targetEntity, true);
         try {
-            ElasticsearchClusterDTO dto = ElasticsearchClusterDTO.getFromRequest(esRequest);
+            ElasticsearchClusterDTO dto =
+                    ElasticsearchClusterDTO.getFromRequest(esRequest, targetEntity.getExtParams());
             targetEntity.setExtParams(mapper.writeValueAsString(dto));
         } catch (Exception e) {
             throw new BusinessException(ErrorCodeEnum.CLUSTER_INFO_INCORRECT,
@@ -76,5 +81,13 @@ public class ElasticsearchClusterOperator extends AbstractClusterOperator {
             CommonBeanUtils.copyProperties(dto, info);
         }
         return info;
+    }
+
+    @Override
+    public Object getClusterInfo(InlongClusterEntity entity) {
+        ElasticsearchClusterInfo elasticsearchClusterInfo = (ElasticsearchClusterInfo) this.getFromEntity(entity);
+        Map<String, String> map = new HashMap<>();
+        map.put("url", elasticsearchClusterInfo.getUrl());
+        return map;
     }
 }

@@ -84,6 +84,6 @@ public class InlongGroupApproveRequest {
             + " 0: report to DataProxy and respond when the DataProxy received data.\n"
             + " 1: report to DataProxy and respond after DataProxy sends data.\n"
             + " 2: report to MQ and respond when the MQ received data.", notes = "Current constraint is that all InLong Agents under one InlongGroup use the same type")
-    private Integer dataReportType = 0;
+    private Integer dataReportType;
 
 }

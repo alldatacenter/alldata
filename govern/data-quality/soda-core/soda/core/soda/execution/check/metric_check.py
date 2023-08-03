@@ -85,7 +85,7 @@ class MetricCheck(Check):
         self.metrics[metric_name] = metric
 
     def evaluate(self, metrics: Dict[str, Metric], historic_values: Dict[str, object]):
-        self.check_value = self.get_metric_value()
+        self.check_value = self.check_value or self.get_metric_value()
         self.set_outcome_based_on_check_value()
 
     def get_metric_value(self) -> object:

@@ -24,7 +24,7 @@ import { sourceFields } from '../common/sourceFields';
 import { SinkInfo } from '../common/SinkInfo';
 
 const { I18n } = DataWithBackend;
-const { FieldDecorator } = RenderRow;
+const { FieldDecorator, SyncField } = RenderRow;
 const { ColumnDecorator } = RenderList;
 
 const tdsqlPostgreSQLFieldTypes = [
@@ -69,6 +69,7 @@ export default class TDSQLPostgreSQLSink
     }),
   })
   @ColumnDecorator()
+  @SyncField()
   @I18n('JDBC URL')
   jdbcUrl: string;
 
@@ -80,6 +81,7 @@ export default class TDSQLPostgreSQLSink
     }),
   })
   @ColumnDecorator()
+  @SyncField()
   @I18n('meta.Sinks.TDSQLPostgreSQL.SchemaName')
   schemaName: string;
 
@@ -91,6 +93,7 @@ export default class TDSQLPostgreSQLSink
     }),
   })
   @ColumnDecorator()
+  @SyncField()
   @I18n('meta.Sinks.TDSQLPostgreSQL.TableName')
   tableName: string;
 
@@ -102,6 +105,7 @@ export default class TDSQLPostgreSQLSink
     }),
   })
   @ColumnDecorator()
+  @SyncField()
   @I18n('meta.Sinks.TDSQLPostgreSQL.PrimaryKey')
   primaryKey: string;
 
@@ -124,6 +128,7 @@ export default class TDSQLPostgreSQLSink
       ],
     }),
   })
+  @SyncField()
   @I18n('meta.Sinks.EnableCreateResource')
   enableCreateResource: number;
 
@@ -134,6 +139,7 @@ export default class TDSQLPostgreSQLSink
       disabled: [110, 130].includes(values?.status),
     }),
   })
+  @SyncField()
   @I18n('meta.Sinks.Username')
   username: string;
 
@@ -144,6 +150,7 @@ export default class TDSQLPostgreSQLSink
       disabled: [110, 130].includes(values?.status),
     }),
   })
+  @SyncField()
   @I18n('meta.Sinks.Password')
   password: string;
 
@@ -153,6 +160,8 @@ export default class TDSQLPostgreSQLSink
       size: 'small',
       editing: ![110, 130].includes(values?.status),
       columns: getFieldListColumns(values),
+      canBatchAdd: true,
+      upsertByFieldKey: true,
     }),
   })
   sinkFieldList: Record<string, unknown>[];

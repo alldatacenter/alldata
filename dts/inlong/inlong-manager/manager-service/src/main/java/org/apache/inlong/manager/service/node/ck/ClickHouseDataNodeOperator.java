@@ -17,8 +17,6 @@
 
 package org.apache.inlong.manager.service.node.ck;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.inlong.manager.common.consts.DataNodeType;
 import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
 import org.apache.inlong.manager.common.exceptions.BusinessException;
@@ -32,6 +30,9 @@ import org.apache.inlong.manager.pojo.node.ck.ClickHouseDataNodeInfo;
 import org.apache.inlong.manager.pojo.node.ck.ClickHouseDataNodeRequest;
 import org.apache.inlong.manager.service.node.AbstractDataNodeOperator;
 import org.apache.inlong.manager.service.resource.sink.ck.ClickHouseJdbcUtils;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -75,10 +76,10 @@ public class ClickHouseDataNodeOperator extends AbstractDataNodeOperator {
 
     @Override
     protected void setTargetEntity(DataNodeRequest request, DataNodeEntity targetEntity) {
-        ClickHouseDataNodeRequest ckDataNodeRequest = (ClickHouseDataNodeRequest) request;
-        CommonBeanUtils.copyProperties(ckDataNodeRequest, targetEntity, true);
+        ClickHouseDataNodeRequest nodeRequest = (ClickHouseDataNodeRequest) request;
+        CommonBeanUtils.copyProperties(nodeRequest, targetEntity, true);
         try {
-            ClickHouseDataNodeDTO dto = ClickHouseDataNodeDTO.getFromRequest(ckDataNodeRequest);
+            ClickHouseDataNodeDTO dto = ClickHouseDataNodeDTO.getFromRequest(nodeRequest, targetEntity.getExtParams());
             targetEntity.setExtParams(objectMapper.writeValueAsString(dto));
         } catch (Exception e) {
             throw new BusinessException(ErrorCodeEnum.SOURCE_INFO_INCORRECT,

@@ -17,13 +17,14 @@
 
 package org.apache.inlong.sdk.dataproxy.threads;
 
-import java.util.concurrent.TimeUnit;
-
-import org.apache.commons.lang3.StringUtils;
 import org.apache.inlong.sdk.dataproxy.ProxyClientConfig;
 import org.apache.inlong.sdk.dataproxy.utils.ServiceDiscoveryUtils;
+
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * manager fetch thread

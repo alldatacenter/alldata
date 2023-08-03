@@ -17,9 +17,10 @@
 
 package org.apache.inlong.sdk.dataproxy.network;
 
+import org.apache.inlong.sdk.dataproxy.codec.EncodeObject;
+
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
-import org.apache.inlong.sdk.dataproxy.codec.EncodeObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

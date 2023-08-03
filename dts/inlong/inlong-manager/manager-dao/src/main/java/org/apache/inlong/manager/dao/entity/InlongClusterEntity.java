@@ -42,6 +42,7 @@ public class InlongClusterEntity implements Serializable {
     private String extParams;
     private String description;
     private String heartbeat;
+    private String tenant;
     private String inCharges;
 
     private Integer status;

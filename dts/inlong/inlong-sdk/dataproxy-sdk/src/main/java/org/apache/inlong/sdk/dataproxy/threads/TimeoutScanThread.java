@@ -17,13 +17,14 @@
 
 package org.apache.inlong.sdk.dataproxy.threads;
 
-import io.netty.channel.Channel;
 import org.apache.inlong.sdk.dataproxy.FileCallback;
 import org.apache.inlong.sdk.dataproxy.ProxyClientConfig;
 import org.apache.inlong.sdk.dataproxy.SendResult;
 import org.apache.inlong.sdk.dataproxy.network.ClientMgr;
 import org.apache.inlong.sdk.dataproxy.network.QueueObject;
 import org.apache.inlong.sdk.dataproxy.network.TimeScanObject;
+
+import io.netty.channel.Channel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

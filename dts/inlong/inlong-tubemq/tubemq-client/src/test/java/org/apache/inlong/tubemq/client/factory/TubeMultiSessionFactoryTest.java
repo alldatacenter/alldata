@@ -17,17 +17,19 @@
 
 package org.apache.inlong.tubemq.client.factory;
 
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 import org.apache.inlong.tubemq.client.config.TubeClientConfig;
 import org.apache.inlong.tubemq.corebase.cluster.MasterInfo;
 import org.apache.inlong.tubemq.corebase.utils.AddressUtils;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PowerMockIgnore;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
+
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 @PowerMockIgnore("javax.management.*")
 @RunWith(PowerMockRunner.class)

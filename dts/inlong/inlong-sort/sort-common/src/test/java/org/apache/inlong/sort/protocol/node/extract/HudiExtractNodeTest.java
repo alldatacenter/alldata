@@ -17,10 +17,6 @@
 
 package org.apache.inlong.sort.protocol.node.extract;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
 import org.apache.inlong.sort.SerializeBaseTest;
 import org.apache.inlong.sort.formats.common.DecimalFormatInfo;
 import org.apache.inlong.sort.formats.common.DoubleFormatInfo;
@@ -28,6 +24,11 @@ import org.apache.inlong.sort.formats.common.IntFormatInfo;
 import org.apache.inlong.sort.formats.common.StringFormatInfo;
 import org.apache.inlong.sort.protocol.FieldInfo;
 import org.apache.inlong.sort.protocol.constant.HudiConstant.CatalogType;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * Test for {@link HudiExtractNode}

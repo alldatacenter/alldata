@@ -17,10 +17,12 @@
 
 package org.apache.inlong.sdk.sort.util;
 
-import java.util.concurrent.TimeUnit;
 import org.apache.inlong.sdk.sort.api.SortClientConfig;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.concurrent.TimeUnit;
 
 public abstract class PeriodicTask implements Runnable {
 

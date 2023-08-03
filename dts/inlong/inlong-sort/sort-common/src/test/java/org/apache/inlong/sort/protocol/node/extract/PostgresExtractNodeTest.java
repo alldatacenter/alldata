@@ -22,6 +22,7 @@ import org.apache.inlong.sort.SerializeBaseTest;
 import org.apache.inlong.sort.formats.common.IntFormatInfo;
 import org.apache.inlong.sort.formats.common.StringFormatInfo;
 import org.apache.inlong.sort.protocol.FieldInfo;
+
 import org.junit.Assert;
 import org.junit.Test;
 

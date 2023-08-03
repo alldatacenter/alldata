@@ -17,13 +17,6 @@
 
 package org.apache.inlong.tubemq.server.master.web.action.screen;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import javax.servlet.http.HttpServletRequest;
-import org.apache.commons.collections.CollectionUtils;
 import org.apache.inlong.tubemq.corebase.TokenConstants;
 import org.apache.inlong.tubemq.corebase.cluster.BrokerInfo;
 import org.apache.inlong.tubemq.corebase.cluster.Partition;
@@ -41,6 +34,16 @@ import org.apache.inlong.tubemq.server.master.nodemanage.nodebroker.TopicPSInfoM
 import org.apache.inlong.tubemq.server.master.nodemanage.nodeconsumer.ConsumerInfoHolder;
 import org.apache.inlong.tubemq.server.master.web.simplemvc.Action;
 import org.apache.inlong.tubemq.server.master.web.simplemvc.RequestContext;
+
+import org.apache.commons.collections.CollectionUtils;
+
+import javax.servlet.http.HttpServletRequest;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class Master implements Action {
 

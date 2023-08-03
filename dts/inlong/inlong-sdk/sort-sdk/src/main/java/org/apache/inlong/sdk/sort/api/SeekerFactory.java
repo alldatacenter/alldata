@@ -20,6 +20,7 @@ package org.apache.inlong.sdk.sort.api;
 import org.apache.inlong.sdk.sort.entity.InLongTopic;
 import org.apache.inlong.sdk.sort.fetcher.kafka.KafkaSeeker;
 import org.apache.inlong.sdk.sort.fetcher.pulsar.PulsarSeeker;
+
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.pulsar.client.api.Consumer;
 

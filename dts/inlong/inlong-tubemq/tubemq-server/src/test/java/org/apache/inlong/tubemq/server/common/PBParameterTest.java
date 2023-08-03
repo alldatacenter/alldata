@@ -17,15 +17,17 @@
 
 package org.apache.inlong.tubemq.server.common;
 
+import org.apache.inlong.tubemq.corebase.TErrCodeConstants;
+import org.apache.inlong.tubemq.corebase.rv.ProcessResult;
+import org.apache.inlong.tubemq.server.common.paramcheck.PBParameterUtils;
+
+import org.junit.Assert;
+import org.junit.Test;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import org.apache.inlong.tubemq.corebase.TErrCodeConstants;
-import org.apache.inlong.tubemq.corebase.rv.ProcessResult;
-import org.apache.inlong.tubemq.server.common.paramcheck.PBParameterUtils;
-import org.junit.Assert;
-import org.junit.Test;
 
 public class PBParameterTest {
 

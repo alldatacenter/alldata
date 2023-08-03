@@ -17,17 +17,22 @@
 
 package org.apache.inlong.dataproxy.config;
 
-import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.math.NumberUtils;
-import org.apache.flume.Context;
 import org.apache.inlong.dataproxy.sink.common.DefaultEventHandler;
 import org.apache.inlong.dataproxy.sink.mq.AllCacheClusterSelector;
 import org.apache.inlong.sdk.commons.protocol.ProxySdk;
+
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.math.NumberUtils;
+import org.apache.flume.Context;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.security.SecureRandom;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -41,7 +46,7 @@ public class CommonConfigHolder {
 
     public static final Logger LOG = LoggerFactory.getLogger(CommonConfigHolder.class);
     // configure file name
-    private static final String COMMON_CONFIG_FILE_NAME = "common.properties";
+    public static final String COMMON_CONFIG_FILE_NAME = "common.properties";
     // **** allowed keys and default value, begin
     // cluster tag
     public static final String KEY_PROXY_CLUSTER_TAG = "proxy.cluster.tag";
@@ -67,14 +72,43 @@ public class CommonConfigHolder {
     // manager auth secret key
     public static final String KEY_MANAGER_AUTH_SECRET_KEY = "manager.auth.secretKey";
     // configure file check interval
+    private static final String KEY_META_CONFIG_SYNC_INTERVAL_MS = "meta.config.sync.interval.ms";
     private static final String KEY_CONFIG_CHECK_INTERVAL_MS = "configCheckInterval";
-    public static final long VAL_DEF_CONFIG_CHECK_INTERVAL_MS = 60000L;
-    // Whether to accept messages without mapping between groupId/streamId and topic
-    public static final String KEY_NOTFOUND_TOPIC_ACCEPT = "source.topic.notfound.accept";
-    public static final boolean VAL_DEF_NOTFOUND_TOPIC_ACCEPT = false;
+    public static final long VAL_DEF_CONFIG_SYNC_INTERVAL_MS = 60000L;
+    public static final long VAL_MIN_CONFIG_SYNC_INTERVAL_MS = 10000L;
+    // whether to startup using the local metadata.json file without connecting to the Manager
+    private static final String KEY_ENABLE_STARTUP_USING_LOCAL_META_FILE =
+            "startup.using.local.meta.file.enable";
+    public static final boolean VAL_DEF_ENABLE_STARTUP_USING_LOCAL_META_FILE = false;
+    // whether to accept messages without mapping between groupId/streamId and topic
+    public static final String KEY_ENABLE_UNCONFIGURED_TOPIC_ACCEPT = "id2topic.unconfigured.accept.enable";
+    public static final boolean VAL_DEF_ENABLE_UNCONFIGURED_TOPIC_ACCEPT = false;
+    // default topics configure key, multiple topic settings are separated by "\\s+".
+    public static final String KEY_UNCONFIGURED_TOPIC_DEFAULT_TOPICS = "id2topic.unconfigured.default.topics";
+    public static final String VAL_DEFAULT_TOPIC = "test";
     // whether enable whitelist, optional field.
     public static final String KEY_ENABLE_WHITELIST = "proxy.enable.whitelist";
     public static final boolean VAL_DEF_ENABLE_WHITELIST = false;
+    // whether enable file metric, optional field.
+    public static final String KEY_ENABLE_FILE_METRIC = "file.metric.enable";
+    public static final boolean VAL_DEF_ENABLE_FILE_METRIC = true;
+    // file metric statistic interval (second)
+    public static final String KEY_FILE_METRIC_STAT_INTERVAL_SEC = "file.metric.stat.interval.sec";
+    public static final int VAL_DEF_FILE_METRIC_STAT_INVL_SEC = 60;
+    public static final int VAL_MIN_FILE_METRIC_STAT_INVL_SEC = 0;
+    // file metric max statistic key count
+    public static final String KEY_FILE_METRIC_MAX_CACHE_CNT = "file.metric.max.cache.cnt";
+    public static final int VAL_DEF_FILE_METRIC_MAX_CACHE_CNT = 1000000;
+    public static final int VAL_MIN_FILE_METRIC_MAX_CACHE_CNT = 0;
+    // source metric statistic name
+    public static final String KEY_FILE_METRIC_SOURCE_OUTPUT_NAME = "file.metric.source.output.name";
+    public static final String VAL_DEF_FILE_METRIC_SOURCE_OUTPUT_NAME = "Source";
+    // sink metric statistic name
+    public static final String KEY_FILE_METRIC_SINK_OUTPUT_NAME = "file.metric.sink.output.name";
+    public static final String VAL_DEF_FILE_METRIC_SINK_OUTPUT_NAME = "Sink";
+    // event metric statistic name
+    public static final String KEY_FILE_METRIC_EVENT_OUTPUT_NAME = "file.metric.event.output.name";
+    public static final String VAL_DEF_FILE_METRIC_EVENT_OUTPUT_NAME = "Stats";
     // Audit fields
     public static final String KEY_ENABLE_AUDIT = "audit.enable";
     public static final boolean VAL_DEF_ENABLE_AUDIT = true;
@@ -85,7 +119,12 @@ public class CommonConfigHolder {
     public static final int VAL_DEF_AUDIT_MAX_CACHE_ROWS = 2000000;
     public static final String KEY_AUDIT_FORMAT_INTERVAL_MS = "auditFormatInterval";
     public static final long VAL_DEF_AUDIT_FORMAT_INTERVAL_MS = 60000L;
-    // Whether response after save msg
+    // whether to retry after the message send failure
+    public static final String KEY_ENABLE_SEND_RETRY_AFTER_FAILURE = "send.retry.after.failure";
+    public static final boolean VAL_DEF_ENABLE_SEND_RETRY_AFTER_FAILURE = true;
+    // max retry count
+    public static final String KEY_MAX_RETRIES_AFTER_FAILURE = "max.retries.after.failure";
+    public static final int VAL_DEF_MAX_RETRIES_AFTER_FAILURE = -1;
     public static final String KEY_RESPONSE_AFTER_SAVE = "isResponseAfterSave";
     public static final boolean VAL_DEF_RESPONSE_AFTER_SAVE = false;
     // Same as KEY_MAX_RESPONSE_TIMEOUT_MS = "maxResponseTimeoutMs";
@@ -124,7 +163,8 @@ public class CommonConfigHolder {
     private IManagerIpListParser ipListParser = null;
     private String managerAuthSecretId = "";
     private String managerAuthSecretKey = "";
-    private long configChkInvlMs = VAL_DEF_CONFIG_CHECK_INTERVAL_MS;
+    private boolean enableStartupUsingLocalMetaFile = VAL_DEF_ENABLE_STARTUP_USING_LOCAL_META_FILE;
+    private long metaConfigSyncInvlMs = VAL_DEF_CONFIG_SYNC_INTERVAL_MS;
     private boolean enableAudit = VAL_DEF_ENABLE_AUDIT;
     private final HashSet<String> auditProxys = new HashSet<>();
     private String auditFilePath = VAL_DEF_AUDIT_FILE_PATH;
@@ -132,7 +172,8 @@ public class CommonConfigHolder {
     private long auditFormatInvlMs = VAL_DEF_AUDIT_FORMAT_INTERVAL_MS;
     private boolean responseAfterSave = VAL_DEF_RESPONSE_AFTER_SAVE;
     private long maxResAfterSaveTimeout = VAL_DEF_MAX_RAS_TIMEOUT_MS;
-    private boolean noTopicAccept = VAL_DEF_NOTFOUND_TOPIC_ACCEPT;
+    private boolean enableUnConfigTopicAccept = VAL_DEF_ENABLE_UNCONFIGURED_TOPIC_ACCEPT;
+    private List<String> defaultTopics = Arrays.asList(VAL_DEFAULT_TOPIC);
     private boolean enableWhiteList = VAL_DEF_ENABLE_WHITELIST;
     private int maxBufferQueueSizeKb = VAL_DEF_MAX_BUFFERQUEUE_SIZE_KB;
     private String eventHandler = VAL_DEF_EVENT_HANDLER;
@@ -140,6 +181,14 @@ public class CommonConfigHolder {
     private String proxyNodeId = VAL_DEF_PROXY_NODE_ID;
     private String msgCompressType = VAL_DEF_MSG_COMPRESS_TYPE;
     private int prometheusHttpPort = VAL_DEF_PROMETHEUS_HTTP_PORT;
+    private boolean enableFileMetric = VAL_DEF_ENABLE_FILE_METRIC;
+    private int fileMetricStatInvlSec = VAL_DEF_FILE_METRIC_STAT_INVL_SEC;
+    private int fileMetricStatCacheCnt = VAL_DEF_FILE_METRIC_MAX_CACHE_CNT;
+    private String fileMetricSourceOutName = VAL_DEF_FILE_METRIC_SOURCE_OUTPUT_NAME;
+    private String fileMetricSinkOutName = VAL_DEF_FILE_METRIC_SINK_OUTPUT_NAME;
+    private String fileMetricEventOutName = VAL_DEF_FILE_METRIC_EVENT_OUTPUT_NAME;
+    private boolean enableSendRetryAfterFailure = VAL_DEF_ENABLE_SEND_RETRY_AFTER_FAILURE;
+    private int maxRetriesAfterFailure = VAL_DEF_MAX_RETRIES_AFTER_FAILURE;
 
     /**
      * get instance for common.properties config manager
@@ -200,12 +249,24 @@ public class CommonConfigHolder {
         return clusterExtTag;
     }
 
-    public long getConfigChkInvlMs() {
-        return configChkInvlMs;
+    public long getMetaConfigSyncInvlMs() {
+        return metaConfigSyncInvlMs;
     }
 
-    public boolean isNoTopicAccept() {
-        return noTopicAccept;
+    public boolean isEnableUnConfigTopicAccept() {
+        return enableUnConfigTopicAccept;
+    }
+
+    public List<String> getDefTopics() {
+        return defaultTopics;
+    }
+
+    public String getRandDefTopics() {
+        if (defaultTopics.isEmpty()) {
+            return null;
+        }
+        SecureRandom rand = new SecureRandom();
+        return defaultTopics.get(rand.nextInt(defaultTopics.size()));
     }
 
     public boolean isEnableWhiteList() {
@@ -230,6 +291,18 @@ public class CommonConfigHolder {
 
     public boolean isEnableAudit() {
         return enableAudit;
+    }
+
+    public boolean isEnableFileMetric() {
+        return enableFileMetric;
+    }
+
+    public int getFileMetricStatInvlSec() {
+        return fileMetricStatInvlSec;
+    }
+
+    public int getFileMetricStatCacheCnt() {
+        return fileMetricStatCacheCnt;
     }
 
     public HashSet<String> getAuditProxys() {
@@ -260,6 +333,10 @@ public class CommonConfigHolder {
         return maxBufferQueueSizeKb;
     }
 
+    public boolean isEnableStartupUsingLocalMetaFile() {
+        return enableStartupUsingLocalMetaFile;
+    }
+
     public String getEventHandler() {
         return eventHandler;
     }
@@ -278,6 +355,26 @@ public class CommonConfigHolder {
 
     public String getMsgCompressType() {
         return msgCompressType;
+    }
+
+    public String getFileMetricSourceOutName() {
+        return fileMetricSourceOutName;
+    }
+
+    public String getFileMetricSinkOutName() {
+        return fileMetricSinkOutName;
+    }
+
+    public String getFileMetricEventOutName() {
+        return fileMetricEventOutName;
+    }
+
+    public boolean isEnableSendRetryAfterFailure() {
+        return enableSendRetryAfterFailure;
+    }
+
+    public int getMaxRetriesAfterFailure() {
+        return maxRetriesAfterFailure;
     }
 
     private void preReadFields() {
@@ -301,15 +398,41 @@ public class CommonConfigHolder {
         if (StringUtils.isNotEmpty(tmpValue)) {
             this.clusterExtTag = tmpValue.trim();
         }
-        // read configure check interval
-        tmpValue = this.props.get(KEY_CONFIG_CHECK_INTERVAL_MS);
-        if (StringUtils.isNotEmpty(tmpValue)) {
-            this.configChkInvlMs = NumberUtils.toLong(tmpValue.trim(), VAL_DEF_CONFIG_CHECK_INTERVAL_MS);
+        // read configure sync interval
+        tmpValue = this.props.get(KEY_META_CONFIG_SYNC_INTERVAL_MS);
+        if (StringUtils.isBlank(tmpValue)) {
+            tmpValue = this.props.get(KEY_CONFIG_CHECK_INTERVAL_MS);
         }
-        // read whether accept msg without topic
-        tmpValue = this.props.get(KEY_NOTFOUND_TOPIC_ACCEPT);
         if (StringUtils.isNotEmpty(tmpValue)) {
-            this.noTopicAccept = "TRUE".equalsIgnoreCase(tmpValue.trim());
+            long tmpSyncInvMs = NumberUtils.toLong(tmpValue.trim(), VAL_DEF_CONFIG_SYNC_INTERVAL_MS);
+            if (tmpSyncInvMs >= VAL_MIN_CONFIG_SYNC_INTERVAL_MS) {
+                this.metaConfigSyncInvlMs = tmpSyncInvMs;
+            }
+        }
+        // read enable startup using local meta file
+        tmpValue = this.props.get(KEY_ENABLE_STARTUP_USING_LOCAL_META_FILE);
+        if (StringUtils.isNotEmpty(tmpValue)) {
+            this.enableStartupUsingLocalMetaFile = "TRUE".equalsIgnoreCase(tmpValue.trim());
+        }
+        // read whether accept msg without id2topic configure
+        tmpValue = this.props.get(KEY_ENABLE_UNCONFIGURED_TOPIC_ACCEPT);
+        if (StringUtils.isNotEmpty(tmpValue)) {
+            this.enableUnConfigTopicAccept = "TRUE".equalsIgnoreCase(tmpValue.trim());
+        }
+        // read default topics
+        tmpValue = this.props.get(KEY_UNCONFIGURED_TOPIC_DEFAULT_TOPICS);
+        if (StringUtils.isNotBlank(tmpValue)) {
+            List<String> tmpList = new ArrayList<>();
+            String[] topicItems = tmpValue.split("\\s+");
+            for (String item : topicItems) {
+                if (StringUtils.isBlank(item)) {
+                    continue;
+                }
+                tmpList.add(item.trim());
+            }
+            if (tmpList.size() > 0) {
+                defaultTopics = tmpList;
+            }
         }
         // read enable whitelist
         tmpValue = this.props.get(KEY_ENABLE_WHITELIST);
@@ -330,6 +453,42 @@ public class CommonConfigHolder {
         tmpValue = this.props.get(KEY_MANAGER_AUTH_SECRET_KEY);
         if (StringUtils.isNotBlank(tmpValue)) {
             this.managerAuthSecretKey = tmpValue.trim();
+        }
+        // read whether enable file metric
+        tmpValue = this.props.get(KEY_ENABLE_FILE_METRIC);
+        if (StringUtils.isNotEmpty(tmpValue)) {
+            this.enableFileMetric = "TRUE".equalsIgnoreCase(tmpValue.trim());
+        }
+        // read file metric statistic interval
+        tmpValue = this.props.get(KEY_FILE_METRIC_STAT_INTERVAL_SEC);
+        if (StringUtils.isNotEmpty(tmpValue)) {
+            int statInvl = NumberUtils.toInt(tmpValue.trim(), VAL_DEF_FILE_METRIC_STAT_INVL_SEC);
+            if (statInvl >= VAL_MIN_FILE_METRIC_MAX_CACHE_CNT) {
+                this.fileMetricStatInvlSec = statInvl;
+            }
+        }
+        // read file metric statistic max cache count
+        tmpValue = this.props.get(KEY_FILE_METRIC_MAX_CACHE_CNT);
+        if (StringUtils.isNotEmpty(tmpValue)) {
+            int maxCacheCnt = NumberUtils.toInt(tmpValue.trim(), VAL_DEF_FILE_METRIC_MAX_CACHE_CNT);
+            if (maxCacheCnt >= VAL_MIN_FILE_METRIC_STAT_INVL_SEC) {
+                this.fileMetricStatCacheCnt = maxCacheCnt;
+            }
+        }
+        // read source file statistic output name
+        tmpValue = this.props.get(KEY_FILE_METRIC_SOURCE_OUTPUT_NAME);
+        if (StringUtils.isNotBlank(tmpValue)) {
+            this.fileMetricSourceOutName = tmpValue.trim();
+        }
+        // read sink file statistic output name
+        tmpValue = this.props.get(KEY_FILE_METRIC_SINK_OUTPUT_NAME);
+        if (StringUtils.isNotBlank(tmpValue)) {
+            this.fileMetricSinkOutName = tmpValue.trim();
+        }
+        // read event file statistic output name
+        tmpValue = this.props.get(KEY_FILE_METRIC_EVENT_OUTPUT_NAME);
+        if (StringUtils.isNotBlank(tmpValue)) {
+            this.fileMetricEventOutName = tmpValue.trim();
         }
         // read whether enable audit
         tmpValue = this.props.get(KEY_ENABLE_AUDIT);
@@ -401,6 +560,19 @@ public class CommonConfigHolder {
         tmpValue = this.props.get(KEY_PROMETHEUS_HTTP_PORT);
         if (StringUtils.isNotEmpty(tmpValue)) {
             this.prometheusHttpPort = NumberUtils.toInt(tmpValue.trim(), VAL_DEF_PROMETHEUS_HTTP_PORT);
+        }
+        // read whether retry send message after sent failure
+        tmpValue = this.props.get(KEY_ENABLE_SEND_RETRY_AFTER_FAILURE);
+        if (StringUtils.isNotEmpty(tmpValue)) {
+            this.enableSendRetryAfterFailure = "TRUE".equalsIgnoreCase(tmpValue.trim());
+        }
+        // read max retry count
+        tmpValue = this.props.get(KEY_MAX_RETRIES_AFTER_FAILURE);
+        if (StringUtils.isNotBlank(tmpValue)) {
+            int retries = NumberUtils.toInt(tmpValue.trim(), VAL_DEF_MAX_RETRIES_AFTER_FAILURE);
+            if (retries >= 0) {
+                this.maxRetriesAfterFailure = retries;
+            }
         }
         // initial ip parser
         try {

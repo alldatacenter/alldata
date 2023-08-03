@@ -33,6 +33,7 @@ public class InlongClusterTagEntity implements Serializable {
     private String clusterTag;
     private String extParams;
     private String description;
+    private String tenant;
     private String inCharges;
 
     private Integer status;

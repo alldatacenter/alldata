@@ -17,15 +17,9 @@
 
 package org.apache.inlong.manager.service.user;
 
-import com.github.pagehelper.Page;
-import com.github.pagehelper.PageHelper;
-import com.google.common.base.Joiner;
-import com.google.common.collect.Sets;
-import org.apache.commons.lang3.RandomStringUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.inlong.manager.common.consts.InlongConstants;
 import org.apache.inlong.manager.common.enums.ErrorCodeEnum;
-import org.apache.inlong.manager.common.enums.UserTypeEnum;
+import org.apache.inlong.manager.common.enums.TenantUserTypeEnum;
 import org.apache.inlong.manager.common.exceptions.BusinessException;
 import org.apache.inlong.manager.common.util.AESUtils;
 import org.apache.inlong.manager.common.util.CommonBeanUtils;
@@ -51,10 +45,18 @@ import org.apache.inlong.manager.pojo.common.PageResult;
 import org.apache.inlong.manager.pojo.consume.InlongConsumePageRequest;
 import org.apache.inlong.manager.pojo.group.InlongGroupPageRequest;
 import org.apache.inlong.manager.pojo.node.DataNodePageRequest;
+import org.apache.inlong.manager.pojo.user.LoginUserUtils;
 import org.apache.inlong.manager.pojo.user.UserInfo;
 import org.apache.inlong.manager.pojo.user.UserLoginLockStatus;
 import org.apache.inlong.manager.pojo.user.UserLoginRequest;
 import org.apache.inlong.manager.pojo.user.UserRequest;
+
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import com.google.common.base.Joiner;
+import com.google.common.collect.Sets;
+import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -102,6 +104,8 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserEntityMapper userMapper;
     @Autowired
+    private TenantRoleService tenantRoleService;
+    @Autowired
     private InlongGroupEntityMapper groupMapper;
     @Autowired
     private InlongClusterEntityMapper clusterMapper;
@@ -145,6 +149,9 @@ public class UserServiceImpl implements UserService {
         }
 
         Preconditions.expectTrue(userMapper.insert(entity) > 0, "Create user failed");
+        Preconditions.expectTrue(tenantRoleService.saveDefault(username, currentUser) > 0,
+                "Add default tenant role failed");
+
         LOGGER.debug("success to create user info={}", request);
         return entity.getId();
     }
@@ -155,7 +162,7 @@ public class UserServiceImpl implements UserService {
         UserEntity entity = userMapper.selectById(userId);
         Preconditions.expectNotNull(entity, "User not exists with id " + userId);
         UserEntity curUser = userMapper.selectByName(currentUser);
-        Preconditions.expectTrue(Objects.equals(UserTypeEnum.ADMIN.getCode(), curUser.getAccountType())
+        Preconditions.expectTrue(Objects.equals(TenantUserTypeEnum.TENANT_ADMIN.getCode(), curUser.getAccountType())
                 || Objects.equals(entity.getName(), currentUser),
                 "Current user does not have permission to get other users' info");
 
@@ -223,13 +230,13 @@ public class UserServiceImpl implements UserService {
         // Whether the current user is a manager
         UserEntity currentUserEntity = userMapper.selectByName(currentUser);
         String updateName = request.getName();
-        boolean isAdmin = Objects.equals(UserTypeEnum.ADMIN.getCode(), currentUserEntity.getAccountType());
+        boolean isAdmin = Objects.equals(TenantUserTypeEnum.TENANT_ADMIN.getCode(), currentUserEntity.getAccountType());
         Preconditions.expectTrue(isAdmin || Objects.equals(updateName, currentUser),
                 "You are not a manager and do not have permission to update other users");
 
         // manager cannot set himself as an ordinary
         boolean managerToOrdinary = isAdmin
-                && Objects.equals(UserTypeEnum.OPERATOR.getCode(), request.getAccountType())
+                && Objects.equals(TenantUserTypeEnum.TENANT_OPERATOR.getCode(), request.getAccountType())
                 && Objects.equals(currentUser, updateName);
         Preconditions.expectFalse(managerToOrdinary, "You are a manager and you cannot change to an ordinary user");
 
@@ -286,7 +293,7 @@ public class UserServiceImpl implements UserService {
         // Whether the current user is an administrator
         UserEntity curUser = userMapper.selectByName(currentUser);
         UserEntity entity = userMapper.selectById(userId);
-        Preconditions.expectTrue(curUser.getAccountType().equals(UserTypeEnum.ADMIN.getCode()),
+        Preconditions.expectTrue(curUser.getAccountType().equals(TenantUserTypeEnum.TENANT_ADMIN.getCode()),
                 "Current user is not a manager and does not have permission to delete users");
         Preconditions.expectTrue(!Objects.equals(entity.getName(), currentUser),
                 "Current user does not have permission to delete himself");
@@ -350,8 +357,8 @@ public class UserServiceImpl implements UserService {
     public void checkUser(String inCharges, String user, String errMsg) {
         UserEntity userEntity = userMapper.selectByName(user);
         boolean isInCharge = Preconditions.inSeparatedString(user, inCharges, InlongConstants.COMMA);
-        Preconditions.expectTrue(isInCharge || UserTypeEnum.ADMIN.getCode().equals(userEntity.getAccountType()),
-                errMsg);
+        Preconditions.expectTrue(isInCharge
+                || TenantUserTypeEnum.TENANT_ADMIN.getCode().equals(userEntity.getAccountType()), errMsg);
     }
 
     public void removeInChargeForGroup(String user, String operator) {

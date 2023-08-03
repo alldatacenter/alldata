@@ -17,8 +17,9 @@
 
 package org.apache.inlong.common.pojo.agent;
 
-import lombok.Data;
 import org.apache.inlong.common.db.CommandEntity;
+
+import lombok.Data;
 
 import java.util.ArrayList;
 import java.util.List;

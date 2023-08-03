@@ -23,13 +23,13 @@ from dbt.contracts.results import RunResultOutput
 from dbt.node_types import NodeType
 from requests.structures import CaseInsensitiveDict
 from soda.cloud.dbt_config import DbtCloudConfig
+from soda.cloud.soda_cloud import SodaCloud
 from soda.common.json_helper import JsonHelper
 from soda.execution.check.check import Check
 from soda.execution.check.dbt_check import DbtCheck
 from soda.execution.check_outcome import CheckOutcome
 from soda.model.dataset import Dataset
 from soda.scan import Scan
-from soda.soda_cloud.soda_cloud import SodaCloud
 from soda.sodacl.dbt_check_cfg import DbtCheckCfg
 
 
@@ -131,6 +131,7 @@ class DbtCloud:
                 "metrics": [{"identity": "dbt_metric", "metricName": "dbt_metric", "value": 0}],
                 "checks": check_dicts,
                 "logs": [log.get_cloud_dict() for log in self.scan._logs.logs],
+                "sourceOwner": "soda-core",
             }
         )
 

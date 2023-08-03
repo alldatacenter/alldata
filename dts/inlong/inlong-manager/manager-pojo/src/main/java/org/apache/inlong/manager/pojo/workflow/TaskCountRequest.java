@@ -49,6 +49,9 @@ public class TaskCountRequest {
     @ApiModelProperty("Task display name")
     private String displayName;
 
+    @ApiModelProperty("Inlong tenant")
+    private String tenant;
+
     @ApiModelProperty("Applicant name")
     private String applicant;
 

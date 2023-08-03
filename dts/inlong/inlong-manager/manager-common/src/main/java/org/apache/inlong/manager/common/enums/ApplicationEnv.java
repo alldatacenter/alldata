@@ -17,9 +17,10 @@
 
 package org.apache.inlong.manager.common.enums;
 
+import org.apache.inlong.manager.common.util.InlongCollectionUtils;
+
 import com.google.common.collect.Lists;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.inlong.manager.common.util.InlongCollectionUtils;
 
 import java.util.Map;
 import java.util.function.Function;

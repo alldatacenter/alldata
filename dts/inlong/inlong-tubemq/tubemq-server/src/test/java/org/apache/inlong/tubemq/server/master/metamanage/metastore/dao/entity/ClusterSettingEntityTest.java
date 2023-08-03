@@ -17,17 +17,19 @@
 
 package org.apache.inlong.tubemq.server.master.metamanage.metastore.dao.entity;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 import org.apache.inlong.tubemq.corebase.TBaseConstants;
 import org.apache.inlong.tubemq.corebase.utils.DateTimeConvertUtils;
 import org.apache.inlong.tubemq.corebase.utils.SettingValidUtils;
 import org.apache.inlong.tubemq.server.common.TServerConstants;
 import org.apache.inlong.tubemq.server.common.statusdef.EnableStatus;
 import org.apache.inlong.tubemq.server.master.bdbstore.bdbentitys.BdbClusterSettingEntity;
+
 import org.junit.Assert;
 import org.junit.Test;
+
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ClusterSettingEntityTest {
 

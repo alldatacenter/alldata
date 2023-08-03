@@ -17,10 +17,11 @@
 
 package org.apache.inlong.manager.service.resource.sink.postgresql;
 
-import com.google.common.collect.Lists;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.inlong.manager.pojo.sink.postgresql.PostgreSQLColumnInfo;
 import org.apache.inlong.manager.pojo.sink.postgresql.PostgreSQLTableInfo;
+
+import com.google.common.collect.Lists;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

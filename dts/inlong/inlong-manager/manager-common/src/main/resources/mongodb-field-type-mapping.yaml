@@ -1,0 +1,81 @@
+#
+# Licensed to the Apache Software Foundation (ASF) under one or more
+# contributor license agreements.  See the NOTICE file distributed with
+# this work for additional information regarding copyright ownership.
+# The ASF licenses this file to You under the Apache License, Version 2.0
+# (the "License"); you may not use this file except in compliance with
+# the License.  You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
+source.type.to.target.type.converter:
+
+  - source.type: INTEGER
+    target.type: INT
+
+  - source.type: INT
+    target.type: INT
+
+  - source.type: FLOAT
+    target.type: FLOAT
+
+  - source.type: DOUBLE
+    target.type: DOUBLE
+
+  - source.type: BOOLEAN
+    target.type: BOOLEAN
+
+  - source.type: DECIMAL
+    target.type: DECIMAL
+
+  - source.type: DECIMAL128
+    target.type: DECIMAL
+
+  - source.type: SHORT
+    target.type: SMALLINT
+
+  - source.type: LONG
+    target.type: LONG
+
+  - source.type: STRING
+    target.type: STRING
+
+  - source.type: OBJECTID
+    target.type: STRING
+
+  - source.type: UUID
+    target.type: STRING
+
+  - source.type: SYMBOL
+    target.type: STRING
+
+  - source.type: MD5
+    target.type: STRING
+
+  - source.type: JAVASCRIPT
+    target.type: STRING
+
+  - source.type: REGEX
+    target.type: STRING
+
+  - source.type: DATE
+    target.type: DATE
+
+  - source.type: TIMESTAMP
+    target.type: TIMESTAMP
+
+  - source.type: OBJECT
+    target.type: STRUCT
+
+  - source.type: ARRAY
+    target.type: ARRAY
+
+  - source.type: BINDATA
+    target.type: VARBINARY

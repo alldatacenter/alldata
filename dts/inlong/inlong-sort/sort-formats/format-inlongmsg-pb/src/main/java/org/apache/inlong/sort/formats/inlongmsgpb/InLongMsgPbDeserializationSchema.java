@@ -17,15 +17,16 @@
 
 package org.apache.inlong.sort.formats.inlongmsgpb;
 
+import org.apache.inlong.common.msg.InLongMsg;
+import org.apache.inlong.sdk.commons.protocol.ProxySdk.MessageObj;
+import org.apache.inlong.sdk.commons.protocol.ProxySdk.MessageObjs;
+
 import com.google.common.base.Objects;
 import org.apache.flink.api.common.serialization.DeserializationSchema;
 import org.apache.flink.api.common.typeinfo.TypeInformation;
 import org.apache.flink.table.data.GenericRowData;
 import org.apache.flink.table.data.RowData;
 import org.apache.flink.util.Collector;
-import org.apache.inlong.common.msg.InLongMsg;
-import org.apache.inlong.sdk.commons.protocol.ProxySdk.MessageObj;
-import org.apache.inlong.sdk.commons.protocol.ProxySdk.MessageObjs;
 
 import java.io.IOException;
 import java.io.Serializable;

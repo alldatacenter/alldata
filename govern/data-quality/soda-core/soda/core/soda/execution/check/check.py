@@ -4,16 +4,20 @@ import collections
 import os
 from abc import ABC
 
+from soda.cloud.cloud import Cloud
+from soda.cloud.historic_descriptor import HistoricDescriptor
 from soda.common.attributes_handler import AttributeHandler
 from soda.execution.check_outcome import CheckOutcome
+from soda.execution.check_type import CheckType
 from soda.execution.column import Column
 from soda.execution.identity import ConsistentHashBuilder
 from soda.execution.metric.metric import Metric
 from soda.execution.query.query import Query
 from soda.sampler.sample_ref import SampleRef
-from soda.soda_cloud.historic_descriptor import HistoricDescriptor
 from soda.sodacl.check_cfg import CheckCfg
 from soda.sodacl.distribution_check_cfg import DistributionCheckCfg
+from soda.sodacl.group_by_check_cfg import GroupByCheckCfg
+from soda.sodacl.group_evolution_check_cfg import GroupEvolutionCheckCfg
 
 
 class Check(ABC):
@@ -95,6 +99,16 @@ class Check(ABC):
 
             return DistributionCheck(check_cfg, data_source_scan, partition, column)
 
+        elif isinstance(check_cfg, GroupByCheckCfg):
+            from soda.execution.check.group_by_check import GroupByCheck
+
+            return GroupByCheck(check_cfg, data_source_scan, partition)
+
+        elif isinstance(check_cfg, GroupEvolutionCheckCfg):
+            from soda.execution.check.group_evolution_check import GroupEvolutionCheck
+
+            return GroupEvolutionCheck(check_cfg, data_source_scan, partition)
+
         raise RuntimeError(f"Bug: Unsupported check type {type(check_cfg)}")
 
     def __init__(
@@ -128,6 +142,12 @@ class Check(ABC):
         self.outcome_reasons: list[dict] = []
         self.force_send_results_to_cloud = False
 
+        # Default check type is Cloud, when this is set to CheckType.LOCAL, the check will not be sent to cloud
+        self.check_type = CheckType.CLOUD
+
+        self.cloud_dict = {}
+        self.dict = {}
+
     @property
     def name(self) -> str:
         """User readable name.
@@ -150,6 +170,10 @@ class Check(ABC):
                 name += f" fail {source_cfg['fail']}"
 
         return jinja_resolve(name)
+
+    @property
+    def is_deprecated(self) -> bool:
+        return False
 
     def create_definition(self) -> str:
         check_cfg: CheckCfg = self.check_cfg
@@ -180,6 +204,7 @@ class Check(ABC):
             identity_source_configurations.pop("samples limit", None)
             identity_source_configurations.pop("identity", None)
             identity_source_configurations.pop("attributes", None)
+            identity_source_configurations.pop("template", None)
             if len(identity_source_configurations) > 0:
                 # The next line ensures that ordering of the check configurations don't matter for identity
                 identity_source_configurations = collections.OrderedDict(sorted(identity_source_configurations.items()))
@@ -224,55 +249,63 @@ class Check(ABC):
         from soda.execution.column import Column
         from soda.execution.partition import Partition
 
-        cloud_dict = {
-            # See https://sodadata.atlassian.net/browse/CLOUD-1143
-            "identity": self.create_identity(with_datasource=True, with_filename=True),
-            "identities": self.create_identities(),
-            "name": self.name,
-            "type": self.cloud_check_type,
-            "definition": self.create_definition(),
-            "resourceAttributes": self._format_attributes(),
-            "location": self.check_cfg.location.get_cloud_dict(),
-            "dataSource": self.data_source_scan.data_source.data_source_name,
-            "table": Partition.get_table_name(self.partition),
-            # "filter": Partition.get_partition_name(self.partition), TODO: re-enable once backend supports the property.
-            "column": Column.get_partition_name(self.column),
-            "metrics": [metric.identity for metric in self.metrics.values()],
-            "outcome": self.outcome.value if self.outcome else None,
-            "diagnostics": self.get_cloud_diagnostics_dict(),
-            "source": "soda-core",
-        }
+        self.cloud_dict.update(
+            {
+                # See https://sodadata.atlassian.net/browse/CLOUD-1143
+                "identity": self.create_identity(with_datasource=True, with_filename=True),
+                "identities": self.create_identities(),
+                "name": self.name,
+                "type": self.cloud_check_type,
+                "definition": self.create_definition(),
+                "resourceAttributes": self._format_attributes(),
+                "location": self.check_cfg.location.get_cloud_dict(),
+                "dataSource": self.data_source_scan.data_source.data_source_name,
+                "table": Partition.get_table_name(self.partition),
+                # "filter": Partition.get_partition_name(self.partition), TODO: re-enable once backend supports the property.
+                "column": Column.get_partition_name(self.column),
+                "metrics": [metric.identity for metric in self.metrics.values()],
+                "outcome": self.outcome.value if self.outcome else None,
+                "diagnostics": self.get_cloud_diagnostics_dict(),
+                "source": "soda-library",
+            }
+        )
         # Update dict if automated monitoring is running
         if self.archetype is not None:
-            cloud_dict.update({"archetype": self.archetype})
+            self.cloud_dict.update({"archetype": self.archetype})
 
         # Update dict if check is skipped and we want to push reason to cloud
         if self.outcome_reasons:
-            cloud_dict.update({"outcomeReasons": self.outcome_reasons})
-        return cloud_dict
+            self.cloud_dict.update({"outcomeReasons": self.outcome_reasons})
+        return self.cloud_dict
 
     def get_dict(self):
         from soda.execution.column import Column
         from soda.execution.partition import Partition
 
-        return {
-            "identity": self.create_identity(with_datasource=True, with_filename=True),
-            "name": self.name,
-            "type": self.cloud_check_type,
-            "definition": self.create_definition(),
-            "resourceAttributes": self._format_attributes(),
-            "location": self.check_cfg.location.get_dict(),
-            "dataSource": self.data_source_scan.data_source.data_source_name,
-            "table": Partition.get_table_name(self.partition),
-            "filter": Partition.get_partition_name(self.partition),
-            "column": Column.get_partition_name(self.column),
-            "metrics": [metric.identity for metric in self.metrics.values()],
-            "outcome": self.outcome.value if self.outcome else None,
-            "outcomeReasons": self.outcome_reasons,
-            "archetype": self.archetype,
-        }
+        self.dict.update(
+            {
+                "identity": self.create_identity(with_datasource=True, with_filename=True),
+                "name": self.name,
+                "type": self.cloud_check_type,
+                "definition": self.create_definition(),
+                "resourceAttributes": self._format_attributes(),
+                "location": self.check_cfg.location.get_dict(),
+                "dataSource": self.data_source_scan.data_source.data_source_name,
+                "table": Partition.get_table_name(self.partition),
+                "filter": Partition.get_partition_name(self.partition),
+                "column": Column.get_partition_name(self.column),
+                "metrics": [metric.identity for metric in self.metrics.values()],
+                "outcome": self.outcome.value if self.outcome else None,
+                "outcomeReasons": self.outcome_reasons,
+                "archetype": self.archetype,
+            }
+        )
+
+        return self.dict
 
     def get_cloud_diagnostics_dict(self) -> dict:
+        csv_max_length = Cloud.CSV_TEXT_MAX_LENGTH
+
         cloud_diagnostics = {
             "blocks": [],
             "value": self.check_value if hasattr(self, "check_value") else None,
@@ -280,23 +313,53 @@ class Check(ABC):
 
         if self.failed_rows_sample_ref and self.failed_rows_sample_ref.type != SampleRef.TYPE_NOT_PERSISTED:
             if self.cloud_check_type == "generic":
-                has_analysis_block = False
                 queries = self._get_all_related_queries()
+                has_analysis_block = False
                 sample_ref_block = self.failed_rows_sample_ref.get_cloud_diagnostics_block()
 
                 for query in queries:
                     if query.failing_sql and query.passing_sql and sample_ref_block:
                         has_analysis_block = True
+                        total_failing_rows = self.check_value
+
+                        # TODO: temporary workaround until derived checks are refactored.
+                        derived_failing_rows_formula_values = ["invalid_count", "duplicate_count", "missing_count"]
+                        if hasattr(self, "formula_values") and self.formula_values:
+                            for derived_value in derived_failing_rows_formula_values:
+                                if derived_value in self.formula_values:
+                                    total_failing_rows = self.formula_values[derived_value]
+
                         rca_block = {
                             "type": "failedRowsAnalysis",
                             "title": "Failed Rows Analysis",
                             "file": sample_ref_block["file"],
                             "failingRowsQueryName": f"{query.query_name}.failing_sql",
                             "passingRowsQueryName": f"{query.query_name}.passing_sql",
-                            "totalFailingRows": self.check_value,
-                            "sampleRowCount": sample_ref_block["file"]["totalRowCount"],
+                            "totalFailingRows": total_failing_rows,
+                            "sampleRowCount": sample_ref_block["file"]["storedRowCount"],
                         }
                         cloud_diagnostics["blocks"].append(rca_block)
+
+                    # TODO: This should be a second failed rows file, refactor failed rows to support multiple files.
+                    if (
+                        query.failing_rows_sql_aggregated
+                        and hasattr(query, "aggregated_failed_rows_data")
+                        and query.aggregated_failed_rows_data
+                    ):
+                        text = f'{",".join(query.metric.metric_args)},frequency'
+
+                        for row in query.aggregated_failed_rows_data:
+                            row_str = f'\n{",".join(map(str, row))}'
+                            if len(text) + len(row_str) < csv_max_length:
+                                text += row_str
+
+                        aggregate_rows_block = {
+                            "type": "csv",
+                            "title": "Failed Rows Aggregate",
+                            "text": text,
+                        }
+                        cloud_diagnostics["blocks"].append(aggregate_rows_block)
+
                 if not has_analysis_block:
                     cloud_diagnostics["blocks"].append(self.failed_rows_sample_ref.get_cloud_diagnostics_block())
 
@@ -321,6 +384,7 @@ class Check(ABC):
     def get_log_diagnostic_dict(self) -> dict:
         diagnostics_dict = self.get_cloud_diagnostics_dict()
         diagnostics_dict.pop("failedRowsFile", None)
+        diagnostics_dict.pop("blocks", None)
         return diagnostics_dict
 
     def __str__(self):

@@ -37,12 +37,16 @@ else
 fi
 
 if [ -z "$AGENT_JVM_HEAP_OPTS" ]; then
-  HEAP_OPTS="-Xms512m -Xmx6656m"
+  HEAP_OPTS="-Xmx512m -Xss512k"
 else
   HEAP_OPTS="$AGENT_JVM_HEAP_OPTS"
 fi
-GC_OPTS="-XX:SurvivorRatio=6 -XX:+UseMembar -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:+CMSScavengeBeforeRemark -XX:ParallelCMSThreads=3 -XX:+TieredCompilation -XX:+UseCMSCompactAtFullCollection -verbose:gc -Xloggc:$BASE_DIR/logs/gc.log -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=$BASE_DIR/logs/ -XX:+CMSClassUnloadingEnabled -XX:CMSInitiatingOccupancyFraction=60 -XX:CMSFullGCsBeforeCompaction=1 -Dsun.net.inetaddr.ttl=3 -Dsun.net.inetaddr.negative.ttl=1 -Djava.net.preferIPv4Stack=true"
-AGENT_JVM_ARGS="$HEAP_OPTS $GC_OPTS"
+GC_OPTS="-XX:+UseG1GC -XX:MaxGCPauseMillis=200 -XX:InitiatingHeapOccupancyPercent=60 -Djava.net.preferIPv4Stack=true -Dfile.encoding=UTF-8"
+LOG_OPTS="-Xloggc:$BASE_DIR/logs/gc.log -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:+UseGCLogFileRotation -XX:NumberOfGCLogFiles=10 -XX:GCLogFileSize=20M"
+if [ -n "$NEED_TRACK_NATIVE_MEMORY" ] && [ "$NEED_TRACK_NATIVE_MEMORY" = "true" ]; then
+    GC_OPTS="$GC_OPTS -XX:NativeMemoryTracking"
+fi
+AGENT_JVM_ARGS="$HEAP_OPTS $GC_OPTS $LOG_OPTS"
 
 # Add Agent Rmi Args when necessary
 AGENT_RMI_ARGS="-Dcom.sun.management.jmxremote \

@@ -28,9 +28,9 @@ import org.apache.inlong.sort.protocol.transformation.FilterFunction;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Test for {@link DorisLoadNode}

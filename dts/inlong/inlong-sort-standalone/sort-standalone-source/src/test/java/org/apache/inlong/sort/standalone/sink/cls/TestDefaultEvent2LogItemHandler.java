@@ -17,10 +17,10 @@
 
 package org.apache.inlong.sort.standalone.sink.cls;
 
-import com.tencentcloudapi.cls.producer.common.LogItem;
-
 import org.apache.inlong.sort.standalone.channel.ProfileEvent;
 import org.apache.inlong.sort.standalone.utils.Constants;
+
+import com.tencentcloudapi.cls.producer.common.LogItem;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

@@ -80,7 +80,7 @@ const Comp: React.FC<DetailModalProps> = ({
 
   const { data: streamDetail, run: getStreamDetail } = useRequest(
     streamId => ({
-      url: `/stream/get`,
+      url: `/stream/getBrief`,
       params: {
         groupId: inlongGroupId,
         streamId,

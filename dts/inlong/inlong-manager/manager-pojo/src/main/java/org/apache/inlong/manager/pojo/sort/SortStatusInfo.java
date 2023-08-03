@@ -17,14 +17,16 @@
 
 package org.apache.inlong.manager.pojo.sort;
 
+import org.apache.inlong.manager.common.enums.SortStatus;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.util.Map;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.apache.inlong.manager.common.enums.SortStatus;
+
+import java.util.Map;
 
 /**
  * Sort status info

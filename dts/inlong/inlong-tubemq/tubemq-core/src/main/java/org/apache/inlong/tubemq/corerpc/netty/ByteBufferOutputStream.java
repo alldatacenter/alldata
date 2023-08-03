@@ -17,12 +17,13 @@
 
 package org.apache.inlong.tubemq.corerpc.netty;
 
+import org.apache.inlong.tubemq.corerpc.RpcConstants;
+
 import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.ByteBuffer;
 import java.util.LinkedList;
 import java.util.List;
-import org.apache.inlong.tubemq.corerpc.RpcConstants;
 
 /**
  * Utility to collect data written to an {@link java.io.OutputStream} in {@link java.nio.ByteBuffer}s.

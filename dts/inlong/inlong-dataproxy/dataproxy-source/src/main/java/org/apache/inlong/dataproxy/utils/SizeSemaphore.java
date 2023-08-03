@@ -30,7 +30,7 @@ public class SizeSemaphore {
     private int maxSize = 0;
     private int leftSize = 0;
     private Semaphore sizeSemaphore = null;
-    private AtomicInteger leftSemaphore = new AtomicInteger(0);
+    private final AtomicInteger leftSemaphore = new AtomicInteger(0);
 
     /**
      * Constructor

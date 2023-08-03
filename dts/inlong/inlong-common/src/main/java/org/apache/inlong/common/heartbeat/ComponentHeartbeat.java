@@ -18,6 +18,7 @@
 package org.apache.inlong.common.heartbeat;
 
 import org.apache.inlong.common.enums.NodeSrvStatus;
+
 import lombok.Data;
 
 /**

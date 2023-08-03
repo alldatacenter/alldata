@@ -23,15 +23,17 @@ import { RenderList } from '@/plugins/RenderList';
 import CheckCard from '@/ui/components/CheckCard';
 import { statusList, genStatusTag } from './status';
 import { sources, defaultValue } from '..';
+import i18n from '@/i18n';
 
 const { I18nMap, I18n } = DataWithBackend;
-const { FieldList, FieldDecorator } = RenderRow;
+const { FieldList, FieldDecorator, SyncField, SyncFieldSet } = RenderRow;
 const { ColumnList, ColumnDecorator } = RenderList;
 
 export class SourceDefaultInfo implements DataWithBackend, RenderRow, RenderList {
   static I18nMap = I18nMap;
   static FieldList = FieldList;
   static ColumnList = ColumnList;
+  static SyncFieldSet = SyncFieldSet;
 
   readonly id: number;
 
@@ -40,6 +42,7 @@ export class SourceDefaultInfo implements DataWithBackend, RenderRow, RenderList
     type: 'text',
     hidden: true,
   })
+  @SyncField()
   @I18n('inlongGroupId')
   readonly inlongGroupId: string;
 
@@ -47,6 +50,7 @@ export class SourceDefaultInfo implements DataWithBackend, RenderRow, RenderList
     type: 'text',
     hidden: true,
   })
+  @SyncField()
   @I18n('inlongStreamId')
   readonly inlongStreamId: string;
 
@@ -68,19 +72,27 @@ export class SourceDefaultInfo implements DataWithBackend, RenderRow, RenderList
   @ColumnDecorator({
     render: type => sources.find(c => c.value === type)?.label || type,
   })
+  @SyncField()
   @I18n('meta.Sources.Type')
   sourceType: string;
 
   @FieldDecorator({
     type: 'input',
-    rules: [{ required: true }],
+    rules: [
+      { required: true },
+      {
+        pattern: /^[a-zA-Z0-9_.-]*$/,
+        message: i18n.t('meta.Sources.NameRule'),
+      },
+    ],
     props: values => ({
       disabled: Boolean(values.id),
-      maxLength: 128,
+      maxLength: 100,
     }),
     visible: values => Boolean(values.sourceType),
   })
   @ColumnDecorator()
+  @SyncField()
   @I18n('meta.Sources.Name')
   sourceName: string;
 
@@ -96,6 +108,7 @@ export class SourceDefaultInfo implements DataWithBackend, RenderRow, RenderList
   @ColumnDecorator({
     render: text => genStatusTag(text),
   })
+  @SyncField()
   @I18n('basic.Status')
   readonly status: string;
 
@@ -107,8 +120,42 @@ export class SourceDefaultInfo implements DataWithBackend, RenderRow, RenderList
     return data;
   }
 
+  renderSyncRow() {
+    const constructor = this.constructor as typeof SourceDefaultInfo;
+    const { FieldList, SyncFieldSet } = constructor;
+    return FieldList.filter(item => {
+      if (item.name === 'sourceType') {
+        item.props = values => ({
+          disabled: Boolean(values.id),
+          dropdownMatchSelectWidth: false,
+          options: sources
+            .filter(item => item.useSync !== false)
+            .map(item => ({
+              label: item.label,
+              value: item.value,
+            })),
+        });
+      }
+      return SyncFieldSet.has(item.name as string);
+    });
+  }
+
   renderRow() {
     const constructor = this.constructor as typeof SourceDefaultInfo;
+    constructor.FieldList.map(item => {
+      if (item.name === 'sourceType') {
+        item.props = values => ({
+          disabled: Boolean(values.id),
+          dropdownMatchSelectWidth: false,
+          options: sources
+            .filter(item => item.value)
+            .map(item => ({
+              label: item.label,
+              value: item.value,
+            })),
+        });
+      }
+    });
     return constructor.FieldList;
   }
 

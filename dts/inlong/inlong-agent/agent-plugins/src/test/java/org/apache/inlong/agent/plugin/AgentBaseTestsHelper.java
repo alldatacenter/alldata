@@ -17,9 +17,10 @@
 
 package org.apache.inlong.agent.plugin;
 
-import org.apache.commons.io.FileUtils;
 import org.apache.inlong.agent.conf.AgentConfiguration;
 import org.apache.inlong.agent.constant.AgentConstants;
+
+import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

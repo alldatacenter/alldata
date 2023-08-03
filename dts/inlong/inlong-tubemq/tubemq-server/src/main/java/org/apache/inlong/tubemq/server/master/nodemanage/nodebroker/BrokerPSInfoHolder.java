@@ -17,15 +17,16 @@
 
 package org.apache.inlong.tubemq.server.master.nodemanage.nodebroker;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
 import org.apache.inlong.tubemq.corebase.cluster.Partition;
 import org.apache.inlong.tubemq.corebase.cluster.TopicInfo;
 import org.apache.inlong.tubemq.corebase.utils.ConcurrentHashSet;
 import org.apache.inlong.tubemq.corebase.utils.Tuple2;
 import org.apache.inlong.tubemq.corebase.utils.Tuple3;
 import org.apache.inlong.tubemq.server.common.statusdef.ManageStatus;
+
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /*
  *  Broker publish and subscribe information holder

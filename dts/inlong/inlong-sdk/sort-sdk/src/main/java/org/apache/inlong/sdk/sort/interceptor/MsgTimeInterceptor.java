@@ -17,11 +17,12 @@
 
 package org.apache.inlong.sdk.sort.interceptor;
 
-import org.apache.commons.collections.CollectionUtils;
 import org.apache.inlong.sdk.sort.api.Interceptor;
 import org.apache.inlong.sdk.sort.entity.InLongMessage;
 import org.apache.inlong.sdk.sort.entity.InLongTopic;
 import org.apache.inlong.sdk.sort.util.TimeUtil;
+
+import org.apache.commons.collections.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

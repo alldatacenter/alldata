@@ -19,6 +19,7 @@ package org.apache.inlong.manager.workflow.processor;
 
 import org.apache.inlong.manager.dao.mapper.WorkflowTaskEntityMapper;
 import org.apache.inlong.manager.workflow.definition.WorkflowTask;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**

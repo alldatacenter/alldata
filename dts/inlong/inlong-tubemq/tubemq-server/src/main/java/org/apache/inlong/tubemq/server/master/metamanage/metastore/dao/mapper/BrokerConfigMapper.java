@@ -17,12 +17,13 @@
 
 package org.apache.inlong.tubemq.server.master.metamanage.metastore.dao.mapper;
 
-import java.util.Map;
-import java.util.Set;
 import org.apache.inlong.tubemq.corebase.rv.ProcessResult;
 import org.apache.inlong.tubemq.server.common.statusdef.ManageStatus;
 import org.apache.inlong.tubemq.server.master.metamanage.metastore.dao.entity.BaseEntity;
 import org.apache.inlong.tubemq.server.master.metamanage.metastore.dao.entity.BrokerConfEntity;
+
+import java.util.Map;
+import java.util.Set;
 
 public interface BrokerConfigMapper extends AbstractMapper {
 

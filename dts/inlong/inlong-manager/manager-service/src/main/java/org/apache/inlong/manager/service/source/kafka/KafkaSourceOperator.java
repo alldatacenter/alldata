@@ -17,10 +17,6 @@
 
 package org.apache.inlong.manager.service.source.kafka;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.inlong.common.constant.Constants;
 import org.apache.inlong.common.enums.DataTypeEnum;
 import org.apache.inlong.manager.common.consts.SourceType;
@@ -42,6 +38,11 @@ import org.apache.inlong.manager.pojo.stream.InlongStreamInfo;
 import org.apache.inlong.manager.pojo.stream.StreamField;
 import org.apache.inlong.manager.service.cluster.InlongClusterService;
 import org.apache.inlong.manager.service.source.AbstractSourceOperator;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -77,7 +78,7 @@ public class KafkaSourceOperator extends AbstractSourceOperator {
         KafkaSourceRequest sourceRequest = (KafkaSourceRequest) request;
         CommonBeanUtils.copyProperties(sourceRequest, targetEntity, true);
         try {
-            KafkaSourceDTO dto = KafkaSourceDTO.getFromRequest(sourceRequest);
+            KafkaSourceDTO dto = KafkaSourceDTO.getFromRequest(sourceRequest, targetEntity.getExtParams());
             targetEntity.setExtParams(objectMapper.writeValueAsString(dto));
         } catch (Exception e) {
             throw new BusinessException(ErrorCodeEnum.SOURCE_INFO_INCORRECT,
