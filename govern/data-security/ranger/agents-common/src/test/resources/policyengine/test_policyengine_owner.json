@@ -1,0 +1,147 @@
+{
+  "serviceName":"hdfsdev",
+
+  "serviceDef":{
+    "name":"hdfs",
+    "id":1,
+    "resources":[
+    {"name":"path","type":"path","level":1,"mandatory":true,"lookupSupported":true,"matcher":"org.apache.ranger.plugin.resourcematcher.RangerPathResourceMatcher","matcherOptions":{"wildCard":true, "ignoreCase":true},"label":"Resource Path","description":"HDFS file or directory path"}
+    ],
+    "accessTypes":[
+      {"name":"read","label":"Read"},
+      {"name":"write","label":"Write"},
+      {"name":"execute","label":"Execute"}
+    ],
+    "contextEnrichers": [ ],
+    "policyConditions": [
+      {
+        "itemId":1,
+        "name":"expression",
+      "evaluator": "org.apache.ranger.plugin.conditionevaluator.RangerScriptConditionEvaluator",
+      "evaluatorOptions" : {"engineName":"JavaScript", "ui.isMultiline":"true"},
+      "label":"Enter boolean expression",
+      "description": "Boolean expression"
+      }
+    ]
+  },
+
+  "policies":[
+    {"id":1,"name":"allow-all-to-owner under /public/{USER}","isEnabled":true,"isAuditEnabled":true,
+     "resources":{"path":{"values":["/public/{USER}"],"isRecursive":true}},
+     "policyItems":[
+       {"accesses":[{"type":"read","isAllowed":true},{"type":"write", "isAllowed":true}, {"type":"execute","isAllowed":true}],"users":["{OWNER}"],"groups":[],"delegateAdmin":false}
+     ]
+    }
+    ,
+    {"id":2,"name":"allow-all-to-owner under /finance/restricted/*","isEnabled":true,"isAuditEnabled":true,
+      "resources":{"path":{"values":["/finance/restricted/*"],"isRecursive":true}},
+      "policyItems":[
+        {"accesses":[{"type":"read","isAllowed":true},{"type":"write", "isAllowed":true}, {"type":"execute","isAllowed":true}],"users":["{OWNER}"],"groups":[],"delegateAdmin":false}
+        ,
+        {"accesses":[{"type":"read","isAllowed":true}],"users":[],"groups":["finance"],"delegateAdmin":false}
+
+      ]
+    }
+    ,
+    {"id":3,"name":"allow-read-to-non-owner under /public/partners/*","isEnabled":true,"isAuditEnabled":true,
+      "resources":{"path":{"values":["/public/partners/*"],"isRecursive":true}},
+      "policyItems":[
+        {"accesses":[{"type":"read","isAllowed":true},{"type":"write", "isAllowed":true}, {"type":"execute","isAllowed":true}],"users":["{OWNER}"],"groups":[],"delegateAdmin":false}
+      ,
+        {"accesses":[{"type":"read","isAllowed":true}],"users":[],"groups":["employees"],"delegateAdmin":false}
+
+      ]
+    }
+  ],
+
+  "tests":[
+    {"name":"ALLOW 'read /public/user1/tax.db' for user=user1, owner=user1; ",
+     "request":{
+      "resource":{"elements":{"path":"/public/user1/tax.db"}, "ownerUser":"user1"},
+      "accessType":"read","user":"user1","userGroups":[],"requestData":"read /public/user1/tax.db, user=user1, owner=user1"
+     },
+     "result":{"isAudited":true,"isAllowed":true,"policyId":1}
+    }
+    ,
+
+    {"name":"DENY 'read /public/user1/tax.db' for user=user1, owner=user2; ",
+     "request":{
+      "resource":{"elements":{"path":"/public/user1/tax.db"}, "ownerUser":"user2"},
+      "accessType":"read","user":"user1","userGroups":[],"requestData":"read /public/user1/tax.db, user=user1, owner=user2"
+     },
+     "result":{"isAudited":true,"isAllowed":false,"policyId":-1}
+    }
+    ,
+    {"name":"DENY 'read /public/user2/tax.db' for user=user2, owner=user1; ",
+      "request":{
+        "resource":{"elements":{"path":"/public/user2/tax.db"}, "ownerUser":"user1"},
+        "accessType":"read","user":"user2","userGroups":[],"requestData":"read /public/user1/tax.db, user=user2, owner=user1"
+      },
+      "result":{"isAudited":true,"isAllowed":false,"policyId":-1}
+    }
+    ,
+    {"name":"ALLOW 'read /finance/restricted/sales.db' for user=finadmin, owner=finadmin; ",
+      "request":{
+        "resource":{"elements":{"path":"/finance/restricted/sales.db"}, "ownerUser":"finadmin"},
+        "accessType":"read","user":"finadmin","userGroups":[],"requestData":"read /finance/restricted/sales.db, user=finadmin, owner=finadmin"
+      },
+      "result":{"isAudited":true,"isAllowed":true,"policyId":2}
+    }
+    ,
+    {"name":"ALLOW 'read /finance/restricted/sales.db' for user=user1, group=finance; ",
+      "request":{
+        "resource":{"elements":{"path":"/finance/restricted/sales.db"}, "ownerUser":"finadmin"},
+        "accessType":"read","user":"user1","userGroups":["finance"],"requestData":"read /finance/restricted/sales.db, user=user1, group=finance"
+      },
+      "result":{"isAudited":true,"isAllowed":true,"policyId":2}
+    }
+    ,
+    {"name":"DENY 'write /finance/restricted/sales.db' for user=user1, group=finance; ",
+      "request":{
+        "resource":{"elements":{"path":"/finance/restricted/sales.db"}, "ownerUser":"finadmin"},
+        "accessType":"write","user":"user1","userGroups":["finance"],"requestData":"write /finance/restricted/sales.db, user=user1, group=finance"
+      },
+      "result":{"isAudited":true,"isAllowed":false,"policyId":-1}
+    }
+    ,
+    {"name":"ALLOW 'read /finance/restricted/sales.db' for user=user1, group=finance; ",
+      "request":{
+        "resource":{"elements":{"path":"/finance/restricted/sales.db"}},
+        "accessType":"read","user":"user1","userGroups":["finance"],"requestData":"read /finance/restricted/sales.db, user=user1, group=finance"
+      },
+      "result":{"isAudited":true,"isAllowed":true,"policyId":2}
+    }
+    ,
+    {"name":"DENY 'write /finance/restricted/sales.db' for user=user1, group=finance; ",
+      "request":{
+        "resource":{"elements":{"path":"/finance/restricted/sales.db"}},
+        "accessType":"write","user":"user1","userGroups":["finance"],"requestData":"write /finance/restricted/sales.db, user=user1, group=finance"
+      },
+      "result":{"isAudited":true,"isAllowed":false,"policyId":-1}
+    }
+    ,
+    {"name":"DENY 'write /public/partners/vendors.db' for user=user1, group=employees; ",
+      "request":{
+        "resource":{"elements":{"path":"/public/partners/vendors.db"}},
+        "accessType":"write","user":"user1","userGroups":["employees"],"requestData":"write /public/partners/vendors.db, user=user1, group=employees"
+      },
+      "result":{"isAudited":true,"isAllowed":false,"policyId":-1}
+    }
+    ,
+    {"name":"ALLOW 'read /public/partners/vendors.db' for user=user1, group=employees; ",
+      "request":{
+        "resource":{"elements":{"path":"/public/partners/vendors.db"}},
+        "accessType":"read","user":"user1","userGroups":["employees"],"requestData":"read /public/partners/vendors.db, user=user1, group=employees"
+      },
+      "result":{"isAudited":true,"isAllowed":true,"policyId":3}
+    }
+  ,
+    {"name":"ALLOW 'write /public/partners/vendors.db' for user=user1, group=employees; owner=user1",
+      "request":{
+        "resource":{"elements":{"path":"/public/partners/vendors.db"}, "ownerUser":"user1"},
+        "accessType":"read","user":"user1","userGroups":["employees"],"requestData":"write /public/partners/vendors.db, user=user1, group=employees; owner=user1"
+      },
+      "result":{"isAudited":true,"isAllowed":true,"policyId":3}
+    }
+  ]
+}

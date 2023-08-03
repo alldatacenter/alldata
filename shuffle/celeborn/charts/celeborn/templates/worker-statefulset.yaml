@@ -1,0 +1,146 @@
+#
+# Licensed to the Apache Software Foundation (ASF) under one or more
+# contributor license agreements.  See the NOTICE file distributed with
+# this work for additional information regarding copyright ownership.
+# The ASF licenses this file to You under the Apache License, Version 2.0
+# (the "License"); you may not use this file except in compliance with
+# the License.  You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: celeborn-worker
+  labels:
+    helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version }}
+    app.kubernetes.io/name: {{ .Chart.Name }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+    app.kubernetes.io/role: worker
+    {{- include "celeborn.labels" . | nindent 4 }}
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ .Chart.Name }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
+      app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+      app.kubernetes.io/role: worker
+      {{- include "celeborn.selectorLabels" . | nindent 6 }}
+  serviceName: celeborn-worker
+  replicas: {{ .Values.workerReplicas }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        app.kubernetes.io/name: {{ .Chart.Name }}
+        app.kubernetes.io/instance: {{ .Release.Name }}
+        app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+        app.kubernetes.io/role: worker
+        app.kubernetes.io/tag: {{ .Values.image.tag }}
+        {{- include "celeborn.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.affinity.worker }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.securityContext }}
+      securityContext:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      hostNetwork: {{ .Values.hostNetwork | default false }}
+      dnsPolicy: {{ .Values.dnsPolicy | default "ClusterFirst" }}
+      initContainers:
+      {{- $dirs := .Values.volumes.worker }}
+      {{- if eq "hostPath" (index $dirs 0).type }}
+      - name: chown-celeborn-worker-volume
+        image: alpine:3.18
+        imagePullPolicy: {{ .Values.image.pullPolicy | default "IfNotPresent" }}
+        securityContext:
+          runAsUser: 0
+        command:
+        - chown
+        - {{ .Values.securityContext.runAsUser | default 10006 }}:{{ .Values.securityContext.runAsGroup | default 10006 }}
+        {{- range $dir := $dirs }}
+        - {{ $dir.mountPath }}
+        {{- end}}
+        volumeMounts:
+        {{- range $index, $dir := $dirs }}
+        - name: celeborn-worker-vol-{{ $index }}
+          mountPath: {{ $dir.mountPath }}
+        {{- end}}
+      {{- end }}
+      containers:
+      - name: {{ .Chart.Name }}
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy | default "IfNotPresent"}}
+        command:
+          - "/usr/bin/tini"
+          - "--"
+          - "/bin/sh"
+          - '-c'
+          {{- $namespace := .Release.Namespace }}
+          - "until {{ range until (.Values.masterReplicas |int) }}nslookup celeborn-master-{{ . }}.celeborn-master-svc.{{ $namespace }}.svc.{{ $.Values.cluster.name }}.local && {{ end }}true; do echo waiting for master; sleep 2; done && exec /opt/celeborn/sbin/start-worker.sh"
+        resources:
+          {{- toYaml .Values.resources.worker | nindent 12 }}
+        ports:
+          - containerPort: {{ get .Values.celeborn "celeborn.worker.metrics.prometheus.port" | default 9096 }}
+            name: metrics
+            protocol: TCP
+        volumeMounts:
+          {{- if .Values.configmap }}
+          - mountPath: /opt/celeborn/conf
+            name: {{ include "celeborn.fullname" . }}-volume
+            readOnly: true
+          {{- end }}
+          {{- range $index, $volume := .Values.volumes.worker }}
+          - name: celeborn-worker-vol-{{ $index }}
+            mountPath: {{ .mountPath }}
+          {{- end }}
+        env:
+          {{- range $key, $val := .Values.environments }}
+          - name: {{ $key }}
+            value: {{ $val | quote }}
+          {{- end}}
+      terminationGracePeriodSeconds: 30
+      volumes:
+        - configMap:
+            name: {{ .Values.configmap }}
+          name: {{ include "celeborn.fullname" . }}-volume
+        {{- range $index, $volume := .Values.volumes.worker }}
+        {{- if eq "emptyDir" $volume.type }}
+        - name: celeborn-worker-vol-{{ $index }}
+          emptyDir:
+            sizeLimit: {{ $volume.size }}
+        {{- else if eq "hostPath" $volume.type }}
+        - name: celeborn-worker-vol-{{ $index }}
+          hostPath:
+            path: {{ $volume.hostPath | default $volume.mountPath }}/worker
+            type: DirectoryOrCreate
+        {{- else }}
+        {{ fail "Currently, Celeborn chart only supports 'emptyDir' and 'hostPath' volume types" }}
+        {{- end }}
+        {{- end }}

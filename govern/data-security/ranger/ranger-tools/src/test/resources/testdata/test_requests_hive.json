@@ -1,0 +1,10 @@
+  [
+    {"name":"'select finance_1/tax_2010_1/col-2;' for hrt_1",
+     "request":{
+      "resource":{"elements":{"database":"finance_1","table":"tax_2010_1","column":"col-2"}},
+      "accessType":"select","user":"hrt_1","userGroups":[],"requestData":"use default"
+     },
+     "result":{"isAudited":true,"isAllowed":true,"policyId":2}
+    }
+  ]
+

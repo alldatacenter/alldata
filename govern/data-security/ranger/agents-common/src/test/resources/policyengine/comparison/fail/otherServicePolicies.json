@@ -1,0 +1,225 @@
+{
+  "serviceName": "hivedev",
+  "serviceDef": {
+    "name": "hive",
+    "id": 3,
+    "resources": [
+      {
+        "name": "database",
+        "level": 1,
+        "mandatory": true,
+        "lookupSupported": true,
+        "matcher": "org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher",
+        "matcherOptions": {
+          "wildCard": true,
+          "ignoreCase": true
+        },
+        "isValidLeaf": true,
+        "label": "Hive Database",
+        "description": "Hive Database"
+      },
+      {
+        "name": "table",
+        "level": 2,
+        "parent": "database",
+        "mandatory": true,
+        "lookupSupported": true,
+        "matcher": "org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher",
+        "matcherOptions": {
+          "wildCard": true,
+          "ignoreCase": true
+        },
+        "isValidLeaf": true,
+        "label": "Hive Table",
+        "description": "Hive Table"
+      },
+      {
+        "name": "column",
+        "level": 3,
+        "parent": "table",
+        "mandatory": true,
+        "lookupSupported": true,
+        "matcher": "org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher",
+        "matcherOptions": {
+          "wildCard": true,
+          "ignoreCase": true
+        },
+        "label": "Hive Column",
+        "description": "Hive Column"
+      }
+    ],
+    "accessTypes": [
+      {
+        "name": "select",
+        "label": "Select"
+      },
+      {
+        "name": "update",
+        "label": "Update"
+      },
+      {
+        "name": "create",
+        "label": "Create"
+      },
+      {
+        "name": "drop",
+        "label": "Drop"
+      },
+      {
+        "name": "alter",
+        "label": "Alter"
+      },
+      {
+        "name": "index",
+        "label": "Index"
+      },
+      {
+        "name": "lock",
+        "label": "Lock"
+      },
+      {
+        "name": "all",
+        "label": "All",
+        "impliedGrants": [
+          "select",
+          "update",
+          "create",
+          "drop",
+          "alter",
+          "index",
+          "lock"
+        ]
+      }
+    ]
+  },
+  "policies": [
+    {
+      "id": 1,
+      "name": "db=default: audit-all-access",
+      "isEnabled": true,
+      "isAuditEnabled": true,
+      "resources": {
+        "database": {
+          "values": [
+            "default"
+          ]
+        },
+        "table": {
+          "values": [
+            "*"
+          ]
+        },
+        "column": {
+          "values": [
+            "*"
+          ]
+        }
+      },
+      "policyItems": [
+        {
+          "accesses": [],
+          "users": [],
+          "groups": [
+            "public"
+          ],
+          "delegateAdmin": false
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "db=default",
+      "isEnabled": true,
+      "isAuditEnabled": true,
+      "resources": {
+        "database": {
+          "values": [
+            "default"
+          ]
+        },
+        "table": {
+          "values": [
+            "my-table"
+          ]
+        }
+      },
+      "policyItems": [
+        {
+          "accesses": [
+            {
+              "type": "create",
+              "isAllowed": true
+            },
+            {
+              "type": "drop",
+              "isAllowed": true
+            },
+            {
+              "type": "select",
+              "isAllowed": true
+            }
+          ],
+          "users": [
+            "user1"
+          ],
+          "groups": [
+            "role-group1"
+          ],
+          "roles": [
+            "fin-admin",
+            "fin-group"
+          ],
+          "delegateAdmin": false
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "db=finance",
+      "isEnabled": true,
+      "isAuditEnabled": true,
+      "resources": {
+        "database": {
+          "values": [
+            "default"
+          ]
+        },
+        "table": {
+          "values": [
+            "my-table"
+          ]
+        }
+      },
+      "policyItems": [
+        {
+          "accesses": [
+            {
+              "type": "create",
+              "isAllowed": true
+            },
+            {
+              "type": "drop",
+              "isAllowed": true
+            },
+            {
+              "type": "select",
+              "isAllowed": true
+            }
+          ],
+          "users": [
+            "user1"
+          ],
+          "groups": [
+            "role-group1"
+          ],
+          "roles": [
+            "fin-admin",
+            "fin-group"
+          ],
+          "delegateAdmin": false
+        }
+      ]
+    }
+
+  ]
+}

@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: deviceshifu-humidity-detector-deployment
+  name: deviceshifu-humidity-detector-deployment
+  namespace: deviceshifu
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: deviceshifu-humidity-detector-deployment
+  template:
+    metadata:
+      labels:
+        app: deviceshifu-humidity-detector-deployment
+    spec:
+      containers:
+        - image: edgehub/deviceshifu-http-http-python:v0.24.0-rc1
+          name: deviceshifu-http
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - name: deviceshifu-config
+              mountPath: "/etc/edgedevice/config"
+              readOnly: true
+          env:
+            - name: EDGEDEVICE_NAME
+              value: "edgedevice-humidity-detector"
+            - name: EDGEDEVICE_NAMESPACE
+              value: "devices"
+      volumes:
+        - name: deviceshifu-config
+          configMap:
+            name: humidity-detector-configmap-0.0.1
+      serviceAccountName: edgedevice-sa

@@ -1,0 +1,176 @@
+{
+  "id":105,
+  "name": "kudu",
+  "implClass": "org.apache.ranger.services.kudu.RangerServiceKudu",
+  "label": "Kudu",
+  "description": "Kudu",
+  "guid": "",
+  "resources":
+  [
+    {
+      "itemId": 1,
+      "name": "database",
+      "type": "string",
+      "level": 10,
+      "parent": "",
+      "mandatory": true,
+      "lookupSupported": true,
+      "recursiveSupported": false,
+      "excludesSupported": true,
+      "matcher": "org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher",
+      "matcherOptions": { "wildCard":true, "ignoreCase":true },
+      "validationRegEx":"",
+      "validationMessage": "",
+      "uiHint":"",
+      "label": "Database",
+      "description": "Database",
+      "isValidLeaf": true
+    },
+
+    {
+      "itemId": 2,
+      "name": "table",
+      "type": "string",
+      "level": 20,
+      "parent": "database",
+      "mandatory": true,
+      "lookupSupported": true,
+      "recursiveSupported": false,
+      "excludesSupported": true,
+      "matcher": "org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher",
+      "matcherOptions": { "wildCard":true, "ignoreCase":true },
+      "validationRegEx":"",
+      "validationMessage": "",
+      "uiHint":"",
+      "label": "Table",
+      "description": "Table",
+      "isValidLeaf": true
+    },
+    {
+      "itemId": 3,
+      "name": "column",
+      "type": "string",
+      "level": 30,
+      "parent": "table",
+      "mandatory": true,
+      "lookupSupported": true,
+      "recursiveSupported": false,
+      "excludesSupported": true,
+      "matcher": "org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher",
+      "matcherOptions": { "wildCard":true, "ignoreCase":true },
+      "validationRegEx":"",
+      "validationMessage": "",
+      "uiHint":"",
+      "label": "Column",
+      "description": "Column"
+    }
+  ],
+
+  "accessTypes":
+  [
+    {
+      "itemId": 1,
+      "name": "select",
+      "label": "SELECT",
+      "impliedGrants":
+      [
+        "metadata"
+      ]
+    },
+
+    {
+      "itemId": 2,
+      "name": "insert",
+      "label": "INSERT",
+      "impliedGrants":
+      [
+        "metadata"
+      ]
+    },
+    {
+      "itemId": 3,
+      "name": "update",
+      "label": "UPDATE",
+      "impliedGrants":
+      [
+        "metadata"
+      ]
+    },
+    {
+      "itemId": 4,
+      "name": "delete",
+      "label": "DELETE",
+      "impliedGrants":
+      [
+        "metadata"
+      ]
+    },
+    {
+      "itemId": 5,
+      "name": "alter",
+      "label": "ALTER",
+      "impliedGrants":
+      [
+        "metadata"
+      ]
+    },
+    {
+      "itemId": 6,
+      "name": "create",
+      "label": "CREATE",
+      "impliedGrants":
+      [
+        "metadata"
+      ]
+    },
+    {
+      "itemId": 7,
+      "name": "drop",
+      "label": "DROP",
+      "impliedGrants":
+      [
+        "metadata"
+      ]
+    },
+    {
+      "itemId": 8,
+      "name": "metadata",
+      "label": "METADATA"
+    },
+    {
+      "itemId": 9,
+      "name": "all",
+      "label": "ALL",
+      "impliedGrants":
+      [
+        "select",
+        "insert",
+        "update",
+        "delete",
+        "alter",
+        "create",
+        "drop",
+        "metadata"
+      ]
+    }
+  ],
+
+  "configs":
+  [
+  ],
+
+  "enums":
+  [
+  ],
+
+  "contextEnrichers":
+  [
+  ],
+
+  "policyConditions":
+  [
+  ]
+}
+
+
+

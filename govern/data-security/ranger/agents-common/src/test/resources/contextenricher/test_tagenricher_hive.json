@@ -1,0 +1,120 @@
+{
+  "serviceName":"hivedev",
+
+  "serviceDef":{
+    "name":"hive",
+    "id":3,
+    "resources":[
+      {"name":"url","level":1,"mandatory":true,"lookupSupported":true,"matcher":"org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher","matcherOptions":{"wildCard":true, "ignoreCase":true},"label":"S3 URL","description":"S3 Bucket URL"},
+      {"name":"database","level":1,"mandatory":true,"lookupSupported":true,"matcher":"org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher","matcherOptions":{"wildCard":true, "ignoreCase":true},"label":"Hive Database","description":"Hive Database"},
+      {"name":"table","level":2,"parent":"database","mandatory":true,"lookupSupported":true,"matcher":"org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher","matcherOptions":{"wildCard":true, "ignoreCase":true},"label":"Hive Table","description":"Hive Table"},
+      {"name":"udf","level":2,"parent":"database","mandatory":true,"lookupSupported":true,"matcher":"org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher","matcherOptions":{"wildCard":true, "ignoreCase":true},"label":"Hive UDF","description":"Hive UDF"},
+      {"name":"column","level":3,"parent":"table","mandatory":true,"lookupSupported":true,"matcher":"org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher","matcherOptions":{"wildCard":true, "ignoreCase":true},"label":"Hive Column","description":"Hive Column"}
+    ],
+    "accessTypes":[
+      {"name":"select","label":"Select"},
+      {"name":"update","label":"Update"},
+      {"name":"create","label":"Create"},
+      {"name":"drop","label":"Drop"},
+      {"name":"alter","label":"Alter"},
+      {"name":"index","label":"Index"},
+      {"name":"lock","label":"Lock"},
+      {"name":"all","label":"All"}
+    ]
+  },
+
+  "tagDefinitions": {
+    "1":{"name":"PII"},
+    "2":{"name":"EXPIRES_ON","attributeDefs":[{"name":"expiry_date","type":"date"}]},
+    "3":{"name":"FINANCE"},
+    "4":{"name":"PCI"}
+  },
+
+  "tags": {
+    "1":{"type":"PII"},
+    "2":{"type":"EXPIRES_ON","attributes":{"expiry_date":"2015/12/31"}},
+    "3":{"type":"FINANCE"},
+    "4":{"type":"EXPIRES_ON","attributes":{"expiry_date":"2025/12/31"}},
+    "5":{"type":"PCI"}
+  },
+
+  "serviceResources": [
+    {"id":1,"serviceName":"cl1_hive","resourceElements":{"database":{"values":["hr"]},"table":{"values":["employee"]},"column":{"values":["ssn"]}}},
+    {"id":2,"serviceName":"cl1_hive","resourceElements":{"database":{"values":["finance"]}}},
+    {"id":3,"serviceName":"cl1_hive","resourceElements":{"database":{"values":["finance"]},"table":{"values":["tax_2010"]}}},
+    {"id":4,"serviceName":"cl1_hive","resourceElements":{"database":{"values":["finance"]},"table":{"values":["tax_2010"]},"column":{"values":["ssn"]}}},
+    {"id":5,"serviceName":"cl1_hive","resourceElements":{"url":{"values":["someurl"]}}},
+    {"id":6,"serviceName":"cl1_hive","resourceElements":{"database":{"values":["def?n"]}}}
+  ],
+
+  "resourceToTagIds": {
+    "1":[1],
+	"2":[3],
+    "3":[2],
+    "4":[1, 4],
+    "5":[1],
+    "6":[5]
+  },
+
+  "tests":[
+    {"name": "url-any",
+      "resource":{"elements":{"database":"default"}},
+      "accessType": "",
+      "result":[]
+    }
+    ,
+    {"name":"finance-any",
+      "resource":{"elements":{"database":"finance"}},
+      "accessType": "",
+      "result":[{"type":"EXPIRES_ON"}, {"type":"FINANCE"}, {"type":"PII"}, {"type":"EXPIRES_ON"}]
+    }
+    ,
+    {"name":"finance-and-tax2010any",
+      "resource":{"elements":{"database":"finance", "table":"tax_2010"}},
+      "accessType": "",
+      "result":[{"type":"FINANCE"},{"type":"EXPIRES_ON"}, {"type":"PII"}, {"type":"EXPIRES_ON"}]
+    }
+    ,
+    {"name":"hr-any",
+      "resource":{"elements":{"database":"hr"}},
+      "accessType": "",
+      "result":[{"type":"PII"}]
+    }
+    ,
+    {"name":"none-any",
+      "resource":{"elements":{}},
+      "accessType": "",
+      "result":[{"type":"EXPIRES_ON"}, {"type":"FINANCE"}, {"type":"PII"}, {"type":"EXPIRES_ON"}, {"type":"PCI"}]
+    }
+    ,
+    {"name":"hr.employee.ssn",
+      "resource":{"elements":{"database":"hr","table":"employee","column":"ssn"}},
+      "accessType": "read",
+      "result":[{"type":"PII"}]
+    }
+    ,
+    {"name":"hr.employee.id",
+      "resource":{"elements":{"database":"hr","table":"employee","column":"id"}},
+      "accessType": "read",
+      "result":[]
+    }
+    ,
+    {"name":"finance.tax_2010",
+      "resource":{"elements":{"database":"finance","table":"tax_2010"}},
+      "accessType": "read",
+      "result":[{"type":"EXPIRES_ON"},{"type":"FINANCE"}]
+    }
+    ,
+    {"name":"finance.tax_2010.ssn",
+      "resource":{"elements":{"database":"finance","table":"tax_2010","column":"ssn"}},
+      "accessType": "read",
+      "result":[{"type":"EXPIRES_ON"},{"type":"PII"},{"type":"FINANCE"}, {"type":"EXPIRES_ON"}]
+    }
+    ,
+    {"name":"finance.tax_2010.id",
+      "resource":{"elements":{"database":"finance","table":"tax_2010","column":"id"}},
+      "accessType": "read",
+      "result":[{"type":"EXPIRES_ON"},{"type":"FINANCE"}]
+    }
+  ]
+}

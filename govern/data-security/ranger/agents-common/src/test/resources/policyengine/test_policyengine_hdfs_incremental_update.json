@@ -1,0 +1,83 @@
+{
+  "serviceName":"hdfsdev",
+
+  "serviceDef":{
+    "name":"hdfs",
+    "id":1,
+    "resources":[
+      {"name":"path","type":"path","level":1,"mandatory":true,"lookupSupported":true,"recursiveSupported": true,"matcher":"org.apache.ranger.plugin.resourcematcher.RangerPathResourceMatcher","matcherOptions":{"wildCard":true, "ignoreCase":true},"label":"Resource Path","description":"HDFS file or directory path"}
+    ],
+    "accessTypes":[
+      {"name":"read","label":"Read"},
+      {"name":"write","label":"Write"},
+      {"name":"execute","label":"Execute"}
+    ],
+    "contextEnrichers": [],
+    "policyConditions": []
+  },
+
+  "policies":[
+    {"id":10,"name":"allow-read-to-user1 /a/b*","isEnabled":true,"isAuditEnabled":true,
+      "resources":{"path":{"values":["/a/b*"],"isRecursive":false}},
+      "policyItems":[
+        {"accesses":[{"type":"read","isAllowed":true}, {"type":"write","isAllowed":true}, {"type":"execute","isAllowed":true}],"users":["user1"],"groups":[],"delegateAdmin":false}
+      ]
+    }
+  ,
+    {"id":20,"name":"allow-read-to-user1 /a/bc*","isEnabled":true,"isAuditEnabled":true,
+      "resources":{"path":{"values":["/a/bc*"],"isRecursive":false}},
+      "policyItems":[
+        {"accesses":[{"type":"read","isAllowed":true}, {"type":"write","isAllowed":true}, {"type":"execute","isAllowed":true}],"users":["user1"],"groups":[],"delegateAdmin":false}
+      ]
+    }
+  ],
+
+  "tests":[
+    {"name":"ALLOW 'read /a/bcd' for u=user1",
+      "request":{
+        "resource":{"elements":{"path":"/a/bcd"}},
+        "accessType":"read","user":"user1","userGroups":[],"requestData":"read /a/bcd"
+      },
+      "result":{"isAudited":true,"isAllowed":true,"policyId":10}
+    }
+    ,
+    {"name":"ALLOW 'read /a/bd' for u=user1",
+      "request":{
+        "resource":{"elements":{"path":"/a/bd"}},
+        "accessType":"read","user":"user1","userGroups":[],"requestData":"read /a/bd"
+      },
+      "result":{"isAudited":true,"isAllowed":true,"policyId":10}
+    }
+  ],
+  "updatedPolicies": {
+    "policyDeltas": [
+      {
+        "changeType": 1,
+        "policy": {
+          "id": 10, "version": 2, "name": "path=/a/b", "isEnabled": true, "isAuditEnabled": true, "serviceType": "hdfs", "policyType": 0,
+          "resources":{"path":{"values":["/a/b"],"isRecursive":false}},
+          "policyItems": [
+            {"accesses":[{"type":"read","isAllowed":true}, {"type":"write","isAllowed":true}, {"type":"execute","isAllowed":true}],"users":["user1"],"groups":[],"delegateAdmin":false}
+           ]
+        }
+      }
+    ]
+  },
+  "updatedTests": [
+    {"name":"ALLOW 'read /a/bcd' for u=user1",
+      "request":{
+        "resource":{"elements":{"path":"/a/bcd"}},
+        "accessType":"read","user":"user1","userGroups":[],"requestData":"read /a/bcd"
+      },
+      "result":{"isAudited":true,"isAllowed":true,"policyId":20}
+    }
+    ,
+    {"name":"DENY 'read /a/bd' for u=user1",
+      "request":{
+        "resource":{"elements":{"path":"/a/bd"}},
+        "accessType":"read","user":"user1","userGroups":[],"requestData":"read /a/bd"
+      },
+      "result":{"isAudited":false,"isAllowed":false,"policyId":-1}
+    }
+  ]
+}

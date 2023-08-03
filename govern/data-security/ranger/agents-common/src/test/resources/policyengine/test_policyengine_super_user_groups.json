@@ -1,0 +1,182 @@
+{
+  "serviceName":"hivedev",
+
+  "original-serviceDef":{
+    "name":"hive",
+    "id":3,
+    "resources":[
+      {"name":"database","level":1,"mandatory":true,"lookupSupported":true,"matcher":"org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher","matcherOptions":{"wildCard":true, "ignoreCase":true},"label":"Hive Database","description":"Hive Database"},
+      {"name":"url","level":1,"mandatory":true,"lookupSupported":false,"matcher":"org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher","matcherOptions":{"wildCard":true, "ignoreCase":true},"label":"URL","description":"URL"},
+      {"name":"hiveservice","level":1,"mandatory":true,"lookupSupported":false,"matcher":"org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher","matcherOptions":{"wildCard":true, "ignoreCase":true},"label":"HiveService","description":"HiveService"},
+      {"name":"table","level":2,"parent":"database","mandatory":true,"lookupSupported":true,"matcher":"org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher","matcherOptions":{"wildCard":true, "ignoreCase":true},"label":"Hive Table","description":"Hive Table"},
+      {"name":"udf","level":2,"parent":"database","mandatory":true,"lookupSupported":true,"matcher":"org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher","matcherOptions":{"wildCard":true, "ignoreCase":true},"label":"Hive UDF","description":"Hive UDF"},
+      {"name":"column","level":3,"parent":"table","mandatory":true,"lookupSupported":true,"matcher":"org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher","matcherOptions":{"wildCard":true, "ignoreCase":true},"label":"Hive Column","description":"Hive Column"}
+    ],
+    "accessTypes":[
+      {"name":"select","label":"Select"},
+      {"name":"update","label":"Update"},
+      {"name":"create","label":"Create"},
+      {"name":"drop","label":"Drop"},
+      {"name":"alter","label":"Alter"},
+      {"name":"index","label":"Index"},
+      {"name":"lock","label":"Lock"},
+      {"name":"read","label":"Read"},
+      {"name":"write","label":"Write"},
+      {"name":"repladmin","label":"ReplAdmin"},
+      {"name":"serviceadmin","label":"ServiceAdmin"},
+      {"name":"all","label":"All",
+        "impliedGrants": ["select", "update", "create", "drop", "alter", "index", "lock", "read", "write", "repladmin", "serviceadmin"]
+      }
+    ]
+  },
+
+  "serviceDef": {
+    "id":3,
+    "name": "hive",
+    "implClass": "org.apache.ranger.services.hive.RangerServiceHive",
+    "label": "Hive Server2",
+    "description": "Hive Server2",
+    "guid": "3e1afb5a-184a-4e82-9d9c-87a5cacc243c",
+
+    "resources": [
+      {"itemId": 1, "name": "database", "type": "string", "level": 10, "parent": "", "mandatory": true, "lookupSupported": true, "recursiveSupported": false, "excludesSupported": true, "matcher": "org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher", "matcherOptions": { "wildCard":true, "ignoreCase":true }, "validationRegEx":"", "validationMessage": "", "uiHint":"", "label": "Hive Database", "description": "Hive Database", "isValidLeaf": true},
+      {"itemId": 2, "name": "table", "type": "string", "level": 20, "parent": "database", "mandatory": true, "lookupSupported": true, "recursiveSupported": false, "excludesSupported": true, "matcher": "org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher", "matcherOptions": { "wildCard":true, "ignoreCase":true }, "validationRegEx":"", "validationMessage": "", "uiHint":"", "label": "Hive Table", "description": "Hive Table", "isValidLeaf": true},
+      {"itemId": 3, "name": "udf", "type": "string", "level": 20, "parent": "database", "mandatory": true, "lookupSupported": true, "recursiveSupported": false, "excludesSupported": true, "matcher": "org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher", "matcherOptions": { "wildCard":true, "ignoreCase":true }, "validationRegEx":"", "validationMessage": "", "uiHint":"", "label": "Hive UDF", "description": "Hive UDF", "isValidLeaf": true},
+      {"itemId": 4, "name": "column", "type": "string", "level": 30, "parent": "table", "mandatory": true, "lookupSupported": true, "recursiveSupported": false, "excludesSupported": true, "matcher": "org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher", "matcherOptions": { "wildCard":true, "ignoreCase":true }, "validationRegEx":"", "validationMessage": "", "uiHint":"", "label": "Hive Column", "description": "Hive Column", "isValidLeaf": true},
+      {"itemId": 5, "name": "url", "type": "string", "level": 10, "parent": "", "mandatory": true, "lookupSupported": false, "recursiveSupported": true, "excludesSupported": false, "matcher": "org.apache.ranger.plugin.resourcematcher.RangerPathResourceMatcher", "matcherOptions": { "wildCard":true, "ignoreCase":false }, "validationRegEx":"", "validationMessage": "", "uiHint":"", "label": "URL", "description": "URL", "isValidLeaf": true}
+    ],
+
+    "accessTypes": [
+      {"itemId": 1, "name": "select", "label": "select"},
+      {"itemId": 2, "name": "update", "label": "update"},
+      {"itemId": 3, "name": "create", "label": "Create"},
+      {"itemId": 4, "name": "drop", "label": "Drop"},
+      {"itemId": 5, "name": "alter", "label": "Alter"},
+      {"itemId": 6, "name": "index", "label": "Index"},
+      {"itemId": 7, "name": "lock", "label": "Lock"},
+      {"itemId": 8, "name": "all", "label": "All",
+        "impliedGrants": ["select", "update", "create", "drop", "alter", "index", "lock", "read", "write"]},
+      {"itemId": 9, "name": "read", "label": "Read"},
+      {"itemId": 10, "name": "write", "label": "Write"}
+    ],
+
+    "configs": [
+      {"itemId": 1, "name": "username", "type": "string", "mandatory": true, "validationRegEx":"", "validationMessage": "", "uiHint":"", "label": "Username"},
+      {"itemId": 2, "name": "password", "type": "password", "mandatory": true, "validationRegEx":"", "validationMessage": "", "uiHint":"", "label": "Password"},
+      {"itemId": 3, "name": "jdbc.driverClassName", "type": "string", "mandatory": true, "validationRegEx":"", "validationMessage": "", "uiHint":"", "defaultValue": "org.apache.hive.jdbc.HiveDriver"},
+      {"itemId": 4, "name": "jdbc.url", "type": "string", "mandatory": true, "defaultValue": "", "validationRegEx":"", "validationMessage": "", "uiHint":""},
+      {"itemId": 5, "name": "commonNameForCertificate", "type": "string", "mandatory": false, "validationRegEx":"", "validationMessage": "", "uiHint":"", "label": "Common Name for Certificate"}
+    ],
+
+    "enums": [
+    ],
+
+    "contextEnrichers": [
+    ],
+
+    "policyConditions": [
+    ]
+  },
+
+  "serviceConfig": {
+    "ranger.plugin.super.users": "svc-cfg-su1, svc-cfg-su2",
+    "ranger.plugin.super.groups": "svc-cfg-sg1, svc-cfg-sg2"
+  },
+
+  "policies":[
+    {"id":1,"name":"database=db-*,table=*,column=* - audit-all-access","isEnabled":true,"isAuditEnabled":true,
+     "resources":{"database":{"values":["db-*"]},"table":{"values":["*"]},"column":{"values":["*"]}},
+     "policyItems":[
+     ],
+     "denyPolicyItems":[
+       {"accesses":[{"type":"create","isAllowed":true}],"users":["hive1","hive2"],"groups":["hadoop","hive"],"delegateAdmin":false}
+     ]
+    }
+  ],
+
+  "superUsers": [ "su1", "su2" ],
+  "superGroups": [ "sg1", "sg2" ],
+
+  "tests":[
+    {"name":"ALLOW 'create db-1;' for su1",
+      "request":{
+        "resource":{"elements":{"database":"db-1"}},
+        "accessType":"create","user":"su1","userGroups":[""],"requestData":"create db-1 for su1"
+      },
+      "result":{"isAudited":true,"isAllowed":true,"policyId":-1}
+    }
+    ,
+    {"name":"ALLOW 'create db-2;' for su2",
+      "request":{
+        "resource":{"elements":{"database":"db-2"}},
+        "accessType":"create","user":"su2","userGroups":[""],"requestData":"create db-2 for su2"
+      },
+      "result":{"isAudited":true,"isAllowed":true,"policyId":-1}
+    }
+  ,
+    {"name":"ALLOW 'create db-1;' for svc-cfg-su1",
+      "request":{
+        "resource":{"elements":{"database":"db-1"}},
+        "accessType":"create","user":"svc-cfg-su1","userGroups":[""],"requestData":"create db-1 for svc-cfg-su1"
+      },
+      "result":{"isAudited":true,"isAllowed":true,"policyId":-1}
+    }
+  ,
+    {"name":"ALLOW 'create db-2;' for svc-cfg-su2",
+      "request":{
+        "resource":{"elements":{"database":"db-2"}},
+        "accessType":"create","user":"svc-cfg-su2","userGroups":[""],"requestData":"create db-2 for svc-cfg-su2"
+      },
+      "result":{"isAudited":true,"isAllowed":true,"policyId":-1}
+    }
+  ,
+    {"name":"ALLOW 'create db-1.tbl-1;' for user1 (in sg1)",
+      "request":{
+        "resource":{"elements":{"database":"db-1", "table":"tbl-1"}},
+        "accessType":"create","user":"user1","userGroups":["sg1"],"requestData":"create db-1.tbl-1;' for user1 (in sg1)"
+      },
+      "result":{"isAudited":true,"isAllowed":true,"policyId":-1}
+    }
+  ,
+    {"name":"ALLOW 'create db-1.tbl-2;' for user2 (in sg2)",
+      "request":{
+        "resource":{"elements":{"database":"db-1", "table":"tbl-2"}},
+        "accessType":"create","user":"user2","userGroups":["sg2"],"requestData":"create db-1.tbl-2;' for user2 (in sg2)"
+      },
+      "result":{"isAudited":true,"isAllowed":true,"policyId":-1}
+    }
+  ,
+    {"name":"ALLOW 'create db-1.tbl-1;' for user1 (in svc-cfg-sg1)",
+      "request":{
+        "resource":{"elements":{"database":"db-1", "table":"tbl-1"}},
+        "accessType":"create","user":"user1","userGroups":["svc-cfg-sg1"],"requestData":"create db-1.tbl-1;' for user1 (in svc-cfg-sg1)"
+      },
+      "result":{"isAudited":true,"isAllowed":true,"policyId":-1}
+    }
+  ,
+    {"name":"ALLOW 'create db-1.tbl-2;' for user2 (in svc-cfg-sg2)",
+      "request":{
+        "resource":{"elements":{"database":"db-1", "table":"tbl-2"}},
+        "accessType":"create","user":"user2","userGroups":["svc-cfg-sg2"],"requestData":"create db-1.tbl-2;' for user2 (in svc-cfg-sg2)"
+      },
+      "result":{"isAudited":true,"isAllowed":true,"policyId":-1}
+    }
+  ,
+    {"name":"DENY 'create db-1.tbl-3;' for user3",
+      "request":{
+        "resource":{"elements":{"database":"db-1", "table":"tbl-3"}},
+        "accessType":"create","user":"user3","userGroups":["users"],"requestData":"create db-1.tbl-3;' for user3"
+      },
+      "result":{"isAudited":true,"isAllowed":false,"policyId":-1}
+    }
+  ,
+    {"name":"ALLOW 'create testdb;' for su1; no audit",
+      "request":{
+        "resource":{"elements":{"database":"testdb"}},
+        "accessType":"create","user":"su1","userGroups":[""],"requestData":"create db-1 for su1"
+      },
+      "result":{"isAudited":false,"isAllowed":true,"policyId":-1}
+    }
+  ]
+}
+

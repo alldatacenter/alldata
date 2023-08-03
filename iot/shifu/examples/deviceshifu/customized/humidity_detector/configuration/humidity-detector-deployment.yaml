@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: humidity-detector
+  name: humidity-detector
+  namespace: devices
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: humidity-detector
+  template:
+    metadata:
+      labels:
+        app: humidity-detector
+    spec:
+      containers:
+        - image: edgehub/humidity-detector:v0.24.0-rc1
+          imagePullPolicy: Never
+          name: humidity-detector
+          ports:
+            - containerPort: 11111

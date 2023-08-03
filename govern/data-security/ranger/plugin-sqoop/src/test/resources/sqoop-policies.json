@@ -1,0 +1,539 @@
+{
+  "serviceName": "sqoopTest",
+  "serviceId": 2,
+  "policyVersion": 13,
+  "policyUpdateTime": "20171103-17:19:53.000-+0800",
+  "policies": [
+    {
+      "service": "sqoopTest",
+      "name": "all - link",
+      "policyType": 0,
+      "description": "Policy for all - link",
+      "isAuditEnabled": true,
+      "resources": {
+        "link": {
+          "values": [
+            "*"
+          ],
+          "isExcludes": false,
+          "isRecursive": false
+        }
+      },
+      "policyItems": [
+        {
+          "accesses": [
+            {
+              "type": "READ",
+              "isAllowed": true
+            },
+            {
+              "type": "WRITE",
+              "isAllowed": true
+            }
+          ],
+          "users": [
+            "sqoop"
+          ],
+          "groups": [],
+          "conditions": [],
+          "delegateAdmin": true
+        }
+      ],
+      "denyPolicyItems": [],
+      "allowExceptions": [],
+      "denyExceptions": [],
+      "dataMaskPolicyItems": [],
+      "rowFilterPolicyItems": [],
+      "id": 16,
+      "guid": "2e493ce4-6da3-45c2-a34f-72334834c711",
+      "isEnabled": true,
+      "version": 1
+    },
+    {
+      "service": "sqoopTest",
+      "name": "all - job",
+      "policyType": 0,
+      "description": "Policy for all - job",
+      "isAuditEnabled": true,
+      "resources": {
+        "job": {
+          "values": [
+            "*"
+          ],
+          "isExcludes": false,
+          "isRecursive": false
+        }
+      },
+      "policyItems": [
+        {
+          "accesses": [
+            {
+              "type": "READ",
+              "isAllowed": true
+            },
+            {
+              "type": "WRITE",
+              "isAllowed": true
+            }
+          ],
+          "users": [
+            "sqoop"
+          ],
+          "groups": [],
+          "conditions": [],
+          "delegateAdmin": true
+        }
+      ],
+      "denyPolicyItems": [],
+      "allowExceptions": [],
+      "denyExceptions": [],
+      "dataMaskPolicyItems": [],
+      "rowFilterPolicyItems": [],
+      "id": 17,
+      "guid": "9f328169-0801-4733-9d0f-d2fe28442010",
+      "isEnabled": true,
+      "version": 1
+    },
+    {
+      "service": "sqoopTest",
+      "name": "all - connector",
+      "policyType": 0,
+      "description": "Policy for all - connector",
+      "isAuditEnabled": true,
+      "resources": {
+        "connector": {
+          "values": [
+            "*"
+          ],
+          "isExcludes": false,
+          "isRecursive": false
+        }
+      },
+      "policyItems": [
+        {
+          "accesses": [
+            {
+              "type": "READ",
+              "isAllowed": true
+            },
+            {
+              "type": "WRITE",
+              "isAllowed": true
+            }
+          ],
+          "users": [
+            "sqoop"
+          ],
+          "groups": [],
+          "conditions": [],
+          "delegateAdmin": true
+        }
+      ],
+      "denyPolicyItems": [],
+      "allowExceptions": [],
+      "denyExceptions": [],
+      "dataMaskPolicyItems": [],
+      "rowFilterPolicyItems": [],
+      "id": 18,
+      "guid": "d715946d-cd6f-4e04-9203-5a7fc65b9726",
+      "isEnabled": true,
+      "version": 1
+    },
+    {
+      "service": "sqoopTest",
+      "name": "accessKafkaConnector",
+      "policyType": 0,
+      "description": "",
+      "isAuditEnabled": true,
+      "resources": {
+        "connector": {
+          "values": [
+            "kafka-connector"
+          ],
+          "isExcludes": false,
+          "isRecursive": false
+        }
+      },
+      "policyItems": [
+        {
+          "accesses": [
+            {
+              "type": "READ",
+              "isAllowed": true
+            }
+          ],
+          "users": [
+            "zhangqiang"
+          ],
+          "groups": [],
+          "conditions": [],
+          "delegateAdmin": false
+        }
+      ],
+      "denyPolicyItems": [],
+      "allowExceptions": [],
+      "denyExceptions": [],
+      "dataMaskPolicyItems": [],
+      "rowFilterPolicyItems": [],
+      "id": 19,
+      "guid": "a2b8f85f-27c7-4ba1-ba8c-6213c6172636",
+      "isEnabled": true,
+      "version": 3
+    },
+    {
+      "service": "sqoopTest",
+      "name": "accessOracleJdbcConnector",
+      "policyType": 0,
+      "description": "",
+      "isAuditEnabled": true,
+      "resources": {
+        "connector": {
+          "values": [
+            "oracle-jdbc-connector"
+          ],
+          "isExcludes": false,
+          "isRecursive": false
+        }
+      },
+      "policyItems": [
+        {
+          "accesses": [
+            {
+              "type": "READ",
+              "isAllowed": true
+            },
+            {
+              "type": "WRITE",
+              "isAllowed": true
+            }
+          ],
+          "users": [
+            "yuwen"
+          ],
+          "groups": [],
+          "conditions": [],
+          "delegateAdmin": false
+        }
+      ],
+      "denyPolicyItems": [],
+      "allowExceptions": [],
+      "denyExceptions": [],
+      "dataMaskPolicyItems": [],
+      "rowFilterPolicyItems": [],
+      "id": 22,
+      "guid": "91f287f1-ce44-435b-bd8b-b0285a20f9c5",
+      "isEnabled": true,
+      "version": 1
+    },
+    {
+      "service": "sqoopTest",
+      "name": "accessHdfsConnector",
+      "policyType": 0,
+      "description": "",
+      "isAuditEnabled": true,
+      "resources": {
+        "connector": {
+          "values": [
+            "hdfs-connector"
+          ],
+          "isExcludes": false,
+          "isRecursive": false
+        }
+      },
+      "policyItems": [
+        {
+          "accesses": [
+            {
+              "type": "READ",
+              "isAllowed": true
+            },
+            {
+              "type": "WRITE",
+              "isAllowed": true
+            }
+          ],
+          "users": [
+            "yuwen"
+          ],
+          "groups": [],
+          "conditions": [],
+          "delegateAdmin": false
+        }
+      ],
+      "denyPolicyItems": [],
+      "allowExceptions": [],
+      "denyExceptions": [],
+      "dataMaskPolicyItems": [],
+      "rowFilterPolicyItems": [],
+      "id": 23,
+      "guid": "454bc74e-e012-4ebd-a4bf-375ed8b2d98d",
+      "isEnabled": true,
+      "version": 1
+    },
+    {
+      "service": "sqoopTest",
+      "name": "accessOracleLink",
+      "policyType": 0,
+      "description": "",
+      "isAuditEnabled": true,
+      "resources": {
+        "link": {
+          "values": [
+            "oracle-link"
+          ],
+          "isExcludes": false,
+          "isRecursive": false
+        }
+      },
+      "policyItems": [
+        {
+          "accesses": [
+            {
+              "type": "READ",
+              "isAllowed": true
+            },
+            {
+              "type": "WRITE",
+              "isAllowed": true
+            }
+          ],
+          "users": [
+            "yuwen"
+          ],
+          "groups": [],
+          "conditions": [],
+          "delegateAdmin": false
+        }
+      ],
+      "denyPolicyItems": [],
+      "allowExceptions": [],
+      "denyExceptions": [],
+      "dataMaskPolicyItems": [],
+      "rowFilterPolicyItems": [],
+      "id": 24,
+      "guid": "3154e0c9-ccd2-4566-a730-5ea51ab21404",
+      "isEnabled": true,
+      "version": 1
+    },
+    {
+      "service": "sqoopTest",
+      "name": "accessHdfsLink",
+      "policyType": 0,
+      "description": "",
+      "isAuditEnabled": true,
+      "resources": {
+        "link": {
+          "values": [
+            "hdfs-link"
+          ],
+          "isExcludes": false,
+          "isRecursive": false
+        }
+      },
+      "policyItems": [
+        {
+          "accesses": [
+            {
+              "type": "READ",
+              "isAllowed": true
+            },
+            {
+              "type": "WRITE",
+              "isAllowed": true
+            }
+          ],
+          "users": [
+            "yuwen"
+          ],
+          "groups": [],
+          "conditions": [],
+          "delegateAdmin": false
+        }
+      ],
+      "denyPolicyItems": [],
+      "allowExceptions": [],
+      "denyExceptions": [],
+      "dataMaskPolicyItems": [],
+      "rowFilterPolicyItems": [],
+      "id": 25,
+      "guid": "2e11dd2d-4da4-4dc4-89fa-ce8e4f5fbc1c",
+      "isEnabled": true,
+      "version": 2
+    },
+    {
+      "service": "sqoopTest",
+      "name": "accessOracle2HdfsJob",
+      "policyType": 0,
+      "description": "",
+      "isAuditEnabled": true,
+      "resources": {
+        "job": {
+          "values": [
+            "oracle2hdfs-job"
+          ],
+          "isExcludes": false,
+          "isRecursive": false
+        }
+      },
+      "policyItems": [
+        {
+          "accesses": [
+            {
+              "type": "READ",
+              "isAllowed": true
+            },
+            {
+              "type": "WRITE",
+              "isAllowed": true
+            }
+          ],
+          "users": [
+            "yuwen"
+          ],
+          "groups": [],
+          "conditions": [],
+          "delegateAdmin": false
+        }
+      ],
+      "denyPolicyItems": [],
+      "allowExceptions": [],
+      "denyExceptions": [],
+      "dataMaskPolicyItems": [],
+      "rowFilterPolicyItems": [],
+      "id": 26,
+      "guid": "81d30427-d164-47f6-beac-5d96bd183132",
+      "isEnabled": true,
+      "version": 1
+    }
+  ],
+  "serviceDef": {
+    "name": "sqoop",
+    "implClass": "org.apache.ranger.services.sqoop.RangerServiceSqoop",
+    "label": "SQOOP",
+    "description": "SQOOP",
+    "options": {
+      "enableDenyAndExceptionsInPolicies": "false"
+    },
+    "configs": [
+      {
+        "itemId": 1,
+        "name": "username",
+        "type": "string",
+        "mandatory": true,
+        "validationRegEx": "",
+        "validationMessage": "",
+        "uiHint": "",
+        "label": "Username"
+      },
+      {
+        "itemId": 2,
+        "name": "sqoop.url",
+        "type": "string",
+        "mandatory": true,
+        "defaultValue": "",
+        "validationRegEx": "",
+        "validationMessage": "",
+        "uiHint": "",
+        "label": "Sqoop URL"
+      }
+    ],
+    "resources": [
+      {
+        "itemId": 1,
+        "name": "connector",
+        "type": "string",
+        "level": 10,
+        "mandatory": true,
+        "lookupSupported": true,
+        "recursiveSupported": false,
+        "excludesSupported": false,
+        "matcher": "org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher",
+        "matcherOptions": {
+          "wildCard": "true",
+          "ignoreCase": "true"
+        },
+        "validationRegEx": "",
+        "validationMessage": "",
+        "uiHint": "",
+        "label": "Connector",
+        "description": "Sqoop Connector",
+        "accessTypeRestrictions": []
+      },
+      {
+        "itemId": 2,
+        "name": "link",
+        "type": "string",
+        "level": 10,
+        "mandatory": true,
+        "lookupSupported": true,
+        "recursiveSupported": false,
+        "excludesSupported": false,
+        "matcher": "org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher",
+        "matcherOptions": {
+          "wildCard": "true",
+          "ignoreCase": "true"
+        },
+        "validationRegEx": "",
+        "validationMessage": "",
+        "uiHint": "",
+        "label": "Link",
+        "description": "Sqoop Link",
+        "accessTypeRestrictions": []
+      },
+      {
+        "itemId": 3,
+        "name": "job",
+        "type": "string",
+        "level": 10,
+        "mandatory": true,
+        "lookupSupported": true,
+        "recursiveSupported": false,
+        "excludesSupported": false,
+        "matcher": "org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher",
+        "matcherOptions": {
+          "wildCard": "true",
+          "ignoreCase": "true"
+        },
+        "validationRegEx": "",
+        "validationMessage": "",
+        "uiHint": "",
+        "label": "Job",
+        "description": "Sqoop Job",
+        "accessTypeRestrictions": []
+      }
+    ],
+    "accessTypes": [
+      {
+        "itemId": 1,
+        "name": "READ",
+        "label": "READ",
+        "impliedGrants": []
+      },
+      {
+        "itemId": 2,
+        "name": "WRITE",
+        "label": "WRITE",
+        "impliedGrants": []
+      }
+    ],
+    "policyConditions": [],
+    "contextEnrichers": [],
+    "enums": [],
+    "dataMaskDef": {
+      "maskTypes": [],
+      "accessTypes": [],
+      "resources": []
+    },
+    "rowFilterDef": {
+      "accessTypes": [],
+      "resources": []
+    },
+    "id": 14,
+    "guid": "6c63d385-5876-4a4c-ac4a-3b99b50ed600",
+    "isEnabled": true,
+    "createTime": "20171023-12:10:59.000-+0800",
+    "updateTime": "20171023-12:10:59.000-+0800",
+    "version": 1
+  },
+  "auditMode": "audit-default"
+}

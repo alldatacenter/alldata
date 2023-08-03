@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<entity-mappings version="1.0"
+                 xmlns="http://java.sun.com/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_1_0.xsd ">
+
+    <named-query name="XXRangerKeyStore.findByAlias">
+        <query>SELECT Obj FROM XXRangerKeyStore obj WHERE obj.alias = :alias</query>
+    </named-query>
+
+    <named-query name="XXRangerKeyStore.getAllKeys">
+        <query>SELECT obj.id,
+                      obj.alias,
+                      obj.createdDate,
+                      obj.encoded,
+                      obj.cipher,
+                      obj.bitLength,
+                      obj.description,
+                      obj.version,
+                      obj.attributes
+                 FROM XXRangerKeyStore obj
+        </query>
+    </named-query>
+
+    <named-query name="XXRangerKeyStore.deleteByAlias">
+        <query>DELETE FROM XXRangerKeyStore obj WHERE obj.alias = :alias</query>
+    </named-query>
+</entity-mappings>

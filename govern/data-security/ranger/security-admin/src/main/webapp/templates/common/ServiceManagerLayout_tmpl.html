@@ -1,0 +1,101 @@
+{{!-- 
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+--}}
+{{#if setOldUi}}
+    <div class="clearfix">
+        <div class="pull-left">
+            <h3 class="wrap-header bold">{{tt 'h.serviceManager'}}</h3>
+        </div>
+        <div class="pull-right m-b-sm">
+            {{#isZoneAdministration}}
+                <div class="inline-block">
+                    <b> Security Zone: </b>
+                    <span title="Create zone first" class="zoneEmptyMsg"><input type="text" data-id="selectZoneName" disabled="disabled"></span>
+                </div>
+            {{/isZoneAdministration}}
+            {{#if showImportExportBtn}}
+                <button type="button" title="Export" class=" btn btn-mini btn-right btn-import-export" data-id="exportBtn"> <i class="fa-fw fa fa-external-link-square"></i>
+                 Export
+                </button>
+                <button type="button" title="Import" class="btn btn btn-mini btn-import-export" data-id="importBtn" > <i class="fa-fw fa fa-rotate-180 fa-fw fa fa-external-link-square"></i>
+                 Import
+                </button>
+            {{/if}}
+        </div>
+    </div>
+    <div class="wrap non-collapsible policy-manager">
+        <div class="css-1o3fej" style="will-change: width; width: 20px; transition: width 300ms cubic-bezier(0.2, 0, 0, 1);">
+            <div class="css-xk6jfr">
+                <div class="css-kq308b"></div>
+            </div>
+            <div class="css-1e4ii7o">
+                <div class="css-kq308b"></div>
+            </div>
+        </div>
+        <div class="row">
+            {{#each serviceDefs}}
+                <div class="col-md-4">
+                    <div class="position-relative">
+                        <table class="table table-bordered table-striped">
+                            <!-- table-policy -->
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <span class="policy-title">
+                                            <!-- Remove alt attribut from img tag -->
+                                            <span>
+                                                <img src="images/folder-grey.png">
+                                                {{./this.attributes.displayName}}
+                                            </span>
+                                            {{#if ../operation}}
+                                                <span>
+                                                    <a href="javascript:void(0)" title="Export" type="button" class="download  pull-right text-decoration" data-id="downloadBtnOnService" data-servicetype="{{./this.attributes.name}}" style="margin-right: 5px;">
+                                                        <i class="fa-fw fa fa-external-link-square"> </i>
+                                                    </a>
+
+                                                    <a href="javascript:void(0)" title="Import" data-id="uploadBtnOnServices" data-servicetype="{{./this.attributes.name}}" class=" btn-right importbtn text-decoration">
+                                                        <i class="fa-fw fa fa-rotate-180 fa-fw fa fa-external-link-square"> </i>
+                                                    </a>
+                                                    {{#if ../isServiceManager}}
+                                                        <a href="#!/service/{{./this.id}}/create" class="pull-right text-decoration" title="Add New Service" style="margin-right: 2px;"> <i class="fa-fw fa fa-plus"></i></a>
+                                                    {{else}}
+                                                        <a href="javascript:void(0)" class="pull-right text-decoration disabled add-service" title="Services cannot be added while filtering Security Zones"> <i class="fa-fw fa fa-plus"></i></a>
+                                                    {{/if}}
+                                                </span>
+
+                                            {{/if}}
+                                        </span>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{{getServices ../services this}}}
+                            </tbody>
+                        </table>
+                        <div data-id="r_tableSpinner" class="loading">
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+    </div>
+{{else}}
+    <div class="security-details-default">
+        <div class="default-zone">
+            <h4>No Services Found!</h4>
+        </div>
+    </div>
+{{/if}}

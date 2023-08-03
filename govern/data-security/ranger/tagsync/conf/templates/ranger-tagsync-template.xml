@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License. See accompanying LICENSE file.
+-->
+
+<configuration>
+	<property>
+		<name>ranger.tagsync.enabled</name>
+		<value></value>
+	</property>
+	<property>
+		<name>ranger.tagsync.logdir</name>
+		<value></value>
+	</property>
+	<property>
+		<name>ranger.tagsync.dest.ranger.endpoint</name>
+		<value></value>
+	</property>
+	<property>
+		<name>ranger.tagsync.dest.ranger.ssl.config.filename</name>
+		<value></value>
+	</property>
+	<property>
+		<name>ranger.tagsync.source.atlas</name>
+		<value></value>
+	</property>
+	<property>
+		<name>ranger.tagsync.source.atlasrest</name>
+		<value></value>
+	</property>
+	<property>
+		<name>ranger.tagsync.source.atlasrest.endpoint</name>
+		<value></value>
+	</property>
+	<property>
+		<name>ranger.tagsync.source.atlasrest.download.interval.millis</name>
+		<value></value>
+	</property>
+	<property>
+		<name>ranger.tagsync.source.file</name>
+		<value></value>
+	</property>
+	<property>
+		<name>ranger.tagsync.source.file.filename</name>
+		<value></value>
+	</property>
+	<property>
+		<name>ranger.tagsync.source.file.check.interval.millis</name>
+		<value></value>
+	</property>
+	<property>
+		<name>ranger.tagsync.atlas.to.ranger.service.mapping</name>
+		<value></value>
+	</property>
+	<property>
+		<name>ranger.tagsync.atlas.custom.resource.mappers</name>
+		<value></value>
+	</property>
+	<property>
+		<name>ranger.tagsync.keystore.filename</name>
+		<value></value>
+	</property>
+	<property>
+		<name>ranger.tagsync.kerberos.keytab</name>
+		<value></value>
+	</property>
+	<property>
+		<name>ranger.tagsync.kerberos.principal</name>
+		<value></value>
+	</property>
+	<property>
+		<name>hadoop_conf</name>
+		<value></value>
+	</property>
+	<property>
+		<name>ranger.tagsync.dest.ranger.username</name>
+		<value></value>
+	</property>
+	<property>
+		<name>ranger.tagsync.source.atlasrest.username</name>
+		<value></value>
+	</property>
+	<property>
+		<name>ranger.tagsync.source.atlasrest.password</name>
+		<value></value>
+	</property>
+	<property>
+		<name>ranger.tagsync.source.atlasrest.keystore.filename</name>
+		<value></value>
+	</property>
+	<property>
+		<name>ranger.tagsync.source.atlasrest.ssl.config.filename</name>
+		<value></value>
+	</property>
+	<property>
+		<name>ranger.tagsync.dest.ranger.session.cookie.name</name>
+		<value>RANGERADMINSESSIONID</value>
+	</property>
+	<property>
+		<name>ranger.tagsync.metrics.filepath</name>
+		<value></value>
+	</property>
+	<property>
+		<name>ranger.tagsync.metrics.filename</name>
+		<value></value>
+	</property>
+	<property>
+		<name>ranger.tagsync.metrics.frequencytimeinmillis</name>
+		<value></value>
+	</property>
+	<property>
+		<name>ranger.tagsync.metrics.enabled</name>
+		<value>false</value>
+	</property>
+</configuration>

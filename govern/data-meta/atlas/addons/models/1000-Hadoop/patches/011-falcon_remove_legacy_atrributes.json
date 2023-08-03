@@ -1,0 +1,38 @@
+{
+    "patches": [
+        {
+            "id":              "TYPEDEF_PATCH_1000_011_001",
+            "description":     "Remove legacy reference attribute 'stored-in' from falcon_feed",
+            "action":          "REMOVE_LEGACY_REF_ATTRIBUTES",
+            "typeName":        "falcon_feed_cluster",
+            "applyToVersion":  "1.1",
+            "updateToVersion": "1.2",
+            "params": {
+                "relationshipLabel": "__falcon_feed.stored-in",
+                "relationshipCategory": "COMPOSITION"
+            }
+        },
+        {
+            "id":              "TYPEDEF_PATCH_1000_011_002",
+            "description":     "Remove legacy reference attribute 'runs-on' from falcon_process",
+            "action":          "REMOVE_LEGACY_REF_ATTRIBUTES",
+            "typeName":        "falcon_cluster_process",
+            "applyToVersion":  "1.1",
+            "updateToVersion": "1.2",
+            "params": {
+                "relationshipLabel": "__falcon_cluster.processes"
+            }
+        },
+        {
+            "id":              "TYPEDEF_PATCH_1000_011_003",
+            "description":     "Remove legacy reference attribute 'stored-in' from falcon_feed_creation",
+            "action":          "REMOVE_LEGACY_REF_ATTRIBUTES",
+            "typeName":        "falcon_cluster_feed_creation",
+            "applyToVersion":  "1.1",
+            "updateToVersion": "1.2",
+            "params": {
+                "relationshipLabel": "__falcon_cluster.feedCreations"
+            }
+        }
+    ]
+}

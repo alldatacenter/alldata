@@ -1,0 +1,160 @@
+{
+  "serviceDef": {
+    "id":1,
+    "name": "hdfs",
+    "resources":
+    [
+      {
+        "itemId": 1,
+        "name": "path",
+        "type": "path",
+        "level": 10,
+        "parent": "",
+        "mandatory": true,
+        "lookupSupported": true,
+        "recursiveSupported": true,
+        "excludesSupported": false,
+        "matcher": "org.apache.ranger.plugin.resourcematcher.RangerPathResourceMatcher",
+        "matcherOptions": { "wildCard":true, "ignoreCase":false },
+        "validationRegEx":"",
+        "validationMessage": "",
+        "uiHint":"",
+        "label": "Resource Path",
+        "description": "HDFS file or directory path"
+      }
+    ],
+
+    "accessTypes":
+    [
+      {
+        "itemId": 1,
+        "name": "read",
+        "label": "Read"
+      },
+
+      {
+        "itemId": 2,
+        "name": "write",
+        "label": "Write"
+      },
+
+      {
+        "itemId": 3,
+        "name": "execute",
+        "label": "Execute"
+      }
+    ]
+  },
+  "testCases": [
+    {
+      "name": "path=/finance/tax/refund",
+      "policyResources": {
+        "path": {
+          "values": [
+            "/finance/tax/refund"
+          ]
+        }
+      },
+      "tests": [
+        {
+          "name": "Exact match for 'path=/finance/tax/refund' policy",
+          "type": "exactMatch",
+          "policy": {
+            "service": "any",
+            "name": "test",
+            "policyType": 0,
+            "description": "",
+            "resourceSignature": "",
+            "isAuditEnabled": true,
+            "resources": {
+              "path": {
+                "values": [
+                  "/finance/tax/refund"
+                ],
+                "isExcludes": false,
+                "isRecursive": true
+              }
+            },
+            "policyItems": [],
+            "denyPolicyItems": [],
+            "allowExceptions": [],
+            "denyExceptions": [],
+            "dataMaskPolicyItems": [],
+            "rowFilterPolicyItems": []
+          },
+          "evalContext": {},
+          "result": true
+        }
+      ]
+    },
+    { "name": "path=/finance/tax/*",
+      "policyResources": {
+        "path": {
+          "values": [
+            "/finance/tax/*"
+          ]
+        }
+      },
+      "tests": [
+        {
+          "name": "Self or Ancestor match for 'path=/finance/tax/refund' policy",
+          "type": "selfOrAncestorMatch",
+          "policy" : {
+            "service" : "any",
+            "name" : "test",
+            "policyType":0,
+            "description":"",
+            "resourceSignature":"",
+            "isAuditEnabled":true,
+            "resources" : {
+              "path": {"values": ["/finance/tax/refund"], "isExcludes": false, "isRecursive": true}
+            },
+            "policyItems":[],
+            "denyPolicyItems":[],
+            "allowExceptions":[],
+            "denyExceptions":[],
+            "dataMaskPolicyItems":[],
+            "rowFilterPolicyItems":[]
+          },
+          "evalContext": {},
+          "result" : true
+        }
+      ]
+    }
+    ,
+    { "name": "path=/finance*",
+      "policyResources": {
+        "path": {
+          "values": [
+            "/finance*"
+          ]
+        }
+      },
+      "tests": [
+        {
+          "name": "Exact match for 'path=/finance/tax/refund' policy",
+          "type": "exactMatch",
+          "policy" : {
+            "service" : "any",
+            "name" : "test",
+            "policyType":0,
+            "description":"",
+            "resourceSignature":"",
+            "isAuditEnabled":true,
+            "resources" : {
+              "path": {"values": ["/finance/tax/refund"], "isExcludes": false, "isRecursive": true}
+            },
+            "policyItems":[],
+            "denyPolicyItems":[],
+            "allowExceptions":[],
+            "denyExceptions":[],
+            "dataMaskPolicyItems":[],
+            "rowFilterPolicyItems":[]
+          },
+          "evalContext": {},
+          "result" : true
+        }
+      ]
+    }
+  ]
+}
