@@ -1,0 +1,7 @@
+{
+  "remote-endpoint": "/var/run/koordlet-runtimehookserver.sock",
+  "failure-policy": "Fail",
+  "runtime-hooks": [
+    "PreRunPodSandbox"
+  ]
+}

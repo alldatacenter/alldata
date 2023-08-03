@@ -1,0 +1,26 @@
+{
+  "query":                  "",
+  "typeName":               "Employee",
+  "classification":         "PII",
+  "excludeDeletedEntities": true,
+  "entityFilters": {
+    "attributeName":  "name",
+	"operator":       "startsWith",
+	"attributeValue": "Anna"
+  },
+  "tagFilters": {
+    "condition": "AND",
+	"criterion": [
+	  {
+        "attributeName":  "type",
+	    "operator":       "=",
+	    "attributeValue": "ccn"
+	  },
+	  {
+        "attributeName":  "notes",
+	    "operator":       "contains",
+	    "attributeValue": "bulk"
+	  }
+	]
+  }
+}

@@ -1,0 +1,52 @@
+{
+    "patches": [
+        {
+            "id":              "TYPEDEF_PATCH_3000_003_001",
+            "description":     "Remove legacy reference attribute 's3Objects' from aws_s3_pseudo_dir",
+            "action":          "REMOVE_LEGACY_REF_ATTRIBUTES",
+            "typeName":        "aws_s3_pseudo_dir_aws_objects",
+            "applyToVersion":  "1.1",
+            "updateToVersion": "1.2",
+            "params": {
+                "relationshipLabel":    "__aws_s3_pseudo_dir.s3Objects",
+                "relationshipCategory": "COMPOSITION"
+            }
+        },
+        {
+            "id":              "TYPEDEF_PATCH_3000_003_002",
+            "description":     "Remove legacy reference attribute 'pseudoDirectories' from aws_s3_bucket",
+            "action":          "REMOVE_LEGACY_REF_ATTRIBUTES",
+            "typeName":        "aws_s3_bucket_aws_s3_pseudo_dirs",
+            "applyToVersion":  "1.1",
+            "updateToVersion": "1.2",
+            "params": {
+                "relationshipLabel":    "__aws_s3_bucket.pseudoDirectories",
+                "relationshipCategory": "COMPOSITION"
+            }
+        },
+        {
+            "id":              "TYPEDEF_PATCH_3000_003_003",
+            "description":     "Remove legacy reference attribute 'avroSchema from aws_s3_object",
+            "action":          "REMOVE_LEGACY_REF_ATTRIBUTES",
+            "typeName":        "aws_s3_object_avro_schema",
+            "applyToVersion":  "1.1",
+            "updateToVersion": "1.2",
+            "params": {
+                "relationshipLabel":    "__aws_s3_object.avroSchema",
+                "relationshipCategory": "ASSOCIATION"
+            }
+        },
+        {
+            "id":              "TYPEDEF_PATCH_3000_003_004",
+            "description":     "Remove legacy reference attribute 'avroSchemas' from aws_s3_pseudo_dir",
+            "action":          "REMOVE_LEGACY_REF_ATTRIBUTES",
+            "typeName":        "aws_s3_pseudo_dir_avro_schema",
+            "applyToVersion":  "1.1",
+            "updateToVersion": "1.2",
+            "params": {
+                "relationshipLabel":    "__aws_s3_pseudo_dir.avroSchemas",
+                "relationshipCategory": "ASSOCIATION"
+            }
+        }
+    ]
+}

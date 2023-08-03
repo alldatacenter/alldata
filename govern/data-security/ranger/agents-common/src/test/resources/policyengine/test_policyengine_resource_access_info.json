@@ -1,0 +1,106 @@
+{
+  "serviceName":"hivedev",
+
+  "serviceDef":{
+    "name":"hive",
+    "id":3,
+    "resources":[
+      {"name":"database","level":1,"mandatory":true,"lookupSupported":true,"matcher":"org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher","matcherOptions":{"wildCard":true, "ignoreCase":true},"label":"Hive Database","description":"Hive Database"},
+      {"name":"table","level":2,"parent":"database","mandatory":true,"lookupSupported":true,"matcher":"org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher","matcherOptions":{"wildCard":true, "ignoreCase":true},"label":"Hive Table","description":"Hive Table"},
+      {"name":"udf","level":2,"parent":"database","mandatory":true,"lookupSupported":true,"matcher":"org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher","matcherOptions":{"wildCard":true, "ignoreCase":true},"label":"Hive UDF","description":"Hive UDF"},
+      {"name":"column","level":3,"parent":"table","mandatory":true,"lookupSupported":true,"matcher":"org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher","matcherOptions":{"wildCard":true, "ignoreCase":true},"label":"Hive Column","description":"Hive Column"}
+    ],
+    "accessTypes":[
+      {"name":"select","label":"Select"},
+      {"name":"update","label":"Update"},
+      {"name":"create","label":"Create"},
+      {"name":"drop","label":"Drop"},
+      {"name":"alter","label":"Alter"},
+      {"name":"index","label":"Index"},
+      {"name":"lock","label":"Lock"},
+      {"name":"all","label":"All"}
+    ],
+    "options": {
+      "enableDenyAndExceptionsInPolicies":"true"
+    }
+  },
+
+  "policies":[
+    {"id":1,"name":"db=default: audit-all-access","isEnabled":true,"isAuditEnabled":true,
+     "resources":{"database":{"values":["default"]},"table":{"values":["*"]},"column":{"values":["*"]}},
+     "policyItems":[
+       {"accesses":[],"users":[],"groups":["public"],"delegateAdmin":false}
+     ]
+    }
+    ,
+    {"id":2,"name":"db=default; table=test*; column=*","isEnabled":true,"isAuditEnabled":true,
+     "resources":{"database":{"values":["default"]},"table":{"values":["test*"]},"column":{"values":["*"]}},
+     "policyItems":[
+       {"accesses":[{"type":"select","isAllowed":true}],"users":["user1","user2"],"groups":["group1","group2"],"delegateAdmin":false}
+       ,
+       {"accesses":[{"type":"create","isAllowed":true},{"type":"drop","isAllowed":true}],"users":["admin"],"groups":["admin"],"delegateAdmin":true}
+     ]
+    }
+    ,
+    {"id":3,"name":"db=db1; table=tbl*; column=*","isEnabled":true,"isAuditEnabled":true,
+     "resources":{"database":{"values":["db1"]},"table":{"values":["tbl*"]},"column":{"values":["*"]}},
+     "policyItems":[
+       {"accesses":[{"type":"select","isAllowed":true}],"users":["user1","user2"],"groups":["group1","group2"],"delegateAdmin":false}
+     ],
+      "denyPolicyItems":[
+        {"accesses":[{"type":"select","isAllowed":true}],"users":["user3"],"groups":["group3"],"delegateAdmin":false}
+      ]
+    }
+  ],
+
+  "tests":[
+    {"name":"use default;",
+     "request":{
+      "resource":{"elements":{"database":"default"}},
+      "accessType":"","requestData":"use default"
+     },
+     "resourceAccessInfo":{"allowedUsers":["admin", "user1", "user2"],"allowedGroups":["admin", "group1", "group2"]}
+    }
+  ,
+    {"name":"select default.testtbl1",
+      "request":{
+        "resource":{"elements":{"database":"default", "table":"testtbl1"}},
+        "accessType":"select","requestData":"select default.testtbl1"
+      },
+      "resourceAccessInfo":{"allowedUsers":["user1", "user2"],"allowedGroups":["group1", "group2"]}
+    }
+    ,
+    {"name":"create default.testtbl1",
+     "request":{
+      "resource":{"elements":{"database":"default", "table":"testtbl1"}},
+      "accessType":"create","requestData":"create default.testtbl1"
+     },
+      "resourceAccessInfo":{"allowedUsers":["admin"],"allowedGroups":["admin"]}
+    }
+    ,
+    {"name":"select db1.tbl1",
+      "request":{
+        "resource":{"elements":{"database":"db1", "table":"tbl1"}},
+        "accessType":"select","requestData":"select db1.tbl1"
+      },
+      "resourceAccessInfo":{"allowedUsers":["user1", "user2"],"allowedGroups":["group1", "group2"],"deniedUsers":["user3"],"deniedGroups":["group3"]}
+    }
+    ,
+    {"name":"insert db1.tbl1",
+      "request":{
+        "resource":{"elements":{"database":"db1", "table":"tb1"}},
+        "accessType":"insert","requestData":"insert db1.tbl1"
+      },
+      "resourceAccessInfo":{"allowedUsers":[],"allowedGroups":[]}
+    }
+    ,
+    {"name":"select db2.tbl1",
+      "request":{
+        "resource":{"elements":{"database":"db2", "table":"tb1"}},
+        "accessType":"create","requestData":"select db2.tbl1"
+      },
+      "resourceAccessInfo":{"allowedUsers":[],"allowedGroups":[]}
+    }
+  ]
+}
+

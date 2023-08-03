@@ -1,0 +1,64 @@
+{
+  "patches": [
+    {
+      "id": "TYPEDEF_PATCH_0001_004",
+      "description": "Add 'additionalAttributes' attribute to AtlasGlossary",
+      "action": "ADD_ATTRIBUTE",
+      "typeName": "AtlasGlossary",
+      "applyToVersion": "1.1",
+      "updateToVersion": "1.2",
+      "params": null,
+      "attributeDefs": [
+        {
+          "name": "additionalAttributes",
+          "typeName": "map<string,string>",
+          "cardinality": "SINGLE",
+          "isIndexable": false,
+          "isOptional": true,
+          "isUnique": false
+        }
+
+      ]
+    },
+    {
+      "id": "TYPEDEF_PATCH_0002_004",
+      "description": "Add 'additionalAttributes' attribute to AtlasGlossaryTerm",
+      "action": "ADD_ATTRIBUTE",
+      "typeName": "AtlasGlossaryTerm",
+      "applyToVersion": "1.1",
+      "updateToVersion": "1.2",
+      "params": null,
+      "attributeDefs": [
+        {
+          "name": "additionalAttributes",
+          "typeName": "map<string,string>",
+          "cardinality": "SINGLE",
+          "isIndexable": false,
+          "isOptional": true,
+          "isUnique": false
+        }
+
+      ]
+    },
+    {
+      "id": "TYPEDEF_PATCH_0003_004",
+      "description": "Add 'additionalAttributes' attribute to AtlasGlossaryCategory",
+      "action": "ADD_ATTRIBUTE",
+      "typeName": "AtlasGlossaryCategory",
+      "applyToVersion": "1.1",
+      "updateToVersion": "1.2",
+      "params": null,
+      "attributeDefs": [
+        {
+          "name": "additionalAttributes",
+          "typeName": "map<string,string>",
+          "cardinality": "SINGLE",
+          "isIndexable": false,
+          "isOptional": true,
+          "isUnique": false
+        }
+
+      ]
+    }
+  ]
+}

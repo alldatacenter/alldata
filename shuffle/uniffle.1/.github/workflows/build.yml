@@ -1,0 +1,83 @@
+#
+# Licensed to the Apache Software Foundation (ASF) under one or more
+# contributor license agreements.  See the NOTICE file distributed with
+# this work for additional information regarding copyright ownership.
+# The ASF licenses this file to You under the Apache License, Version 2.0
+# (the "License"); you may not use this file except in compliance with
+# the License.  You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
+name: build
+
+on: [push, pull_request]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  checkstyle:
+    uses: ./.github/workflows/sequential.yml
+    with:
+      maven-args: checkstyle:check
+      cache-key: checkstyle
+
+  license:
+    uses: ./.github/workflows/sequential.yml
+    with:
+      maven-args: apache-rat:check
+      cache-key: license
+      summary: "grep -r '!?????' --include='rat.txt' | awk '{print $3}'"
+
+  spotbugs:
+    needs: [checkstyle, license] # delay execution
+    uses: ./.github/workflows/sequential.yml
+    with:
+      maven-args: test-compile spotbugs:check
+      cache-key: spotbugs
+  
+  java-11:
+    needs: [spotbugs] # delay execution
+    name: 'compile'
+    uses: ./.github/workflows/sequential.yml
+    with:
+      maven-args: package -DskipTests
+      cache-key: package
+      java-version: '11'
+
+  java-17:
+    needs: [spotbugs] # delay execution
+    name: 'compile'
+    uses: ./.github/workflows/sequential.yml
+    with:
+      maven-args: package -DskipTests
+      cache-key: package
+      java-version: '17'
+
+  unit:
+    uses: ./.github/workflows/parallel.yml
+    with:
+      maven-args: package -Dtest=!org.apache.uniffle.test.**
+      reports-path: "**/target/surefire-reports/*.txt"
+
+  integration:
+    uses: ./.github/workflows/parallel.yml
+    with:
+      maven-args: package -Dtest=org.apache.uniffle.test.**
+      reports-path: "**/target/surefire-reports/*.txt"
+
+  kubernetes:
+    needs: [checkstyle, license] # delay execution
+    uses: ./.github/workflows/single.yml
+    with:
+      maven-args: package -Pkubernetes -DskipUTs -DskipITs
+      cache-key: package
+      go-version: '1.17'

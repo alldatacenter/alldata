@@ -1,0 +1,281 @@
+{
+  "serviceName": "kylinTest",
+  "serviceId": 2,
+  "policyVersion": 8,
+  "policyUpdateTime": "20171208-11:03:31.000-+0800",
+  "policies": [
+    {
+      "service": "kylinTest",
+      "name": "all - project",
+      "policyType": 0,
+      "description": "Policy for all - project",
+      "isAuditEnabled": true,
+      "resources": {
+        "project": {
+          "values": [
+            "*"
+          ],
+          "isExcludes": false,
+          "isRecursive": false
+        }
+      },
+      "policyItems": [
+        {
+          "accesses": [
+            {
+              "type": "QUERY",
+              "isAllowed": true
+            },
+            {
+              "type": "OPERATION",
+              "isAllowed": true
+            },
+            {
+              "type": "MANAGEMENT",
+              "isAllowed": true
+            },
+            {
+              "type": "ADMIN",
+              "isAllowed": true
+            }
+          ],
+          "users": [
+            "kylin"
+          ],
+          "groups": [],
+          "conditions": [],
+          "delegateAdmin": false
+        }
+      ],
+      "denyPolicyItems": [],
+      "allowExceptions": [],
+      "denyExceptions": [],
+      "dataMaskPolicyItems": [],
+      "rowFilterPolicyItems": [],
+      "id": 4,
+      "guid": "a38ec5dc-a788-48f2-87d1-c522ea8f996e",
+      "isEnabled": true,
+      "version": 2
+    },
+    {
+      "service": "kylinTest",
+      "name": "accessTestProject",
+      "policyType": 0,
+      "description": "",
+      "isAuditEnabled": true,
+      "resources": {
+        "project": {
+          "values": [
+            "test_project"
+          ],
+          "isExcludes": false,
+          "isRecursive": false
+        }
+      },
+      "policyItems": [
+        {
+          "accesses": [
+            {
+              "type": "ADMIN",
+              "isAllowed": true
+            }
+          ],
+          "users": [
+            "zhangqiang"
+          ],
+          "groups": [],
+          "conditions": [],
+          "delegateAdmin": false
+        },
+        {
+          "accesses": [
+            {
+              "type": "MANAGEMENT",
+              "isAllowed": true
+            }
+          ],
+          "users": [
+            "yuwen"
+          ],
+          "groups": [],
+          "conditions": [],
+          "delegateAdmin": false
+        }
+      ],
+      "denyPolicyItems": [],
+      "allowExceptions": [],
+      "denyExceptions": [],
+      "dataMaskPolicyItems": [],
+      "rowFilterPolicyItems": [],
+      "id": 5,
+      "guid": "072bdf13-6af0-45dd-8670-003e88ae2e54",
+      "isEnabled": true,
+      "version": 3
+    },
+    {
+      "service": "kylinTest",
+      "name": "accessKylinProject",
+      "policyType": 0,
+      "description": "",
+      "isAuditEnabled": true,
+      "resources": {
+        "project": {
+          "values": [
+            "kylin_project"
+          ],
+          "isExcludes": false,
+          "isRecursive": false
+        }
+      },
+      "policyItems": [
+        {
+          "accesses": [
+            {
+              "type": "OPERATION",
+              "isAllowed": true
+            }
+          ],
+          "users": [
+            "zhangqiang"
+          ],
+          "groups": [],
+          "conditions": [],
+          "delegateAdmin": false
+        },
+        {
+          "accesses": [
+            {
+              "type": "QUERY",
+              "isAllowed": true
+            }
+          ],
+          "users": [
+            "yuwen"
+          ],
+          "groups": [],
+          "conditions": [],
+          "delegateAdmin": false
+        }
+      ],
+      "denyPolicyItems": [],
+      "allowExceptions": [],
+      "denyExceptions": [],
+      "dataMaskPolicyItems": [],
+      "rowFilterPolicyItems": [],
+      "id": 6,
+      "guid": "9974c4bd-4c99-4eb1-b626-1d037c2c8567",
+      "isEnabled": true,
+      "version": 2
+    }
+  ],
+  "serviceDef": {
+    "name": "kylin",
+    "implClass": "org.apache.ranger.services.kylin.RangerServiceKylin",
+    "label": "KYLIN",
+    "description": "KYLIN",
+    "options": {
+      "enableDenyAndExceptionsInPolicies": "false"
+    },
+    "configs": [
+      {
+        "itemId": 1,
+        "name": "username",
+        "type": "string",
+        "mandatory": true,
+        "validationRegEx": "",
+        "validationMessage": "",
+        "uiHint": "",
+        "label": "Username"
+      },
+      {
+        "itemId": 2,
+        "name": "password",
+        "type": "password",
+        "mandatory": true,
+        "validationRegEx": "",
+        "validationMessage": "",
+        "uiHint": "",
+        "label": "Password"
+      },
+      {
+        "itemId": 3,
+        "name": "kylin.url",
+        "type": "string",
+        "mandatory": true,
+        "defaultValue": "",
+        "validationRegEx": "",
+        "validationMessage": "",
+        "uiHint": "{\"TextFieldWithIcon\":true, \"info\": \"eg. \u0027http://\u0026lt;ipaddr\u0026gt;:7070\u0027\"}",
+        "label": "Kylin URL"
+      }
+    ],
+    "resources": [
+      {
+        "itemId": 1,
+        "name": "project",
+        "type": "string",
+        "level": 10,
+        "mandatory": true,
+        "lookupSupported": true,
+        "recursiveSupported": false,
+        "excludesSupported": false,
+        "matcher": "org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher",
+        "matcherOptions": {
+          "wildCard": "true",
+          "ignoreCase": "true"
+        },
+        "validationRegEx": "",
+        "validationMessage": "",
+        "uiHint": "",
+        "label": "Kylin Project",
+        "description": "Kylin Project",
+        "accessTypeRestrictions": []
+      }
+    ],
+    "accessTypes": [
+      {
+        "itemId": 1,
+        "name": "QUERY",
+        "label": "QUERY",
+        "impliedGrants": []
+      },
+      {
+        "itemId": 2,
+        "name": "OPERATION",
+        "label": "OPERATION",
+        "impliedGrants": []
+      },
+      {
+        "itemId": 3,
+        "name": "MANAGEMENT",
+        "label": "MANAGEMENT",
+        "impliedGrants": []
+      },
+      {
+        "itemId": 4,
+        "name": "ADMIN",
+        "label": "ADMIN",
+        "impliedGrants": []
+      }
+    ],
+    "policyConditions": [],
+    "contextEnrichers": [],
+    "enums": [],
+    "dataMaskDef": {
+      "maskTypes": [],
+      "accessTypes": [],
+      "resources": []
+    },
+    "rowFilterDef": {
+      "accessTypes": [],
+      "resources": []
+    },
+    "id": 12,
+    "guid": "88ab8471-3e27-40c2-8bd8-458b5b1a9b25",
+    "isEnabled": true,
+    "createTime": "20171128-09:52:41.000-+0800",
+    "updateTime": "20171128-09:52:41.000-+0800",
+    "version": 1
+  },
+  "auditMode": "audit-default"
+}

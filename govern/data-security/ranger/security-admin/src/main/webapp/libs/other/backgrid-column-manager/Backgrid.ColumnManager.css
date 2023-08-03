@@ -1,0 +1,114 @@
+#control {
+    margin: 0 0 10px 0;
+}
+
+div.columnmanager-visibilitycontrol {
+    margin: 0 auto;
+    position: relative;
+}
+
+div.columnmanager-visibilitycontrol > button.dropdown-button {
+    background-image: -moz-linear-gradient(top, #ffffff, #dbdbdb);
+    background-image: -webkit-gradient(linear,left top,left bottom,
+    color-stop(0, #ffffff),color-stop(1, #dbdbdb));
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#dbdbdb');
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#dbdbdb')";
+    border: 1px solid #fff;
+    -moz-box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.4);
+    -webkit-box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.4);
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.4);
+    text-decoration: none;
+    text-shadow: #fff 0 1px 0;
+    color: #597390;
+    font-weight: bold;
+}
+
+div.columnmanager-visibilitycontrol > button.dropdown-button:hover {
+    background-image: -moz-linear-gradient(top, #ffffff, #eeeeee);
+    background-image: -webkit-gradient(linear,left top,left bottom,
+    color-stop(0, #ffffff),color-stop(1, #eeeeee));
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#eeeeee');
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#eeeeee')";
+    color: #000;
+}
+
+div.columnmanager-visibilitycontrol > button.dropdown-button:active {
+    background-image: -moz-linear-gradient(top, #dbdbdb, #ffffff);
+    background-image: -webkit-gradient(linear,left top,left bottom,
+    color-stop(0, #dbdbdb),color-stop(1, #ffffff));
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#dbdbdb', EndColorStr='#ffffff');
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#dbdbdb', EndColorStr='#ffffff')";
+    text-shadow: 0px -1px 0 rgba(255, 255, 255, 0.5);
+}
+
+div.columnmanager-dropdown-container {
+    cursor: default;
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    background: #fff;
+    border: solid 1px #bbb;
+    -webkit-box-shadow: #999999 0 1px 3px;
+    -moz-box-shadow: #999999 0 1px 3px;
+    box-shadow: #999999 0 1px 3px;
+    width: 200px;
+    display: none !important;
+    min-height: 20px;
+    max-height: 400px;
+    font-size: 14px;
+    line-height: 1.1em;
+    font-weight: normal;
+    text-align: left;
+    color: #444;
+    text-transform: none;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    pointer-events: none;
+}
+
+div.columnmanager-dropdown-container.open {
+    display: block !important;
+    pointer-events: auto;
+    overflow-y: auto;
+}
+
+.columnmanager-dropdown-container > li {
+    list-style-type:none;
+    padding: 5px 0px 0px 20px;
+    border-bottom: solid 1px lightgray;
+    cursor: pointer;
+}
+
+.columnmanager-dropdown-container > li:hover {
+    background-color: #f0f0f0;
+}
+
+.columnmanager-dropdown-container > li:last-child {
+    border-bottom: none;
+}
+
+.columnmanager-dropdown-container > li > span.indicator {
+    width: 20px;
+    display: inline-block;
+}
+.columnmanager-dropdown-container > li.visible > span.indicator::before {
+    content: "✓";
+    color: blue;
+}
+
+.columnmanager-dropdown-container > li > span.column-label {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: inline-block;
+    width: 142px;
+ }
+
+th.columnVisibility {
+    overflow: visible;
+}

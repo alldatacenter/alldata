@@ -1,0 +1,161 @@
+{
+  "serviceName":"hivedev",
+
+  "serviceDef": {
+    "id":3,
+    "name": "hive",
+    "implClass": "org.apache.ranger.services.hive.RangerServiceHive",
+    "label": "Hive Server2",
+    "description": "Hive Server2",
+    "guid": "3e1afb5a-184a-4e82-9d9c-87a5cacc243c",
+
+    "resources": [
+      {"itemId": 1, "name": "database", "type": "string", "level": 10, "parent": "", "mandatory": true, "lookupSupported": true, "recursiveSupported": false, "excludesSupported": true, "matcher": "org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher", "matcherOptions": { "wildCard":true, "ignoreCase":true }, "validationRegEx":"", "validationMessage": "", "uiHint":"", "label": "Hive Database", "description": "Hive Database", "isValidLeaf": true},
+      {"itemId": 2, "name": "table", "type": "string", "level": 20, "parent": "database", "mandatory": true, "lookupSupported": true, "recursiveSupported": false, "excludesSupported": true, "matcher": "org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher", "matcherOptions": { "wildCard":true, "ignoreCase":true }, "validationRegEx":"", "validationMessage": "", "uiHint":"", "label": "Hive Table", "description": "Hive Table", "isValidLeaf": true},
+      {"itemId": 3, "name": "udf", "type": "string", "level": 20, "parent": "database", "mandatory": true, "lookupSupported": true, "recursiveSupported": false, "excludesSupported": true, "matcher": "org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher", "matcherOptions": { "wildCard":true, "ignoreCase":true }, "validationRegEx":"", "validationMessage": "", "uiHint":"", "label": "Hive UDF", "description": "Hive UDF", "isValidLeaf": true},
+      {"itemId": 4, "name": "column", "type": "string", "level": 30, "parent": "table", "mandatory": true, "lookupSupported": true, "recursiveSupported": false, "excludesSupported": true, "matcher": "org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher", "matcherOptions": { "wildCard":true, "ignoreCase":true }, "validationRegEx":"", "validationMessage": "", "uiHint":"", "label": "Hive Column", "description": "Hive Column", "isValidLeaf": true},
+      {"itemId": 5, "name": "url", "type": "string", "level": 10, "parent": "", "mandatory": true, "lookupSupported": false, "recursiveSupported": true, "excludesSupported": false, "matcher": "org.apache.ranger.plugin.resourcematcher.RangerPathResourceMatcher", "matcherOptions": { "wildCard":true, "ignoreCase":false }, "validationRegEx":"", "validationMessage": "", "uiHint":"", "label": "URL", "description": "URL", "isValidLeaf": true}
+    ],
+
+    "accessTypes": [
+      {"itemId": 1, "name": "select", "label": "select"},
+      {"itemId": 2, "name": "update", "label": "update"},
+      {"itemId": 3, "name": "create", "label": "Create"},
+      {"itemId": 4, "name": "drop", "label": "Drop"},
+      {"itemId": 5, "name": "alter", "label": "Alter"},
+      {"itemId": 6, "name": "index", "label": "Index"},
+      {"itemId": 7, "name": "lock", "label": "Lock"},
+      {"itemId": 8, "name": "all", "label": "All",
+        "impliedGrants": ["select", "update", "create", "drop", "alter", "index", "lock", "read", "write"]},
+      {"itemId": 9, "name": "read", "label": "Read"},
+      {"itemId": 10, "name": "write", "label": "Write"}
+    ],
+
+    "configs": [
+      {"itemId": 1, "name": "username", "type": "string", "mandatory": true, "validationRegEx":"", "validationMessage": "", "uiHint":"", "label": "Username"},
+      {"itemId": 2, "name": "password", "type": "password", "mandatory": true, "validationRegEx":"", "validationMessage": "", "uiHint":"", "label": "Password"},
+      {"itemId": 3, "name": "jdbc.driverClassName", "type": "string", "mandatory": true, "validationRegEx":"", "validationMessage": "", "uiHint":"", "defaultValue": "org.apache.hive.jdbc.HiveDriver"},
+      {"itemId": 4, "name": "jdbc.url", "type": "string", "mandatory": true, "defaultValue": "", "validationRegEx":"", "validationMessage": "", "uiHint":""},
+      {"itemId": 5, "name": "commonNameForCertificate", "type": "string", "mandatory": false, "validationRegEx":"", "validationMessage": "", "uiHint":"", "label": "Common Name for Certificate"}
+    ],
+
+    "enums": [
+    ],
+
+    "contextEnrichers": [
+    ],
+
+    "policyConditions": [
+    ]
+  },
+
+  "serviceConfig": {
+    "ranger.plugin.super.users": "svc-cfg-su1, svc-cfg-su2",
+    "ranger.plugin.super.groups": "svc-cfg-sg1, svc-cfg-sg2"
+  },
+
+  "policies":[
+    {"id":1,"name":"database=db-*,table=*,column=* - audit-all-access","isEnabled":true,"isAuditEnabled":true,
+     "resources":{"database":{"values":["db-*"]},"table":{"values":["*"]},"column":{"values":["*"]}},
+     "policyItems":[
+     ],
+     "denyPolicyItems":[
+       {"accesses":[{"type":"create","isAllowed":true}],"users":["hive1","hive2"],"groups":["hadoop","hive"],"delegateAdmin":false}
+     ]
+    }
+  ],
+
+  "superUsers": [ "su1", "su2" ],
+  "superGroups": [ "sg1", "sg2" ],
+
+  "tests":[
+    {"name":"ALLOW '_super_user' for su1",
+      "request":{
+        "resource":{"elements":{"database":"db-1"}},
+        "accessType":"_super_user","user":"su1","userGroups":[""],"requestData":"_super_user for su1"
+      },
+      "result":{"isAudited":true,"isAllowed":true,"policyId":-1}
+    }
+    ,
+    {"name":"ALLOW '_super_user' for su2",
+      "request":{
+        "resource":{"elements":{"database":"db-2"}},
+        "accessType":"_super_user","user":"su2","userGroups":[""],"requestData":"_super_user for su2"
+      },
+      "result":{"isAudited":true,"isAllowed":true,"policyId":-1}
+    }
+  ,
+    {"name":"ALLOW '_super_user' for svc-cfg-su1",
+      "request":{
+        "resource":{"elements":{"database":"db-1"}},
+        "accessType":"_super_user","user":"svc-cfg-su1","userGroups":[""],"requestData":"_super_user for svc-cfg-su1"
+      },
+      "result":{"isAudited":true,"isAllowed":true,"policyId":-1}
+    }
+  ,
+    {"name":"ALLOW '_super_user' for svc-cfg-su2",
+      "request":{
+        "resource":{"elements":{"database":"db-2"}},
+        "accessType":"_super_user","user":"svc-cfg-su2","userGroups":[""],"requestData":"_super_user for svc-cfg-su2"
+      },
+      "result":{"isAudited":true,"isAllowed":true,"policyId":-1}
+    }
+  ,
+    {"name":"ALLOW '_super_user' for user1 (in sg1)",
+      "request":{
+        "resource":{"elements":{"database":"db-1", "table":"tbl-1"}},
+        "accessType":"_super_user","user":"user1","userGroups":["sg1"],"requestData":"_super_user for user1 (in sg1)"
+      },
+      "result":{"isAudited":true,"isAllowed":true,"policyId":-1}
+    }
+  ,
+    {"name":"ALLOW '_super_user;' for user2 (in sg2)",
+      "request":{
+        "resource":{"elements":{"database":"db-1", "table":"tbl-2"}},
+        "accessType":"_super_user","user":"user2","userGroups":["sg2"],"requestData":"_super_user for user2 (in sg2)"
+      },
+      "result":{"isAudited":true,"isAllowed":true,"policyId":-1}
+    }
+  ,
+    {"name":"ALLOW '_super_user' for user1 (in svc-cfg-sg1)",
+      "request":{
+        "resource":{"elements":{"database":"db-1", "table":"tbl-1"}},
+        "accessType":"_super_user","user":"user1","userGroups":["svc-cfg-sg1"],"requestData":"_super_user for user1 (in svc-cfg-sg1)"
+      },
+      "result":{"isAudited":true,"isAllowed":true,"policyId":-1}
+    }
+  ,
+    {"name":"ALLOW '_super_user' for user2 (in svc-cfg-sg2)",
+      "request":{
+        "resource":{"elements":{"database":"db-1", "table":"tbl-2"}},
+        "accessType":"_super_user","user":"user2","userGroups":["svc-cfg-sg2"],"requestData":"_super_user for user2 (in svc-cfg-sg2)"
+      },
+      "result":{"isAudited":true,"isAllowed":true,"policyId":-1}
+    }
+  ,
+    {"name":"ALLOW '_super_user' for su1; no audit",
+      "request":{
+        "resource":{"elements":{"database":"testdb"}},
+        "accessType":"_super_user","user":"su1","userGroups":[""],"requestData":"_super_user for su1"
+      },
+      "result":{"isAudited":false,"isAllowed":true,"policyId":-1}
+    }
+  ,
+    {"name":"DENY '_super_user' for user3",
+      "request":{
+        "resource":{"elements":{"database":"db-1", "table":"tbl-3"}},
+        "accessType":"_super_user","user":"user3","userGroups":["users"],"requestData":"_super_user for user3"
+      },
+      "result":{"isAudited":true,"isAllowed":false,"policyId":-1}
+    }
+  ,
+    {"name":"DENY '_super_user' for user3; no audit",
+      "request":{
+        "resource":{"elements":{"database":"testdb"}},
+        "accessType":"_super_user","user":"user3","userGroups":["users"],"requestData":"_super_user for user3"
+      },
+      "result":{"isAudited":false,"isAllowed":false,"policyId":-1}
+    }
+  ]
+}
+

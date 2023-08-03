@@ -1,0 +1,50 @@
+{
+  "op":          "add_or_update",
+  "serviceName": "dev_hive",
+  "tagVersion":  0,
+  "tagDefinitions": {
+    "0": { "name": "PII" },
+    "1": { "name": "EMPLOYEE_ID" },
+    "2": { "name": "ADDRESS" }
+  },
+  "tags": {
+    "0": { "type": "PII" },
+    "1": { "type": "EMPLOYEE_ID" },
+    "2": { "type": "ADDRESS" }
+  },
+  "serviceResources": [
+    {
+      "id":          0,
+      "serviceName": "dev_hive",
+      "resourceElements": {
+        "database": { "values": [ "hr" ] },
+        "table":    { "values": [ "employee" ] },
+        "column":   { "values": [ "ssn" ] }
+      }
+    },
+    {
+      "id":          1,
+      "serviceName": "dev_hive",
+      "resourceElements": {
+        "database": { "values": [ "hr" ] },
+        "table":    { "values": [ "employee" ] },
+        "column":   { "values": [ "address" ] }
+      }
+    },
+    {
+      "id":          2,
+      "serviceName": "dev_hive",
+      "serviceName":      "dev_hive",
+      "resourceElements": {
+        "database": { "values": [ "hr" ] },
+        "table":    { "values": [ "employee" ] },
+        "column":   { "values": [ "id" ] }
+      }
+    }
+  ],
+  "resourceToTagIds": {
+    "0": [ "0" ],
+    "1": [ "0", "2" ],
+    "2": [ "1" ]
+  }
+}

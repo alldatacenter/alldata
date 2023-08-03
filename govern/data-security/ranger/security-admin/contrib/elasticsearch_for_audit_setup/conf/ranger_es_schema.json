@@ -1,0 +1,124 @@
+{
+  "properties": {
+    "_expire_at_": {
+      "type": "date",
+      "store": true,
+      "doc_values": true
+    },
+    "_ttl_": {
+      "type": "text",
+      "store": true
+    },
+    "_version_": {
+      "type": "long",
+      "store": true,
+      "index": false
+    },
+    "access": {
+      "type": "keyword"
+    },
+    "action": {
+      "type": "keyword"
+    },
+    "agent": {
+      "type": "keyword"
+    },
+    "agentHost": {
+      "type": "keyword"
+    },
+    "cliIP": {
+      "type": "keyword"
+    },
+    "cliType": {
+      "type": "keyword"
+    },
+    "cluster": {
+      "type": "keyword"
+    },
+    "reqContext": {
+      "type": "keyword"
+    },
+    "enforcer": {
+      "type": "keyword"
+    },
+    "event_count": {
+      "type": "long",
+      "doc_values": true
+    },
+    "event_dur_ms": {
+      "type": "long",
+      "doc_values": true
+    },
+    "evtTime": {
+      "type": "date",
+      "doc_values": true
+    },
+    "id": {
+      "type": "keyword",
+      "store": true
+    },
+    "logType": {
+      "type": "keyword"
+    },
+    "policy": {
+      "type": "long",
+      "doc_values": true
+    },
+    "proxyUsers": {
+      "type": "keyword"
+    },
+    "reason": {
+      "type": "text"
+    },
+    "repo": {
+      "type": "keyword"
+    },
+    "repoType": {
+      "type": "integer",
+      "doc_values": true
+    },
+    "req_caller_id": {
+      "type": "keyword"
+    },
+    "req_self_id": {
+      "type": "keyword"
+    },
+    "reqData": {
+      "type": "text"
+    },
+    "reqUser": {
+      "type": "keyword"
+    },
+    "resType": {
+      "type": "keyword"
+    },
+    "resource": {
+      "type": "keyword"
+    },
+    "result": {
+      "type": "integer"
+    },
+    "seq_num": {
+      "type": "long",
+      "doc_values": true
+    },
+    "sess": {
+      "type": "keyword"
+    },
+    "tags": {
+      "type": "keyword"
+    },
+    "tags_str": {
+      "type": "text"
+    },
+    "text": {
+      "type": "text"
+    },
+    "zoneName": {
+      "type": "keyword"
+    },
+    "policyVersion": {
+      "type": "long"
+    }
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "patches": [
+    {
+      "id":              "TYPEDEF_PATCH_3000_127",
+      "description":     "Set serviceType 'aws' to aws_tag",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "aws_tag",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "aws"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_3000_128",
+      "description":     "Set serviceType 'aws' to aws_cloud_watch_metric",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "aws_cloud_watch_metric",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "aws"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_3000_129",
+      "description":     "Set serviceType 'aws' to aws_s3_bucket_lifeCycleRule",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "aws_s3_bucket_lifeCycleRule",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "aws"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_3000_130",
+      "description":     "Set serviceType 'aws' to aws_s3_access_policy",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "aws_s3_access_policy",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "aws"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_3000_131",
+      "description":     "Set serviceType 'aws' to aws_s3_object",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "aws_s3_object",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "aws"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_3000_132",
+      "description":     "Set serviceType 'aws' to aws_s3_pseudo_dir",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "aws_s3_pseudo_dir",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "aws"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_3000_133",
+      "description":     "Set serviceType 'aws' to aws_s3_bucket",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "aws_s3_bucket",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "aws"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_3000_134",
+      "description":     "Set serviceType 'aws' to aws_s3_bucket_aws_s3_pseudo_dirs",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "aws_s3_bucket_aws_s3_pseudo_dirs",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "aws"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_3000_135",
+      "description":     "Set serviceType 'aws' to aws_s3_pseudo_dir_aws_objects",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "aws_s3_pseudo_dir_aws_objects",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "aws"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_3000_136",
+      "description":     "Set serviceType 'aws' to aws_s3_object_avro_schema",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "aws_s3_object_avro_schema",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "aws"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_3000_137",
+      "description":     "Set serviceType 'aws' to aws_s3_pseudo_dir_avro_schema",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "aws_s3_pseudo_dir_avro_schema",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "aws"
+    }
+  ]
+}

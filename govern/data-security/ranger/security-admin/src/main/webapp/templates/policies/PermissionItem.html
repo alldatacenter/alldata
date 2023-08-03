@@ -1,0 +1,62 @@
+{{!-- 
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+--}}
+<td class="width-22">
+  <input  type="text" data-js="selectRoles" />
+</td>
+<td class="width-22">
+        <input  type="text" data-js="selectGroups" />
+</td>
+<td class="width-22">
+        <input  type="text" data-js="selectUsers" />
+</td>
+{{#if policyConditions}}
+<td>	
+        <a href="javascript:;" id="policyConditions" data-type="policyConditions" data-original-title="Policy Conditions" title="add/edit conditions"></a>
+	<button type="button" class="btn btn-sm add-conditions" title="Add" style="display: inline-block;"><i class="fa-fw fa fa-plus"></i>
+	</button>
+</td>
+{{/if}}
+<td>	
+        <a href="javascript:;" data-js="permissions" data-type="checklist" data-title="Select permissions" title="add/edit permissions" ></a>
+	<button type="button" class="btn btn-sm add-permissions" title="Add" style="display: inline-block;"><i class="fa-fw fa fa-plus"></i>
+	</button>
+</td>
+{{#if isMaskingPolicy}}
+<td>	
+        <a href="javascript:;" data-js="maskingType" data-type="radiolist" data-title="Select Masking Option" title="Select Masking Option" >Add Mask Type</a>
+	<button type="button" class="btn btn-sm add-masking-type" title="Add" style="display: inline-block;"><i class="fa-fw fa fa-plus"></i>
+	</button>
+	<input type="text" data-id="maskTypeCustom" value="{{dataMaskInfo.valueExpr}}" placeholder="enter masked value or expression" style="display:none;" width="40%"/>
+</td>	
+{{/if}}
+{{#if isRowFilterPolicy}}
+<td>	
+        <a href="javascript:;" data-js="rowLeveFilter" data-type="text" data-title="Enter row filter expression" title="Enter filter expression" ></a>
+	<button type="button" class="btn btn-sm add-row-filter" title="Add" style="display: inline-block;"><i class="fa-fw fa fa-plus"></i>
+	</button>
+</td>	
+{{/if}}
+{{#if isAccessPolicy}}
+<td style=" width: 12%; ">
+	<input data-js="delegatedAdmin" type="checkbox">
+</td>
+{{/if}}
+<td>
+	<button type="button" class="btn btn-sm btn-danger " data-action="delete">
+		<i class="fa-fw fa fa-remove"></i>
+	</button>
+</td>

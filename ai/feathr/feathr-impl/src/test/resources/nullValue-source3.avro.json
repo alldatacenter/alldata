@@ -1,0 +1,33 @@
+{
+  "schema": {
+    "type": "record",
+    "name": "FeathrTest",
+    "fields": [
+      {
+        "name": "mId",
+        "type": "long"
+      },
+      {
+        "name": "features",
+        "type": {
+          "type": "map",
+          "values": {
+            "type": "map",
+            "values": "int"
+          }
+        }
+      }
+    ]
+  },
+  "data": [{
+    "mId": 1,
+    "features": {
+      "feature1": {
+        "term1_1": 1 ,
+        "term1_2": 2
+      },
+      "feature2": {
+      }
+    }
+  }]
+}

@@ -1,0 +1,37 @@
+{
+  "patches": [
+    {
+      "id": "TYPEDEF_PATCH_0000_001",
+      "description": "Add 'replicatedFrom' and 'replicatedTo' attributes to Referenceable",
+      "action": "ADD_ATTRIBUTE",
+      "typeName": "Referenceable",
+      "applyToVersion": "1.0",
+      "updateToVersion": "1.1",
+      "params": null,
+      "attributeDefs": [
+        {
+          "name": "replicatedFrom",
+          "typeName": "array<AtlasServer>",
+          "cardinality": "SET",
+          "isIndexable": false,
+          "isOptional": true,
+          "isUnique": false,
+          "options": {
+            "isSoftReference": "true"
+          }
+        },
+        {
+          "name": "replicatedTo",
+          "typeName": "array<AtlasServer>",
+          "cardinality": "SET",
+          "isIndexable": false,
+          "isOptional": true,
+          "isUnique": false,
+          "options": {
+            "isSoftReference": "true"
+          }
+        }
+      ]
+    }
+  ]
+}

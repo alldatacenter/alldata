@@ -1,0 +1,115 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package org.apache.paimon.tests;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.DisabledIfSystemProperty;
+import org.testcontainers.containers.Container;
+
+import java.util.UUID;
+
+/**
+ * Tests for reading paimon from Hive.
+ *
+ * <p>NOTE: This test runs a complete Hadoop cluster in Docker, which requires a lot of memory. If
+ * you're running this test locally, make sure that the memory limit of your Docker is at least 8GB.
+ */
+@DisabledIfSystemProperty(named = "test.flink.version", matches = "1.14.*")
+public class HiveE2eTest extends E2eReaderTestBase {
+
+    public HiveE2eTest() {
+        super(false, true, false);
+    }
+
+    @BeforeEach
+    @Override
+    public void before() throws Exception {
+        super.before();
+        setupHiveConnector();
+    }
+
+    @Test
+    public void testReadExternalTable() throws Exception {
+        final String table = "paimon_pk";
+        String paimonPkPath = HDFS_ROOT + "/" + UUID.randomUUID() + ".store";
+        String paimonPkDdl =
+                String.format(
+                        "CREATE TABLE IF NOT EXISTS %s (\n"
+                                + "  a int,\n"
+                                + "  b bigint,\n"
+                                + "  c string,\n"
+                                + "  PRIMARY KEY (a, b) NOT ENFORCED\n"
+                                + ") WITH (\n"
+                                + "  'bucket' = '2'\n"
+                                + ");",
+                        table);
+        runSql(createInsertSql(table), createCatalogSql("paimon", paimonPkPath), paimonPkDdl);
+
+        String externalTablePkDdl =
+                String.format(
+                        "CREATE EXTERNAL TABLE IF NOT EXISTS %s\n"
+                                + "STORED BY 'org.apache.paimon.hive.PaimonStorageHandler'\n"
+                                + "LOCATION '%s/default.db/%s';\n",
+                        table, paimonPkPath, table);
+
+        checkQueryResults(table, this::executeQuery, externalTablePkDdl);
+    }
+
+    @Test
+    public void testFlinkWriteAndHiveRead() throws Exception {
+        final String warehouse = HDFS_ROOT + "/" + UUID.randomUUID() + ".warehouse";
+        final String table = "t";
+        runSql(
+                String.join(
+                        "\n",
+                        createCatalogSql(
+                                "my_hive",
+                                warehouse,
+                                "'metastore' = 'hive'",
+                                "'uri' = 'thrift://hive-metastore:9083'"),
+                        createTableSql(table),
+                        createInsertSql(table)));
+        checkQueryResults(table, this::executeQuery);
+    }
+
+    private String executeQuery(String sql) throws Exception {
+        Container.ExecResult execResult =
+                getHive()
+                        .execInContainer(
+                                "/opt/hive/bin/hive",
+                                "--hiveconf",
+                                "hive.root.logger=INFO,console",
+                                "-f",
+                                TEST_DATA_DIR + "/" + sql);
+        if (execResult.getExitCode() != 0) {
+            throw new AssertionError("Failed when running hive sql.");
+        }
+        return execResult.getStdout();
+    }
+
+    private void runSql(String sql, String... ddls) throws Exception {
+        runSql(
+                "SET 'execution.runtime-mode' = 'batch';\n"
+                        + "SET 'table.dml-sync' = 'true';\n"
+                        + String.join("\n", ddls)
+                        + "\n"
+                        + sql);
+    }
+}

@@ -1,0 +1,208 @@
+#!/bin/bash
+
+# Licensed to the Apache Software Foundation (ASF) under one or more
+# contributor license agreements.  See the NOTICE file distributed with
+# this work for additional information regarding copyright ownership.
+# The ASF licenses this file to You under the Apache License, Version 2.0
+# (the "License"); you may not use this file except in compliance with
+# the License.  You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+if [ -z "$1" ]
+then
+	echo "Invalid argument [$1];"
+	echo "Usage: Only start | stop | restart | version, are supported."
+	echo "For KMSMetric Usage: metric -type  hsmenabled | encryptedkey | encryptedkeybyalgorithm"
+	exit;
+fi
+action=$1
+arg2=$2
+arg3=$3
+
+if [ -z "${arg3}" ]
+then
+	arg3="hsmenabled"
+fi
+
+action=`echo $action | tr '[:lower:]' '[:upper:]'`
+realScriptPath=`readlink -f $0`
+realScriptDir=`dirname $realScriptPath`
+RANGER_KMS_DIR=`(cd $realScriptDir; pwd)`
+RANGER_KMS_EWS_DIR=${RANGER_KMS_DIR}/ews
+RANGER_KMS_EWS_CONF_DIR="${RANGER_KMS_EWS_DIR}/webapp/WEB-INF/classes/conf"
+
+ranger_kms_max_heap_size=1g
+
+if [ -f ${RANGER_KMS_DIR}/ews/webapp/WEB-INF/classes/conf/java_home.sh ]; then
+        . ${RANGER_KMS_DIR}/ews/webapp/WEB-INF/classes/conf/java_home.sh
+fi
+
+for custom_env_script in `find ${RANGER_KMS_DIR}/ews/webapp/WEB-INF/classes/conf/ -name "ranger-kms-env*"`; do
+        if [ -f $custom_env_script ]; then
+                . $custom_env_script
+        fi
+done
+
+JAVA_OPTS=" ${JAVA_OPTS}  -XX:MetaspaceSize=100m -XX:MaxMetaspaceSize=256m -Xmx${ranger_kms_max_heap_size} -Xms1g "
+
+if [ "$JAVA_HOME" != "" ]; then
+        export PATH=$JAVA_HOME/bin:$PATH
+fi
+
+cd ${RANGER_KMS_EWS_DIR}
+
+if [ -z "${RANGER_KMS_LOG_DIR}" ]
+then
+        RANGER_KMS_LOG_DIR=${RANGER_KMS_EWS_DIR}/logs
+fi
+
+if [ -z "${RANGER_KMS_PID_NAME}" ]
+then
+        RANGER_KMS_PID_NAME=rangerkms.pid
+fi
+
+if [ -z "${RANGER_KMS_PID_DIR_PATH}" ]
+then
+	RANGER_KMS_PID_DIR_PATH=/var/run/ranger_kms
+fi
+if [ ! -d "${RANGER_KMS_PID_DIR_PATH}" ]
+then
+	mkdir -p  $RANGER_KMS_PID_DIR_PATH
+	chmod 660 $RANGER_KMS_PID_DIR_PATH
+fi
+# User can set their own pid path using RANGER_KMS_PID_DIR_PATH and
+# RANGER_KMS_PID_NAME variable before calling the script. The user can modify
+# the value of the RANGER_KMS_PID_DIR_PATH in ranger-kms-env-piddir.sh to
+# change pid path and set the value of RANGER_KMS_PID_NAME to change the
+# pid file.
+pidf=${RANGER_KMS_PID_DIR_PATH}/${RANGER_KMS_PID_NAME}
+
+if [ -z "${KMS_USER}" ]
+then
+	KMS_USER=kms
+fi
+
+PROC_NAME=proc_rangerkms
+export PROC_NAME
+
+START_CLASS_NAME="org.apache.ranger.server.tomcat.EmbeddedServer"
+
+STOP_CLASS_NAME="org.apache.ranger.server.tomcat.StopEmbeddedServer"
+
+#KMS_CONFIG_FILENAME=kms_webserver.properties
+KMS_CONFIG_FILENAME=ranger-kms-site.xml
+
+TOMCAT_LOG_DIR=${RANGER_KMS_LOG_DIR}
+
+TOMCAT_LOG_FILE=${TOMCAT_LOG_DIR}/catalina.out
+TOMCAT_STOP_LOG_FILE=${TOMCAT_LOG_DIR}/stop_catalina.out
+KMS_LOG_PROPERTIES_FILE=${RANGER_KMS_EWS_CONF_DIR}/kms-logback.xml
+
+if [ ! -d ${TOMCAT_LOG_DIR} ]
+then
+	mkdir -p ${TOMCAT_LOG_DIR}
+fi
+
+KMS_CONF_DIR=${RANGER_KMS_EWS_DIR}/webapp/WEB-INF/classes/conf
+SERVER_NAME=rangerkms
+cp="-cp ${RANGER_KMS_EWS_CONF_DIR}:${RANGER_KMS_EWS_DIR}/lib/*:${JAVA_HOME}/lib/*:${RANGER_HADOOP_CONF_DIR}/*:$CLASSPATH"
+JAVA_OPTS="${JAVA_OPTS} ${DB_SSL_PARAM} -Dmetric.type=${arg3} -Duser=${USER} -Dhostname=${HOSTNAME} -Dservername=${SERVER_NAME} -Dcatalina.base=${RANGER_KMS_EWS_DIR} -Dkms.config.dir=${KMS_CONF_DIR} -Dlogback.configurationFile=file:${KMS_LOG_PROPERTIES_FILE} -Dkms.log.dir=${TOMCAT_LOG_DIR} $cp"
+createRangerKMSPid () {
+	SLEEP_TIME_AFTER_START=5
+	nohup java -D${PROC_NAME} ${JAVA_OPTS} ${START_CLASS_NAME} ${KMS_CONFIG_FILENAME} > ${TOMCAT_LOG_FILE} 2>&1 &
+	VALUE_OF_PID=$!
+	echo "Starting Apache Ranger KMS Service"
+	sleep $SLEEP_TIME_AFTER_START
+	if ps -p $VALUE_OF_PID > /dev/null
+	then
+		echo $VALUE_OF_PID > ${pidf}
+                chown ${KMS_USER} ${pidf}
+		chmod 660 ${pidf}
+		pid=`cat $pidf`
+		echo "Apache Ranger KMS Service with pid ${pid} has started."
+	else
+		echo "Apache Ranger KMS Service failed to start"
+	fi
+	exit ;
+}
+killRangerKMSPid () {
+	WAIT_TIME_FOR_SHUTDOWN=2
+	NR_ITER_FOR_SHUTDOWN_CHECK=15
+	if [ -f "$pidf" ] ; then
+		pid=`cat $pidf` > /dev/null 2>&1
+		echo "Found Apache Ranger KMS Service with pid $pid, Stopping..."
+		nohup java ${JAVA_OPTS} ${STOP_CLASS_NAME} ${KMS_CONFIG_FILENAME} > ${TOMCAT_STOP_LOG_FILE} 2>&1
+		for ((i=0; i<$NR_ITER_FOR_SHUTDOWN_CHECK; i++))
+		do
+			sleep $WAIT_TIME_FOR_SHUTDOWN
+			if ps -p $pid > /dev/null ; then
+				echo "Shutdown in progress. Will check after $WAIT_TIME_FOR_SHUTDOWN secs again.."
+				continue;
+			else
+				break;
+			fi
+		done
+		# if process is still around, use kill -9
+		if ps -p $pid > /dev/null ; then
+			echo "Initial kill failed, getting serious now..."
+			kill -9 $pid
+		fi
+		sleep 1 # Give kill -9 sometime to "kill"
+		if ps -p $pid > /dev/null ; then
+			echo "Wow, even kill -9 failed, giving up! Sorry.."
+		else
+			rm -rf $pidf
+			echo "Apache Ranger KMS Service with pid ${pid} has been stopped."
+		fi
+	else
+		echo "Apache Ranger KMS Service is not running"
+	fi
+}
+metric(){
+  if [ "$JAVA_HOME" == "" ]; then
+    echo "[E] JAVA_HOME environment variable not defined, aborting Apache Ranger KMS metric collection" 1>&2;
+    exit 1;
+  fi
+	java  ${JAVA_OPTS} org.apache.hadoop.crypto.key.kms.server.KMSMetricUtil ${arg2} ${arg3} 2>/dev/null
+}
+if [ "${action}" == "START" ]; then
+	if [ -f "$pidf" ] ; then
+		pid=`cat $pidf`
+		if  ps -p $pid > /dev/null
+		then
+			echo "Apache Ranger KMS Service is already running [pid={$pid}]"
+			exit 1
+		else
+			rm -rf $pidf
+			createRangerKMSPid
+		fi
+	else
+		createRangerKMSPid
+	fi
+elif [ "${action}" == "STOP" ]; then
+	killRangerKMSPid
+	exit
+elif [ "${action}" == "RESTART" ]; then
+	echo "Restarting Apache Ranger KMS Service"
+	killRangerKMSPid
+	createRangerKMSPid
+	exit
+elif [ "${action}" == "METRIC" ]; then
+	metric;
+	exit
+elif [ "${action}" == "VERSION" ]; then
+	( cd ${RANGER_KMS_EWS_DIR}/webapp/WEB-INF/lib ; java -cp ranger-util-*.jar org.apache.ranger.common.RangerVersionInfo )
+	exit
+else
+        echo "Invalid argument [$1];"
+        echo "Usage: Only start | stop | restart | version, are supported."
+        echo "For KMSMetric Usage: metric -type  hsmenabled | encryptedkey | encryptedkeybyalgorithm"
+        exit;
+fi

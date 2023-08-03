@@ -1,0 +1,23 @@
+{
+  "patches": [
+    {
+      "id": "TYPEDEF_PATCH_1000_036",
+      "description": "Update 'table' attribute in hive_column",
+      "action": "UPDATE_ATTRIBUTE",
+      "typeName": "hive_column",
+      "applyToVersion": "1.2",
+      "updateToVersion": "1.3",
+      "params": null,
+      "attributeDefs": [
+        {
+          "name": "table",
+          "typeName": "hive_table",
+          "cardinality": "SINGLE",
+          "isIndexable": false,
+          "isOptional": true,
+          "isUnique": false
+        }
+      ]
+    }
+  ]
+}

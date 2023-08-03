@@ -1,0 +1,537 @@
+[
+  {
+    "name": "Non-repeating validity-schedule",
+    "validitySchedules": [
+      {
+        "startTime": "2018/01/12 14:32:00",
+        "endTime": "2018/02/03 12:16:00",
+        "recurrences": [
+          {
+            "schedule": {
+              "minute": "30",
+              "hour": "*",
+              "dayOfMonth": "*",
+              "dayOfWeek": "5, 7",
+              "month": "*",
+              "year": "2018"
+            },
+            "interval": {
+              "minutes": 10
+            }
+          }
+        ]
+      }
+    ],
+    "accessTime": "20180113-14:32:27.000-0800",
+    "result": {
+      "isValid": true,
+      "isApplicable": true,
+      "validationFailureCount": 0
+    }
+  },
+  {
+    "name": "Empty end-time",
+    "validitySchedules": [
+      {
+        "startTime": "2018/01/12 14:30:00",
+        "endTime": ""
+      }
+    ],
+    "accessTime": "20180112-14:32:27.000-0800",
+    "result": {
+      "isValid": true,
+      "isApplicable": true,
+      "validationFailureCount": 0
+    }
+  },
+  {
+    "name": "Empty start-time",
+    "validitySchedules": [
+      {
+        "startTime": "",
+        "endTime": "2050/01/12 14:30:00"
+      }
+    ],
+    "accessTime": "20180112-14:32:27.000-0800",
+    "result": {
+      "isValid": true,
+      "isApplicable": true,
+      "validationFailureCount": 0
+    }
+  },
+  {
+    "name": "Applicable for 9 minutes in a 10 minute interval",
+    "validitySchedules": [
+      {
+        "startTime": "2018/01/12 14:32:00",
+        "endTime": "2018/02/03 12:16:00",
+        "recurrences": [
+          {
+            "schedule": {
+              "minute": "0, 10, 20, 30, 40, 50",
+              "hour": "*",
+              "dayOfMonth": "*",
+              "dayOfWeek": "5, 7",
+              "month": "*",
+              "year": "2018"
+            },
+            "interval": {
+              "minutes": 9
+            }
+          }
+        ]
+      }
+    ],
+    "accessTime": "20180112-14:32:27.000-0800",
+    "result": {
+      "isValid": true,
+      "isApplicable": true,
+      "validationFailureCount": 0
+    }
+  },
+  {
+    "name": "Applicable every Wednesday or Saturday or 1st of month starting at 10 past noon hour PST for 2 days and 10 hours",
+    "validitySchedules": [
+      {
+        "startTime": "2018/01/12 14:32:00",
+        "endTime": "2018/02/03 12:16:00",
+        "recurrences": [
+          {
+            "schedule": {
+              "minute": "10",
+              "hour": "12",
+              "dayOfMonth": "1",
+              "dayOfWeek": "4, 7",
+              "month": "*",
+              "year": "2018"
+            },
+            "interval": {
+              "days": 2,
+              "hours": 10
+            }
+          }
+        ]
+      }
+      ],
+    "accessTime": "20180115-19:32:27.000-0800",
+    "result": {
+      "isValid": true,
+      "isApplicable": true,
+      "validationFailureCount": 0
+    }
+  },
+  {
+    "name": "Applicable every Wednesday or Saturday or 1st of month starting at 59 minutes past midnight PST for 1 day and 2 minutes",
+    "validitySchedules": [
+      {
+        "startTime": "2017/01/12 14:32:00",
+        "endTime": "2018/02/03 12:16:00",
+        "recurrences": [
+          {
+            "schedule": {
+              "minute": "59",
+              "hour": "0",
+              "dayOfMonth": "1",
+              "dayOfWeek": "4, 7",
+              "month": "*",
+              "year": "2017-2018"
+            },
+            "interval": {
+              "days": 1,
+              "minutes": 2
+            }
+          }
+        ]
+      }
+      ],
+    "accessTime": "20180102-01:00:00.000-0800",
+    "result": {
+      "isValid": true,
+      "isApplicable": true,
+      "validationFailureCount": 0
+    }
+  },
+  {
+    "name": "Applicable every 31st of month starting at noon Zulu for 1 day, starting from 1/1/18",
+    "validitySchedules": [
+      {
+        "startTime": "2018/01/01 00:00:00",
+        "endTime": "2050/02/03 12:16:00",
+        "recurrences": [
+          {
+            "schedule": {
+              "minute": "0",
+              "hour": "12",
+              "dayOfMonth": "31",
+              "dayOfWeek": "*",
+              "month": "*",
+              "year": "2017-2018"
+            },
+            "interval": {
+              "days": 1
+            }
+          }
+        ]
+      }
+      ],
+    "accessTime": "20180301-00:00:00.000-0800",
+    "result": {
+      "isValid": true,
+      "isApplicable": true,
+      "validationFailureCount": 0
+    }
+  }
+  ,
+  {
+    "name": "validity-interval longer than minimum diff in  - still not applicable",
+    "validitySchedules": [
+      {
+        "startTime": "2018/01/12 14:32:00",
+        "endTime": "2020/01/23 06:30:00",
+        "recurrences": [
+          {
+            "schedule": {
+              "minute": "0",
+              "hour": "12",
+              "dayOfMonth": "1",
+              "dayOfWeek": "2, 3",
+              "month": "*",
+              "year": "*"
+            },
+            "interval": {
+              "days": 1,
+              "hours": 23,
+              "minutes": 59
+            }
+          }
+        ]
+      }
+      ],
+    "accessTime": "20180304-14:40:00.000-0800",
+    "result": {
+      "isValid": true,
+      "isApplicable": false,
+      "validationFailureCount": 0
+    }
+  },
+  {
+    "name": "validity-interval longer than minimum diff in schedule - applicable",
+    "validitySchedules": [
+      {
+        "startTime": "2018/01/12 14:32:00",
+        "endTime": "2020/01/23 06:30:00",
+        "recurrences": [
+          {
+            "schedule": {
+              "minute": "0",
+              "hour": "12",
+              "dayOfMonth": "1",
+              "dayOfWeek": "2, 3",
+              "month": "*",
+              "year": "*"
+            },
+            "interval": {
+              "days": 1,
+              "hours": 23,
+              "minutes": 59
+            }
+          }
+        ]
+      }
+      ],
+    "accessTime": "20180303-10:40:00.000-0800",
+    "result": {
+      "isValid": true,
+      "isApplicable": true,
+      "validationFailureCount": 0
+    }
+  },
+  {
+    "name": "dayOfWeek non blank and dayOfMonth blank - applicable",
+    "validitySchedules": [
+      {
+        "startTime": "2018/01/12 14:32:00",
+        "endTime": "2020/01/23 06:30:00",
+        "recurrences": [
+          {
+            "schedule": {
+              "minute": "45, 30, 1, 14",
+              "hour": "0,20, 21",
+              "dayOfMonth": "",
+              "dayOfWeek": "1",
+              "month": "12, 1-2",
+              "year": "2018"
+            },
+            "interval": {
+              "hours": 5
+            }
+          }
+        ]
+      }
+      ],
+    "accessTime": "20180114-04:32:27.000-0800",
+    "result": {
+      "isValid": true,
+      "isApplicable": true,
+      "validationFailureCount": 0
+    }
+  },
+  {
+    "name": "dayOfWeek non blank and dayOfMonth blank - not applicable",
+    "validitySchedules": [
+      {
+        "startTime": "2018/01/12 14:32:00",
+        "endTime": "2020/01/23 06:30:00",
+        "recurrences": [
+          {
+            "schedule": {
+              "minute": "45, 30, 1, 14",
+              "hour": "0,20, 21",
+              "dayOfMonth": "",
+              "dayOfWeek": "1",
+              "month": "12, 1-2",
+              "year": "2018"
+            },
+            "interval": {
+              "hours": 5
+            }
+          }
+        ]
+      }
+      ],
+    "accessTime": "20180119-04:32:27.000-0800",
+    "result": {
+      "isValid": true,
+      "isApplicable": false,
+      "validationFailureCount": 0
+    }
+  },
+  {
+    "name": "dayOfWeek blank and dayOfMonth not blank -  applicable",
+    "validitySchedules": [
+      {
+        "startTime": "2018/01/12 14:32:00",
+        "endTime": "2020/01/23 06:30:00",
+        "recurrences": [
+          {
+            "schedule": {
+              "minute": "45, 30, 1, 14",
+              "hour": "0,20, 21",
+              "dayOfMonth": "15, 20",
+              "dayOfWeek": "",
+              "month": "12, 1-2",
+              "year": "2018"
+            },
+            "interval": {
+              "days": 5
+            }
+          }
+        ]
+      }
+      ],
+    "accessTime": "20180119-04:32:27.000-0800",
+    "result": {
+      "isValid": true,
+      "isApplicable": true,
+      "validationFailureCount": 0
+    }
+  },
+  {
+    "name": "dayOfWeek blank and dayOfMonth not blank -  not applicable",
+    "validitySchedules": [
+      {
+        "startTime": "2018/01/12 14:32:00",
+        "endTime": "2020/01/23 06:30:00",
+        "recurrences": [
+          {
+            "schedule": {
+              "minute": "45, 30, 1, 14",
+              "hour": "0,20, 21",
+              "dayOfMonth": "15, 20",
+              "dayOfWeek": "",
+              "month": "12, 1-2",
+              "year": "2018"
+            },
+            "interval": {
+              "days": 3
+            }
+          }
+        ]
+      }
+      ],
+    "accessTime": "20180119-04:32:27.000-0800",
+    "result": {
+      "isValid": true,
+      "isApplicable": false,
+      "validationFailureCount": 0
+    }
+  },
+  {
+    "name": "Applicable every 31st of month or every Thursday starting at noon Zulu for 1 day, starting from 1/1/18 - not applicable",
+    "validitySchedules": [
+      {
+        "startTime": "2018/01/01 00:00:00",
+        "endTime": "2020/02/03 12:16:00",
+        "recurrences": [
+          {
+            "schedule": {
+              "minute": "0",
+              "hour": "12",
+              "dayOfMonth": "31",
+              "dayOfWeek": "5",
+              "month": "*",
+              "year": "2017-2018"
+            },
+            "interval": {
+              "days": 1
+            }
+          }
+        ]
+      }
+      ],
+    "accessTime": "20180301-00:00:00.000-0800",
+    "result": {
+      "isValid": true,
+      "isApplicable": false,
+      "validationFailureCount": 0
+    }
+  },
+  {
+    "name": "Applicable every 31st of month or every Thursday starting at noon Zulu for 1 day, starting from 1/1/18 -  applicable",
+    "validitySchedules": [
+      {
+        "startTime": "2018/01/01 00:00:00",
+        "endTime": "2050/02/03 12:16:00",
+        "recurrences": [
+          {
+            "schedule": {
+              "minute": "0",
+              "hour": "12",
+              "dayOfMonth": "31",
+              "dayOfWeek": "5",
+              "month": "*",
+              "year": "2017-2018"
+            },
+            "interval": {
+              "days": 1
+            }
+          }
+        ]
+      }
+      ],
+    "accessTime": "20180216-00:00:00.000-0800",
+    "result": {
+      "isValid": true,
+      "isApplicable": true,
+      "validationFailureCount": 0
+    }
+  },
+  {
+    "name": "Applicable on Feb 29",
+    "validitySchedules": [
+      {
+        "startTime": "2020/01/01 00:00:00",
+        "endTime": "2050/02/03 12:16:00",
+        "recurrences": [
+          {
+            "schedule": {
+              "minute": "0",
+              "hour": "*",
+              "dayOfMonth": "29",
+              "dayOfWeek": "",
+              "month": "2",
+              "year": "2020-2026"
+            },
+            "interval": {
+              "days": 1
+            }
+          }
+        ]
+      }
+      ],
+    "accessTime": "20200301-00:00:00.000-0800",
+    "result": {
+      "isValid": true,
+      "isApplicable": true,
+      "validationFailureCount": 0
+    }
+  },
+  {
+    "name": "Not Applicable on Mar 29",
+    "validitySchedules": [
+      {
+        "startTime": "2020/01/01 00:00:00",
+        "endTime": "2050/02/03 12:16:00",
+        "recurrences": [
+          {
+            "schedule": {
+              "minute": "0",
+              "hour": "*",
+              "dayOfMonth": "29",
+              "dayOfWeek": "",
+              "month": "3",
+              "year": "2020-2026"
+            },
+            "interval": {
+              "days": 1
+            }
+          }
+        ]
+      }
+      ],
+    "accessTime": "20200301-00:00:00.000-0800",
+    "result": {
+      "isValid": true,
+      "isApplicable": false,
+      "validationFailureCount": 0
+    }
+  },
+  {
+    "name": "Applicable on Feb 29 with a timezone specified in the schedule",
+    "validitySchedules": [
+      {
+        "startTime": "2020/01/01 00:00:00",
+        "endTime": "2050/02/03 12:16:00",
+        "timeZone": "Asia/Kolkata",
+        "recurrences": [
+          {
+            "schedule": {
+              "minute": "0",
+              "hour": "*",
+              "dayOfMonth": "29",
+              "dayOfWeek": "",
+              "month": "2",
+              "year": "2020-2026"
+            },
+            "interval": {
+              "days": 1
+            }
+          }
+        ]
+      }
+      ],
+    "accessTime": "20200229-23:30:00.000-0800",
+    "result": {
+      "isValid": true,
+      "isApplicable": true,
+      "validationFailureCount": 0
+    }
+  },
+  {
+    "name": "Not applicable with a timezone specified in the schedule; no recurrences",
+    "validitySchedules": [
+      {
+        "startTime": "2020/01/01 00:00:00",
+        "endTime": "2050/02/03 12:16:00",
+        "timeZone": "GMT"
+      }
+    ],
+    "accessTime": "20191231-16:00:00.000-0700",
+    "result": {
+      "isValid": true,
+      "isApplicable": false,
+      "validationFailureCount": 0
+    }
+  }
+
+]

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	<persistence-unit name="defaultPU">
+		<mapping-file>META-INF/jpa_named_queries.xml</mapping-file>
+
+		<class>org.apache.ranger.entity.XXDBBase</class>
+		<class>org.apache.ranger.entity.XXAuthSession</class>
+		<class>org.apache.ranger.entity.XXPortalUser</class>
+		<class>org.apache.ranger.entity.XXPortalUserRole</class>
+		<class>org.apache.ranger.entity.XXAsset</class>
+		<class>org.apache.ranger.entity.XXResource</class>
+		<class>org.apache.ranger.entity.XXCredentialStore</class>
+		<class>org.apache.ranger.entity.XXGroup</class>
+		<class>org.apache.ranger.entity.XXUser</class>
+		<class>org.apache.ranger.entity.XXGroupUser</class>
+		<class>org.apache.ranger.entity.XXGroupGroup</class>
+		<class>org.apache.ranger.entity.XXPermMap</class>
+		<class>org.apache.ranger.entity.XXAuditMap</class>
+		<class>org.apache.ranger.entity.XXPolicyExportAudit</class>
+		<class>org.apache.ranger.entity.XXTrxLog</class>
+		<!--0.5 -->
+		<class>org.apache.ranger.entity.XXServiceDefBase</class>
+		<class>org.apache.ranger.entity.XXServiceDefWithAssignedId</class>
+		<class>org.apache.ranger.entity.XXServiceDef</class>
+		<class>org.apache.ranger.entity.XXServiceBase</class>
+		<class>org.apache.ranger.entity.XXServiceWithAssignedId</class>
+		<class>org.apache.ranger.entity.XXService</class>
+		<class>org.apache.ranger.entity.XXPolicyBase</class>
+		<class>org.apache.ranger.entity.XXPolicyWithAssignedId</class>
+		<class>org.apache.ranger.entity.XXPolicy</class>
+		<class>org.apache.ranger.entity.XXServiceConfigDef</class>
+		<class>org.apache.ranger.entity.XXResourceDef</class>
+		<class>org.apache.ranger.entity.XXAccessTypeDef</class>
+		<class>org.apache.ranger.entity.XXAccessTypeDefGrants</class>
+		<class>org.apache.ranger.entity.XXPolicyConditionDef</class>
+		<class>org.apache.ranger.entity.XXContextEnricherDef</class>
+		<class>org.apache.ranger.entity.XXEnumDef</class>
+		<class>org.apache.ranger.entity.XXEnumElementDef</class>
+		<class>org.apache.ranger.entity.XXServiceConfigMap</class>
+		<class>org.apache.ranger.entity.XXPolicyResource</class>
+		<class>org.apache.ranger.entity.XXPolicyResourceMap</class>
+		<class>org.apache.ranger.entity.XXPolicyItem</class>
+		<class>org.apache.ranger.entity.XXPolicyItemAccess</class>
+		<class>org.apache.ranger.entity.XXPolicyItemCondition</class>
+		<class>org.apache.ranger.entity.XXPolicyItemGroupPerm</class>
+		<class>org.apache.ranger.entity.XXPolicyItemUserPerm</class>
+		<class>org.apache.ranger.entity.XXDataHist</class>
+		<class>org.apache.ranger.entity.XXModuleDef</class>
+		<class>org.apache.ranger.entity.XXGroupPermission</class>
+		<class>org.apache.ranger.entity.XXUserPermission</class>
+		<!--0.6 -->
+		<class>org.apache.ranger.entity.XXTagDef</class>
+		<class>org.apache.ranger.entity.XXTag</class>
+		<class>org.apache.ranger.entity.XXServiceResource</class>
+		<class>org.apache.ranger.entity.XXServiceResourceElement</class>
+		<class>org.apache.ranger.entity.XXTagAttributeDef</class>
+		<class>org.apache.ranger.entity.XXTagAttribute</class>
+		<class>org.apache.ranger.entity.XXTagResourceMap</class>
+		<class>org.apache.ranger.entity.XXServiceResourceElementValue</class>
+		<class>org.apache.ranger.entity.XXDataMaskTypeDef</class>
+		<class>org.apache.ranger.entity.XXPolicyItemDataMaskInfo</class>
+		<class>org.apache.ranger.entity.XXPolicyItemRowFilterInfo</class>
+		<class>org.apache.ranger.entity.XXServiceVersionInfo</class>
+		<class>org.apache.ranger.entity.XXPluginInfo</class>
+		<class>org.apache.ranger.entity.XXUgsyncAuditInfo</class>
+        <shared-cache-mode>NONE</shared-cache-mode>
+
+		<properties>
+			<property name="eclipselink.logging.level" value="WARNING"/>
+			<property name="eclipselink.jdbc.batch-writing" value="jdbc"/>
+		</properties>
+	</persistence-unit>
+	<persistence-unit name="loggingPU">
+		<mapping-file>META-INF/jpa_named_queries.xml</mapping-file>
+        <class>org.apache.ranger.entity.XXAccessAudit</class>
+        <shared-cache-mode>NONE</shared-cache-mode>
+
+		<properties>
+			<property name="eclipselink.logging.level" value="WARNING"/>
+			<property name="eclipselink.jdbc.batch-writing" value="jdbc"/>
+		</properties>
+	</persistence-unit>
+
+</persistence>

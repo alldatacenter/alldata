@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: deviceshifu-tcp-deployment
+  name: deviceshifu-tcp-deployment
+  namespace: deviceshifu
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: deviceshifu-tcp-deployment
+  template:
+    metadata:
+      labels:
+        app: deviceshifu-tcp-deployment
+    spec:
+      containers:
+      - image: edgehub/deviceshifu-tcp-tcp:v0.24.0-rc1
+        name: deviceshifu-tcp
+        ports:
+        - containerPort: 8081
+        volumeMounts:
+        - name: deviceshifu-config
+          mountPath: "/etc/edgedevice/config"
+          readOnly: true
+        env:
+        - name: EDGEDEVICE_NAME
+          value: "edgedevice-tcp"
+        - name: EDGEDEVICE_NAMESPACE
+          value: "devices"
+      volumes:
+      - name: deviceshifu-config
+        configMap:
+          name: tcp-configmap-0.0.1
+      serviceAccountName: edgedevice-sa

@@ -1,0 +1,695 @@
+{
+  "serviceName":"hdfsdev",
+  "serviceDef":{
+    "name":"hdfs",
+    "id":1,
+    "resources":[
+      {"name":"path","type":"path","level":1,"mandatory":true,"lookupSupported":true,"matcher":"org.apache.ranger.plugin.resourcematcher.RangerPathResourceMatcher","matcherOptions":{"wildCard":true, "ignoreCase":true},"label":"Resource Path","description":"HDFS file or directory path"}
+    ],
+    "options": {
+      "enableDenyAndExceptionsInPolicies":"true"
+    },
+    "accessTypes":[
+      {"name":"read","label":"Read"},
+      {"name":"write","label":"Write"},
+      {"name":"execute","label":"Execute"}
+    ]
+  },
+  "policies":[
+    {
+      "id": 1,
+      "name": "/resource: allow: users=user-ra, user-ra-ta, user-ra-td; deny: user=user-rd, user-rd-ta, user-rd-td",
+      "isEnabled": true,
+      "isAuditEnabled": true,
+      "resources": {
+        "path": { "values": [ "/resource" ], "isRecursive": true }
+      },
+      "policyItems": [
+        {
+          "accesses":[
+            {"type":"read"},
+            {"type":"write"}
+          ],
+          "users":["user-ra", "user-ra-ta", "user-ra-td"],
+          "groups":["finance"],
+          "delegateAdmin":false,
+          "conditions" : []
+        }
+      ],
+      "allowExceptions":[ ],
+      "denyPolicyItems": [
+        {
+          "accesses": [
+            { "type": "read" },
+            { "type": "execute" },
+            { "type": "write" }
+          ],
+          "users": [ "user-rd", "user-rd-ta", "user-rd-td" ],
+          "groups": [],
+          "delegateAdmin": false,
+          "conditions": [
+          ]
+        }
+      ],
+      "denyExceptions":[ ]
+    },
+    {
+      "id": 2,
+      "name": "/unaudited-resource: allow: users=user-ra, user-ra-ta, user-ra-td; deny: user=user-rd, user-rd-ta, user-rd-td",
+      "isEnabled": true,
+      "isAuditEnabled": false,
+      "resources": {
+        "path": { "values": [ "/unaudited-resource" ], "isRecursive": true }
+      },
+      "policyItems": [
+        {
+          "accesses":[
+            {"type":"read" },
+            {"type":"write" }
+          ],
+          "users":["user-ra", "user-ra-ta", "user-ra-td"],
+          "groups":["finance"],
+          "delegateAdmin":false,
+          "conditions" : []
+        }
+      ],
+      "allowExceptions":[ ],
+      "denyPolicyItems": [
+        {
+          "accesses": [
+            { "type": "read" },
+            { "type": "execute" },
+            { "type": "write" }
+          ],
+          "users": [ "user-rd", "user-rd-ta", "user-rd-td" ],
+          "groups": [],
+          "delegateAdmin": false,
+          "conditions": [
+          ]
+        }
+      ],
+      "denyExceptions":[ ]
+    }
+  ],
+
+  "tagPolicyInfo": {
+    "serviceName":"tagdev",
+    "serviceDef": {
+      "name": "tag",
+      "id": 100,
+      "resources": [
+        { "name": "tag", "type": "string", "level": 1, "mandatory": true, "matcher": "org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher", "matcherOptions": { "wildCard": false, "ignoreCase": false }, "label": "TAG", "description": "TAG" }
+      ],
+      "accessTypes": [
+        { "name": "hdfs:read", "label": "hdfs:Read"  },
+        { "name": "hdfs:write", "label": "hdfs:Write" },
+        { "name": "hdfs:execute", "label": "hdfs:Execute" }
+      ],
+      "contextEnrichers": [ ],
+      "policyConditions": [ ]
+    },
+    "tagPolicies":[
+      {
+        "id":101,
+        "name":"PII",
+        "isEnabled":true,
+        "isAuditEnabled":true,
+        "resources":{"tag":{"values":["PII"],"isRecursive":false}},
+        "policyItems":[
+          {
+            "accesses":[
+              {"type":"hdfs:read", "isAllowed":true},
+              {"type":"hdfs:write", "isAllowed":true}
+            ],
+            "users":["user-ta", "user-ra-ta", "user-rd-ta"],
+            "groups":["finance"],
+            "delegateAdmin":false,
+            "conditions" : []
+          }
+        ],
+        "allowExceptions":[ ],
+        "denyPolicyItems":[
+          {
+            "accesses":[
+              {"type":"hdfs:read" },
+              {"type":"hdfs:write" }
+            ],
+            "users":["user-td", "user-ra-td", "user-rd-td"],
+            "groups":[],
+            "delegateAdmin":false,
+            "conditions" : [ ]
+          }
+        ],
+        "denyExceptions":[ ]
+      },
+      {
+        "id":102,
+        "name":"Unaudited-TAG",
+        "isEnabled":true,
+        "isAuditEnabled":false,
+        "resources":{"tag":{"values":["Unaudited-TAG"],"isRecursive":false}},
+        "policyItems":[
+          {
+            "accesses":[
+              {"type":"hdfs:read" },
+              {"type":"hdfs:write" }
+            ],
+            "users":["user-ta", "user-ra-ta", "user-rd-ta"],
+            "groups":["finance"],
+            "delegateAdmin":false,
+            "conditions" : []
+          }
+        ],
+        "allowExceptions":[ ],
+        "denyPolicyItems":[
+          {
+            "accesses":[
+              {"type":"hdfs:read" },
+              {"type":"hdfs:write" }
+            ],
+            "users":["user-td", "user-ra-td", "user-rd-td"],
+            "groups":[],
+            "delegateAdmin":false,
+            "conditions" : [ ]
+          }
+        ],
+        "denyExceptions":[ ]
+      }
+    ]
+  },
+  "tests":[
+    {
+      "name": "ALLOW 'read /resource' for u=user-ra",
+      "request": {
+        "resource": { "elements": { "path": "/resource" } },
+        "accessType": "read",
+        "user": "user-ra",
+        "userGroups": [ ],
+        "requestData": "read /resource",
+        "context": {
+          "TAGS": "[{\"type\":\"PII\"}]"
+        }
+      },
+      "result": { "isAudited": true, "isAllowed": true, "policyId": 1 }
+    },
+    {
+      "name": "ALLOW 'read /resource' for u=user-ra-ta",
+      "request": {
+        "resource": { "elements": { "path": "/resource" } },
+        "accessType": "read",
+        "user": "user-ra-ta",
+        "userGroups": [ ],
+        "requestData": "read /resource",
+        "context": {
+          "TAGS": "[{\"type\":\"PII\"}]"
+        }
+      },
+      "result": { "isAudited": true, "isAllowed": true, "policyId": 101 }
+    },
+    {
+      "name": "DENY 'read /resource' for u=user-ra-td",
+      "request": {
+        "resource": { "elements": { "path": "/resource" } },
+        "accessType": "read",
+        "user": "user-ra-td",
+        "userGroups": [ ],
+        "requestData": "read /resource",
+        "context": {
+          "TAGS": "[{\"type\":\"PII\", \"matchType\": \"SELF\"}]"
+        }
+      },
+      "result": { "isAudited": true, "isAllowed": false, "policyId": 101 }
+    },
+    {
+      "name": "DENY 'read /resource' for u=user-rd",
+      "request": {
+        "resource": { "elements": { "path": "/resource" } },
+        "accessType": "read",
+        "user": "user-rd",
+        "userGroups": [ ],
+        "requestData": "read /resource",
+        "context": {
+          "TAGS": "[{\"type\":\"PII\"}]"
+        }
+      },
+      "result": { "isAudited": true, "isAllowed": false, "policyId": 1 }
+    },
+    {
+      "name": "DENY 'read /resource' for u=user-rd-ta",
+      "request": {
+        "resource": { "elements": { "path": "/resource" } },
+        "accessType": "read",
+        "user": "user-rd-ta",
+        "userGroups": [ ],
+        "requestData": "read /resource",
+        "context": {
+          "TAGS": "[{\"type\":\"PII\"}]"
+        }
+      },
+      "result": { "isAudited": true, "isAllowed": false, "policyId": 1 }
+    },
+    {
+      "name": "DENY 'read /resource' for u=user-rd-td",
+      "request": {
+        "resource": { "elements": { "path": "/resource" } },
+        "accessType": "read",
+        "user": "user-rd-td",
+        "userGroups": [ ],
+        "requestData": "read /resource",
+        "context": {
+          "TAGS": "[{\"type\":\"PII\"}]"
+        }
+      },
+      "result": { "isAudited": true, "isAllowed": false, "policyId": 101 }
+    },
+    {
+      "name": "ALLOW 'read /resource' for u=user-ta",
+      "request": {
+        "resource": { "elements": { "path": "/resource" } },
+        "accessType": "read",
+        "user": "user-ta",
+        "userGroups": [ ],
+        "requestData": "read /resource",
+        "context": {
+          "TAGS": "[{\"type\":\"PII\"}]"
+        }
+      },
+      "result": { "isAudited": true, "isAllowed": true, "policyId": 101 }
+    },
+    {
+      "name": "DENY 'read /resource' for u=user-td",
+      "request": {
+        "resource": { "elements": { "path": "/resource" } },
+        "accessType": "read",
+        "user": "user-td",
+        "userGroups": [ ],
+        "requestData": "read /resource",
+        "context": {
+          "TAGS": "[{\"type\":\"PII\"}]"
+        }
+      },
+      "result": { "isAudited": true, "isAllowed": false, "policyId": 101 }
+    },
+    {
+      "name": "DENY 'read /resource' for u=user-unknown",
+      "request": {
+        "resource": { "elements": { "path": "/resource" } },
+        "accessType": "read",
+        "user": "user-unknown",
+        "userGroups": [ ],
+        "requestData": "read /resource",
+        "context": {
+          "TAGS": "[{\"type\":\"PII\"}]"
+        }
+      },
+      "result": { "isAudited": true, "isAllowed": false, "policyId": -1 }
+    }
+    ,
+
+    {
+      "name": "ALLOW 'read /resource' for u=user-ra",
+      "request": {
+        "resource": { "elements": { "path": "/resource" } },
+        "accessType": "read",
+        "user": "user-ra",
+        "userGroups": [ ],
+        "requestData": "read /resource",
+        "context": {
+          "TAGS": "[{\"type\":\"Unaudited-TAG\"}]"
+        }
+      },
+      "result": { "isAudited": true, "isAllowed": true, "policyId": 1 }
+    },
+    {
+      "name": "ALLOW 'read /resource' for u=user-ra-ta",
+      "request": {
+        "resource": { "elements": { "path": "/resource" } },
+        "accessType": "read",
+        "user": "user-ra-ta",
+        "userGroups": [ ],
+        "requestData": "read /resource",
+        "context": {
+          "TAGS": "[{\"type\":\"Unaudited-TAG\"}]"
+        }
+      },
+      "result": { "isAudited": true, "isAllowed": true, "policyId": 102 }
+    },
+    {
+      "name": "DENY 'read /resource' for u=user-ra-td",
+      "request": {
+        "resource": { "elements": { "path": "/resource" } },
+        "accessType": "read",
+        "user": "user-ra-td",
+        "userGroups": [ ],
+        "requestData": "read /resource",
+        "context": {
+          "TAGS": "[{\"type\":\"Unaudited-TAG\"}]"
+        }
+      },
+      "result": { "isAudited": true, "isAllowed": false, "policyId": 102 }
+    },
+    {
+      "name": "DENY 'read /resource' for u=user-rd",
+      "request": {
+        "resource": { "elements": { "path": "/resource" } },
+        "accessType": "read",
+        "user": "user-rd",
+        "userGroups": [ ],
+        "requestData": "read /resource",
+        "context": {
+          "TAGS": "[{\"type\":\"Unaudited-TAG\"}]"
+        }
+      },
+      "result": { "isAudited": true, "isAllowed": false, "policyId": 1 }
+    },
+    {
+      "name": "DENY 'read /resource' for u=user-rd-ta",
+      "request": {
+        "resource": { "elements": { "path": "/resource" } },
+        "accessType": "read",
+        "user": "user-rd-ta",
+        "userGroups": [ ],
+        "requestData": "read /resource",
+        "context": {
+          "TAGS": "[{\"type\":\"Unaudited-TAG\", \"matchType\": \"SELF\"}]"
+        }
+      },
+      "result": { "isAudited": true, "isAllowed": false, "policyId": 1 }
+    },
+    {
+      "name": "DENY 'read /resource' for u=user-rd-td",
+      "request": {
+        "resource": { "elements": { "path": "/resource" } },
+        "accessType": "read",
+        "user": "user-rd-td",
+        "userGroups": [ ],
+        "requestData": "read /resource",
+        "context": {
+          "TAGS": "[{\"type\":\"Unaudited-TAG\"}]"
+        }
+      },
+      "result": { "isAudited": true, "isAllowed": false, "policyId": 102 }
+    },
+    {
+      "name": "ALLOW 'read /resource' for u=user-ta",
+      "request": {
+        "resource": { "elements": { "path": "/resource" } },
+        "accessType": "read",
+        "user": "user-ta",
+        "userGroups": [ ],
+        "requestData": "read /resource",
+        "context": {
+          "TAGS": "[{\"type\":\"Unaudited-TAG\"}]"
+        }
+      },
+      "result": { "isAudited": true, "isAllowed": true, "policyId": 102 }
+    },
+    {
+      "name": "DENY 'read /resource' for u=user-td",
+      "request": {
+        "resource": { "elements": { "path": "/resource" } },
+        "accessType": "read",
+        "user": "user-td",
+        "userGroups": [ ],
+        "requestData": "read /resource",
+        "context": {
+          "TAGS": "[{\"type\":\"Unaudited-TAG\"}]"
+        }
+      },
+      "result": { "isAudited": true, "isAllowed": false, "policyId": 102 }
+    },
+    {
+      "name": "DENY 'read /resource' for u=user-unknown",
+      "request": {
+        "resource": { "elements": { "path": "/resource" } },
+        "accessType": "read",
+        "user": "user-unknown",
+        "userGroups": [ ],
+        "requestData": "read /resource",
+        "context": {
+          "TAGS": "[{\"type\":\"Unaudited-TAG\"}]"
+        }
+      },
+      "result": { "isAudited": true, "isAllowed": false, "policyId": -1 }
+    }
+    ,
+
+    {
+      "name": "ALLOW 'read /unaudited-resource' for u=user-ra",
+      "request": {
+        "resource": { "elements": { "path": "/unaudited-resource" } },
+        "accessType": "read",
+        "user": "user-ra",
+        "userGroups": [ ],
+        "requestData": "read /unaudited-resource",
+        "context": {
+          "TAGS": "[{\"type\":\"PII\"}]"
+        }
+      },
+      "result": { "isAudited": true, "isAllowed": true, "policyId": 2 }
+    },
+    {
+      "name": "ALLOW 'read /unaudited-resource' for u=user-ra-ta",
+      "request": {
+        "resource": { "elements": { "path": "/unaudited-resource" } },
+        "accessType": "read",
+        "user": "user-ra-ta",
+        "userGroups": [ ],
+        "requestData": "read /unaudited-resource",
+        "context": {
+          "TAGS": "[{\"type\":\"PII\"}]"
+        }
+      },
+      "result": { "isAudited": true, "isAllowed": true, "policyId": 101 }
+    },
+    {
+      "name": "DENY 'read /unaudited-resource' for u=user-ra-td",
+      "request": {
+        "resource": { "elements": { "path": "/unaudited-resource" } },
+        "accessType": "read",
+        "user": "user-ra-td",
+        "userGroups": [ ],
+        "requestData": "read /unaudited-resource",
+        "context": {
+          "TAGS": "[{\"type\":\"PII\"}]"
+        }
+      },
+      "result": { "isAudited": true, "isAllowed": false, "policyId": 101 }
+    },
+    {
+      "name": "DENY 'read /unaudited-resource' for u=user-rd",
+      "request": {
+        "resource": { "elements": { "path": "/unaudited-resource" } },
+        "accessType": "read",
+        "user": "user-rd",
+        "userGroups": [ ],
+        "requestData": "read /unaudited-resource",
+        "context": {
+          "TAGS": "[{\"type\":\"PII\"}]"
+        }
+      },
+      "result": { "isAudited": true, "isAllowed": false, "policyId": 2 }
+    },
+    {
+      "name": "DENY 'read /unaudited-resource' for u=user-rd-ta",
+      "request": {
+        "resource": { "elements": { "path": "/unaudited-resource" } },
+        "accessType": "read",
+        "user": "user-rd-ta",
+        "userGroups": [ ],
+        "requestData": "read /unaudited-resource",
+        "context": {
+          "TAGS": "[{\"type\":\"PII\"}]"
+        }
+      },
+      "result": { "isAudited": true, "isAllowed": false, "policyId": 2 }
+    },
+    {
+      "name": "DENY 'read /unaudited-resource' for u=user-rd-td",
+      "request": {
+        "resource": { "elements": { "path": "/unaudited-resource" } },
+        "accessType": "read",
+        "user": "user-rd-td",
+        "userGroups": [ ],
+        "requestData": "read /unaudited-resource",
+        "context": {
+          "TAGS": "[{\"type\":\"PII\"}]"
+        }
+      },
+      "result": { "isAudited": true, "isAllowed": false, "policyId": 101 }
+    },
+    {
+      "name": "ALLOW 'read /unaudited-resource' for u=user-ta",
+      "request": {
+        "resource": { "elements": { "path": "/unaudited-resource" } },
+        "accessType": "read",
+        "user": "user-ta",
+        "userGroups": [ ],
+        "requestData": "read /unaudited-resource",
+        "context": {
+          "TAGS": "[{\"type\":\"PII\"}]"
+        }
+      },
+      "result": { "isAudited": true, "isAllowed": true, "policyId": 101 }
+    },
+    {
+      "name": "DENY 'read /unaudited-resource' for u=user-td",
+      "request": {
+        "resource": { "elements": { "path": "/unaudited-resource" } },
+        "accessType": "read",
+        "user": "user-td",
+        "userGroups": [ ],
+        "requestData": "read /unaudited-resource",
+        "context": {
+          "TAGS": "[{\"type\":\"PII\"}]"
+        }
+      },
+      "result": { "isAudited": true, "isAllowed": false, "policyId": 101 }
+    },
+    {
+      "name": "DENY 'read /unaudited-resource' for u=user-unknown",
+      "request": {
+        "resource": { "elements": { "path": "/unaudited-resource" } },
+        "accessType": "read",
+        "user": "user-unknown",
+        "userGroups": [ ],
+        "requestData": "read /unaudited-resource",
+        "context": {
+          "TAGS": "[{\"type\":\"PII\"}]"
+        }
+      },
+      "result": { "isAudited": true, "isAllowed": false, "policyId": -1 }
+    }
+    ,
+
+    {
+      "name": "ALLOW 'read /unaudited-resource' for u=user-ra",
+      "request": {
+        "resource": { "elements": { "path": "/unaudited-resource" } },
+        "accessType": "read",
+        "user": "user-ra",
+        "userGroups": [ ],
+        "requestData": "read /unaudited-resource",
+        "context": {
+          "TAGS": "[{\"type\":\"Unaudited-TAG\"}]"
+        }
+      },
+      "result": { "isAudited": false, "isAllowed": true, "policyId": 2 }
+    },
+    {
+      "name": "ALLOW 'read /unaudited-resource' for u=user-ra-ta",
+      "request": {
+        "resource": { "elements": { "path": "/unaudited-resource" } },
+        "accessType": "read",
+        "user": "user-ra-ta",
+        "userGroups": [ ],
+        "requestData": "read /unaudited-resource",
+        "context": {
+          "TAGS": "[{\"type\":\"Unaudited-TAG\"}]"
+        }
+      },
+      "result": { "isAudited": false, "isAllowed": true, "policyId": 102 }
+    },
+    {
+      "name": "DENY 'read /unaudited-resource' for u=user-ra-td",
+      "request": {
+        "resource": { "elements": { "path": "/unaudited-resource" } },
+        "accessType": "read",
+        "user": "user-ra-td",
+        "userGroups": [ ],
+        "requestData": "read /unaudited-resource",
+        "context": {
+          "TAGS": "[{\"type\":\"Unaudited-TAG\"}]"
+        }
+      },
+      "result": { "isAudited": false, "isAllowed": false, "policyId": 102 }
+    },
+    {
+      "name": "DENY 'read /unaudited-resource' for u=user-rd",
+      "request": {
+        "resource": { "elements": { "path": "/unaudited-resource" } },
+        "accessType": "read",
+        "user": "user-rd",
+        "userGroups": [ ],
+        "requestData": "read /unaudited-resource",
+        "context": {
+          "TAGS": "[{\"type\":\"Unaudited-TAG\"}]"
+        }
+      },
+      "result": { "isAudited": false, "isAllowed": false, "policyId": 2 }
+    },
+    {
+      "name": "DENY 'read /unaudited-resource' for u=user-rd-ta",
+      "request": {
+        "resource": { "elements": { "path": "/unaudited-resource" } },
+        "accessType": "read",
+        "user": "user-rd-ta",
+        "userGroups": [ ],
+        "requestData": "read /unaudited-resource",
+        "context": {
+          "TAGS": "[{\"type\":\"Unaudited-TAG\"}]"
+        }
+      },
+      "result": { "isAudited": false, "isAllowed": false, "policyId": 2 }
+    },
+    {
+      "name": "DENY 'read /unaudited-resource' for u=user-rd-td",
+      "request": {
+        "resource": { "elements": { "path": "/unaudited-resource" } },
+        "accessType": "read",
+        "user": "user-rd-td",
+        "userGroups": [ ],
+        "requestData": "read /unaudited-resource",
+        "context": {
+          "TAGS": "[{\"type\":\"Unaudited-TAG\"}]"
+        }
+      },
+      "result": { "isAudited": false, "isAllowed": false, "policyId": 102 }
+    },
+    {
+      "name": "ALLOW 'read /unaudited-resource' for u=user-ta",
+      "request": {
+        "resource": { "elements": { "path": "/unaudited-resource" } },
+        "accessType": "read",
+        "user": "user-ta",
+        "userGroups": [ ],
+        "requestData": "read /unaudited-resource",
+        "context": {
+          "TAGS": "[{\"type\":\"Unaudited-TAG\"}]"
+        }
+      },
+      "result": { "isAudited": false, "isAllowed": true, "policyId": 102 }
+    },
+    {
+      "name": "DENY 'read /unaudited-resource' for u=user-td",
+      "request": {
+        "resource": { "elements": { "path": "/unaudited-resource" } },
+        "accessType": "read",
+        "user": "user-td",
+        "userGroups": [ ],
+        "requestData": "read /unaudited-resource",
+        "context": {
+          "TAGS": "[{\"type\":\"Unaudited-TAG\"}]"
+        }
+      },
+      "result": { "isAudited": false, "isAllowed": false, "policyId": 102 }
+    },
+    {
+      "name": "DENY 'read /unaudited-resource' for u=user-unknown",
+      "request": {
+        "resource": { "elements": { "path": "/unaudited-resource" } },
+        "accessType": "read",
+        "user": "user-unknown",
+        "userGroups": [ ],
+        "requestData": "read /unaudited-resource",
+        "context": {
+          "TAGS": "[{\"type\":\"Unaudited-TAG\"}]"
+        }
+      },
+      "result": { "isAudited": false, "isAllowed": false, "policyId": -1 }
+    }
+
+
+  ]
+}
+
