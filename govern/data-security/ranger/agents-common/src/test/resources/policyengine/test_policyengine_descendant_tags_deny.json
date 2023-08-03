@@ -1,0 +1,107 @@
+{
+  "serviceName":"hivedev",
+
+  "serviceDef":{
+    "name":"hive",
+    "id":3,
+    "resources":[
+      {"name":"database","level":1,"mandatory":true,"lookupSupported":true,"matcher":"org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher","matcherOptions":{"wildCard":true, "ignoreCase":true},"label":"Hive Database","description":"Hive Database"},
+      {"name":"table","level":2,"parent":"database","mandatory":true,"lookupSupported":true,"matcher":"org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher","matcherOptions":{"wildCard":true, "ignoreCase":true},"label":"Hive Table","description":"Hive Table"},
+      {"name":"udf","level":2,"parent":"database","mandatory":true,"lookupSupported":true,"matcher":"org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher","matcherOptions":{"wildCard":true, "ignoreCase":true},"label":"Hive UDF","description":"Hive UDF"},
+      {"name":"column","level":3,"parent":"table","mandatory":true,"lookupSupported":true,"matcher":"org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher","matcherOptions":{"wildCard":true, "ignoreCase":true},"label":"Hive Column","description":"Hive Column"}
+    ],
+    "accessTypes":[
+      {"name":"select","label":"Select"},
+      {"name":"update","label":"Update"},
+      {"name":"create","label":"Create"},
+      {"name":"grant","label":"Grant"},
+      {"name":"drop","label":"Drop"},
+      {"name":"alter","label":"Alter"},
+      {"name":"index","label":"Index"},
+      {"name":"lock","label":"Lock"},
+      {"name":"all","label":"All", "impliedGrants": [ "select", "update", "create", "grant", "drop", "alter", "index", "lock" ] }
+    ]
+  },
+
+  "policies":[
+    {"id":101,"name":"db=*, table=*, column=*","isEnabled":true,"isAuditEnabled":true,
+     "resources":{"database":{"values":["*"]},"table":{"values":["*"]},"column":{"values":["*"]}},
+     "policyItems":[
+       {"accesses":[{"type":"select","isAllowed":true}],"users":["user1", "user2"],"groups":["public"],"delegateAdmin":false}
+      ]
+    }
+  ],
+  "tagPolicyInfo": {
+    "serviceName":"tagdev",
+    "serviceDef": {
+      "name": "tag",
+      "id": 100,
+      "resources": [
+        { "itemId": 1, "name": "tag", "type": "string", "level": 1, "parent": "", "mandatory": true, "matcher": "org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher", "matcherOptions": { "wildCard": true, "ignoreCase": false }, "label": "TAG", "description": "TAG" }
+      ],
+      "accessTypes": [
+        { "itemId": 1, "name": "hive:select", "label": "hive:select" },
+        { "itemId": 2, "name": "hive:update", "label": "hive:update" },
+        { "itemId": 3, "name": "hive:create", "label": "hive:create" } ,
+        { "itemId": 4, "name": "hive:grant", "label": "hive:grant" } ,
+        { "itemId": 5, "name": "hive:drop", "label": "hive:drop" } ,
+        { "itemId": 6, "name": "hive:alter", "label": "hive:alter" },
+        { "itemId": 7, "name": "hive:index", "label": "hive:index" },
+        { "itemId": 8, "name": "hive:lock", "label": "hive:lock" },
+        { "itemId": 9, "name": "hive:all", "label": "hive:all", "impliedGrants": [ "hive:select", "hive:update", "hive:create", "hive:grant", "hive:drop", "hive:alter", "hive:index", "hive:lock" ] }
+      ],
+      "contextEnrichers": [
+        {
+          "itemId": 1,
+          "name" : "TagEnricher",
+          "enricher" : "org.apache.ranger.plugin.contextenricher.RangerTagEnricher",
+          "enricherOptions" : {"tagRetrieverClassName":"org.apache.ranger.plugin.contextenricher.RangerFileBasedTagRetriever", "tagRefresherPollingInterval":60000, "serviceTagsFileName":"/policyengine/descendant_tags.json"}
+        }
+      ]
+    },
+    "tagPolicies":[
+      {"id":1,"name":"RESTRICTED","isEnabled":true,"isAuditEnabled":true,
+        "resources":{"tag":{"values":["RESTRICTED"],"isRecursive":false}},
+        "isDenyAllElse": false,
+        "policyItems":[
+          { "accesses":[{"type":"hive:select","isAllowed":true}],"users":["user1"],"groups":[],"delegateAdmin":false }
+        ],
+        "denyPolicyItems":[
+          { "accesses":[{"type":"hive:select","isAllowed":true}],"users":["user2"],"groups":[],"delegateAdmin":false }
+        ]
+      }
+    ]
+  },
+
+  "tests":[
+    {"name":"ALLOW 'select name from finance.tax_2016;' for user1",
+      "request":{
+        "resource":{"elements":{"database":"finance", "table":"tax_2016", "column":"name"}},
+        "accessType":"select","user":"user1","userGroups":[],"requestData":"select name from finance.tax_2016;' for user1"
+      },
+      "result":{"isAudited":true,"isAllowed":true,"policyId":1}
+    },
+    {"name":"DENY 'select name from finance.tax_2016;' for user2",
+      "request":{
+        "resource":{"elements":{"database":"finance", "table":"tax_2016", "column":"name"}},
+        "accessType":"select","user":"user2","userGroups":[],"requestData":"select name from finance.tax_2016;' for user2"
+      },
+      "result":{"isAudited":true,"isAllowed":false,"policyId":1}
+    },
+    {"name":"ALLOW 'show databases' for user1",
+      "request":{
+        "resource":{"elements":{}},
+        "accessType":"_any","user":"user1","userGroups":[],"requestData":"show databases;' for user1"
+      },
+      "result":{"isAudited":true,"isAllowed":true,"policyId":1}
+    },
+    {"name":"ALLOW 'use finance' for user2",
+      "request":{
+        "resource":{"elements":{"database": "finance"}},
+        "accessType":"_any","user":"user2","userGroups":[],"requestData":"use finance;' for user2"
+      },
+      "result":{"isAudited":true,"isAllowed":true,"policyId":101}
+    }
+  ]
+}
+

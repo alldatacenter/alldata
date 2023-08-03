@@ -1,0 +1,16 @@
+{
+    "patches": [
+        {
+            "id":              "YPEDEF_PATCH_1000_013_001",
+            "description":     "Remove legacy reference attribute 'avroSchema' from kafka_topic",
+            "action":          "REMOVE_LEGACY_REF_ATTRIBUTES",
+            "typeName":        "kafka_topic_avroSchema",
+            "applyToVersion":  "1.1",
+            "updateToVersion": "1.2",
+            "params": {
+                "relationshipLabel": "__kafka_topic.avroSchema",
+                "relationshipCategory": "ASSOCIATION"
+            }
+        }
+    ]
+}

@@ -1,0 +1,10 @@
+apiVersion: shifu.edgenesis.io/v1alpha1
+kind: EdgeDevice
+metadata:
+  name: edgedevice-http
+  namespace: devices
+spec:
+  sku: "HTTP Device"
+  connection: Ethernet
+  address: 192.168.14.124:12345
+  protocol: HTTP

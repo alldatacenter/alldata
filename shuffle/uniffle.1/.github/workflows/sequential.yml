@@ -1,0 +1,90 @@
+#
+# Licensed to the Apache Software Foundation (ASF) under one or more
+# contributor license agreements.  See the NOTICE file distributed with
+# this work for additional information regarding copyright ownership.
+# The ASF licenses this file to You under the Apache License, Version 2.0
+# (the "License"); you may not use this file except in compliance with
+# the License.  You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
+name: Main Profiles in Sequential
+
+on:
+  workflow_call:
+    inputs:
+      maven-args:
+        required: true
+        type: string
+      cache-key:
+        default: ''
+        required: false
+        type: string
+      summary:
+        default: "grep -e '^\\[ERROR\\]' /tmp/maven.log || true"
+        required: false
+        type: string
+      reports-path:
+        default: ''
+        required: false
+        type: string
+      reports-name:
+        default: 'test-reports'
+        required: false
+        type: string
+      java-version:
+        default: '8'
+        required: false
+        type: string
+      jdk-distro:
+        default: 'temurin'
+        required: false
+        type: string
+
+jobs:
+  maven:
+    runs-on: ubuntu-20.04
+    name: java ${{ inputs.java-version }}
+    steps:
+    - name: Checkout project
+      uses: actions/checkout@v3
+    - name: Set up JDK ${{ inputs.java-version }}
+      uses: actions/setup-java@v3
+      with:
+        java-version: ${{ inputs.java-version }}
+        distribution: ${{ inputs.jdk-distro }}
+    - name: Cache local Maven repository
+      if: ${{ inputs.cache-key != '' }}
+      uses: actions/cache@v3
+      with:
+        path: ~/.m2/repository
+        key: mvn-${{ inputs.java-version }}-${{ inputs.cache-key }}-${{ hashFiles('**/pom.xml') }}
+        restore-keys: |
+          mvn-${{ inputs.java-version }}-${{ inputs.cache-key }}-
+    - name: Execute `mvn ${{ inputs.maven-args }} -Pspark3`
+      run: mvn -B -fae ${{ inputs.maven-args }} -Pspark3 | tee -a /tmp/maven.log;
+      shell: bash
+    - name: Execute `mvn ${{ inputs.maven-args }} -Pspark2`
+      run: mvn -B -fae ${{ inputs.maven-args }} -Pspark2 | tee -a /tmp/maven.log;
+      shell: bash
+    - name: Execute `mvn ${{ inputs.maven-args }} -Pmr`
+      run: mvn -B -fae ${{ inputs.maven-args }} -Pmr | tee -a /tmp/maven.log;
+      shell: bash
+    - name: Summary of failures
+      if: ${{ failure() && inputs.summary != '' }}
+      run: ${{ inputs.summary }}
+      continue-on-error: true
+    - name: Upload test reports
+      if: ${{ failure() && inputs.reports-path != '' }}
+      uses: actions/upload-artifact@v3
+      with:
+        name: ${{ inputs.reports-name }}
+        path: ${{ inputs.reports-path }}
+      continue-on-error: true

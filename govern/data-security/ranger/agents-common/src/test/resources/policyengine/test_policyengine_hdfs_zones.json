@@ -1,0 +1,509 @@
+{
+  "serviceName": "cl1_hadoop",
+  "serviceDef": {
+    "accessTypes": [
+      {
+        "impliedGrants": [],
+        "itemId": 1,
+        "label": "Read",
+        "name": "read"
+      },
+      {
+        "impliedGrants": [],
+        "itemId": 2,
+        "label": "Write",
+        "name": "write"
+      },
+      {
+        "impliedGrants": [],
+        "itemId": 3,
+        "label": "Execute",
+        "name": "execute"
+      }
+    ],
+    "configs": [
+      {
+        "itemId": 1,
+        "label": "Username",
+        "mandatory": true,
+        "name": "username",
+        "subType": "",
+        "type": "string",
+        "uiHint": "",
+        "validationMessage": "",
+        "validationRegEx": ""
+      },
+      {
+        "itemId": 2,
+        "label": "Password",
+        "mandatory": true,
+        "name": "password",
+        "subType": "",
+        "type": "password",
+        "uiHint": "",
+        "validationMessage": "",
+        "validationRegEx": ""
+      },
+      {
+        "itemId": 3,
+        "label": "Namenode URL",
+        "mandatory": true,
+        "name": "fs.default.name",
+        "subType": "",
+        "type": "string",
+        "uiHint": "{\"TextFieldWithIcon\":true, \"info\": \"1.For one Namenode Url, eg.<br>hdfs://&lt;host&gt;:&lt;port&gt;<br>2.For HA Namenode Urls(use , delimiter), eg.<br>hdfs://&lt;host&gt;:&lt;port&gt;,hdfs://&lt;host2&gt;:&lt;port2&gt;<br>\"}",
+        "validationMessage": "",
+        "validationRegEx": ""
+      },
+      {
+        "defaultValue": "false",
+        "itemId": 4,
+        "label": "Authorization Enabled",
+        "mandatory": true,
+        "name": "hadoop.security.authorization",
+        "subType": "YesTrue:NoFalse",
+        "type": "bool",
+        "uiHint": "",
+        "validationMessage": "",
+        "validationRegEx": ""
+      },
+      {
+        "defaultValue": "simple",
+        "itemId": 5,
+        "label": "Authentication Type",
+        "mandatory": true,
+        "name": "hadoop.security.authentication",
+        "subType": "authnType",
+        "type": "enum",
+        "uiHint": "",
+        "validationMessage": "",
+        "validationRegEx": ""
+      },
+      {
+        "itemId": 6,
+        "mandatory": false,
+        "name": "hadoop.security.auth_to_local",
+        "subType": "",
+        "type": "string",
+        "uiHint": "",
+        "validationMessage": "",
+        "validationRegEx": ""
+      },
+      {
+        "itemId": 7,
+        "mandatory": false,
+        "name": "dfs.datanode.kerberos.principal",
+        "subType": "",
+        "type": "string",
+        "uiHint": "",
+        "validationMessage": "",
+        "validationRegEx": ""
+      },
+      {
+        "itemId": 8,
+        "mandatory": false,
+        "name": "dfs.namenode.kerberos.principal",
+        "subType": "",
+        "type": "string",
+        "uiHint": "",
+        "validationMessage": "",
+        "validationRegEx": ""
+      },
+      {
+        "itemId": 9,
+        "mandatory": false,
+        "name": "dfs.secondary.namenode.kerberos.principal",
+        "subType": "",
+        "type": "string",
+        "uiHint": "",
+        "validationMessage": "",
+        "validationRegEx": ""
+      },
+      {
+        "defaultValue": "authentication",
+        "itemId": 10,
+        "label": "RPC Protection Type",
+        "mandatory": false,
+        "name": "hadoop.rpc.protection",
+        "subType": "rpcProtection",
+        "type": "enum",
+        "uiHint": "",
+        "validationMessage": "",
+        "validationRegEx": ""
+      },
+      {
+        "itemId": 11,
+        "label": "Common Name for Certificate",
+        "mandatory": false,
+        "name": "commonNameForCertificate",
+        "subType": "",
+        "type": "string",
+        "uiHint": "",
+        "validationMessage": "",
+        "validationRegEx": ""
+      }
+    ],
+    "contextEnrichers": [],
+    "dataMaskDef": {
+      "accessTypes": [],
+      "maskTypes": [],
+      "resources": []
+    },
+    "description": "HDFS Repository",
+    "enums": [
+      {
+        "defaultIndex": 0,
+        "elements": [
+          {
+            "itemId": 1,
+            "label": "Simple",
+            "name": "simple"
+          },
+          {
+            "itemId": 2,
+            "label": "Kerberos",
+            "name": "kerberos"
+          }
+        ],
+        "itemId": 1,
+        "name": "authnType"
+      },
+      {
+        "defaultIndex": 0,
+        "elements": [
+          {
+            "itemId": 1,
+            "label": "Authentication",
+            "name": "authentication"
+          },
+          {
+            "itemId": 2,
+            "label": "Integrity",
+            "name": "integrity"
+          },
+          {
+            "itemId": 3,
+            "label": "Privacy",
+            "name": "privacy"
+          }
+        ],
+        "itemId": 2,
+        "name": "rpcProtection"
+      }
+    ],
+    "guid": "0d047247-bafe-4cf8-8e9b-d5d377284b2d",
+    "id": 1,
+    "implClass": "org.apache.ranger.services.hdfs.RangerServiceHdfs",
+    "isEnabled": true,
+    "label": "HDFS Repository",
+    "name": "hdfs",
+    "options": {
+      "enableDenyAndExceptionsInPolicies": "true"
+    },
+    "policyConditions": [],
+    "resources": [
+      {
+        "accessTypeRestrictions": [],
+        "description": "HDFS file or directory path",
+        "excludesSupported": false,
+        "isValidLeaf": true,
+        "itemId": 1,
+        "label": "Resource Path",
+        "level": 10,
+        "lookupSupported": true,
+        "mandatory": true,
+        "matcher": "org.apache.ranger.plugin.resourcematcher.RangerPathResourceMatcher",
+        "matcherOptions": {
+          "ignoreCase": "false",
+          "wildCard": "true"
+        },
+        "name": "path",
+        "recursiveSupported": true,
+        "type": "path",
+        "uiHint": "",
+        "validationMessage": "",
+        "validationRegEx": ""
+      }
+    ],
+    "rowFilterDef": {
+      "accessTypes": [],
+      "resources": []
+    },
+    "version": 1
+  },
+  "policies": [
+        {
+            "allowExceptions": [],
+            "dataMaskPolicyItems": [],
+            "denyExceptions": [],
+            "denyPolicyItems": [],
+            "description": "Policy for all - path",
+            "guid": "7a763261-06f4-42a3-9c74-e6d4287a5494",
+            "id": 1,
+            "isAuditEnabled": true,
+            "isEnabled": true,
+            "name": "all - path",
+            "options": {},
+            "policyItems": [
+                {
+                    "accesses": [
+                        {
+                            "isAllowed": true,
+                            "type": "read"
+                        },
+                        {
+                            "isAllowed": true,
+                            "type": "write"
+                        },
+                        {
+                            "isAllowed": true,
+                            "type": "execute"
+                        }
+                    ],
+                    "conditions": [],
+                    "delegateAdmin": true,
+                    "groups": [],
+                    "users": [
+                        "hadoop"
+                    ]
+                }
+            ],
+            "policyLabels": [],
+            "policyPriority": 0,
+            "policyType": 0,
+            "resources": {
+                "path": {
+                    "isExcludes": false,
+                    "isRecursive": true,
+                    "values": [
+                        "/*"
+                    ]
+                }
+            },
+            "rowFilterPolicyItems": [],
+            "service": "cl1_hadoop",
+            "validitySchedules": [],
+            "version": 1
+        },
+        {
+            "allowExceptions": [],
+            "dataMaskPolicyItems": [],
+            "denyExceptions": [],
+            "denyPolicyItems": [],
+            "description": "Policy for kms-audit-path",
+            "guid": "06fa497e-a638-49a1-a13f-f4d583af7f91",
+            "id": 2,
+            "isAuditEnabled": true,
+            "isEnabled": true,
+            "name": "kms-audit-path",
+            "options": {},
+            "policyItems": [
+                {
+                    "accesses": [
+                        {
+                            "isAllowed": true,
+                            "type": "read"
+                        },
+                        {
+                            "isAllowed": true,
+                            "type": "write"
+                        },
+                        {
+                            "isAllowed": true,
+                            "type": "execute"
+                        }
+                    ],
+                    "conditions": [],
+                    "delegateAdmin": false,
+                    "groups": [],
+                    "users": [
+                        "keyadmin"
+                    ]
+                }
+            ],
+            "policyLabels": [],
+            "policyPriority": 0,
+            "policyType": 0,
+            "resources": {
+                "path": {
+                    "isExcludes": false,
+                    "isRecursive": true,
+                    "values": [
+                        "/ranger/audit/kms"
+                    ]
+                }
+            },
+            "rowFilterPolicyItems": [],
+            "service": "cl1_hadoop",
+            "validitySchedules": [],
+            "version": 1
+        },
+        {
+            "allowExceptions": [],
+            "dataMaskPolicyItems": [],
+            "denyExceptions": [],
+            "denyPolicyItems": [],
+            "description": "",
+            "guid": "ce4828e1-ad6f-402a-960f-da1c660f8675",
+            "id": 40,
+            "isAuditEnabled": true,
+            "isEnabled": true,
+            "name": "Finance for default zone",
+            "options": {},
+            "policyItems": [
+                {
+                    "accesses": [
+                        {
+                            "isAllowed": true,
+                            "type": "read"
+                        },
+                        {
+                            "isAllowed": true,
+                            "type": "write"
+                        },
+                        {
+                            "isAllowed": true,
+                            "type": "execute"
+                        }
+                    ],
+                    "conditions": [],
+                    "delegateAdmin": false,
+                    "groups": [],
+                    "users": [
+                        "sales-admin"
+                    ]
+                }
+            ],
+            "policyLabels": [
+                ""
+            ],
+            "policyPriority": 0,
+            "policyType": 0,
+            "resources": {
+                "path": {
+                    "isExcludes": false,
+                    "isRecursive": true,
+                    "values": [
+                        "/finance"
+                    ]
+                }
+            },
+            "rowFilterPolicyItems": [],
+            "service": "cl1_hadoop",
+            "validitySchedules": [],
+            "version": 1
+        }
+    ],
+  "securityZones": {
+        "finance": {
+            "policies": [
+                {
+                    "allowExceptions": [],
+                    "dataMaskPolicyItems": [],
+                    "denyExceptions": [],
+                    "denyPolicyItems": [],
+                    "description": "Policy for all - path",
+                    "guid": "2b88b928-00e4-4670-9ca9-fc577eda7cfc",
+                    "id": 37,
+                    "isAuditEnabled": true,
+                    "isEnabled": true,
+                    "name": "finance-all - path-0",
+                    "options": {},
+                    "policyItems": [
+                        {
+                            "accesses": [
+                                {
+                                    "isAllowed": true,
+                                    "type": "read"
+                                },
+                                {
+                                    "isAllowed": true,
+                                    "type": "write"
+                                },
+                                {
+                                    "isAllowed": true,
+                                    "type": "execute"
+                                }
+                            ],
+                            "conditions": [],
+                            "delegateAdmin": true,
+                            "groups": [],
+                            "users": [
+                                "hadoop", "finance-admin"
+                            ]
+                        }
+                    ],
+                    "policyLabels": [
+                        ""
+                    ],
+                    "policyPriority": 0,
+                    "policyType": 0,
+                    "resources": {
+                        "path": {
+                            "isExcludes": false,
+                            "isRecursive": true,
+                            "values": [
+                                "/*"
+                            ]
+                        }
+                    },
+                    "rowFilterPolicyItems": [],
+                    "service": "cl1_hadoop",
+                    "validitySchedules": [],
+                    "version": 3,
+                    "zoneName": "finance"
+                }
+            ],
+            "resources": [
+                {
+                    "path": [
+                        "/finance"
+                    ]
+                }
+            ],
+            "zoneName": "finance",
+            "containsAssociatedTagService": false
+        }
+    },
+  "tests":[
+    {"name":"ALLOW 'read /finance/restricted/sales.db' for u=finance-admin; in zone finance",
+      "request":{
+        "resource":{"elements":{"path":"/finance/restricted/sales.db"}},
+        "accessType":"read","user":"finance-admin","userGroups":[],"requestData":"read /finance/restricted/sales.db"
+      },
+      "result":{"isAudited":true,"isAllowed":true,"policyId":37}
+    }
+  ,
+    {"name":"DENY 'read /sales/restricted/invoices.db' for u=finance-admin; not in zone unzoned",
+      "request":{
+        "resource":{"elements":{"path":"/sales/restricted/invoices.db"}},
+        "accessType":"read","user":"finance-admin","userGroups":[],"requestData":"read /finance/restricted/invoices.db"
+      },
+      "result":{"isAudited":true,"isAllowed":false,"policyId":-1}
+    }
+  ,
+    {"name":"ALLOW 'read /finance/restricted/sales.db' for u=hadoop; in zone finance",
+      "request":{
+        "resource":{"elements":{"path":"/finance/restricted/sales.db"}},
+        "accessType":"read","user":"hadoop","userGroups":[],"requestData":"read /finance/restricted/sales.db"
+      },
+      "result":{"isAudited":true,"isAllowed":true,"policyId":37}
+    }
+  ,
+    {"name":"ALLOW 'read /sales/restricted/invoices.db' for u=hadoop; in zone unzoned",
+      "request":{
+        "resource":{"elements":{"path":"/sales/restricted/invoices.db"}},
+        "accessType":"read","user":"hadoop","userGroups":[],"requestData":"read /finance/restricted/invoices.db"
+      },
+      "result":{"isAudited":true,"isAllowed":true,"policyId":1}
+    }
+  ,
+    {"name":"DENY 'read /finance/restricted/sales.db' for u=sales-admin; in zone finance",
+      "request":{
+        "resource":{"elements":{"path":"/finance/restricted/sales.db"}},
+        "accessType":"read","user":"sales-admin","userGroups":[],"requestData":"read /finance/restricted/sales.db"
+      },
+      "result":{"isAudited":true,"isAllowed":false,"policyId":-1}
+    }
+  ]
+}

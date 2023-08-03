@@ -1,0 +1,114 @@
+{{!-- 
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+--}}
+<div class="navbar-collapse collapse" >
+    <ul class="nav page-nav" >
+        {{#if setOldUi}}
+            <li class="active dropdown">
+                <a href="javascript:;" id="nav2"><i class="fa fa-fw fa-shield"></i>Access Manager</a>
+                <ul class="dropdown-menu">
+                    {{#hasAccessToTab 'Resource Based Policies'}}
+                        <li><a class="dropdown-item" href="#!/policymanager/resource"><i class="fa fa-fw fa-file m-r-xs"></i>Resource Based Policies</a></li>
+                    {{/hasAccessToTab}}
+                    {{#hasAccessToTab 'Tag Based Policies'}}
+                        <li><a class="dropdown-item" href="#!/policymanager/tag"><i class="fa fa-fw fa-tags m-r-xs"></i>Tag Based Policies</a></li>
+                    {{/hasAccessToTab}}
+                    {{#hasAccessToTab 'Reports'}}
+                        <li><a class="dropdown-item" href="#!/reports/userAccess"><i class="fa fa-fw fa-file-text m-r-xs"></i>Reports</a></li>
+                    {{/hasAccessToTab}}
+                </ul>
+            </li>
+            {{#hasAccessToTab  'Audit'}}
+                <li>
+                    <a href="#!/reports/audit/bigData" id="nav3"><i class="fa fa-fw fa-file-o"></i> {{tt 'h.audit'}} </a>
+                </li>
+            {{/hasAccessToTab}}
+            <li class="dropdown">
+                <a href="javascript:;" id="nav4"><i class="fa fa-fw fa-lock"></i> {{tt 'h.encryption'}} </a>
+                <ul class="dropdown-menu">
+                    {{#hasAccessToTab  'Key Manager'}}
+                        <li><a class="dropdown-item" href="#!/kms/keys/new/manage/service"><i class="fa fa-fw fa-key m-r-xs"></i>Key Manager </a></li>
+                    {{/hasAccessToTab}}
+                </ul>
+            </li>
+            {{#hasAccessToTab  'Security Zone'}}
+                {{^hideSecurityZoneTab}}
+                    <li>
+                        <a href="#!/zones/zone/list" id="nav6">
+                            <span class="zone-icon fa-stack fa-lg">
+                              <i class="fa fa-square-o fa-stack-2x"></i>
+                              <i class="fa fa-bolt fa-stack-1x"></i>
+                            </span>{{tt 'h.securityZone'}}
+                        </a>
+                    </li>
+                {{/hideSecurityZoneTab}}
+            {{/hasAccessToTab}}
+            <li class="dropdown">
+                <a href="javascript:;" id="nav5"><i class="fa-fw fa fa-gear"></i> {{tt 'h.settings'}} </a>
+                <ul class="dropdown-menu">
+                    {{#hasAccessToTab  'Users/Groups'}}
+                        <li><a class="dropdown-item" href="#!/users/usertab"><i class="fa-fw fa fa-group m-r-xs"></i>{{tt 'h.usersOrGroupsOrRoles'}}</a></li>
+                    {{/hasAccessToTab}}	
+                    {{#if showPermissionTab}}
+                        <li><a class="dropdown-item" href="#!/permissions/models"><i class="fa-fw fa fa-file-o m-r-xs"></i> {{tt 'h.permissions'}}</a></li>
+                    {{/if}}
+                </ul>
+            </li>
+        {{else}}
+            {{#hasAccessToTab 'Resource Based Policies'}}
+                <li class="active">
+                    <a href="#!/policymanager/resource" id="nav1"><i class="fa-fw fa fa-shield"></i>Resource Policies</a>
+                </li>
+            {{/hasAccessToTab}}
+            {{#hasAccessToTab 'Tag Based Policies'}}
+                <li class="">
+                    <a href="#!/policymanager/tag"><i class="fa-fw fa fa-tags"></i>Tag Policies</a>
+                </li>
+            {{/hasAccessToTab}}
+            {{#hasAccessToTab  'Audit'}}
+                <li>
+                    <a href="#!/reports/audit/bigData" id="nav3"><i class=" fa-fw fa fa-file-o"></i> {{tt 'h.audit'}} </a>
+                </li>
+            {{/hasAccessToTab}}
+            <li class="dropdown">
+                <a href="javascript:;" id="nav4"><i class="fa-fw fa fa-lock"></i> {{tt 'h.encryption'}} </a>
+                <ul class="dropdown-menu">
+                    {{#hasAccessToTab  'Key Manager'}}
+                        <li><a class="dropdown-item" href="#!/kms/keys/new/manage/service"><i class="fa-fw fa fa-key m-r-xs"></i>Key Manager </a></li>
+                    {{/hasAccessToTab}}
+                </ul>
+            </li>
+            {{#hasAccessToTab  'Security Zone'}}
+                {{^hideSecurityZoneTab}}
+                    <li>
+                        <a href="#!/zones/zone/list" id="nav6">
+                            <span class="zone-icon fa-stack fa-lg">
+                              <i class="fa fa-square-o fa-stack-2x"></i>
+                              <i class="fa fa-bolt fa-stack-1x"></i>
+                            </span>{{tt 'h.securityZone'}}
+                        </a>
+                    </li>
+                {{/hideSecurityZoneTab}}
+            {{/hasAccessToTab}}
+            {{#hasAccessToTab  'Users/Groups'}}
+                <li><a href="#!/users/usertab" id="nav5"><i class="fa-fw fa fa-gear"></i> {{tt 'h.settings'}} </a></li>
+            {{/hasAccessToTab}}
+            {{#hasAccessToTab 'Reports'}}
+                <li><a href="#!/reports/userAccess" id="nav8"><i class="fa-fw fa fa-file-text"></i>Reports</a></li>
+            {{/hasAccessToTab}}
+        {{/if}}
+	</ul>
+</div>

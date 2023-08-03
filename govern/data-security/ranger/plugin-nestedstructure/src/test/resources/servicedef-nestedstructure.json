@@ -1,0 +1,186 @@
+{
+  "name":        "nestedstructure",
+  "displayName": "nestedstructure",
+  "implClass":   "",
+  "label":       "NestedStructure",
+  "description": "Plugin to enforce read AND WRITE access control on nested structures such as JSON response objects from microservice API resource calls",
+  "options": {
+    "enableDenyAndExceptionsInPolicies": "true"
+  },
+  "configs": [
+    { "itemId": 1, "name": "commonNameForCertificate",   "type": "string", "mandatory": false },
+    { "itemId": 2, "name": "policy.download.auth.users", "type": "string", "mandatory": false }
+  ],
+  "resources": [
+    {
+      "itemId":                 1,
+      "name":                   "schema",
+      "type":                   "string",
+      "level":                  10,
+      "mandatory":              true,
+      "lookupSupported":        false,
+      "recursiveSupported":     false,
+      "excludesSupported":      true,
+      "matcher":                "org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher",
+      "matcherOptions":         { "wildCard": "true", "ignoreCase": "true" },
+      "label":                  "NestedStructure Schema",
+      "description":            "Schema of the nested structure returned from Microservice GET, etc",
+      "accessTypeRestrictions": [],
+      "isValidLeaf":            true
+    },
+    {
+      "itemId":                  2,
+      "name":                   "field",
+      "type":                   "string",
+      "level":                  20,
+      "parent":                 "schema",
+      "mandatory":              true,
+      "lookupSupported":        false,
+      "recursiveSupported":     false,
+      "excludesSupported":      true,
+      "matcher":                "org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher",
+      "matcherOptions":         { "wildCard": "true", "ignoreCase": "true" },
+      "label":                  "NestedStructure Schema Field",
+      "description":            "NestedStructure Schema Field",
+      "accessTypeRestrictions": [],
+      "isValidLeaf":            true
+    }
+  ],
+  "accessTypes": [
+    { "itemId": 1, "name": "read",  "label": "Read" },
+    { "itemId": 2, "name": "write", "label": "Write" }
+  ],
+  "policyConditions": [],
+  "contextEnrichers": [],
+  "enums":            [],
+  "dataMaskDef": {
+    "maskTypes": [
+      {
+        "itemId":          1,
+        "name":            "MASK",
+        "label":           "Redact",
+        "description":     "Replace lowercase with 'x', uppercase with 'X', digits with '0'",
+        "transformer":     "mask({field})",
+        "dataMaskOptions": {}
+      },
+      {
+        "itemId":          2,
+        "name":            "MASK_SHOW_LAST_4",
+        "label":           "Partial mask: show last 4",
+        "description":     "Show last 4 characters; replace rest with 'x'",
+        "transformer":     "mask_show_last_n({field}, 4, 'x', 'x', 'x', -1, '1')",
+        "dataMaskOptions": {}
+      },
+      {
+        "itemId":          3,
+        "name":            "MASK_SHOW_FIRST_4",
+        "label":           "Partial mask: show first 4",
+        "description":     "Show first 4 characters; replace rest with 'x'",
+        "transformer":     "mask_show_first_n({field}, 4, 'x', 'x', 'x', -1, '1')",
+        "dataMaskOptions": {}
+      },
+      {
+        "itemId":          4,
+        "name":            "MASK_HASH",
+        "label":           "Hash",
+        "description":     "Hash the value",
+        "transformer":     "mask_hash({field})",
+        "dataMaskOptions": {}
+      },
+      {
+        "itemId":          5,
+        "name":            "MASK_NULL",
+        "label":           "Nullify",
+        "description":     "Replace with NULL",
+        "dataMaskOptions": {}
+      },
+      {
+        "itemId":          6,
+        "name":            "MASK_NONE",
+        "label":           "Unmasked (retain original value)",
+        "description":     "No masking",
+        "dataMaskOptions": {}
+      },
+      {
+        "itemId":          12,
+        "name":            "MASK_DATE_SHOW_YEAR",
+        "label":           "Date: show only year",
+        "description":     "Date: show only year",
+        "transformer":     "mask({field}, 'x', 'x', 'x', -1, '1', 1, 0, -1)",
+        "dataMaskOptions": {}
+      },
+      {
+        "itemId":          13,
+        "name":            "CUSTOM",
+        "label":           "Custom",
+        "description":     "Custom",
+        "dataMaskOptions": {}
+      }
+    ],
+    "accessTypes": [
+      { "itemId": 1, "name":  "read", "label": "Read" }
+    ],
+    "resources": [
+      {
+        "itemId":                 1,
+        "name":                   "schema",
+        "type":                   "string",
+        "level":                  10,
+        "mandatory":              true,
+        "lookupSupported":        false,
+        "recursiveSupported":     false,
+        "excludesSupported":      false,
+        "matcher":                "org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher",
+        "matcherOptions":         { "wildCard": "false", "ignoreCase": "true" },
+        "uiHint":                 "{ \"singleValue\":true }",
+        "label":                  "NestedStructure Schema",
+        "description":            "NestedStructure Schema returned from Microservice GET, etc",
+        "accessTypeRestrictions": [],
+        "isValidLeaf":            false
+      },
+      {
+        "itemId":                 2,
+        "name":                   "field",
+        "type":                   "string",
+        "level":                  20,
+        "parent":                 "schema",
+        "mandatory":              true,
+        "lookupSupported":        false,
+        "recursiveSupported":     false,
+        "excludesSupported":      false,
+        "matcher":                "org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher",
+        "matcherOptions":         { "wildCard": "false", "ignoreCase": "true" },
+        "uiHint":                 "{ \"singleValue\":true }",
+        "label":                  "NestedStructure Schema Field",
+        "description":            "NestedStructure Schema Field",
+        "accessTypeRestrictions": [],
+        "isValidLeaf":            true
+      }
+    ]
+  },
+  "rowFilterDef": {
+    "accessTypes": [
+      { "itemId": 1, "name": "read",  "label": "Read"  },
+      { "itemId": 2, "name": "write", "label": "Write" }
+    ],
+    "resources": [
+      {
+        "itemId":                 1,
+        "name":                   "schema",
+        "type":                   "string",
+        "level":                  10,
+        "mandatory":              true,
+        "lookupSupported":        false,
+        "recursiveSupported":     false,
+        "excludesSupported":      false,
+        "matcher":                "org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher",
+        "matcherOptions":         { "wildCard": "false", "ignoreCase": "true" },
+        "uiHint":                 "{ \"singleValue\":true }",
+        "label":                  "NestedStructure Schema",
+        "description":            "NestedStructure Schema returned from Microservice GET, etc",
+        "accessTypeRestrictions": [],
+        "isValidLeaf":            true
+      }
+    ]
+  }
+}

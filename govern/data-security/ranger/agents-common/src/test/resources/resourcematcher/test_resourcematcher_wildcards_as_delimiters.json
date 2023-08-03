@@ -1,0 +1,30 @@
+{
+  "testCases":[
+	  {
+		  "name":"value=/; isRecursive=false; wildCard=false; ignoreCase=true",
+		  "resourceDef":{
+			  "matcher":"org.apache.ranger.plugin.resourcematcher.RangerPathResourceMatcher",
+			  "matcherOptions":{"wildCard":false, "ignoreCase":true, "replaceTokens":true, "tokenDelimiterStart":"*", "tokenDelimiterEnd":"?", "tokenDelimiterEscape":"@" }
+		  },
+		  "policyResource":{
+			  "values": ["/abc*xyz?w", "/xyz*somestuff?z", "/abc@*xyz@w", "/mad@@*xyy?"],
+			  "isRecursive":false
+		  },
+		  "tests":[
+			  { "name":"exact-path","input":"/abc@*xyz@w", "evalContext": {"token:somestuff": "somethingelse"}, "result":false}
+			  ,
+			  { "name":"exact-path","input":"/mad@new", "evalContext": {"token:xyy": "new"}, "result":true}
+			  ,
+			  { "name":"exact-path","input":"/abcw", "evalContext": {"token:somestuff": "somethingelse"}, "result":false}
+			  ,
+			  { "name":"exact-path","input":"/abc*xyz?w", "evalContext": {"token:somestuff": "somethingelse"}, "result":true}
+			  ,
+			  { "name":"exact-path","input":"/abcabcdw", "evalContext": {"token:somestuff": "somethingelse", "token:xyz":"abcd"}, "result":true}
+			  ,
+			  { "name":"exact-path","input":"/xyzsomethingelsez", "evalContext": {"token:somestuff": "somethingelse"}, "result":true}
+			  ,
+			  { "name":"exact-path","input":"/abc*xyz@w", "evalContext": {"token:somestuff": "somethingelse"}, "result":true}
+		  ]
+	  }
+  ]
+}

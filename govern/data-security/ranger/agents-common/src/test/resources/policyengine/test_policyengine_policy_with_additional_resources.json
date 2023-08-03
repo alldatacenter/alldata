@@ -1,0 +1,84 @@
+{
+  "serviceName": "hivedev",
+
+  "serviceDef": {
+    "name": "hive", "id": 3,
+    "resources": [
+      { "name": "database", "level": 1, "parent": "",         "mandatory": true, "lookupSupported": true, "matcher": "org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher", "matcherOptions": { "wildCard": true, "ignoreCase": true }, "label": "Hive Database", "description": "Hive Database" },
+      { "name": "table",    "level": 2, "parent": "database", "mandatory": true, "lookupSupported": true, "matcher": "org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher", "matcherOptions": { "wildCard": true, "ignoreCase": true }, "label": "Hive Table",    "description": "Hive Table" },
+      { "name": "udf",      "level": 2, "parent": "database", "mandatory": true, "lookupSupported": true, "matcher": "org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher", "matcherOptions": { "wildCard": true, "ignoreCase": true }, "label": "Hive UDF",      "description": "Hive UDF" },
+      { "name": "column",   "level": 3, "parent": "table",    "mandatory": true, "lookupSupported": true, "matcher": "org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher", "matcherOptions": { "wildCard": true, "ignoreCase": true }, "label": "Hive Column",   "description": "Hive Column" }
+    ],
+    "accessTypes": [
+      { "name": "select", "label": "Select" },
+      { "name": "update", "label": "Update" },
+      { "name": "create", "label": "Create" },
+      { "name": "drop",   "label": "Drop" },
+      { "name": "alter",  "label": "Alter" },
+      { "name": "index",  "label": "Index" },
+      { "name": "lock",   "label": "Lock" },
+      { "name": "all",    "label": "All" }
+    ],
+    "options": {
+      "enableDenyAndExceptionsInPolicies": "true"
+    }
+  },
+
+  "policies": [
+    { "id": 1, "name": "db=default: audit-all-access", "isEnabled": true, "isAuditEnabled": true,
+      "resources": { "database": { "values": [ "default" ] }, "table": { "values": [ "*" ] }, "column": { "values": [ "*" ] } }
+    },
+    { "id": 2, "name": "db=default; table=test*; column=*", "isEnabled": true, "isAuditEnabled": true,
+      "resources": { "database": { "values": [ "default" ] }, "table": { "values": [ "test*" ] }, "column": { "values": [ "*" ] } },
+      "additionalResources": [
+        { "database": { "values": [ "db1" ] }, "table": { "values": [ "tbl*" ] }, "column": { "values": [ "*" ] } }
+      ],
+     "policyItems": [
+       { "accesses": [ { "type": "select" } ], "users": [ "user1", "user2" ], "groups": [ "group1", "group2" ], "delegateAdmin": false },
+       { "accesses": [ { "type": "create" }, { "type": "drop" } ], "users": [ "admin" ], "groups": [ "admin" ], "delegateAdmin": true }
+     ]
+    },
+    { "id": 3, "name": "db=default; table=test2; column=*", "isEnabled": true, "isAuditEnabled": true,
+      "resources": { "database": { "values": [ "default" ] }, "table": { "values": [ "test2" ] }, "column": { "values": [ "*" ] } },
+      "additionalResources": [
+        { "database": { "values": [ "db1" ] }, "table": { "values": [ "tbl2" ] }, "column": { "values": [ "*" ] } }
+      ],
+      "denyPolicyItems":[
+        { "accesses": [ { "type": "select" } ], "users": [ "user1", "user2" ], "groups": [ "group1", "group2" ], "delegateAdmin": false },
+        { "accesses": [ { "type": "create" }, { "type": "drop" } ], "users": [ "admin" ], "groups": [ "admin" ], "delegateAdmin": true }
+      ]
+    }
+  ],
+
+  "tests":[
+    { "name":    "ALLOW use default; for user1",
+      "request": { "resource": { "elements": { "database": "default"} }, "accessType":"", "user":"user1","userGroups":[],"requestData":"use default; user=user1" },
+      "result":  { "isAudited": true, "isAllowed": true, "policyId": 2 }
+    },
+    { "name": "ALLOW select * from default.test1; for user1",
+      "request": { "resource": { "elements": { "database": "default", "table": "test1" } }, "accessType": "select", "user": "user1", "userGroups":[], "requestData":"select * from default.test1; user=user1" },
+      "result":  { "isAudited": true, "isAllowed": true, "policyId": 2}
+    },
+    { "name":    "DENY create table default.test1; for user1",
+      "request": { "resource": { "elements": { "database": "default", "table": "test1" } }, "accessType": "create", "user": "user1", "userGroups":[], "requestData": "create table from default.test1; user=user1" },
+      "result":  { "isAudited": true, "isAllowed": false, "policyId": -1 }
+    },
+    { "name":    "ALLOW create table default.test1; for admin",
+      "request": { "resource": { "elements": { "database": "default", "table": "test1" } }, "accessType": "create", "user": "admin", "userGroups":[], "requestData": "create table from default.test1; user=admin" },
+      "result":  { "isAudited": true, "isAllowed": true, "policyId": 2 }
+    },
+    { "name":    "DENY select * from default.test2; for user1",
+      "request": { "resource": { "elements": { "database": "default", "table": "test2" } }, "accessType": "select", "user": "user1", "userGroups": [], "requestData": "select * from default.test2; user=user1" },
+      "result":  { "isAudited": true, "isAllowed": false, "policyId": 3 }
+    },
+    { "name":    "DENY create default.test2; for admin",
+      "request": { "resource": { "elements": { "database": "default", "table": "test2" } }, "accessType":"create", "user": "admin", "userGroups":[], "requestData":"create default.test2; user=admin" },
+      "result":  { "isAudited": true, "isAllowed": false, "policyId": 3 }
+    },
+    { "name":    "ALLOW use db1; for user1",
+      "request": { "resource": { "elements": { "database":"db1" } }, "accessType":"", "user": "user1", "userGroups":[], "requestData":"use db1; user=user1" },
+      "result":  { "isAudited": true, "isAllowed": true, "policyId": 2}
+    }
+  ]
+}
+

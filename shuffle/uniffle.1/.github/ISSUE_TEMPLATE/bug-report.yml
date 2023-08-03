@@ -1,0 +1,135 @@
+#
+# Licensed to the Apache Software Foundation (ASF) under one or more
+# contributor license agreements.  See the NOTICE file distributed with
+# this work for additional information regarding copyright ownership.
+# The ASF licenses this file to You under the Apache License, Version 2.0
+# (the "License"); you may not use this file except in compliance with
+# the License.  You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
+# See https://gh-community.github.io/issue-template-feedback/structured/
+
+name: Uniffle Bug Report
+title: "[Bug] "
+description: Describe the bug you encountered with Apache Uniffle
+labels: [ "kind:bug,priority:major" ]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for finding the time to report the issue! We really appreciate the community's efforts to improve Uniffle.
+
+        It doesn't really matter whether what you are reporting is a bug or not, just feel free to share the problem you have
+        encountered with the community. For best practices, if it is indeed a bug, please try your best to provide the reproducible
+        steps. If you want to ask questions or share ideas, please [subscribe to our mailing list](mailto:dev-subscribe@uniffle.apache.org)
+        and send emails to [our mailing list](mailto:dev@uniffle.apache.org), you can also head to our
+        [Discussions](https://github.com/apache/incubator-uniffle/discussions) tab.
+
+  - type: checkboxes
+    attributes:
+      label: Code of Conduct
+      description: The Code of Conduct helps create a safe space for everyone. We require that everyone agrees to it.
+      options:
+        - label: >
+            I agree to follow this project's [Code of Conduct](https://www.apache.org/foundation/policies/conduct)
+          required: true
+
+  - type: checkboxes
+    attributes:
+      label: Search before asking
+      options:
+        - label: >
+            I have searched in the [issues](https://github.com/apache/incubator-uniffle/issues?q=is%3Aissue) and found no similar
+            issues.
+          required: true
+
+  - type: textarea
+    attributes:
+      label: Describe the bug
+      placeholder: >
+        Please provide the context in which the problem occurred and explain what happened
+    validations:
+      required: true
+
+  - type: input
+    id: versions
+    attributes:
+      label: Affects Version(s)
+      description: Which versions of uniffle are affected by this bug?
+      placeholder: >
+        e.g. master/0.5.0/0.4.0/...
+    validations:
+      required: true
+
+  - type: textarea
+    id: s-logs
+    attributes:
+      label: Uniffle Server Log Output
+      description: What do you see when you check the log of Uniffle server instance?
+      placeholder: >
+        Tips: check the server log under the RSS_HOME/logs/ folder. It is extremely helpful if you copy and paste
+        the fragment of logs showing the exact error messages of Uniffle server.
+      render: logtalk
+    validations:
+      required: false
+
+  - type: textarea
+    id: e-logs
+    attributes:
+      label: Uniffle Engine Log Output
+      description: What do you see when you check the log of Uniffle engine (eg:Spark, MapReduce) innstance?
+      placeholder: >
+        Tips: check the engine log folder. It is extremely helpful if you copy and paste
+        the fragment of logs showing the exact error messages of Uniffle engines(eg:Spark, MapReduce).
+      render: logtalk
+    validations:
+      required: false
+
+  - type: textarea
+    id: s-configurations
+    attributes:
+      label: Uniffle Server Configurations
+      placeholder: >
+        Custom configurations you specified in server.conf at server-side
+      render: yaml
+    validations:
+      required: false
+
+  - type: textarea
+    id: e-configurations
+    attributes:
+      label: Uniffle Engine Configurations
+      placeholder: >
+        Custom configurations you specified in engine configuration(eg:spark-defaults.conf, mapred-site.xml) at engine-side
+      render: yaml
+    validations:
+      required: false
+
+  - type: textarea
+    attributes:
+      label: Additional context
+      placeholder: Anything else we need to know.
+    validations:
+      required: false
+
+  - type: checkboxes
+    attributes:
+      label: Are you willing to submit PR?
+      description: >
+        A pull request is optional, but we are glad to help you in the contribution process
+        especially if you already know a good understanding of how to implement the fix.
+        Uniffle is a community-driven project and we love to bring new contributors in.
+      options:
+        - label: Yes I am willing to submit a PR!
+
+  - type: markdown
+    attributes:
+      value: "Thanks for taking the time to fill out this bug report!"

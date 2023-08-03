@@ -1,0 +1,62 @@
+{{!-- 
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+--}}
+{{#if setOldUi}}
+    <ul class="nav nav-tabs">
+        <li data="users" data-js="users" class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#users">Users</a>
+        </li>
+        <li data="groups" data-js="groups" class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#groups">Groups</a>
+        </li>
+        <li data="roles" data-js="roles" class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#roles">Roles</a>
+        </li>
+    </ul>
+{{/if}}
+
+<div class="wrap non-collapsible m-height">
+  <h3 class="wrap-header bold"> {{tt 'lbl.userListing'}} </h3>
+    <div>
+        <div class="row">
+        <div class="col-sm-8" style=" margin-bottom: 11px; ">
+            <div class="visual_search"></div>
+        </div>
+        <div class="col-sm-4" data-id="addNewBtnDiv">
+            {{#isSystemAdmin .}}
+                <a href="javascript:void(0);" data-id="deleteUserGroup" title="Permanently delete selected users/groups/roles" class="btn btn-right btn-danger btn-sm"><i class="fa-fw fa fa-trash fa-fw fa fa-large"></i></a>
+            {{/isSystemAdmin}}
+            {{#isSystemAdmin .}}
+                <div class="dropdown btn-right" data-id="hideShowVisibility">
+                    <button type="button" class="btn btn-primary dropdown-toggle btn-sm" data-toggle="dropdown">
+                        {{tt 'btn.setVisibility'}}
+                    </button>
+                    <div class="dropdown-menu" data-id="visibilityDropdown">
+                        <a class="dropdown-item" data-id="visible" href="javascript:void(0);" style="font-size: 13px;">{{tt 'lbl.VisibilityStatus_IS_VISIBLE'}}</a>
+                        <a class="dropdown-item" data-id="hidden" href="javascript:void(0);" style="font-size: 13px;">{{tt 'lbl.VisibilityStatus_IS_HIDDEN'}}</a>
+                    </div>
+                </div>
+                <a href="#!/user/create" class="btn btn-primary btn-right btn-sm" type="button" data-id="addNewUser"> {{tt 'lbl.addNewUser'}} </a>
+                <a href="#!/group/create" class="btn btn-primary btn-right btn-sm" type="button" data-id="addNewGroup" style="display:none;"> {{tt 'lbl.addNewGroup'}} </a>
+                <a href="#!/roles/create" class="btn btn-primary btn-right btn-sm" type="button" data-id="addNewRoles" style="display:none;"> {{tt 'lbl.addNewRole'}} </a>
+            {{/isSystemAdmin}}
+        </div>
+      </div>
+        <div data-id="r_tableList">
+            <b class="_prevNav"></b>
+        </div>
+    </div>
+</div>

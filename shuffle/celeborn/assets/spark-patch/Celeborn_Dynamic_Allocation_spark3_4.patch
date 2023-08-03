@@ -1,0 +1,86 @@
+# Licensed to the Apache Software Foundation (ASF) under one or more
+# contributor license agreements.  See the NOTICE file distributed with
+# this work for additional information regarding copyright ownership.
+# The ASF licenses this file to You under the Apache License, Version 2.0
+# (the "License"); you may not use this file except in compliance with
+# the License.  You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+Subject: [PATCH] [CORE][SHUFFLE] Support enabling DRA with Apache Celeborn
+---
+Index: core/src/main/scala/org/apache/spark/ExecutorAllocationManager.scala
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/core/src/main/scala/org/apache/spark/ExecutorAllocationManager.scala b/core/src/main/scala/org/apache/spark/ExecutorAllocationManager.scala
+--- a/core/src/main/scala/org/apache/spark/ExecutorAllocationManager.scala	(revision efae5362cbeaf1594b18edf594e83b2cf72afce6)
++++ b/core/src/main/scala/org/apache/spark/ExecutorAllocationManager.scala	(date 1685946134830)
+@@ -209,7 +209,7 @@
+       } else if (decommissionEnabled &&
+           conf.get(config.STORAGE_DECOMMISSION_SHUFFLE_BLOCKS_ENABLED)) {
+         logInfo("Shuffle data decommission is enabled without a shuffle service.")
+-      } else if (!testing) {
++      } else if (!testing && !Utils.isCelebornEnabled(conf)) {
+         throw new SparkException("Dynamic allocation of executors requires the external " +
+           "shuffle service. You may enable this through spark.shuffle.service.enabled.")
+       }
+Index: core/src/main/scala/org/apache/spark/scheduler/DAGScheduler.scala
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/core/src/main/scala/org/apache/spark/scheduler/DAGScheduler.scala b/core/src/main/scala/org/apache/spark/scheduler/DAGScheduler.scala
+--- a/core/src/main/scala/org/apache/spark/scheduler/DAGScheduler.scala	(revision efae5362cbeaf1594b18edf594e83b2cf72afce6)
++++ b/core/src/main/scala/org/apache/spark/scheduler/DAGScheduler.scala	(date 1685946134830)
+@@ -2515,7 +2515,7 @@
+     // if the cluster manager explicitly tells us that the entire worker was lost, then
+     // we know to unregister shuffle output.  (Note that "worker" specifically refers to the process
+     // from a Standalone cluster, where the shuffle service lives in the Worker.)
+-    val fileLost = workerHost.isDefined || !env.blockManager.externalShuffleServiceEnabled
++    val fileLost = !Utils.isCelebornEnabled(sc.getConf) && (workerHost.isDefined || !env.blockManager.externalShuffleServiceEnabled)
+     removeExecutorAndUnregisterOutputs(
+       execId = execId,
+       fileLost = fileLost,
+Index: core/src/main/scala/org/apache/spark/util/Utils.scala
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/core/src/main/scala/org/apache/spark/util/Utils.scala b/core/src/main/scala/org/apache/spark/util/Utils.scala
+--- a/core/src/main/scala/org/apache/spark/util/Utils.scala	(revision efae5362cbeaf1594b18edf594e83b2cf72afce6)
++++ b/core/src/main/scala/org/apache/spark/util/Utils.scala	(date 1685946145650)
+@@ -3271,6 +3271,9 @@
+     files.toSeq
+   }
+
++  def isCelebornEnabled(conf: SparkConf): Boolean =
++    conf.get("spark.shuffle.manager", "sort").contains("celeborn")
++
+   /**
+    * Return the median number of a long array
+    *
+Index: core/src/main/scala/org/apache/spark/scheduler/TaskSetManager.scala
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/core/src/main/scala/org/apache/spark/scheduler/TaskSetManager.scala b/core/src/main/scala/org/apache/spark/scheduler/TaskSetManager.scala
+--- a/core/src/main/scala/org/apache/spark/scheduler/TaskSetManager.scala	(revision efae5362cbeaf1594b18edf594e83b2cf72afce6)
++++ b/core/src/main/scala/org/apache/spark/scheduler/TaskSetManager.scala	(date 1685946134830)
+@@ -1055,7 +1055,7 @@
+     // data from this dead executor so we would need to rerun these tasks on other executors.
+     val maybeShuffleMapOutputLoss = isShuffleMapTasks &&
+       (reason.isInstanceOf[ExecutorDecommission] || !env.blockManager.externalShuffleServiceEnabled)
+-    if (maybeShuffleMapOutputLoss && !isZombie) {
++    if (maybeShuffleMapOutputLoss && !isZombie && !Utils.isCelebornEnabled(conf)) {
+       for ((tid, info) <- taskInfos if info.executorId == execId) {
+         val index = info.index
+         lazy val isShuffleMapOutputAvailable = reason match {

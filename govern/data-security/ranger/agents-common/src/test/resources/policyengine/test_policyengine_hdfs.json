@@ -1,0 +1,292 @@
+{
+  "serviceName":"hdfsdev",
+
+  "serviceDef":{
+    "name":"hdfs",
+    "id":1,
+    "resources":[
+    {"name":"path","type":"path","level":1,"mandatory":true,"lookupSupported":true,"matcher":"org.apache.ranger.plugin.resourcematcher.RangerPathResourceMatcher","matcherOptions":{"wildCard":true, "ignoreCase":true},"label":"Resource Path","description":"HDFS file or directory path"}
+    ],
+    "accessTypes":[
+      {"name":"read","label":"Read"},
+      {"name":"write","label":"Write"},
+      {"name":"execute","label":"Execute"}
+    ],
+    "contextEnrichers":
+    [
+      {
+        "itemId":1,
+        "name" : "GeolocationEnricher",
+        "enricher" : "org.apache.ranger.plugin.contextenricher.RangerFileBasedGeolocationProvider",
+        "enricherOptions" : {
+          "FilePath":"/etc/ranger/geo/geo.txt", "ForceRead":"false", "IPInDotFormat":"true"
+          ,"geolocation.meta.prefix": "TEST_"
+        }
+      }
+    ],
+    "policyConditions": [
+      {
+        "itemId":1,
+        "name":"ScriptConditionEvaluator",
+        "evaluator": "org.apache.ranger.plugin.conditionevaluator.RangerScriptConditionEvaluator",
+        "evaluatorOptions" : {"engineName":"JavaScript"},
+        "label":"Script",
+        "description": "Script to execute"
+      }
+    ]
+  },
+
+  "policies":[
+    {"id":10,"name":"allow-read-to-user1,user3 /test/restricted/","isEnabled":true,"isAuditEnabled":true,
+      "isDenyAllElse": true,
+      "resources":{"path":{"values":["/test/restricted/"],"isRecursive":true}},
+      "policyItems":[
+        {"accesses":[{"type":"read","isAllowed":true}],"users":["user1", "user2", "user3"],"groups":[],"delegateAdmin":false}
+      ],
+      "allowExceptions":[
+        {"accesses":[{"type":"read","isAllowed":true}],"users":["user2"],"groups":[],"delegateAdmin":false}
+      ]
+    }
+  ,
+    {"id":11,"name":"allow-read-to-public /test/forbidden/","isEnabled":true,"isAuditEnabled":true,
+      "isDenyAllElse": false,
+      "resources":{"path":{"values":["/test/forbidden/"],"isRecursive":true}},
+      "policyItems":[
+        {"accesses":[{"type":"read","isAllowed":true}],"users":[],"groups":["public"],"delegateAdmin":false}
+      ]
+    }
+  ,
+    {"id":12,"name":"deny-any-to-everybody /test/forbidden/","isEnabled":true,"isAuditEnabled":true,
+      "isDenyAllElse": true,
+      "resources":{"path":{"values":["/test/forbidden/"],"isRecursive":true}}
+    }
+  ,
+    {"id":20,"name":"allow-read-to-user2 /test/restricted/","isEnabled":true,"isAuditEnabled":true,
+      "resources":{"path":{"values":["/test/restricted/"],"isRecursive":true}},
+      "policyItems":[
+        {"accesses":[{"type":"read","isAllowed":true}, {"type":"write","isAllowed":true}],"users":["user2", "non-user1", "non-user2", "non-user3"],"groups":["public"],"delegateAdmin":false}],
+      "denyPolicyItems":[
+        {"accesses":[{"type":"read","isAllowed":true}],"users":["non-user4"],"groups":[],"delegateAdmin":false}
+      ]
+    }
+  ,
+    {"id":30,"name":"deny-read-to-user3 /test/restricted/","isEnabled":true,"isAuditEnabled":true,
+      "resources":{"path":{"values":["/test/restricted/"],"isRecursive":true}},
+      "policyItems":[
+        {"accesses":[{"type":"read","isAllowed":true}],"users":["non-user5", "non-user6", "non-user7", "non-user8"],"groups":["public"],"delegateAdmin":false,
+        "conditions":[{
+          "type":"ScriptConditionEvaluator",
+          "values":["var country_code = ctx.getRequestContextAttribute('LOCATION_TEST_COUNTRY_CODE'); ctx.result = !!country_code;"]
+        }]}],
+
+      "denyPolicyItems":[
+        {"accesses":[{"type":"read","isAllowed":true}],"users":["user3", "non-user9"],"groups":[],"delegateAdmin":false}
+      ]
+    }
+  ,
+    {"id":1,"name":"audit-all-access under /finance/restricted/","isEnabled":true,"isAuditEnabled":true,
+     "resources":{"path":{"values":["/finance/restricted/"],"isRecursive":true}},
+     "policyItems":[
+       {"accesses":[],"users":[],"groups":["public"],"delegateAdmin":false}
+     ]
+    }
+    ,
+    {"id":2,"name":"allow-read-to-all under /public/","isEnabled":true,"isAuditEnabled":false,
+     "resources":{"path":{"values":["/public/*"],"isRecursive":true}},
+     "policyItems":[
+       {"accesses":[{"type":"read","isAllowed":true},{"type":"execute","isAllowed":true}],"users":[],"groups":["public"],"delegateAdmin":false}
+     ]
+    }
+    ,
+    {"id":3,"name":"allow-read-to-finance under /finance/restricted","isEnabled":true,"isAuditEnabled":true,
+     "resources":{"path":{"values":["/finance/restricted"],"isRecursive":true}},
+     "policyItems":[
+       {"accesses":[{"type":"read","isAllowed":true}],"users":[],"groups":["finance"],"delegateAdmin":false,
+         "conditions":[{
+           "type":"ScriptConditionEvaluator",
+           "values":["var country_code = ctx.getRequestContextAttribute('LOCATION_TEST_COUNTRY_CODE'); ctx.result = !!country_code;"]
+         }]}
+     ]
+    },
+    {"id":4,"name":"invalid policy with a single backslash","isEnabled":true,"isAuditEnabled":true,
+      "resources":{"path":{"values":["\\"],"isRecursive":true}},
+      "policyItems":[
+        {"accesses":[{"type":"read","isAllowed":true}],"users":[],"groups":["public"],"delegateAdmin":false}
+      ]
+    }
+  ],
+
+  "tests":[
+    {"name":"DENY 'read /test/restricted/sales.db' for u=user2",
+      "request":{
+        "resource":{"elements":{"path":"/test/restricted/sales.db"}},
+        "accessType":"read","user":"user2","userGroups":[],"requestData":"read /test/restricted/sales.db",
+        "remoteIPAddress":"255.255.255.255"
+      },
+      "result":{"isAudited":true,"isAllowed":false,"policyId":10}
+    }
+  ,
+    {"name":"ALLOW 'read /test/restricted/sales.db' for u=user1",
+      "request":{
+        "resource":{"elements":{"path":"/test/restricted/sales.db"}},
+        "accessType":"read","user":"user1","userGroups":[],"requestData":"read /test/restricted/sales.db",
+        "remoteIPAddress":"255.255.255.255"
+      },
+      "result":{"isAudited":true,"isAllowed":true,"policyId":10}
+    }
+  ,
+    {"name":"DENY 'read /test/forbidden/sales.db' for u=user1",
+      "request":{
+        "resource":{"elements":{"path":"/test/forbidden/sales.db"}},
+        "accessType":"","user":"user1","userGroups":[],"requestData":"read /test/forbidden/sales.db",
+        "remoteIPAddress":"255.255.255.255"
+      },
+      "result":{"isAudited":true,"isAllowed":false,"policyId":12}
+    }
+  ,
+    {"name":"DENY 'read /test/restricted/sales.db' for u=user3",
+      "request":{
+        "resource":{"elements":{"path":"/test/restricted/sales.db"}},
+        "accessType":"read","user":"user3","userGroups":[],"requestData":"read /test/restricted/sales.db",
+        "remoteIPAddress":"255.255.255.255"
+      },
+      "result":{"isAudited":true,"isAllowed":false,"policyId":30}
+    }
+  ,
+    {"name":"ALLOW 'read /finance/restricted/sales.db' for g=finance; valid clientIPAddress",
+     "request":{
+      "resource":{"elements":{"path":"/finance/restricted/sales.db"}},
+      "accessType":"read","user":"user1","userGroups":["finance"],"requestData":"read /finance/restricted/sales.db",
+       "remoteIPAddress":"255.255.255.255"
+     },
+     "result":{"isAudited":true,"isAllowed":true,"policyId":3}
+    }
+    ,
+    {"name":"DENY 'read /finance/restricted/sales.db' for g=finance; invalid clientIPAddress",
+      "request":{
+        "resource":{"elements":{"path":"/finance/restricted/sales.db"}},
+        "accessType":"read","user":"user1","userGroups":["finance"],"requestData":"read /finance/restricted/sales.db",
+        "remoteIPAddress":"128.101.101.99"
+      },
+      "result":{"isAudited":true,"isAllowed":false,"policyId":-1}
+    }
+  ,
+    {"name":"ALLOW 'read /finance/restricted/sales.db' for g=finance; no clientIPAddress",
+      "request":{
+        "resource":{"elements":{"path":"/finance/restricted/sales.db"}},
+        "accessType":"read","user":"user1","userGroups":["finance"],"requestData":"read /finance/restricted/sales.db"
+      },
+      "result":{"isAudited":true,"isAllowed":false,"policyId":-1}
+    }
+  ,
+    {"name":"ALLOW 'read /finance/restricted/hr/payroll.db' for g=finance",
+     "request":{
+      "resource":{"elements":{"path":"/finance/restricted/hr/payroll.db"}},
+      "accessType":"read","user":"user1","userGroups":["finance"],"requestData":"read /finance/restricted/hr/payroll.db",
+       "remoteIPAddress":"128.101.101.101"
+
+     },
+     "result":{"isAudited":true,"isAllowed":true,"policyId":3}
+    }
+    ,
+    {"name":"DENY 'read /operations/visitors.db' for g=finance",
+     "request":{
+      "resource":{"elements":{"path":"/operations/visitors.db"}},
+      "accessType":"read","user":"user1","userGroups":["finance"],"requestData":"read /operations/visitors.db",
+       "clientIPAddress":"128.101.101.99"
+     },
+     "result":{"isAudited":false,"isAllowed":false,"policyId":-1}
+    }
+    ,
+    {"name":"ALLOW 'read /public/technology/blogs.db' for g=finance",
+     "request":{
+      "resource":{"elements":{"path":"/public/technology/blogs.db"}},
+      "accessType":"read","user":"user1","userGroups":["finance"],"requestData":"read /public/technology/blogs.db"
+     },
+     "result":{"isAudited":false,"isAllowed":true,"policyId":2}
+    }
+    ,
+
+    {"name":"DENY 'read /finance/restricted/sales.db' for g=hr",
+     "request":{
+      "resource":{"elements":{"path":"/finance/restricted/sales.db"}},
+      "accessType":"read","user":"user1","userGroups":["hr"],"requestData":"read /finance/restricted/sales.db"
+     },
+     "result":{"isAudited":true,"isAllowed":false,"policyId":-1}
+    }
+    ,
+    {"name":"FALSE 'read /finance/restricted/hr/payroll.db' for g=hr",
+     "request":{
+      "resource":{"elements":{"path":"/finance/restricted/hr/payroll.db"}},
+      "accessType":"read","user":"user1","userGroups":["hr"],"requestData":"read /finance/restricted/hr/payroll.db"
+     },
+     "result":{"isAudited":true,"isAllowed":false,"policyId":-1}
+    }
+    ,
+    {"name":"DENY 'read /operations/visitors.db' for g=hr",
+     "request":{
+      "resource":{"elements":{"path":"/operations/visitors.db"}},
+      "accessType":"read","user":"user1","userGroups":["hr"],"requestData":"read /operations/visitors.db"
+     },
+     "result":{"isAudited":false,"isAllowed":false,"policyId":-1}
+    }
+    ,
+    {"name":"ALLOW 'read /public/technology/blogs.db' for g=hr",
+     "request":{
+      "resource":{"elements":{"path":"/public/technology/blogs.db"}},
+      "accessType":"read","user":"user1","userGroups":["hr"],"requestData":"read /public/technology/blogs.db"
+     },
+     "result":{"isAudited":false,"isAllowed":true,"policyId":2}
+    }
+    ,
+
+    {"name":"DENY 'read /finance/restricted/sales.db' for u=user1",
+     "request":{
+      "resource":{"elements":{"path":"/finance/restricted/sales.db"}},
+      "accessType":"read","user":"user1","userGroups":[],"requestData":"read /finance/restricted/sales.db"
+     },
+     "result":{"isAudited":true,"isAllowed":false,"policyId":-1}
+    }
+    ,
+    {"name":"DENY 'read /finance/restricted/hr/payroll.db' for u=user1",
+     "request":{
+      "resource":{"elements":{"path":"/finance/restricted/hr/payroll.db"}},
+      "accessType":"read","user":"user1","userGroups":[],"requestData":"read /finance/restricted/hr/payroll.db"
+     },
+     "result":{"isAudited":true,"isAllowed":false,"policyId":-1}
+    }
+    ,
+    {"name":"DENY 'read /operations/visitors.db' for u=user1",
+     "request":{
+      "resource":{"elements":{"path":"/operations/visitors.db"}},
+      "accessType":"read","user":"user1","userGroups":[],"requestData":"read /operations/visitors.db"
+     },
+     "result":{"isAudited":false,"isAllowed":false,"policyId":-1}
+    }
+    ,
+    {"name":"ALLOW 'read /public/technology/blogs.db' for u=user1",
+     "request":{
+      "resource":{"elements":{"path":"/public/technology/blogs.db"}},
+      "accessType":"read","user":"user1","userGroups":[],"requestData":"read /public/technology/blogs.db"
+     },
+     "result":{"isAudited":false,"isAllowed":true,"policyId":2}
+    }
+    ,
+    {"name":"ALLOW 'read /public/technology' for u=user1",
+     "request":{
+      "resource":{"elements":{"path":"/public/technology/blogs.db"}},
+      "accessType":"read","user":"user1","userGroups":[],"requestData":"read /public/technology/blogs.db"
+     },
+     "result":{"isAudited":false,"isAllowed":true,"policyId":2}
+    }
+    ,
+    {"name":"ALLOW 'read /public/technology' for u=user1",
+     "request":{
+      "resource":{"elements":{"path":"/public/technology/blogs.db"}},
+      "accessType":"execute","user":"user1","userGroups":[],"requestData":"read /public/technology/blogs.db"
+     },
+     "result":{"isAudited":false,"isAllowed":true,"policyId":2}
+    }
+  ]
+}
+

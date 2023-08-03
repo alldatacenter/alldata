@@ -1,0 +1,207 @@
+{
+    "op":"add_or_update",
+    "tagModel":"resource_private",
+    "serviceName": "hivedev",
+    "tagDefinitions": {
+      "1": {
+        "name": "EXPIRES_ON",
+        "attributeDefs": [ { "name": "expiry_date", "type": "datetime" } ],
+        "id": 1,
+        "guid": "tagdefinition-expires-on-guid"
+      },
+      "2": {
+        "name": "PII",
+        "attributeDefs": [ { "name": "expiry", "type": "datetime" } ],
+        "id": 2,
+        "guid": "tagdefinition-pii-guid"
+      },
+      "3": {
+        "name": "PII-FINAL",
+        "attributeDefs": [ { "name": "expiry", "type": "datetime" } ],
+        "id": 3,
+        "guid": "tagdefinition-pii-final-guid"
+      },
+      "4": {
+        "name": "RESTRICTED",
+        "attributeDefs": [ { "name": "activation_date", "type": "datetime" } ],
+        "id": 4,
+        "guid": "tagdefinition-restricted-guid"
+      },
+      "5": {
+        "name": "RESTRICTED-FINAL",
+        "attributeDefs": [ { "name": "activation_date", "type": "datetime" } ],
+        "id": 5,
+        "guid": "tagdefinition-restricted-final-guid"
+      }
+    },
+    "tags": {
+      "1": {
+        "type": "EXPIRES_ON",
+        "attributes": { "expiry_date": "2026/06/15" },
+        "id": 1,
+        "guid": "tag-expires-on-1-guid"
+      },
+      "2": {
+        "type": "EXPIRES_ON",
+        "attributes": { "expiry_date": "2015/08/10" },
+        "id": 2,
+        "guid": "tag-expires-on-2-guid"
+      },
+      "3": {
+        "type": "RESTRICTED",
+        "attributes": { "activation_date": "2015/08/10", "score": "2" },
+        "id": 3,
+        "guid": "tag-restricted-3-guid"
+      },
+      "4": {
+        "type": "RESTRICTED-FINAL",
+        "attributes": { "activation_date": "2026/06/15" },
+        "id": 4,
+        "guid": "tag-restricted-final-4-guid"
+      },
+      "5": {
+        "type": "PII",
+        "attributes": { "expiry": "2026/06/15" },
+        "id": 5,
+        "guid": "tag-pii-5-guid"
+      },
+      "6": {
+        "type": "PII-FINAL",
+        "attributes": { "expiry": "2026/06/15" },
+        "id": 6,
+        "guid": "tag-pii-final-6-guid"
+      }
+    },
+    "serviceResources": [
+      {
+        "serviceName": "cl1_hive",
+        "resourceElements": {
+          "database": { "values": [ "employee" ] },
+          "table": { "values": [ "personal" ] },
+          "column": { "values": [ "ssn" ] }
+        },
+        "id": 1,
+        "guid": "employee.personal.ssn-guid"
+     },
+      {
+        "serviceName": "cl1_hive",
+        "resourceElements": {
+          "database": { "values": [ "employee" ] },
+          "table": { "values": [ "personal" ] },
+          "column": { "values": [ "id" ] }
+        },
+        "id": 2,
+        "guid": "employee.personal.id-guid"
+     },
+      {
+        "serviceName": "cl1_hive",
+        "resourceElements": {
+          "database": { "values": [ "employee" ] },
+          "table": { "values": [ "personal" ] },
+          "column": { "values": [ "city" ] }
+        },
+        "id": 3,
+        "guid": "employee.personal.city-guid"
+     },
+      {
+        "serviceName": "cl1_hive",
+        "resourceElements": {
+          "database": { "values": [ "employee" ] },
+          "table": { "values": [ "personal" ] },
+          "column": { "values": [ "address" ] }
+        },
+        "id": 4,
+        "guid": "employee.personal.address-guid"
+     },
+      {
+        "serviceName": "cl1_hive",
+        "resourceElements": {
+          "database": { "values": [ "employee" ] },
+          "table": { "values": [ "personal" ] },
+          "column": { "values": [ "salary" ] }
+        },
+        "id": 5,
+        "guid": "employee.personal.salary-guid"
+     },
+      {
+        "serviceName": "cl1_hive",
+        "resourceElements": {
+          "database": { "values": [ "employee" ] },
+          "table": { "values": [ "personal" ] },
+          "column": { "values": [ "emp-number" ] }
+        },
+        "id": 6,
+        "guid": "employee.personal.emp-number-guid"
+     },
+     {
+        "serviceName": "cl1_hive",
+        "resourceElements": {
+          "database": { "values": [ "employee" ] },
+          "table": { "values": [ "personal" ] },
+          "column": { "values": [ "name" ] }
+        },
+        "id": 7,
+        "guid": "employee.personal.name-guid"
+     },
+     {
+        "serviceName": "cl1_hive",
+        "resourceElements": {
+          "database": { "values": [ "nodb" ] }
+        },
+        "id": 8,
+        "guid": "nodb-guid"
+     },
+     {
+        "serviceName": "cl1_hive",
+        "resourceElements": {
+          "database": { "values": [ "nodb" ] },
+          "table": { "values": [ "table1" ] }
+        },
+        "id": 9,
+        "guid": "nodb.table1-guid"
+     },
+     {
+        "serviceName": "cl1_hive",
+        "resourceElements": {
+          "database": { "values": [ "nodb" ] },
+          "table": { "values": [ "table1" ] },
+          "column": { "values": [ "name" ] }
+        },
+        "id": 10,
+        "guid": "nodb.table1.name-guid"
+     },
+     {
+        "serviceName": "cl1_hive",
+        "resourceElements": {
+          "database": { "values": [ "finance" ] },
+          "table": { "values": [ "sales" ] }
+        },
+        "id": 11,
+        "guid": "finance.sales-guid"
+     },
+     {
+        "serviceName": "cl1_hive",
+        "resourceElements": {
+          "database": { "values": [ "finance" ] },
+          "table": { "values": [ "sales" ] },
+          "column": { "values": [ "invoice_id" ] }
+        },
+        "id": 12,
+        "guid": "finance.sales.invoice_id-guid"
+     }
+    ],
+    "resourceToTagIds": {
+      "1": [ 1 ],
+      "2": [ 2 ],
+      "3": [ 3 ],
+      "4": [ 4 ],
+      "5": [ 2 ],
+      "6": [ 2 ],
+      "8": [ 6 ],
+      "9": [ 5 ],
+      "10": [ 6 ],
+      "11": [ 6 ],
+      "12": [ 5 ]
+    }
+}
+

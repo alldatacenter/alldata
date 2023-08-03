@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<topology>
+
+    <gateway>
+
+        <provider>
+            <role>authentication</role>
+            <name>ShiroProvider</name>
+            <enabled>true</enabled>
+            <param>
+                <!--
+                session timeout in minutes,  this is really idle timeout,
+                defaults to 30mins, if the property value is not defined,,
+                current client authentication would expire if client idles contiuosly for more than this value
+                -->
+                <name>sessionTimeout</name>
+                <value>30</value>
+            </param>
+            <param>
+                <name>main.ldapRealm</name>
+                <value>org.apache.knox.gateway.shirorealm.KnoxLdapRealm</value>
+            </param>
+            <param>
+                <name>main.ldapContextFactory</name>
+                <value>org.apache.knox.gateway.shirorealm.KnoxLdapContextFactory</value>
+            </param>
+            <param>
+                <name>main.ldapRealm.contextFactory</name>
+                <value>$ldapContextFactory</value>
+            </param>
+            <param>
+                <name>main.ldapRealm.userDnTemplate</name>
+                <value>uid={0},ou=people,dc=hadoop,dc=apache,dc=org</value>
+            </param>
+            <param>
+                <name>main.ldapRealm.contextFactory.url</name>
+                <value>ldap://localhost:33389</value>
+            </param>
+            <param>
+                <name>main.ldapRealm.contextFactory.authenticationMechanism</name>
+                <value>simple</value>
+            </param>
+            <param>
+                <name>urls./**</name>
+                <value>authcBasic</value>
+            </param>
+        </provider>
+
+        <provider>
+            <role>authorization</role>
+            <name>AclsAuthz</name>
+            <enabled>true</enabled>
+        </provider>
+
+        <provider>
+            <role>identity-assertion</role>
+            <name>Default</name>
+            <enabled>true</enabled>
+        </provider>
+
+        <provider>
+            <role>hostmap</role>
+            <name>static</name>
+            <enabled>true</enabled>
+            <param>
+                <name>localhost</name>
+                <value>sandbox,sandbox.hortonworks.com</value>
+            </param>
+        </provider>
+
+    </gateway>
+
+    <service>
+        <role>NAMENODE</role>
+        <url>hdfs://ranger-hadoop.example.com:8020</url>
+    </service>
+
+    <service>
+        <role>JOBTRACKER</role>
+        <url>rpc://ranger-hadoop.example.com:8050</url>
+    </service>
+
+    <service>
+        <role>WEBHDFS</role>
+        <url>http://ranger-hadoop.example.com:9870/webhdfs</url>
+    </service>
+
+    <service>
+        <role>WEBHCAT</role>
+        <url>http://ranger-hive.example.com:50111/templeton</url>
+    </service>
+
+    <service>
+        <role>OOZIE</role>
+        <url>http://localhost:11000/oozie</url>
+        <param>
+            <name>replayBufferSize</name>
+            <value>8</value>
+        </param>
+    </service>
+
+    <service>
+        <role>WEBHBASE</role>
+        <url>http://ranger-hbase.example.com:60080</url>
+        <param>
+            <name>replayBufferSize</name>
+            <value>8</value>
+        </param>
+    </service>
+
+    <service>
+        <role>HIVE</role>
+        <url>http://ranger-hive.example.com:10001/cliservice</url>
+        <param>
+            <name>replayBufferSize</name>
+            <value>8</value>
+        </param>
+    </service>
+
+    <service>
+        <role>RESOURCEMANAGER</role>
+        <url>http://ranger-hadoop.example.com:8088/ws</url>
+    </service>
+
+    <service>
+        <role>DRUID-COORDINATOR-UI</role>
+        <url>http://localhost:8081</url>
+    </service>
+
+    <service>
+        <role>DRUID-COORDINATOR</role>
+        <url>http://localhost:8081</url>
+    </service>
+
+    <service>
+        <role>DRUID-BROKER</role>
+        <url>http://localhost:8082</url>
+    </service>
+
+    <service>
+        <role>DRUID-ROUTER</role>
+        <url>http://localhost:8082</url>
+    </service>
+
+    <service>
+        <role>DRUID-OVERLORD</role>
+        <url>http://localhost:8090</url>
+    </service>
+
+    <service>
+        <role>DRUID-OVERLORD-UI</role>
+        <url>http://localhost:8090</url>
+    </service>
+
+    <service>
+        <role>HUE</role>
+        <url>http://localhost:8889</url>
+    </service>
+</topology>

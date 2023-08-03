@@ -1,0 +1,251 @@
+{
+  "serviceName": "hivedev",
+  "serviceDef": {
+    "name": "hive",
+    "id": 3,
+    "resources": [
+      {
+        "name": "database",
+        "level": 1,
+        "mandatory": true,
+        "lookupSupported": true,
+        "matcher": "org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher",
+        "matcherOptions": {
+          "wildCard": true,
+          "ignoreCase": true
+        },
+        "isValidLeaf": true,
+        "label": "Hive Database",
+        "description": "Hive Database"
+      },
+      {
+        "name": "table",
+        "level": 2,
+        "parent": "database",
+        "mandatory": true,
+        "lookupSupported": true,
+        "matcher": "org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher",
+        "matcherOptions": {
+          "wildCard": true,
+          "ignoreCase": true
+        },
+        "isValidLeaf": true,
+        "label": "Hive Table",
+        "description": "Hive Table"
+      },
+      {
+        "name": "column",
+        "level": 3,
+        "parent": "table",
+        "mandatory": true,
+        "lookupSupported": true,
+        "matcher": "org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher",
+        "matcherOptions": {
+          "wildCard": true,
+          "ignoreCase": true
+        },
+        "label": "Hive Column",
+        "description": "Hive Column"
+      }
+    ],
+    "accessTypes": [
+      {
+        "name": "select",
+        "label": "Select"
+      },
+      {
+        "name": "update",
+        "label": "Update"
+      },
+      {
+        "name": "create",
+        "label": "Create"
+      },
+      {
+        "name": "drop",
+        "label": "Drop"
+      },
+      {
+        "name": "alter",
+        "label": "Alter"
+      },
+      {
+        "name": "index",
+        "label": "Index"
+      },
+      {
+        "name": "lock",
+        "label": "Lock"
+      },
+      {
+        "name": "all",
+        "label": "All",
+        "impliedGrants": [
+          "select",
+          "update",
+          "create",
+          "drop",
+          "alter",
+          "index",
+          "lock"
+        ]
+      }
+    ],
+    "policyConditions":[
+      { "name": "expression", "evaluator": "org.apache.ranger.plugin.conditionevaluator.RangerScriptConditionEvaluator" }
+    ]
+  },
+  "policies": [
+    {
+      "id": 1,
+      "name": "db=default: audit-all-access",
+      "isEnabled": true,
+      "isAuditEnabled": true,
+      "resources": {
+        "database": {
+          "values": [
+            "default"
+          ]
+        },
+        "table": {
+          "values": [
+            "*"
+          ]
+        },
+        "column": {
+          "values": [
+            "*"
+          ]
+        }
+      },
+      "policyItems": [
+        {
+          "accesses": [],
+          "users": [],
+          "groups": [
+            "public"
+          ],
+          "delegateAdmin": false
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "db=default",
+      "isEnabled": true,
+      "isAuditEnabled": true,
+      "resources": {
+        "database": {
+          "values": [
+            "default"
+          ]
+        }
+      },
+      "policyItems": [
+        {
+          "accesses": [
+            {
+              "type": "create",
+              "isAllowed": true
+            },
+            {
+              "type": "drop",
+              "isAllowed": true
+            },
+            {
+              "type": "select",
+              "isAllowed": true
+            }
+          ],
+          "users": [
+            "user1"
+          ],
+          "groups": [ "role-group1"],
+          "roles": ["fin-admin", "fin-group"],
+          "delegateAdmin": false
+        }
+      ]
+    },
+    {
+      "id": 3, "name": "db=hr-fin", "isEnabled": true, "isAuditEnabled": true, "isDenyAllElse": true,
+      "resources": { "database":  { "values": [ "hr-fin"] } },
+      "policyItems": [
+        { "accesses":  [ { "type": "create" } ], "groups": [ "public"], "conditions": [ { "type": "expression", "values": [ "IS_IN_ROLE('fin-admin') && IS_IN_ROLE('hr-admin') "] } ] }
+      ]
+    }
+  ],
+  "userRoles": {"role-user1": ["fin-admin", "hr-admin"], "admin-user": [ "fin-admin", "hr-admin" ], "fin-user": [ "fin-admin"], "hr-user": [ "hr-admin"] },
+  "groupRoles":  {"role-group1": ["fin-group", "hr-group"], "admin-group":  [ "fin-admin", "hr-admin" ] },
+  "tests": [
+    {"name":"ALLOW 'create database default default ;' for user='role-user1'",
+      "request":{
+        "resource":{"elements":{"database":"default"}},
+        "accessType":"create","user":"role-user1","userGroups":[],"requestData":"create database default ; for role-user1"
+      },
+      "result":{"isAudited":true,"isAllowed":true,"policyId":2}
+    },
+    {"name":"DENY 'create database default default ;' for user='role-user2'",
+      "request":{
+        "resource":{"elements":{"database":"default"}},
+        "accessType":"create","user":"role-user2","userGroups":[],"requestData":"create database default ; for role-user2"
+      },
+      "result":{"isAudited":true,"isAllowed":false,"policyId":-1}
+    },
+    {"name":"ALLOW 'create database default default ;' for group='role-group1'",
+      "request":{
+        "resource":{"elements":{"database":"default"}},
+        "accessType":"create","user":"","userGroups":["role-group1"],"requestData":"create database default ; for role-group1"
+      },
+      "result":{"isAudited":true,"isAllowed":true,"policyId":2}
+    },
+    {"name":"DENY 'create database default default ;' for group='role-group2'",
+      "request":{
+        "resource":{"elements":{"database":"default"}},
+        "accessType":"create","user":"","userGroups":["role-group2"],"requestData":"create database default ; for role-group2"
+      },
+      "result":{"isAudited":true,"isAllowed":false,"policyId":-1}
+    },
+    {"name":"ALLOW 'create database default default ;' for user1",
+      "request":{
+        "resource":{"elements":{"database":"default"}},
+        "accessType":"create","user":"user1","userGroups":[],"requestData":"create database default ; for user1"
+      },
+      "result":{"isAudited":true,"isAllowed":true,"policyId":2}
+    },
+    {"name":"DENY 'create database default ;' for user2",
+      "request":{
+        "resource":{"elements":{"database":"default"}},
+        "accessType":"create","user":"user2","userGroups":[],"requestData":"create database default ; for user2"
+      },
+      "result":{"isAudited":true,"isAllowed":false,"policyId":-1}
+    },
+    { "name": "ALLOW 'create database hr-fin;' for user=admin-user",
+      "request": {
+        "resource": { "elements": { "database": "hr-fin" } },
+        "accessType": "create", "user": "admin-user", "requestData": "create database hr-fin; for admin-user"
+      },
+      "result":{"isAudited":true,"isAllowed":true,"policyId":3}
+    },
+    { "name": "ALLOW 'create database hr-fin;' for group=admin-group",
+      "request": {
+        "resource": { "elements": { "database": "hr-fin" } },
+        "accessType": "create", "user": "test-user1", "userGroups": [ "admin-group" ], "requestData": "create database hr-fin; for group=admin-group"
+      },
+      "result":{"isAudited":true,"isAllowed":true,"policyId":3}
+    },
+    { "name": "DENY 'create database hr-fin;' for fin-user",
+      "request": {
+        "resource": { "elements": { "database": "hr-fin" } },
+        "accessType": "create", "user": "fin-user", "requestData": "create database hr-fin; for fin-user"
+      },
+      "result": { "isAudited": true, "isAllowed": false, "policyId": 3}
+    },
+    { "name": "DENY 'create database hr-fin;' for hr-user",
+      "request": {
+        "resource": { "elements": { "database": "hr-fin" } },
+        "accessType": "create", "user": "hr-user", "requestData": "create database hr-fin; for hr-user"
+      },
+      "result": { "isAudited": true, "isAllowed": false, "policyId": 3}
+    }
+  ]
+}

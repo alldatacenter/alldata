@@ -1,0 +1,14 @@
+{
+  "auditFilters": {
+    "condition": "AND",
+    "criterion": [
+      {
+        "attributeName": "operation",
+        "operator": "eq",
+        "attributeValue": "PURGE"
+      }
+    ]
+  },
+  "limit": 10,
+  "offset": 0
+}

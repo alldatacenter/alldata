@@ -1,0 +1,57 @@
+{
+  "serviceName":"hbasedev",
+
+  "serviceDef":{
+    "name":"hbase",
+    "id":2,
+    "resources":[
+      {"name":"table","level":1,"parent":"","mandatory":true,"lookupSupported":true,"matcher":"org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher","matcherOptions":{"wildCard":true, "ignoreCase":true},"label":"HBase Table","description":"HBase Table"},
+      {"name":"column-family","level":2,"parent":"table","mandatory":true,"lookupSupported":true,"matcher":"org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher","matcherOptions":{"wildCard":true, "ignoreCase":true},"label":"HBase Column-Family","description":"HBase Column-Family"},
+      {"name":"column","level":3,"parent":"column-family","mandatory":true,"lookupSupported":true,"matcher":"org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher","matcherOptions":{"wildCard":true, "ignoreCase":true},"label":"HBase Column","description":"HBase Column"}
+    ],
+    "accessTypes":[
+      {"name":"read","label":"Read"},
+      {"name":"write","label":"Write"},
+      {"name":"create","label":"Create"},
+      {"name":"admin","label":"Admin","impliedGrants":["read","write","create"]}
+    ]
+  },
+
+  "policies":[
+    {"id":1,"name":"table=*; column-family=*; column=*: audit-all-access","isEnabled":true,"isAuditEnabled":true,
+      "resources":{"table":{"values":["*"]},"column-family":{"values":["*"]}, "column":{"values":["*"]}},
+      "policyItems":[
+        {"accesses":[{"type":"read","isAllowed":true},{"type":"write","isAllowed":true}, {"type":"create", "isAllowed":true},
+          {"type":"admin", "isAllowed":true}],"users":["user1"],"groups":[],"delegateAdmin":false}
+      ]
+    }
+    ,
+    {"id":2,"name":"table=namespace_1:*; column-family=*; column=*: audit-all-access","isEnabled":true,"isAuditEnabled":true,
+      "resources":{"table":{"values":["namespace_1:*"]},"column-family":{"values":["*"]}, "column":{"values":["*"]}},
+      "policyItems":[
+        {"accesses":[{"type":"read","isAllowed":true},{"type":"write","isAllowed":true}, {"type":"create", "isAllowed":true},
+          {"type":"admin", "isAllowed":true}],"users":["user1"],"groups":[],"delegateAdmin":false}
+      ,
+        {"accesses":[{"type":"admin","isAllowed":true}],"users":["hrt_qa"],"groups":[],"delegateAdmin":false}
+      ]
+    }
+  ],
+
+  "tests":[
+    {"name":"TEST!!! ALLOW 'create namespace namespace_1;' for hrt_qa",
+      "request":{
+        "resource":{"elements":{"table":"namespace_1:"}},
+        "accessType":"admin","user":"hrt_qa","userGroups":[],"requestData":"create namespace namespace_1;' for hrt_qa"
+      },
+      "result":{"isAudited":true,"isAllowed":true,"policyId":2}
+    }
+  ,
+    {"name":"TEST!!! DENY 'create namespace namespace_2;' for hrt_qa",
+      "request":{
+        "resource":{"elements":{"table":"namespace_2:"}},
+        "accessType":"admin","user":"hrt_qa","userGroups":[],"requestData":"create namespace namespace_2;' for hrt_qa"
+      },
+      "result":{"isAudited":true,"isAllowed":false,"policyId":-1}
+    }
+  ]
+}

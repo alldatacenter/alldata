@@ -1,0 +1,376 @@
+{
+  "testCases":[
+        {
+            "name":"values={USER}_simple, %{USER}_simple; wildCard=true; ignoreCase=true; startDelimiter={, endDelimiter=}, escapeChar=%",
+            "resourceDef":{
+                "matcher":"org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher",
+                "matcherOptions":{"wildCard":true, "ignoreCase":true, "replaceTokens":true, "tokenDelimiterEscape":"%", "tokenDelimiterPrefix":"rangerToken:" }
+            },
+            "policyResource":{
+                "values": ["{rangerToken:USER}_simple", "simple_{USER}", "{USER}_simple"]
+            },
+            "tests":[
+                { "name":"all-lower","input":"admin_simple", "evalContext": { "token:USER": "admin"}, "result":true},
+                { "name":"all-upper","input":"{USER}_SIMPLE", "result":true},
+                { "name":"mixed-case","input":"_SiMpLe", "evalContext": { "token:USER": ""}, "result":true},
+                { "name":"invalid-all-lower-wild","input":"other-simple", "result":false},
+                { "name":"invalid-all-upper-wild","input":"OTHER-SIMPLE", "result":false},
+                { "name":"invalid-mixed-case-wild","input":"OtHeR-SiMpLe", "result":false},
+                { "name":"escaped-delimiter","input":"%{USER}_SiMpLe", "evalContext": { "token:USER": ""}, "result":false},
+                { "name":"not-escaped-delimiter-with-evalContext","input":"{USER}_SiMpLe", "evalContext": { "token:USER": ""}, "result":true},
+                { "name":"not-escaped-delimiter-no-evalContext","input":"{USER}_SiMpLe", "result":true},
+                { "name":"with-no-prefix","input":"simple_admin", "evalContext": { "token:USER": "admin"}, "result":false},
+                { "name":"with-no-prefix-straight-match","input":"simple_{USER}", "evalContext": { "token:USER": "admin"}, "result":true}
+            ]
+        },
+  	{
+      "name":"value=simple; wildCard=true; ignoreCase=true",
+      "resourceDef":{
+	    "matcher":"org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher",
+        "matcherOptions":{"wildCard":true, "ignoreCase":true}
+      },
+      "policyResource":{
+      	"values": ["simple"]
+      },
+      "tests":[
+      	{ "name":"all-lower","input":"simple", "result":true},
+      	{ "name":"all-upper","input":"SIMPLE", "result":true},
+      	{ "name":"mixed-case","input":"SiMpLe", "result":true},
+      	{ "name":"invalid-all-lower-wild","input":"other-simple", "result":false},
+      	{ "name":"invalid-all-upper-wild","input":"OTHER-SIMPLE", "result":false},
+        { "name":"invalid-mixed-case-wild","input":"OtHeR-SiMpLe", "result":false}
+      ]
+  	}
+  	,
+  	{
+      "name":"value=simple; wildCard=true; ignoreCase=true; isExcludes=true",
+      "resourceDef":{
+        "matcher":"org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher",
+        "matcherOptions":{"wildCard":true, "ignoreCase":true}
+      },
+      "policyResource":{
+      	"values": ["simple"],
+      	"isExcludes":true
+      },
+      "tests":[
+      	{ "name":"all-lower","input":"simple", "result":false},
+      	{ "name":"all-upper","input":"SIMPLE", "result":false},
+      	{ "name":"mixed-case","input":"SiMpLe", "result":false},
+      	{ "name":"invalid-all-lower-wild","input":"other-simple", "result":true},
+      	{ "name":"invalid-all-upper-wild","input":"OTHER-SIMPLE", "result":true},
+        { "name":"invalid-mixed-case-wild","input":"OtHeR-SiMpLe", "result":true}
+      ]
+  	}
+  	,
+  	{
+      "name":"value=simple; wildCard=true; ignoreCase=false",	
+      "resourceDef":{
+        "matcher":"org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher",
+        "matcherOptions":{"wildCard":true, "ignoreCase":false}
+      },
+      "policyResource":{
+      	"values": ["simple"]
+      },
+      "tests":[
+      	{ "name":"all-lower","input":"simple", "result":true},
+      	{ "name":"all-upper","input":"SIMPLE", "result":false},
+      	{ "name":"mixed-case","input":"SiMpLe", "result":false},
+      	{ "name":"invalid-all-lower","input":"other-string", "result":false},
+      	{ "name":"invalid-all-upper","input":"OTHER-STRING", "result":false},
+        { "name":"invalid-mixed-case","input":"oThEr-StRiNg", "result":false}
+      ]
+  	}
+  	,
+  	{
+      "name":"value=SiMpLe; wildCard=true; ignoreCase=false",	
+      "resourceDef":{
+        "matcher":"org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher",
+        "matcherOptions":{"wildCard":true, "ignoreCase":false}
+      },
+      "policyResource":{
+      	"values": ["SiMpLe"]
+      },
+      "tests":[
+      	{ "name":"all-lower","input":"simple", "result":false},
+      	{ "name":"all-upper","input":"SIMPLE", "result":false},
+      	{ "name":"mixed-case","input":"SiMpLe", "result":true},
+      	{ "name":"invalid-all-lower","input":"other-string", "result":false},
+      	{ "name":"invalid-all-upper","input":"OTHER-STRING", "result":false},
+        { "name":"invalid-mixed-case","input":"oThEr-StRiNg", "result":false}
+      ]
+  	}
+  	,
+  	{
+      "name":"value=simple*; wildCard=true; ignoreCase=true",	
+      "resourceDef":{
+        "matcher":"org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher",
+        "matcherOptions":{"wildCard":true, "ignoreCase":true}
+      },
+      "policyResource":{
+      	"values": ["simple*"]
+      },
+      "tests":[
+      	{ "name":"all-lower","input":"simple", "result":true},
+      	{ "name":"all-upper","input":"SIMPLE", "result":true},
+      	{ "name":"mixed-case","input":"SiMpLe", "result":true},
+      	{ "name":"all-lower-wild-exact","input":"simple*", "result":true},
+      	{ "name":"all-upper-wild-exact","input":"SIMPLE*", "result":true},
+      	{ "name":"mixed-case-wild-exact","input":"SiMpLe*", "result":true},
+      	{ "name":"all-lower-wild","input":"simple-test-string", "result":true},
+      	{ "name":"all-upper-wild","input":"SIMPLE-TEST-STRING", "result":true},
+      	{ "name":"mixed-case-wild","input":"SiMpLe-TeSt-StRiNg", "result":true},
+      	{ "name":"invalid-all-lower","input":"other-string", "result":false},
+      	{ "name":"invalid-all-upper","input":"OTHER-STRING", "result":false},
+      	{ "name":"invalid-mixed-case","input":"oThEr-StRiNg", "result":false},
+      	{ "name":"invalid-lower-wild","input":"simpele-test-string", "result":false},
+      	{ "name":"invalid-upper-wild","input":"SIMPELE-TEST-STRING", "result":false},
+        { "name":"invalid-mixed-case-wild","input":"SiMpeLe-TeSt-StRiNg", "result":false}
+      ]
+  	}
+  	,
+  	{
+      "name":"value=simple*string; wildCard=true; ignoreCase=true",	
+      "resourceDef":{
+        "matcher":"org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher",
+        "matcherOptions":{"wildCard":true, "ignoreCase":true}
+      },
+      "policyResource":{
+      	"values": ["simple*string"]
+      },
+      "tests":[
+      	{ "name":"all-lower","input":"simplestring", "result":true},
+      	{ "name":"all-upper","input":"SIMPLESTRING", "result":true},
+      	{ "name":"mixed-case","input":"SiMpLeStRiNg", "result":true},
+      	{ "name":"all-lower-wild-exact","input":"simple*string", "result":true},
+      	{ "name":"all-upper-wild-exact","input":"SIMPLE*STRING", "result":true},
+      	{ "name":"mixed-case-wild-exact","input":"SiMpLe*StRiNg", "result":true},
+      	{ "name":"all-lower-wild","input":"simple-test-string", "result":true},
+      	{ "name":"all-upper-wild","input":"SIMPLE-TEST-STRING", "result":true},
+      	{ "name":"mixed-case-wild","input":"SiMpLe-TeSt-StRiNg", "result":true},
+      	{ "name":"invalid-all-lower","input":"other-simple-string", "result":false},
+      	{ "name":"invalid-all-upper","input":"OTHER-SIMPLE-STRING", "result":false},
+      	{ "name":"invalid-mixed-case","input":"oThEr-SiMpLe-StRiNg", "result":false},
+      	{ "name":"invalid-lower-wild","input":"simpele-test-string", "result":false},
+      	{ "name":"invalid-upper-wild","input":"SIMPELE-TEST-STRING", "result":false},
+        { "name":"invalid-mixed-case-wild","input":"SiMpeLe-TeSt-StRiNg", "result":false}
+      ]
+  	}
+  	,
+  	{
+      "name":"value=simple*test*string; wildCard=true; ignoreCase=true",	
+      "resourceDef":{
+        "matcher":"org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher",
+        "matcherOptions":{"wildCard":true, "ignoreCase":true}
+      },
+      "policyResource":{
+      	"values": ["simple*test*string"]
+      },
+      "tests":[
+      	{ "name":"all-lower","input":"simpleteststring", "result":true},
+      	{ "name":"all-upper","input":"SIMPLETESTSTRING", "result":true},
+      	{ "name":"mixed-case","input":"SiMpLeTeStStRiNg", "result":true},
+      	{ "name":"all-lower-wild-exact","input":"simple*test*string", "result":true},
+      	{ "name":"all-upper-wild-exact","input":"SIMPLE*TEST*STRING", "result":true},
+      	{ "name":"mixed-case-wild-exact","input":"SiMpLe*TeSt*StRiNg", "result":true},
+      	{ "name":"all-lower-wild","input":"simple-test-string", "result":true},
+      	{ "name":"all-upper-wild","input":"SIMPLE-TEST-STRING", "result":true},
+      	{ "name":"mixed-case-wild","input":"SiMpLe-TeSt-StRiNg", "result":true},
+      	{ "name":"all-lower-wild","input":"simple-long-test-cool-string", "result":true},
+      	{ "name":"all-upper-wild","input":"SIMPLE-LONG-TEST-COOL-STRING", "result":true},
+      	{ "name":"mixed-case-wild","input":"SiMpLe-LoNg-TeSt-CoOl-StRiNg", "result":true},
+      	{ "name":"invalid-all-lower","input":"other-simple-test-string", "result":false},
+      	{ "name":"invalid-all-upper","input":"OTHER-SIMPLE-TEST-STRING", "result":false},
+      	{ "name":"invalid-mixed-case","input":"oThEr-SiMpLe-TeSt-StRiNg", "result":false},
+      	{ "name":"invalid-lower-wild","input":"simpele-test-string", "result":false},
+      	{ "name":"invalid-upper-wild","input":"SIMPELE-TEST-STRING", "result":false},
+        { "name":"invalid-mixed-case-wild","input":"SiMpeLe-TeSt-StRiNg", "result":false}
+      ]
+  	}
+  	,
+  	{
+      "name":"value=*simple; wildCard=true; ignoreCase=true",	
+      "resourceDef":{
+        "matcher":"org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher",
+        "matcherOptions":{"wildCard":true, "ignoreCase":true}
+      },
+      "policyResource":{
+      	"values": ["*simple"]
+      },
+      "tests":[
+      	{ "name":"all-lower","input":"teststringsimple", "result":true},
+      	{ "name":"all-upper","input":"TESTSTRINGSIMPLE", "result":true},
+      	{ "name":"mixed-case","input":"TeStStRiNgSiMpLe", "result":true},
+      	{ "name":"all-lower","input":"simpleteststringsimple", "result":true},
+      	{ "name":"all-upper","input":"SIMPLETESTSTRINGSIMPLE", "result":true},
+      	{ "name":"mixed-case","input":"SiMpLeTeStStRiNgSiMpLe", "result":true},
+	    { "name":"invalid-all-lower","input":"simpleteststring", "result":false},
+      	{ "name":"invalid-all-upper","input":"SIMPLETESTSTRING", "result":false},
+      	{ "name":"invalid-mixed-case","input":"SiMpLeTeStStRiNg", "result":false},
+      	{ "name":"invalid-all-lower-wild-exact","input":"simple*test*string", "result":false},
+      	{ "name":"invalid-all-upper-wild-exact","input":"SIMPLE*TEST*STRING", "result":false},
+      	{ "name":"invalid-mixed-case-wild-exact","input":"SiMpLeTeStStRiNg", "result":false},
+      	{ "name":"invalid-all-lower-wild","input":"simple-test-string", "result":false},
+      	{ "name":"invalid-all-upper-wild","input":"SIMPLE-TEST-STRING", "result":false},
+      	{ "name":"invalid-mixed-case-wild","input":"SiMpLe-TeSt-StRiNg", "result":false},
+      	{ "name":"invalid-all-lower","input":"other-simple-string", "result":false},
+      	{ "name":"invalid-all-upper","input":"OTHER-SIMPLE-STRING", "result":false},
+      	{ "name":"invalid-mixed-case","input":"oThEr-SiMpLe-StRiNg", "result":false},
+      	{ "name":"invalid-lower-wild","input":"simpele-test-string", "result":false},
+      	{ "name":"invalid-upper-wild","input":"SIMPELE-TEST-STRING", "result":false},
+        { "name":"invalid-mixed-case-wild","input":"SiMpeLe-TeSt-StRiNg", "result":false}
+      ]
+  	}
+  	,
+  	{
+      "name":"value=simple*; wildCard=true; ignoreCase=false",	
+      "resourceDef":{
+        "matcher":"org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher",
+        "matcherOptions":{"wildCard":true, "ignoreCase":false}
+      },
+      "policyResource":{
+      	"values": ["simple*"]
+      },
+      "tests":[
+      	{ "name":"all-lower","input":"simple", "result":true},
+      	{ "name":"all-upper","input":"SIMPLE", "result":false},
+      	{ "name":"mixed-case","input":"SiMpLe", "result":false},
+      	{ "name":"all-lower-wild","input":"simple-test-string", "result":true},
+      	{ "name":"all-upper-wild","input":"SIMPLE-TEST-STRING", "result":false},
+      	{ "name":"mixed-case-wild","input":"SiMpLe-TeSt-StRiNg", "result":false},
+      	{ "name":"invalid-all-lower","input":"other-string", "result":false},
+      	{ "name":"invalid-all-upper","input":"OTHER-STRING", "result":false},
+      	{ "name":"invalid-mixed-case","input":"oThEr-StRiNg", "result":false},
+      	{ "name":"invalid-lower-wild","input":"simpele-test-string", "result":false},
+      	{ "name":"invalid-upper-wild","input":"SIMPELE-TEST-STRING", "result":false},
+        { "name":"invalidmixed-case-wild","input":"SiMpeLe-TeSt-StRiNg", "result":false}
+      ]
+  	}
+  	,
+  	{
+      "name":"value=simple?; wildCard=true; ignoreCase=true",	
+      "resourceDef":{
+        "matcher":"org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher",
+        "matcherOptions":{"wildCard":true, "ignoreCase":true}
+      },
+      "policyResource":{
+      	"values": ["simple?"]
+      },
+      "tests":[
+      	{ "name":"all-lower","input":"simple1", "result":true},
+      	{ "name":"all-upper","input":"SIMPLE1", "result":true},
+      	{ "name":"mixed-case","input":"SiMpLe1", "result":true},
+      	{ "name":"all-lower-wild-exact","input":"simple?", "result":true},
+      	{ "name":"all-upper-wild-exact","input":"SIMPLE?", "result":true},
+      	{ "name":"mixed-case-wild-exact","input":"SiMpLe?", "result":true},
+      	{ "name":"invalid-all-lower","input":"simple", "result":false},
+      	{ "name":"invalid-all-upper","input":"SIMPLE", "result":false},
+      	{ "name":"invalid-mixed-case","input":"SiMpLe", "result":false},
+      	{ "name":"invalid-all-lower","input":"simple11", "result":false},
+      	{ "name":"invalid-all-upper","input":"SIMPLE11", "result":false},
+      	{ "name":"invalid-mixed-case","input":"SiMpLe11", "result":false},
+      	{ "name":"invalid-all-lower-wild","input":"simple-test-string", "result":false},
+      	{ "name":"invalid-all-upper-wild","input":"SIMPLE-TEST-STRING", "result":false},
+      	{ "name":"invalid-mixed-case-wild","input":"SiMpLe-TeSt-StRiNg", "result":false},
+      	{ "name":"invalid-all-lower","input":"other-string", "result":false},
+      	{ "name":"invalid-all-upper","input":"OTHER-STRING", "result":false},
+      	{ "name":"invalid-mixed-case","input":"oThEr-StRiNg", "result":false},
+      	{ "name":"invalid-lower-wild","input":"simpele-test-string", "result":false},
+      	{ "name":"invalid-upper-wild","input":"SIMPELE-TEST-STRING", "result":false},
+        { "name":"invalid-mixed-case-wild","input":"SiMpeLe-TeSt-StRiNg", "result":false}
+      ]
+  	}
+  	,
+  	{
+      "name":"value=simple?string; wildCard=true; ignoreCase=true",	
+      "resourceDef":{
+        "matcher":"org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher",
+        "matcherOptions":{"wildCard":true, "ignoreCase":true}
+      },
+      "policyResource":{
+      	"values": ["simple?string"]
+      },
+      "tests":[
+      	{ "name":"all-lower","input":"simple1string", "result":true},
+      	{ "name":"all-upper","input":"SIMPLE1STRING", "result":true},
+      	{ "name":"mixed-case","input":"SiMpLe1StRiNg", "result":true},
+      	{ "name":"all-lower-wild-exact","input":"simple?string", "result":true},
+      	{ "name":"all-upper-wild-exact","input":"SIMPLE?STRING", "result":true},
+      	{ "name":"mixed-case-wild-exact","input":"SiMpLe?StRiNg", "result":true},
+      	{ "name":"all-lower-wild","input":"simple-test-string", "result":false},
+      	{ "name":"all-upper-wild","input":"SIMPLE-TEST-STRING", "result":false},
+      	{ "name":"mixed-case-wild","input":"SiMpLe-TeSt-StRiNg", "result":false},
+      	{ "name":"invalid-all-lower","input":"other-string-simple", "result":false},
+      	{ "name":"invalid-all-upper","input":"OTHER-STRING-simple", "result":false},
+      	{ "name":"invalid-mixed-case","input":"oThEr-StRiNg-simple", "result":false},
+      	{ "name":"invalid-lower-wild","input":"simpele-test-string", "result":false},
+      	{ "name":"invalid-upper-wild","input":"SIMPELE-TEST-STRING", "result":false},
+        { "name":"invalid-mixed-case-wild","input":"SiMpeLe-TeSt-StRiNg", "result":false}
+      ]
+  	}
+  	,
+  	{
+      "name":"value=simple?string?; wildCard=true; ignoreCase=true",	
+      "resourceDef":{
+        "matcher":"org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher",
+        "matcherOptions":{"wildCard":true, "ignoreCase":true}
+      },
+      "policyResource":{
+      	"values": ["simple?string?"]
+      },
+      "tests":[
+      	{ "name":"all-lower","input":"simple1string1", "result":true},
+      	{ "name":"all-upper","input":"SIMPLE1STRING1", "result":true},
+      	{ "name":"mixed-case","input":"SiMpLe1StRiNg1", "result":true},
+      	{ "name":"all-lower-wild-exact","input":"simple?string?", "result":true},
+      	{ "name":"all-upper-wild-exact","input":"SIMPLE?STRING?", "result":true},
+      	{ "name":"mixed-case-wild-exact","input":"SiMpLe*StRiNg?", "result":true},
+      	{ "name":"all-lower","input":"simple1string", "result":false},
+      	{ "name":"all-upper","input":"SIMPLE1STRING11", "result":false},
+      	{ "name":"mixed-case","input":"SiMpLe1StRiNg11", "result":false},
+      	{ "name":"all-lower-wild","input":"simple-test-string", "result":false},
+      	{ "name":"all-upper-wild","input":"SIMPLE-TEST-STRING", "result":false},
+      	{ "name":"mixed-case-wild","input":"SiMpLe-TeSt-StRiNg", "result":false},
+      	{ "name":"invalid-all-lower","input":"other-string", "result":false},
+      	{ "name":"invalid-all-upper","input":"OTHER-STRING", "result":false},
+      	{ "name":"invalid-mixed-case","input":"oThEr-StRiNg", "result":false},
+      	{ "name":"invalid-lower-wild","input":"simpele-test-string", "result":false},
+      	{ "name":"invalid-upper-wild","input":"SIMPELE-TEST-STRING", "result":false},
+        { "name":"invalid-mixed-case-wild","input":"SiMpeLe-TeSt-StRiNg", "result":false}
+      ]
+  	}
+  	,
+  	{
+      "name":"value=simple1,simple2,wild*,onechar?,star*onechar?; wildCard=true; ignoreCase=true",	
+      "resourceDef":{
+        "matcher":"org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher",
+        "matcherOptions":{"wildCard":true, "ignoreCase":true}
+      },
+      "policyResource":{
+      	"values": ["simple1","simple2","wild*","onechar?","star*onechar?"]
+      },
+      "tests":[
+      	{ "name":"val1-all-lower","input":"simple1", "result":true},
+      	{ "name":"val2-all-lower","input":"simple2", "result":true},
+      	{ "name":"val3-all-lower","input":"wild*", "result":true},
+      	{ "name":"val4-all-lower","input":"onechar?", "result":true},
+      	{ "name":"val5-all-lower","input":"star*onechar?", "result":true},
+      	{ "name":"val3-all-lower-wild","input":"wild", "result":true},
+      	{ "name":"val3-all-lower-wild","input":"wildstring", "result":true},
+      	{ "name":"val4-all-lower","input":"onechar1", "result":true},
+      	{ "name":"val5-all-lower","input":"star-studded-onechar1", "result":true},
+      	{ "name":"val1-captialize","input":"Simple1", "result":true},
+      	{ "name":"val1-all-upper","input":"SIMPLE1", "result":true},
+      	{ "name":"val3-captialize-wild","input":"Wild", "result":true},
+      	{ "name":"val3-mixed-case-wild","input":"WiLdStR", "result":true},
+      	{ "name":"val1-mixed-case","input":"SiMpLe1", "result":true},
+      	{ "name":"val1-mixed-case","input":"sImPlE1", "result":true},
+      	{ "name":"val1-extra-at-end","input":"simple11", "result":false},
+      	{ "name":"val1-extra-at-begin","input":"1simple1", "result":false},
+      	{ "name":"val3-extra-at-begin-wild","input":"mywildstring", "result":false},
+      	{ "name":"val3-extra-at-begin-wild","input":"mywildstring", "result":false},
+      	{ "name":"val4-all-lower","input":"onechar11", "result":false},
+        { "name":"val5-all-lower","input":"star-studded-onechar11", "result":false}
+      ]
+  	}
+  ]
+}

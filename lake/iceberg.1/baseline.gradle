@@ -1,0 +1,117 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+
+apply plugin: 'com.palantir.baseline-config'
+
+allprojects {
+  apply plugin: 'com.palantir.baseline-idea'
+}
+
+subprojects {
+  // Currently, if any subproject applies the blanket Baseline plugin, it forces the Baseline plugin
+  // to be applied to ALL projects. And we are not prepared to address all of the build errors that
+  // occur as a result at this time. Furthermore, baseline-format will not work out of the box for
+  // us - see below.
+
+  // Thus we concede to applying all of the Baseline plugins individually on all the projects we are
+  // ready to enforce linting on.
+  apply plugin: 'org.inferred.processors'
+  if (!project.hasProperty('quick')) {
+    apply plugin: 'com.palantir.baseline-checkstyle'
+    apply plugin: 'com.palantir.baseline-error-prone'
+  }
+  apply plugin: 'com.palantir.baseline-class-uniqueness'
+  apply plugin: 'com.palantir.baseline-reproducibility'
+  apply plugin: 'com.palantir.baseline-exact-dependencies'
+  apply plugin: 'com.palantir.baseline-release-compatibility'
+  apply plugin: 'com.diffplug.spotless'
+
+  pluginManager.withPlugin('com.palantir.baseline-checkstyle') {
+    checkstyle {
+      // com.palantir.baseline:gradle-baseline-java:4.42.0 (the last version supporting Java 8) pulls
+      // in an old version of the checkstyle(9.1), which has this OutOfMemory bug https://github.com/checkstyle/checkstyle/issues/10934.
+      // So, override its checkstyle version using CheckstyleExtension to 9.3 (the latest java 8 supported version) which contains a fix.
+      toolVersion '9.3'
+    }
+  }
+
+  pluginManager.withPlugin('com.diffplug.spotless') {
+    spotless {
+      java {
+        target 'src/main/java/**/*.java', 'src/test/java/**/*.java', 'src/jmh/java/**/*.java', 'src/integration/java/**/*.java'
+        // we use an older version of google-java-format that is compatible with JDK 8
+        googleJavaFormat("1.7")
+        removeUnusedImports()
+        licenseHeaderFile "$rootDir/.baseline/copyright/copyright-header-java.txt"
+      }
+    }
+  }
+
+  pluginManager.withPlugin('com.palantir.baseline-error-prone') {
+    tasks.withType(JavaCompile).configureEach {
+      options.errorprone.errorproneArgs.addAll (
+          // error-prone is slow, don't run on tests/generated-src/generated
+          '-XepExcludedPaths:.*/(test|generated-src|generated)/.*',
+          // specific to Palantir
+          '-Xep:ConsistentLoggerName:OFF',  // Uses name `log` but we use name `LOG`
+          '-Xep:FinalClass:OFF',
+          '-Xep:PreferSafeLoggingPreconditions:OFF',
+          '-Xep:PreferSafeLoggableExceptions:OFF',
+          '-Xep:Slf4jLogsafeArgs:OFF',
+          '-Xep:RawTypes:OFF',
+          // enforce logging conventions
+          '-Xep:LoggerEnclosingClass:ERROR',
+          '-Xep:PreferStaticLoggers:ERROR',
+          '-Xep:Slf4jThrowable:ERROR',
+          // subclasses are not equal
+          '-Xep:EqualsGetClass:OFF',
+          // prefer method references over lambdas
+          '-Xep:LambdaMethodReference:ERROR',
+          // patterns that are allowed
+          '-Xep:MissingCasesInEnumSwitch:OFF',
+          //Added because it errors out compile, but we need to figure out if we want it
+          '-Xep:StrictUnusedVariable:OFF',
+          '-Xep:TypeParameterShadowing:OFF',
+          '-Xep:TypeParameterUnusedInFormals:OFF',
+          '-Xep:DangerousThreadPoolExecutorUsage:OFF',
+          // Enforce hashCode over hash
+          '-Xep:ObjectsHashCodeUnnecessaryVarargs:ERROR',
+          '-Xep:PreferSafeLogger:OFF',
+          // Enforce safe string splitting
+          '-Xep:StringSplitter:ERROR',
+          // Enforce missing override
+          '-Xep:MissingOverride:ERROR',
+          '-Xep:IntLongMath:ERROR',
+          '-Xep:MissingSummary:ERROR',
+          '-Xep:AnnotateFormatMethod:ERROR',
+      )
+    }
+  }
+
+  pluginManager.withPlugin('com.github.alisiikh.scalastyle') {
+    scalastyle {
+      config = file("${rootDir}/project/scalastyle_config.xml")
+      inputEncoding = 'UTF-8'
+      outputEncoding = 'UTF-8'
+      failOnWarning = false
+      verbose = false
+      quiet = false
+    }
+  }
+}

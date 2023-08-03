@@ -1,0 +1,248 @@
+{
+  "serviceName":"hivedev",
+
+  "serviceDef":{
+    "name":"hive",
+    "id":3,
+    "resources":[
+      {"name":"database","level":1,"mandatory":true,"lookupSupported":true,"matcher":"org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher","matcherOptions":{"wildCard":true, "ignoreCase":true},"label":"Hive Database","description":"Hive Database"},
+      {"name":"global","level":1,"mandatory":true,"lookupSupported":true,"matcher":"org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher","matcherOptions":{"wildCard":true, "ignoreCase":true},"label":"Global","description":"Global"},
+      {"name":"url","level":1,"mandatory":true,"lookupSupported":true,"matcher":"org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher","matcherOptions":{"wildCard":true, "ignoreCase":true},"label":"URL","description":"URL"},
+      {"name":"hiveservice","level":1,"mandatory":true,"lookupSupported":true,"matcher":"org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher","matcherOptions":{"wildCard":true, "ignoreCase":true},"label":"Hive Service","description":"Hive Service"},
+      {"name":"table","level":2,"parent":"database","mandatory":true,"lookupSupported":true,"matcher":"org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher","matcherOptions":{"wildCard":true, "ignoreCase":true},"label":"Hive Table","description":"Hive Table"},
+      {"name":"udf","level":2,"parent":"database","mandatory":true,"lookupSupported":true,"matcher":"org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher","matcherOptions":{"wildCard":true, "ignoreCase":true},"label":"Hive UDF","description":"Hive UDF"},
+      {"name":"column","level":3,"parent":"table","mandatory":true,"lookupSupported":true,"matcher":"org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher","matcherOptions":{"wildCard":true, "ignoreCase":true},"label":"Hive Column","description":"Hive Column"}
+    ],
+    "accessTypes":[
+      {"name":"select","label":"Select"},
+      {"name":"update","label":"Update"},
+      {"name":"create","label":"Create"},
+      {"name":"drop","label":"Drop"},
+      {"name":"alter","label":"Alter"},
+      {"name":"index","label":"Index"},
+      {"name":"lock","label":"Lock"},
+      {"name":"all","label":"All",
+        "impliedGrants": [
+          "select",
+          "update",
+          "create",
+          "drop",
+          "alter",
+          "index",
+          "lock"
+        ]
+      }
+    ]
+  },
+
+  "serviceConfig": {
+    "ranger.plugin.audit.filters": "[ {'accessResult': 'DENIED', 'isAudited': true}, {'resources':{'database':{'values':['temp']},'table':{'values':['tempdata']},'column':{'values':['*']}},'isAudited' : false}, {'resources':{'database':{'values':['sys']},'table':{'values':['dump']}},'users':['user2'],'isAudited': false }, {'actions':['METADATA OPERATION'], 'isAudited': false}, {'users':['superuser1'],'groups':['supergroup1'], 'isAudited': false} ]"
+ },
+
+"policies": [
+    {"id":1,"name":"db=*:table=*,column=*","isEnabled":true,"isAuditEnabled":true,"policyType":0,
+      "resources":{"database":{"values":["*"]},"table":{"values":["*"]},"column":{"values":["*"]}},
+      "policyItems":[
+        {"accesses":[{"type":"select","isAllowed":true}],"users":["hive", "user1", "user2", "superuser1"],"groups":["supergroup1"],"delegateAdmin":false}
+      ]
+    }
+  ],
+  "tagPolicyInfo": {
+
+    "serviceName":"tagdev",
+    "serviceDef": {
+      "name": "tag",
+      "id": 100,
+      "resources": [
+        {
+          "itemId": 1,
+          "name": "tag",
+          "type": "string",
+          "level": 1,
+          "parent": "",
+          "mandatory": true,
+          "lookupSupported": true,
+          "recursiveSupported": false,
+          "excludesSupported": false,
+          "matcher": "org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher",
+          "matcherOptions": {
+            "wildCard": true,
+            "ignoreCase": false
+          },
+          "validationRegEx": "",
+          "validationMessage": "",
+          "uiHint": "",
+          "label": "TAG",
+          "description": "TAG"
+        }
+      ],
+      "accessTypes": [
+        {
+          "itemId": 1,
+          "name": "hive:select",
+          "label": "hive:select"
+        },
+        {
+          "itemId": 2,
+          "name": "hive:update",
+          "label": "hive:update"
+        },
+        {
+          "itemId": 3,
+          "name": "hive:create",
+          "label": "hive:create"
+        }
+      ,
+        {
+          "itemId": 4,
+          "name": "hive:grant",
+          "label": "hive:grant"
+        }
+      ,
+        {
+          "itemId": 5,
+          "name": "hive:drop",
+          "label": "hive:drop"
+        }
+      ,
+        {
+          "itemId": 6,
+          "name": "hive:alter",
+          "label": "hive:alter"
+        },
+        {
+          "itemId": 7,
+          "name": "hive:index",
+          "label": "hive:index"
+        },
+        {
+          "itemId": 8,
+          "name": "hive:lock",
+          "label": "hive:lock"
+        },
+        {
+          "itemId": 9,
+          "name": "hive:all",
+          "label": "hive:all",
+          "impliedGrants":
+          [
+            "hive:select",
+            "hive:update",
+            "hive:create",
+            "hive:grant",
+            "hive:drop",
+            "hive:alter",
+            "hive:index",
+            "hive:lock"
+          ]
+        }
+      ],
+      "contextEnrichers": [],
+      "policyConditions": []
+    },
+
+    "serviceConfig": {
+      "ranger.plugin.audit.filters": "[ {'resources':{'tag':{'values':['NO_AUDIT']}},'isAudited': false}, {'resources':{'tag':{'values':['SYS_DATA']}},'users':['user1'],'isAudited': false}, {'resources':{'tag':{'values':['HIPPA']}},'users':['user1'], 'isAudited': true} ]"
+    },
+
+    "tagPolicies":[
+      {"id":1001,"name":"DEFAULT","isEnabled":true,"isAuditEnabled":true,
+        "resources":{"tag":{"values":["DEFAULT"],"isRecursive":false}},
+        "policyItems":[{"accesses":[{"type":"hive:select","isAllowed":true}],"users":["hive", "user1"],"groups":[],"delegateAdmin":false}]
+      },
+      {"id":1002,"name":"HIPPA","isEnabled":true,"isAuditEnabled":true,
+        "resources":{"tag":{"values":["HIPPA"],"isRecursive":false}},
+        "policyItems":[{"accesses":[{"type":"hive:select","isAllowed":true}],"users":["hive", "user1","user2"],"groups":[],"delegateAdmin":false}]
+      }
+    ]
+  },
+
+  "tests": [
+    {"name":"cmd -> select * from temp.tempdata, discard access audit for user1 to table -> temp.tempdata",
+      "request":{
+        "resource":{"elements":{"database":"temp","table":"tempdata", "column": "*"}},
+        "accessType":"select","user":"user1","userGroups":["user1"],"requestData":"select * from temp.tempdata"
+      },
+      "result":{"isAudited":false,"isAllowed":true,"policyId":-1}
+    },
+    {"name":"cmd -> use temp, discard access audit for user1 to database -> temp" ,
+      "request":{
+        "resource":{"elements":{"database":"temp"},
+          "accessType":"_any","user":"user1","userGroups":["user1"],"requestData":"use temp"
+        },
+        "result":{"isAudited":false,"isAllowed":true,"policyId":-1}
+      }
+    },
+    {"name":"cmd -> select * from sys.dump, discard access audit for user2 to table -> sys.dump",
+      "request":{
+        "resource":{"elements":{"database":"sys","table":"dump"}},
+        "accessType":"select","user":"user2","userGroups":[],"requestData":"select * from sys.dump"
+      },
+      "result":{"isAudited":false,"isAllowed":true,"policyId":-1}
+    },
+    {"name":"cmd -> select * from hr.emp, discard access audit for superuser1 for access to table -> hr.emp",
+      "request":{
+        "resource":{"elements":{"database":"hr"}},
+        "accessType":"select","user":"superuser1","userGroups":[],"requestData":"select * from hr.emp"
+      },
+      "result":{"isAudited":false,"isAllowed":true,"policyId":-1}
+    },
+    {"name":"cmd -> select * from hr.emp, discard access audit for supergroup1 to table -> hr.emp",
+      "request":{
+        "resource":{"elements":{"database":"hr","table":"emp"}},
+        "accessType":"select","user":"","userGroups":["supergroup1"],"requestData":"select * from hr.emp"
+      },
+      "result":{"isAudited":false,"isAllowed":true,"policyId":-1}
+    },
+    {"name":"cmd -> select * from hr.emp;', Audit access for user4 to table hr.emp",
+      "request":{
+        "resource":{"elements":{"database":"hr","table":"emp"}},
+        "accessType":"select","user":"user4","userGroups":[],"requestData":"select * from hr.emp"
+      },
+      "result":{"isAudited":true,"isAllowed":false,"policyId":-1}
+    },
+    {"name":"cmd -> select * from sys.scheduled_queries, discard access audit for hive operation = METADATA OPERATION",
+      "request":{
+        "resource":{"elements":{"database":"sys","table":"scheduled_queries"}},
+        "accessType":"select","user":"hive","userGroups":[],"requestData":"select * from sys.scheduled_queries","action": "METADATA OPERATION"
+      },
+      "result":{"isAudited":false,"isAllowed":true,"policyId":-1}
+    },
+
+    {"name":"cmd -> select name from medical.data, Audit access of resources with TAG = HIPPA",
+      "request":{
+        "resource":{"elements":{"database":"medical", "table":"data", "column":"name"}},
+        "accessType":"select","user":"user2","userGroups":[],"requestData":"select name from medical.data for user1",
+        "context": {"TAGS": "[{\"type\":\"HIPPA\"}]"}
+      },
+      "result":{"isAudited":true,"isAllowed":true,"policyId":-1}
+    },
+
+    {"name":"cmd -> select name from temp.data, discard  access audit of resources with TAG = NO_AUDIT",
+      "request":{
+        "resource":{"elements":{"database":"temp", "table":"data", "column":"name"}},
+        "accessType":"select","user":"user1","userGroups":[],"requestData":"select name from temp.data for user1",
+        "context": {"TAGS": "[{\"type\":\"NO_AUDIT\"}]"}
+      },
+      "result":{"isAudited":false,"isAllowed":true,"policyId":-1}
+    },
+
+    {"name":"cmd -> select name from sysdb.data, discard access audit of resources with TAG = SYS_DATA",
+      "request":{
+        "resource":{"elements":{"database":"sysdb", "table":"data", "column":"name"}},
+        "accessType":"select","user":"user1","userGroups":[],"requestData":"select name from sysdb.data for user1",
+        "context": {"TAGS": "[{\"type\":\"SYS_DATA\"}]"}
+      },
+      "result":{"isAudited":false,"isAllowed":true,"policyId":-1}
+    },
+
+    {"name":"cmd -> use sysdb, discard access audit of resource with TAG = SYS_DATA",
+      "request":{
+        "resource":{"elements":{"database":"sysdb"}},
+        "accessType":"_any","user":"user1","userGroups":[],"requestData":"use sysdb",
+        "context": {"TAGS": "[{\"type\":\"SYS_DATA\"}]"}
+      },
+      "result":{"isAudited":false,"isAllowed":true,"policyId":-1}
+    }
+  ]
+}

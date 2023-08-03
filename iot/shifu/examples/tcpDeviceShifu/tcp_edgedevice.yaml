@@ -1,0 +1,14 @@
+apiVersion: shifu.edgenesis.io/v1alpha1
+kind: EdgeDevice
+metadata:
+  name: edgedevice-tcp
+  namespace: devices
+spec:
+  sku: "testTcp"
+  connection: Ethernet
+  address: 192.168.38.46:11122 #change this accordingly
+  protocol: TCP
+  protocolSettings:
+    TCPSetting:
+      NetworkType: tcp
+      ListenPort: "8081"

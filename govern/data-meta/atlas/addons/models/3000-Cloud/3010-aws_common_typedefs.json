@@ -1,0 +1,55 @@
+{
+    "enumDefs": [],
+    "structDefs": [
+        {
+            "name":        "aws_tag",
+            "description": "Atlas Type representing a tag/value pair associated with an AWS object, eg S3 bucket",
+            "serviceType": "aws",
+            "typeVersion": "1.0",
+            "attributeDefs": [
+                {
+                    "name":        "key",
+                    "typeName":    "string",
+                    "cardinality": "SINGLE",
+                    "isIndexable": true,
+                    "isOptional":  false,
+                    "isUnique":    false
+                },
+                {
+                    "name":        "value",
+                    "typeName":    "string",
+                    "cardinality": "SINGLE",
+                    "isIndexable": false,
+                    "isOptional":  false,
+                    "isUnique":    false
+                }
+            ]
+        },
+        {
+            "name":        "aws_cloud_watch_metric",
+            "description": "Atlas Type representing a metric provided by AWS Cloud Watch",
+            "serviceType": "aws",
+            "typeVersion": "1.0",
+            "attributeDefs": [
+                {
+                    "name":        "metricName",
+                    "typeName":    "string",
+                    "cardinality": "SINGLE",
+                    "isIndexable": true,
+                    "isOptional":  false,
+                    "isUnique":    false
+                },
+                {
+                    "name":        "scope",
+                    "typeName":    "string",
+                    "cardinality": "SINGLE",
+                    "isIndexable": false,
+                    "isOptional":  false,
+                    "isUnique":    false
+                }
+            ]
+        }
+    ],
+    "classificationDefs": [],
+    "entityDefs": []
+}

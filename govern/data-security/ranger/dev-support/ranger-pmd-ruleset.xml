@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one
+  or more contributor license agreements. See the NOTICE file
+  distributed with this work for additional information
+  regarding copyright ownership. The ASF licenses this file
+  to you under the Apache License, Version 2.0 (the
+  "License"); you may not use this file except in compliance
+  with the License. You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing,
+  software distributed under the License is distributed on an
+  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+  KIND, either express or implied. See the License for the
+  specific language governing permissions and limitations
+  under the License.
+-->
+<ruleset name="ranger-pmd" xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 http://pmd.sourceforge.net/ruleset_2_0_0.xsd">
+  <description>
+     Apache Ranger - PMD rule set
+  </description>
+
+  <rule ref="category/java/codestyle.xml">
+    <!-- TODO: can be Handle -->
+    <exclude name="UnnecessaryLocalBeforeReturn" />
+    <exclude name="UnnecessaryModifier" />
+    <exclude name="UnnecessaryConstructor" />
+    <exclude name="UnnecessaryFullyQualifiedName" />
+    <exclude name="UnnecessaryAnnotationValueElement" />
+    <exclude name="LocalVariableNamingConventions" />
+    <exclude name="AvoidDollarSigns" />
+    <exclude name="ClassNamingConventions" />
+    <exclude name="UnnecessaryCast" />
+    <!-- Nothing -->
+    <exclude name="LocalVariableCouldBeFinal" />
+    <exclude name="MethodArgumentCouldBeFinal" />
+    <exclude name="ShortVariable" />
+    <exclude name="LongVariable" />
+    <exclude name="IdenticalCatchBranches" />
+    <exclude name="ControlStatementBraces" />
+    <exclude name="UselessParentheses" />
+    <exclude name="FieldNamingConventions" />
+    <exclude name="ConfusingTernary" />
+    <exclude name="OnlyOneReturn" />
+    <exclude name="AtLeastOneConstructor" />
+    <exclude name="PrematureDeclaration" />
+    <exclude name="CallSuperInConstructor" />
+    <exclude name="DefaultPackage" />
+    <exclude name="CommentDefaultAccessModifier" />
+    <exclude name="UseDiamondOperator" />
+    <exclude name="FieldDeclarationsShouldBeAtStartOfClass" />
+    <exclude name="BooleanGetMethodName" />
+    <exclude name="EmptyMethodInAbstractClassShouldBeAbstract" />
+    <exclude name="UseUnderscoresInNumericLiterals" />
+    <exclude name="MethodNamingConventions" />
+    <exclude name="UseShortArrayInitializer" />
+    <exclude name="LinguisticNaming" />
+    <exclude name="ShortClassName" />
+    <exclude name="FormalParameterNamingConventions" />
+    <exclude name="ShortMethodName" />
+    <exclude name="PackageCase" />
+    <exclude name="GenericsNaming" />
+    <exclude name="TooManyStaticImports" />
+  </rule>
+  <rule ref="category/java/bestpractices.xml">
+    <!-- TODO: can be Handle -->
+    <exclude name="ForLoopCanBeForeach" />
+    <exclude name="UseCollectionIsEmpty" />
+    <exclude name="UnusedLocalVariable" />
+    <exclude name="ForLoopVariableCount" />
+    <exclude name="DoubleBraceInitialization" />
+    <exclude name="AbstractClassWithoutAbstractMethod" />
+    <exclude name="UseTryWithResources" />
+    <exclude name="GuardLogStatement" /> <!-- TODO: guard only debug log level-->
+    <exclude name="UnusedAssignment" />
+    <!-- Nothing -->
+    <exclude name="AvoidReassigningParameters" />
+    <exclude name="MissingOverride" />
+    <exclude name="AvoidPrintStackTrace" />
+    <exclude name="SystemPrintln" />
+    <exclude name="UseVarargs" />
+    <exclude name="LiteralsFirstInComparisons" />
+    <exclude name="JUnitAssertionsShouldIncludeMessage" />
+    <exclude name="UseAssertEqualsInsteadOfAssertTrue" />
+    <exclude name="AvoidUsingHardCodedIP" />
+    <exclude name="AccessorMethodGeneration" />
+    <exclude name="PositionLiteralsFirstInCaseInsensitiveComparisons" />
+    <exclude name="LooseCoupling" />
+    <exclude name="SwitchStmtsShouldHaveDefault" />
+    <exclude name="AvoidReassigningLoopVariables" />
+    <exclude name="JUnitTestContainsTooManyAsserts" />
+    <exclude name="JUnitTestsShouldIncludeAssert" />
+    <exclude name="JUnit4TestShouldUseTestAnnotation" />
+    <exclude name="UseAssertSameInsteadOfAssertTrue" />
+    <exclude name="UseAssertNullInsteadOfAssertTrue" />
+    <exclude name="UseAssertTrueInsteadOfAssertEquals" />
+    <exclude name="MethodReturnsInternalArray" />
+    <exclude name="PreserveStackTrace" />
+    <exclude name="OneDeclarationPerLine" />
+    <exclude name="ArrayIsStoredDirectly" />
+    <exclude name="AccessorClassGeneration" />
+    <exclude name="ConstantsInInterface" />
+  </rule>
+  <rule ref="category/java/multithreading.xml">
+    <!-- TODO: can be Handle -->
+    <exclude name="DontCallThreadRun" />
+    <exclude name="DoubleCheckedLocking" />
+    <exclude name="AvoidSynchronizedAtMethodLevel" />
+    <exclude name="UseConcurrentHashMap" />
+    <exclude name="AvoidUsingVolatile" />
+    <!-- Nothing -->
+    <exclude name="DoNotUseThreads" />
+    <exclude name="UseNotifyAllInsteadOfNotify" />
+    <exclude name="NonThreadSafeSingleton" />
+</rule>
+
+</ruleset>

@@ -1,0 +1,47 @@
+#
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied.  See the License for the
+# specific language governing permissions and limitations
+# under the License.
+#
+# This is a sample geolocation data format used by Ranger
+# If a line contains '#' as a first-nonblank character then it is considered a comment line
+# First non-comment line in the file must be metadata line
+# Format of metadata and data lines is strictly Comma-Separated-Values. Spaces are not allowed to surround commas.
+# Only IP-4 address values in dot-notation or as long integers are supported.
+#
+FROM_IP,TO_IP,COUNTRY_CODE,COUNTRY_NAME,STATE,CITY,ZIP,LAT,LONG
+167772415,167772928,US,United States,CA
+335570020,335570029,US,United States,MT
+335570000,335570009,CA,Canada
+335570030,335570039,BR,Brazil
+335569990,335569993,IN,India
+335570040,335570049,NG,Nigeria
+335570010,335570014,AUS,Austalia
+335569994,335569999,AN,Angola
+335570015,335570019,UK,United Kingdom
+3229639681,3229639755,FR,France
+16777216,16777471,AU,Australia,Queensland,Brisbane
+16777472,16778239,CN,China,Fujian,Fuzhou,
+16778240,16778495,AU,Australia,Victoria,Melbourne,
+16778496,16779263,AU,Australia,-,-,
+16779264,16781311,CN,China,Guangdong,Guangzhou,
+4294967040,4294967295,CN,China,Guangdong,Guangzhou,
+16781312,16785407,JP,Japan,Tokyo,Tokyo,
+16785408,16793599,CN,China,Guangdong,Guangzhou,
+16793600,16797695,JP,Japan,Hiroshima,Hiroshima,
+16797696,16798719,JP,Japan,Tokyo,Tokyo,
+2154128740,2154128895,US,United States,Minnesota,Minneapolis
+#16797696,16798719,JP,Japan,Tokyo,Tokyo

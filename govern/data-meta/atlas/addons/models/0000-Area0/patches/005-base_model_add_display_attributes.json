@@ -1,0 +1,33 @@
+{
+  "patches": [
+    {
+      "id": "TYPEDEF_PATCH_0005_001",
+      "description": "Add displayName and userDescription to Asset",
+      "action": "ADD_ATTRIBUTE",
+      "typeName": "Asset",
+      "applyToVersion": "1.5",
+      "updateToVersion": "1.6",
+      "params": null,
+      "attributeDefs": [
+        {
+          "name": "displayName",
+          "typeName": "string",
+          "cardinality": "SINGLE",
+          "isIndexable": true,
+          "isOptional": true,
+          "isUnique": false,
+          "indexType": "STRING"
+        },
+        {
+          "name": "userDescription",
+          "typeName": "string",
+          "cardinality": "SINGLE",
+          "isIndexable": true,
+          "isOptional": true,
+          "isUnique": false,
+          "indexType": "STRING"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+{{!-- 
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+--}}
+<div class="diff-content">
+	<div class="no-margin label-size13-weightbold">Name: {{objectName}}</div>
+	<div class="no-margin label-size13-weightbold">Date: {{objectCreatedDate}}</div>
+	<div class="no-margin label-size13-weightbold">Created By: {{userName}}</div>
+{{#compare action 'eq' 'create'}}
+	{{#if collection.length}}
+		<h5 class="bold wrap-header m-t-sm">User Details:</h5>
+		<div class="diff">
+			<div class="diff-left">
+				<h3>Fields</h3>
+				<ol class="attr">
+				{{#each collection}}
+					<li class="change-row">{{./this.attributes.attributeName}}</li>
+				{{/each}}	
+				</ol>
+			</div>
+			<div class="diff-right">
+				<h3>New Value</h3>
+				<ol class="list-unstyled data">
+				{{#each collection}}
+					{{#if ./this.attributes.newValue}}
+						{{#compare ./this.attributes.newValue "eq" ''}}
+	  						<li>--</li>		
+						{{else}}
+	  						<li class="change-row">{{./this.attributes.newValue}}</li>
+						{{/compare}}
+					{{else}}
+						<li>--</li>
+					{{/if}}		
+				{{/each}}	
+				</ol>
+			</div>
+		</div>
+	{{/if}}	
+ 	{{#if isGroup}}
+		<h5 class="bold wrap-header m-t-sm">Group:</h5>
+		<div class="diff">
+			<div class="diff-left">
+				<h3>Fields</h3>
+				<ol class="attr">
+					<li class="change-row">Groups</li>
+				</ol>
+			</div>
+			<div class="diff-right" data-id="diff">
+				<h3>New Value</h3>
+				<ol class="list-unstyled data">
+					<li class="change-row">
+						{{#each newGroupList}}
+							{{./this}} 
+							<span>,</span>
+						{{/each}}
+					</li>
+				</ol>
+			</div>
+		</div>
+	{{/if}}
+
+{{else}}
+	<label class="no-margin label-size13-weightbold">Deleted By: {{userName}}</label>
+	{{#if collection.length}}
+	<h5 class="bold wrap-header m-t-sm">User Details:</h5>
+		<div class="diff">
+			<div class="diff-left">
+				<h3>Fields</h3>
+					<ol class="attr">
+					{{#each collection}}
+						<li class="change-row">{{./this.attributes.attributeName}}</li>
+					{{/each}}
+					</ol>
+			</div>
+			<div class="diff-right">
+				<h3>Old Value</h3>
+					<ol class="list-unstyled data">
+					{{#each collection}}
+						{{#if ./this.attributes.previousValue}}
+							<li class="change-row">{{./this.attributes.previousValue}}</li>
+						{{else}}
+							<li class="change-row">--</li>
+						{{/if}}
+					{{/each}}
+					</ol>
+			</div>
+		</div>
+	{{/if}}
+{{/compare}}
+</div>

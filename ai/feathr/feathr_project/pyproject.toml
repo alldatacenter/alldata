@@ -1,0 +1,23 @@
+[tool.black]
+line-length = 120
+target_version = ['py38']
+
+[tool.isort]
+profile = "black"
+line_length = 120
+known_first_party = ['feathr']
+force_sort_within_sections = true
+multi_line_output = 3
+
+[tool.pytest.ini_options]
+markers = [
+    "notebooks: Jupyter notebook tests. Target Spark platform can be either Azure Synapse, Databricks, or Local Spark.",
+    "databricks: Jupyter notebook tests. Target Spark platform must be Databricks",
+]
+
+[build-system]
+requires = [
+    "setuptools",
+    "wheel"
+]
+build-backend = "setuptools.build_meta"

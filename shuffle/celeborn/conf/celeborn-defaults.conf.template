@@ -1,0 +1,47 @@
+#
+# Licensed to the Apache Software Foundation (ASF) under one or more
+# contributor license agreements.  See the NOTICE file distributed with
+# this work for additional information regarding copyright ownership.
+# The ASF licenses this file to You under the Apache License, Version 2.0
+# (the "License"); you may not use this file except in compliance with
+# the License.  You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
+# An Example:
+celeborn.rpc.io.mode                             NIO
+celeborn.rpc.io.clientThreads                    8
+celeborn.rpc.io.serverThreads                    8
+celeborn.rpc.io.numConnectionsPerPeer            2
+
+celeborn.push.io.numConnectionsPerPeer           2
+celeborn.worker.push.io.threads                  8
+
+celeborn.metrics.enabled                         true
+celeborn.metrics.master.prometheus.port          9098
+celeborn.metrics.worker.prometheus.port          9096
+
+celeborn.worker.storage.dirs                     /mnt/disk1,/mnt/disk2,/mnt/disk3,/mnt/disk4,/mnt/disk5,/mnt/disk6,/mnt/disk7,/mnt/disk8,/mnt/disk9,/mnt/disk10
+
+celeborn.master.endpoints                        clb-1:9097,clb-2:9098,clb-3:9099
+
+celeborn.master.ha.enabled                              true
+celeborn.master.ha.node.1.host                   clb-1
+celeborn.master.ha.node.1.port                   9097
+celeborn.master.ha.node.1.ratis.port             9872
+celeborn.master.ha.node.2.host                   clb-2
+celeborn.master.ha.node.2.port                   9098
+celeborn.master.ha.node.2.ratis.port             9873
+celeborn.master.ha.node.3.host                   clb-3
+celeborn.master.ha.node.3.port                   9099
+celeborn.master.ha.node.3.ratis.port             9874
+celeborn.master.ha.ratis.raft.server.storage.dir                           /mnt/disk1/celeborn_ratis/
+celeborn.master.ha.ratis.raft.server.snapshot.auto.trigger.enabled         true
+celeborn.master.ha.ratis.raft.server.snapshot.auto.trigger.threshold       200000
