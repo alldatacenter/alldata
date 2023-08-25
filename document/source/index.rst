@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-AllData数字化方案
+AllData科学护城河
 ===================================
 
 .. toctree::
@@ -11,15 +11,17 @@ AllData数字化方案
 
    README
    quickstart/index
+   knowledge/index
    donate/index
    studio/index
+   gpt/index
    lake/index
    olap/index
    ai/index
    dts/index
    govern/index
    shuffle/index
-   k8s/index
+   koordinator/index
    kg/index
    iot/index
    wiki/index
