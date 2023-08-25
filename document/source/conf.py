@@ -6,7 +6,7 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'alldata'
+project = 'AllData'
 copyright = '2023, AllDataDC'
 author = 'AllDataDC'
 release = '0.4.x'
