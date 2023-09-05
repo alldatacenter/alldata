@@ -111,7 +111,7 @@ AllData募捐活动收款码 https://docs.qq.com/doc/DVE9HdG56Z3RQaWxH
 加入条件：捐赠AllData团队 5000 人民币[需要扫码支付]
 AllData募捐活动收款码 https://docs.qq.com/doc/DVE9HdG56Z3RQaWxH
 详情查看https://docs.qq.com/sheet/DVFd6WXJLUHJ3eEZ1
-1、包含普通会员S1的所有权益
+1、享有普通会员S1的所有权益
 2、创建高级VIP账号,邀请到高级会员群 [需要申请]
 3、加入AllData高级客户群，获取最新开发规划和内部资料[需要申请]
 4、提供AllData架构设计文档，产品原型
@@ -132,9 +132,9 @@ AllData募捐活动收款码 https://docs.qq.com/doc/DVE9HdG56Z3RQaWxH
 加入条件：捐赠AllData团队 5万人民币[需要扫码支付]
 AllData募捐活动收款码 https://docs.qq.com/doc/DVE9HdG56Z3RQaWxH
 详情查看https://docs.qq.com/sheet/DVFd6WXJLUHJ3eEZ1
-1、包含普通会员S1所有权益
-2、包含高级会员S2所有权益
-3、高级会员K2获取AllData所有整包代码，有效期24个月
+1、享有普通会员S1所有权益
+2、享有高级会员S2所有权益
+3、享有权益：获取AllData所有整包代码，有效期24个月
 
 ```
 
