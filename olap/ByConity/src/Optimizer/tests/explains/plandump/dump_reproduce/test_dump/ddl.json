@@ -1,4 +1,0 @@
-{
-  "test_dump.max_avg_parition_by" : "CREATE TABLE test_dump.max_avg_parition_by\n(\n    `id` Nullable(Int32),\n    `department` Nullable(String),\n    `onboard_date` Nullable(String),\n    `age` Nullable(Int32)\n)\nENGINE = Memory()",
-  "test_dump.people" : "CREATE TABLE test_dump.people\n(\n    `id` Nullable(Int32),\n    `department` Nullable(String),\n    `onboard_date` Nullable(String),\n    `age` Nullable(Int32)\n)\nENGINE = Memory()"
-}

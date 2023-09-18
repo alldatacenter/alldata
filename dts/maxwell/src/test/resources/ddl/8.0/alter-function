@@ -1,7 +1,0 @@
-ALTER FUNCTION func_name [characteristic ...]
-
-characteristic:
-    COMMENT 'string'
-  | LANGUAGE SQL
-  | { CONTAINS SQL | NO SQL | READS SQL DATA | MODIFIES SQL DATA }
-  | SQL SECURITY { DEFINER | INVOKER }

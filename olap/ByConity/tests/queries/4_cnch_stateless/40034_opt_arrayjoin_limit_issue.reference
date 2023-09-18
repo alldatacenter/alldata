@@ -1,8 +1,0 @@
-1	a
-Projection est. 1 rows, cost 2.220000e-01
-│     Expressions: arrayJoin([\'a\', \'b\', \'c\']):=`expr#arrayJoin([\'a\', \'b\', \'c\'])`, x:=`expr#1`
-└─ Limit est. 1 rows, cost 1.480000e-01
-   │     Limit: 1
-   └─ Projection est. 1 rows, cost 1.480000e-01
-      │     Expressions: expr#1:=1, expr#arrayJoin([\'a\', \'b\', \'c\']):=arrayJoin([\'a\', \'b\', \'c\'])
-      └─ Values est. 1 rows, cost 7.400000e-02

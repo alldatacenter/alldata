@@ -11,18 +11,9 @@ AllData科学护城河
 
    README
    quickstart/index
-   knowledge/index
    donate/index
    studio/index
-   gpt/index
-   lake/index
-   olap/index
-   ai/index
-   dts/index
-   govern/index
-   shuffle/index
-   koordinator/index
-   kg/index
-   iot/index
+   chatgptindex
+   mlops/index
    wiki/index
 

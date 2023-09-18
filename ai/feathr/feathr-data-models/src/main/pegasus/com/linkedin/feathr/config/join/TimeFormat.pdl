@@ -1,9 +1,0 @@
-// LINT_SUPPRESS: namespace.three.parts
-
-namespace com.linkedin.feathr.config.join
-
-/**
- * The timeformat, which accepts the formats parsed by the DateTimeFormatter java class or epoch or epoch_millis. However in future, we can have
- * the option of a stronger type. Example, dd/MM/yyyy, yyyy-MM-dd, epoch, epoch_millis, etc.
- */
-typeref TimeFormat = string
