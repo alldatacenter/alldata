@@ -1,1 +1,0 @@
-SELECT k, groupArray(x) AS res1, toTypeName(groupArray(x)), avg(x) AS res2, toTypeName(avg(x)) FROM (SELECT 1 AS k, arrayJoin([1, NULL, 2]) AS x UNION ALL SELECT 2 AS k, CAST(arrayJoin([NULL, NULL]) AS Nullable(UInt8)) AS x) GROUP BY k ORDER BY k;

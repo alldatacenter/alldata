@@ -1,9 +1,0 @@
-[run]
-omit = feathr_project/feathr/registry/_feature_registry_purview.py
-       feathr_project/feathr/registry/registry_utils.py
-       feathr_project/feathr/spark_provider/_databricks_submission.py
-       feathr_project/feathr/spark_provider/_synapse_submission.py
-[report]
-exclude_lines =
-    pragma: no cover
-    @abstract

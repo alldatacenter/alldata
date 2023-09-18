@@ -1,2 +1,0 @@
-class Telemetry:
-    pass

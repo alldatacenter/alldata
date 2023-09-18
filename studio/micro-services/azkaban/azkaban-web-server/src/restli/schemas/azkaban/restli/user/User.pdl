@@ -1,9 +1,0 @@
-namespace azkaban.restli.user
-
-/**
- * Azkaban User restli info
- * */
-record User {
-  userId: string
-  email: string
-}

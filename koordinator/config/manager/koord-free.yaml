@@ -1,7 +1,0 @@
-apiVersion: scheduling.k8s.io/v1
-description: Run lowest-priority offline batch jobs, generally refers to not making resource budgets.
-kind: PriorityClass
-metadata:
-  name: free
-preemptionPolicy: PreemptLowerPriority
-value: 3000

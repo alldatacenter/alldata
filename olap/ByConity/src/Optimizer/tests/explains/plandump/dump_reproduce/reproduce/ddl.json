@@ -1,6 +1,0 @@
-{
-  "test_dump.max_avg_parition_by" : "CREATE TABLE test_dump.max_avg_parition_by UUID '64918b27-63a4-44d9-a491-8b2763a484d9'\n(\n    `id` Int32,\n    `department` String,\n    `onboard_date` String,\n    `age` Int32\n)\nENGINE = Distributed('test_cluster_two_shards_localhost', 'test_dump', 'max_avg_parition_by_local', id)",
-  "test_dump.max_avg_parition_by_local" : "CREATE TABLE test_dump.max_avg_parition_by_local UUID '650491b3-2769-44d6-a504-91b32769d4d6'\n(\n    `id` Int32,\n    `department` String,\n    `onboard_date` String,\n    `age` Int32\n)\nENGINE = MergeTree\nORDER BY id\nSETTINGS index_granularity = 8192",
-  "test_dump.people" : "CREATE TABLE test_dump.people UUID '353a7c96-34f1-484f-b53a-7c9634f1384f'\n(\n    `id` Int32,\n    `department` String,\n    `onboard_date` String,\n    `age` Int32\n)\nENGINE = Distributed('test_cluster_two_shards_localhost', 'test_dump', 'people_local', id)",
-  "test_dump.people_local" : "CREATE TABLE test_dump.people_local UUID 'f4b687ed-64f7-4e31-b4b6-87ed64f74e31'\n(\n    `id` Int32,\n    `department` String,\n    `onboard_date` String,\n    `age` Int32\n)\nENGINE = MergeTree\nORDER BY id\nSETTINGS index_granularity = 8192"
-}

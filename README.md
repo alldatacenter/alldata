@@ -1,4 +1,4 @@
-# AllData科学护城河
+# 可定义化数据中台
 
 ## [原型](https://orgnext.modao.cc/app/HhitGZQTr954c7Ug8XBvAY) ｜ [官方文档](https://alldata.readthedocs.io/) ｜ [Document](https://github.com/alldatacenter/alldata/blob/master/README.md) ｜ [Community](#community)
 
@@ -18,7 +18,7 @@
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/204965509-fc13050b-ebe8-4bd5-8882-69e1af0a8367.png">
 <br/>
 
-## AllData科学护城河
+## 可定义化数据中台
 <br/>
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/235920344-fbf3c9d2-6239-4c73-aa9c-77a72773780e.png">
 <br/>
@@ -1706,20 +1706,11 @@ void testCreateDatabase() {
 
 | Component                                                                       | Description                                                    | Important Composition       |
 |---------------------------------------------------------------------------------|----------------------------------------------------------------|-----------------------------|
-| [**ai**](https://github.com/alldatacenter/alldata/tree/master/ai)               | AI STUDIO FOR ALL DATA PLATFORM artificial intelligence engine | 人工智能引擎                      |
-| [**dts**](https://github.com/alldatacenter/alldata/tree/master/dts)             | DTS FOR ALL DATA PLATFORM DATA DTS engine                      | 数据集成引擎                      |
-| [**fs**](https://github.com/alldatacenter/alldata/tree/master/fs)               | DATA STORAGE FOR ALL DATA PLATFORM DATA STORAGE engine         | 大数据存储引擎                     |
-| [**govern**](https://github.com/alldatacenter/alldata/tree/master/govern)       | DATA GOVERN FOR ALL DATA PLATFORM Data Governance Engine       | 数据治理引擎                      |
-| [**iot**](https://github.com/alldatacenter/alldata/tree/master/iot)             | IOT FOR ALL DATA PLATFORM Data Governance Engine               | 云原生IOT开发框架                  |
-| [**koordinator**](https://github.com/alldatacenter/alldata/tree/master/koordinator)               | Koordinator FOR ALL DATA PLATFORM Data Task Engine         | 知识图谱引擎                      |
-| [**kg**](https://github.com/alldatacenter/alldata/tree/master/kg)               | KNOWLEDGE GRAPH FOR ALL DATA PLATFORM Data Task Engine         | 知识图谱引擎                      |
-| [**lake**](https://github.com/alldatacenter/alldata/tree/master/lake) | LAKEHOUSE FOR ALL DATA PLATFORM ONE LAKE engine                 | 数据湖引擎                       |
-| [**olap**](https://github.com/alldatacenter/alldata/tree/master/olap)           | OLAP FOR ALL DATA PLATFORM OLAP query engine                   | 混合OLAP查询引擎                  |
-| [**shuffle**](https://github.com/alldatacenter/alldata/tree/master/shuffle)         | SHUFFLE FOR ALL DATA PLATFORM DATA SHUFFLE engine                  | Shuffule引擎                      |
+| [**mlops**](https://github.com/alldatacenter/alldata/tree/master/mlops)               | MLOPS FOR ALL DATA PLATFORM artificial intelligence engine | 机器学习平台引擎                      |
+| [**chatgpt**](https://github.com/alldatacenter/alldata/tree/master/gpt)               | CHATGPT FOR ALL DATA PLATFORM DATA STORAGE engine         | ChatGPT引擎                     |
 | [**studio**](https://github.com/alldatacenter/alldata/tree/master/studio)         | STUDIO FOR ALL DATA PLATFORM DATA STUDIO engine                  | 数据工厂引擎                      |
-| [**trade**](https://github.com/alldatacenter/alldata/tree/master/trade)         | TRADE FOR ALL DATA PLATFORM TRADE Engine                       | TRADE引擎                     |
 | [**wiki**](https://github.com/alldatacenter/alldata/tree/master/wiki)           | WIKI FOR ALL DATA PLATFORM WIKI Engine                         | AllData知识库                  |
-| [**alldata**](https://github.com/alldatacenter/all-in-data)                         | AllData社区项目通过二开大数据生态组件, 以及大数据采集, 大数据存储, 大数据计算, 大数据开发来建设科学护城河    | Github一站式细分领域AllData科学护城河社区项目 |
+| [**alldata**](https://github.com/alldatacenter/alldata)                         | AllData大数据产品是基于大数据和人工智能研发的可定义化数据中台。 |
 
 
 ## AllData社区商业计划图

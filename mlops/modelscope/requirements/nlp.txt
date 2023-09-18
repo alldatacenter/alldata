@@ -1,0 +1,27 @@
+boto3
+embeddings
+en_core_web_sm>=2.3.5
+filelock
+ftfy
+jieba>=0.42.1
+matplotlib
+megatron_util
+nltk
+pandas
+# protobuf version beyond 3.20.0 is not compatible with TensorFlow 1.x, therefore is discouraged.
+protobuf>=3.19.0,<3.21.0
+pythainlp
+pyvi
+regex
+rouge
+sacremoses>=0.0.41
+scikit_learn
+sentencepiece
+seqeval
+spacy>=2.3.5
+stanza
+subword_nmt>=0.3.8
+termcolor
+tokenizers
+transformers>=4.12.0,<=4.30.2
+zhconv
