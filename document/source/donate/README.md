@@ -76,7 +76,7 @@
 >
 > 知乎首发文章：https://zhuanlan.zhihu.com/p/626703766
 
-## AllData社区【微信群】
+## 三、AllData社区【微信群】
 ```markdown 
 讨论alldata产品与技术，关注公众号，视频号，B站知识库，强烈推荐，安装文档为alldata/install.md
 代码目录为alldata/studio，重要资料如下‼️
@@ -87,7 +87,7 @@ https://docs.qq.com/doc/DVHlkSEtvVXVCdEFo
 【腾讯文档】可选参加--2023--社区经费募捐 
 https://docs.qq.com/sheet/DVFd6WXJLUHJ3eEZ1?tab=BB08J2
 
-## 普通会员S1【2年有效】
+## 四、普通会员S1【2年有效】
 ```markdown
 加入条件：捐赠AllData团队 500 人民币[需要扫码支付]
 AllData募捐活动收款码 https://docs.qq.com/doc/DVE9HdG56Z3RQaWxH
@@ -106,7 +106,7 @@ AllData募捐活动收款码 https://docs.qq.com/doc/DVE9HdG56Z3RQaWxH
 12、普通会员新增流程编排功能[已发布][已开源][提供线上体验][社区版]
 ```
 
-## 高级会员S2【2年有效】
+## 五、高级会员S2【2年有效】
 ```markdown
 加入条件：捐赠AllData团队 5000 人民币[需要扫码支付]
 AllData募捐活动收款码 https://docs.qq.com/doc/DVE9HdG56Z3RQaWxH
@@ -127,7 +127,7 @@ AllData募捐活动收款码 https://docs.qq.com/doc/DVE9HdG56Z3RQaWxH
 
 ```
 
-## 高级会员S3【2年有效】
+## 六、高级会员S3【2年有效】
 ```markdown
 加入条件：捐赠AllData团队 5万人民币[需要扫码支付]
 AllData募捐活动收款码 https://docs.qq.com/doc/DVE9HdG56Z3RQaWxH
@@ -138,9 +138,9 @@ AllData募捐活动收款码 https://docs.qq.com/doc/DVE9HdG56Z3RQaWxH
 
 ```
 
-## AllData体验版地址【社区免费游客账号】【可选参加募捐活动获取会员体验账号】
-详情查看https://docs.qq.com/sheet/DVFd6WXJLUHJ3eEZ1
+## 七、AllData体验版地址
 ```markdown
+详情查看https://docs.qq.com/sheet/DVFd6WXJLUHJ3eEZ1
 体验版地址：游客账号只有数据质量提供对外访问，更多功能可选参加募捐活动
 购买VIP开通会员账号，同时享受较多权益
 详情查看https://docs.qq.com/doc/DVHlkSEtvVXVCdEFo

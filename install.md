@@ -1,9 +1,12 @@
 ## 部署指南
 
-> **提示**
-近期有许多小伙伴开始关注并尝试部署AllData项目，为方便小伙伴快速本地部署体验，便有了这篇文档。
-
-**AllData**通过汇聚大数据与AI领域生态组件，提供细分领域AllData科学护城河：大数据平台[数据中台]集成、大数据平台[数据中台]湖仓分析、大数据平台[数据中台]开发治理、大数据平台[数据中台]集群运维
+### 部署方式
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/226297187-d36d6ebf-9cdc-4e1a-81bb-860af018d14e.png">
+<br/>
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/221345609-45a34a1a-8316-4810-8624-bc43a0e3c91d.png">
+<br/>
 
 ## **后端结构**
 
@@ -353,6 +356,25 @@ log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
 > curl http://localhost:8013
 >
 > 用户名：admin 密码：123456
+
+## 数据集成配置教程
+
+> 先找到用户管理-菜单管理, 新增【数据集成】目录
+>
+> 新增【数据集成】下面的菜单, 菜单各项按如下配置输入, 之后进入角色管理
+>
+> 配置admin账号的目录数据权限, 选中刚才新增的数据集成目录及里面的菜单, 刷新或重新登录即可访问【数据集成】
+
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/9457212/233446739-41ea4501-bb09-4eb2-86de-21c168784564.png">
+<br/>
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/9457212/233446763-cbb15105-b209-4b8f-b3f2-c41b5a607dd9.png">
+<br/>
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/9457212/233447516-c952efd0-f8e2-4181-8608-1f513f9c0e93.png">
+<br/>
+
 
 ## 常见问题
 ```
