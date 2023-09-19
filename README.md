@@ -236,6 +236,39 @@
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/234817116-dc4bca8e-e8ac-4efa-a2a0-d91ce9eb56e8.png">
 <br/>
 
+## 数据平台
+<br/>
+<img width="1215" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/18fdc008-10c8-4ef8-a7b7-5d170b2532eb">
+<br/>
+
+<br/>
+<img width="1215" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/cf92dc3c-bcb7-49d4-8f9e-f099808c3ba8">
+<br/>
+
+<br/>
+<img width="1215" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/f2341f0c-8205-4fb6-940e-954f78544397">
+<br/>
+
+<br/>
+<img width="1215" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/1ea1f9a0-ab7a-4992-b604-daf046352dae">
+<br/>
+
+<br/>
+<img width="1215" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/f40c794a-6498-444d-bcc6-6b1def7f263b">
+<br/>
+
+<br/>
+<img width="1215" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/48d1bc42-6bf9-4c0a-add0-f53cefff8cf1">
+<br/>
+
+<br/>
+<img width="1215" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/a2820a29-52bd-42da-9395-63c68c279336">
+<br/>
+
+<br/>
+<img width="1215" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/07220b62-4757-4988-a906-cb4e0cc1bfa4">
+<br/>
+
 ## BI报表
 <br/>
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/227458114-48ab43b4-437d-4b7e-9eb3-d49b1da1b762.png">
