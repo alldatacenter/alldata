@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-AllData科学护城河
+可定义化数据中台
 ===================================
 
 .. toctree::
