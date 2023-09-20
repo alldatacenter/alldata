@@ -6,6 +6,8 @@ import cn.datax.common.database.core.DbColumn;
 import cn.datax.common.database.core.DbTable;
 import cn.datax.common.database.core.PageResult;
 import cn.datax.common.database.dialect.OracleDialect;
+import cn.datax.common.database.dialect.PostgreDialect;
+import cn.datax.common.database.dialect.DmDBDialect;
 import cn.datax.common.database.exception.DataQueryException;
 import com.zaxxer.hikari.HikariDataSource;
 import lombok.Setter;
@@ -43,7 +45,7 @@ public abstract class AbstractDbQueryFactory implements DbQuery {
 			conn = dataSource.getConnection();
 			return conn.isValid(0);
 		} catch (SQLException e) {
-			throw new DataQueryException("检测连通性出错");
+			throw new DataQueryException("检测连通性出错："+e.getMessage());
 		} finally {
 			if (conn != null) {
 				try {
@@ -83,7 +85,15 @@ public abstract class AbstractDbQueryFactory implements DbQuery {
 
 	@Override
 	public List<DbTable> getTables(String dbName) {
-		String sql = dbDialect.tables(dbName);
+		String sql = null;
+		if (dbDialect instanceof PostgreDialect) {
+			//如果数据源为PostgreSql,同步元数据时默认owner为登录账号（userName），故不能传递dbName需传递userName
+			HikariDataSource hikariDataSource = (HikariDataSource) dataSource;
+			String username = hikariDataSource.getUsername();
+			sql = dbDialect.tables(username);
+		} else {
+			sql = dbDialect.tables(dbName);
+		}
 		return jdbcTemplate.query(sql, dbDialect.tableMapper());
 	}
 
