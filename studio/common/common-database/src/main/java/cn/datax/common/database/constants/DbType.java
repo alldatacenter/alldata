@@ -37,6 +37,10 @@ public enum DbType {
      */
     SQL_SERVER("7", "SQLServer2012+数据库", "jdbc:sqlserver://${host}:${port};DatabaseName=${dbName}"),
     /**
+     * DMDb
+     */
+    DMDB("9", "DM数据库", "jdbc:dm://${host}:${port}/${dbName}"),
+    /**
      * UNKONWN DB
      */
     OTHER("8", "其他数据库", "");
