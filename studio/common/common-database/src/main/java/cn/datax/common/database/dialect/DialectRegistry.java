@@ -18,6 +18,7 @@ public class DialectRegistry {
         dialect_enum_map.put(DbType.POSTGRE_SQL, new PostgreDialect());
         dialect_enum_map.put(DbType.SQL_SERVER2008, new SQLServer2008Dialect());
         dialect_enum_map.put(DbType.SQL_SERVER, new SQLServerDialect());
+        dialect_enum_map.put(DbType.DMDB, new DmDBDialect());
         dialect_enum_map.put(DbType.OTHER, new UnknownDialect());
     }
 
