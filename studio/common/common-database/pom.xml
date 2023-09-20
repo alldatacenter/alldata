@@ -41,5 +41,10 @@
             <artifactId>mssql-jdbc</artifactId>
             <version>${sqlserver.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.dameng</groupId>
+            <artifactId>dm-jdbc</artifactId>
+            <version>1.8</version>
+        </dependency>
     </dependencies>
 </project>
