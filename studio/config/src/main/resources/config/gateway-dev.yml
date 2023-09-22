@@ -27,6 +27,13 @@ spring:
               args:
                 name: systemHystrix
                 fallbackUri: forward:/fallback
+        # 系统基础设置中心
+        - id: service-system
+          uri: lb:ws://service-system
+          predicates:
+            - Path=/ws/**
+          filters:
+            - StripPrefix=1
         # 邮件中心
         - id: service-email
           uri: lb://service-email
