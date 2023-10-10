@@ -43,7 +43,7 @@
 
 
 ```
-│ ── ui
+│ ── micro-ui
      ├── public // 公共文件
     │   ├── favicon.ico // favicon图标
     │   ├── index.html  // html模板
@@ -157,7 +157,7 @@ SystemServiceApplication.java（系统模块 必须，不启动无法登录）
 
 # 前端运行
 ```
-cd alldata/studio/ui
+cd alldata/studio/micro-ui
 npm run dev
 ```
 启动成功，会自动弹出浏览器登录页
@@ -289,7 +289,7 @@ BI报表 - data-visual-service-parent ~ data-visual-service ~ DataxVisualApplica
 
 > npm run build:prod [生产]
 >
-> 生产环境启动前端ui项目, 需要[配置nginx]
+> 生产环境启动前端micro-ui项目, 需要[配置nginx]
 ```markdown
 # For more information on configuration, see:
 #   * Official English Documentation: http://nginx.org/en/docs/
@@ -334,7 +334,7 @@ log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
 		add_header Access-Control-Allow-Headers X-Requested-With;
 		add_header Access-Control-Allow-Methods GET,POST,OPTIONS;
 		location / {
-			root /studio/ui/dist;
+			root /studio/micro-ui/dist;
 			index index.html;
 			try_files $uri $uri/ /index.html;
 		}
@@ -347,7 +347,7 @@ log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
 	}
 }
 ```
-> 测试环境启动前端ui项目
+> 测试环境启动前端micro-ui项目
 >
 > npm run dev [测试]
 >
