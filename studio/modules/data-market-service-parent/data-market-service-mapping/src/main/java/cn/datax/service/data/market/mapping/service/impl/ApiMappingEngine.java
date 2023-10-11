@@ -47,8 +47,8 @@ public class ApiMappingEngine {
                 dbSchema.getUsername(), dbSchema.getPassword(), dbSchema.getPort(), dbSchema.getDbName(), dbSchema.getSid());
         DbQuery dbQuery = Optional.ofNullable(dataSourceFactory.createDbQuery(dbQueryProperty)).orElseThrow(() -> new DataException("创建数据查询接口出错"));
         // 参数
-        Integer pageNum = Integer.parseInt((String) params.getOrDefault("pageNum", 1));
-        Integer pageSize = Integer.parseInt((String) params.getOrDefault("pageSize", 20));
+        Integer pageNum =  (Integer) params.getOrDefault("pageNum", 1);
+        Integer pageSize = (Integer) params.getOrDefault("pageSize", 20);
         PageUtil pageUtil = new PageUtil(pageNum, pageSize);
         Integer offset = pageUtil.getOffset();
         SqlBuilderUtil.SqlFilterResult sqlFilterResult;
