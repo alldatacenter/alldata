@@ -1,1 +1,0 @@
-ALTER TABLE `am_app_package_component_rel` CHANGE `app_id` `app_id` VARCHAR(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '应用唯一标示';

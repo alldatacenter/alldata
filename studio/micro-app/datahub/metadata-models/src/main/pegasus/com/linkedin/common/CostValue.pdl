@@ -1,9 +1,0 @@
-namespace com.linkedin.common
-
-/**
- * A union of all supported Cost Value types
- */
-typeref CostValue = union[
-  costId: double
-  costCode: string
-]

@@ -1,1 +1,0 @@
-SELECT SUM(x) FILTER (WHERE x > 4);

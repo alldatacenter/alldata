@@ -1,9 +1,0 @@
-namespace com.datahub.test.testing
-
-/**
- * For unit tests
- */
-typeref EntityAspectUnionAlias = union[
-  foo: AspectFoo,
-  bar: AspectBar
-]

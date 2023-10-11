@@ -1,7 +1,0 @@
-rules:
-  -   alert: KafkaBorker进程存活
-      promql: up{job="kafkabroker"} != 1
-      alertLevel: exception
-      serviceRoleName: KAFKA_BROKER
-      alertAdvice: KafkaBroker宕机，请重新启动
-      alertInfo: "{{ $labels.job }}的{{ $labels.instance }}实例产生告警"

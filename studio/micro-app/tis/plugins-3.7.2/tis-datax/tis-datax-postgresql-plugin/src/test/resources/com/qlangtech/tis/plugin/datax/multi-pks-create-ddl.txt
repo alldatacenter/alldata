@@ -1,8 +1,0 @@
-CREATE TABLE customer_order_relation
-(
-    customerregister_id    VARCHAR(256),
-    waitingorder_id        VARCHAR(256),
-    kind                   INTEGER,
-    create_time            BIGINT,
-    last_ver               INTEGER
-, CONSTRAINT uk_customer_order_relation_unique_customerregister_id_waitingorder_id UNIQUE(customerregister_id,waitingorder_id))

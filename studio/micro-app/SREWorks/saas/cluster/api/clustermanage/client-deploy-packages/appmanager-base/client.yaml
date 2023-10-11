@@ -1,6 +1,0 @@
-
-
-name: appmanagerbase
-deployCommand: helm upgrade appmanagerbase ./appmanager-chart-dependency --create-namespace --namespace sreworks-client -f values.yaml --install
-chart: appmanagerbase
-
