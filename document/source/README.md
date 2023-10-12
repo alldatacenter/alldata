@@ -5,7 +5,7 @@
 ## 安装教程
 > https://github.com/alldatacenter/alldata/blob/master/install.md
 
-### 教程文档
+## 教程文档
 > https://github.com/alldatacenter/alldata/blob/master/studio/modules/service-data-dts-parent/DTS_QuickStart.md
 
 ## github
