@@ -15,7 +15,7 @@ public class MD5Util {
     /** 向量(同时拥有向量和密匙才能解密)，此向量必须是8byte，多少都报错 */
     private final byte[] DESIV = new byte[] { 0x22, 0x54, 0x36, 110, 0x40, (byte) 0xac, (byte) 0xad, (byte) 0xdf };
     /** 自定义密钥,个数不能太短，太短报错，过长，它默认只取前N位（N的具体值，大家另行查找资料） */
-    private final String deSkey = "cloud";
+    private final String deSkey = "cloudcloud";
     /** 加密算法的参数接口 */
     private AlgorithmParameterSpec iv = null;
     private Key key = null;
