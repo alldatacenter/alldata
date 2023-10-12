@@ -1,5 +1,0 @@
-query getDataPlatform($urn: String!) {
-    dataPlatform(urn: $urn) {
-        ...platformFields
-    }
-}

@@ -1,4 +1,4 @@
-# AI FOR ALL DATA
+# CHAT GPT FOR ALL DATA
 
 ## 人工智能平台 
 

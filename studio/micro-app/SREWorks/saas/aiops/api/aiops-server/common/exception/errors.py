@@ -1,2 +1,0 @@
-class DatasourceError(Exception):
-    pass

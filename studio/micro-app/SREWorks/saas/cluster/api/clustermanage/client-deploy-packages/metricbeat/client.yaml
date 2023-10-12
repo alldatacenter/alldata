@@ -1,6 +1,0 @@
-
-
-name: metricbeat 
-deployCommand: helm upgrade metricbeat ./metricbeat-chart --create-namespace --namespace sreworks-client -f values.yaml --install 
-chart: metricbeat
-

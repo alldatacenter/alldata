@@ -1,6 +1,0 @@
-
-
-name: appmanager-operator 
-deployCommand: helm upgrade sreworks-client ./appmanager-chart --create-namespace --namespace sreworks-client --set installMode=client --install
-chart: appmanager
-

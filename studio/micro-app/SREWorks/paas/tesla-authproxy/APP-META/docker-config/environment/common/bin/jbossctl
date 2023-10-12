@@ -1,8 +1,0 @@
-#!/bin/bash
-
-cd $(dirname $0)/..
-APP_HOME=$(pwd)
-echo "user: $(whoami)"
-echo "current directory: ${APP_HOME}"
-echo "command: /bin/bash ${APP_HOME}/bin/appctl.sh $@"
-/bin/bash ${APP_HOME}/bin/appctl.sh "$@"

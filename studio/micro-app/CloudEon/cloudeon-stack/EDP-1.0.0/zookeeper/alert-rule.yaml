@@ -1,7 +1,0 @@
-rules:
-    - alert: ZookeeperServer进程存活
-      promql: up{job="zkserver"} != 1
-      alertLevel: exception
-      serviceRoleName: ZOOKEEPER_SERVER
-      alertAdvice: ZookeeperServer宕机，请重新启动
-      alertInfo: "{{ $labels.job }}的{{ $labels.instance }}实例产生告警"

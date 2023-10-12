@@ -1,8 +1,0 @@
-CREATE TABLE customer_order_relation
-(
-    customerregister_id    VARCHAR(256),
-    waitingorder_id        VARCHAR(256) PRIMARY KEY,
-    kind                   INTEGER,
-    create_time            BIGINT,
-    last_ver               INTEGER
-)

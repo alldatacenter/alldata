@@ -1,6 +1,0 @@
-FROM python:3.7.0
-WORKDIR /root/test/
-COPY . .
-RUN pip install kubernetes
-CMD ["diagnosis.py"]
-ENTRYPOINT ["python3"]

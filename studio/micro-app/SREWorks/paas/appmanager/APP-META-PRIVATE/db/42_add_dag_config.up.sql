@@ -1,4 +1,0 @@
-insert ignore into `tc_dag_config`(`id`, `gmt_create`, `gmt_modified`, `name`, `content`, `comment`) values(11, NOW(), NOW(), "preRunningConcurrentSize", 20, NULL);
-insert ignore into `tc_dag_config`(`id`, `gmt_create`, `gmt_modified`, `name`, `content`, `comment`) values(12, NOW(), NOW(), "postRunningConcurrentSize", 20, NULL);
-insert ignore into `tc_dag_config`(`id`, `gmt_create`, `gmt_modified`, `name`, `content`, `comment`) values(13, NOW(), NOW(), "preRunningPeriod", 1 , NULL);
-insert ignore into `tc_dag_config`(`id`, `gmt_create`, `gmt_modified`, `name`, `content`, `comment`) values(14, NOW(), NOW(), "postRunningPeriod", 1, NULL);

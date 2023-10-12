@@ -1,9 +1,0 @@
-# 生产环境的Dockerfile ： https://lark.alipay.com/aone/docker/rm2g1d
-# 用基础镜像地址替换下方镜像地址
-FROM reg.docker.alibaba-inc.com/aone-base/tesla-authproxy-service_base:20191010173104
-
-# 设置spring profile或者自定义的jvm参数。如果需要则打开下面的注释内容
-ENV SERVICE_OPTS=-Dspring.profiles.active=internal
-
-# 将构建出的主包复制到指定镜像目录中
-COPY ${APP_NAME}.tgz /home/admin/${APP_NAME}/target/${APP_NAME}.tgz

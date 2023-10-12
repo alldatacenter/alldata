@@ -7,8 +7,6 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.util.StringUtils;
 import java.sql.ResultSet;
 
-import javafx.application.Application;
-import javafx.stage.Stage;
 
 public class DmDBDialect extends AbstractDbDialect {
 

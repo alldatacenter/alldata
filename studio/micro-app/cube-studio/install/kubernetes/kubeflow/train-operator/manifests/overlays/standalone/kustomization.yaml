@@ -1,9 +1,0 @@
-apiVersion: kustomize.config.k8s.io/v1beta1
-kind: Kustomization
-namespace: kubeflow
-resources:
-  - ../../base
-images:
-  - name: kubeflow/training-operator
-    newName: ccr.ccs.tencentyun.com/cube-studio/kubeflow
-    newTag: "training-operator"

@@ -1,1 +1,0 @@
-emon flink version

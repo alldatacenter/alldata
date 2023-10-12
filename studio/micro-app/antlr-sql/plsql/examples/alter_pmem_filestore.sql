@@ -1,6 +1,0 @@
-ALTER PMEM FILESTORE cloud_db_1 RESIZE 5T;
-
-ALTER  PMEM FILESTORE cloud_db_1 MOUNT  MOUNTPOINT '/corp/db/cloud_db_1'
-    BACKINGFILE '/var/pmem/foo_1';
-
-ALTER PMEM FILESTORE cloud_db_1 DISMOUNT;

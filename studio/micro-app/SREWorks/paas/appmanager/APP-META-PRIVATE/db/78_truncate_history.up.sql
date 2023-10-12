@@ -1,2 +1,0 @@
-TRUNCATE TABLE am_rt_app_instance_history;
-TRUNCATE TABLE am_rt_component_instance_history;

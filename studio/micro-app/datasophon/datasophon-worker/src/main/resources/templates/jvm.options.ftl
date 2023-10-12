@@ -1,2 +1,0 @@
--Xms${heapSize}
--Xmx${heapSize}

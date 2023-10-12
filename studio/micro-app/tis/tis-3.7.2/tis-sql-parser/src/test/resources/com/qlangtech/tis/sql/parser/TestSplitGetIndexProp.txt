@@ -1,4 +1,0 @@
-SELECT i.order_id, split(i.batch_msg,'[\\w\\W]*\\|')[1] as customer_ids
-FROM instance AS i
-WHERE (  i.is_valid= 1 )
-GROUP BY i.order_id

@@ -1,8 +1,0 @@
-ALTER FULLTEXT STOPLIST CombinedFunctionWordList ADD 'en' LANGUAGE 'Spanish';  
-ALTER FULLTEXT STOPLIST CombinedFunctionWordList ADD 'en' LANGUAGE 'French';  
-CREATE FULLTEXT STOPLIST myStoplist;
-GO
-CREATE FULLTEXT STOPLIST myStoplist2 FROM AdventureWorks.otherStoplist;
-GO
-CREATE FULLTEXT STOPLIST myStoplist3 FROM SYSTEM STOPLIST;
-GO

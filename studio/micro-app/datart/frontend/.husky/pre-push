@@ -1,7 +1,0 @@
-#!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
-
-cd frontend
-npm run test:ci
-npm run lint:css
-npm run lint:style
