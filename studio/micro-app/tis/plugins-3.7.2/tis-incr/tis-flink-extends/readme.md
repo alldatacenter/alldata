@@ -1,2 +1,0 @@
-
-构建出的dist包拷贝到flink_home/lib目录下用于flink classloader的扩展

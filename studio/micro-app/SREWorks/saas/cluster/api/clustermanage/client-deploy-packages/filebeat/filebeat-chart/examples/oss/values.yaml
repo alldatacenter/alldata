@@ -1,5 +1,0 @@
-image: docker.elastic.co/beats/filebeat-oss
-
-extraEnvs:
-  - name: ELASTICSEARCH_HOSTS
-    value: oss-master:9200

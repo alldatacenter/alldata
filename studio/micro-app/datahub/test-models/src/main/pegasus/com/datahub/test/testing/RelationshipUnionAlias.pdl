@@ -1,9 +1,0 @@
-namespace com.datahub.test.testing
-
-/**
- * For unit testing
- */
-typeref RelationshipUnionAlias = union[
-  foo: RelationshipFoo,
-  bar: RelationshipBar
-]

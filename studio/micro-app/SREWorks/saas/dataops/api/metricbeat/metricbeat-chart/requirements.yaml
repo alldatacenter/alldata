@@ -1,5 +1,0 @@
-dependencies:
-  - name: 'kube-state-metrics'
-    version: '2.4.1'
-    repository: '@stable'
-    condition: kube_state_metrics.enabled

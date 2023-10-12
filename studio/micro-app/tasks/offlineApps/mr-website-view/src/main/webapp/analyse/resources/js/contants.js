@@ -1,1 +1,0 @@
-var COMMON_PREFIX_URL = "/mr-website-view";

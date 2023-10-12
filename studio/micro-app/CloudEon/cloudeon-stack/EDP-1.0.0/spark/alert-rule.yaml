@@ -1,7 +1,0 @@
-rules:
-  -   alert: SparkHistoryServer进程存活
-      promql: up{job="sparkhistoryserver"} != 1
-      alertLevel: exception
-      serviceRoleName: SPARK_HISTORY_SERVER
-      alertAdvice: 请联系管理员
-      alertInfo: "{{ $labels.job }}的{{ $labels.instance }}实例产生告警"
