@@ -1,13 +1,81 @@
 # 可定义数据中台
 
-## [官方文档](https://alldata.readthedocs.io/) ｜ [安装文档](https://github.com/alldatacenter/alldata/blob/master/install.md) ｜ [Community](#community)
+## [官方文档](https://alldata.readthedocs.io/) ｜ [安装文档](https://github.com/alldatacenter/alldata/blob/master/install.md)
 
+## 安装教程
+> https://github.com/alldatacenter/alldata/blob/master/install.md
 
-## Stargazers over time
+### 教程文档
+> https://github.com/alldatacenter/alldata/blob/master/studio/modules/service-data-dts-parent/DTS_QuickStart.md
+
+## github
 
 [![Stargazers over time](https://starchart.cc/alldatacenter/alldata.svg)](https://starchart.cc/alldatacenter/alldata)
 
 <br/>
+
+## 功能列表
+
+- 平台基础设置
+    - 系统管理
+        - 岗位管理: 配置系统用户所属担任职务
+        - 部门管理: 配置系统组织机构, 树结构展现支持数据权限
+        - 菜单管理: 配置系统菜单, 操作权限, 按钮权限标识等
+        - 角色管理: 角色菜单权限分配, 设置角色按机构进行数据范围权限划分
+        - 用户管理: 用户是系统操作者, 该功能主要完成系统用户配置
+        - 参数管理: 对系统动态配置常用参数
+        - 字典管理: 对系统中经常使用的一些较为固定的数据进行维护
+    - 系统监控
+        - 登录日志: 系统登录日志记录查询
+        - 操作日志: 系统正常操作日志记录和查询, 系统异常信息日志记录和查询
+    - 任务调度
+        - 任务管理: 在线（添加, 修改, 删除)任务调度
+        - 日志管理: 任务调度执行结果日志
+- 元数据管理
+    - 数据源: 数据源连接信息管理, 可生成数据库文档
+    - 元数据: 数据库表的元数据信息管理
+    - 数据授权: 设置元数据信息权限划分
+    - 变更记录: 元数据信息变更记录信息管理
+    - 数据检索: 数据源, 数据表, 元数据等信息查询
+    - 数据地图: 元数据的隶属数据表, 数据库的图形展示
+    - SQL工作台: 在线执行查询sql
+- 数据标准管理
+    - 标准字典: 国标数据维护
+    - 对照表: 本地数据中需要对照标准的数据维护
+    - 字典对照: 本地数据与国标数据的对照关系
+    - 对照统计: 本地数据与国标数据的对照结果统计分析
+- 数据质量管理
+    - 规则配置: 数据质量规则配置
+    - 问题统计: 数据质量规则统计
+    - 质量报告: 数据质量结果统计分析
+    - 定时任务: 数据质量定时任务
+    - 任务日志: 数据质量定时任务日志
+- 主数据管理
+    - 数据模型: 主数据数据模型维护
+    - 数据管理: 主数据数据管理
+- 数据集市管理
+    - 数据服务: 动态开发api数据服务, 可生成数据服务文档
+    - 数据脱敏: api数据服务返回结果动态脱敏
+    - 接口日志: api数据服务调用日志
+    - 服务集成: 三方数据服务集成管理
+    - 服务日志: 三方数据服务集成调用日志
+- 可视化管理
+    - 数据集: 基于sql的查询结果维护
+    - 图表配置: 动态echarts图表配置, 支持多维表格, 折线, 柱状, 饼图, 雷达, 散点等多种图表
+    - 看板配置: 拖拽式添加图表组件, 调整位置, 大小
+    - 酷屏配置: 拖拽式添加图表组件, 调整背景图, 颜色, 位置, 大小
+- 流程管理
+    - 流程定义: 流程定义管理
+    - 流程实例
+        - 运行中的流程: 运行中的流程实例管理
+        - 我发起的流程: 我发起的流程实例管理
+        - 我参与的流程: 我参与的流程实例管理
+    - 流程任务
+        - 待办任务: 待办任务管理
+        - 已办任务: 已办任务管理
+    - 业务配置: 配置业务系统与流程的相关属性
+
+
 <br/>
 <a href="https://github.com/alldatacenter/github-readme-stats">
   <img width="1215" align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=alldatacenter&repo=alldata" />
@@ -236,39 +304,6 @@
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/234817116-dc4bca8e-e8ac-4efa-a2a0-d91ce9eb56e8.png">
 <br/>
 
-## 数据平台
-<br/>
-<img width="1215" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/18fdc008-10c8-4ef8-a7b7-5d170b2532eb">
-<br/>
-
-<br/>
-<img width="1215" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/cf92dc3c-bcb7-49d4-8f9e-f099808c3ba8">
-<br/>
-
-<br/>
-<img width="1215" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/f2341f0c-8205-4fb6-940e-954f78544397">
-<br/>
-
-<br/>
-<img width="1215" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/1ea1f9a0-ab7a-4992-b604-daf046352dae">
-<br/>
-
-<br/>
-<img width="1215" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/f40c794a-6498-444d-bcc6-6b1def7f263b">
-<br/>
-
-<br/>
-<img width="1215" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/48d1bc42-6bf9-4c0a-add0-f53cefff8cf1">
-<br/>
-
-<br/>
-<img width="1215" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/a2820a29-52bd-42da-9395-63c68c279336">
-<br/>
-
-<br/>
-<img width="1215" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/07220b62-4757-4988-a906-cb4e0cc1bfa4">
-<br/>
-
 ## BI报表
 <br/>
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/227458114-48ab43b4-437d-4b7e-9eb3-d49b1da1b762.png">
@@ -359,83 +394,13 @@
 >
 > 同时, 数据中台建设还需要依赖于跨部门的协同和配合, 以确保数据的一致性和可用性
 
-### 功能一览
-
-- 平台基础设置
-    - 系统管理
-        - 岗位管理: 配置系统用户所属担任职务
-        - 部门管理: 配置系统组织机构, 树结构展现支持数据权限
-        - 菜单管理: 配置系统菜单, 操作权限, 按钮权限标识等
-        - 角色管理: 角色菜单权限分配, 设置角色按机构进行数据范围权限划分
-        - 用户管理: 用户是系统操作者, 该功能主要完成系统用户配置
-        - 参数管理: 对系统动态配置常用参数
-        - 字典管理: 对系统中经常使用的一些较为固定的数据进行维护
-    - 系统监控
-        - 登录日志: 系统登录日志记录查询
-        - 操作日志: 系统正常操作日志记录和查询, 系统异常信息日志记录和查询
-    - 任务调度
-        - 任务管理: 在线（添加, 修改, 删除)任务调度
-        - 日志管理: 任务调度执行结果日志
-- 元数据管理
-    - 数据源: 数据源连接信息管理, 可生成数据库文档
-    - 元数据: 数据库表的元数据信息管理
-    - 数据授权: 设置元数据信息权限划分
-    - 变更记录: 元数据信息变更记录信息管理
-    - 数据检索: 数据源, 数据表, 元数据等信息查询
-    - 数据地图: 元数据的隶属数据表, 数据库的图形展示
-    - SQL工作台: 在线执行查询sql
-- 数据标准管理
-    - 标准字典: 国标数据维护
-    - 对照表: 本地数据中需要对照标准的数据维护
-    - 字典对照: 本地数据与国标数据的对照关系
-    - 对照统计: 本地数据与国标数据的对照结果统计分析
-- 数据质量管理
-    - 规则配置: 数据质量规则配置
-    - 问题统计: 数据质量规则统计
-    - 质量报告: 数据质量结果统计分析
-    - 定时任务: 数据质量定时任务
-    - 任务日志: 数据质量定时任务日志
-- 主数据管理
-    - 数据模型: 主数据数据模型维护
-    - 数据管理: 主数据数据管理
-- 数据集市管理
-    - 数据服务: 动态开发api数据服务, 可生成数据服务文档
-    - 数据脱敏: api数据服务返回结果动态脱敏
-    - 接口日志: api数据服务调用日志
-    - 服务集成: 三方数据服务集成管理
-    - 服务日志: 三方数据服务集成调用日志
-- 可视化管理
-    - 数据集: 基于sql的查询结果维护
-    - 图表配置: 动态echarts图表配置, 支持多维表格, 折线, 柱状, 饼图, 雷达, 散点等多种图表
-    - 看板配置: 拖拽式添加图表组件, 调整位置, 大小
-    - 酷屏配置: 拖拽式添加图表组件, 调整背景图, 颜色, 位置, 大小
-- 流程管理
-    - 流程定义: 流程定义管理
-    - 流程实例
-        - 运行中的流程: 运行中的流程实例管理
-        - 我发起的流程: 我发起的流程实例管理
-        - 我参与的流程: 我参与的流程实例管理
-    - 流程任务
-        - 待办任务: 待办任务管理
-        - 已办任务: 已办任务管理
-    - 业务配置: 配置业务系统与流程的相关属性
-
- ## Architecture
+## Architecture
 <br/>
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/171598215-0914f665-9950-476c-97ff-e7e07aa10eaf.png">
 <br/>
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/171598333-d14ff53f-3af3-481c-9f60-4f891a535b5c.png">
 <br/>
 
-| Component                                                                       | Description                                                    | Important Composition       |
-|---------------------------------------------------------------------------------|----------------------------------------------------------------|-----------------------------|
-| [**mlops**](https://github.com/alldatacenter/alldata/tree/master/mlops)               | MLOPS FOR ALL DATA PLATFORM artificial intelligence engine | 机器学习平台引擎                      |
-| [**chatgpt**](https://github.com/alldatacenter/alldata/tree/master/gpt)               | CHATGPT FOR ALL DATA PLATFORM DATA STORAGE engine         | ChatGPT引擎                     |
-| [**studio**](https://github.com/alldatacenter/alldata/tree/master/studio)         | STUDIO FOR ALL DATA PLATFORM DATA STUDIO engine                  | 数据工厂引擎                      |
-| [**wiki**](https://github.com/alldatacenter/alldata/tree/master/wiki)           | WIKI FOR ALL DATA PLATFORM WIKI Engine                         | AllData知识库                  |
-| [**alldata**](https://github.com/alldatacenter/alldata)                         | AllData大数据产品是基于大数据和人工智能研发的可定义数据中台。 |
-
-
 ## Community
 
-> 联系作者: https://docs.qq.com/doc/DVHlkSEtvVXVCdEFo
+> 加入微信群: https://docs.qq.com/doc/DVHlkSEtvVXVCdEFo
