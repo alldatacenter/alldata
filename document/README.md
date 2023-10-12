@@ -8,7 +8,7 @@
 ```markdown
 pip3 install sphinx-autobuild
 pip3 install sphinx_rtd_theme
-pip3 install recommonmark
+pip3 install --upgrade myst-parser
 pip3 install sphinx_markdown_tables
 ```
 > 3 配置mac(mac单独配置)
@@ -24,7 +24,7 @@ source ~/.bash_profile
 > 
 > 7 python3.10 -m pip install --upgrade pip
 > 
-> 8 pip3 install recommonmark && pip3 install sphinxawesome_theme
+> 8  pip3 install --upgrade myst-parser && pip3 install sphinxawesome_theme
 > 
 > 9 make html
 > 

@@ -1,6 +1,6 @@
 # 可定义数据中台
 
-## [官方文档](https://alldata.readthedocs.io/) ｜ [安装文档](https://github.com/alldatacenter/alldata/blob/master/install.md) ｜ [Community](#community)
+## [官方文档](https://alldata.readthedocs.io/) ｜ [安装文档](https://github.com/alldatacenter/alldata/blob/master/install.md)
 
 ## 安装教程
 > https://github.com/alldatacenter/alldata/blob/master/install.md
