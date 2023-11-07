@@ -10,7 +10,8 @@
 
    ##### 部署成功之后，点击BI模块点击修改操作进入修改界面，alldata-metadata-service模块会报错
 
-   ![image-20231107200125621](C:\Users\36229\AppData\Roaming\Typora\typora-user-images\image-20231107200125621.png)
+  ![image](https://github.com/LMR-up/alldata/assets/80820139/d7957d60-3d5b-490b-aa48-413c696bb277)
+
 
    
 
@@ -21,7 +22,6 @@
    2：在数据库中新建完这两个数据库之后，主要查看studio数据库中metadata_source表中的db_schema字段注意该字段的数据，端口和用户名，密码是否和foodmart2库和robot库相匹配，并且注意数据库的访问权限
 
    ##### 数据库补充完毕，就可以愉快的使用bi功能了
+   ![image](https://github.com/LMR-up/alldata/assets/80820139/a4033dd8-8b7f-4995-adfd-6863565c8388)
 
-   ![image-20231107201008315](C:\Users\36229\AppData\Roaming\Typora\typora-user-images\image-20231107201008315.png)
-
-![image-20231107201019281](C:\Users\36229\AppData\Roaming\Typora\typora-user-images\image-20231107201019281.png)
+![image](https://github.com/LMR-up/alldata/assets/80820139/18b097c8-f957-43b6-bdfb-f902a6eede45)
