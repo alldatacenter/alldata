@@ -17,7 +17,6 @@
     <modules>
         <module>assembly</module>
         <module>box</module>
-        <module>service-api</module>
         <module>common</module>
         <module>config</module>
         <module>eureka</module>
@@ -25,7 +24,6 @@
         <module>generic</module>
         <module>logging</module>
         <module>modules</module>
-        <module>ui</module>
     </modules>
 
     <name>Studio</name>
@@ -72,6 +70,7 @@
         <oracle.version>19.3.0.0</oracle.version>
         <postgresql.version>42.2.11</postgresql.version>
         <sqlserver.version>8.2.1.jre8</sqlserver.version>
+        <dameng.version>8.1.1.193</dameng.version>
         <zxing.version>3.4.0</zxing.version>
         <aspose.version>20.3</aspose.version>
         <jasperreports.version>6.12.2</jasperreports.version>

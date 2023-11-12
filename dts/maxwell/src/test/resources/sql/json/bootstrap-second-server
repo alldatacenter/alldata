@@ -1,3 +1,0 @@
-insert into maxwell.bootstrap set database_name = 'test_other', table_name = 'other';
-
--> { database: "test_other", table: "other", type: "bootstrap-insert",  data: {id: 1} }

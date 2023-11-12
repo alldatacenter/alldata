@@ -1,3 +1,0 @@
-"column": [
-#foreach($c in $writer.cols)
-{"name":"$c.name","type":"$c.type.s","nullable": ${c.nullable},"pk":${c.pk}},#end]

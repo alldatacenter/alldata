@@ -1,7 +1,0 @@
-Projection est. ? rows
-│     Expressions: [app_id, cohort_id, hash_uid, q4_date]
-└─ Gather Exchange est. ? rows
-   └─ Filter est. ? rows
-      │     Condition: (cohort_id > 80) AND (hash_uid > 70)
-      └─ TableScan correctness.q4_t1 est. ? rows
-               Outputs: [app_id, cohort_id, hash_uid, q4_date]

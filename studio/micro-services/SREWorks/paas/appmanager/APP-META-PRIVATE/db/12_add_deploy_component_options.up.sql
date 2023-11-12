@@ -1,1 +1,0 @@
-ALTER TABLE `am_deploy_component` ADD COLUMN `deploy_options` LONGTEXT NULL AFTER `deploy_ext`;

@@ -1,6 +1,0 @@
-
-
-name: filebeat 
-deployCommand: helm upgrade filebeat ./filebeat-chart --create-namespace --namespace sreworks-client -f values.yaml --install 
-chart: filebeat
-

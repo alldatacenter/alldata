@@ -1,11 +1,6 @@
 ## 部署指南
 
-> **提示**
-近期有许多小伙伴开始关注并尝试部署AllData项目，为方便小伙伴快速本地部署体验，便有了这篇文档。
-
-**AllData**通过汇聚大数据与AI领域生态组件，提供细分领域AllData数字化解决方案：大数据平台[数据中台]集成、大数据平台[数据中台]湖仓分析、大数据平台[数据中台]开发治理、大数据平台[数据中台]集群运维
-
-## **后端结构**
+### 1、后端结构
 
 ```
 ├── studio
@@ -36,11 +31,11 @@
 
 ```
 
-## **前端结构**
+### 2、前端结构
 
 
 ```
-│ ── ui
+│ ── micro-ui
      ├── public // 公共文件
     │   ├── favicon.ico // favicon图标
     │   ├── index.html  // html模板
@@ -92,7 +87,7 @@
 ```
 
 
-## 准备工作
+### 3、准备工作
 
 
 ```
@@ -105,13 +100,11 @@ RabbitMQ >= 3.0.x
 ```
 > 使用Mysql 8的用户注意导入数据时的编码格式问题
 
+### 4、本地启动/运行系统
 
+> 首先确保启动rabbitmq，mysql，redis已经启动
 
-
-## 运行系统
-首先确保启动rabbitmq，mysql，redis已经启动
-
-#后端运行
+#### 4.1 后端运行
 
 1、前往GitHub项目页面(https://github.com/alldatacenter/alldata)
 推荐使用版本控制方式下载解压到工作目录或IDEA直接从VCS获取项目代码，便于同步最新社区版改动， alldata/studio/为项目前后端存放路径。
@@ -120,9 +113,11 @@ RabbitMQ >= 3.0.x
 
 3、创建数据库studio：到 `factory/studio/install/sql`目录下sql数据脚本，把` studio.sql`和`studio-v0.x.x.sql`导入本地或线上Mysql数据库
 
-4、修改该文件 `alldata/studio/config/src/main/resources/config/application-common-dev.yml`的rabbitmq，mysql，redis为自己的服务
+4、导入BI sql, 参考alldata/bi_quickstart.md
 
-5、打开运行基础模块（启动没有先后顺序）
+5、修改该文件 `alldata/studio/config/src/main/resources/config/application-common-dev.yml`的rabbitmq，mysql，redis为自己的服务
+
+6、打开运行基础模块（启动没有先后顺序）
 
 ```
 DataxEurekaApplication.java（注册中心模块 必须）
@@ -152,18 +147,20 @@ SystemServiceApplication.java（系统模块 必须，不启动无法登录）
 5.4 启动SystemService项目，本地运行时eureka配置处，改成localhost。及其他项目同理。
 
 
-# 前端运行
+#### 4.2 前端运行
 ```
-cd alldata/studio/ui
+cd alldata/studio/micro-ui
 npm run dev
 ```
 启动成功，会自动弹出浏览器登录页
 
 
-##### 注意目前视频能看到的功能都已开源，若发现“数据集成”菜单没有，可只导入factory/studio/install/sql下的studio.sql + studio-v0.x.x + 数据集成。其他菜单若发现没有的话，也可自行配置，具体参考 https://github.com/alldatacenter/alldata/issues/489
+#### 注意目前视频能看到的功能都已开源，若发现“数据集成”菜单没有.
+#### 可只导入factory/studio/install/sql下的studio.sql + studio-v0.x.x + 数据集成。
+#### 其他菜单若发现没有的话，也可自行配置，具体参考 https://github.com/alldatacenter/alldata/issues/489
 
 
-## 启动SystemService项目，本地运行时eureka配置处，改成localhost。及其他项目同理。
+#### 4.3 启动SystemService项目，本地运行时eureka配置处，改成localhost。及其他项目同理。
 ```
 系统管理 - system-service-parent ~ system-service ~ SystemServiceApplication
 数据集成 - service-data-dts-parent ~ service-data-dts ~ DataDtsServiceApplication
@@ -185,7 +182,7 @@ BI报表 - data-visual-service-parent ~ data-visual-service ~ DataxVisualApplica
 文件服务 - file-service-parent ~ file-service ~ DataxFileApplication
 ```
 
-## 打包部署
+### 5、服务器集群部署
 | 16gmaster                | port | ip             |
 |--------------------------|------| -------------- |
 | system-service           | 8000 | 16gmaster  |
@@ -215,19 +212,20 @@ BI报表 - data-visual-service-parent ~ data-visual-service ~ DataxVisualApplica
 | gateway               | 9538 | 16gslave    |
 
 
-### 部署方式
+### 6、部署方式
 
 > 数据库版本为 **mysql5.7** 及以上版本
-### 1、`studio`数据库初始化
+#### 1、`studio`数据库初始化
 >
 > 1.1 source install/sql/studio.sql
 > 1.2 source install/sql/studio-v0.x.x.sql
+> 1.3 导入BI sql, 参考alldata/bi_quickstart.md
 
-### 2、修改 **config** 配置中心
+#### 2、修改 **config** 配置中心
 
 > **config** 文件夹下的配置文件, 修改 **redis**, **mysql** 和 **rabbitmq** 的配置信息
 >
-### 3、项目根目录下执行
+#### 3、项目根目录下执行
 ```
 1、缺失aspose-words,要手动安装到本地仓库
 2、cd alldata/studio/common
@@ -242,8 +240,8 @@ BI报表 - data-visual-service-parent ~ data-visual-service ~ DataxVisualApplica
 >
 > 上传服务器解压
 >
-### 4、部署`stuido`[后端]
-## 单节点启动[All In One]
+#### 4、部署`stuido`[后端]
+#### 单节点启动[All In One]
 
 > 1、启动eureka on `16gslave`
 >
@@ -253,7 +251,7 @@ BI报表 - data-visual-service-parent ~ data-visual-service ~ DataxVisualApplica
 >
 > 4、启动其他Jar
 
-## 三节点启动[16gmaster, 16gslave, 16gdata]
+#### 5、三节点启动[16gmaster, 16gslave, 16gdata]
 > 1. 单独启动 eureka on `16gslave`
 >
 > 2. 单独启动config on `16gmaster`
@@ -266,10 +264,10 @@ BI报表 - data-visual-service-parent ~ data-visual-service ~ DataxVisualApplica
 >
 > 6. 启动`16gmaster`, sh start16gmaster.sh
 
-### 5、部署`studio`[前端]:
-## 前端部署
+#### 6、部署`studio`[前端]:
+#### 前端部署
 
-### 安装依赖
+#### 安装依赖
 
 > 依次安装：
 > nvm install v10.15.3 && nvm use v10.15.3
@@ -286,7 +284,7 @@ BI报表 - data-visual-service-parent ~ data-visual-service ~ DataxVisualApplica
 
 > npm run build:prod [生产]
 >
-> 生产环境启动前端ui项目, 需要[配置nginx]
+> 生产环境启动前端micro-ui项目, 需要[配置nginx]
 ```markdown
 # For more information on configuration, see:
 #   * Official English Documentation: http://nginx.org/en/docs/
@@ -331,7 +329,7 @@ log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
 		add_header Access-Control-Allow-Headers X-Requested-With;
 		add_header Access-Control-Allow-Methods GET,POST,OPTIONS;
 		location / {
-			root /studio/ui/dist;
+			root /studio/micro-ui/dist;
 			index index.html;
 			try_files $uri $uri/ /index.html;
 		}
@@ -344,7 +342,7 @@ log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
 	}
 }
 ```
-> 测试环境启动前端ui项目
+> 测试环境启动前端micro-ui项目
 >
 > npm run dev [测试]
 >
@@ -354,7 +352,26 @@ log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
 >
 > 用户名：admin 密码：123456
 
-## 常见问题
+### 7、数据集成配置教程
+
+> 先找到用户管理-菜单管理, 新增【数据集成】目录
+>
+> 新增【数据集成】下面的菜单, 菜单各项按如下配置输入, 之后进入角色管理
+>
+> 配置admin账号的目录数据权限, 选中刚才新增的数据集成目录及里面的菜单, 刷新或重新登录即可访问【数据集成】
+
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/9457212/233446739-41ea4501-bb09-4eb2-86de-21c168784564.png">
+<br/>
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/9457212/233446763-cbb15105-b209-4b8f-b3f2-c41b5a607dd9.png">
+<br/>
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/9457212/233447516-c952efd0-f8e2-4181-8608-1f513f9c0e93.png">
+<br/>
+
+
+### 8、常见问题
 ```
 前置 -
 1、启动前是删除了pom.xml；

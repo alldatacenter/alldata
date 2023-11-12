@@ -15,10 +15,7 @@ import com.platform.core.util.ProcessUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -172,24 +169,44 @@ public class JobTriggerPoolHelper {
 	}
 
 	public static void runJob(int jobId) {
+		InputStreamReader isReader = null;
+		BufferedReader bfReader = null;
+		FileOutputStream out = null;
 		try {
 			JobInfo jobInfo = JobAdminConfig.getAdminConfig().getJobInfoMapper().loadById(jobId);
 			String cmdstr = "";
 			String tmpFilePath ="";
 			String[] cmdarrayFinal = null;
 			tmpFilePath = generateTemJsonFile(jobInfo.getJobJson());
-			cmdarrayFinal = buildFlinkXExecutorCmd(ExcecutorConfig.getExcecutorConfig().getFlinkxHome(), tmpFilePath,jobId);
+			cmdarrayFinal = buildFlinkXExecutorCmd(ExcecutorConfig.getExcecutorConfig().getFlinkxHome(), tmpFilePath, jobId);
 			for (int j = 0; j < cmdarrayFinal.length; j++) {
-				if (cmdarrayFinal[j].contains(".out")) {
+				if (cmdarrayFinal[j].contains(".log")) {
 					cmdstr += " > " + cmdarrayFinal[j] ;
 				}else {
 					cmdstr += cmdarrayFinal[j] + " ";
 				}
 			}
+			if(cmdstr.indexOf("python")>0){
+				cmdstr = cmdstr.substring(cmdstr.indexOf("python"), cmdstr.length());
+			}
 			final Process process = Runtime.getRuntime().exec(cmdstr);
 			String prcsId = ProcessUtil.getProcessId(process);
 			JobLogger.log("Execute: " + cmdstr);
 			JobLogger.log("process id: " + prcsId);
+			//jeff优化直接执行不生效问题
+			isReader = new InputStreamReader(process.getInputStream(), "UTF-8");
+			bfReader = new BufferedReader(isReader);
+			String line = null;
+			String logPath = ExcecutorConfig.getExcecutorConfig().getFlinkxlogHome()+"/"+jobId+""+System.currentTimeMillis()+".log";
+			JobLogger.log("logPath: " + logPath);
+			out = new FileOutputStream(logPath);
+			while ((line = bfReader.readLine()) != null){
+				logger.info(line);
+				out.write(line.getBytes());
+				String newLine = System.getProperty("line.separator");
+				out.write(newLine.getBytes());
+			}
+			process.waitFor();
 			if (FileUtil.exist(tmpFilePath)) {
 				//				FileUtil.del(new File(tmpFilePath));
 			}
@@ -208,10 +225,32 @@ public class JobTriggerPoolHelper {
 			jobLog.setHandleCode(0);
 			jobLog.setProcessId(prcsId);
 			// 设置job的执行路径
-//			jobLog.setExecutorAddress(cmdarrayFinal[3]);
+			jobLog.setExecutorAddress(logPath);
 			JobAdminConfig.getAdminConfig().getJobLogMapper().save(jobLog);
 		} catch (Exception e) {
 			e.printStackTrace();
+		}finally {
+			if(out != null){
+				try {
+					out.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+			if(bfReader != null){
+				try {
+					bfReader.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+			if(isReader != null){
+				try {
+					isReader.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 	}
 

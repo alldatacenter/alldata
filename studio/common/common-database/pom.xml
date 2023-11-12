@@ -41,5 +41,10 @@
             <artifactId>mssql-jdbc</artifactId>
             <version>${sqlserver.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.dameng</groupId>
+            <artifactId>DmJdbcDriver18</artifactId>
+            <version>${dameng.version}</version>
+        </dependency>
     </dependencies>
 </project>

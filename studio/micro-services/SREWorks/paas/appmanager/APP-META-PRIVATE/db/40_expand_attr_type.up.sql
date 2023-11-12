@@ -1,1 +1,0 @@
-alter table am_deploy_app_attr modify attr_type varchar(256) null comment '类型';

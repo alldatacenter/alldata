@@ -37,6 +37,9 @@ public abstract class AbstractDataSourceFactory implements DataSourceFactory {
 
     public DataSource createDataSource(DbQueryProperty property) {
         HikariDataSource dataSource = new HikariDataSource();
+//        if (property.getDbType().equals("9")) {
+//            dataSource.setDriverClassName("dm.jdbc.driver.DmDriver");
+//        }
         dataSource.setJdbcUrl(trainToJdbcUrl(property));
         dataSource.setUsername(property.getUsername());
         dataSource.setPassword(property.getPassword());

@@ -1,3 +1,0 @@
-CREATE ROLE engineer;
-
-CREATE ROLE IF NOT EXISTS engineer;

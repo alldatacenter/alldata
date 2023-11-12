@@ -1,6 +1,0 @@
-# CSV uses quote as the quote escape by default.
-# Earlier versions accidentally used back-slash.
-# The back-slash, and \n, don't do anything; they are regular chars.
-"a, b,","c","d,, \n e","f""g"
-"d, e,","f","g,, \n h","i""j"
-"g, h,","i","j,, \n k","l""m"

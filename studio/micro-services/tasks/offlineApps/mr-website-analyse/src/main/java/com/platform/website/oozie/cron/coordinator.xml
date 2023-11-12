@@ -1,7 +1,0 @@
-<coordinator-app name="cron-coord" frequency="${coord:hours(24)}" start="${start}" end="${end}" timezone="UTC" xmlns="uri:oozie:coordinator:0.2">
-<action>
-	<workflow>
-		<app-path>${workflowAppUri}</app-path>
-	</workflow>
-</action>
-</coordinator-app>
