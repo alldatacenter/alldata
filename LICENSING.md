@@ -6,4 +6,4 @@ You can choose AGPL to use alldata.
 
 for more details.
 
-All contributions to the alldata are subject to this COPYING file.
+All contributions to the alldata are subject to this LICENSING file.
