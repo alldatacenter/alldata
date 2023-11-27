@@ -6,7 +6,7 @@
         select
         p.*,u.username
         from job_project p
-        join job_user u on p.user_id = u.id
+        join sys_user u on p.user_id = u.user_id
         where p.flag=1
         <if test="searchName!=null and searchName != ''">
             and p.name like concat('%', #{searchName}, '%')
