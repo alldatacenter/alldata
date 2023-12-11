@@ -12,7 +12,5 @@
    README
    quickstart/index
    studio/index
-   mlops/index
-   chatgpt/index
    wiki/index
    donate/index
