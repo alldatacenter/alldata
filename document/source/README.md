@@ -34,21 +34,14 @@
   <img width="1215" align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=alldatacenter&repo=alldata" />
 </a>
 
-## 体验版
-<br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/204965509-fc13050b-ebe8-4bd5-8882-69e1af0a8367.png">
-<br/>
-
-
 ## 可定义数据中台
 <br/>
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/235920344-fbf3c9d2-6239-4c73-aa9c-77a72773780e.png">
 <br/>
 
-## 首页
-
+## 体验版
 <br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/227456470-6fd4e3c8-e5b7-48f9-bf3a-83975f78654c.png">
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/204965509-fc13050b-ebe8-4bd5-8882-69e1af0a8367.png">
 <br/>
 
 <br/>

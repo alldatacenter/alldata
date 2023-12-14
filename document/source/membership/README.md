@@ -15,10 +15,10 @@
 >
 > 部署教程：https://github.com/alldatacenter/alldata/blob/master/install.md
 >
-> 教程文档：https://github.com/alldatacenter/alldata/blob/master/studio/modules/service-data-dts-parent/DTS_QuickStart.md
+> 教程文档：https://github.com/alldatacenter/alldata/blob/master/dts_quickstart.md
+> 教程文档2: https://github.com/alldatacenter/alldata/blob/master/bi_quickstart.md
 
 ## 三、会员通道-商业版【可选参加】
 > 【腾讯文档】2023-大数据中台AllData会员通道
 >
 > https://docs.qq.com/sheet/DVFd6WXJLUHJ3eEZ1
-
