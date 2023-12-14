@@ -10,7 +10,6 @@
    :maxdepth: 1
 
    README
-   quickstart/index
    studio/index
+   membership/index
    wiki/index
-   donate/index
