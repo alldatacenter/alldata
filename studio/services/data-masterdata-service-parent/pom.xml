@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>services</artifactId>
+        <groupId>com.platform</groupId>
+        <version>0.4.x</version>
+    </parent>
+    <packaging>pom</packaging>
+    <modelVersion>4.0.0</modelVersion>
+    <version>0.4.x</version>
+    <description>主数据</description>
+    <artifactId>data-masterdata-service-parent</artifactId>
+
+    <modules>
+        <module>data-masterdata-service-api</module>
+        <module>data-masterdata-service</module>
+    </modules>
+</project>
