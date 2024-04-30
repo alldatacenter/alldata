@@ -325,6 +325,17 @@ http://122.51.43.143/dashboard
 
 ![image](https://github.com/alldatacenter/alldata/assets/20246692/b5c75229-f074-4d4b-ab1c-a5e16091efc6)
 
+<img width="1215" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/eddd3086-b4e8-480d-8fff-ccdeedf8f12d">
+
+<img width="1215" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/41b1fb5f-de34-4488-812f-8b217baaf54b">
+
+<img width="1215" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/706345d8-a7d7-459f-b125-912bdc4cec03">
+
+<img width="1215" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/ab048563-22a0-43d8-91d1-f6cf8f45781c">
+
+<img width="1215" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/91065efb-c6c2-4267-8886-59761d2dc555">
+
+
 ### 9.18 新版BI平台(Datart)
 
 ![image](https://github.com/alldatacenter/alldata/assets/20246692/2677806b-aa2a-4114-927a-b7e7a1309817)
