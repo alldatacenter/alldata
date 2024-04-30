@@ -49,7 +49,7 @@
 ### 6.1 AllData会员商业版通道
 
 > 1.1 微信社区交流群
->
+> 
 ![image](https://github.com/alldatacenter/alldata/assets/20246692/610da0a1-ee19-4173-b6ab-7f96aaf808f1)
 
 > 1.2 加入AllData开发组
@@ -59,17 +59,17 @@
 > 此群为2024年度规划研发群，加内部群请先领取相关issue，加群请备注：开发组
 
 > 1.3 加入AllData社区交流群
->
+> 
 > 加入条件：无条件加入【交流群加入备注：开源共建】
->
+> 
 > 此群为alldata社区群，讨论alldata产品与技术，加群请备注：开源共建
 
 > 1.4 微信搜索-视频号
->
+> 
 ![image](https://github.com/alldatacenter/alldata/assets/20246692/c809b131-4b5f-4e60-ab26-81930665fc3b)
 
 > 1.5 微信搜索-公众号
->
+> 
 ![image](https://github.com/alldatacenter/alldata/assets/20246692/7d4312a3-1904-404d-a0ed-f36b14e7c02d)
 
 
@@ -311,6 +311,17 @@
 ### 9.17 数据平台(K8S)
 
 ![image](https://github.com/alldatacenter/alldata/assets/20246692/b5c75229-f074-4d4b-ab1c-a5e16091efc6)
+
+<img width="1215" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/eddd3086-b4e8-480d-8fff-ccdeedf8f12d">
+
+<img width="1215" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/41b1fb5f-de34-4488-812f-8b217baaf54b">
+
+<img width="1215" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/706345d8-a7d7-459f-b125-912bdc4cec03">
+
+<img width="1215" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/ab048563-22a0-43d8-91d1-f6cf8f45781c">
+
+<img width="1215" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/91065efb-c6c2-4267-8886-59761d2dc555">
+
 
 ### 9.18 新版BI平台(Datart)
 
