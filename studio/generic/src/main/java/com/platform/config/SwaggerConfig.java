@@ -62,8 +62,8 @@ public class SwaggerConfig {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .description("AllData科学护城河")
-                .title("AllData科学护城河")
+                .description("AllData数据中台")
+                .title("AllData数据中台")
                 .version("2.6")
                 .build();
     }

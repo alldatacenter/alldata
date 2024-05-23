@@ -2,7 +2,7 @@ module.exports = {
   /**
    * @description 网站标题
    */
-  title: 'AllData科学护城河',
+  title: 'AllData数据中台',
   /**
    * @description 是否显示 tagsView
    */

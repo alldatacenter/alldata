@@ -25,7 +25,7 @@ export default {
   },
   data() {
     return {
-      title: 'AllData科学护城河',
+      title: 'AllData数据中台',
       logo: Logo
     }
   }
