@@ -1,11 +1,11 @@
-# 可定义数据中台
+# AllData数据中台
 
-## [官方文档](https://alldata.readthedocs.io) ｜ [安装文档](https://github.com/alldatacenter/alldata/blob/master/install.md)
+### [官方文档](https://alldata.readthedocs.io) ｜ [安装文档](https://github.com/alldatacenter/alldata/blob/master/install.md)
 
-## 数据中台登录页
+### 数据中台登录页
 <img width="1416" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/189663b3-f9e2-4c83-b6fa-507dc19711a5">
 
-## 数据中台首页
+### 数据中台首页
 <img width="2208" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/d74d7986-73c3-4338-a0e2-3baf15d40a7b">
 
 
