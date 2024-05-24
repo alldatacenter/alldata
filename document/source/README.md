@@ -53,7 +53,7 @@
 
 ### 3.个人版只用于个人学习使用，项目使用用途
 
-> 3.1 创始版会员功能可以查看海报: https://docs.qq.com/doc/DVG9Hc0haTFhjTUNs
+> 3.1 个人版会员功能可以查看海报: https://docs.qq.com/doc/DVG9Hc0haTFhjTUNs
 >
 
 ### 4.开源版功能列表[1.0架构]
