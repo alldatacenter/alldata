@@ -13,8 +13,6 @@
   ![image](https://github.com/LMR-up/alldata/assets/80820139/d7957d60-3d5b-490b-aa48-413c696bb277)
 
 
-   
-
    该模块爆的应该是数据库的错误，其实主要是因为该项目提供的数据库只有studio,缺少了foodmart2和robot数据库
 
    1：我们只需要新建这两个数据库并且把数据导入即可以下为数据库连接，https://gitee.com/zrxjava/srt-data/tree/master/db可以自己下载导入，我会把数据库文件放在项目根目录

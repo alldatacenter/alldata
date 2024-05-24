@@ -5,10 +5,10 @@
     <parent>
         <artifactId>data-standard-service-parent</artifactId>
         <groupId>com.platform</groupId>
-        <version>0.4.x</version>
+        <version>0.5.x</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <version>0.4.x</version>
+    <version>0.5.x</version>
     <artifactId>data-standard-service</artifactId>
 
     <dependencies>
@@ -47,27 +47,27 @@
         <dependency>
             <groupId>com.platform</groupId>
             <artifactId>common-mybatis</artifactId>
-            <version>0.4.x</version>
+            <version>0.5.x</version>
         </dependency>
         <dependency>
             <groupId>com.platform</groupId>
             <artifactId>common-redis</artifactId>
-            <version>0.4.x</version>
+            <version>0.5.x</version>
         </dependency>
         <dependency>
             <groupId>com.platform</groupId>
             <artifactId>common-security</artifactId>
-            <version>0.4.x</version>
+            <version>0.5.x</version>
         </dependency>
         <dependency>
             <groupId>com.platform</groupId>
             <artifactId>common-log</artifactId>
-            <version>0.4.x</version>
+            <version>0.5.x</version>
         </dependency>
         <dependency>
             <groupId>com.platform</groupId>
             <artifactId>data-standard-service-api</artifactId>
-            <version>0.4.x</version>
+            <version>0.5.x</version>
         </dependency>
     </dependencies>
 

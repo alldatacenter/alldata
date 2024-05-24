@@ -3,13 +3,15 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-可定义数据中台
+AllData介绍
 ===================================
 
 .. toctree::
    :maxdepth: 1
 
    README
-   studio/index
+   installDeploy/index
+   userGuide/index
+   meetup/index
+   plan/index
    membership/index
-   wiki/index
