@@ -40,20 +40,20 @@
 2.2 新版尊贵会员，新版高级会员，新版终身会员属于V2.0新版架构，V2.0新版架构使用Wujie微前端架构+后端可插拔架构。这套架构是全新会员商业版的核心优势，集成开源组件能力十分优秀，可以扩展支持到30-100+大数据开源组件。
 ```
 >
-> 2.3 创始版会员功能可以查看海报：https://docs.qq.com/doc/DVG1udXdxdWF4VHRG
+> 2.3 创始版会员价格可以查看价格文档：https://docs.qq.com/doc/DVG1udXdxdWF4VHRG
 >
-> 2.4 新版尊贵会员功能可以查看海报：https://docs.qq.com/doc/DVEtIeVJ0ZlROdnJL
+> 2.4 新版尊贵会员价格可以查看价格文档：https://docs.qq.com/doc/DVEtIeVJ0ZlROdnJL
 >
-> 2.5 新版高级会员功能可以查看海报：https://docs.qq.com/doc/DVG9meHFCdFJCQU9I
+> 2.5 新版高级会员价格可以查看价格文档：https://docs.qq.com/doc/DVG9meHFCdFJCQU9I
 >
-> 2.6 新版终身会员功能可以查看海报：https://docs.qq.com/doc/DVExLZHNwcmlxTXZx
+> 2.6 新版终身会员价格可以查看价格文档：https://docs.qq.com/doc/DVExLZHNwcmlxTXZx
 >
 > 2.7 全部会员价格汇总可以查看海报：https://docs.qq.com/doc/DVFZEQWhoaGxFSXR6
 >
 
 ### 3.个人版只用于个人学习使用，项目使用用途
 
-> 3.1 个人版会员功能可以查看海报: https://docs.qq.com/doc/DVG9Hc0haTFhjTUNs
+> 3.1 个人版会员价格可以查看价格文档: https://docs.qq.com/doc/DVG9Hc0haTFhjTUNs
 >
 
 ### 4.开源版功能列表[1.0架构]
