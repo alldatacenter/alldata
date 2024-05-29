@@ -1,22 +1,78 @@
-# AllData数据中台
+# 数据中台
 
-### [官方文档](https://alldata.readthedocs.io) ｜ [安装文档](https://github.com/alldatacenter/alldata/blob/master/install.md)
+### [官方文档](https://alldata-document.readthedocs.io/zh/latest/README.html) ｜ [安装文档](https://alldata-document.readthedocs.io/zh/latest/installDeploy/index.html)
 
 ### 数据中台登录页
-<img width="1416" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/189663b3-f9e2-4c83-b6fa-507dc19711a5">
+<img width="1423" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/189663b3-f9e2-4c83-b6fa-507dc19711a5">
 
 ### 数据中台首页
-<img width="2208" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/d74d7986-73c3-4338-a0e2-3baf15d40a7b">
+<img width="1423" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/d74d7986-73c3-4338-a0e2-3baf15d40a7b">
+
+## 一、开源版功能列表
+### [1.0架构]
+
+| id  | 功能模块          | 是否开源                               |        开源版与商业版区别     |           架构版本        |
+|-----|------------------|------------------------------------|----------------------------|--------------------------|
+| 1   | 系统管理          | 开源                                 |    商业版更稳定,Bug比较少   |         旧版架构V1.0      |
+| 2   | 数据集成          | 开源                                 |    商业版更稳定,Bug比较少   |         旧版架构V1.0      |
+| 3   | 元数据管理        | 开源                                  |    商业版更稳定,Bug比较少   |         旧版架构V1.0      |
+| 4   | 数据标准          | 开源                                 |    商业版更稳定,Bug比较少   |         旧版架构V1.0      |
+| 5   | 数据质量          | 开源                                 |    商业版更稳定,Bug比较少   |         旧版架构V1.0      |
+| 6   | 数据资产          | 开源                                 |    商业版更稳定,Bug比较少   |         旧版架构V1.0      |
+| 7   | 数据市场          | 开源                                 |    商业版更稳定,Bug比较少   |         旧版架构V1.0      |
+| 8   | 数据对比          | 开源                                 |    商业版更稳定,Bug比较少   |         旧版架构V1.0      |
+| 9   | BI报表           | 开源                                 |    商业版更稳定,Bug比较少  |         旧版架构V1.0      |
+| 10  | 流程编排          | 开源                                 |    商业版更稳定,Bug比较少   |         旧版架构V1.0      |
+| 11  | 系统监控          | 开源                                 |    商业版更稳定,Bug比较少   |         旧版架构V1.0      |
+| 12  | 邮件服务          | 开源                                 |    商业版更稳定,Bug比较少   |         旧版架构V1.0      |
+| 14  | 文件服务          | 开源                                 |    商业版更稳定,Bug比较少   |         旧版架构V1.0      |
 
 
-## 一、会员商业版
+
+
+## 二、商业版功能列表
+### [2.0架构，商业版提供更稳定的功能，商业版功能更稳定，Bug更少]
+
+| id  | 功能模块          | 是否开源    |        开源版与商业版区别     |           架构版本        |
+|-----|------------------|---------|----------------------------|--------------------------|
+| 1   | 系统管理          | 商业版，不开源 |    商业版更稳定,Bug比较少   |         新版架构V2.0      |
+| 2   | 数据集成          | 商业版，不开源 |    商业版更稳定,Bug比较少   |         新版架构V2.0       |
+| 3   | 元数据管理        | 商业版，不开源 |    商业版更稳定,Bug比较少   |         旧版架构V1.0      |
+| 4   | 数据标准          | 商业版，不开源 |    商业版更稳定,Bug比较少   |         新版架构V2.0       |
+| 5   | 数据质量          | 商业版，不开源 |    商业版更稳定,Bug比较少   |         新版架构V2.0       |
+| 6   | 数据资产          | 商业版，不开源 |    商业版更稳定,Bug比较少   |         新版架构V2.0       |
+| 7   | 数据市场          | 商业版，不开源 |    商业版更稳定,Bug比较少   |         新版架构V2.0       |
+| 8   | 数据对比          | 商业版，不开源 |    商业版更稳定,Bug比较少   |         新版架构V2.0       |
+| 9   | BI报表           | 商业版，不开源 |    商业版更稳定,Bug比较少   |         新版架构V2.0       |
+| 10  | 流程编排          | 商业版，不开源 |    商业版更稳定,Bug比较少   |         新版架构V2.0       |
+| 11  | 系统监控          | 商业版，不开源 |    商业版更稳定,Bug比较少   |         新版架构V2.0       |
+| 12  | 邮件服务          | 商业版，不开源 |    商业版更稳定,Bug比较少   |         新版架构V2.0       |
+| 14  | 文件服务          | 商业版，不开源 |    商业版更稳定,Bug比较少   |         新版架构V2.0       |
+
+
+## 三、商业版新增功能列表
+### [2.0架构，商业版提供源码，开源版不支持]
+
+| id | 功能模块        | 是否开源                                   |        开源版与商业版区别     | 架构版本    |
+|----|----------------|----------------------------------------|----------------------------|---------|
+| 15 | 数据平台功能| 商业版，不开源                                |    商业版更稳定,Bug比较少   | 旧版架构1.0 |
+| 16 | 数据平台功能(DataSophon)| 商业版，不开源                                |    商业版更稳定,Bug比较少   | 新版架构V2.0 |
+| 17 | 数据平台k8s功能(Cloudeon)| 商业版，不开源                                |    商业版更稳定,Bug比较少   | 新版架构V2.0 |
+| 18 | 实时开发功能(Streampark)| 商业版，不开源                                |    商业版更稳定,Bug比较少   | 新版架构V2.0 |
+| 19 | 实时开发IDE功能(Dinky)| 商业版，不开源                                |    商业版更稳定,Bug比较少   | 新版架构V2.0 |
+| 20 | 离线平台功能(DolphinScheduler)| 商业版，不开源                                |    商业版更稳定,Bug比较少   | 新版架构V2.0 |
+| 21 | BI平台功能(Datart)| 商业版，不开源                                |    商业版更稳定,Bug比较少   | 新版架构V2.0 |
+| 22 | 数据质量功能(Datavines)| 商业版，不开源                                |    商业版更稳定,Bug比较少   | 新版架构V2.0 |
+
+
+## 四、会员商业版
 ### 会员商业版线上环境地址
 
 ```
 会员商业版线上环境地址，线上环境只对会员通道开放，成为会员：享受会员权益。
 ```
 > 地址：http://122.51.43.143:5173/ui_moat
-> 
+>
 > 账号：test/123456（此账号只能体验数据质量功能）
 >
 
@@ -34,11 +90,17 @@
 ```
 
 ### 2.商业版包含创始版、新版尊贵会员、新版高级会员、新版终身会员
-```
-2.1 创始版属于V1.0旧版架构，V1.0旧版架构使用Vue2 + SpringCloud前后端分离架构。扩展大数据组件能力有限，目前扩展了开源组件DataSophon，此功能仅在商业版提供源码，开源版本不提供源码。
 
-2.2 新版尊贵会员，新版高级会员，新版终身会员属于V2.0新版架构，V2.0新版架构使用Wujie微前端架构+后端可插拔架构。这套架构是全新会员商业版的核心优势，集成开源组件能力十分优秀，可以扩展支持到30-100+大数据开源组件。
-```
+> 2.1 创始版属于V1.0旧版架构，V1.0旧版架构使用Vue2 + SpringCloud前后端分离架构。
+>
+> 扩展大数据组件能力有限，目前扩展了开源组件DataSophon，此功能仅在商业版提供源码，开源版本不提供源码。
+>
+> 2.2 新版尊贵会员，新版高级会员，新版终身会员属于V2.0新版架构。
+>
+> V2.0新版架构使用Wujie微前端架构+后端可插拔架构。
+>
+> 这套架构是全新会员商业版的核心优势，集成开源组件能力十分优秀，可以扩展支持到30-100+大数据开源组件。
+>
 >
 > 2.3 创始版会员价格可以查看价格文档：https://docs.qq.com/doc/DVG1udXdxdWF4VHRG
 >
@@ -49,106 +111,16 @@
 > 2.6 新版终身会员价格可以查看价格文档：https://docs.qq.com/doc/DVExLZHNwcmlxTXZx
 >
 > 2.7 全部会员价格汇总可以查看海报：https://docs.qq.com/doc/DVFZEQWhoaGxFSXR6
->
 
 ### 3.个人版只用于个人学习使用，项目使用用途
 
 > 3.1 个人版会员价格可以查看价格文档: https://docs.qq.com/doc/DVG9Hc0haTFhjTUNs
->
 
-### 4.开源版功能列表[1.0架构]
-```
-4.1 系统管理 - system-service-parent ~ system-service ~ SystemServiceApplication
 
-4.2 数据集成 - service-data-dts-parent ~ service-data-dts ~ DataDtsServiceApplication
 
-4.3 元数据管理 - data-metadata-service-parent ~ data-metadata-service ~ DataxMetadataApplication
+## 五、 官方网站
 
-4.4 元数据管理 - data-metadata-service-parent ~ data-metadata-service-console ~ DataxConsoleApplication
-
-4.5 数据标准 - data-standard-service-parent ~ data-standard-service ~ DataxStandardApplication
-
-4.6 数据质量 - data-quality-service-parent ~ data-quality-service ~ DataxQualityApplication
-
-4.7 数据资产 - data-masterdata-service-parent ~ data-masterdata-service ~ DataxMasterdataApplication
-
-4.8 数据市场 - data-market-service-parent ~ data-market-service ~ DataxMarketApplication
-
-4.9 数据市场 - data-market-service-parent ~ data-market-service-integration ~ DataxIntegrationApplication
-
-4.10 数据市场 - data-market-service-parent ~ data-market-service-mapping ~ DataxMappingApplication
-
-4.11 数据对比 - data-compare-service-parent ~ data-compare-service ~ DataCompareApplication
-
-4.12 BI报表 - data-visual-service-parent ~ data-visual-service ~ DataxVisualApplication
-
-4.13 流程编排 - workflow-service-parent ~ workflow-service ~ DataxWorkflowApplication
-
-4.14 系统监控 - system-service-parent ~ system-service ~ SystemServiceApplication
-
-4.15 邮件服务 - email-service-parent ~ email-service ~ DataxMailApplication
-
-4.16 文件服务 - file-service-parent ~ file-service ~ DataxFileApplication
-
-```
-
-### 5.商业版功能列表[2.0架构，商业版提供与开源版功能，商业版功能更稳定，Bug更少]
-```
-5.1 系统管理 - system-service-parent ~ system-service ~ SystemServiceApplication
-
-5.2 数据集成 - service-data-dts-parent ~ service-data-dts ~ DataDtsServiceApplication
-
-5.3 元数据管理 - data-metadata-service-parent ~ data-metadata-service ~ DataxMetadataApplication
-
-5.4 元数据管理 - data-metadata-service-parent ~ data-metadata-service-console ~ DataxConsoleApplication
-
-5.5 数据标准 - data-standard-service-parent ~ data-standard-service ~ DataxStandardApplication
-
-5.6 数据质量 - data-quality-service-parent ~ data-quality-service ~ DataxQualityApplication
-
-5.7 数据资产 - data-masterdata-service-parent ~ data-masterdata-service ~ DataxMasterdataApplication
-
-5.8 数据市场 - data-market-service-parent ~ data-market-service ~ DataxMarketApplication
-
-5.9 数据市场 - data-market-service-parent ~ data-market-service-integration ~ DataxIntegrationApplication
-
-5.10 数据市场 - data-market-service-parent ~ data-market-service-mapping ~ DataxMappingApplication
-
-5.11 数据对比 - data-compare-service-parent ~ data-compare-service ~ DataCompareApplication
-
-5.12 BI报表 - data-visual-service-parent ~ data-visual-service ~ DataxVisualApplication
-
-5.13 流程编排 - workflow-service-parent ~ workflow-service ~ DataxWorkflowApplication
-
-5.14 系统监控 - system-service-parent ~ system-service ~ SystemServiceApplication
-
-5.15 邮件服务 - email-service-parent ~ email-service ~ DataxMailApplication
-
-5.16 文件服务 - file-service-parent ~ file-service ~ DataxFileApplication
-
-```
-
-### 6.商业版新增功能列表[2.0架构，商业版提供源码，开源版不支持]
-```
-6.1 数据平台功能(DataSophon)
-
-6.2 数据平台k8s功能(Cloudeon)
-
-6.3 实时开发功能(Streampark)
-
-6.4 实时开发IDE功能(Dinky)
-
-6.5 离线平台功能(DolphinScheduler)
-
-6.6 BI平台功能(Datart)
-
-6.7 数据质量功能(Datavines)
-
-```
-
-## 二、 官方网站
-
-> 2.1 官方文档：https://alldata.readthedocs.io
+> 2.1 官方文档：https://alldata-document.readthedocs.io/zh/latest/README.html
 >
 > 2.2 部署教程：https://github.com/alldatacenter/alldata/blob/master/install.md
 >
@@ -157,43 +129,43 @@
 > 2.4 BI教程文档: https://github.com/alldatacenter/alldata/blob/master/quickstart_bi.md
 >
 > 2.5 微信社区交流群
-> 
+>
 ![image](https://github.com/alldatacenter/alldata/assets/20246692/610da0a1-ee19-4173-b6ab-7f96aaf808f1)
 >
 > 2.6 微信搜索-视频号
-> 
+>
 ![image](https://github.com/alldatacenter/alldata/assets/20246692/c809b131-4b5f-4e60-ab26-81930665fc3b)
 >
 > 2.7 微信搜索-公众号
-> 
+>
 ![image](https://github.com/alldatacenter/alldata/assets/20246692/7d4312a3-1904-404d-a0ed-f36b14e7c02d)
-> 
+>
 > 2.8 功能介绍（开源版只有创始版会员部分功能）
 ![第一：功能权益](https://github.com/alldatacenter/alldata/assets/20246692/6acb372c-bcdf-4732-9ed4-0dd7aaa8b926)
 
-## 三、AllData GitHub网站
+## 六、AllData GitHub网站
 
-### 3.1 Github开源AllData
+### 6.1 Github开源AllData
 
 <br/>
 <a href="https://github.com/alldatacenter/github-readme-stats">
-  <img width="1215" align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=alldatacenter&repo=alldata" />
+  <img width="1020" align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=alldatacenter&repo=alldata" />
 </a>
 
 [![Stargazers over time](https://starchart.cc/alldatacenter/alldata.svg)](https://starchart.cc/alldatacenter/alldata)
 
 
-### 3.2 AllData架构设计
+### 6.2 AllData架构设计
 <br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/235920344-fbf3c9d2-6239-4c73-aa9c-77a72773780e.png">
+<img width="1423" alt="image" src="https://user-images.githubusercontent.com/20246692/235920344-fbf3c9d2-6239-4c73-aa9c-77a72773780e.png">
 <br/>
 
-## 四、AllData会员商业版体验环境
+## 七、AllData会员商业版体验环境
 
-### 4.1 首页
-<img width="1421" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/40364db7-d7a1-457c-af51-94b3b6a71f8e">
+### 7.1 首页
+<img width="1423" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/40364db7-d7a1-457c-af51-94b3b6a71f8e">
 
-### 4.2 数据集成（开源版有，商业版更稳定，bug比较少）
+### 7.2 数据集成（开源版有，商业版更稳定，bug比较少）
 
 <img width="1423" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/862469f5-a557-4654-a348-c7d2ccc29b49">
 
@@ -209,7 +181,7 @@
 <img width="1400" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/65d5e8ec-f2f2-4053-bf3c-9e46131dd54b">
 
 
-### 4.3 数据质量（开源版有，商业版更稳定，bug比较少）
+### 7.3 数据质量（开源版有，商业版更稳定，bug比较少）
 
 <img width="1412" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/def238c4-9721-4ebf-b7f8-60f2c317d27d">
 
@@ -221,7 +193,7 @@
 
 ![image](https://github.com/alldatacenter/alldata/assets/20246692/5280690b-f6a1-4aba-98b9-788270d65fba)
 
-### 4.4 数据标准（开源版有，商业版更稳定，bug比较少）
+### 7.4 数据标准（开源版有，商业版更稳定，bug比较少）
 
 <img width="1405" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/73c735f9-ebc1-4824-8e03-713494bc9d00">
 
@@ -232,7 +204,7 @@
 <img width="1409" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/b091f7eb-6ba1-4c04-a065-02cc1b984862">
 
 
-### 4.5 元数据管理（开源版有，商业版更稳定，bug比较少）
+### 7.5 元数据管理（开源版有，商业版更稳定，bug比较少）
 <img width="1411" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/6e2800e3-ff47-4bfd-8401-ed3983b588ab">
 
 <img width="1424" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/e5497f9d-6a75-424b-98e1-4a73573f0c0b">
@@ -248,13 +220,13 @@
 <img width="1415" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/8a3f6445-cf3e-4b38-a423-ab94d59c3ba4">
 
 
-### 4.6 数据资产（开源版有，商业版更稳定，bug比较少）
+### 7.6 数据资产（开源版有，商业版更稳定，bug比较少）
 
 <img width="1434" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/87351bf4-2249-421f-bde0-afa2bd115324">
 
 <img width="1411" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/4096b37b-0534-48b1-bcb4-c592966df6f5">
 
-### 4.7 数据服务（开源版有，商业版更稳定，bug比较少）
+### 7.7 数据服务（开源版有，商业版更稳定，bug比较少）
 
 <img width="1400" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/53a16fc5-13c0-4c68-a6ae-549d81c6b3c7">
 
@@ -269,7 +241,7 @@
 
 
 
-### 4.8 数据比对（开源版有，商业版更稳定，bug比较少）
+### 7.8 数据比对（开源版有，商业版更稳定，bug比较少）
 
 <img width="1416" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/a7214896-7a15-443a-bd75-f024ae8e8ec3">
 
@@ -292,7 +264,7 @@
 
 
 
-### 4.9 BI报表（开源版有，商业版更稳定，bug比较少）
+### 7.9 BI报表（开源版有，商业版更稳定，bug比较少）
 
 ![image](https://github.com/alldatacenter/alldata/assets/20246692/6aa5e2d0-6343-4943-9963-5c8e08557e4f)
 
@@ -306,7 +278,7 @@
 
 
 
-### 4.10 流程编排（开源版有，商业版更稳定，bug比较少）
+### 7.10 流程编排（开源版有，商业版更稳定，bug比较少）
 
 <img width="1382" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/90f23e9f-2154-474c-bc93-4b9eb1fee263">
 
@@ -314,7 +286,7 @@
 
 <img width="1429" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/87c388ad-b578-4c37-8222-e6bec8dfb249">
 
-### 4.11 系统监控（开源版有，商业版更稳定，bug比较少）
+### 7.11 系统监控（开源版有，商业版更稳定，bug比较少）
 ![image](https://github.com/alldatacenter/alldata/assets/20246692/725711c1-d603-4fe5-93b0-debf50b6ce74)
 
 ![image](https://github.com/alldatacenter/alldata/assets/20246692/12b47e3e-2227-42e9-96fb-a88d13b54594)
@@ -323,7 +295,7 @@
 
 ![image](https://github.com/alldatacenter/alldata/assets/20246692/0a1b1c3f-cf12-4213-8b72-deeb5c8205f8)
 
-### 4.12 运维管理（开源版有，商业版更稳定，bug比较少）
+### 7.12 运维管理（开源版有，商业版更稳定，bug比较少）
 
 ![image](https://github.com/alldatacenter/alldata/assets/20246692/4e990fda-dbc5-41b4-a038-0b5f6c0e4539)
 
@@ -335,7 +307,7 @@
 
 ![image](https://github.com/alldatacenter/alldata/assets/20246692/cc84bd6b-c609-4d3b-82f1-33b524ab33b1)
 
-### 4.13 数据平台（开源版没有，商业版提供源码）
+### 7.13 数据平台（开源版没有，商业版提供源码）
 
 <img width="1410" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/dbc8c273-1800-4395-999d-eb241c09301a">
 
@@ -361,7 +333,7 @@
 
 ![image](https://github.com/alldatacenter/alldata/assets/20246692/c07399b9-f0a8-4b2d-ac9a-1b39db5784e5)
 
-### 4.14 数据平台(K8S)（开源版没有，商业版提供源码）
+### 7.14 数据平台(K8S)（开源版没有，商业版提供源码）
 
 <img width="1424" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/b77cfc70-796f-426b-b0e2-e9b5471c59d9">
 
@@ -377,7 +349,7 @@
 
 
 
-### 4.15 实时开发（开源版没有，商业版提供源码）
+### 7.15 实时开发（开源版没有，商业版提供源码）
 <img width="1431" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/e397f42a-850d-49ea-bfa0-c952a9857c7f">
 
 
@@ -393,7 +365,7 @@
 
 
 
-### 4.16 实时开发IDE（开源版没有，商业版提供源码）
+### 7.16 实时开发IDE（开源版没有，商业版提供源码）
 <img width="1409" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/c6fac72f-0162-49f1-9897-abfcb24dc313">
 
 <img width="1438" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/6178bb3b-3523-400a-afc3-3eeb1a7b4eb8">
@@ -410,7 +382,7 @@
 <img width="1410" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/f268f2ea-6736-4d8a-ab46-6b7678906424">
 
 
-### 4.17 离线平台（开源版没有，商业版提供源码）
+### 7.17 离线平台（开源版没有，商业版提供源码）
 <img width="1436" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/b26fd04d-fc0f-40b9-8446-c8c1fc3e70ce">
 
 <img width="1436" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/af3f84f9-06ef-420c-a20e-36880b3ba2fb">
@@ -438,9 +410,7 @@
 <img width="1439" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/c2692cba-eaea-422f-8264-c3226897d705">
 <img width="1412" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/de906b6c-3498-4174-9fa7-82bf79d667d2">
 
-### 4.18 新版数据质量平台(DataVines)（开源版没有，商业版提供源码）
-
-> 新版数据质量平台功能请查看文档
+### 7.18 新版数据质量平台(DataVines)（开源版没有，商业版提供源码）
 
 <img width="1419" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/dccc4c1d-b277-49f5-a347-22bc38599f53">
 
@@ -464,7 +434,7 @@
 
 <img width="1439" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/b25dba4d-28c9-4d16-bca1-e1803c5ae87a">
 
-### 4.19 新版BI平台(Datart)（开源版没有，商业版提供源码）
+### 7.19 新版BI平台(Datart)（开源版没有，商业版提供源码）
 
 <img width="1413" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/0732f03a-63b3-404d-a1d6-adfd9eff34b7">
 
@@ -477,24 +447,10 @@
 <img width="1265" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/92e4ba6b-ee6e-4d54-93b9-28d3af509564">
 
 
-## 五、AllData开源RoadMap
+## 八、AllData开源RoadMap
 
-### 5.1 AllData规划
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/188898972-d78bcbb6-eb30-420d-b5e1-7168aa340555.png">
-<br/>
-
-### 5.2、全站式AllData产品路线图
+### 8.1、全站式AllData产品路线图
 <br/>
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/179927878-ff9c487e-0d30-49d5-bc88-6482646d90a8.png">
 <br/>
-
-### 5.3、AllData社区开发规划
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/188899033-948583a4-841b-4233-ad61-bbc45c936ca1.png">
-<br/>
-
-### 5.4、Architecture
-<br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/171598215-0914f665-9950-476c-97ff-e7e07aa10eaf.png">
-<br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/171598333-d14ff53f-3af3-481c-9f60-4f891a535b5c.png">
-<br/>
+ 
