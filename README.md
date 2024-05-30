@@ -1,15 +1,19 @@
 # 数据中台
 
-### [官方文档](https://alldata-document.readthedocs.io/zh/latest/README.html) ｜ [安装文档](https://alldata-document.readthedocs.io/zh/latest/installDeploy/index.html)
+```
+AllData数据中台是可定义数据中台，上层是Wujie微前端架构，底座是可插拔的后端架构。
 
-### 数据中台登录页
+AllData数据中台以数据平台为底座，以数据中台为桥梁，以机器学习平台为中层框架，以大模型应用为上游产品，提供全链路数字化解决方案。
+```
+
 <img width="1423" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/189663b3-f9e2-4c83-b6fa-507dc19711a5">
 
-### 数据中台首页
 <img width="1423" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/d74d7986-73c3-4338-a0e2-3baf15d40a7b">
 
+### [官方文档](https://alldata.readthedocs.io) ｜ [安装文档](https://github.com/alldatacenter/alldata/blob/master/install.md)
+
 ## 一、开源版功能列表
-### [1.0架构]
+### AllData 1.0旧版架构
 
 | id  | 功能模块          | 是否开源                               |        开源版与商业版区别     |           架构版本        |
 |-----|------------------|------------------------------------|----------------------------|--------------------------|
@@ -31,13 +35,13 @@
 
 
 ## 二、商业版功能列表
-### [2.0架构，商业版提供更稳定的功能，商业版功能更稳定，Bug更少]
+### AllData 2.0新版架构
 
 | id  | 功能模块          | 是否开源    |        开源版与商业版区别     |           架构版本        |
 |-----|------------------|---------|----------------------------|--------------------------|
 | 1   | 系统管理          | 商业版，不开源 |    商业版更稳定,Bug比较少   |         新版架构V2.0      |
 | 2   | 数据集成          | 商业版，不开源 |    商业版更稳定,Bug比较少   |         新版架构V2.0       |
-| 3   | 元数据管理        | 商业版，不开源 |    商业版更稳定,Bug比较少   |         旧版架构V1.0      |
+| 3   | 元数据管理        | 商业版，不开源 |    商业版更稳定,Bug比较少   |         新版架构V2.0      |
 | 4   | 数据标准          | 商业版，不开源 |    商业版更稳定,Bug比较少   |         新版架构V2.0       |
 | 5   | 数据质量          | 商业版，不开源 |    商业版更稳定,Bug比较少   |         新版架构V2.0       |
 | 6   | 数据资产          | 商业版，不开源 |    商业版更稳定,Bug比较少   |         新版架构V2.0       |
@@ -51,96 +55,88 @@
 
 
 ## 三、商业版新增功能列表
-### [2.0架构，商业版提供源码，开源版不支持]
+### ### AllData 2.0新版架构-新增功能
 
-| id | 功能模块        | 是否开源                                   |        开源版与商业版区别     | 架构版本    |
-|----|----------------|----------------------------------------|----------------------------|---------|
+| id | 功能模块        | 是否开源                                |        开源版与商业版区别     | 架构版本    |
+|----|----------------|---------------------------------------|----------------------------|---------|
 | 15 | 数据平台功能| 商业版，不开源                                |    商业版更稳定,Bug比较少   | 旧版架构1.0 |
-| 16 | 数据平台功能(DataSophon)| 商业版，不开源                                |    商业版更稳定,Bug比较少   | 新版架构V2.0 |
-| 17 | 数据平台k8s功能(Cloudeon)| 商业版，不开源                                |    商业版更稳定,Bug比较少   | 新版架构V2.0 |
-| 18 | 实时开发功能(Streampark)| 商业版，不开源                                |    商业版更稳定,Bug比较少   | 新版架构V2.0 |
-| 19 | 实时开发IDE功能(Dinky)| 商业版，不开源                                |    商业版更稳定,Bug比较少   | 新版架构V2.0 |
-| 20 | 离线平台功能(DolphinScheduler)| 商业版，不开源                                |    商业版更稳定,Bug比较少   | 新版架构V2.0 |
-| 21 | BI平台功能(Datart)| 商业版，不开源                                |    商业版更稳定,Bug比较少   | 新版架构V2.0 |
-| 22 | 数据质量功能(Datavines)| 商业版，不开源                                |    商业版更稳定,Bug比较少   | 新版架构V2.0 |
+| 16 | 数据平台功能(DataSophon)| 商业版，不开源                    |    商业版更稳定,Bug比较少   | 新版架构V2.0 |
+| 17 | 数据平台k8s功能(Cloudeon)| 商业版，不开源                   |    商业版更稳定,Bug比较少   | 新版架构V2.0 |
+| 18 | 实时开发功能(Streampark)| 商业版，不开源                    |    商业版更稳定,Bug比较少   | 新版架构V2.0 |
+| 19 | 实时开发IDE功能(Dinky)| 商业版，不开源                      |    商业版更稳定,Bug比较少   | 新版架构V2.0 |
+| 20 | 离线平台功能(DolphinScheduler)| 商业版，不开源              |    商业版更稳定,Bug比较少   | 新版架构V2.0 |
+| 21 | BI平台功能(Datart)| 商业版，不开源                         |    商业版更稳定,Bug比较少   | 新版架构V2.0 |
+| 22 | 数据质量功能(Datavines)| 商业版，不开源                     |    商业版更稳定,Bug比较少   | 新版架构V2.0 |
 
 
 ## 四、会员商业版
-### 会员商业版线上环境地址
+
+
+### 4.1 商业版V1.0旧版架构 & V2.0新版架构
+```
+1、会员商业版线上环境地址，线上环境只对会员通道开放，成为会员：享受会员权益。
+
+  线上环境：http://122.51.43.143:5173/ui_moat
+  账号：test/123456（此账号只能体验数据质量功能）
+
+2、开源版与商业版不是同一个项目，开源版会长期存在，商业版由公司团队维护。
+
+3、开源项目可以用于公司内部调研用途，如需商业使用，需要购买会员商业版，开源AllData项目使用GPL协议。
+
+4、加入会员通道，购买商业版源码，可以商业使用AllData。
+
+5、商业版功能更多，保证稳定性，Bug比较少，由公司架构师团队维护。
+
+6、V1.0旧版架构: 
+
+  创始版属于V1.0旧版架构，V1.0旧版架构使用Vue2 + SpringCloud前后端分离架构。
+  扩展大数据组件能力有限，目前扩展了开源组件DataSophon，此功能仅在商业版提供源码，开源版本不提供源码。
+
+7、V2.0新版架构: 
+
+  新版尊贵会员，新版高级会员，新版终身会员属于V2.0新版架构。V2.0新版架构使用Wujie微前端架构+后端可插拔架构。
+  这套架构是全新会员商业版的核心优势，集成开源组件能力十分优秀，可以扩展支持到30-100+大数据开源组件。
 
 ```
-会员商业版线上环境地址，线上环境只对会员通道开放，成为会员：享受会员权益。
-```
-> 地址：http://122.51.43.143:5173/ui_moat
+
+
+### 4.2、商业版价格 & 个人版价格 & 开源版价格
+
+> 1、企业版-创始版会员价格可以查看价格文档：https://docs.qq.com/doc/DVG1udXdxdWF4VHRG
 >
-> 账号：test/123456（此账号只能体验数据质量功能）
+> 2、企业版-新版尊贵会员价格可以查看价格文档：https://docs.qq.com/doc/DVEtIeVJ0ZlROdnJL
+>
+> 3、企业版-新版高级会员价格可以查看价格文档：https://docs.qq.com/doc/DVG9meHFCdFJCQU9I
+>
+> 4、企业版-新版终身会员价格可以查看价格文档：https://docs.qq.com/doc/DVExLZHNwcmlxTXZx
+>
+> 5、企业版-全部会员价格汇总可以查看海报：https://docs.qq.com/doc/DVFZEQWhoaGxFSXR6
+> 
+> 6、个人版-会员价格可以查看价格文档: https://docs.qq.com/doc/DVG9Hc0haTFhjTUNs
+>
+> 7、开源版-会员价格可以查看价格文档: https://docs.qq.com/doc/DVEt2eUV0Q3hyZ3lz
+>
+> 8、官方文档：https://alldata.readthedocs.io
+>
+> 9、部署教程：https://github.com/alldatacenter/alldata/blob/master/install.md
+>
+> 10、数据集成文档：https://github.com/alldatacenter/alldata/blob/master/quickstart_dts.md
+>
+> 11、BI教程文档: https://github.com/alldatacenter/alldata/blob/master/quickstart_bi.md
 >
 
 
-### 1.开源版与商业版区别
-```
-1.1 开源版与商业版不是同一个项目，开源版会长期存在，商业版由公司团队维护。
-
-1.2 开源项目可以用于公司内部调研用途，如需商业使用，需要购买会员商业版，开源AllData项目使用GPL协议。
-
-1.3 加入会员通道，购买商业版源码，可以商业使用AllData。
-
-1.4 商业版功能更多，保证稳定性，Bug比较少，由公司架构师团队维护。
-
-```
-
-### 2.商业版包含创始版、新版尊贵会员、新版高级会员、新版终身会员
-
-> 2.1 创始版属于V1.0旧版架构，V1.0旧版架构使用Vue2 + SpringCloud前后端分离架构。
->
-> 扩展大数据组件能力有限，目前扩展了开源组件DataSophon，此功能仅在商业版提供源码，开源版本不提供源码。
->
-> 2.2 新版尊贵会员，新版高级会员，新版终身会员属于V2.0新版架构。
->
-> V2.0新版架构使用Wujie微前端架构+后端可插拔架构。
->
-> 这套架构是全新会员商业版的核心优势，集成开源组件能力十分优秀，可以扩展支持到30-100+大数据开源组件。
->
->
-> 2.3 创始版会员价格可以查看价格文档：https://docs.qq.com/doc/DVG1udXdxdWF4VHRG
->
-> 2.4 新版尊贵会员价格可以查看价格文档：https://docs.qq.com/doc/DVEtIeVJ0ZlROdnJL
->
-> 2.5 新版高级会员价格可以查看价格文档：https://docs.qq.com/doc/DVG9meHFCdFJCQU9I
->
-> 2.6 新版终身会员价格可以查看价格文档：https://docs.qq.com/doc/DVExLZHNwcmlxTXZx
->
-> 2.7 全部会员价格汇总可以查看海报：https://docs.qq.com/doc/DVFZEQWhoaGxFSXR6
-
-### 3.个人版只用于个人学习使用，项目使用用途
-
-> 3.1 个人版会员价格可以查看价格文档: https://docs.qq.com/doc/DVG9Hc0haTFhjTUNs
-
-
-
-## 五、 官方网站
-
-> 2.1 官方文档：https://alldata-document.readthedocs.io/zh/latest/README.html
->
-> 2.2 部署教程：https://github.com/alldatacenter/alldata/blob/master/install.md
->
-> 2.3 数据集成文档：https://github.com/alldatacenter/alldata/blob/master/quickstart_dts.md
->
-> 2.4 BI教程文档: https://github.com/alldatacenter/alldata/blob/master/quickstart_bi.md
->
-> 2.5 微信社区交流群
->
+## 五、 技术社区
+> 5.1 微信社区交流群
 ![image](https://github.com/alldatacenter/alldata/assets/20246692/610da0a1-ee19-4173-b6ab-7f96aaf808f1)
 >
-> 2.6 微信搜索-视频号
->
+> 5.2 微信搜索-视频号
 ![image](https://github.com/alldatacenter/alldata/assets/20246692/c809b131-4b5f-4e60-ab26-81930665fc3b)
 >
-> 2.7 微信搜索-公众号
->
+> 5.3 微信搜索-公众号
 ![image](https://github.com/alldatacenter/alldata/assets/20246692/7d4312a3-1904-404d-a0ed-f36b14e7c02d)
 >
-> 2.8 功能介绍（开源版只有创始版会员部分功能）
+> 5.4 功能介绍（开源版只有创始版会员部分功能）
 ![第一：功能权益](https://github.com/alldatacenter/alldata/assets/20246692/6acb372c-bcdf-4732-9ed4-0dd7aaa8b926)
 
 ## 六、AllData GitHub网站
