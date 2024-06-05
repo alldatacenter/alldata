@@ -107,6 +107,8 @@ AllData数据中台以数据平台为底座，以数据中台为桥梁，以机�
 >
 > 7、开源版-会员价格可以查看价格文档: https://docs.qq.com/doc/DVEt2eUV0Q3hyZ3lz
 >
+> 8、部署版-会员价格可以查看价格文档: https://docs.qq.com/doc/DVE5ITllxcG1rV0JJ
+>
 
 
 ## 六、加入社区 ｜ AllData数据中台技术社区
