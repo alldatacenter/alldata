@@ -3,7 +3,7 @@
 AllData数据中台是可定义数据中台，上层是Wujie微前端架构，底座是可插拔的后端架构。
 AllData数据中台以数据平台为底座，以数据中台为桥梁，以机器学习平台为中层框架，以大模型应用为上游产品，提供全链路数字化解决方案。
 ```
-## [AllData 推荐 ｜ CSDN博客专栏（推荐订阅）](https://blog.csdn.net/alldatadc/category_12671909.html)
+## [AllData源码知识星球-商业版源码包教包会](https://docs.qq.com/doc/DVHhOdGp5UXB5UldP) ｜ [CSDN博客专栏（推荐订阅）](https://blog.csdn.net/alldatadc/category_12671909.html)
 
 ## [官方文档](https://alldata-document.readthedocs.io/) ｜ [安装文档](https://alldata-document.readthedocs.io/zh/latest/installDeploy/index.html)  |  [部署教程](https://github.com/alldatacenter/alldata/blob/master/install.md)  |  [数据集成文档](https://github.com/alldatacenter/alldata/blob/master/quickstart_dts.md)  |  [BI教程文档](https://github.com/alldatacenter/alldata/blob/master/quickstart_bi.md)
 ## AllData 首页 ｜ 登陆页
