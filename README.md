@@ -3,9 +3,14 @@
 AllData数据中台是可定义数据中台，上层是Wujie微前端架构，底座是可插拔的后端架构。
 AllData数据中台以数据平台为底座，以数据中台为桥梁，以机器学习平台为中层框架，以大模型应用为上游产品，提供全链路数字化解决方案。
 ```
-## [AllData源码知识星球-商业版源码包教包会](https://docs.qq.com/doc/DVHhOdGp5UXB5UldP) 
-<img width="500" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/2fa3e113-6b35-4d02-be4f-5842360c2981">
-
+## [AllData数据中台开源项目作者-知识星球-强烈推荐核心商业版源码分享-资料都在星球](https://docs.qq.com/doc/DVHhOdGp5UXB5UldP) 
+<img width="1423" alt="image" src="https://github.com/user-attachments/assets/7606ebc4-8bf7-4685-bdda-2eb3d887ba5b">
+<img width="1423" alt="image" src="https://github.com/user-attachments/assets/0d115ab0-a73b-4212-9c3f-3a0626918fae">
+<img width="1423" alt="image" src="https://github.com/user-attachments/assets/ff7e12b9-b780-4eda-b86a-c4a05cf51f32">
+<img width="1423" alt="image" src="https://github.com/user-attachments/assets/64f4a307-f035-4f07-9da4-ded10b31960a">
+<img width="1423" alt="image" src="https://github.com/user-attachments/assets/4a208c48-1612-4ffa-8675-943753f07c53">
+<img width="1423" alt="image" src="https://github.com/user-attachments/assets/641c0577-95b1-4e77-bcc0-22c511c271d2">
+<img width="1423" alt="image" src="https://github.com/user-attachments/assets/b0d387bf-6948-42ca-8694-4f8321f8677d">
 
 ## [官方文档](https://alldata-document.readthedocs.io/) ｜ [安装文档](https://alldata-document.readthedocs.io/zh/latest/installDeploy/index.html)  |  [部署教程](https://github.com/alldatacenter/alldata/blob/master/install.md)  |  [数据集成文档](https://github.com/alldatacenter/alldata/blob/master/quickstart_dts.md)  |  [BI教程文档](https://github.com/alldatacenter/alldata/blob/master/quickstart_bi.md)
 ## AllData 首页 ｜ 登陆页
