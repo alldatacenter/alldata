@@ -3,6 +3,10 @@
 AllData数据中台是可定义数据中台，上层是Wujie微前端架构，底座是可插拔的后端架构。
 AllData数据中台以数据平台为底座，以数据中台为桥梁，以机器学习平台为中层框架，以大模型应用为上游产品，提供全链路数字化解决方案。
 ```
+
+## 采购商业版 ｜ 推荐采购创始版
+<img width="1423" alt="image" src="https://github.com/user-attachments/assets/283ad992-ddf5-44ce-8965-b81e8117e772">
+
 ## [AllData数据中台开源项目作者-知识星球-强烈推荐核心商业版源码分享-资料都在星球](https://docs.qq.com/doc/DVHhOdGp5UXB5UldP) 
 <img width="1423" alt="image" src="https://github.com/user-attachments/assets/7606ebc4-8bf7-4685-bdda-2eb3d887ba5b">
 <img width="1423" alt="image" src="https://github.com/user-attachments/assets/0d115ab0-a73b-4212-9c3f-3a0626918fae">
@@ -41,7 +45,7 @@ AllData数据中台以数据平台为底座，以数据中台为桥梁，以机�
 | 6   | 数据资产          | 开源                                 |    商业版更稳定,Bug比较少   |         旧版架构V1.0      |
 | 7   | 数据市场          | 开源                                 |    商业版更稳定,Bug比较少   |         旧版架构V1.0      |
 | 8   | 数据对比          | 开源                                 |    商业版更稳定,Bug比较少   |         旧版架构V1.0      |
-| 9   | BI报表           | 开源                                 |    商业版更稳定,Bug比较少  |         旧版架构V1.0      |
+| 9   | BI报表           | 开源                                 |    商业版更稳定,Bug比较少   |         旧版架构V1.0      |
 | 10  | 流程编排          | 开源                                 |    商业版更稳定,Bug比较少   |         旧版架构V1.0      |
 | 11  | 系统监控          | 开源                                 |    商业版更稳定,Bug比较少   |         旧版架构V1.0      |
 | 12  | 邮件服务          | 开源                                 |    商业版更稳定,Bug比较少   |         旧版架构V1.0      |
@@ -84,33 +88,6 @@ AllData数据中台以数据平台为底座，以数据中台为桥梁，以机�
 
 ## 五、会员商业版
 
-#### 5.1 架构设计版本【包含alldata-V1.0架构, sciencemoat-V2.0架构】
-```
-1、会员商业版线上环境地址，线上环境只对会员通道开放，成为会员：享受会员权益。
-   
-  线上环境：http://122.51.43.143:5173/ui_moat    账号：test/123456（此账号只能体验数据质量功能）
-  
-2、开源版与商业版不是同一个项目，开源版命名为alldata，会长期存在，商业版命名为sciencemoat, 由公司团队维护。
-   
-   2.1 开源项目可以用于公司内部调研用途，如需商业使用，需要购买会员商业版，开源AllData项目使用GPL协议。
-   
-   2.2 加入会员通道，购买商业版源码，可以商业使用AllData。商业版功能更多，保证稳定性，Bug比较少，由公司架构师团队维护。
-   
-3、V1.0新版架构 alldata架构
-  
-  3.1 开源版属于V1.0旧版架构，V1.0旧版架构使用Vue2 + SpringCloud前后端分离架构。
-  
-  3.2 扩展大数据组件能力有限，目前扩展了开源组件DataSophon，此功能仅在商业版提供源码，开源版本不提供源码。
-  
-4、V2.0新版架构 sciencemoat架构
-  
-  4.1 创始版，新版尊贵会员，新版高级会员，新版终身会员属于V2.0新版架构。
-  
-  4.2 V2.0新版架构使用Wujie微前端架构+后端可插拔架构。
-  这套架构是全新会员商业版的核心优势，集成开源组件能力十分优秀，可以扩展支持到30-100+大数据开源组件。
-  
-```
-
 #### 5.2、会员价格【包含个人版, 企业版】
 
 > 1、企业版-创始版会员价格可以查看价格文档：https://docs.qq.com/doc/DVG1udXdxdWF4VHRG
@@ -141,14 +118,9 @@ AllData数据中台以数据平台为底座，以数据中台为桥梁，以机�
 > 6.3 微信搜索-公众号
 ![image](https://github.com/alldatacenter/alldata/assets/20246692/7d4312a3-1904-404d-a0ed-f36b14e7c02d)
 >
-> 6.4 功能介绍（开源版只有创始版会员部分功能）
-![第一：功能权益](https://github.com/alldatacenter/alldata/assets/20246692/6acb372c-bcdf-4732-9ed4-0dd7aaa8b926)
->
-> 6.5 架构设计
+> 6.4 架构设计
 <br/>
-<img width="1423" alt="image" src="https://user-images.githubusercontent.com/20246692/235920344-fbf3c9d2-6239-4c73-aa9c-77a72773780e.png">
-![AllData数据中台](https://github.com/alldatacenter/alldata/assets/20246692/1059d046-f3d6-4486-be08-786db4fda365)
-
+<img width="1423" alt="image" src="https://github.com/user-attachments/assets/5f53da70-b000-4eef-a80f-600d6b05223a">
 <br/>
 
 
