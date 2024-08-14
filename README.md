@@ -1,27 +1,88 @@
 # 数据中台
 ```
 AllData数据中台是可定义数据中台，上层是Wujie微前端架构，底座是可插拔的后端架构。
-AllData数据中台以数据平台为底座，以数据中台为桥梁，以机器学习平台为中层框架，以大模型应用为上游产品，提供全链路数字化解决方案。
+
+AllData数据中台以数据平台为底座，以数据中台为桥梁，以机器学习平台为中层框架。
+
+AllData以大模型应用为上游产品，提供全链路数字化解决方案。
+
+AllData商业版功能有8个菜单功能，其中菜单2-8为集成大数据组件案例模版，2024年12月底会发布目前已经集成的30个新的开源项目框架。
+
+菜单1. AllData数据中台菜单，包括数据集成功能，数据质量功能，数据标准功能，元数据管理功能，数据资产功能，数据服务功能，数据比对功能，BI报表功能，流程编排功能，系统管理功能，系统监控功能，运维管理功能。
+
+菜单2. AllData数据平台菜单，集成开源DataSophon项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
+
+菜单3. AllData数据平台(k8s)菜单，集成开源CloudEon项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
+
+菜单4. AllData实时开发菜单，集成开源StreamPark项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
+
+菜单5. AllData实时开发IDE菜单，集成开源Dinky项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
+
+菜单6. AllData离线开发菜单，集成开源DolphinScheduler项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
+
+菜单7. AllData数据质量平台菜单，集成开源DataVines项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
+
+菜单8. AllDataBI平台菜单，集成开源Datart项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
+
+未来规划： 2024年12月底会发布目前已经集成的30个新的开源项目框架，敬请期待。
+
+1. 企业版-创始版会员价格可以查看价格文档：
+https://docs.qq.com/doc/DVG1udXdxdWF4VHRG
+
+2. 企业版-尊贵会员价格可以查看价格文档：
+https://docs.qq.com/doc/DVEtIeVJ0ZlROdnJL
+
+3. 企业版-高级会员价格可以查看价格文档：
+https://docs.qq.com/doc/DVG9meHFCdFJCQU9I
+
+4. 企业版-部署版会员价格可以查看价格文档: 
+https://docs.qq.com/doc/DVE5ITllxcG1rV0JJ
+
+5. 企业版-全部会员价格汇总可以查看价格文档：
+https://docs.qq.com/doc/DVFZEQWhoaGxFSXR6
+
+6. 基础版（个人版）-会员价格可以查看价格文档: 
+https://docs.qq.com/doc/DVG9Hc0haTFhjTUNs
+
+7. 开源版-会员价格可以查看价格文档: 
+https://docs.qq.com/doc/DVEt2eUV0Q3hyZ3lz
 ```
 
-## 采购商业版 ｜ 推荐采购创始版
-<img width="1423" alt="image" src="https://github.com/user-attachments/assets/283ad992-ddf5-44ce-8965-b81e8117e772">
-
-## [AllData数据中台开源项目作者-知识星球-强烈推荐核心商业版源码分享-资料都在星球](https://docs.qq.com/doc/DVHhOdGp5UXB5UldP) 
-<img width="1423" alt="image" src="https://github.com/user-attachments/assets/7606ebc4-8bf7-4685-bdda-2eb3d887ba5b">
-<img width="1423" alt="image" src="https://github.com/user-attachments/assets/0d115ab0-a73b-4212-9c3f-3a0626918fae">
-<img width="1423" alt="image" src="https://github.com/user-attachments/assets/ff7e12b9-b780-4eda-b86a-c4a05cf51f32">
-<img width="1423" alt="image" src="https://github.com/user-attachments/assets/64f4a307-f035-4f07-9da4-ded10b31960a">
-<img width="1423" alt="image" src="https://github.com/user-attachments/assets/4a208c48-1612-4ffa-8675-943753f07c53">
-<img width="1423" alt="image" src="https://github.com/user-attachments/assets/641c0577-95b1-4e77-bcc0-22c511c271d2">
-<img width="1423" alt="image" src="https://github.com/user-attachments/assets/b0d387bf-6948-42ca-8694-4f8321f8677d">
-
 ## [官方文档](https://alldata-document.readthedocs.io/) ｜ [安装文档](https://alldata-document.readthedocs.io/zh/latest/installDeploy/index.html)  |  [部署教程](https://github.com/alldatacenter/alldata/blob/master/install.md)  |  [数据集成文档](https://github.com/alldatacenter/alldata/blob/master/quickstart_dts.md)  |  [BI教程文档](https://github.com/alldatacenter/alldata/blob/master/quickstart_bi.md)
+
+## AllData数据中台技术社区
+
+### AllData社区号
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/ddfb0c08-618c-4add-ac38-1e5fae462c81">
+
+### AllData视频号
+<img width="600" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/c809b131-4b5f-4e60-ab26-81930665fc3b">
+
+### AllData公众号
+<img width="600" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/7d4312a3-1904-404d-a0ed-f36b14e7c02d">
+
+## [AllData数据中台开源作者-AllData系列星球重磅发布](https://docs.qq.com/doc/DVHhOdGp5UXB5UldP) 
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/7606ebc4-8bf7-4685-bdda-2eb3d887ba5b">
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/0d115ab0-a73b-4212-9c3f-3a0626918fae">
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/ff7e12b9-b780-4eda-b86a-c4a05cf51f32">
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/64f4a307-f035-4f07-9da4-ded10b31960a">
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/4a208c48-1612-4ffa-8675-943753f07c53">
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/641c0577-95b1-4e77-bcc0-22c511c271d2">
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/b0d387bf-6948-42ca-8694-4f8321f8677d">
+
 ## AllData 首页 ｜ 登陆页
 <img width="1423" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/189663b3-f9e2-4c83-b6fa-507dc19711a5">
 
 ## AllData 推荐 ｜ 技术社区
 <img width="1423" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/5e510d0e-35c5-43b9-9d84-300e73b43679">
+
+## AllData商业版
+
+<img width="1423" alt="image" src="https://github.com/user-attachments/assets/283ad992-ddf5-44ce-8965-b81e8117e772">
+
+## AllData架构设计
+<img width="1423" alt="image" src="https://github.com/user-attachments/assets/5f53da70-b000-4eef-a80f-600d6b05223a">
+
 
 ## 一、推荐 ｜ AllData数据中台开源项目
 
@@ -35,93 +96,20 @@ AllData数据中台以数据平台为底座，以数据中台为桥梁，以机�
 ## 二、介绍 ｜ AllData数据中台开源版功能列表
 ### AllData 1.0旧版架构
 
-| id  | 功能模块          | 是否开源                               |        开源版与商业版区别     |           架构版本        |
-|-----|------------------|------------------------------------|----------------------------|--------------------------|
-| 1   | 系统管理          | 开源                                 |    商业版更稳定,Bug比较少   |         旧版架构V1.0      |
-| 2   | 数据集成          | 开源                                 |    商业版更稳定,Bug比较少   |         旧版架构V1.0      |
-| 3   | 元数据管理        | 开源                                  |    商业版更稳定,Bug比较少   |         旧版架构V1.0      |
-| 4   | 数据标准          | 开源                                 |    商业版更稳定,Bug比较少   |         旧版架构V1.0      |
-| 5   | 数据质量          | 开源                                 |    商业版更稳定,Bug比较少   |         旧版架构V1.0      |
-| 6   | 数据资产          | 开源                                 |    商业版更稳定,Bug比较少   |         旧版架构V1.0      |
-| 7   | 数据市场          | 开源                                 |    商业版更稳定,Bug比较少   |         旧版架构V1.0      |
-| 8   | 数据对比          | 开源                                 |    商业版更稳定,Bug比较少   |         旧版架构V1.0      |
-| 9   | BI报表           | 开源                                 |    商业版更稳定,Bug比较少   |         旧版架构V1.0      |
-| 10  | 流程编排          | 开源                                 |    商业版更稳定,Bug比较少   |         旧版架构V1.0      |
-| 11  | 系统监控          | 开源                                 |    商业版更稳定,Bug比较少   |         旧版架构V1.0      |
-| 12  | 邮件服务          | 开源                                 |    商业版更稳定,Bug比较少   |         旧版架构V1.0      |
-| 14  | 文件服务          | 开源                                 |    商业版更稳定,Bug比较少   |         旧版架构V1.0      |
+<img width="1423" alt="image" src="https://github.com/user-attachments/assets/1f33223f-2d60-4e3a-8dfa-a8b59af0677f">
+
 
 
 ## 三、介绍 ｜ AllData数据中台商业版功能列表
-### AllData 2.0新版架构
+### AllData 2.0架构
 
-| id  | 功能模块          | 是否开源    |        开源版与商业版区别     |           架构版本        |
-|-----|------------------|---------|----------------------------|--------------------------|
-| 1   | 系统管理          | 商业版，不开源 |    商业版更稳定,Bug比较少   |         新版架构V2.0      |
-| 2   | 数据集成          | 商业版，不开源 |    商业版更稳定,Bug比较少   |         新版架构V2.0       |
-| 3   | 元数据管理        | 商业版，不开源 |    商业版更稳定,Bug比较少   |         新版架构V2.0      |
-| 4   | 数据标准          | 商业版，不开源 |    商业版更稳定,Bug比较少   |         新版架构V2.0       |
-| 5   | 数据质量          | 商业版，不开源 |    商业版更稳定,Bug比较少   |         新版架构V2.0       |
-| 6   | 数据资产          | 商业版，不开源 |    商业版更稳定,Bug比较少   |         新版架构V2.0       |
-| 7   | 数据市场          | 商业版，不开源 |    商业版更稳定,Bug比较少   |         新版架构V2.0       |
-| 8   | 数据对比          | 商业版，不开源 |    商业版更稳定,Bug比较少   |         新版架构V2.0       |
-| 9   | BI报表           | 商业版，不开源 |    商业版更稳定,Bug比较少   |         新版架构V2.0       |
-| 10  | 流程编排          | 商业版，不开源 |    商业版更稳定,Bug比较少   |         新版架构V2.0       |
-| 11  | 系统监控          | 商业版，不开源 |    商业版更稳定,Bug比较少   |         新版架构V2.0       |
-| 12  | 邮件服务          | 商业版，不开源 |    商业版更稳定,Bug比较少   |         新版架构V2.0       |
-| 14  | 文件服务          | 商业版，不开源 |    商业版更稳定,Bug比较少   |         新版架构V2.0       |
+<img width="1423" alt="image" src="https://github.com/user-attachments/assets/b9a12472-5642-431f-bba9-050a96ad3f95">
+
 
 
 ## 四、介绍 ｜ AllData数据中台商业版新增功能列表
 
-| id | 功能模块        | 是否开源                                |        开源版与商业版区别     | 架构版本    |
-|----|----------------|---------------------------------------|----------------------------|---------|
-| 15 | 数据平台功能| 商业版，不开源                                |    商业版更稳定,Bug比较少   | 旧版架构1.0 |
-| 16 | 数据平台功能(DataSophon)| 商业版，不开源                    |    商业版更稳定,Bug比较少   | 新版架构V2.0 |
-| 17 | 数据平台k8s功能(Cloudeon)| 商业版，不开源                   |    商业版更稳定,Bug比较少   | 新版架构V2.0 |
-| 18 | 实时开发功能(Streampark)| 商业版，不开源                    |    商业版更稳定,Bug比较少   | 新版架构V2.0 |
-| 19 | 实时开发IDE功能(Dinky)| 商业版，不开源                      |    商业版更稳定,Bug比较少   | 新版架构V2.0 |
-| 20 | 离线平台功能(DolphinScheduler)| 商业版，不开源              |    商业版更稳定,Bug比较少   | 新版架构V2.0 |
-| 21 | BI平台功能(Datart)| 商业版，不开源                         |    商业版更稳定,Bug比较少   | 新版架构V2.0 |
-| 22 | 数据质量功能(Datavines)| 商业版，不开源                     |    商业版更稳定,Bug比较少   | 新版架构V2.0 |
-
-
-## 五、会员商业版
-
-#### 5.2、会员价格【包含个人版, 企业版】
-
-> 1、企业版-创始版会员价格可以查看价格文档：https://docs.qq.com/doc/DVG1udXdxdWF4VHRG
->
-> 2、企业版-新版尊贵会员价格可以查看价格文档：https://docs.qq.com/doc/DVEtIeVJ0ZlROdnJL
->
-> 3、企业版-新版高级会员价格可以查看价格文档：https://docs.qq.com/doc/DVG9meHFCdFJCQU9I
->
-> 4、企业版-新版终身会员价格可以查看价格文档：https://docs.qq.com/doc/DVExLZHNwcmlxTXZx
->
-> 5、企业版-全部会员价格汇总可以查看海报：https://docs.qq.com/doc/DVFZEQWhoaGxFSXR6
-> 
-> 6、个人版-会员价格可以查看价格文档: https://docs.qq.com/doc/DVG9Hc0haTFhjTUNs
->
-> 7、开源版-会员价格可以查看价格文档: https://docs.qq.com/doc/DVEt2eUV0Q3hyZ3lz
->
-> 8、部署版-会员价格可以查看价格文档: https://docs.qq.com/doc/DVE5ITllxcG1rV0JJ
->
-
-
-## 六、加入社区 ｜ AllData数据中台技术社区
-> 6.1 微信社区交流群
-![image](https://github.com/alldatacenter/alldata/assets/20246692/610da0a1-ee19-4173-b6ab-7f96aaf808f1)
->
-> 6.2 微信搜索-视频号
-![image](https://github.com/alldatacenter/alldata/assets/20246692/c809b131-4b5f-4e60-ab26-81930665fc3b)
->
-> 6.3 微信搜索-公众号
-![image](https://github.com/alldatacenter/alldata/assets/20246692/7d4312a3-1904-404d-a0ed-f36b14e7c02d)
->
-> 6.4 架构设计
-<br/>
-<img width="1423" alt="image" src="https://github.com/user-attachments/assets/5f53da70-b000-4eef-a80f-600d6b05223a">
-<br/>
+<img width="1423" alt="image" src="https://github.com/user-attachments/assets/809a53a1-0978-41ed-b005-7a20c99f6234">
 
 
 ## 七、演示 ｜ AllData数据中台正式线上环境
@@ -209,7 +197,6 @@ AllData数据中台以数据平台为底座，以数据中台为桥梁，以机�
 
 <img width="1416" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/a7214896-7a15-443a-bd75-f024ae8e8ec3">
 
-
 <img width="1428" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/424fc66b-8186-470f-ba3b-76f02035a679">
 
 <img width="1422" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/31a9368e-fbed-43f4-911d-7551a3592049">
@@ -218,28 +205,13 @@ AllData数据中台以数据平台为底座，以数据中台为桥梁，以机�
 
 <img width="1410" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/2409f74f-bed4-465b-adf3-022979132247">
 
-![image](https://github.com/alldatacenter/alldata/assets/20246692/d1d5307c-3963-49d9-b125-d999bb32a05a)
-
-![image](https://github.com/alldatacenter/alldata/assets/20246692/c5c71ad3-e205-4920-8b03-6ac3d58a0540)
-
-![image](https://github.com/alldatacenter/alldata/assets/20246692/1ed9226e-ecab-4e4e-b00f-4ca73228c1ec)
-
-![image](https://github.com/alldatacenter/alldata/assets/20246692/b278918e-35a6-4d0d-8ee9-153620af0ef3)
-
-
 
 ### 7.9 BI报表（开源版有，商业版更稳定，bug比较少）
 
-![image](https://github.com/alldatacenter/alldata/assets/20246692/6aa5e2d0-6343-4943-9963-5c8e08557e4f)
-
-![image](https://github.com/alldatacenter/alldata/assets/20246692/e5299ec0-3428-4097-969d-caa712e672d3)
-
-![image](https://github.com/alldatacenter/alldata/assets/20246692/0c9f3e05-ca04-47b1-a84e-e4e6643c3e6d)
-
-![image](https://github.com/alldatacenter/alldata/assets/20246692/db822c06-3553-4e6f-aeaf-61a50e81f17a)
-
-<img width="1427" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/9476f258-e8dd-438e-acab-4abc68410b9c">
-
+<img width="1427" alt="image" src="https://github.com/user-attachments/assets/7dd80022-3635-4e8b-ad4e-3155ecbe33bd">
+<img width="1427" alt="image" src="https://github.com/user-attachments/assets/3fedbae3-bf4c-4a63-ab01-655507ead0d8">
+<img width="1427" alt="image" src="https://github.com/user-attachments/assets/3ad92d75-74f5-4996-8a19-a15af23e4b5e">
+<img width="1427" alt="image" src="https://github.com/user-attachments/assets/8a3ba65b-3c29-41ce-ad7a-b83fe007eafe">
 
 
 ### 7.10 流程编排（开源版有，商业版更稳定，bug比较少）
@@ -251,25 +223,20 @@ AllData数据中台以数据平台为底座，以数据中台为桥梁，以机�
 <img width="1429" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/87c388ad-b578-4c37-8222-e6bec8dfb249">
 
 ### 7.11 系统监控（开源版有，商业版更稳定，bug比较少）
-![image](https://github.com/alldatacenter/alldata/assets/20246692/725711c1-d603-4fe5-93b0-debf50b6ce74)
 
-![image](https://github.com/alldatacenter/alldata/assets/20246692/12b47e3e-2227-42e9-96fb-a88d13b54594)
-
-![image](https://github.com/alldatacenter/alldata/assets/20246692/6b58bffc-0133-4973-99ae-37642347ba50)
-
-![image](https://github.com/alldatacenter/alldata/assets/20246692/0a1b1c3f-cf12-4213-8b72-deeb5c8205f8)
+<img width="1429" alt="image" src="https://github.com/user-attachments/assets/9cad9c6d-27ad-4895-a3f7-462a4a0ef4d3">
+<img width="1429" alt="image" src="https://github.com/user-attachments/assets/10aa1d90-dc40-4b2e-9855-af1bac160b60">
+<img width="1429" alt="image" src="https://github.com/user-attachments/assets/857ccdd7-e279-466b-a2a8-7dab838aca61">
+<img width="1429" alt="image" src="https://github.com/user-attachments/assets/1d2d3446-b188-47b5-91a5-dbbfe9acc68f">
 
 ### 7.12 运维管理（开源版有，商业版更稳定，bug比较少）
-
-![image](https://github.com/alldatacenter/alldata/assets/20246692/4e990fda-dbc5-41b4-a038-0b5f6c0e4539)
-
-![image](https://github.com/alldatacenter/alldata/assets/20246692/7a94f0ec-5608-4841-9ebc-3ba5c8214544)
-
-![image](https://github.com/alldatacenter/alldata/assets/20246692/575a7f99-dc82-48a8-bf4f-dbc2a115a0b2)
-
-![image](https://github.com/alldatacenter/alldata/assets/20246692/0f01f27d-bd9e-4449-81e3-3f5d306a643e)
-
-![image](https://github.com/alldatacenter/alldata/assets/20246692/cc84bd6b-c609-4d3b-82f1-33b524ab33b1)
+<img width="1429" alt="image" src="https://github.com/user-attachments/assets/d4dd5d06-3dbd-4644-bbb4-73a6f21fa7ea">
+<img width="1429" alt="image" src="https://github.com/user-attachments/assets/06c6fb00-ad34-4e91-bad3-ad74f96d190b">
+<img width="1429" alt="image" src="https://github.com/user-attachments/assets/5298d4ac-0a09-439c-8e4d-6d5e1e07b68a">
+<img width="1429" alt="image" src="https://github.com/user-attachments/assets/93f0589b-fa86-4707-bfa8-e96dd0d4e9b0">
+<img width="1429" alt="image" src="https://github.com/user-attachments/assets/51dae416-d546-478b-8def-27f03dd7de6a">
+ 
+ 
 
 ### 7.13 数据平台（开源版没有，商业版提供源码）
 
@@ -374,7 +341,7 @@ AllData数据中台以数据平台为底座，以数据中台为桥梁，以机�
 <img width="1439" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/c2692cba-eaea-422f-8264-c3226897d705">
 <img width="1412" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/de906b6c-3498-4174-9fa7-82bf79d667d2">
 
-### 7.18 新版数据质量平台(DataVines)（开源版没有，商业版提供源码）
+### 7.18 数据质量平台(DataVines)（开源版没有，商业版提供源码）
 
 <img width="1419" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/dccc4c1d-b277-49f5-a347-22bc38599f53">
 
@@ -398,7 +365,7 @@ AllData数据中台以数据平台为底座，以数据中台为桥梁，以机�
 
 <img width="1439" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/b25dba4d-28c9-4d16-bca1-e1803c5ae87a">
 
-### 7.19 新版BI平台(Datart)（开源版没有，商业版提供源码）
+### 7.19 BI平台(Datart)（开源版没有，商业版提供源码）
 
 <img width="1413" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/0732f03a-63b3-404d-a1d6-adfd9eff34b7">
 
@@ -410,11 +377,4 @@ AllData数据中台以数据平台为底座，以数据中台为桥梁，以机�
 
 <img width="1265" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/92e4ba6b-ee6e-4d54-93b9-28d3af509564">
 
-
-## 八、AllData开源RoadMap
-
-### 8.1、全站式AllData产品路线图
-<br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/179927878-ff9c487e-0d30-49d5-bc88-6482646d90a8.png">
-<br/>
  
