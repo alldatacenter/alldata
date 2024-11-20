@@ -209,7 +209,7 @@ BI报表 - data-visual-service-parent ~ data-visual-service ~ DataxVisualApplica
 | email-service         | 8812 | 16gdata |
 | file-service          | 8811 | 16gdata |
 | quartz-service        | 8813 | 16gdata |
-| gateway               | 9538 | 16gslave    |
+| gateway               | 9538 | 16gdata    |
 
 
 ### 6、部署方式

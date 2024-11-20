@@ -15,6 +15,7 @@ common:
       password: 123456
       url: jdbc:mysql://localhost:3306/studio?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=GMT%2B8
     master:
+      driver: com.mysql.cj.jdbc.Driver
       username: root
       password: 123456
       url: jdbc:mysql://localhost:3306/studio?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=GMT%2B8

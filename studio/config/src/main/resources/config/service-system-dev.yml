@@ -27,7 +27,7 @@ spring:
   datasource:
     druid:
       db-type: com.alibaba.druid.pool.DruidDataSource
-      driver-class-name: com.mysql.cj.jdbc.Driver
+      driver-class-name: ${common.mysql.master.driver}
       url: ${common.mysql.druid.url}
       username: ${common.mysql.druid.username}
       password: ${common.mysql.druid.password}

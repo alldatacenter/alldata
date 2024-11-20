@@ -16,7 +16,7 @@ spring:
         min-idle: 5       # 连接池中的最小空闲连接
   datasource:
     primary:
-      driver-class-name: com.mysql.cj.jdbc.Driver
+      driver-class-name: ${common.mysql.master.driver}
       username: ${common.mysql.primary.username}
       password: ${common.mysql.primary.password}
       url: ${common.mysql.primary.url}
