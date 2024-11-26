@@ -26,26 +26,16 @@ AllData商业版功能有8个菜单功能，其中菜单2-8为集成大数据组
 
 未来规划： 2024年12月底会发布目前已经集成的30个新的开源项目框架，敬请期待。
 
-1. 企业版-创始版会员价格可以查看价格文档：
-https://docs.qq.com/doc/DVG1udXdxdWF4VHRG
+1、企业版-创始版会员价格可以查看价格文档：https://docs.qq.com/doc/DVG1udXdxdWF4VHRG
 
-2. 企业版-尊贵会员价格可以查看价格文档：
-https://docs.qq.com/doc/DVEtIeVJ0ZlROdnJL
+2、企业版-尊贵版商业版价格可以查看价格文档：https://docs.qq.com/doc/DVEtIeVJ0ZlROdnJL
 
-3. 企业版-高级会员价格可以查看价格文档：
-https://docs.qq.com/doc/DVG9meHFCdFJCQU9I
+3、企业版-高级版商业版价格可以查看价格文档：https://docs.qq.com/doc/DVG9meHFCdFJCQU9I
 
-4. 企业版-部署版会员价格可以查看价格文档: 
-https://docs.qq.com/doc/DVE5ITllxcG1rV0JJ
+4、企业版-终身版商业版价格可以查看价格文档：https://docs.qq.com/doc/DVExLZHNwcmlxTXZx
 
-5. 企业版-全部会员价格汇总可以查看价格文档：
-https://docs.qq.com/doc/DVFZEQWhoaGxFSXR6
+5、企业版-全部商业版价格汇总可以查看海报：https://docs.qq.com/doc/DVFZEQWhoaGxFSXR6
 
-6. 基础版（个人版）-会员价格可以查看价格文档: 
-https://docs.qq.com/doc/DVG9Hc0haTFhjTUNs
-
-7. 开源版-会员价格可以查看价格文档: 
-https://docs.qq.com/doc/DVEt2eUV0Q3hyZ3lz
 ```
 
 ## [官方文档](https://alldata-document.readthedocs.io/) ｜ [安装文档](https://alldata-document.readthedocs.io/zh/latest/installDeploy/index.html)  |  [部署教程](https://github.com/alldatacenter/alldata/blob/master/install.md)  |  [数据集成文档](https://github.com/alldatacenter/alldata/blob/master/quickstart_dts.md)  |  [BI教程文档](https://github.com/alldatacenter/alldata/blob/master/quickstart_bi.md)
@@ -61,7 +51,7 @@ https://docs.qq.com/doc/DVEt2eUV0Q3hyZ3lz
 ### AllData公众号
 <img width="600" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/7d4312a3-1904-404d-a0ed-f36b14e7c02d">
 
-## [AllData数据中台开源作者-AllData系列星球重磅发布](https://docs.qq.com/doc/DVHhOdGp5UXB5UldP) 
+## [AllData数据中台开源作者-AllData系列星球重磅发布](https://docs.qq.com/doc/DVHhOdGp5UXB5UldP)
 <img width="600" alt="image" src="https://github.com/user-attachments/assets/7606ebc4-8bf7-4685-bdda-2eb3d887ba5b">
 <img width="600" alt="image" src="https://github.com/user-attachments/assets/0d115ab0-a73b-4212-9c3f-3a0626918fae">
 <img width="600" alt="image" src="https://github.com/user-attachments/assets/ff7e12b9-b780-4eda-b86a-c4a05cf51f32">
@@ -235,8 +225,8 @@ https://docs.qq.com/doc/DVEt2eUV0Q3hyZ3lz
 <img width="1429" alt="image" src="https://github.com/user-attachments/assets/5298d4ac-0a09-439c-8e4d-6d5e1e07b68a">
 <img width="1429" alt="image" src="https://github.com/user-attachments/assets/93f0589b-fa86-4707-bfa8-e96dd0d4e9b0">
 <img width="1429" alt="image" src="https://github.com/user-attachments/assets/51dae416-d546-478b-8def-27f03dd7de6a">
- 
- 
+
+
 
 ### 7.13 数据平台（开源版没有，商业版提供源码）
 
