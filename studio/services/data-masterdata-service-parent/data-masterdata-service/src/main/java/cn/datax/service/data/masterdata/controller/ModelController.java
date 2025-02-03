@@ -148,17 +148,6 @@ public class ModelController extends BaseController {
         return R.ok();
     }
 
-    /**
-     * 工作流提交
-     * @param id
-     * @return
-     */
-    @PostMapping("/submit/{id}")
-    public R submitModelById(@PathVariable String id) {
-        modelService.submitModelById(id);
-        return R.ok();
-    }
-
     @PostMapping("/table/create/{id}")
     public R createTable(@PathVariable String id) {
         modelService.createTable(id);

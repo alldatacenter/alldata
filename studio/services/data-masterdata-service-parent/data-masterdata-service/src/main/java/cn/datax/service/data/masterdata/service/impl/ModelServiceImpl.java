@@ -4,8 +4,6 @@ import cn.datax.common.core.DataConstant;
 import cn.datax.common.core.RedisConstant;
 import cn.datax.common.exception.DataException;
 import cn.datax.common.redis.service.RedisService;
-import cn.datax.common.utils.MsgFormatUtil;
-import cn.datax.common.utils.SecurityUtil;
 import cn.datax.service.data.masterdata.api.entity.ModelColumnEntity;
 import cn.datax.service.data.masterdata.api.entity.ModelEntity;
 import cn.datax.service.data.masterdata.api.dto.ModelDto;
@@ -16,10 +14,6 @@ import cn.datax.service.data.masterdata.service.ModelService;
 import cn.datax.service.data.masterdata.dao.ModelDao;
 import cn.datax.common.base.BaseServiceImpl;
 import cn.datax.service.data.standard.api.entity.DictEntity;
-import cn.datax.service.workflow.api.dto.ProcessInstanceCreateRequest;
-import cn.datax.service.workflow.api.entity.BusinessEntity;
-import cn.datax.service.workflow.api.feign.FlowInstanceServiceFeign;
-import cn.datax.service.workflow.api.vo.FlowInstanceVo;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.date.DatePattern;
 import cn.hutool.core.date.DateUtil;
@@ -62,9 +56,6 @@ public class ModelServiceImpl extends BaseServiceImpl<ModelDao, ModelEntity> imp
 
     @Autowired
     private RedisService redisService;
-
-    @Autowired
-    private FlowInstanceServiceFeign flowInstanceServiceFeign;
 
     private static String BIND_GB_CODE = "gb_code";
     private static String BIND_GB_NAME = "gb_name";
@@ -234,36 +225,4 @@ public class ModelServiceImpl extends BaseServiceImpl<ModelDao, ModelEntity> imp
         return map;
     }
 
-    @Override
-    public void submitModelById(String id) {
-        BusinessEntity businessEntity = (BusinessEntity) redisService.hget(RedisConstant.WORKFLOW_BUSINESS_KEY, DEFAULT_BUSINESS_CODE);
-        if (businessEntity != null) {
-            ProcessInstanceCreateRequest request = new ProcessInstanceCreateRequest();
-            request.setSubmitter(SecurityUtil.getUserId());
-            request.setBusinessKey(id);
-            request.setBusinessCode(DEFAULT_BUSINESS_CODE);
-            request.setBusinessAuditGroup(businessEntity.getBusinessAuditGroup());
-            String processDefinitionId = businessEntity.getProcessDefinitionId();
-            request.setProcessDefinitionId(processDefinitionId);
-            // 流程实例标题(动态拼接)
-            String tempalte = businessEntity.getBusinessTempalte();
-            String businessName = businessEntity.getBusinessName();
-            Map<String, String> parameters = new HashMap<>(4);
-            parameters.put(MsgFormatUtil.TEMPALTE_NICKNAME, SecurityUtil.getNickname());
-            parameters.put(MsgFormatUtil.TEMPALTE_DATETIME, DateUtil.formatLocalDateTime(LocalDateTime.now()));
-            parameters.put(MsgFormatUtil.TEMPALTE_BUSINESS_NAME, businessName);
-            parameters.put(MsgFormatUtil.TEMPALTE_BUSINESS_KEY, id);
-            String content = MsgFormatUtil.getContent(tempalte, parameters);
-            request.setBusinessName(content);
-            FlowInstanceVo flowInstanceVo = flowInstanceServiceFeign.startById(request);
-            if (flowInstanceVo != null) {
-                ModelEntity modelEntity = new ModelEntity();
-                modelEntity.setId(id);
-                modelEntity.setProcessInstanceId(flowInstanceVo.getProcessInstanceId());
-                modelDao.updateById(modelEntity);
-            }
-        } else {
-            throw new DataException("业务流程未配置");
-        }
-    }
 }

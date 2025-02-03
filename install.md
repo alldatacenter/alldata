@@ -236,7 +236,7 @@ BI报表 - data-visual-service-parent ~ data-visual-service ~ DataxVisualApplica
 > cd alldata/studio/common
 > mvn install:install-file -Dfile=/alldata/studio/common/aspose-words-20.3.jar -DgroupId=com.aspose -DartifactId=aspose-words -Dversion=20.3 -Dpackaging=jar
 > mvn clean install -DskipTests && mvn clean package -DskipTests
-> 获取安装包build/studio-release-0.5.x.tar.gz
+> 获取安装包build/studio-release-0.6.x.tar.gz
 >
 > 上传服务器解压
 >

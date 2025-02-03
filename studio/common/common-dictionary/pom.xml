@@ -5,10 +5,10 @@
     <parent>
         <artifactId>common</artifactId>
         <groupId>com.platform</groupId>
-        <version>0.5.x</version>
+        <version>0.6.x</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <version>0.5.x</version>
+    <version>0.6.x</version>
     <artifactId>common-dictionary</artifactId>
 
     <dependencies>
@@ -21,7 +21,7 @@
         <dependency>
             <groupId>com.platform</groupId>
             <artifactId>common-core</artifactId>
-            <version>0.5.x</version>
+            <version>0.6.x</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.springframework.boot</groupId>
@@ -36,7 +36,7 @@
         <dependency>
             <groupId>com.platform</groupId>
             <artifactId>common-redis</artifactId>
-            <version>0.5.x</version>
+            <version>0.6.x</version>
         </dependency>
     </dependencies>
 </project>

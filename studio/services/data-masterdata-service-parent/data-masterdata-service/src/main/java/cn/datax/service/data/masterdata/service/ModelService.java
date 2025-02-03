@@ -35,5 +35,4 @@ public interface ModelService extends BaseService<ModelEntity> {
 
     Map<String, Object> getFormParamById(String id);
 
-    void submitModelById(String id);
 }

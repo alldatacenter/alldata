@@ -5,10 +5,10 @@
     <parent>
         <artifactId>common</artifactId>
         <groupId>com.platform</groupId>
-        <version>0.5.x</version>
+        <version>0.6.x</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <version>0.5.x</version>
+    <version>0.6.x</version>
     <artifactId>common-core</artifactId>
 
     <dependencies>
@@ -102,13 +102,13 @@
         <dependency>
             <groupId>com.platform</groupId>
             <artifactId>common-service-api</artifactId>
-            <version>0.5.x</version>
+            <version>0.6.x</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>com.platform</groupId>
             <artifactId>common-log</artifactId>
-            <version>0.5.x</version>
+            <version>0.6.x</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>
