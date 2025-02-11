@@ -75,7 +75,8 @@ AllData商业版功能有11个菜单功能，其中菜单2-8为集成大数据�
 <img width="1423" alt="image" src="https://github.com/user-attachments/assets/a1c3e3f8-ae13-405e-a347-80beef6573e6">
 
 ## AllData架构设计
-<img width="1423" alt="image" src="https://github.com/user-attachments/assets/5f53da70-b000-4eef-a80f-600d6b05223a">
+<img width="1423" alt="image" src="https://github.com/user-attachments/assets/befa64c2-c40c-40ee-9dae-a626dab03923">
+
 
 ## 一、推荐 ｜ AllData数据中台开源项目
 <br/>
