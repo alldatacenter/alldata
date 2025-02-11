@@ -122,24 +122,24 @@ public class SqlBuilderUtil {
         for (int i = 0; i < params.size(); i++) {
             ReqParam reqParam = params.get(i);
             sql.append(SPACE).append(MARK_KEY_START).append(WHERE_AND).append(SPACE).append(reqParam.getParamName());
-            if (WhereType.LIKE.getType() == reqParam.getWhereType()) {
+            if (WhereType.LIKE.getType().equals(reqParam.getWhereType())) {
                 // LIKE '%' :username '%' ,:username 两边一定要有空格，如果没有空格，是查询不到数据的
                 sql.append(SPACE).append(WhereType.getWhereType(reqParam.getWhereType()).getKey())
                         .append(SPACE).append(SINGLE_QUOTE).append(PERCENT_SIGN).append(SINGLE_QUOTE).append(SPACE)
                         .append(COLON).append(reqParam.getParamName())
                         .append(SPACE).append(SINGLE_QUOTE).append(PERCENT_SIGN).append(SINGLE_QUOTE).append(MARK_KEY_END);
-            } else if(WhereType.LIKE_LEFT.getType() == reqParam.getWhereType()) {
+            } else if(WhereType.LIKE_LEFT.getType().equals(reqParam.getWhereType())) {
                 sql.append(SPACE).append(WhereType.getWhereType(reqParam.getWhereType()).getKey())
                         .append(SPACE).append(SINGLE_QUOTE).append(PERCENT_SIGN).append(SINGLE_QUOTE).append(SPACE)
                         .append(COLON).append(reqParam.getParamName()).append(MARK_KEY_END);
-            } else if(WhereType.LIKE_RIGHT.getType() == reqParam.getWhereType()) {
+            } else if(WhereType.LIKE_RIGHT.getType().equals(reqParam.getWhereType())) {
                 sql.append(SPACE).append(WhereType.getWhereType(reqParam.getWhereType()).getKey())
                         .append(SPACE).append(COLON).append(reqParam.getParamName())
                         .append(SPACE).append(SINGLE_QUOTE).append(PERCENT_SIGN).append(SINGLE_QUOTE).append(MARK_KEY_END);
-            } else if(WhereType.NULL.getType() == reqParam.getWhereType() || WhereType.NOT_NULL.getType() == reqParam.getWhereType()){
+            } else if(WhereType.NULL.getType().equals(reqParam.getWhereType()) || WhereType.NOT_NULL.getType().equals(reqParam.getWhereType())){
                 // is null或is not null不需要参数值
                 sql.append(SPACE).append(WhereType.getWhereType(reqParam.getWhereType()).getKey()).append(MARK_KEY_END);
-            } else if(WhereType.IN.getType() == reqParam.getWhereType()){
+            } else if(WhereType.IN.getType().equals(reqParam.getWhereType())){
                 // in (:ids)
                 sql.append(SPACE).append(WhereType.getWhereType(reqParam.getWhereType()).getKey())
                         .append(SPACE).append(LEFT_BRACKET)
