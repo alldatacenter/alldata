@@ -67,7 +67,8 @@ AllData商业版功通过集成大数据组件案例模版，2027年12月30会�
 <img width="1423" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/7d4312a3-1904-404d-a0ed-f36b14e7c02d">
 
 ## [AllData系列星球重磅发布: https://docs.qq.com/doc/DVHhOdGp5UXB5UldP](https://docs.qq.com/doc/DVHhOdGp5UXB5UldP)
-<img width="1423" alt="image" src="https://github.com/user-attachments/assets/7606ebc4-8bf7-4685-bdda-2eb3d887ba5b">
+
+<img width="1423" alt="image" src="https://github.com/user-attachments/assets/aeddb586-514a-4edd-ab75-0f1c54bd2702">
 
 ## AllData架构设计
 <img width="1423" alt="image" src="https://github.com/user-attachments/assets/befa64c2-c40c-40ee-9dae-a626dab03923">
@@ -87,7 +88,7 @@ AllData商业版功通过集成大数据组件案例模版，2027年12月30会�
 ## 三、演示 ｜ AllData数据中台正式线上环境
 
 ### AllData 首页 ｜ 登陆页
-<img width="1423" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/189663b3-f9e2-4c83-b6fa-507dc19711a5">
+<img width="1423" alt="image" src="https://github.com/user-attachments/assets/019c2b8d-5af4-4c2d-9092-22e1dbd52776" />
 
 
 ### 1. 系统管理（开源版有，商业版更稳定，bug比较少）
@@ -225,13 +226,17 @@ AllData商业版功通过集成大数据组件案例模版，2027年12月30会�
 
 <img width="1410" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/3d8acd20-17a0-4726-94de-c46d4e008c2d">
 
-<img width="1397" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/304adb57-61dd-4f3d-816f-f743ac628832">
+<img width="1407" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/304adb57-61dd-4f3d-816f-f743ac628832">
 
 <img width="1403" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/f8ac1e10-2f54-4bf2-a6a0-993949e83e08">
 
 <img width="1416" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/058c0dde-35c5-4bab-97e9-36bf03200bd2">
+<img width="1407" alt="9_集群管理_告警管理_告警组管理" src="https://github.com/user-attachments/assets/fa253ac4-9c08-476b-b9ca-cd9e6813bba8" />
 
+<img width="1407" alt="10_集群管理_告警管理_告警指标管理" src="https://github.com/user-attachments/assets/b7d39f92-b1bf-4992-b859-2c72b18607bc" />
+<img width="1407" alt="13_集群管理_系统管理_标签管理" src="https://github.com/user-attachments/assets/1d0ead66-2a6f-4ffa-a41c-7075a5b3de49" />
 
+<img width="1407" alt="11_集群管理_系统管理_租户管理" src="https://github.com/user-attachments/assets/8804b3f6-7ee0-493b-ba18-c67843afa737" />
 
 ### 12. K8S数据平台（开源版没有，商业版提供源码）
 
