@@ -18,31 +18,49 @@ AllData以大模型应用为上游产品，提供全链路数字化解决方案�
 
 AllData商业版功通过集成大数据组件案例模版，2027年12月30会逐步发布由AllData商业版团队集成的80+新的开源项目框架。
 
-菜单1. Moat主应用菜单，包含系统管理、数据集成，数据模型管理、元数据管理、数据标准管理、数据比对管理、数据安全管理、数据质量管理、数据服务管理、BI报表等10个功能。
+功能1. 系统管理，包含系统设置、系统监控、服务器管理等功能。
 
-菜单2. AllData数据平台菜单，集成开源DataSophon项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
+功能2. 数据集成，包含项目管理、数据源管理、注册中心、单任务、多任务、任务模版、任务详情、运行日志、执行配置等功能。
 
-菜单3. AllData数据平台(k8s)菜单，集成开源CloudEon项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
+功能3. 数据模型管理，包含数据管理、数据模型等功能。
 
-菜单4. AllData实时开发菜单，集成开源StreamPark项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
+功能4. 元数据管理，包含数据字段、数据地图、数据查询、数据源、SQL控制台、行级变更等功能。
 
-菜单5. AllData实时开发IDE菜单，集成开源Dinky项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
+功能5. 数据标准管理，包含对比度统计、数据字典、字典对比、字典映射等功能。
 
-菜单6. AllData离线开发菜单，集成开源DolphinScheduler项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
+功能6. 数据比对管理，包含数据库配置、调度任务、任务配置、任务实例、调度日志等功能。
 
-菜单7. AllData数据质量平台菜单，集成开源DataVines项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
+功能7. 数据安全管理，包含数据授权等功能。
 
-菜单8. AllDataBI平台菜单，集成开源Datart项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
+功能8. 数据质量管理，包含质量报告、质量任务、规则引擎、日志监控、质量统计等功能。
 
-菜单9. AllData元数据管理平台菜单，集成开源OpenMetaData项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
+功能9. 数据服务管理，包含API日志、API Mask、数据接口、服务接口、服务日志等功能。
 
-菜单10. AllData指标体系平台菜单，集成开源SuperSonic项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
+功能10. BI报表，包含数据看板、数据大屏、数据集、数据图表等功能。
 
-菜单11. AllData数据集成平台菜单，集成开源Tis项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
+功能11. AllData数据平台菜单，集成开源DataSophon项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
 
-菜单12. AllData数据同步平台菜单，集成开源Seatunnel项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
+功能12. AllData数据平台(k8s)菜单，集成开源CloudEon项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
 
-菜单13. AllData数据湖平台菜单，集成开源Paimon项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
+功能13. AllData实时开发菜单，集成开源StreamPark项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
+
+功能14. AllData实时开发IDE菜单，集成开源Dinky项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
+
+功能15. AllData离线开发菜单，集成开源DolphinScheduler项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
+
+功能16. AllData数据质量平台菜单，集成开源DataVines项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
+
+功能17. AllDataBI平台菜单，集成开源Datart项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
+
+功能18. AllData元数据管理平台菜单，集成开源OpenMetaData项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
+
+功能19. AllData指标体系平台菜单，集成开源SuperSonic项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
+
+功能20. AllData数据集成平台菜单，集成开源Tis项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
+
+功能21. AllData数据同步平台菜单，集成开源Seatunnel项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
+
+功能22. AllData数据湖平台菜单，集成开源Paimon项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
 
 未来规划： 2027年12月30会逐步发布由AllData商业版团队集成的80+新的开源项目框架。敬请期待。
 
