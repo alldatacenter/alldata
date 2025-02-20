@@ -89,15 +89,14 @@ AllData商业版功通过集成大数据组件案例模版，2025年12月30会�
 
 功能34. 信创一体化平台【发布后源码交付
 
-功能35. 国有数据库一体化平台【发布后源码交付】
+功能35. 国产数据库一体化平台【发布后源码交付】
 
-企业版-全部商业版价格汇总可以查看海报：https://docs.qq.com/sheet/DYnZweWVickdLQmd5
+商业版价格文档：https://docs.qq.com/sheet/DYnZweWVickdLQmd5
 
 ```
 
 ### 开源版 VS 商业版
-<img width="1423" alt="image" src="https://github.com/user-attachments/assets/0e4b58ae-9023-491a-a7dc-73a98b8cdbdb">
-
+<img width="1423" alt="image" src="https://github.com/user-attachments/assets/e7720ea3-2aa8-4947-9265-648ef64e6418">
 
 ### AllData架构设计
 <img width="1423" alt="image" src="https://github.com/user-attachments/assets/befa64c2-c40c-40ee-9dae-a626dab03923">
@@ -114,7 +113,7 @@ AllData商业版功通过集成大数据组件案例模版，2025年12月30会�
 ### AllData技术社区
 <img width="1423" alt="image" src="https://github.com/user-attachments/assets/a1c3e3f8-ae13-405e-a347-80beef6573e6">
 
-### AllData开源时间旅行
+### AllData发展历程
 <br/>
 <a href="https://github.com/alldatacenter/github-readme-stats">
   <img width="1423" align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=alldatacenter&repo=alldata" />
@@ -134,7 +133,7 @@ AllData商业版功通过集成大数据组件案例模版，2025年12月30会�
 <img width="1423" alt="image" src="https://github.com/user-attachments/assets/019c2b8d-5af4-4c2d-9092-22e1dbd52776" />
 
 
-### 1. 系统管理（开源版有，商业版更稳定，bug比较少）
+### 1. 系统管理（开源版有，商业版稳定、好用、方便扩展）
 <img width="1428" alt="49_系统管理_用户管理" src="https://github.com/user-attachments/assets/cf52fde5-1dd1-4312-996c-d749ac2ef8a8" />
 <img width="1428" alt="50_系统管理_角色管理" src="https://github.com/user-attachments/assets/9172761e-6184-4ba5-98b1-81000a0feb43" />
 <img width="1428" alt="51_系统管理_菜单管理" src="https://github.com/user-attachments/assets/cf773ff4-1d06-4c23-84d1-21c6a113aba4" />
@@ -150,7 +149,7 @@ AllData商业版功通过集成大数据组件案例模版，2025年12月30会�
 <img width="1428" alt="64_运维管理_数据库管理" src="https://github.com/user-attachments/assets/68e653a6-6960-4657-9462-3f49f1ff1a95" />
 
 
-### 2. 数据集成（开源版有，商业版更稳定，bug比较少）
+### 2. 数据集成（开源版有，商业版稳定、好用、方便扩展）
 <img width="1400" alt="image" src="https://github.com/user-attachments/assets/b4c752b9-fb02-4ba7-8d4d-0c246c795408" />
 <img width="1423" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/862469f5-a557-4654-a348-c7d2ccc29b49">
 <img width="1439" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/34fcabb5-5c93-468b-8c83-b23266a593ac">
@@ -162,7 +161,7 @@ AllData商业版功通过集成大数据组件案例模版，2025年12月30会�
 <img width="1400" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/65d5e8ec-f2f2-4053-bf3c-9e46131dd54b">
 
 
-### 3. 数据质量管理（开源版有，商业版更稳定，bug比较少）
+### 3. 数据质量管理（开源版有，商业版稳定、好用、方便扩展）
 <img width="1400" alt="image" src="https://github.com/user-attachments/assets/21a6242f-e211-4eaf-b389-1fb6d3b113a0" />
 
 <img width="1425" alt="12_数据质量_规制引擎" src="https://github.com/user-attachments/assets/03b00f6f-9138-49ad-a3fb-51da40390e56" />
@@ -173,7 +172,7 @@ AllData商业版功通过集成大数据组件案例模版，2025年12月30会�
 
 
 
-### 4. 数据标准管理（开源版有，商业版更稳定，bug比较少）
+### 4. 数据标准管理（开源版有，商业版稳定、好用、方便扩展）
 
 <img width="1400" alt="image" src="https://github.com/user-attachments/assets/6ebdeb67-e6c9-4782-ae49-ed073f63a2f2" />
 
@@ -186,7 +185,7 @@ AllData商业版功通过集成大数据组件案例模版，2025年12月30会�
 <img width="1409" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/b091f7eb-6ba1-4c04-a065-02cc1b984862">
 
 
-### 5. 元数据管理（开源版有，商业版更稳定，bug比较少）
+### 5. 元数据管理（开源版有，商业版稳定、好用、方便扩展）
 <img width="1400" alt="image" src="https://github.com/user-attachments/assets/6eac60f9-b9ab-4c77-b156-5b607ab24c44" />
 
 <img width="1411" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/6e2800e3-ff47-4bfd-8401-ed3983b588ab">
@@ -204,14 +203,14 @@ AllData商业版功通过集成大数据组件案例模版，2025年12月30会�
 <img width="1415" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/8a3f6445-cf3e-4b38-a423-ab94d59c3ba4">
 
 
-### 6. 数据模型管理（开源版有，商业版更稳定，bug比较少）
+### 6. 数据模型管理（开源版有，商业版稳定、好用、方便扩展）
 <img width="1400" alt="image" src="https://github.com/user-attachments/assets/41e18c48-8481-467f-bc89-4b6aa1276d26" />
 
 <img width="1434" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/87351bf4-2249-421f-bde0-afa2bd115324">
 
 <img width="1411" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/4096b37b-0534-48b1-bcb4-c592966df6f5">
 
-### 7. 数据服务管理（开源版有，商业版更稳定，bug比较少）
+### 7. 数据服务管理（开源版有，商业版稳定、好用、方便扩展）
 <img width="1400" alt="image" src="https://github.com/user-attachments/assets/d55a5627-588c-4ef0-9488-fd5b8fa00e75" />
 
 <img width="1191" alt="image" src="https://github.com/user-attachments/assets/322b34df-589a-471d-b6f8-0c95be7e4031" />
@@ -227,7 +226,7 @@ AllData商业版功通过集成大数据组件案例模版，2025年12月30会�
 <img width="1402" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/9058eead-2a33-4c87-b4e7-85b619ce5e78">
 
 
-### 8. 数据比对（开源版有，商业版更稳定，bug比较少）
+### 8. 数据比对（开源版有，商业版稳定、好用、方便扩展）
 <img width="1188" alt="image" src="https://github.com/user-attachments/assets/1555e387-173d-4337-8381-bb2e10926871" />
 
 <img width="1416" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/a7214896-7a15-443a-bd75-f024ae8e8ec3">
@@ -241,7 +240,7 @@ AllData商业版功通过集成大数据组件案例模版，2025年12月30会�
 <img width="1410" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/2409f74f-bed4-465b-adf3-022979132247">
 
 
-### 9. BI报表（开源版有，商业版更稳定，bug比较少）
+### 9. BI报表（开源版有，商业版稳定、好用、方便扩展）
 <img width="1428" alt="image" src="https://github.com/user-attachments/assets/b5d558a8-f8bc-4c5d-9a81-df6a44105922" />
 
 <img width="1427" alt="image" src="https://github.com/user-attachments/assets/7dd80022-3635-4e8b-ad4e-3155ecbe33bd">
@@ -250,7 +249,7 @@ AllData商业版功通过集成大数据组件案例模版，2025年12月30会�
 <img width="1427" alt="image" src="https://github.com/user-attachments/assets/8a3ba65b-3c29-41ce-ad7a-b83fe007eafe">
 
 
-### 10. 数据安全管理（开源版有，商业版更稳定，bug比较少）
+### 10. 数据安全管理（开源版有，商业版稳定、好用、方便扩展）
 <img width="1428" alt="image" src="https://github.com/user-attachments/assets/60d8194e-f589-44f7-abc0-77f795f96337" />
 
 
