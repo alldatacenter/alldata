@@ -1,4 +1,7 @@
 # AllData数据中台
+
+## [官方文档](https://alldata-document.readthedocs.io/) ｜ [安装文档](https://alldata-document.readthedocs.io/zh/latest/installDeploy/index.html)  |  [部署教程](https://github.com/alldatacenter/alldata/blob/master/install.md)  |  [数据集成文档](https://github.com/alldatacenter/alldata/blob/master/quickstart_dts.md)  |  [BI教程文档](https://github.com/alldatacenter/alldata/blob/master/quickstart_bi.md)
+
 ```
 AllData数据中台是可定义数据中台，上层是Wujie微前端架构，底座是可插拔的后端架构。
 
@@ -16,7 +19,7 @@ AllData以大模型应用为上游产品，提供全链路数字化解决方案�
 
 开源项目地址：https://github.com/alldatacenter/alldata/blob/master/README.md
 
-AllData商业版功通过集成大数据组件案例模版，2027年12月30会逐步发布由AllData商业版团队集成的80+新的开源项目框架。
+AllData商业版功通过集成大数据组件案例模版，2025年12月30会逐步发布由AllData商业版团队集成的80+新的开源项目框架。
 
 功能1. 系统管理，包含系统设置、系统监控、服务器管理等功能。
 
@@ -62,18 +65,42 @@ AllData商业版功通过集成大数据组件案例模版，2027年12月30会�
 
 功能22. AllData数据湖平台菜单，集成开源Paimon项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
 
-未来规划： 2027年12月30会逐步发布由AllData商业版团队集成的80+新的开源项目框架。敬请期待。
+功能23. 数仓查询中心【发布后源码交付】
+
+功能24. 实时开发系统【发布后源码交付】
+
+功能25. 离线调度平台【发布后源码交付】
+
+功能26. 数仓建模平台【发布后源码交付】
+
+功能27. 数据安全平台【发布后源码交付】
+
+功能28. 机器学习算法平台【发布后源码交付】
+
+功能29. 大模型应用开发平台【发布后源码交付】
+
+功能30. 可视化分析平台【发布后源码交付】
+
+功能31. 元数据治理平台【发布后源码交付】
+
+功能32. 主数据管理平台【发布后源码交付】
+
+功能33. 数据资产平台【发布后源码交付】
+
+功能34. 信创一体化平台【发布后源码交付
+
+功能35. 国有数据库一体化平台【发布后源码交付】
 
 企业版-全部商业版价格汇总可以查看海报：https://docs.qq.com/sheet/DYnZweWVickdLQmd5
 
 ```
 
-## [官方文档](https://alldata-document.readthedocs.io/) ｜ [安装文档](https://alldata-document.readthedocs.io/zh/latest/installDeploy/index.html)  |  [部署教程](https://github.com/alldatacenter/alldata/blob/master/install.md)  |  [数据集成文档](https://github.com/alldatacenter/alldata/blob/master/quickstart_dts.md)  |  [BI教程文档](https://github.com/alldatacenter/alldata/blob/master/quickstart_bi.md)
+### 开源版 VS 商业版
+<img width="1423" alt="image" src="https://github.com/user-attachments/assets/0e4b58ae-9023-491a-a7dc-73a98b8cdbdb">
 
-## AllData数据中台技术社区
 
-## AllData技术社区
-<img width="1423" alt="image" src="https://github.com/user-attachments/assets/a1c3e3f8-ae13-405e-a347-80beef6573e6">
+### AllData架构设计
+<img width="1423" alt="image" src="https://github.com/user-attachments/assets/befa64c2-c40c-40ee-9dae-a626dab03923">
 
 ### AllData开源技术群
 <img width="1423" alt="image" src="https://github.com/user-attachments/assets/ddfb0c08-618c-4add-ac38-1e5fae462c81">
@@ -84,21 +111,19 @@ AllData商业版功通过集成大数据组件案例模版，2027年12月30会�
 ### AllData公众号
 <img width="1423" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/7d4312a3-1904-404d-a0ed-f36b14e7c02d">
 
-## [AllData系列星球重磅发布: https://docs.qq.com/doc/DVHhOdGp5UXB5UldP](https://docs.qq.com/doc/DVHhOdGp5UXB5UldP)
+### AllData技术社区
+<img width="1423" alt="image" src="https://github.com/user-attachments/assets/a1c3e3f8-ae13-405e-a347-80beef6573e6">
 
-<img width="1423" alt="image" src="https://github.com/user-attachments/assets/aeddb586-514a-4edd-ab75-0f1c54bd2702">
-
-## AllData架构设计
-<img width="1423" alt="image" src="https://github.com/user-attachments/assets/befa64c2-c40c-40ee-9dae-a626dab03923">
-
-
-## AllData开源时间旅行
+### AllData开源时间旅行
 <br/>
 <a href="https://github.com/alldatacenter/github-readme-stats">
   <img width="1423" align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=alldatacenter&repo=alldata" />
 </a>
 
 [![Stargazers over time](https://starchart.cc/alldatacenter/alldata.svg)](https://starchart.cc/alldatacenter/alldata)
+
+### [AllData系列星球重磅发布: https://docs.qq.com/doc/DVHhOdGp5UXB5UldP](https://docs.qq.com/doc/DVHhOdGp5UXB5UldP)
+<img width="1423" alt="image" src="https://github.com/user-attachments/assets/aeddb586-514a-4edd-ab75-0f1c54bd2702">
 
 ## 二、介绍 ｜ AllData数据中台
 
@@ -444,21 +469,4 @@ AllData商业版功通过集成大数据组件案例模版，2027年12月30会�
 <img width="1265" alt="20_数据湖集群" src="https://github.com/user-attachments/assets/0c43cb19-3c2d-467a-855f-08c9cfdd077e" />
 <img width="1265" alt="22_数据湖集群_更新集群" src="https://github.com/user-attachments/assets/1a502c73-ff19-4124-bcd6-8bdf088791af" />
 <img width="1265" alt="23_数据湖集群_集群连通性检测" src="https://github.com/user-attachments/assets/dadeec66-c9b3-43db-bf66-6e24d1529f6d" />
-
-
-### 23 实时开发系统（开源版没有，商业版发布后提供源码）
-发布后提供源码。
-
-### 24 数仓查询中心（开源版没有，商业版发布后提供源码）
-发布后提供源码。
-
-### 25 数仓建模平台（开源版没有，商业版发布后提供源码）
-发布后提供源码。
-
-### 26 机器学习平台（开源版没有，商业版发布后提供源码）
-发布后提供源码。
-
-### 25 大模型应用开发平台（开源版没有，商业版发布后提供源码）
-发布后提供源码。
-
 
