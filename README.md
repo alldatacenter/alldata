@@ -41,31 +41,31 @@ AllData商业版功通过集成大数据组件案例模版，2025年12月30会�
 
 功能10. BI报表，包含数据看板、数据大屏、数据集、数据图表等功能。
 
-功能11. AllData数据平台菜单，集成开源DataSophon项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
+功能11. 数据平台，集成开源DataSophon项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
 
-功能12. AllData数据平台(k8s)菜单，集成开源CloudEon项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
+功能12. BI可视化平台，集成开源Datart项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
 
-功能13. AllData实时开发菜单，集成开源StreamPark项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
+功能13. 指标体系平台，集成开源SuperSonic项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
 
-功能14. AllData实时开发IDE菜单，集成开源Dinky项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
+功能14. K8S数据平台，集成开源CloudEon项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
 
-功能15. AllData离线开发菜单，集成开源DolphinScheduler项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
+功能15. 实时开发平台，集成开源StreamPark项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
 
-功能16. AllData数据质量平台菜单，集成开源DataVines项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
+功能16. 实时开发IDE，集成开源Dinky项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
 
-功能17. AllDataBI平台菜单，集成开源Datart项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
+功能17. 离线开发平台，集成开源DolphinScheduler项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
 
-功能18. AllData元数据管理平台菜单，集成开源OpenMetaData项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
+功能18. 元数据管理平台，集成开源OpenMetaData项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
 
-功能19. AllData指标体系平台菜单，集成开源SuperSonic项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
+功能19. 数据质量平台，集成开源DataVines项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
 
-功能20. AllData数据集成平台菜单，集成开源Tis项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
+功能20. 数据集成平台，集成开源Tis项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
 
-功能21. AllData数据同步平台菜单，集成开源Seatunnel项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
+功能21. 数据同步平台，集成开源Seatunnel项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
 
-功能22. AllData数据湖平台菜单，集成开源Paimon项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
+功能22. 数据湖平台，集成开源Paimon项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
 
-功能23. 数仓查询中心【发布后源码交付】
+功能23. 湖仓一体化平台【发布后源码交付】
 
 功能24. 实时开发系统【发布后源码交付】
 
@@ -95,25 +95,25 @@ AllData商业版功通过集成大数据组件案例模版，2025年12月30会�
 
 ```
 
-### 开源版 VS 商业版
-<img width="1423" alt="image" src="https://github.com/user-attachments/assets/e7720ea3-2aa8-4947-9265-648ef64e6418">
+## 开源版 VS 商业版
+<img width="1423" alt="image" src="https://github.com/user-attachments/assets/b33f3cff-4287-4e81-b684-a76e58b894c0">
 
-### AllData架构设计
+## AllData架构设计
 <img width="1423" alt="image" src="https://github.com/user-attachments/assets/befa64c2-c40c-40ee-9dae-a626dab03923">
 
-### AllData开源技术群
+## AllData开源技术群
 <img width="1423" alt="image" src="https://github.com/user-attachments/assets/ddfb0c08-618c-4add-ac38-1e5fae462c81">
 
-### AllData视频号
+## AllData视频号
 <img width="1423" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/c809b131-4b5f-4e60-ab26-81930665fc3b">
 
-### AllData公众号
+## AllData公众号
 <img width="1423" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/7d4312a3-1904-404d-a0ed-f36b14e7c02d">
 
-### AllData技术社区
+## AllData技术社区
 <img width="1423" alt="image" src="https://github.com/user-attachments/assets/a1c3e3f8-ae13-405e-a347-80beef6573e6">
 
-### AllData发展历程
+## AllData发展历程
 <br/>
 <a href="https://github.com/alldatacenter/github-readme-stats">
   <img width="1423" align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=alldatacenter&repo=alldata" />
@@ -121,7 +121,7 @@ AllData商业版功通过集成大数据组件案例模版，2025年12月30会�
 
 [![Stargazers over time](https://starchart.cc/alldatacenter/alldata.svg)](https://starchart.cc/alldatacenter/alldata)
 
-### [AllData系列星球重磅发布: https://docs.qq.com/doc/DVHhOdGp5UXB5UldP](https://docs.qq.com/doc/DVHhOdGp5UXB5UldP)
+## [AllData系列星球重磅发布: https://docs.qq.com/doc/DVHhOdGp5UXB5UldP](https://docs.qq.com/doc/DVHhOdGp5UXB5UldP)
 <img width="1423" alt="image" src="https://github.com/user-attachments/assets/aeddb586-514a-4edd-ab75-0f1c54bd2702">
 
 ## 二、介绍 ｜ AllData数据中台
@@ -129,12 +129,14 @@ AllData商业版功通过集成大数据组件案例模版，2025年12月30会�
 
 ## 三、演示 ｜ AllData数据中台正式线上环境
 
-### AllData 首页 ｜ 登陆页
+## AllData 首页 ｜ 登陆页
 <img width="1423" alt="image" src="https://github.com/user-attachments/assets/019c2b8d-5af4-4c2d-9092-22e1dbd52776" />
 
 
-### 1. 系统管理（开源版有，商业版稳定、好用、方便扩展）
+## 1. 系统管理（开源版有，商业版稳定、好用、方便扩展）
+
 <img width="1428" alt="49_系统管理_用户管理" src="https://github.com/user-attachments/assets/cf52fde5-1dd1-4312-996c-d749ac2ef8a8" />
+
 <img width="1428" alt="50_系统管理_角色管理" src="https://github.com/user-attachments/assets/9172761e-6184-4ba5-98b1-81000a0feb43" />
 <img width="1428" alt="51_系统管理_菜单管理" src="https://github.com/user-attachments/assets/cf773ff4-1d06-4c23-84d1-21c6a113aba4" />
 <img width="1428" alt="52_系统管理_部门管理" src="https://github.com/user-attachments/assets/cf295797-9c5d-45b4-a833-04d9f178298e" />
@@ -149,8 +151,10 @@ AllData商业版功通过集成大数据组件案例模版，2025年12月30会�
 <img width="1428" alt="64_运维管理_数据库管理" src="https://github.com/user-attachments/assets/68e653a6-6960-4657-9462-3f49f1ff1a95" />
 
 
-### 2. 数据集成（开源版有，商业版稳定、好用、方便扩展）
+## 2. 数据集成（开源版有，商业版稳定、好用、方便扩展）
+
 <img width="1400" alt="image" src="https://github.com/user-attachments/assets/b4c752b9-fb02-4ba7-8d4d-0c246c795408" />
+
 <img width="1423" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/862469f5-a557-4654-a348-c7d2ccc29b49">
 <img width="1439" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/34fcabb5-5c93-468b-8c83-b23266a593ac">
 <img width="1413" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/265f3d51-5404-4525-aa3a-1706e7c44001">
@@ -161,7 +165,8 @@ AllData商业版功通过集成大数据组件案例模版，2025年12月30会�
 <img width="1400" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/65d5e8ec-f2f2-4053-bf3c-9e46131dd54b">
 
 
-### 3. 数据质量管理（开源版有，商业版稳定、好用、方便扩展）
+## 3. 数据质量管理（开源版有，商业版稳定、好用、方便扩展）
+
 <img width="1400" alt="image" src="https://github.com/user-attachments/assets/21a6242f-e211-4eaf-b389-1fb6d3b113a0" />
 
 <img width="1425" alt="12_数据质量_规制引擎" src="https://github.com/user-attachments/assets/03b00f6f-9138-49ad-a3fb-51da40390e56" />
@@ -172,7 +177,7 @@ AllData商业版功通过集成大数据组件案例模版，2025年12月30会�
 
 
 
-### 4. 数据标准管理（开源版有，商业版稳定、好用、方便扩展）
+## 4. 数据标准管理（开源版有，商业版稳定、好用、方便扩展）
 
 <img width="1400" alt="image" src="https://github.com/user-attachments/assets/6ebdeb67-e6c9-4782-ae49-ed073f63a2f2" />
 
@@ -185,7 +190,8 @@ AllData商业版功通过集成大数据组件案例模版，2025年12月30会�
 <img width="1409" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/b091f7eb-6ba1-4c04-a065-02cc1b984862">
 
 
-### 5. 元数据管理（开源版有，商业版稳定、好用、方便扩展）
+## 5. 元数据管理（开源版有，商业版稳定、好用、方便扩展）
+
 <img width="1400" alt="image" src="https://github.com/user-attachments/assets/6eac60f9-b9ab-4c77-b156-5b607ab24c44" />
 
 <img width="1411" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/6e2800e3-ff47-4bfd-8401-ed3983b588ab">
@@ -203,14 +209,16 @@ AllData商业版功通过集成大数据组件案例模版，2025年12月30会�
 <img width="1415" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/8a3f6445-cf3e-4b38-a423-ab94d59c3ba4">
 
 
-### 6. 数据模型管理（开源版有，商业版稳定、好用、方便扩展）
+## 6. 数据模型管理（开源版有，商业版稳定、好用、方便扩展）
+
 <img width="1400" alt="image" src="https://github.com/user-attachments/assets/41e18c48-8481-467f-bc89-4b6aa1276d26" />
 
 <img width="1434" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/87351bf4-2249-421f-bde0-afa2bd115324">
 
 <img width="1411" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/4096b37b-0534-48b1-bcb4-c592966df6f5">
 
-### 7. 数据服务管理（开源版有，商业版稳定、好用、方便扩展）
+## 7. 数据服务管理（开源版有，商业版稳定、好用、方便扩展）
+
 <img width="1400" alt="image" src="https://github.com/user-attachments/assets/d55a5627-588c-4ef0-9488-fd5b8fa00e75" />
 
 <img width="1191" alt="image" src="https://github.com/user-attachments/assets/322b34df-589a-471d-b6f8-0c95be7e4031" />
@@ -226,7 +234,8 @@ AllData商业版功通过集成大数据组件案例模版，2025年12月30会�
 <img width="1402" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/9058eead-2a33-4c87-b4e7-85b619ce5e78">
 
 
-### 8. 数据比对（开源版有，商业版稳定、好用、方便扩展）
+## 8. 数据比对（开源版有，商业版稳定、好用、方便扩展）
+
 <img width="1188" alt="image" src="https://github.com/user-attachments/assets/1555e387-173d-4337-8381-bb2e10926871" />
 
 <img width="1416" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/a7214896-7a15-443a-bd75-f024ae8e8ec3">
@@ -240,7 +249,8 @@ AllData商业版功通过集成大数据组件案例模版，2025年12月30会�
 <img width="1410" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/2409f74f-bed4-465b-adf3-022979132247">
 
 
-### 9. BI报表（开源版有，商业版稳定、好用、方便扩展）
+## 9. BI报表（开源版有，商业版稳定、好用、方便扩展）
+
 <img width="1428" alt="image" src="https://github.com/user-attachments/assets/b5d558a8-f8bc-4c5d-9a81-df6a44105922" />
 
 <img width="1427" alt="image" src="https://github.com/user-attachments/assets/7dd80022-3635-4e8b-ad4e-3155ecbe33bd">
@@ -249,13 +259,13 @@ AllData商业版功通过集成大数据组件案例模版，2025年12月30会�
 <img width="1427" alt="image" src="https://github.com/user-attachments/assets/8a3ba65b-3c29-41ce-ad7a-b83fe007eafe">
 
 
-### 10. 数据安全管理（开源版有，商业版稳定、好用、方便扩展）
+## 10. 数据安全管理（开源版有，商业版稳定、好用、方便扩展）
 <img width="1428" alt="image" src="https://github.com/user-attachments/assets/60d8194e-f589-44f7-abc0-77f795f96337" />
 
 
 
 
-### 11. 数据平台（开源版没有，商业版提供源码）
+## 11. 数据平台（开源版有，商业版稳定、好用、方便扩展）
 
 <img width="1410" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/dbc8c273-1800-4395-999d-eb241c09301a">
 
@@ -280,7 +290,34 @@ AllData商业版功通过集成大数据组件案例模版，2025年12月30会�
 
 <img width="1407" alt="11_集群管理_系统管理_租户管理" src="https://github.com/user-attachments/assets/8804b3f6-7ee0-493b-ba18-c67843afa737" />
 
-### 12. K8S数据平台（开源版没有，商业版提供源码）
+## 12 BI可视化平台（开源版有，商业版稳定、好用、方便扩展）
+
+<img width="1413" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/0732f03a-63b3-404d-a1d6-adfd9eff34b7">
+
+<img width="1435" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/cf8d53d3-7292-45cb-9bd3-847b24150880">
+
+<img width="1413" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/5a2cb21c-3b42-4626-80f3-fceb76e06a22">
+
+<img width="1409" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/5175a50f-c6cb-4fc1-a40c-ba8a5745f26d">
+
+<img width="1265" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/92e4ba6b-ee6e-4d54-93b9-28d3af509564">
+
+
+## 13 指标体系平台（开源版有，商业版稳定、好用、方便扩展）
+<img width="1265" alt="0_指标体系_目录表单" src="https://github.com/user-attachments/assets/e4f330fa-be14-49e6-94ce-4e5da106d573" />
+<img width="1265" alt="1_问答对话_算指标" src="https://github.com/user-attachments/assets/bcd98279-5ba9-413a-a54e-d4a32da717a0" />
+<img width="1265" alt="13_指标管理_模型管理_画布" src="https://github.com/user-attachments/assets/beb15b49-a605-4f3e-b36b-c9f547d84dbc" />
+<img width="1265" alt="12_指标管理_模型管理_列表" src="https://github.com/user-attachments/assets/bcd720bc-8265-4f24-b8ad-3a448160869f" />
+<img width="1265" alt="14_指标管理_模型管理_创建模型" src="https://github.com/user-attachments/assets/07f9a2f2-a6d0-47fb-b6e7-0bbe2430e4f0" />
+<img width="1265" alt="17_指标管理_模型管理_指标管理" src="https://github.com/user-attachments/assets/dac1c2b3-182c-4c39-95c5-452abb9b841e" />
+<img width="1265" alt="18_指标管理_模型管理_指标管理_创建指标" src="https://github.com/user-attachments/assets/49694d05-44a1-4c7f-958c-1cf0836b4a44" />
+<img width="1265" alt="20_指标管理_模型管理_维度管理_创建维度" src="https://github.com/user-attachments/assets/077d1b66-cf32-424e-9b07-5d0ceaf30215" />
+<img width="1265" alt="30_指标血缘" src="https://github.com/user-attachments/assets/96d9f117-574b-42d7-9acb-3cae8508baf2" />
+<img width="1265" alt="31_指标检索" src="https://github.com/user-attachments/assets/39a1d228-7704-4a0d-b960-2577838a12ba" />
+<img width="1265" alt="32_指标检索_基础信息" src="https://github.com/user-attachments/assets/2158540c-f6aa-45d6-ae79-e80ecd161e84" />
+<img width="1265" alt="34_标签市场" src="https://github.com/user-attachments/assets/af5a1ae5-62c0-40a7-93a5-386f23aa6c7f" />
+
+## 14. K8S数据平台（开源版有，商业版稳定、好用、方便扩展）
 
 <img width="1424" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/b77cfc70-796f-426b-b0e2-e9b5471c59d9">
 
@@ -296,7 +333,7 @@ AllData商业版功通过集成大数据组件案例模版，2025年12月30会�
 
 
 
-### 13. 实时开发平台（开源版没有，商业版提供源码）
+## 15. 实时开发平台（开源版有，商业版稳定、好用、方便扩展）
 <img width="1431" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/e397f42a-850d-49ea-bfa0-c952a9857c7f">
 
 
@@ -312,7 +349,7 @@ AllData商业版功通过集成大数据组件案例模版，2025年12月30会�
 
 
 
-### 14. 实时开发IDE（开源版没有，商业版提供源码）
+## 16. 实时开发IDE（开源版有，商业版稳定、好用、方便扩展）
 <img width="1409" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/c6fac72f-0162-49f1-9897-abfcb24dc313">
 
 <img width="1438" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/6178bb3b-3523-400a-afc3-3eeb1a7b4eb8">
@@ -329,7 +366,7 @@ AllData商业版功通过集成大数据组件案例模版，2025年12月30会�
 <img width="1410" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/f268f2ea-6736-4d8a-ab46-6b7678906424">
 
 
-### 15. 离线开发平台（开源版没有，商业版提供源码）
+## 17. 离线开发平台（开源版有，商业版稳定、好用、方便扩展）
 <img width="1436" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/b26fd04d-fc0f-40b9-8446-c8c1fc3e70ce">
 
 <img width="1436" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/af3f84f9-06ef-420c-a20e-36880b3ba2fb">
@@ -357,7 +394,7 @@ AllData商业版功通过集成大数据组件案例模版，2025年12月30会�
 <img width="1439" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/c2692cba-eaea-422f-8264-c3226897d705">
 <img width="1412" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/de906b6c-3498-4174-9fa7-82bf79d667d2">
 
-### 16 数据质量平台（开源版没有，商业版提供源码）
+## 18. 数据质量平台（开源版有，商业版稳定、好用、方便扩展）
 
 <img width="1419" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/dccc4c1d-b277-49f5-a347-22bc38599f53">
 
@@ -381,19 +418,8 @@ AllData商业版功通过集成大数据组件案例模版，2025年12月30会�
 
 <img width="1439" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/b25dba4d-28c9-4d16-bca1-e1803c5ae87a">
 
-### 17 BI可视化平台（开源版没有，商业版提供源码）
 
-<img width="1413" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/0732f03a-63b3-404d-a1d6-adfd9eff34b7">
-
-<img width="1435" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/cf8d53d3-7292-45cb-9bd3-847b24150880">
-
-<img width="1413" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/5a2cb21c-3b42-4626-80f3-fceb76e06a22">
-
-<img width="1409" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/5175a50f-c6cb-4fc1-a40c-ba8a5745f26d">
-
-<img width="1265" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/92e4ba6b-ee6e-4d54-93b9-28d3af509564">
-
-### 18 元数据管理平台（开源版没有，商业版提供源码）
+## 19. 元数据管理平台（开源版有，商业版稳定、好用、方便扩展）
 <img width="1265" alt="0_元数据管理_目录表单" src="https://github.com/user-attachments/assets/02733c65-80da-4df8-aea5-aae74c5bba36" />
 <img width="1265" alt="01元数据资产-数据库" src="https://github.com/user-attachments/assets/c9eb64fb-5670-4092-aea6-73d6d1144ce9" />
 <img width="1265" alt="02元数据资产-数据模式" src="https://github.com/user-attachments/assets/0ac343ba-8e60-46a7-a36c-fad298331b92" />
@@ -406,22 +432,8 @@ AllData商业版功通过集成大数据组件案例模版，2025年12月30会�
 <img width="1265" alt="23元数据拾取-服务" src="https://github.com/user-attachments/assets/2a709c0d-43cc-4b32-bee0-422b3782c550" />
 
 
-### 19 指标体系平台（开源版没有，商业版提供源码）
-<img width="1265" alt="0_指标体系_目录表单" src="https://github.com/user-attachments/assets/e4f330fa-be14-49e6-94ce-4e5da106d573" />
-<img width="1265" alt="1_问答对话_算指标" src="https://github.com/user-attachments/assets/bcd98279-5ba9-413a-a54e-d4a32da717a0" />
-<img width="1265" alt="13_指标管理_模型管理_画布" src="https://github.com/user-attachments/assets/beb15b49-a605-4f3e-b36b-c9f547d84dbc" />
-<img width="1265" alt="12_指标管理_模型管理_列表" src="https://github.com/user-attachments/assets/bcd720bc-8265-4f24-b8ad-3a448160869f" />
-<img width="1265" alt="14_指标管理_模型管理_创建模型" src="https://github.com/user-attachments/assets/07f9a2f2-a6d0-47fb-b6e7-0bbe2430e4f0" />
-<img width="1265" alt="17_指标管理_模型管理_指标管理" src="https://github.com/user-attachments/assets/dac1c2b3-182c-4c39-95c5-452abb9b841e" />
-<img width="1265" alt="18_指标管理_模型管理_指标管理_创建指标" src="https://github.com/user-attachments/assets/49694d05-44a1-4c7f-958c-1cf0836b4a44" />
-<img width="1265" alt="20_指标管理_模型管理_维度管理_创建维度" src="https://github.com/user-attachments/assets/077d1b66-cf32-424e-9b07-5d0ceaf30215" />
-<img width="1265" alt="30_指标血缘" src="https://github.com/user-attachments/assets/96d9f117-574b-42d7-9acb-3cae8508baf2" />
-<img width="1265" alt="31_指标检索" src="https://github.com/user-attachments/assets/39a1d228-7704-4a0d-b960-2577838a12ba" />
-<img width="1265" alt="32_指标检索_基础信息" src="https://github.com/user-attachments/assets/2158540c-f6aa-45d6-ae79-e80ecd161e84" />
-<img width="1265" alt="34_标签市场" src="https://github.com/user-attachments/assets/af5a1ae5-62c0-40a7-93a5-386f23aa6c7f" />
 
-
-### 20 数据集成平台（开源版没有，商业版提供源码）
+## 20. 数据集成平台（开源版有，商业版稳定、好用、方便扩展）
 <img width="1265" alt="0_数据集成平台_目录表单" src="https://github.com/user-attachments/assets/21b5b047-486a-45b8-babd-6af03b1ae341" />
 <img width="1265" alt="1_数据集成平台_首页" src="https://github.com/user-attachments/assets/8f0b395f-f0ca-420e-933c-c0beacfd3a85" />
 <img width="1265" alt="2_实例_实例管理" src="https://github.com/user-attachments/assets/f5b36a10-bf44-498f-9c21-22274f472ea4" />
@@ -440,7 +452,7 @@ AllData商业版功通过集成大数据组件案例模版，2025年12月30会�
 <img width="1265" alt="38_配置中心_操作日志" src="https://github.com/user-attachments/assets/943a1822-ab89-47f4-a7c5-5cf2657387ba" />
 
 
-### 21 数据同步平台（开源版没有，商业版提供源码）
+## 21. 数据同步平台（开源版有，商业版稳定、好用、方便扩展）
 <img width="1265" alt="0_数据同步成平台_目录表单" src="https://github.com/user-attachments/assets/1f3b2f88-b984-46bd-9dec-a0f81ff677b4" />
 <img width="1265" alt="1_任务_同步任务定义" src="https://github.com/user-attachments/assets/bdbbd191-493f-42b0-a590-c3a3ed8540be" />
 <img width="1265" alt="2_任务_同步任务定义_任务详情" src="https://github.com/user-attachments/assets/74599b8f-ed2a-4be3-b3e6-b1597bfca999" />
@@ -453,7 +465,7 @@ AllData商业版功通过集成大数据组件案例模版，2025年12月30会�
 <img width="1265" alt="12_数据源_非结构化" src="https://github.com/user-attachments/assets/0d30cd28-8ede-4788-9e61-3b581858b0ba" />
 
 
-### 22 数据湖平台（开源版没有，商业版提供源码）
+## 22. 数据湖平台（开源版有，商业版稳定、好用、方便扩展）
 <img width="1265" alt="WechatIMG630" src="https://github.com/user-attachments/assets/ca5287d8-63d7-48b4-9522-fdb6d2b9db4c" />
 <img width="1265" alt="1_数据湖任务" src="https://github.com/user-attachments/assets/3b41e6b6-a043-4ffd-9e6d-6b3b829d9490" />
 <img width="1265" alt="2_数据湖查询_查询" src="https://github.com/user-attachments/assets/59696518-1eda-4c35-8237-bdc85238dac9" />
