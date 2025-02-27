@@ -248,33 +248,24 @@ AllData商业版功通过集成大数据组件案例模版，2025年12月30会�
 
 <img width="1410" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/2409f74f-bed4-465b-adf3-022979132247">
 
-
-<<<<<<< HEAD
-### 9. BI报表（开源版有，商业版更稳定，bug比较少）
-=======
 ## 9. BI报表（开源版有，商业版稳定、好用、方便扩展）
-
-<img width="1428" alt="image" src="https://github.com/user-attachments/assets/b5d558a8-f8bc-4c5d-9a81-df6a44105922" />
->>>>>>> 55965ea93b915164de0cc72eef1941765977924a
 
 #### 9.1 在BI报表-增加数据源
 
 <img width="1410" alt="image" src="https://github.com/user-attachments/assets/d67133d2-f6e3-41fa-94fb-8aff33c34608" />
 
-<<<<<<< HEAD
 #### 9.2 编辑数据源
+
 <img width="1410" alt="image" src="https://github.com/user-attachments/assets/b6e5aff3-a1ce-49aa-83fc-52ad33dd6a57" />
-=======
-## 10. 数据安全管理（开源版有，商业版稳定、好用、方便扩展）
-<img width="1428" alt="image" src="https://github.com/user-attachments/assets/60d8194e-f589-44f7-abc0-77f795f96337" />
->>>>>>> 55965ea93b915164de0cc72eef1941765977924a
 
 #### 9.3 点击SQL解析，设置维度列和指标列
+
 <img width="1410" alt="image" src="https://github.com/user-attachments/assets/4d4c4425-a6cd-4b2b-b4e8-b6625c0e00ad" />
 
 <img width="1410" alt="image" src="https://github.com/user-attachments/assets/db6b9c71-a4e9-4a37-b5ff-a705fef05bfa" />
 
 #### 9.4 点击数据预览，查看数据
+
 <img width="1410" alt="image" src="https://github.com/user-attachments/assets/d0bde800-da3f-4970-a60b-f9c07db284be" />
 
 #### 9.5 数据图表管理
@@ -290,17 +281,20 @@ AllData商业版功通过集成大数据组件案例模版，2025年12月30会�
 <img width="1410" alt="image" src="https://github.com/user-attachments/assets/53f2e95a-488c-4e6a-919f-8c3c4d23719c" />
 
 #### 9.8 车联网平台数据概览
+
 <img width="1410" alt="image" src="https://github.com/user-attachments/assets/4fe8f8bc-585b-4ecf-a930-200b66493a0f" />
 
 #### 9.9 数据看板管理
+
 <img width="1410" alt="image" src="https://github.com/user-attachments/assets/76cde41e-2ef9-4a70-9110-f6382bea49a2" />
 
 #### 9.10 数据看板编辑
+
 <img width="1410" alt="image" src="https://github.com/user-attachments/assets/066f55a3-982b-46e5-b500-8f0fca66a3f3" />
 
-### 10、数据安全管理（开源版有，商业版更稳定，bug比较少）
-<img width="1410" alt="image" src="https://github.com/user-attachments/assets/60d8194e-f589-44f7-abc0-77f795f96337" />
 
+## 10. 数据安全管理（开源版有，商业版稳定、好用、方便扩展）
+<img width="1428" alt="image" src="https://github.com/user-attachments/assets/60d8194e-f589-44f7-abc0-77f795f96337" />
 
 ## 11. 数据平台（开源版有，商业版稳定、好用、方便扩展）
 
