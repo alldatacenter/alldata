@@ -1,25 +1,57 @@
-#### （BI模块配置流程）
+# BI模块配置流程
 
-##### 根据官方部署文档，部署项目https://github.com/alldatacenter/alldata/blob/master/install.md
+## 根据官方部署文档，部署项目
 
-###### 部署可能会遇到的问题：
+https://github.com/alldatacenter/alldata/blob/master/install.md
 
-1. 在修改完配置文件后应该在alldata根目录进行打包，而不是单独模块打包，这样有些模块，无法打包成功
+## BI教程
 
-2. 切记认真查阅部署文档
+### 1. 源码部署安装
+   https://github.com/alldatacenter/alldata/blob/master/install.md
 
-   ##### 部署成功之后，点击BI模块点击修改操作进入修改界面，alldata-metadata-service模块会报错
+### 2. 导入数据库, 以下为数据库连接:
 
-  ![image](https://github.com/LMR-up/alldata/assets/80820139/d7957d60-3d5b-490b-aa48-413c696bb277)
+foodmart2数据库：https://github.com/alldatacenter/alldata/blob/master/studio/install/sql/foodmart2.zip
+
+robot数据库：https://github.com/alldatacenter/alldata/blob/master/studio/install/sql/robot.sql
 
 
-   该模块爆的应该是数据库的错误，其实主要是因为该项目提供的数据库只有studio,缺少了foodmart2和robot数据库
+### 3. 在元数据管理-配置数据源
 
-   1：我们只需要新建这两个数据库并且把数据导入即可以下为数据库连接，https://gitee.com/zrxjava/srt-data/tree/master/db可以自己下载导入，我会把数据库文件放在项目根目录
+### 4. 在BI报表-增加数据源
 
-   2：在数据库中新建完这两个数据库之后，主要查看studio数据库中metadata_source表中的db_schema字段注意该字段的数据，端口和用户名，密码是否和foodmart2库和robot库相匹配，并且注意数据库的访问权限
+<img width="2239" alt="image" src="https://github.com/user-attachments/assets/d67133d2-f6e3-41fa-94fb-8aff33c34608" />
 
-   ##### 数据库补充完毕，就可以愉快的使用bi功能了
-   ![image](https://github.com/LMR-up/alldata/assets/80820139/a4033dd8-8b7f-4995-adfd-6863565c8388)
+### 5. 编辑数据源
+<img width="2237" alt="image" src="https://github.com/user-attachments/assets/b6e5aff3-a1ce-49aa-83fc-52ad33dd6a57" />
 
-![image](https://github.com/LMR-up/alldata/assets/80820139/18b097c8-f957-43b6-bdfb-f902a6eede45)
+### 6. 点击SQL解析，设置维度列和指标列
+<img width="2238" alt="image" src="https://github.com/user-attachments/assets/4d4c4425-a6cd-4b2b-b4e8-b6625c0e00ad" />
+
+<img width="2240" alt="image" src="https://github.com/user-attachments/assets/db6b9c71-a4e9-4a37-b5ff-a705fef05bfa" />
+
+### 7. 点击数据预览，查看数据
+<img width="2239" alt="image" src="https://github.com/user-attachments/assets/d0bde800-da3f-4970-a60b-f9c07db284be" />
+
+### 8. 数据图表管理
+
+<img width="2239" alt="image" src="https://github.com/user-attachments/assets/4573708c-7df6-414d-b408-4b549a90f861" />
+
+### 9. 编辑数据图表
+
+<img width="2239" alt="image" src="https://github.com/user-attachments/assets/aebf2929-ffe3-4a76-b499-aa9d08cf0389" />
+
+### 10. 数据大屏管理
+
+<img width="2239" alt="image" src="https://github.com/user-attachments/assets/53f2e95a-488c-4e6a-919f-8c3c4d23719c" />
+
+### 11. 车联网平台数据概览
+<img width="2239" alt="image" src="https://github.com/user-attachments/assets/4fe8f8bc-585b-4ecf-a930-200b66493a0f" />
+
+### 12. 数据看板管理
+<img width="2239" alt="image" src="https://github.com/user-attachments/assets/76cde41e-2ef9-4a70-9110-f6382bea49a2" />
+
+### 13. 数据看板编辑
+<img width="2239" alt="image" src="https://github.com/user-attachments/assets/066f55a3-982b-46e5-b500-8f0fca66a3f3" />
+
+
