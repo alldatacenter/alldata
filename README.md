@@ -65,7 +65,7 @@ AllData商业版功通过集成大数据组件案例模版，2025年12月30会�
 
 功能22. 数据湖平台，集成开源Paimon项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
 
-功能23. 湖仓一体化平台【发布后源码交付】
+功能23. 湖仓一体化平台，集成开源Kyuubi项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
 
 功能24. 实时开发系统【发布后源码交付】
 
@@ -87,7 +87,7 @@ AllData商业版功通过集成大数据组件案例模版，2025年12月30会�
 
 功能33. 数据资产平台【发布后源码交付】
 
-功能34. 信创一体化平台【发布后源码交付
+功能34. 信创一体化平台【发布后源码交付】
 
 功能35. 国产数据库一体化平台【发布后源码交付】
 
@@ -95,8 +95,16 @@ AllData商业版功通过集成大数据组件案例模版，2025年12月30会�
 
 ```
 
+## AllData发展历程
+<br/>
+<a href="https://github.com/alldatacenter/github-readme-stats">
+  <img width="1423" align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=alldatacenter&repo=alldata" />
+</a>
+
+[![Stargazers over time](https://starchart.cc/alldatacenter/alldata.svg)](https://starchart.cc/alldatacenter/alldata)
+
 ## 开源版 VS 商业版
-<img width="1423" alt="image" src="https://github.com/user-attachments/assets/b33f3cff-4287-4e81-b684-a76e58b894c0">
+<img width="1423" alt="image" src="https://github.com/user-attachments/assets/a9f6b9a0-d466-4244-8344-fa90d35913fd">
 
 ## AllData架构设计
 <img width="1423" alt="image" src="https://github.com/user-attachments/assets/befa64c2-c40c-40ee-9dae-a626dab03923">
@@ -112,14 +120,6 @@ AllData商业版功通过集成大数据组件案例模版，2025年12月30会�
 
 ## AllData技术社区
 <img width="1423" alt="image" src="https://github.com/user-attachments/assets/a1c3e3f8-ae13-405e-a347-80beef6573e6">
-
-## AllData发展历程
-<br/>
-<a href="https://github.com/alldatacenter/github-readme-stats">
-  <img width="1423" align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=alldatacenter&repo=alldata" />
-</a>
-
-[![Stargazers over time](https://starchart.cc/alldatacenter/alldata.svg)](https://starchart.cc/alldatacenter/alldata)
 
 ## [AllData系列星球重磅发布: https://docs.qq.com/doc/DVHhOdGp5UXB5UldP](https://docs.qq.com/doc/DVHhOdGp5UXB5UldP)
 <img width="1423" alt="image" src="https://github.com/user-attachments/assets/aeddb586-514a-4edd-ab75-0f1c54bd2702">
