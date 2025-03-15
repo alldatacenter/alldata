@@ -150,7 +150,10 @@ AllData以大模型应用为上游产品，提供全链路数字化解决方案�
 
 
 ## 二、AllData数据中台 & 功能清单
+
 功能1. 系统管理，包含系统设置、系统监控、服务器管理等功能。
+
+<img width="1400" alt="image" src="https://github.com/user-attachments/assets/32e0e53f-f924-4974-afc7-c5e6ba70d432" />
 
 功能2. 数据集成，包含项目管理、数据源管理、注册中心、单任务、多任务、任务模版、任务详情、运行日志、执行配置等功能。
 
@@ -189,54 +192,55 @@ AllData以大模型应用为上游产品，提供全链路数字化解决方案�
 <img width="1428" alt="image" src="https://github.com/user-attachments/assets/b5d558a8-f8bc-4c5d-9a81-df6a44105922" />
 
 功能11. 数据平台，集成开源DataSophon项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
-
-<img width="1410" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/dbc8c273-1800-4395-999d-eb241c09301a">
+<img width="1400" alt="image" src="https://github.com/user-attachments/assets/ed171070-583e-4d69-b81f-68ef2e2e5ed1" />
 
 功能12. BI可视化平台，集成开源Datart项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
 
-<img width="1413" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/0732f03a-63b3-404d-a1d6-adfd9eff34b7">
+<img width="1400" alt="image" src="https://github.com/user-attachments/assets/29b09400-6283-4546-92e1-06e134983ee5" />
 
 功能13. 指标体系平台，集成开源SuperSonic项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
 
-<img width="1265" alt="0_指标体系_目录表单" src="https://github.com/user-attachments/assets/e4f330fa-be14-49e6-94ce-4e5da106d573" />
+<img width="1400" alt="0_指标体系_目录表单" src="https://github.com/user-attachments/assets/e4f330fa-be14-49e6-94ce-4e5da106d573" />
 
 功能14. K8S数据平台，集成开源CloudEon项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
-
-<img width="1424" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/b77cfc70-796f-426b-b0e2-e9b5471c59d9">
+ 
+<img width="1400" alt="image" src="https://github.com/user-attachments/assets/1a738be2-1419-43e8-9636-d8b7cb725ed3" />
 
 功能15. 实时开发平台，集成开源StreamPark项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
 
-<img width="1431" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/e397f42a-850d-49ea-bfa0-c952a9857c7f">
+<img width="1400" alt="image" src="https://github.com/user-attachments/assets/48017f79-3c71-49c5-9b0b-c71313a8e64d" />
 
 功能16. 实时开发IDE，集成开源Dinky项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
 
-<img width="1409" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/c6fac72f-0162-49f1-9897-abfcb24dc313">、
+<img width="1400" alt="image" src="https://github.com/user-attachments/assets/b1e77224-47e7-44c0-85bf-61f3860db89f" />
 
 功能17. 离线开发平台，集成开源DolphinScheduler项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
 
-<img width="1436" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/b26fd04d-fc0f-40b9-8446-c8c1fc3e70ce">
+<img width="1400" alt="image" src="https://github.com/user-attachments/assets/01ab01c5-de14-4240-8024-a48431821603" />
 
 功能18. 元数据管理平台，集成开源OpenMetaData项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
 
-<img width="1265" alt="0_元数据管理_目录表单" src="https://github.com/user-attachments/assets/02733c65-80da-4df8-aea5-aae74c5bba36" />
+<img width="1400" alt="image" src="https://github.com/user-attachments/assets/1a4008e5-4701-45d7-9eab-3e61a914013d" />
 
 功能19. 数据质量平台，集成开源DataVines项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
 
-<img width="1419" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/dccc4c1d-b277-49f5-a347-22bc38599f53">
+<img width="1400" alt="image" src="https://github.com/user-attachments/assets/8f20e776-b24f-4ac6-8ec2-38d8aeba5521" />
 
 功能20. 数据集成平台，集成开源Tis项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
 
-<img width="1265" alt="0_数据集成平台_目录表单" src="https://github.com/user-attachments/assets/21b5b047-486a-45b8-babd-6af03b1ae341" />
+<img width="1400" alt="0_数据集成平台_目录表单" src="https://github.com/user-attachments/assets/21b5b047-486a-45b8-babd-6af03b1ae341" />
 
 功能21. 数据同步平台，集成开源Seatunnel项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
 
-<img width="1265" alt="0_数据同步成平台_目录表单" src="https://github.com/user-attachments/assets/1f3b2f88-b984-46bd-9dec-a0f81ff677b4" />
+<img width="1400" alt="0_数据同步成平台_目录表单" src="https://github.com/user-attachments/assets/1f3b2f88-b984-46bd-9dec-a0f81ff677b4" />
 
 功能22. 数据湖平台，集成开源Paimon项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
 
-<img width="1265" alt="WechatIMG630" src="https://github.com/user-attachments/assets/ca5287d8-63d7-48b4-9522-fdb6d2b9db4c" />
+<img width="1400" alt="WechatIMG630" src="https://github.com/user-attachments/assets/ca5287d8-63d7-48b4-9522-fdb6d2b9db4c" />
 
 功能23. 湖仓一体化平台，集成开源Kyuubi项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
+
+<img width="1400" alt="image" src="https://github.com/user-attachments/assets/5b8acb33-c8c2-4cf4-a23a-b76f63ad2025" />
 
 
 ## 三、AllData数据中台正式线上环境 & 能力演示
