@@ -11,22 +11,22 @@
 │   │   ├── 16gdata
 │   │   ├── 16gmaster
 │   │   │   ├──studio
-│   │   │  │   ├──studio-0.x.x.sql
-│   ├── modules（各模块目录）
-│   │   ├── codegen-service-parent（代码生成模块，可选启动）
-│   │   ├── data-market-service-parent（数据集市模块，可选启动）
-│   │   ├── data-masterdata-service-parent（主数据服务模块，可选启动）
-│   │   ├── data-metadata-service-parent（元数据管理模块，可选启动）
-│   │   ├── data-quality-service-parent（数据质量模块，可选启动）
-│   │   ├── data-standard-service-parent（数据标准模块，可选启动）
-│   │   ├── data-system-service-parent
+│   │   │   │   ├──studio-0.x.x.sql
+│   │   ├── 16gsla 
+│   ├── services（各模块目录）
+│   │   ├── codegen-service-parent（代码生成，可选启动）
+│   │   ├── data-market-service-parent（数据服务，可选启动）
+│   │   ├── data-masterdata-service-parent（数据模型，可选启动）
+│   │   ├── data-metadata-service-parent（元数据管理，可选启动）
+│   │   ├── data-quality-service-parent（数据质量，可选启动）
+│   │   ├── data-standard-service-parent（数据标准，可选启动）
+│   │   ├── data-system-service-parent（基础服务，必须启动）
 │   │   ├── data-visual-service-parent（数据可视化模块，可选启动）
 │   │   ├── email-service-parent（邮件管理模块，可选启动）
 │   │   ├── file-service-parent（文件管理模块，可选启动）
 │   │   ├── quartz-service-parent（定时任务模块，可选启动）
 │   │   ├── service-data-dts-parent（数据集成模块，可选启动）
 │   │   ├── system-service-parent（系统管理模块，必须启动）
-│   │  └── workflow-service-parent（工作流模块，可选启动）
 │   ├── pom.xml
 
 ```
@@ -35,54 +35,18 @@
 
 
 ```
-│ ── micro-ui
-     ├── public // 公共文件
-    │   ├── favicon.ico // favicon图标
-    │   ├── index.html  // html模板
-    │   └── robots.txt //爬虫协议
-     ├── src    // 源代码         
-    │   ├── App.vue
-    │   ├── api    // 所有请求
-    │   ├── assets// 主题 字体等静态资源
-    │   ├── components // 全局公用组件
-    │   ├── directive  // 全局指令
-    │   ├── filters
-    │   ├── icons 
-    │   ├── layout  // 布局
-    │   ├── main.js // 入口 加载组件 初始化等
-    │   ├── mixins
-    │   ├── router  // 路由
-    │   ├── settings.js // 系统配置
-    │   ├── store  // 全局 store管理
-    │   ├── styles // 样式
-    │   ├── utils  // 全局公用方法
-    │   ├── vendor
-    │   └── views  // view页面
-    │       ├── components
-    │       ├── dashboard
-    │       ├── dts
-    │       ├── features
-    │       ├── generator
-    │       ├── govern
-    │       ├── home.vue
-    │       ├── lakehouse
-    │       ├── login.vue
-    │       ├── market
-    │       ├── masterdata
-    │       ├── metadata
-    │       ├── mnt
-    │       ├── monitor
-    │       ├── nested
-    │       ├── quality
-    │       ├── standard
-    │       ├── system
-    │       ├── tools
-    │       ├── visual
-    │       └── workflow
-    └── vue.config.js
-    ├── package.json
-    ├── plopfile.js
-    ├── postcss.config.js
+├── studio-ui
+│   ├── LICENSE
+│   ├── babel.config.js
+│   ├── jest.config.js
+│   ├── npm.version
+│   ├── package.json
+│   ├── plopfile.js
+│   ├── postcss.config.js
+│   ├── public
+│   ├── src
+│   └── vue.config.js
+
 
 ```
 
@@ -174,7 +138,6 @@ npm run dev
 数据市场 - data-market-service-parent ~ data-market-service-mapping ~ DataxMappingApplication
 数据对比 - data-compare-service-parent ~ data-compare-service ~ DataCompareApplication
 BI报表 - data-visual-service-parent ~ data-visual-service ~ DataxVisualApplication
-流程编排 - workflow-service-parent ~ workflow-service ~ DataxWorkflowApplication
 系统监控 - system-service-parent ~ system-service ~ SystemServiceApplication
 批量/定时任务 - quartz-service-parent ~ quartz-service ~ DataxQuartzApplication
 代码生成 - codegen-service-parent ~ codegen-service ~ DataxCodeGenApplication
@@ -369,68 +332,3 @@ log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
 <br/>
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/9457212/233447516-c952efd0-f8e2-4181-8608-1f513f9c0e93.png">
 <br/>
-
-
-### 8、常见问题
-```
-前置 -
-1、启动前是删除了pom.xml；
-2、本地是V16版本的nodejs;
-
-运行 -
-1、启动后端相关服务；
-2、启动前端npm run dev,报错：
-multi ./node modules/.pnpm/webpack-dev-server3.1.3 webpack04.28.4/node modules/webpack-dev-server/clienthtp://192.168.0.118:8013/sockjs-node(webpack)/hot/dev-server.js ./src/main.js
-Module not found: Error: Can't resolvebabel-loader'in D: workspaceldatacenter workspacelscit-datacenter-ui
-
-原因 -
-前端UI对应nodejs版本是v10.15.3 , 需要切换版本，为开发方便，一遍采用nvm进行管理
-1、卸载nodejs;
-2、安装nvm - https://www.jianshu.com/p/13c0b3ca7c71
-3、安装v10.15.3版本： nvm install v10.15.3
-4、根据实际切换版本：nvm use v10.15.3
-5、安装依赖：npm install
-6、启动前端：npm run dev
-```
-
-```
-前置 -
-1、数据集成教程
-
-运行 -
-1、数据集成教程
-
-原因 -
-1、教程
-https://github.com/alldatacenter/alldata/blob/master/studio/modules/service-data-dts-parent/DTS_QuickStart.md
-
-```
-
-```
-前置 -
-1、数据集成教程
-
-运行 -
-1、数据集成教程
-
-原因 -
-1、教程
-2、依赖datax,安装datax: https://blog.csdn.net/qq_18896247/article/details/123127487
-3、https://github.com/alldatacenter/alldata/blob/master/studio/modules/service-data-dts-parent/DTS_QuickStart.md
-
-```
-
-```
-前置 -
-1、元数据数据库文档下载
-
-运行 -
-1、元数据数据库文档下载，依赖报错
-
-原因 -
-1、缺失aspose-words,要手动安装到本地仓库
-2、cd alldata/studio/common
-3、安装命令：windows使用git bash执行, mac直接执行以下命令
-4、mvn install:install-file -Dfile=aspose-words-20.3.jar -DgroupId=com.aspose -DartifactId=aspose-words -Dversion=20.3 -Dpackaging=jar
-5、安装成功重新刷新依赖,重新打包
-```
