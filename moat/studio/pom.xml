@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>moat</artifactId>
+        <groupId>com.platform</groupId>
+        <version>0.6.x</version>
+
+    </parent>
+    <packaging>pom</packaging>
+    <modelVersion>4.0.0</modelVersion>
+    <version>0.6.x</version>
+    <artifactId>studio</artifactId>
+
+    <modules>
+        <module>system-service-parent</module>
+        <module>file-service-parent</module>
+        <module>email-service-parent</module>
+        <module>quartz-service-parent</module>
+        <module>codegen-service-parent</module>
+        <module>data-compare-service-parent</module>
+        <module>data-metadata-service-parent</module>
+        <module>data-market-service-parent</module>
+        <module>data-visual-service-parent</module>
+        <module>data-standard-service-parent</module>
+        <module>data-system-service-parent</module>
+        <module>data-masterdata-service-parent</module>
+        <module>data-quality-service-parent</module>
+        <module>service-data-dts-parent</module>
+    </modules>
+</project>

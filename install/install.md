@@ -3,7 +3,7 @@
 ### 1、后端结构
 
 ```
-├── studio
+├── moat
 │   ├── config（配置中心，必须启动）
 │   ├── eureka（注册中心，必须启动）
 │   ├── gateway（网关，必须启动）
@@ -13,7 +13,7 @@
 │   │   │   ├──studio
 │   │   │   │   ├──studio-0.x.x.sql
 │   │   ├── 16gsla 
-│   ├── services（各模块目录）
+│   ├── studio（各模块目录）
 │   │   ├── codegen-service-parent（代码生成，可选启动）
 │   │   ├── data-market-service-parent（数据服务，可选启动）
 │   │   ├── data-masterdata-service-parent（数据模型，可选启动）
@@ -35,7 +35,7 @@
 
 
 ```
-├── studio-ui
+├── moat_ui
 │   ├── LICENSE
 │   ├── babel.config.js
 │   ├── jest.config.js
@@ -71,7 +71,7 @@ RabbitMQ >= 3.0.x
 #### 4.1 后端运行
 
 1、前往GitHub项目页面(https://github.com/alldatacenter/alldata)
-推荐使用版本控制方式下载解压到工作目录或IDEA直接从VCS获取项目代码，便于同步最新社区版改动， alldata/studio/为项目前后端存放路径。
+推荐使用版本控制方式下载解压到工作目录或IDEA直接从VCS获取项目代码，便于同步最新社区版改动， alldata/moat/为项目前后端存放路径。
 
 2、项目导入到IDEA后，会自动加载Maven依赖包，初次加载会比较慢（根据自身网络情况而定）
 
@@ -79,7 +79,7 @@ RabbitMQ >= 3.0.x
 
 4、导入BI sql, 参考alldata/bi_quickstart.md
 
-5、修改该文件 `alldata/studio/config/src/main/resources/config/application-common-dev.yml`的rabbitmq，mysql，redis为自己的服务
+5、修改该文件 `alldata/moat/config/src/main/resources/config/application-common-dev.yml`的rabbitmq，mysql，redis为自己的服务
 
 6、打开运行基础模块（启动没有先后顺序）
 
@@ -113,7 +113,7 @@ SystemServiceApplication.java（系统模块 必须，不启动无法登录）
 
 #### 4.2 前端运行
 ```
-cd alldata/studio/micro-ui
+cd alldata/moat/micro-ui
 npm run dev
 ```
 启动成功，会自动弹出浏览器登录页
@@ -159,7 +159,6 @@ BI报表 - data-visual-service-parent ~ data-visual-service ~ DataxVisualApplica
 | 16gslave                      | port | ip             |
 |-------------------------------| ---- | -------------- |
 | eureka                  | 8610 | 16gslave    |
-| service-workflow        | 8814 | 16gslave    |
 | data-metadata-service-console    | 8821 | 16gslave    |
 | service-data-mapping    | 8823 | 16gslave    |
 | data-masterdata-service | 8828 | 16gslave    |
@@ -191,13 +190,13 @@ BI报表 - data-visual-service-parent ~ data-visual-service ~ DataxVisualApplica
 #### 3、项目根目录下执行
 ```
 1、缺失aspose-words,要手动安装到本地仓库
-2、cd alldata/studio/common
+2、cd alldata/moat/common
 3、安装命令：windows使用git bash执行, mac直接执行以下命令
 4、mvn install:install-file -Dfile=aspose-words-20.3.jar -DgroupId=com.aspose -DartifactId=aspose-words -Dversion=20.3 -Dpackaging=jar
 5、安装成功重新刷新依赖,重新打包
 ```
-> cd alldata/studio/common
-> mvn install:install-file -Dfile=/alldata/studio/common/aspose-words-20.3.jar -DgroupId=com.aspose -DartifactId=aspose-words -Dversion=20.3 -Dpackaging=jar
+> cd alldata/moat/common
+> mvn install:install-file -Dfile=/alldata/moat/common/aspose-words-20.3.jar -DgroupId=com.aspose -DartifactId=aspose-words -Dversion=20.3 -Dpackaging=jar
 > mvn clean install -DskipTests && mvn clean package -DskipTests
 > 获取安装包build/studio-release-0.6.x.tar.gz
 >
@@ -309,7 +308,7 @@ log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
 >
 > npm run dev [测试]
 >
-> 访问`studio`页面
+> 访问`moat_ui`页面
 >
 > curl http://localhost:8013
 >

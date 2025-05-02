@@ -59,7 +59,7 @@ https://github.com/alldatacenter/alldata/blob/master/studio/modules/service-data
 
 原因 -
 1、缺失aspose-words,要手动安装到本地仓库
-2、cd alldata/studio/common
+2、cd alldata/moat/common
 3、安装命令：windows使用git bash执行, mac直接执行以下命令
 4、mvn install:install-file -Dfile=aspose-words-20.3.jar -DgroupId=com.aspose -DartifactId=aspose-words -Dversion=20.3 -Dpackaging=jar
 5、安装成功重新刷新依赖,重新打包

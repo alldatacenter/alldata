@@ -66,7 +66,7 @@ AllData开源社区 ✖️ DataFun
 
 3.7 自己可以定开引入新的模块嘛，有什么好的方式？
 
-可以二开引入模块。方式：基于alldata/studio/services的代码进行二次开发，然后修改相关配置。详情查看社区群公告官方知识库文档。
+可以二开引入模块。方式：基于alldata/moat/studio的代码进行二次开发，然后修改相关配置。详情查看社区群公告官方知识库文档。
 
 3.8 数据开发IDE工具是否有？是否会开源？
 
@@ -106,5 +106,5 @@ AllData开源社区 ✖️ DataFun
 
 3.17 有没有这样功能，配置json就可以同步数据
 
-有的。datax,chunjun,flinkcdc等作为可插拔的插件加入我们的数据集成方案。详情可以查看alldata/studio数据集成模块的内容。
+有的。datax,chunjun,flinkcdc等作为可插拔的插件加入我们的数据集成方案。详情可以查看alldata/moat数据集成模块的内容。
 ```
