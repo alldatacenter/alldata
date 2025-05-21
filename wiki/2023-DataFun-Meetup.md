@@ -1,4 +1,4 @@
-# AllData社区 ✖️ DataFun Meetup
+# AllData社区 ✖️ DataFun社区 Meetup
 
 ```markdown
 AllData开源社区 ✖️ DataFun

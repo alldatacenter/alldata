@@ -5,7 +5,7 @@
  Source Server Type    : MySQL
  Source Server Version : 50730
  Source Host           : localhost:3306
- Source Schema         : robot
+ Source Schema         : alldata
 
  Target Server Type    : MySQL
  Target Server Version : 50730
@@ -13,6 +13,7 @@
 
  Date: 03/05/2022 12:07:48
 */
+USE `alldata`;
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;

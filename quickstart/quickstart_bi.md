@@ -11,9 +11,7 @@ https://github.com/alldatacenter/alldata/blob/master/install.md
 
 ### 2. 导入数据库, 以下为数据库连接:
 
-foodmart2数据库：https://github.com/alldatacenter/alldata/blob/master/studio/install/sql/foodmart2.zip
-
-robot数据库：https://github.com/alldatacenter/alldata/blob/master/studio/install/sql/robot.sql
+参考alldata/install/sql/installme.md
 
 
 ### 3. 在元数据管理-配置数据源

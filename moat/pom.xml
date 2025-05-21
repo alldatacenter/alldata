@@ -48,7 +48,7 @@
         <spring-cloud.version>Hoxton.SR9</spring-cloud.version>
         <spring-boot-admin.version>2.3.0</spring-boot-admin.version>
         <fastjson.version>1.2.75</fastjson.version>
-        <hutool.version>5.4.7</hutool.version>
+        <hutool.version>5.3.4</hutool.version>
         <mybatis-plus.version>3.3.2</mybatis-plus.version>
         <dynamic-datasource.version>3.2.1</dynamic-datasource.version>
         <p6spy.version>3.8.7</p6spy.version>
@@ -145,27 +145,22 @@
             <version>2.6.3</version>
         </dependency>
 
-
-
-
         <!-- excel工具 -->
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi</artifactId>
-            <version>5.2.0</version>
+            <version>3.17</version>
         </dependency>
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
-            <version>5.2.0</version>
+            <version>3.17</version>
         </dependency>
         <dependency>
             <groupId>xerces</groupId>
             <artifactId>xercesImpl</artifactId>
-            <version>2.12.2</version>
+            <version>2.12.0</version>
         </dependency>
-
-
 
         <!--mapStruct依赖-->
         <dependency>

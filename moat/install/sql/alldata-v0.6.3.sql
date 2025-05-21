@@ -1,3 +1,5 @@
+USE `alldata`;
+
 LOCK TABLES `sys_menu` WRITE;
 /*!40000 ALTER TABLE `sys_menu` DISABLE KEYS */;
 

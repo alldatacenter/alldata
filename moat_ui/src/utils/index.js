@@ -384,14 +384,14 @@ export function regMobile(mobile) {
 }
 
 // 下载文件
-export function downloadFile(obj, name, suffix) {
-  const url = window.URL.createObjectURL(new Blob([obj]))
+export function downloadFile(result, name, suffix) {
+  const url = window.URL.createObjectURL(new Blob([result]))
   const link = document.createElement('a')
   link.style.display = 'none'
   link.href = url
-  const fileName = parseTime(new Date()) + '-' + name + '.' + suffix
-  link.setAttribute('download', fileName)
+  link.setAttribute('download', 'test.xlsx')
   document.body.appendChild(link)
   link.click()
   document.body.removeChild(link)
 }
+

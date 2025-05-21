@@ -1,6 +1,7 @@
 SET FOREIGN_KEY_CHECKS=0;
 
-use studio;
+USE `alldata`;
+
 -- ----------------------------
 -- Table structure for system_dc_db_config
 -- ----------------------------

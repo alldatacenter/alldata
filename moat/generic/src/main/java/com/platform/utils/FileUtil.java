@@ -1,36 +1,35 @@
-
 package com.platform.utils;
 
 import cn.hutool.core.io.IoUtil;
 import cn.hutool.core.util.IdUtil;
-import cn.hutool.poi.excel.BigExcelWriter;
 import cn.hutool.poi.excel.ExcelUtil;
+import cn.hutool.poi.excel.ExcelWriter;
 import com.platform.exception.BadRequestException;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.util.IOUtils;
 import org.apache.poi.xssf.streaming.SXSSFSheet;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.web.multipart.MultipartFile;
+
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import java.io.*;
+import java.nio.file.Files;
 import java.security.MessageDigest;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * File工具类，扩展 hutool 工具包
  *
- * @author AllDataDC
- * @date 2023-01-27
+ * @author Zheng Jie
+ * @date 2018-12-27
  */
+@Slf4j
 public class FileUtil extends cn.hutool.core.io.FileUtil {
-
-    private static final Logger log = LoggerFactory.getLogger(FileUtil.class);
 
     /**
      * 系统临时目录
@@ -94,7 +93,7 @@ public class FileUtil extends cn.hutool.core.io.FileUtil {
      * 获取文件扩展名，不带 .
      */
     public static String getExtensionName(String filename) {
-        if ((filename != null) && (filename.length() > 0)) {
+        if ((filename != null) && (!filename.isEmpty())) {
             int dot = filename.lastIndexOf('.');
             if ((dot > -1) && (dot < (filename.length() - 1))) {
                 return filename.substring(dot + 1);
@@ -107,9 +106,9 @@ public class FileUtil extends cn.hutool.core.io.FileUtil {
      * Java文件操作 获取不带扩展名的文件名
      */
     public static String getFileNameNoEx(String filename) {
-        if ((filename != null) && (filename.length() > 0)) {
+        if ((filename != null) && (!filename.isEmpty())) {
             int dot = filename.lastIndexOf('.');
-            if ((dot > -1) && (dot < (filename.length()))) {
+            if (dot > -1) {
                 return filename.substring(0, dot);
             }
         }
@@ -146,7 +145,7 @@ public class FileUtil extends cn.hutool.core.io.FileUtil {
         }
         OutputStream os = null;
         try {
-            os = new FileOutputStream(file);
+            os = Files.newOutputStream(file.toPath());
             int bytesRead;
             int len = 8192;
             byte[] buffer = new byte[len];
@@ -154,7 +153,7 @@ public class FileUtil extends cn.hutool.core.io.FileUtil {
                 os.write(buffer, 0, bytesRead);
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error(e.getMessage(), e);
         } finally {
             CloseUtil.close(os);
             CloseUtil.close(ins);
@@ -168,7 +167,8 @@ public class FileUtil extends cn.hutool.core.io.FileUtil {
     public static File upload(MultipartFile file, String filePath) {
         Date date = new Date();
         SimpleDateFormat format = new SimpleDateFormat("yyyyMMddhhmmssS");
-        String name = getFileNameNoEx(file.getOriginalFilename());
+        // 过滤非法文件名
+        String name = getFileNameNoEx(verifyFilename(file.getOriginalFilename()));
         String suffix = getExtensionName(file.getOriginalFilename());
         String nowStr = "-" + format.format(date);
         try {
@@ -195,11 +195,52 @@ public class FileUtil extends cn.hutool.core.io.FileUtil {
      * 导出excel
      */
     public static void downloadExcel(List<Map<String, Object>> list, HttpServletResponse response) throws IOException {
+//        String tempPath = SYS_TEM_DIR + IdUtil.fastSimpleUUID() + ".xlsx";
+//        File file = new File(tempPath);
+//        BigExcelWriter writer = ExcelUtil.getBigWriter(file);
+//        // 一次性写出内容，使用默认样式，强制输出标题
+//        writer.write(list, true);
+//        SXSSFSheet sheet = (SXSSFSheet)writer.getSheet();
+//        //上面需要强转SXSSFSheet  不然没有trackAllColumnsForAutoSizing方法
+//        sheet.trackAllColumnsForAutoSizing();
+//        //列宽自适应
+//        writer.autoSizeColumnAll();
+//        //response为HttpServletResponse对象
+//        response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8");
+//        //test.xls是弹出下载对话框的文件名，不能为中文，中文请自行编码
+//        response.setHeader("Content-Disposition", "attachment;filename=file.xlsx");
+//        ServletOutputStream out = response.getOutputStream();
+//        // 终止后删除临时文件
+//        file.deleteOnExit();
+//        writer.flush(out, true);
+//        //此处记得关闭输出Servlet流
+//        IoUtil.close(out);
+
+
+        //---------------------------------------------------------------//
+
         String tempPath = SYS_TEM_DIR + IdUtil.fastSimpleUUID() + ".xlsx";
         File file = new File(tempPath);
-        BigExcelWriter writer = ExcelUtil.getBigWriter(file);
+        ExcelWriter writer = ExcelUtil.getBigWriter(file);
+        // 处理数据以防止CSV注入
+        List<Map<String, Object>> sanitizedList = list.parallelStream().map(map -> {
+            Map<String, Object> sanitizedMap = new LinkedHashMap<>();
+            map.forEach((key, value) -> {
+                if (value instanceof String) {
+                    String strValue = (String) value;
+                    // 检查并处理以特殊字符开头的值
+                    if (strValue.startsWith("=") || strValue.startsWith("+") || strValue.startsWith("-") || strValue.startsWith("@")) {
+                        strValue = "'" + strValue; // 添加单引号前缀
+                    }
+                    sanitizedMap.put(key, strValue);
+                } else {
+                    sanitizedMap.put(key, value);
+                }
+            });
+            return sanitizedMap;
+        }).collect(Collectors.toList());
         // 一次性写出内容，使用默认样式，强制输出标题
-        writer.write(list, true);
+        writer.write(sanitizedList, true);
         SXSSFSheet sheet = (SXSSFSheet)writer.getSheet();
         //上面需要强转SXSSFSheet  不然没有trackAllColumnsForAutoSizing方法
         sheet.trackAllColumnsForAutoSizing();
@@ -210,7 +251,6 @@ public class FileUtil extends cn.hutool.core.io.FileUtil {
         //test.xls是弹出下载对话框的文件名，不能为中文，中文请自行编码
         response.setHeader("Content-Disposition", "attachment;filename=file.xlsx");
         ServletOutputStream out = response.getOutputStream();
-        // 终止后删除临时文件
         file.deleteOnExit();
         writer.flush(out, true);
         //此处记得关闭输出Servlet流
@@ -267,7 +307,7 @@ public class FileUtil extends cn.hutool.core.io.FileUtil {
         byte[] b = new byte[(int) file.length()];
         InputStream in = null;
         try {
-            in = new FileInputStream(file);
+            in = Files.newInputStream(file.toPath());
             try {
                 System.out.println(in.read(b));
             } catch (IOException e) {
@@ -334,6 +374,43 @@ public class FileUtil extends cn.hutool.core.io.FileUtil {
                 }
             }
         }
+    }
+
+    /**
+     * 验证并过滤非法的文件名
+     * @param fileName 文件名
+     * @return 文件名
+     */
+    public static String verifyFilename(String fileName) {
+        // 过滤掉特殊字符
+        fileName = fileName.replaceAll("[\\\\/:*?\"<>|~\\s]", "");
+
+        // 去掉文件名开头和结尾的空格和点
+        fileName = fileName.trim().replaceAll("^[. ]+|[. ]+$", "");
+
+        // 不允许文件名超过255（在Mac和Linux中）或260（在Windows中）个字符
+        int maxFileNameLength = 255;
+        if (System.getProperty("os.name").startsWith("Windows")) {
+            maxFileNameLength = 260;
+        }
+        if (fileName.length() > maxFileNameLength) {
+            fileName = fileName.substring(0, maxFileNameLength);
+        }
+
+        // 过滤掉控制字符
+        fileName = fileName.replaceAll("[\\p{Cntrl}]", "");
+
+        // 过滤掉 ".." 路径
+        fileName = fileName.replaceAll("\\.{2,}", "");
+
+        // 去掉文件名开头的 ".."
+        fileName = fileName.replaceAll("^\\.+/", "");
+
+        // 保留文件名中最后一个 "." 字符，过滤掉其他 "."
+        fileName = fileName.replaceAll("^(.*)(\\.[^.]*)$", "$1").replaceAll("\\.", "") +
+                fileName.replaceAll("^(.*)(\\.[^.]*)$", "$2");
+
+        return fileName;
     }
 
     public static String getMd5(File file) {

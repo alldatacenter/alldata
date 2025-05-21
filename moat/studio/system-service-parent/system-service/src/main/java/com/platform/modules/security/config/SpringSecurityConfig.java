@@ -94,7 +94,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/**/*.html",
                         "/**/*.css",
                         "/**/*.js",
-                        "/webSocket/**"
+                        "/webSocket/**",
+                        "/**/*.xlsx"
                 ).permitAll()
                 // swagger 文档
                 .antMatchers("/swagger-ui.html").permitAll()

@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.24, for Linux (x86_64)
 --
--- Host: 127.0.0.1    Database: studio
+-- Host: 127.0.0.1    Database: alldata
 -- ------------------------------------------------------
 -- Server version	8.0.31
 
@@ -16,12 +16,12 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Current Database: `studio`
+-- Current Database: `alldata``
 --
 
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ `studio` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `alldata` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 
-USE `studio`;
+USE `alldata`;
 
 --
 -- Table structure for table `code_column_config`
@@ -1015,9 +1015,9 @@ UNLOCK TABLES;
 
  Date: 03/05/2022 12:07:27
 */
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ `studio` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `alldata`` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 
-USE `studio`;
+USE `alldata`;
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
@@ -1277,7 +1277,7 @@ SET FOREIGN_KEY_CHECKS = 1;
  Source Server Type    : MySQL
  Source Server Version : 50730
  Source Host           : localhost:3306
- Source Schema         : foodmart2
+ Source Schema         : alldata
 
  Target Server Type    : MySQL
  Target Server Version : 50730
@@ -1285,9 +1285,9 @@ SET FOREIGN_KEY_CHECKS = 1;
 
  Date: 03/05/2022 12:08:07
 */
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ `studio` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `alldata`` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 
-USE `studio`;
+USE `alldata`;
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
@@ -33329,9 +33329,9 @@ SET FOREIGN_KEY_CHECKS = 1;
 
  Date: 03/05/2022 12:07:48
 */
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ `studio` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `alldata`` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 
-USE `studio`;
+USE `alldata`;
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
@@ -33420,9 +33420,9 @@ SET FOREIGN_KEY_CHECKS = 1;
  Date: 03/05/2022 12:06:03
 */
 
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ `studio` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `alldata`` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 
-USE `studio`;
+USE `alldata`;
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
@@ -34207,7 +34207,7 @@ CREATE TABLE `metadata_source`  (
 -- ----------------------------
 -- Records of metadata_source
 -- ----------------------------
-INSERT INTO `metadata_source` VALUES ('1240185865539600385', 1, '1214835832967581698', '2020-03-19 03:58:47', '1197789917762031617', '1214835832967581698', '2022-05-01 08:59:54', NULL, 1, '测试数据库1', '2', '{\"sid\": null, \"host\": \"localhost\", \"port\": 3306, \"dbName\": \"foodmart2\", \"password\": \"root\", \"username\": \"root\"}');
+INSERT INTO `metadata_source` VALUES ('1240185865539600385', 1, '1214835832967581698', '2020-03-19 03:58:47', '1197789917762031617', '1214835832967581698', '2022-05-01 08:59:54', NULL, 1, '测试数据库1', '2', '{\"sid\": null, \"host\": \"localhost\", \"port\": 3306, \"dbName\": \"alldata\", \"password\": \"root\", \"username\": \"root\"}');
 INSERT INTO `metadata_source` VALUES ('1336474987430793217', 1, '1214835832967581698', '2020-12-09 21:57:22', '1197789917762031617', '1214835832967581698', '2022-05-01 09:00:16', NULL, 1, '测试数据库2', '2', '{\"sid\": null, \"host\": \"localhost\", \"port\": 3306, \"dbName\": \"robot\", \"password\": \"root\", \"username\": \"root\"}');
 
 -- ----------------------------
@@ -36224,7 +36224,7 @@ CREATE TABLE `visual_data_set`  (
 -- ----------------------------
 -- Records of visual_data_set
 -- ----------------------------
-INSERT INTO `visual_data_set` VALUES ('1326047453933334529', 1, '1214835832967581698', '2020-11-10 14:22:04', '1197789917762031617', '1214835832967581698', '2022-05-01 09:02:10', NULL, '1240185865539600385', '测试数据集1', 'SELECT\n  b.the_year + 5 AS the_year,\n  b.month_of_year,\n  b.day_of_month,\n  date_add(b.the_date, interval 5 year) AS the_date,\n  r.SALES_DISTRICT,\n  r.SALES_REGION,\n  r.SALES_COUNTRY,\n  d.yearly_income,\n  d.total_children,\n  d.member_card,\n  d.num_cars_owned,\n  d.gender,\n  a.store_sales,\n  a.store_cost,\n  a.unit_sales\nFROM\n  foodmart2.sales_fact_sample a\n  JOIN foodmart2.time_by_day b ON a.time_id = b.time_id\n  JOIN foodmart2.store c ON a.store_id = c.store_id\n  JOIN foodmart2.region r ON c.REGION_ID = r.REGION_ID\n  JOIN foodmart2.customer d ON a.CUSTOMER_ID = d.CUSTOMER_ID\nWHERE\n  SALES_COUNTRY IS NOT NULL', '{\"columns\": [\"the_year\", \"month_of_year\", \"day_of_month\", \"the_date\", \"SALES_DISTRICT\", \"SALES_REGION\", \"SALES_COUNTRY\", \"yearly_income\", \"total_children\", \"member_card\", \"num_cars_owned\", \"gender\", \"store_sales\", \"store_cost\", \"unit_sales\"], \"measures\": [{\"col\": \"store_cost\", \"alias\": \"cost\"}, {\"col\": \"store_sales\", \"alias\": \"\"}, {\"col\": \"unit_sales\", \"alias\": \"\"}], \"dimensions\": [{\"col\": \"SALES_DISTRICT\", \"alias\": \"地区\"}, {\"col\": \"SALES_REGION\", \"alias\": \"区域\"}, {\"col\": \"SALES_COUNTRY\", \"alias\": \"城市\"}]}');
+INSERT INTO `visual_data_set` VALUES ('1326047453933334529', 1, '1214835832967581698', '2020-11-10 14:22:04', '1197789917762031617', '1214835832967581698', '2022-05-01 09:02:10', NULL, '1240185865539600385', '测试数据集1', 'SELECT\n  b.the_year + 5 AS the_year,\n  b.month_of_year,\n  b.day_of_month,\n  date_add(b.the_date, interval 5 year) AS the_date,\n  r.SALES_DISTRICT,\n  r.SALES_REGION,\n  r.SALES_COUNTRY,\n  d.yearly_income,\n  d.total_children,\n  d.member_card,\n  d.num_cars_owned,\n  d.gender,\n  a.store_sales,\n  a.store_cost,\n  a.unit_sales\nFROM\n  alldata.sales_fact_sample a\n  JOIN alldata.time_by_day b ON a.time_id = b.time_id\n  JOIN alldata.store c ON a.store_id = c.store_id\n  JOIN alldata.region r ON c.REGION_ID = r.REGION_ID\n  JOIN alldata.customer d ON a.CUSTOMER_ID = d.CUSTOMER_ID\nWHERE\n  SALES_COUNTRY IS NOT NULL', '{\"columns\": [\"the_year\", \"month_of_year\", \"day_of_month\", \"the_date\", \"SALES_DISTRICT\", \"SALES_REGION\", \"SALES_COUNTRY\", \"yearly_income\", \"total_children\", \"member_card\", \"num_cars_owned\", \"gender\", \"store_sales\", \"store_cost\", \"unit_sales\"], \"measures\": [{\"col\": \"store_cost\", \"alias\": \"cost\"}, {\"col\": \"store_sales\", \"alias\": \"\"}, {\"col\": \"unit_sales\", \"alias\": \"\"}], \"dimensions\": [{\"col\": \"SALES_DISTRICT\", \"alias\": \"地区\"}, {\"col\": \"SALES_REGION\", \"alias\": \"区域\"}, {\"col\": \"SALES_COUNTRY\", \"alias\": \"城市\"}]}');
 
 -- ----------------------------
 -- Table structure for visual_screen

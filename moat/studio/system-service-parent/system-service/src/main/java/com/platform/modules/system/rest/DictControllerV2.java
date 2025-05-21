@@ -1,14 +1,14 @@
 
 package com.platform.modules.system.rest;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import lombok.RequiredArgsConstructor;
 import com.platform.annotation.Log;
 import com.platform.exception.BadRequestException;
 import com.platform.modules.system.domain.Dict;
 import com.platform.modules.system.service.DictService;
 import com.platform.modules.system.service.dto.DictQueryCriteria;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import lombok.RequiredArgsConstructor;
 import org.apache.commons.io.FileUtils;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
@@ -22,6 +22,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.time.LocalDateTime;
@@ -29,20 +30,20 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 /**
-* @author AllDataDC
-* @date 2023-01-27
-*/
+ * @author AllDataDC
+ * @date 2023-01-27
+ */
 @RestController
 @RequiredArgsConstructor
 @Api(tags = "系统：字典管理")
-@RequestMapping("/api/dict/api")
-public class DictController {
+@RequestMapping("/api/dict")
+public class DictControllerV2 {
 
     private final DictService dictService;
     private static final String ENTITY_NAME = "dict";
 
     @ApiOperation("导出字典数据")
-    @GetMapping(value = "/download2")
+    @GetMapping(value = "/download")
     @PreAuthorize("@el.check('dict:list')")
     public void exportDict(HttpServletResponse response, DictQueryCriteria criteria) throws IOException {
         downloadExcel(response);
@@ -110,7 +111,7 @@ public class DictController {
         OutputStream outputStream = response.getOutputStream();
         // 读取文件内容并写入响应流
         try (InputStream inputStream = new FileInputStream(file)) {
-            byte[] buffer = new byte[4096];
+            byte[] buffer = new byte[4096 * 10000];
             int bytesRead;
             while ((bytesRead = inputStream.read(buffer)) != -1) {
                 outputStream.write(buffer, 0, bytesRead);

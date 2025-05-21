@@ -1,4 +1,4 @@
-# AllData社区 ✖️ Datavines ✖️ 跑象科技Meetup
+# AllData社区 ✖️ Datavines社区 ✖️ Datart社区 Meetup
 
 ```markdown
 AllData开源社区 ✖️ Datavines ✖️ 跑象科技 Meetup
@@ -141,6 +141,4 @@ StreamPark作者王华杰给AllData社区带来了较多问题较多的分享
 回答：AllData社区目前的功能正在集成阶段，后续会出更多贯穿场景的闭环功能。
 ```
 
-
-​
 

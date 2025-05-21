@@ -1,11 +1,12 @@
 {
   "name": "micro-ui",
-  "version": "0.4.3",
+  "version": "0.6.4",
   "description": "AllData数据中台-前端项目",
-  "author": "AllDataDC",
-  "license": "Apache-2.0",
+  "author": "AllDataFounder",
+  "license": "GPL-V3",
   "scripts": {
-    "dev": "vue-cli-service serve --port 8013",
+    "bootstrap": "npm install",
+    "start": "vue-cli-service serve --port 8013",
     "build:prod": "vue-cli-service build",
     "build:stage": "vue-cli-service build --mode staging",
     "preview": "node build/index.js --preview",
