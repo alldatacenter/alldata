@@ -3,7 +3,7 @@
 ## [官方文档](https://alldata-document.readthedocs.io) ｜ [安装文档](https://alldata-document.readthedocs.io/zh/latest/installDeploy/index.html) ｜ [部署教程](https://github.com/alldatacenter/alldata/blob/master/install/install.md)
 
 ## 数据中台核心功能 & 亲测好用系列教程
-#### [数据集成能力演示: https://mp.weixin.qq.com/s/GcFeLwyMfaGHnQ02rD97lw](https://mp.weixin.qq.com/s/GcFeLwyMfaGHnQ02rD97lw) 
+#### [数据集成能力演示: https://mp.weixin.qq.com/s/GcFeLwyMfaGHnQ02rD97lw](https://mp.weixin.qq.com/s/GcFeLwyMfaGHnQ02rD97lw)
 #### [数据模型管理能力演示: https://mp.weixin.qq.com/s/lKN171nK6z6OYb_80JwuYg](https://mp.weixin.qq.com/s/lKN171nK6z6OYb_80JwuYg)
 #### [元数据管理能力演示: https://mp.weixin.qq.com/s/39TMa1BB_NxsxRbBYQtnpg](https://mp.weixin.qq.com/s/39TMa1BB_NxsxRbBYQtnpg)
 #### [数据集成平台能力演示: https://mp.weixin.qq.com/s/5IbEnLCEhNPz6cM2E7K2XQ](https://mp.weixin.qq.com/s/5IbEnLCEhNPz6cM2E7K2XQ)
@@ -203,7 +203,7 @@ AllData以大模型应用为上游产品，提供全链路数字化解决方案�
 <img width="1400" alt="0_指标体系_目录表单" src="https://github.com/user-attachments/assets/e4f330fa-be14-49e6-94ce-4e5da106d573" />
 
 功能14. K8S数据平台，集成开源CloudEon项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
- 
+
 <img width="1400" alt="image" src="https://github.com/user-attachments/assets/1a738be2-1419-43e8-9636-d8b7cb725ed3" />
 
 功能15. 实时开发平台，集成开源StreamPark项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。

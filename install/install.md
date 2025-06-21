@@ -3,7 +3,7 @@
 ### 1、后端结构
 
 ```
-├── studio
+├── moat
 │   ├── config（配置中心，必须启动）
 │   ├── eureka（注册中心，必须启动）
 │   ├── gateway（网关，必须启动）
@@ -11,9 +11,9 @@
 │   │   ├── 16gdata
 │   │   ├── 16gmaster
 │   │   │   ├──studio
-│   │   │   │   ├──studio-0.x.x.sql
+│   │   │   │   ├──alldata-0.x.x.sql
 │   │   ├── 16gsla 
-│   ├── services（各模块目录）
+│   ├── studio（各模块目录）
 │   │   ├── codegen-service-parent（代码生成，可选启动）
 │   │   ├── data-market-service-parent（数据服务，可选启动）
 │   │   ├── data-masterdata-service-parent（数据模型，可选启动）
@@ -33,9 +33,8 @@
 
 ### 2、前端结构
 
-
 ```
-├── studio-ui
+├── moat_ui
 │   ├── LICENSE
 │   ├── babel.config.js
 │   ├── jest.config.js
@@ -46,13 +45,9 @@
 │   ├── public
 │   ├── src
 │   └── vue.config.js
-
-
 ```
 
-
 ### 3、准备工作
-
 
 ```
 JDK >= 1.8 
@@ -71,15 +66,15 @@ RabbitMQ >= 3.0.x
 #### 4.1 后端运行
 
 1、前往GitHub项目页面(https://github.com/alldatacenter/alldata)
-推荐使用版本控制方式下载解压到工作目录或IDEA直接从VCS获取项目代码，便于同步最新社区版改动， alldata/studio/为项目前后端存放路径。
+推荐使用版本控制方式下载解压到工作目录或IDEA直接从VCS获取项目代码，便于同步最新社区版改动， alldata/moat/为项目前后端存放路径。
 
 2、项目导入到IDEA后，会自动加载Maven依赖包，初次加载会比较慢（根据自身网络情况而定）
 
-3、创建数据库studio：到 `factory/studio/install/sql`目录下sql数据脚本，把` studio.sql`和`studio-v0.x.x.sql`导入本地或线上Mysql数据库
+3、创建数据库studio：到 `factory/studio/install/sql`目录下sql数据脚本，把` alldata.sql`和`alldata-v0.x.x.sql`导入本地或线上Mysql数据库
 
 4、导入BI sql, 参考alldata/bi_quickstart.md
 
-5、修改该文件 `alldata/studio/config/src/main/resources/config/application-common-dev.yml`的rabbitmq，mysql，redis为自己的服务
+5、修改该文件 `alldata/moat/config/src/main/resources/config/application-common-dev.yml`的rabbitmq，mysql，redis为自己的服务
 
 6、打开运行基础模块（启动没有先后顺序）
 
@@ -113,14 +108,14 @@ SystemServiceApplication.java（系统模块 必须，不启动无法登录）
 
 #### 4.2 前端运行
 ```
-cd alldata/studio/micro-ui
+cd alldata/moat/micro-ui
 npm run dev
 ```
 启动成功，会自动弹出浏览器登录页
 
 
 #### 注意目前视频能看到的功能都已开源，若发现“数据集成”菜单没有.
-#### 可只导入factory/studio/install/sql下的studio.sql + studio-v0.x.x + 数据集成。
+#### 可只导入factory/studio/install/sql下的alldata.sql + alldata-v0.x.x + 数据集成。
 #### 其他菜单若发现没有的话，也可自行配置，具体参考 https://github.com/alldatacenter/alldata/issues/489
 
 
@@ -159,7 +154,6 @@ BI报表 - data-visual-service-parent ~ data-visual-service ~ DataxVisualApplica
 | 16gslave                      | port | ip             |
 |-------------------------------| ---- | -------------- |
 | eureka                  | 8610 | 16gslave    |
-| service-workflow        | 8814 | 16gslave    |
 | data-metadata-service-console    | 8821 | 16gslave    |
 | service-data-mapping    | 8823 | 16gslave    |
 | data-masterdata-service | 8828 | 16gslave    |
@@ -178,10 +172,10 @@ BI报表 - data-visual-service-parent ~ data-visual-service ~ DataxVisualApplica
 ### 6、部署方式
 
 > 数据库版本为 **mysql5.7** 及以上版本
-#### 1、`studio`数据库初始化
+#### 1、`alldata``数据库初始化
 >
-> 1.1 source install/sql/studio.sql
-> 1.2 source install/sql/studio-v0.x.x.sql
+> 1.1 source install/sql/alldata.sql
+> 1.2 source install/sql/alldata-v0.x.x.sql
 > 1.3 导入BI sql, 参考alldata/bi_quickstart.md
 
 #### 2、修改 **config** 配置中心
@@ -191,15 +185,15 @@ BI报表 - data-visual-service-parent ~ data-visual-service ~ DataxVisualApplica
 #### 3、项目根目录下执行
 ```
 1、缺失aspose-words,要手动安装到本地仓库
-2、cd alldata/studio/common
+2、cd alldata/moat/common
 3、安装命令：windows使用git bash执行, mac直接执行以下命令
 4、mvn install:install-file -Dfile=aspose-words-20.3.jar -DgroupId=com.aspose -DartifactId=aspose-words -Dversion=20.3 -Dpackaging=jar
 5、安装成功重新刷新依赖,重新打包
 ```
-> cd alldata/studio/common
-> mvn install:install-file -Dfile=/alldata/studio/common/aspose-words-20.3.jar -DgroupId=com.aspose -DartifactId=aspose-words -Dversion=20.3 -Dpackaging=jar
+> cd alldata/moat/common
+> mvn install:install-file -Dfile=/alldata/moat/common/aspose-words-20.3.jar -DgroupId=com.aspose -DartifactId=aspose-words -Dversion=20.3 -Dpackaging=jar
 > mvn clean install -DskipTests && mvn clean package -DskipTests
-> 获取安装包build/studio-release-0.6.x.tar.gz
+> 获取安装包build/alldata-release-0.6.x.tar.gz
 >
 > 上传服务器解压
 >
@@ -227,93 +221,6 @@ BI报表 - data-visual-service-parent ~ data-visual-service ~ DataxVisualApplica
 >
 > 6. 启动`16gmaster`, sh start16gmaster.sh
 
-#### 6、部署`studio`[前端]:
-#### 前端部署
-
-#### 安装依赖
-
-> 依次安装：
-> nvm install v10.15.3 && nvm use v10.15.3
-
-> npm install -g @vue/cli
-
-> npm install script-loader
-
-> npm install jsonlint
-
-> npm install vue2-jsoneditor
-
-> npm install
-
-> npm run build:prod [生产]
->
-> 生产环境启动前端micro-ui项目, 需要[配置nginx]
-```markdown
-# For more information on configuration, see:
-#   * Official English Documentation: http://nginx.org/en/docs/
-#   * Official Russian Documentation: http://nginx.org/ru/docs/
-
-user nginx;
-worker_processes auto;
-error_log /var/log/nginx/error.log;
-pid /run/nginx.pid;
-
-# Load dynamic modules. See /usr/share/doc/nginx/README.dynamic.
-include /usr/share/nginx/modules/*.conf;
-
-events {
-worker_connections 1024;
-}
-
-http {
-log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
-'$status $body_bytes_sent "$http_referer" '
-'"$http_user_agent" "$http_x_forwarded_for"';
-
-    access_log  /var/log/nginx/access.log  main;
-
-    sendfile            on;
-    tcp_nopush          on;
-    tcp_nodelay         on;
-    keepalive_timeout   65;
-    types_hash_max_size 4096;
-
-    include             /etc/nginx/mime.types;
-    default_type        application/octet-stream;
-
-    # Load modular configuration files from the /etc/nginx/conf.d directory.
-    # See http://nginx.org/en/docs/ngx_core_module.html#include
-    # for more information.
-    include /etc/nginx/conf.d/*.conf;
-    server {
-		listen       80;
-		server_name  16gmaster;	
-		add_header Access-Control-Allow-Origin *;
-		add_header Access-Control-Allow-Headers X-Requested-With;
-		add_header Access-Control-Allow-Methods GET,POST,OPTIONS;
-		location / {
-			root /studio/micro-ui/dist;
-			index index.html;
-			try_files $uri $uri/ /index.html;
-		}
-		location /api/ {
-			proxy_pass  http://16gdata:9538/;
-			proxy_set_header Host $proxy_host;
-			proxy_set_header X-Real-IP $remote_addr;
-			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-		}
-	}
-}
-```
-> 测试环境启动前端micro-ui项目
->
-> npm run dev [测试]
->
-> 访问`studio`页面
->
-> curl http://localhost:8013
->
-> 用户名：admin 密码：123456
 
 ### 7、数据集成配置教程
 
