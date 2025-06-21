@@ -25,7 +25,7 @@
 #### [数据湖平台: https://mp.weixin.qq.com/s/qN9jRDK8ulB_uWZx4OF7iA](https://mp.weixin.qq.com/s/qN9jRDK8ulB_uWZx4OF7iA)
 #### [湖仓一体化平台: https://mp.weixin.qq.com/s/Z4VEXm6WPiE7to1VbY_URA](https://mp.weixin.qq.com/s/Z4VEXm6WPiE7to1VbY_URA)
 
-## AllData数据中台商业版 & 大数据组件案例模版
+## AllData数据中台商业版 & 大数据组件案例模版规划
 ```
 AllData数据中台是可定义数据中台，上层是Wujie微前端架构，底座是可插拔的后端架构。
 
