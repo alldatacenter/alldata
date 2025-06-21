@@ -269,22 +269,13 @@ AllData以大模型应用为上游产品，提供全链路数字化解决方案�
 <img width="1423" alt="image" src="https://github.com/user-attachments/assets/019c2b8d-5af4-4c2d-9092-22e1dbd52776" />
 
 
-## 1. 系统管理（开源版有，商业版稳定、好用、方便扩展）
+##核心功能01:数据集成管理
 
-<img width="1428" alt="49_系统管理_用户管理" src="https://github.com/user-attachments/assets/cf52fde5-1dd1-4312-996c-d749ac2ef8a8" />
-
-<img width="1428" alt="50_系统管理_角色管理" src="https://github.com/user-attachments/assets/9172761e-6184-4ba5-98b1-81000a0feb43" />
-<img width="1428" alt="51_系统管理_菜单管理" src="https://github.com/user-attachments/assets/cf773ff4-1d06-4c23-84d1-21c6a113aba4" />
-<img width="1428" alt="52_系统管理_部门管理" src="https://github.com/user-attachments/assets/cf295797-9c5d-45b4-a833-04d9f178298e" />
-<img width="1428" alt="53_系统管理_岗位管理" src="https://github.com/user-attachments/assets/4e52e224-ad95-4425-b123-ed9cc830fed4" />
-<img width="1428" alt="56_系统监控_在线用户" src="https://github.com/user-attachments/assets/f38b599a-f71c-4e7d-92cb-f143a08e7842" />
-<img width="1428" alt="57_系统监控_操作日志" src="https://github.com/user-attachments/assets/e22e3a5d-07b7-4779-bd6a-8029629bf004" />
-<img width="1428" alt="58_系统监控_异常日志" src="https://github.com/user-attachments/assets/da537966-1ae0-4167-a3c9-39a39f2cf897" />
-<img width="1428" alt="59_系统监控_SQL监控" src="https://github.com/user-attachments/assets/7749eab1-f3ad-49f0-92f2-ce1ddd7c6ca1" />
-<img width="1428" alt="60_运维管理_服务器" src="https://github.com/user-attachments/assets/84d9323c-9859-4d1e-95fc-c8b07c5bf6ab" />
-<img width="1428" alt="61_运维管理_应用管理" src="https://github.com/user-attachments/assets/806e3292-4d6f-4184-a1cc-ec5abcdc8dd5" />
-<img width="1428" alt="62_运维管理_部署管理" src="https://github.com/user-attachments/assets/3dc5e51b-d7d6-40bc-b3bd-7d72a4acaf58" />
-<img width="1428" alt="64_运维管理_数据库管理" src="https://github.com/user-attachments/assets/68e653a6-6960-4657-9462-3f49f1ff1a95" />
+![1、配置数据源](https://github.com/user-attachments/assets/7a3db157-df60-43c6-8b78-873dd54708e3)
+![5、构建Sink](https://github.com/user-attachments/assets/cc5e5159-e240-4b31-a082-c327828f6537)
+![6、字段映射](https://github.com/user-attachments/assets/02741ecf-3d86-44d8-a46f-8248b67c06c5)
+![7、构建同步任务Json](https://github.com/user-attachments/assets/83c25c48-3504-4ee2-8648-4588521c7f34)
+![8、选择定时调度任务模版，配置同步任务调度](https://github.com/user-attachments/assets/3a0c63a3-da9e-4888-81ec-a61d5d7b8e4a)
 
 
 ## 2. 数据集成（开源版有，商业版稳定、好用、方便扩展）
