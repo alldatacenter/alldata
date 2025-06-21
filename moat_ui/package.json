@@ -16,11 +16,6 @@
     "new": "plop",
     "docker-build": "docker build -t vueApp ."
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
     "src/**/*.{js,vue}": [
       "eslint --fix",

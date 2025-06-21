@@ -1,7 +1,7 @@
 <template>
   <div className="app-container">
     <transition name="el-zoom-in-center">
-      <dc-job-config-list v-if="options.showList" @showCard="showCard"/>
+      <dc-job-config-list v-if="options.showList" @showCard="showCard" />
     </transition>
   </div>
 </template>
@@ -10,8 +10,8 @@
 import dcJobConfigList from './dcJobConfigList'
 
 export default {
-  name: 'dcJobConfig',
-  components: {dcJobConfigList},
+  name: 'DcJobConfig',
+  components: { dcJobConfigList },
   data() {
     return {
       options: {

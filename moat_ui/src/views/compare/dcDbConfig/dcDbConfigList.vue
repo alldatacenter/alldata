@@ -78,8 +78,8 @@
               v-for="item in options"
               :key="item.value"
               :label="item.label"
-              :value="item.value">
-            </el-option>
+              :value="item.value"
+            />
           </el-select>
         </el-form-item>
         <el-form-item label="url" prop="url" required>
@@ -215,7 +215,7 @@ export default {
       pageDataModel(this.queryParams).then(response => {
         console.log(response)
         _this.loading = false
-        if (response.code ===0) {
+        if (response.code === 0) {
           _this.tableDataList = response.rows
           _this.total = response.total
         }
@@ -343,7 +343,7 @@ export default {
       }).then(() => {
         delDataModel(row.id).then(response => {
           console.log(response)
-          if (response.code ===0) {
+          if (response.code === 0) {
             this.$message.success('删除成功')
             this.getList()
           }

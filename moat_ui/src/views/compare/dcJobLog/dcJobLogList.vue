@@ -64,19 +64,19 @@
     <el-dialog title="调度日志详情" :visible.sync="dialogFormVisible" width="800px">
       <el-form ref="dataForm" :rules="rules" :model="temp" label-position="left" label-width="150px">
         <el-form-item label="日志编号" prop="jobLogId" required>
-          <el-input v-model="temp.jobLogId"  style="width: 70%" />
+          <el-input v-model="temp.jobLogId" style="width: 70%" />
         </el-form-item>
         <el-form-item label="任务名称" prop="jobName" required>
-          <el-input v-model="temp.jobName"  style="width: 70%" />
+          <el-input v-model="temp.jobName" style="width: 70%" />
         </el-form-item>
         <el-form-item label="源表主键" prop="jobGroup" required>
-          <el-input v-model="temp.jobGroup"  style="width: 70%" />
+          <el-input v-model="temp.jobGroup" style="width: 70%" />
         </el-form-item>
         <el-form-item label="调用目标字符串" prop="invokeTarget">
-          <el-input v-model="temp.invokeTarget"  style="width: 70%" />
+          <el-input v-model="temp.invokeTarget" style="width: 70%" />
         </el-form-item>
         <el-form-item label="日志信息" prop="jobMessage">
-          <el-input v-model="temp.jobMessage"  style="width: 70%" />
+          <el-input v-model="temp.jobMessage" style="width: 70%" />
         </el-form-item>
 
         <el-form-item label="状态" prop="status" required>
@@ -150,12 +150,12 @@ export default {
         },
         { prop: 'status', label: '状态', show: true,
           formatter: function (value, row, index) {
-            if (value.status==0) {
+            if (value.status == 0) {
               return '成功'
             } else {
               return '失败'
             }
-          }}
+          } }
       ],
       // 默认选择中表格头
       checkedTableColumns: [],
@@ -203,7 +203,7 @@ export default {
         // console.log(response.total)
         // console.log(response.code)
         _this.loading = false
-        if (response.code ===0) {
+        if (response.code === 0) {
           _this.tableDataList = response.rows
           _this.total = response.total
           // console.log("hello world3")
@@ -268,7 +268,7 @@ export default {
       }).then(() => {
         delDataModel(row.jobLogId).then(response => {
           console.log(response)
-          if (response.code ===0) {
+          if (response.code === 0) {
             this.$message.success('删除成功')
             this.getList()
           }

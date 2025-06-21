@@ -53,46 +53,44 @@
       <div style="text-align: center;font-size: 18pt;margin-bottom: 20px">量级对比</div>
       <el-form ref="dataForm" :rules="rules" :model="temp" label-position="left" label-width="180px">
         <div style="display: flex;align-items: center;justify-content: center">
-        <el-form-item style="width: 70%;" label="源表" prop="originTableName" required>
-        </el-form-item>
-        <el-form-item style="width: 70%"  label="目标表" prop="originTablePrimary" required>
-        </el-form-item>
+          <el-form-item style="width: 70%;" label="源表" prop="originTableName" required />
+          <el-form-item style="width: 70%" label="目标表" prop="originTablePrimary" required />
         </div>
 
         <div style="display: flex">
           <el-form-item style="width: 70%" label="originTablePv" prop="originTablePv" required>
-            <el-input v-model="temp.originTablePv" style="width: 85%" disabled/>
+            <el-input v-model="temp.originTablePv" style="width: 85%" disabled />
           </el-form-item>
-          <el-form-item style="width: 70%"  label="toTablePv" prop="toTablePv" required>
-            <el-input v-model="temp.toTablePv"  style="width: 85%" disabled/>
+          <el-form-item style="width: 70%" label="toTablePv" prop="toTablePv" required>
+            <el-input v-model="temp.toTablePv" style="width: 85%" disabled />
           </el-form-item>
         </div>
         <div style="display: flex">
           <el-form-item style="width: 70%" label="originTableUv" prop="originTableUv" required>
-            <el-input v-model="temp.originTableUv"  style="width: 85%" disabled/>
+            <el-input v-model="temp.originTableUv" style="width: 85%" disabled />
           </el-form-item>
-          <el-form-item style="width: 70%"  label="toTableUv" prop="toTableUv" required>
-            <el-input v-model="temp.toTableUv"  style="width: 85%" disabled/>
+          <el-form-item style="width: 70%" label="toTableUv" prop="toTableUv" required>
+            <el-input v-model="temp.toTableUv" style="width: 85%" disabled />
           </el-form-item>
         </div>
 
         <div style="display: flex">
           <el-form-item style="width: 70%" label="pvDiff" prop="pvDiff" required>
-            <el-input v-model="temp.pvDiff"  style="width: 85%" disabled/>
+            <el-input v-model="temp.pvDiff" style="width: 85%" disabled />
           </el-form-item>
-          <el-form-item style="width: 70%"  label="uvDiff" prop="uvDiff" required>
-            <el-input v-model="temp.uvDiff"  style="width: 85%" disabled/>
+          <el-form-item style="width: 70%" label="uvDiff" prop="uvDiff" required>
+            <el-input v-model="temp.uvDiff" style="width: 85%" disabled />
           </el-form-item>
         </div>
         <div style="display: flex">
           <el-form-item style="width: 95%" label="magnitudeSql" prop="magnitudeSql" required>
             <el-input
+              v-model="temp.magnitudeSql"
               type="textarea"
               :autosize="{ minRows: 2, maxRows: 8}"
               disabled
               height="150"
-              v-model="temp.magnitudeSql">
-            </el-input>
+            />
           </el-form-item>
         </div>
 
@@ -103,39 +101,35 @@
               height="150"
               style="color:red"
               :value="temp.pvDiff==0 &&temp.uvDiff==0 ? 'true':'false'"
-              >
-            </el-input>
+            />
           </el-form-item>
         </div>
 
-
-
-
-<!--一致性对比-->
+        <!--一致性对比-->
         <div style="text-align: center;font-size: 18pt;margin-bottom: 20px">一致性对比</div>
         <div style="display: flex">
           <el-form-item style="width: 70%" label="originTableCount" prop="originTableCount" required>
-            <el-input v-model="temp.originTableCount" style="width: 85%" disabled/>
+            <el-input v-model="temp.originTableCount" style="width: 85%" disabled />
           </el-form-item>
-          <el-form-item style="width: 70%"  label="uvDiff" prop="uvDiff" required>
-            <el-input v-model="temp.uvDiff"  style="width: 85%" disabled/>
+          <el-form-item style="width: 70%" label="uvDiff" prop="uvDiff" required>
+            <el-input v-model="temp.uvDiff" style="width: 85%" disabled />
           </el-form-item>
         </div>
 
         <div style="display: flex">
           <el-form-item style="width: 50%" label="countDiff" prop="countDiff" required>
-            <el-input v-model="temp.countDiff"  style="width: 85%" disabled/>
+            <el-input v-model="temp.countDiff" style="width: 85%" disabled />
           </el-form-item>
         </div>
         <div style="display: flex">
           <el-form-item style="width: 95%" label="magnitudeSql" prop="magnitudeSql" required>
             <el-input
+              v-model="temp.consistencySql"
               type="textarea"
               :autosize="{ minRows: 2, maxRows: 8}"
               disabled
               height="150"
-              v-model="temp.consistencySql">
-            </el-input>
+            />
           </el-form-item>
         </div>
 
@@ -146,8 +140,7 @@
               height="150"
               style="color:red"
               :value="temp.countDiff == temp.originTableCount && temp.countDiff == temp.toTableCount ? 'true':'false'"
-            >
-            </el-input>
+            />
           </el-form-item>
         </div>
       </el-form>
@@ -158,49 +151,49 @@
       </div>
     </el-dialog>
 
-<!--    模态框：查看差异-->
+    <!--    模态框：查看差异-->
     <el-dialog title="差异case" :visible.sync="dialogFormVisible2" width="1000px">
       <el-table
         :data="tableData"
         style="width: 100%;"
         height="250"
         stripe
-        >
+      >
         <el-table-column
           prop="base_dict_code"
           label="base_dict_code"
-          width="140">
-        </el-table-column>
+          width="140"
+        />
         <el-table-column
           prop="base_dict_label"
           label="base_dict_label"
-          width="140">
-        </el-table-column>
+          width="140"
+        />
         <el-table-column
           prop="verify_dict_label"
           label="verify_dict_label"
-          width="140">
-        </el-table-column>
+          width="140"
+        />
         <el-table-column
           prop="dict_label_is_pass"
           label="dict_label_is_pass"
-          width="140">
-        </el-table-column>
+          width="140"
+        />
         <el-table-column
           prop="base_dict_value"
           label="base_dict_value"
-          width="140">
-        </el-table-column>
+          width="140"
+        />
         <el-table-column
           prop="verify_dict_value"
           label="verify_dict_value"
-          width="140">
-        </el-table-column>
+          width="140"
+        />
         <el-table-column
           prop="dict_value_is_pass"
           label="dict_value_is_pass"
-          width="140">
-        </el-table-column>
+          width="140"
+        />
       </el-table>
     </el-dialog>
     <el-pagination
@@ -333,7 +326,7 @@ export default {
       _this.loading = true
       pageDataModel(this.queryParams).then(response => {
         _this.loading = false
-        if (response.code ===0) {
+        if (response.code === 0) {
           _this.tableDataList = response.rows
           _this.total = response.total
         }
@@ -356,7 +349,6 @@ export default {
     },
     // 查看差异
     getDiffDetail(id) {
-
       console.log('查看差异', id)
       const _this = this
       // console.log("hello world1")
@@ -364,9 +356,9 @@ export default {
       getDiffDetail(id).then(response => {
         _this.loading = false
         console.log('response', response)
-        if (response.code ===0) {
+        if (response.code === 0) {
           for (let i = 0; i < response.total; i++) {
-            let array = {
+            const array = {
               base_dict_code: '--',
               base_dict_label: '--',
               verify_dict_label: '--',

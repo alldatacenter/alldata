@@ -81,8 +81,8 @@
               v-for="item in options"
               :key="item.value"
               :label="item.label"
-              :value="item.value">
-            </el-option>
+              :value="item.value"
+            />
           </el-select>
         </el-form-item>
         <el-form-item label="源表" prop="originTableName" required>
@@ -259,7 +259,7 @@ export default {
         { prop: 'schduleStatus', label: '是否启动调度', show: true,
           formatter: function (value, row, index) {
             console.log(value)
-            if (value.schduleStatus =='1') {
+            if (value.schduleStatus == '1') {
               return '是'
             } else {
               return '否'
@@ -318,7 +318,7 @@ export default {
         // console.log(response.total)
         // console.log(response.code)
         _this.loading = false
-        if (response.code ===0) {
+        if (response.code === 0) {
           _this.tableDataList = response.rows
           _this.total = response.total
           // console.log("hello world3")
@@ -332,22 +332,22 @@ export default {
     },
     // 获取DbconfigId
     getDbConfig() {
-      let _this =this
+      const _this = this
       console.log('添加数据时，获取DbconfigId')
-          getDbConfig().then((response) => {
-            // console.log("response",response)
-            // console.log("total",response.total)
-           for(let i = 0; i < response.total; i++){
-             // console.log(response.rows[i].id)
-             let obj={ value :'', label : '' }
-             console.log(response.rows[i].connectName)
-             obj.value = response.rows[i].id
-             obj.label = response.rows[i].connectName
-             console.log(i)
-             console.log(obj)
-             _this.options.push(obj)
-           }
-            })
+      getDbConfig().then((response) => {
+        // console.log("response",response)
+        // console.log("total",response.total)
+        for (let i = 0; i < response.total; i++) {
+          // console.log(response.rows[i].id)
+          const obj = { value: '', label: '' }
+          console.log(response.rows[i].connectName)
+          obj.value = response.rows[i].id
+          obj.label = response.rows[i].connectName
+          console.log(i)
+          console.log(obj)
+          _this.options.push(obj)
+        }
+      })
     },
     // 添加数据前，清空数据
     resetTemp() {
@@ -432,18 +432,18 @@ export default {
       })
     },
     // 运行按钮操作
-    handleRun(data){
+    handleRun(data) {
       console.log(data.id)
       dcJobConfigRun(data.id).then((response) => {
-        console.log("response",response)
-        if (response.code ===0) {
+        console.log('response', response)
+        if (response.code === 0) {
           this.$message.success('运行成功')
           this.getList()
-        }else{
+        } else {
           this.$message.success('运行失败')
           this.getList()
         }
-        })
+      })
     },
     /** 搜索按钮操作 */
     handleQuery() {
@@ -474,7 +474,7 @@ export default {
       }).then(() => {
         delDataModel(row.id).then(response => {
           console.log(response)
-          if (response.code ===0) {
+          if (response.code === 0) {
             this.$message.success('删除成功')
             this.getList()
           }

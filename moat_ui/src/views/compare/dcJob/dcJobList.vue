@@ -262,7 +262,7 @@ export default {
       _this.loading = true
       pageDataModel(this.queryParams).then(response => {
         _this.loading = false
-        if (response.code ===0) {
+        if (response.code === 0) {
           _this.tableDataList = response.rows
           _this.total = response.total
         }
@@ -397,7 +397,7 @@ export default {
       }).then(() => {
         delDataModel(row.id).then(response => {
           console.log(response)
-          if (response.code ===0) {
+          if (response.code === 0) {
             this.$message.success('删除成功')
             this.getList()
           }
