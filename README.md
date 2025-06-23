@@ -148,6 +148,7 @@ AllData以大模型应用为上游产品，提供全链路数字化解决方案�
 ## [AllData系列星球重磅发布: https://docs.qq.com/doc/DVHhOdGp5UXB5UldP](https://docs.qq.com/doc/DVHhOdGp5UXB5UldP)
 <img width="1024" alt="image" src="https://github.com/user-attachments/assets/aeddb586-514a-4edd-ab75-0f1c54bd2702">
 
+
 ## AllData数据中台正式线上环境 & 能力演示
 
 ## AllData 首页 ｜ 登陆页
@@ -163,7 +164,7 @@ AllData以大模型应用为上游产品，提供全链路数字化解决方案�
 ![8、选择定时调度任务模版，配置同步任务调度](https://github.com/user-attachments/assets/177d8908-8660-4841-abf8-52f944e8898f)
 
 
-## 核心功能02:数据模型管理
+## 核心功能02: 数据模型管理
 
 ![1、数据模型管理](https://github.com/user-attachments/assets/d0cbf38c-2f2d-40b6-b1aa-b1a239acd111)
 ![2、增加模型基本信息](https://github.com/user-attachments/assets/6ae9af77-e35b-4350-9fb0-33d7d8149ee7)
@@ -172,7 +173,7 @@ AllData以大模型应用为上游产品，提供全链路数字化解决方案�
 ![6、数据管理-主数据新增](https://github.com/user-attachments/assets/6c9d185d-4845-4c17-897e-a5fc01ff72b8)
 
 
-## 核心功能03:元数据管理
+## 核心功能03: 元数据管理
 
 ![1、数据源管理](https://github.com/user-attachments/assets/69e9a5bb-f77e-4951-802b-4e0300dc6d05)
 ![2、元数据同步](https://github.com/user-attachments/assets/9eeacecf-6ea2-4b0b-bef1-e9bd6f7d06f2)
@@ -181,7 +182,7 @@ AllData以大模型应用为上游产品，提供全链路数字化解决方案�
 ![11、行级变更](https://github.com/user-attachments/assets/fc81e898-dd60-4e79-835d-eba98d167cee)
 
 
-## 核心功能04:数据标准管理
+## 核心功能04: 数据标准管理
 
 ![1、标准管理](https://github.com/user-attachments/assets/fb37fb7b-4be8-43a6-b12e-09691b561f5a)
 ![5、新增数据标准成功](https://github.com/user-attachments/assets/5ce63fb6-01c5-45a9-b591-8b38cb5a1ef7)
@@ -190,7 +191,7 @@ AllData以大模型应用为上游产品，提供全链路数字化解决方案�
 ![15、标准结果中心](https://github.com/user-attachments/assets/f97cd15d-aba6-4759-bf1f-8730b333630d)
 
 
-## 核心功能05:数据比对管理
+## 核心功能05: 数据比对管理
 
 ![15、标准结果中心](https://github.com/user-attachments/assets/5f312208-4203-44ea-8ee2-8a512f3b96a3)
 ![2、新增Mysql数据库](https://github.com/user-attachments/assets/e1e3d1b2-3034-4f48-82b7-436fe7f171d3)
@@ -199,7 +200,7 @@ AllData以大模型应用为上游产品，提供全链路数字化解决方案�
 ![9、查看数据比对任务结果](https://github.com/user-attachments/assets/0ad48bea-05f7-4e39-b033-92dfb5da5990)
 
 
-## 核心功能06:数据安全管理
+## 核心功能06: 数据安全管理
 
 ![1、选中角色组-超级管理员](https://github.com/user-attachments/assets/27938b27-11e5-4418-8adc-c246c6a263c7)
 ![3、增加数据库权限授权](https://github.com/user-attachments/assets/d0acad52-9a7c-4291-8ea7-6d532f69fa53)
@@ -208,7 +209,7 @@ AllData以大模型应用为上游产品，提供全链路数字化解决方案�
 ![image](https://github.com/user-attachments/assets/e19da8ad-191c-49dd-93b5-a5732be3d49e)
 
 
-## 核心功能07:数据质量管理
+## 核心功能07: 数据质量管理
 
 ![2、创建唯一性质量规则](https://github.com/user-attachments/assets/20549725-78e4-427e-b37b-d831b0d1311b)
 ![2、创建唯一性质量规则](https://github.com/user-attachments/assets/f7964a2a-79b1-413a-899e-8c92b3fb732b)
@@ -217,7 +218,7 @@ AllData以大模型应用为上游产品，提供全链路数字化解决方案�
 ![18、查看数据质量统计分析](https://github.com/user-attachments/assets/3e61b44e-cabd-4bd7-a351-327d2068c985)
 
 
-## 核心功能08:数据服务管理
+## 核心功能08: 数据服务管理
 
 ![6、创建数据服务](https://github.com/user-attachments/assets/66dd7c21-8714-4cba-9fa9-395f4068b6af)
 ![7、需要选择字段作为请求参数](https://github.com/user-attachments/assets/6132c7d5-60a3-4d8c-aed3-df63e8ed6395)
@@ -235,7 +236,7 @@ AllData以大模型应用为上游产品，提供全链路数字化解决方案�
 ![12、可视化仪表盘编辑](https://github.com/user-attachments/assets/6024894f-eb9d-4d1e-adcb-65fc03b065c1)
 
 
-## 核心功能10:系统管理
+## 核心功能10: 系统管理
 
 ![image](https://github.com/user-attachments/assets/20ca5731-93ed-44ab-b84d-7b886c420f61)
 ![image](https://github.com/user-attachments/assets/657fe988-7aaa-46e7-93b4-a25ec77dc438)
@@ -244,7 +245,7 @@ AllData以大模型应用为上游产品，提供全链路数字化解决方案�
 ![image](https://github.com/user-attachments/assets/0eeb0c05-a2c2-4ffe-9e5a-8fff9e34a9e5)
 
 
-## 核心功能11:BI可视化平台
+## 核心功能11: BI可视化平台
 
 ![image](https://github.com/user-attachments/assets/a7257f3b-375d-4431-9a3c-8d3361b65432)
 ![image](https://github.com/user-attachments/assets/b617e15a-9194-48e7-91cc-22364a8db995)
@@ -253,7 +254,7 @@ AllData以大模型应用为上游产品，提供全链路数字化解决方案�
 ![image](https://github.com/user-attachments/assets/9557c38f-9749-4d69-9e1f-9c4e67e54740)
 
 
-## 核心功能12:数据平台
+## 核心功能12: 数据平台
 
 ![image](https://github.com/user-attachments/assets/1b44c84d-a86b-4416-9ff5-5753ae5a5723)
 ![image](https://github.com/user-attachments/assets/6a735ba1-a82a-4b72-8c91-c3052c5e7650)
@@ -262,7 +263,7 @@ AllData以大模型应用为上游产品，提供全链路数字化解决方案�
 ![image](https://github.com/user-attachments/assets/edc62c24-90c7-4938-a89f-e0e61e460507)
 
 
-## 核心功能13:指标体系平台
+## 核心功能13: 指标体系平台
 
 ![image](https://github.com/user-attachments/assets/9ef6ab40-1de8-4fde-92a9-f126bca69596)
 ![image](https://github.com/user-attachments/assets/699096c2-69a4-4ee0-a720-e5479acb1f2b)
@@ -280,7 +281,7 @@ AllData以大模型应用为上游产品，提供全链路数字化解决方案�
 ![image](https://github.com/user-attachments/assets/5f4e93b2-b981-4a8d-b118-af58793031b9)
 
 
-## 核心功能15:实时开发平台
+## 核心功能15: 实时开发平台
 
 ![image](https://github.com/user-attachments/assets/1c83ad69-8fa1-4eab-ae8a-17b9b7c8aaed)
 ![image](https://github.com/user-attachments/assets/4fca9d5f-ed47-42b8-84b6-fbd95be5ad16)
@@ -289,7 +290,7 @@ AllData以大模型应用为上游产品，提供全链路数字化解决方案�
 ![image](https://github.com/user-attachments/assets/874daa23-7353-43f0-b871-68a22cd5d7a7)
 
 
-## 核心功能16:实时开发IDE
+## 核心功能16: 实时开发IDE
 
 ![image](https://github.com/user-attachments/assets/acee579b-5c56-4179-a121-c26c158d7c3e)
 ![image](https://github.com/user-attachments/assets/33599613-f5cf-4d5a-b68e-07291a2e501c)
@@ -298,7 +299,7 @@ AllData以大模型应用为上游产品，提供全链路数字化解决方案�
 ![image](https://github.com/user-attachments/assets/fb511706-3ace-40a0-afe3-2ba9cdc34998)
 
 
-## 核心功能17:离线开发平台
+## 核心功能17: 离线开发平台
 
 ![image](https://github.com/user-attachments/assets/3edce009-996a-425a-9c5b-fe4299188330)
 ![image](https://github.com/user-attachments/assets/443c6afe-1b53-4803-aa42-0b6a887a67e9)
@@ -307,7 +308,7 @@ AllData以大模型应用为上游产品，提供全链路数字化解决方案�
 ![image](https://github.com/user-attachments/assets/891f74f7-6850-4ebb-a2a9-3fc4ef23b7d3)
 
 
-## 核心功能18:元数据管理平台
+## 核心功能18: 元数据管理平台
 
 ![image](https://github.com/user-attachments/assets/5258ac10-a318-403b-9a86-8ea4685e81b3)
 ![image](https://github.com/user-attachments/assets/93178d6c-a38f-4ca9-af07-68cab2f7a8db)
@@ -316,7 +317,7 @@ AllData以大模型应用为上游产品，提供全链路数字化解决方案�
 ![image](https://github.com/user-attachments/assets/50a7f5a5-f311-44a6-b173-e10058994a02)
 
 
-## 核心功能19:数据质量平台
+## 核心功能19: 数据质量平台
 
 ![image](https://github.com/user-attachments/assets/e63a1795-9f69-4cf1-8114-6fdd10863eb5)
 ![image](https://github.com/user-attachments/assets/bfda0e48-67fe-4fdd-8681-d8c0760da525)
@@ -325,7 +326,7 @@ AllData以大模型应用为上游产品，提供全链路数字化解决方案�
 ![image](https://github.com/user-attachments/assets/157649be-88d2-4b02-b694-d0f359d9f53c)
 
 
-## 核心功能20:数据集成平台
+## 核心功能20: 数据集成平台
 
 ![image](https://github.com/user-attachments/assets/72e37a17-4a50-4da8-9aa6-ff7cf09bf783)
 ![image](https://github.com/user-attachments/assets/2310ef12-07de-4b04-918a-b558d5a021de)
@@ -334,7 +335,7 @@ AllData以大模型应用为上游产品，提供全链路数字化解决方案�
 ![image](https://github.com/user-attachments/assets/d0215c45-ee2a-44dd-b4e6-a035e7929041)
 
 
-## 核心功能21:数据同步平台
+## 核心功能21: 数据同步平台
 
 ![image](https://github.com/user-attachments/assets/35cd0552-7205-44fd-8544-9bc858d4b3e3)
 ![image](https://github.com/user-attachments/assets/0bbb2d8b-80de-4bbf-8b46-f14f6da16151)
@@ -343,7 +344,7 @@ AllData以大模型应用为上游产品，提供全链路数字化解决方案�
 ![image](https://github.com/user-attachments/assets/efa17ce2-5c90-4a5a-9e6b-db8730e8626a)
 
 
-## 核心功能22:数据湖平台
+## 核心功能22: 数据湖平台
 
 ![image](https://github.com/user-attachments/assets/8664f823-611e-4a6d-bb94-c8f4cc4eb908)
 ![image](https://github.com/user-attachments/assets/351d3095-c275-4ac3-99bc-cb104fb8c573)
@@ -352,7 +353,7 @@ AllData以大模型应用为上游产品，提供全链路数字化解决方案�
 ![image](https://github.com/user-attachments/assets/d35017a5-f44a-4b46-a578-7fde371d19c9)
 
 
-## 核心功能23:湖仓一体化
+## 核心功能23: 湖仓一体化
 
 ![image](https://github.com/user-attachments/assets/7e4e38b0-8326-42aa-8763-8c863f8e8af5)
 ![image](https://github.com/user-attachments/assets/5e7478b3-8356-4132-83a6-0e19efae1147)
@@ -361,7 +362,7 @@ AllData以大模型应用为上游产品，提供全链路数字化解决方案�
 ![image](https://github.com/user-attachments/assets/afdbc81d-63ad-496d-ba27-3983d1ffeb25)
 
 
-## 核心功能24:湖仓一体化
+## 核心功能24: 湖仓平台中心
 
 ![image](https://github.com/user-attachments/assets/5bd5dcb1-d152-4d8f-898d-ef7742fe5000)
 ![image](https://github.com/user-attachments/assets/178d782c-d3cf-4c62-b17e-6b8626eeb258)
@@ -370,7 +371,7 @@ AllData以大模型应用为上游产品，提供全链路数字化解决方案�
 ![image](https://github.com/user-attachments/assets/28d069d7-0618-4fb9-b277-2d4c61acc4d8)
 
 
-## 核心功能25:机器学习算法平台
+## 核心功能25: 机器学习算法平台
 
 ![image](https://github.com/user-attachments/assets/81cbf4f8-1c0b-45e3-b21a-8b32ce5abecd)
 ![image](https://github.com/user-attachments/assets/3c063ee3-e2c9-4225-bc1a-0b12c1447431)
