@@ -145,8 +145,6 @@ AllData以大模型应用为上游产品，提供全链路数字化解决方案�
 ## AllData技术社区
 <img width="1024" alt="image" src="https://github.com/user-attachments/assets/a1c3e3f8-ae13-405e-a347-80beef6573e6">
 
-## [AllData系列星球重磅发布: https://docs.qq.com/doc/DVHhOdGp5UXB5UldP](https://docs.qq.com/doc/DVHhOdGp5UXB5UldP)
-<img width="1024" alt="image" src="https://github.com/user-attachments/assets/aeddb586-514a-4edd-ab75-0f1c54bd2702">
 
 
 ## AllData数据中台正式线上环境 & 能力演示
@@ -371,11 +369,10 @@ AllData以大模型应用为上游产品，提供全链路数字化解决方案�
 ![image](https://github.com/user-attachments/assets/28d069d7-0618-4fb9-b277-2d4c61acc4d8)
 
 
-## 核心功能25: 机器学习算法平台
+## 核心功能25:机器学习算法平台
 
 ![image](https://github.com/user-attachments/assets/81cbf4f8-1c0b-45e3-b21a-8b32ce5abecd)
 ![image](https://github.com/user-attachments/assets/3c063ee3-e2c9-4225-bc1a-0b12c1447431)
 ![image](https://github.com/user-attachments/assets/019c4f60-0816-4904-ad4c-622f36039643)
 ![image](https://github.com/user-attachments/assets/d2b90680-a7fa-4e51-b0dc-e2eb88d526e3)
 ![image](https://github.com/user-attachments/assets/27ef983d-83bd-46d2-b4f4-99903bdf15e1)
-
