@@ -115,8 +115,6 @@ AllData以大模型应用为上游产品，提供全链路数字化解决方案�
 
 功能35. 国产数据库一体化平台【发布后源码交付】
 
-商业版价格文档：https://docs.qq.com/sheet/DYnZweWVickdLQmd5
-
 ```
 
 ## AllData发展历程
@@ -149,7 +147,6 @@ AllData以大模型应用为上游产品，提供全链路数字化解决方案�
 
 ## AllData数据中台正式线上环境 & 能力演示
 
-## AllData 首页 ｜ 登陆页
 <img width="1423" alt="image" src="https://github.com/user-attachments/assets/019c2b8d-5af4-4c2d-9092-22e1dbd52776" />
 
 
