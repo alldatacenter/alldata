@@ -137,23 +137,11 @@
 <img width="1400" src="https://starchart.cc/alldatacenter/alldata.svg" />
 
 ## AllData架构设计
-<img width="1400" alt="image" src="https://github.com/user-attachments/assets/befa64c2-c40c-40ee-9dae-a626dab03923">
-
-## 开源版 VS 商业版
-<img width="1400" alt="image" src="https://github.com/user-attachments/assets/a9f6b9a0-d466-4244-8344-fa90d35913fd">
-
-## AllData开源技术群
-<img width="1400" alt="image" src="https://github.com/user-attachments/assets/ddfb0c08-618c-4add-ac38-1e5fae462c81">
-
-## AllData视频号
-<img width="1400" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/c809b131-4b5f-4e60-ab26-81930665fc3b">
-
-## AllData公众号
-<img width="1400" alt="image" src="https://github.com/alldatacenter/alldata/assets/20246692/7d4312a3-1904-404d-a0ed-f36b14e7c02d">
+<img width="1400" alt="image" src="https://github.com/user-attachments/assets/3a9822bb-3a3a-4e0a-bb90-3b61865cf588">
 
 ## AllData技术社区
-<img width="1400" alt="image" src="https://github.com/user-attachments/assets/a1c3e3f8-ae13-405e-a347-80beef6573e6">
 
+<img width="1400" alt="image" src="https://github.com/user-attachments/assets/f91804db-9e45-4b22-958f-563bc6b9b578">
 
 ## AllData数据中台正式线上环境(仅演示部分功能与截图)
 

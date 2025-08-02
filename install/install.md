@@ -59,24 +59,26 @@ RabbitMQ >= 3.0.x
 ```
 > 使用Mysql 8的用户注意导入数据时的编码格式问题
 
-### 4、本地启动/运行系统
+### 4、启动基础软件
 
 > 首先确保启动rabbitmq，mysql，redis已经启动
 
-#### 4.1 后端运行
+### 5、后端运行
 
-1、前往GitHub项目页面(https://github.com/alldatacenter/alldata)
+5.1、前往GitHub项目页面(https://github.com/alldatacenter/alldata)
 推荐使用版本控制方式下载解压到工作目录或IDEA直接从VCS获取项目代码，便于同步最新社区版改动， alldata/moat/为项目前后端存放路径。
 
-2、项目导入到IDEA后，会自动加载Maven依赖包，初次加载会比较慢（根据自身网络情况而定）
+5.2、项目导入到IDEA后，会自动加载Maven依赖包，初次加载会比较慢（根据自身网络情况而定）
 
-3、创建数据库studio：到 `factory/studio/install/sql`目录下sql数据脚本，把` alldata.sql`和`alldata-v0.x.x.sql`导入本地或线上Mysql数据库
+5.3、创建数据库studio：到 `install/sql`目录下sql数据脚本，把` alldata.sql`和`alldata-v0.x.x.sql`导入本地或线上Mysql数据库
 
-4、导入BI sql, 参考alldata/bi_quickstart.md
+5.4、导入BI sql, 参考alldata/bi_quickstart.md
 
-5、修改该文件 `alldata/moat/config/src/main/resources/config/application-common-dev.yml`的rabbitmq，mysql，redis为自己的服务
+5.5、修改该文件 `alldata/moat/config/src/main/resources/config/application-common-dev.yml`的rabbitmq，mysql，redis为自己的服务
 
-6、打开运行基础模块（启动没有先后顺序）
+### 6、项目启动
+
+6.1、运行基础模块（启动没有先后顺序）
 
 ```
 DataxEurekaApplication.java（注册中心模块 必须）
@@ -86,40 +88,47 @@ SystemServiceApplication.java（系统模块 必须，不启动无法登录）
 ```
 其他模块可根据需求，自行决定启动
 
-5.1 启动Eurake项目
+6.1 启动Eurake项目
 
-1. 找到factory/studio/eureka/src/main/java/cn/datax/eureka/DataxEurekaApplication.java 运行启动
+6.1.1 找到moat/studio/eureka/src/main/java/cn/datax/eureka/DataxEurekaApplication.java 运行启动
 
-2. 浏览器访问 http://localhost:8610/，看到以下页面表示启动成功
+6.1.2 浏览器访问 http://localhost:8610/，看到以下页面表示启动成功
 
-5.2 启动Config项目
-1. 修改bootstrap.yml文件，本地运行时eureka配置处，改成localhost
-2. 找到factory/studio/config/src/main/java/cn/datax/config/DataxConfigApplication.java，运行启动
+6.2启动Config项目
 
-5.3  启动Gateway项目
-1. 修改bootstrap.yml文件，本地运行时eureka配置处，改成localhost
+6.2.1 修改bootstrap.yml文件，本地运行时eureka配置处，改成localhost
 
-2. 找到factory/studio/gateway/src/main/java/cn/datax/gateway/DataxGatewayApplication.java，启动项目
+6.2.2 找到moat/studio/config/src/main/java/cn/datax/config/DataxConfigApplication.java，运行启动
 
-3. 启动完后，可以在Eureka中发现刚才启动的服务
+6.3  启动Gateway项目
 
-5.4 启动SystemService项目，本地运行时eureka配置处，改成localhost。及其他项目同理。
+6.3.1 修改bootstrap.yml文件，本地运行时eureka配置处，改成localhost
+
+6.3.2 找到moat/studio/gateway/src/main/java/cn/datax/gateway/DataxGatewayApplication.java，启动项目
+
+6.3.3 启动完后，可以在Eureka中发现刚才启动的服务
+
+6.4 启动SystemService项目，本地运行时eureka配置处，改成localhost。及其他项目同理。
 
 
-#### 4.2 前端运行
+### 7、前端运行
 ```
 cd alldata/moat-ui
+
+nvm use v16.20.2
+
+npm install
+
 npm run dev
+
+npm run build
 ```
 启动成功，会自动弹出浏览器登录页
 
-
-#### 注意目前视频能看到的功能都已开源，若发现“数据集成”菜单没有.
-#### 可只导入factory/studio/install/sql下的alldata.sql + alldata-v0.x.x + 数据集成。
-#### 其他菜单若发现没有的话，也可自行配置，具体参考 https://github.com/alldatacenter/alldata/issues/489
+访问：http://localhost:8013 账号密码：admin/123456
 
 
-#### 4.3 启动SystemService项目，本地运行时eureka配置处，改成localhost。及其他项目同理。
+### 8、启动SystemService项目，本地运行时eureka配置处，改成localhost。及其他项目同理。
 ```
 系统管理 - system-service-parent ~ system-service ~ SystemServiceApplication
 数据集成 - service-data-dts-parent ~ service-data-dts ~ DataDtsServiceApplication
@@ -140,7 +149,7 @@ BI报表 - data-visual-service-parent ~ data-visual-service ~ DataxVisualApplica
 文件服务 - file-service-parent ~ file-service ~ DataxFileApplication
 ```
 
-### 5、服务器集群部署
+### 9、服务器集群部署
 | 16gmaster                | port | ip             |
 |--------------------------|------| -------------- |
 | system-service           | 8000 | 16gmaster  |
@@ -169,20 +178,20 @@ BI报表 - data-visual-service-parent ~ data-visual-service ~ DataxVisualApplica
 | gateway               | 9538 | 16gdata    |
 
 
-### 6、部署方式
+### 10、部署方式
 
 > 数据库版本为 **mysql5.7** 及以上版本
-#### 1、`alldata``数据库初始化
+#### 10.1、`alldata``数据库初始化
 >
 > 1.1 source install/sql/alldata.sql
 > 1.2 source install/sql/alldata-v0.x.x.sql
 > 1.3 导入BI sql, 参考alldata/bi_quickstart.md
 
-#### 2、修改 **config** 配置中心
+#### 10.2、修改 **config** 配置中心
 
 > **config** 文件夹下的配置文件, 修改 **redis**, **mysql** 和 **rabbitmq** 的配置信息
 >
-#### 3、项目根目录下执行
+#### 10.3、项目根目录下执行
 ```
 1、缺失aspose-words,要手动安装到本地仓库
 2、cd alldata/moat/common
@@ -197,7 +206,7 @@ BI报表 - data-visual-service-parent ~ data-visual-service ~ DataxVisualApplica
 >
 > 上传服务器解压
 >
-#### 4、部署`stuido`[后端]
+#### 10.4、部署`stuido`[后端]
 #### 单节点启动[All In One]
 
 > 1、启动eureka on `16gslave`
@@ -208,7 +217,7 @@ BI报表 - data-visual-service-parent ~ data-visual-service ~ DataxVisualApplica
 >
 > 4、启动其他Jar
 
-#### 5、三节点启动[16gmaster, 16gslave, 16gdata]
+#### 10.5、三节点启动[16gmaster, 16gslave, 16gdata]
 > 1. 单独启动 eureka on `16gslave`
 >
 > 2. 单独启动config on `16gmaster`
@@ -222,7 +231,11 @@ BI报表 - data-visual-service-parent ~ data-visual-service ~ DataxVisualApplica
 > 6. 启动`16gmaster`, sh start16gmaster.sh
 
 
-### 7、数据集成配置教程
+### 11、数据集成配置教程
+
+#### 注意目前视频能看到的功能都已开源，若发现“数据集成”菜单没有.
+#### 可只导入moat/studio/install/sql下的alldata.sql + alldata-v0.x.x + 数据集成。
+#### 其他菜单若发现没有的话，也可自行配置，具体参考 https://github.com/alldatacenter/alldata/issues/489
 
 > 先找到用户管理-菜单管理, 新增【数据集成】目录
 >
