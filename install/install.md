@@ -108,7 +108,7 @@ SystemServiceApplication.java（系统模块 必须，不启动无法登录）
 
 #### 4.2 前端运行
 ```
-cd alldata/moat/micro-ui
+cd alldata/moat-ui
 npm run dev
 ```
 启动成功，会自动弹出浏览器登录页

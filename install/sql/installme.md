@@ -1,5 +1,6 @@
 # alldata数据库导入
-分别导入数据库
+
+AllData数据中台-Mysql数据库导入
 
 1、source alldata-install.sql;
 
