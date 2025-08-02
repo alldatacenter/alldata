@@ -2,7 +2,7 @@
 
 **1、安装datax**
 
-    安装参考[linux安装dataX-CSDN博客](https://blog.csdn.net/hzp666/article/details/127350768)
+> 安装参考 [linux安装dataX-CSDN博客](https://blog.csdn.net/hzp666/article/details/127350768)
 
 **2、配置datax同步mysql**
 > 配置mysql隔离级别,进入mysql终端

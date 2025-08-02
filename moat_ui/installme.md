@@ -10,7 +10,7 @@ npm run start
 
 npm run build:prod [生产]
 
-生产环境启动前端micro-ui项目, 需要[配置nginx]
+生产环境启动前端moat_ui项目, 需要[配置nginx]
 
 ```markdown
 # For more information on configuration, see:
@@ -56,7 +56,7 @@ log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
 		add_header Access-Control-Allow-Headers X-Requested-With;
 		add_header Access-Control-Allow-Methods GET,POST,OPTIONS;
 		location / {
-			root /studio/micro-ui/dist;
+			root /root/project/moat_ui/dist;
 			index index.html;
 			try_files $uri $uri/ /index.html;
 		}
@@ -70,7 +70,7 @@ log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
 }
 ```
 
-### 测试环境启动前端micro-ui项目
+### 测试环境启动前端moat_ui项目
 
 npm run dev [测试]
 
