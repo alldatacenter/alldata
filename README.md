@@ -2,7 +2,7 @@
 
 ## [AllData@杭州奥零数据科技公司-官方网站](http://www.aolingdata.com)
 
-## [AllData@杭州奥零数据科技公司-产品手册](https://www.yuque.com/alldata/docs)
+## [AllData@杭州奥零数据科技公司-产品手册](https://www.yuque.com/aolingdata/product)
 
 ## [AllData@杭州奥零数据科技公司-社群商务咨询](https://docs.qq.com/doc/DVHlkSEtvVXVCdEFo)
 
@@ -137,7 +137,7 @@
 <img width="1400" src="https://starchart.cc/alldatacenter/alldata.svg" />
 
 ## AllData架构设计
-<img width="1400" alt="image" src="https://github.com/user-attachments/assets/83752740-531a-4fc4-ba49-cec507e03997">
+<img width="1400" alt="image" src="https://github.com/user-attachments/assets/01959b61-c5d4-4208-890f-db80d2cab613">
 
 ## AllData技术社区 
 
@@ -367,5 +367,4 @@
 ![image](https://github.com/user-attachments/assets/3c063ee3-e2c9-4225-bc1a-0b12c1447431)
 ![image](https://github.com/user-attachments/assets/019c4f60-0816-4904-ad4c-622f36039643)
 ![image](https://github.com/user-attachments/assets/d2b90680-a7fa-4e51-b0dc-e2eb88d526e3)
-
 ![image](https://github.com/user-attachments/assets/27ef983d-83bd-46d2-b4f4-99903bdf15e1)
