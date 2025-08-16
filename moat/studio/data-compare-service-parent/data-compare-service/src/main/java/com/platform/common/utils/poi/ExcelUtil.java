@@ -33,7 +33,7 @@ import org.apache.poi.hssf.usermodel.HSSFPictureData;
 import org.apache.poi.hssf.usermodel.HSSFShape;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ooxml.POIXMLDocumentPart;
+import org.apache.poi.POIXMLDocumentPart;
 import org.apache.poi.ss.usermodel.BorderStyle;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
@@ -1513,7 +1513,7 @@ public class ExcelUtil<T>
             Cell cell = row.getCell(column);
             if (StringUtils.isNotNull(cell))
             {
-                if (cell.getCellType() == CellType.NUMERIC || cell.getCellType() == CellType.FORMULA)
+                if (cell.getCellType() == CellType.NUMERIC.getCode() || cell.getCellType() == CellType.FORMULA.getCode())
                 {
                     val = cell.getNumericCellValue();
                     if (DateUtil.isCellDateFormatted(cell))
@@ -1532,15 +1532,15 @@ public class ExcelUtil<T>
                         }
                     }
                 }
-                else if (cell.getCellType() == CellType.STRING)
+                else if (cell.getCellType() == CellType.STRING.getCode())
                 {
                     val = cell.getStringCellValue();
                 }
-                else if (cell.getCellType() == CellType.BOOLEAN)
+                else if (cell.getCellType() == CellType.BOOLEAN.getCode())
                 {
                     val = cell.getBooleanCellValue();
                 }
-                else if (cell.getCellType() == CellType.ERROR)
+                else if (cell.getCellType() == CellType.ERROR.getCode())
                 {
                     val = cell.getErrorCellValue();
                 }
@@ -1569,7 +1569,7 @@ public class ExcelUtil<T>
         for (int i = row.getFirstCellNum(); i < row.getLastCellNum(); i++)
         {
             Cell cell = row.getCell(i);
-            if (cell != null && cell.getCellType() != CellType.BLANK)
+            if (cell != null && cell.getCellType() != CellType.BLANK.getCode())
             {
                 return false;
             }

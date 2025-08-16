@@ -90,7 +90,7 @@ SystemServiceApplication.java（系统模块 必须，不启动无法登录）
 
 6.1 启动Eurake项目
 
-6.1.1 找到moat/studio/eureka/src/main/java/cn/datax/eureka/DataxEurekaApplication.java 运行启动
+6.1.1 找到moat/eureka/src/main/java/cn/datax/eureka/DataxEurekaApplication.java 运行启动
 
 6.1.2 浏览器访问 http://localhost:8610/，看到以下页面表示启动成功
 
@@ -98,13 +98,13 @@ SystemServiceApplication.java（系统模块 必须，不启动无法登录）
 
 6.2.1 修改bootstrap.yml文件，本地运行时eureka配置处，改成localhost
 
-6.2.2 找到moat/studio/config/src/main/java/cn/datax/config/DataxConfigApplication.java，运行启动
+6.2.2 找到moat/config/src/main/java/cn/datax/config/DataxConfigApplication.java，运行启动
 
 6.3  启动Gateway项目
 
 6.3.1 修改bootstrap.yml文件，本地运行时eureka配置处，改成localhost
 
-6.3.2 找到moat/studio/gateway/src/main/java/cn/datax/gateway/DataxGatewayApplication.java，启动项目
+6.3.2 找到moat/gateway/src/main/java/cn/datax/gateway/DataxGatewayApplication.java，启动项目
 
 6.3.3 启动完后，可以在Eureka中发现刚才启动的服务
 
@@ -194,12 +194,13 @@ BI报表 - data-visual-service-parent ~ data-visual-service ~ DataxVisualApplica
 #### 10.3、项目根目录下执行
 ```
 1、缺失aspose-words,要手动安装到本地仓库
-2、cd alldata/moat/common
+2、cd moat/common
 3、安装命令：windows使用git bash执行, mac直接执行以下命令
 4、mvn install:install-file -Dfile=aspose-words-20.3.jar -DgroupId=com.aspose -DartifactId=aspose-words -Dversion=20.3 -Dpackaging=jar
 5、安装成功重新刷新依赖,重新打包
 ```
-> cd alldata/moat/common
+> 切换系统jdk环境为1.8
+> cd moat/common
 > mvn install:install-file -Dfile=/alldata/moat/common/aspose-words-20.3.jar -DgroupId=com.aspose -DartifactId=aspose-words -Dversion=20.3 -Dpackaging=jar
 > mvn clean install -DskipTests && mvn clean package -DskipTests
 > 获取安装包build/alldata-release-0.6.x.tar.gz
@@ -234,7 +235,7 @@ BI报表 - data-visual-service-parent ~ data-visual-service ~ DataxVisualApplica
 ### 11、数据集成配置教程
 
 #### 注意目前视频能看到的功能都已开源，若发现“数据集成”菜单没有.
-#### 可只导入moat/studio/install/sql下的alldata.sql + alldata-v0.x.x + 数据集成。
+#### 可只导入install/sql下的alldata.sql + alldata-v0.x.x + 数据集成。
 #### 其他菜单若发现没有的话，也可自行配置，具体参考 https://github.com/alldatacenter/alldata/issues/489
 
 > 先找到用户管理-菜单管理, 新增【数据集成】目录
