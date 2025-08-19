@@ -104,13 +104,13 @@
 
 功能27. 数据治理平台-元数据管理平台，集成开源OpenMetaData项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
 
-功能28. 数据安全平台，发布后提供源码。
+功能28. 数据治理平台-元数据开发平台，发布后提供源码。
 
-功能29. 数据共享平台-数据服务平台，包含接口市场管理，接口日志管理，接口数据脱敏，第三方接口注册，第三方接口调用日志等功能。
+功能29. 数据安全平台，发布后提供源码。
 
-功能30. 数据共享平台-API共享平台，集成开源SqlRest项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
+功能30. 数据共享平台-数据服务平台，包含接口市场管理，接口日志管理，接口数据脱敏，第三方接口注册，第三方接口调用日志等功能。
 
-功能31. 数据可视化平台-BI报表管理，包含数据分析，可视化图表，可视化大屏，可视化仪表盘等功能。
+功能31. 数据共享平台-API共享平台，集成开源SqlRest项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
 
 功能32. 数据可视化平台-BI可视化平台，集成开源Datart项目，引入开源项目，保留License协议和Notice声明，以及必要的二次开发。
 
@@ -255,14 +255,6 @@
 ![19、第三方服务详情](https://github.com/user-attachments/assets/67749814-d674-4788-ac40-7505f23886a9)
 
 
-## 数据可视化平台：BI报表管理
-
-![image](https://github.com/user-attachments/assets/746d3b47-31a5-4af6-acbe-1e6650fac502)
-![image](https://github.com/user-attachments/assets/1d633473-a132-42ef-bd61-bf3f12be12da)
-![image](https://github.com/user-attachments/assets/8e28201a-1763-4d80-bab7-f7a02202489d)
-![image](https://github.com/user-attachments/assets/9f20aba6-66e3-45cb-8e39-64aaeb28ef4c)
-![12、可视化仪表盘编辑](https://github.com/user-attachments/assets/6024894f-eb9d-4d1e-adcb-65fc03b065c1)
-
 ## 数据可视化平台: BI可视化平台
 
 ![image](https://github.com/user-attachments/assets/a7257f3b-375d-4431-9a3c-8d3361b65432)
@@ -368,3 +360,4 @@
 ![image](https://github.com/user-attachments/assets/019c4f60-0816-4904-ad4c-622f36039643)
 ![image](https://github.com/user-attachments/assets/d2b90680-a7fa-4e51-b0dc-e2eb88d526e3)
 ![image](https://github.com/user-attachments/assets/27ef983d-83bd-46d2-b4f4-99903bdf15e1)
+
