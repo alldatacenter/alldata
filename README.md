@@ -136,8 +136,11 @@
 
 <img width="1400" src="https://starchart.cc/alldatacenter/alldata.svg" />
 
-## AllData架构设计
-<img width="1400" alt="image" src="https://github.com/user-attachments/assets/01959b61-c5d4-4208-890f-db80d2cab613">
+## AllData操作流程图
+<img width="1400" alt="image" src="https://github.com/user-attachments/assets/c9bfa4e6-9196-4341-97e9-d3d652ac811e">
+
+## AllData架构设计图
+<img width="1400" alt="image" src="https://github.com/user-attachments/assets/a13d2118-896a-4111-958c-3deb903c1f48">
 
 ## AllData技术社区 
 
@@ -360,4 +363,5 @@
 ![image](https://github.com/user-attachments/assets/019c4f60-0816-4904-ad4c-622f36039643)
 ![image](https://github.com/user-attachments/assets/d2b90680-a7fa-4e51-b0dc-e2eb88d526e3)
 ![image](https://github.com/user-attachments/assets/27ef983d-83bd-46d2-b4f4-99903bdf15e1)
+
 
