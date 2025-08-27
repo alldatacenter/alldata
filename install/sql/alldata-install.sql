@@ -1015,7 +1015,7 @@ UNLOCK TABLES;
 
  Date: 03/05/2022 12:07:27
 */
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ `alldata`` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+-- CREATE DATABASE /*!32312 IF NOT EXISTS*/ `alldata`` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 
 USE `alldata`;
 
@@ -1285,7 +1285,7 @@ SET FOREIGN_KEY_CHECKS = 1;
 
  Date: 03/05/2022 12:08:07
 */
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ `alldata`` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+-- CREATE DATABASE /*!32312 IF NOT EXISTS*/ `alldata`` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 
 USE `alldata`;
 
@@ -1296,14 +1296,14 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- Table structure for account
 -- ----------------------------
 -- DROP TABLE IF EXISTS `account`;
-CREATE TABLE `account`  (
+CREATE TABLE `account` (
   `ACCOUNT_ID` int(11) NOT NULL,
-  `ACCOUNT_PARENT` int(11) NULL DEFAULT NULL,
-  `ACCOUNT_DESCRIPTION` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `ACCOUNT_TYPE` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `ACCOUNT_ROLLUP` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `CUSTOM_MEMBERS` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL
-) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+  `ACCOUNT_PARENT` int(11) DEFAULT NULL,
+  `ACCOUNT_DESCRIPTION` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `ACCOUNT_TYPE` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `ACCOUNT_ROLLUP` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `CUSTOM_MEMBERS` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of account
@@ -1324,13 +1324,12 @@ INSERT INTO `account` VALUES (5000, NULL, 'Net Income', 'Income', '+', NULL);
 -- Table structure for category
 -- ----------------------------
 -- DROP TABLE IF EXISTS `category`;
-CREATE TABLE `category`  (
-  `CATEGORY_ID` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `CATEGORY_PARENT` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `CATEGORY_DESCRIPTION` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `CATEGORY_ROLLUP` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL
-) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
-
+CREATE TABLE `category` (
+  `CATEGORY_ID` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `CATEGORY_PARENT` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `CATEGORY_DESCRIPTION` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `CATEGORY_ROLLUP` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 -- ----------------------------
 -- Records of category
 -- ----------------------------
@@ -2037,37 +2036,37 @@ INSERT INTO `chinagis1` VALUES ('黑龙江', '齐齐哈尔', '男', 173);
 -- Table structure for customer
 -- ----------------------------
 -- DROP TABLE IF EXISTS `customer`;
-CREATE TABLE `customer`  (
+CREATE TABLE `customer` (
   `CUSTOMER_ID` int(11) NOT NULL,
   `ACCOUNT_NUM` bigint(20) NOT NULL,
-  `LNAME` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `FNAME` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `MI` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `ADDRESS1` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `ADDRESS2` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `ADDRESS3` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `ADDRESS4` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `CITY` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `STATE_PROVINCE` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `POSTAL_CODE` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `COUNTRY` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `LNAME` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `FNAME` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `MI` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `ADDRESS1` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `ADDRESS2` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `ADDRESS3` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `ADDRESS4` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `CITY` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `STATE_PROVINCE` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `POSTAL_CODE` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `COUNTRY` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `CUSTOMER_REGION_ID` int(11) NOT NULL,
-  `PHONE1` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `PHONE2` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `PHONE1` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `PHONE2` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `BIRTHDATE` date NOT NULL,
-  `MARITAL_STATUS` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `YEARLY_INCOME` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `GENDER` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `MARITAL_STATUS` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `YEARLY_INCOME` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `GENDER` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `TOTAL_CHILDREN` smallint(6) NOT NULL,
   `NUM_CHILDREN_AT_HOME` smallint(6) NOT NULL,
-  `EDUCATION` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `EDUCATION` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `DATE_ACCNT_OPENED` date NOT NULL,
-  `MEMBER_CARD` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `OCCUPATION` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `HOUSEOWNER` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `NUM_CARS_OWNED` int(11) NULL DEFAULT NULL,
+  `MEMBER_CARD` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `OCCUPATION` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `HOUSEOWNER` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `NUM_CARS_OWNED` int(11) DEFAULT NULL,
   PRIMARY KEY (`CUSTOMER_ID`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of customer
@@ -3191,10 +3190,10 @@ INSERT INTO `customer` VALUES (1114, 10843715667, 'Owens', 'Judy', 'L.', '8168 E
 -- Table structure for department
 -- ----------------------------
 -- DROP TABLE IF EXISTS `department`;
-CREATE TABLE `department`  (
+CREATE TABLE `department` (
   `DEPARTMENT_ID` int(11) NOT NULL,
-  `DEPARTMENT_DESCRIPTION` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
-) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+  `DEPARTMENT_DESCRIPTION` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of department
@@ -3216,25 +3215,25 @@ INSERT INTO `department` VALUES (19, 'Store Permanent Butchers');
 -- Table structure for employee
 -- ----------------------------
 -- DROP TABLE IF EXISTS `employee`;
-CREATE TABLE `employee`  (
+CREATE TABLE `employee` (
   `EMPLOYEE_ID` int(11) NOT NULL,
-  `FULL_NAME` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `FIRST_NAME` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `LAST_NAME` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `POSITION_ID` int(11) NULL DEFAULT NULL,
-  `POSITION_TITLE` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `FULL_NAME` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `FIRST_NAME` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `LAST_NAME` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `POSITION_ID` int(11) DEFAULT NULL,
+  `POSITION_TITLE` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `STORE_ID` int(11) NOT NULL,
   `DEPARTMENT_ID` int(11) NOT NULL,
   `BIRTH_DATE` date NOT NULL,
-  `HIRE_DATE` timestamp(0) NULL DEFAULT NULL,
-  `END_DATE` timestamp(0) NULL DEFAULT NULL,
-  `SALARY` decimal(10, 4) NOT NULL,
-  `SUPERVISOR_ID` int(11) NULL DEFAULT NULL,
-  `EDUCATION_LEVEL` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `MARITAL_STATUS` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `GENDER` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `MANAGEMENT_ROLE` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL
-) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+  `HIRE_DATE` timestamp NULL DEFAULT NULL,
+  `END_DATE` timestamp NULL DEFAULT NULL,
+  `SALARY` decimal(10,4) NOT NULL,
+  `SUPERVISOR_ID` int(11) DEFAULT NULL,
+  `EDUCATION_LEVEL` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `MARITAL_STATUS` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `GENDER` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `MANAGEMENT_ROLE` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of employee
@@ -4399,11 +4398,11 @@ INSERT INTO `employee` VALUES (1156, 'Kris Stand', 'Kris', 'Stand', 18, 'Store T
 -- Table structure for employee_closure
 -- ----------------------------
 -- DROP TABLE IF EXISTS `employee_closure`;
-CREATE TABLE `employee_closure`  (
+CREATE TABLE `employee_closure` (
   `EMPLOYEE_ID` int(11) NOT NULL,
   `SUPERVISOR_ID` int(11) NOT NULL,
-  `DISTANCE` int(11) NULL DEFAULT NULL
-) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+  `DISTANCE` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of employee_closure
@@ -4425,15 +4424,15 @@ INSERT INTO `employee_closure` VALUES (638, 1, 6);
 -- Table structure for expense_fact
 -- ----------------------------
 -- DROP TABLE IF EXISTS `expense_fact`;
-CREATE TABLE `expense_fact`  (
+CREATE TABLE `expense_fact` (
   `STORE_ID` int(11) NOT NULL,
   `ACCOUNT_ID` int(11) NOT NULL,
-  `EXP_DATE` timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0) ON UPDATE CURRENT_TIMESTAMP(0),
+  `EXP_DATE` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `TIME_ID` int(11) NOT NULL,
-  `CATEGORY_ID` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `CATEGORY_ID` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `CURRENCY_ID` int(11) NOT NULL,
-  `AMOUNT` decimal(10, 4) NOT NULL
-) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+  `AMOUNT` decimal(10,4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of expense_fact
@@ -6907,26 +6906,26 @@ INSERT INTO `flowtst` VALUES ('##!svc/html5/inviteparents/', 'me_pcenter', 37.72
 -- Table structure for inventory_fact
 -- ----------------------------
 -- DROP TABLE IF EXISTS `inventory_fact`;
-CREATE TABLE `inventory_fact`  (
+CREATE TABLE `inventory_fact` (
   `PRODUCT_ID` int(11) NOT NULL,
   `TIME_ID` int(11) NOT NULL,
   `WAREHOUSE_ID` int(11) NOT NULL,
   `STORE_ID` int(11) NOT NULL,
-  `UNITS_ORDERED` int(11) NULL DEFAULT NULL,
-  `UNITS_SHIPPED` int(11) NULL DEFAULT NULL,
-  `WAREHOUSE_SALES` decimal(10, 4) NULL DEFAULT NULL,
-  `WAREHOUSE_COST` decimal(10, 4) NULL DEFAULT NULL,
-  `SUPPLY_TIME` smallint(6) NULL DEFAULT NULL,
-  `STORE_INVOICE` decimal(10, 4) NULL DEFAULT NULL,
-  PRIMARY KEY (`PRODUCT_ID`, `TIME_ID`, `WAREHOUSE_ID`, `STORE_ID`) USING BTREE,
-  INDEX `STORE_ID`(`STORE_ID`) USING BTREE,
-  INDEX `TIME_ID`(`TIME_ID`) USING BTREE,
-  INDEX `WAREHOUSE_ID`(`WAREHOUSE_ID`) USING BTREE,
+  `UNITS_ORDERED` int(11) DEFAULT NULL,
+  `UNITS_SHIPPED` int(11) DEFAULT NULL,
+  `WAREHOUSE_SALES` decimal(10,4) DEFAULT NULL,
+  `WAREHOUSE_COST` decimal(10,4) DEFAULT NULL,
+  `SUPPLY_TIME` smallint(6) DEFAULT NULL,
+  `STORE_INVOICE` decimal(10,4) DEFAULT NULL,
+  PRIMARY KEY (`PRODUCT_ID`,`TIME_ID`,`WAREHOUSE_ID`,`STORE_ID`) USING BTREE,
+  KEY `STORE_ID` (`STORE_ID`) USING BTREE,
+  KEY `TIME_ID` (`TIME_ID`) USING BTREE,
+  KEY `WAREHOUSE_ID` (`WAREHOUSE_ID`) USING BTREE,
   CONSTRAINT `inventory_fact_ibfk_1` FOREIGN KEY (`PRODUCT_ID`) REFERENCES `product` (`PRODUCT_ID`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `inventory_fact_ibfk_2` FOREIGN KEY (`STORE_ID`) REFERENCES `store` (`STORE_ID`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `inventory_fact_ibfk_3` FOREIGN KEY (`TIME_ID`) REFERENCES `time_by_day` (`TIME_ID`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `inventory_fact_ibfk_4` FOREIGN KEY (`WAREHOUSE_ID`) REFERENCES `warehouse` (`WAREHOUSE_ID`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of inventory_fact
@@ -7610,28 +7609,28 @@ INSERT INTO `map_data_sample` VALUES ('云南省', '曲靖市', '师宗县', '�
 -- Table structure for product
 -- ----------------------------
 -- DROP TABLE IF EXISTS `product`;
-CREATE TABLE `product`  (
+CREATE TABLE `product` (
   `PRODUCT_CLASS_ID` int(11) NOT NULL,
   `PRODUCT_ID` int(11) NOT NULL,
-  `BRAND_NAME` varchar(60) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `PRODUCT_NAME` varchar(60) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `BRAND_NAME` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `PRODUCT_NAME` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `SKU` bigint(20) NOT NULL,
-  `SRP` decimal(10, 4) NULL DEFAULT NULL,
-  `GROSS_WEIGHT` double NULL DEFAULT NULL,
-  `NET_WEIGHT` double NULL DEFAULT NULL,
-  `RECYCLABLE_PACKAGE` smallint(6) NULL DEFAULT NULL,
-  `LOW_FAT` smallint(6) NULL DEFAULT NULL,
-  `UNITS_PER_CASE` smallint(6) NULL DEFAULT NULL,
-  `CASES_PER_PALLET` smallint(6) NULL DEFAULT NULL,
-  `SHELF_WIDTH` double NULL DEFAULT NULL,
-  `SHELF_HEIGHT` double NULL DEFAULT NULL,
-  `SHELF_DEPTH` double NULL DEFAULT NULL,
-  `PRODUCT_SUBCATEGORY` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `PRODUCT_CATEGORY` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `PRODUCT_DEPARTMENT` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `PRODUCT_FAMILY` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `SRP` decimal(10,4) DEFAULT NULL,
+  `GROSS_WEIGHT` double DEFAULT NULL,
+  `NET_WEIGHT` double DEFAULT NULL,
+  `RECYCLABLE_PACKAGE` smallint(6) DEFAULT NULL,
+  `LOW_FAT` smallint(6) DEFAULT NULL,
+  `UNITS_PER_CASE` smallint(6) DEFAULT NULL,
+  `CASES_PER_PALLET` smallint(6) DEFAULT NULL,
+  `SHELF_WIDTH` double DEFAULT NULL,
+  `SHELF_HEIGHT` double DEFAULT NULL,
+  `SHELF_DEPTH` double DEFAULT NULL,
+  `PRODUCT_SUBCATEGORY` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `PRODUCT_CATEGORY` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `PRODUCT_DEPARTMENT` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `PRODUCT_FAMILY` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`PRODUCT_ID`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of product
@@ -9201,16 +9200,16 @@ INSERT INTO `product` VALUES (31, 1560, 'CDR', 'CDR Grape Jelly', 54896665215, 1
 -- Table structure for promotion
 -- ----------------------------
 -- DROP TABLE IF EXISTS `promotion`;
-CREATE TABLE `promotion`  (
+CREATE TABLE `promotion` (
   `PROMOTION_ID` int(11) NOT NULL,
-  `PROMOTION_DISTRICT_ID` int(11) NULL DEFAULT NULL,
-  `PROMOTION_NAME` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `MEDIA_TYPE` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `COST` decimal(10, 4) NULL DEFAULT NULL,
-  `START_DATE` timestamp(0) NULL DEFAULT NULL,
-  `END_DATE` timestamp(0) NULL DEFAULT NULL,
+  `PROMOTION_DISTRICT_ID` int(11) DEFAULT NULL,
+  `PROMOTION_NAME` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `MEDIA_TYPE` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `COST` decimal(10,4) DEFAULT NULL,
+  `START_DATE` timestamp NULL DEFAULT NULL,
+  `END_DATE` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`PROMOTION_ID`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of promotion
@@ -11084,16 +11083,16 @@ INSERT INTO `promotion` VALUES (1896, 133, 'Money Savers', 'Cash Register Handou
 -- Table structure for region
 -- ----------------------------
 -- DROP TABLE IF EXISTS `region`;
-CREATE TABLE `region`  (
+CREATE TABLE `region` (
   `REGION_ID` int(11) NOT NULL,
-  `SALES_CITY` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `SALES_STATE_PROVINCE` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `SALES_DISTRICT` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `SALES_REGION` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `SALES_COUNTRY` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `SALES_DISTRICT_ID` int(11) NULL DEFAULT NULL,
+  `SALES_CITY` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `SALES_STATE_PROVINCE` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `SALES_DISTRICT` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `SALES_REGION` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `SALES_COUNTRY` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `SALES_DISTRICT_ID` int(11) DEFAULT NULL,
   PRIMARY KEY (`REGION_ID`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of region
@@ -11213,24 +11212,24 @@ INSERT INTO `region` VALUES (109, 'Santa Fe', 'DF', 'Mexico City', 'Mexico Centr
 -- Table structure for reserve_employee
 -- ----------------------------
 -- DROP TABLE IF EXISTS `reserve_employee`;
-CREATE TABLE `reserve_employee`  (
+CREATE TABLE `reserve_employee` (
   `EMPLOYEE_ID` int(11) NOT NULL,
-  `FULL_NAME` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `FIRST_NAME` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `LAST_NAME` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `POSITION_ID` int(11) NULL DEFAULT NULL,
-  `POSITION_TITLE` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `FULL_NAME` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `FIRST_NAME` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `LAST_NAME` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `POSITION_ID` int(11) DEFAULT NULL,
+  `POSITION_TITLE` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `STORE_ID` int(11) NOT NULL,
   `DEPARTMENT_ID` int(11) NOT NULL,
-  `BIRTH_DATE` timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0) ON UPDATE CURRENT_TIMESTAMP(0),
-  `HIRE_DATE` timestamp(0) NULL DEFAULT NULL,
-  `END_DATE` timestamp(0) NULL DEFAULT NULL,
-  `SALARY` decimal(10, 4) NOT NULL,
-  `SUPERVISOR_ID` int(11) NULL DEFAULT NULL,
-  `EDUCATION_LEVEL` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `MARITAL_STATUS` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `GENDER` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
-) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+  `BIRTH_DATE` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `HIRE_DATE` timestamp NULL DEFAULT NULL,
+  `END_DATE` timestamp NULL DEFAULT NULL,
+  `SALARY` decimal(10,4) NOT NULL,
+  `SUPERVISOR_ID` int(11) DEFAULT NULL,
+  `EDUCATION_LEVEL` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `MARITAL_STATUS` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `GENDER` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of reserve_employee
@@ -11383,16 +11382,16 @@ INSERT INTO `reserve_employee` VALUES (1299, 'Shona Grimm', 'Shona', 'Grimm', NU
 -- Table structure for salary
 -- ----------------------------
 -- DROP TABLE IF EXISTS `salary`;
-CREATE TABLE `salary`  (
-  `PAY_DATE` timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0) ON UPDATE CURRENT_TIMESTAMP(0),
+CREATE TABLE `salary` (
+  `PAY_DATE` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `EMPLOYEE_ID` int(11) NOT NULL,
   `DEPARTMENT_ID` int(11) NOT NULL,
   `CURRENCY_ID` int(11) NOT NULL,
-  `SALARY_PAID` decimal(10, 4) NOT NULL,
-  `OVERTIME_PAID` decimal(10, 4) NOT NULL,
+  `SALARY_PAID` decimal(10,4) NOT NULL,
+  `OVERTIME_PAID` decimal(10,4) NOT NULL,
   `VACATION_ACCRUED` double NOT NULL,
   `VACATION_USED` double NOT NULL
-) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of salary
@@ -32694,27 +32693,27 @@ INSERT INTO `sales_fact_sample` VALUES (1147, 1041, 6192, 549, 7, 4.2600, 1.3206
 -- Table structure for sales_fact_virtual
 -- ----------------------------
 -- DROP TABLE IF EXISTS `sales_fact_virtual`;
-CREATE TABLE `sales_fact_virtual`  (
+CREATE TABLE `sales_fact_virtual` (
   `PRODUCT_ID` int(11) NOT NULL,
   `TIME_ID` int(11) NOT NULL,
   `CUSTOMER_ID` int(11) NOT NULL,
   `PROMOTION_ID` int(11) NOT NULL,
   `STORE_ID` int(11) NOT NULL,
-  `STORE_SALES` decimal(10, 0) NOT NULL,
-  `STORE_COST` decimal(10, 0) NOT NULL,
-  `UNIT_SALES` decimal(10, 0) NOT NULL,
+  `STORE_SALES` decimal(10,0) NOT NULL,
+  `STORE_COST` decimal(10,0) NOT NULL,
+  `UNIT_SALES` decimal(10,0) NOT NULL,
   `VERSION` int(11) NOT NULL,
-  PRIMARY KEY (`PRODUCT_ID`, `TIME_ID`, `CUSTOMER_ID`, `PROMOTION_ID`, `STORE_ID`, `VERSION`) USING BTREE,
-  INDEX `CUSTOMER_ID`(`CUSTOMER_ID`) USING BTREE,
-  INDEX `PROMOTION_ID`(`PROMOTION_ID`) USING BTREE,
-  INDEX `STORE_ID`(`STORE_ID`) USING BTREE,
-  INDEX `TIME_ID`(`TIME_ID`) USING BTREE,
+  PRIMARY KEY (`PRODUCT_ID`,`TIME_ID`,`CUSTOMER_ID`,`PROMOTION_ID`,`STORE_ID`,`VERSION`) USING BTREE,
+  KEY `CUSTOMER_ID` (`CUSTOMER_ID`) USING BTREE,
+  KEY `PROMOTION_ID` (`PROMOTION_ID`) USING BTREE,
+  KEY `STORE_ID` (`STORE_ID`) USING BTREE,
+  KEY `TIME_ID` (`TIME_ID`) USING BTREE,
   CONSTRAINT `sales_fact_virtual_ibfk_1` FOREIGN KEY (`CUSTOMER_ID`) REFERENCES `customer` (`CUSTOMER_ID`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `sales_fact_virtual_ibfk_2` FOREIGN KEY (`PRODUCT_ID`) REFERENCES `product` (`PRODUCT_ID`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `sales_fact_virtual_ibfk_3` FOREIGN KEY (`PROMOTION_ID`) REFERENCES `promotion` (`PROMOTION_ID`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `sales_fact_virtual_ibfk_4` FOREIGN KEY (`STORE_ID`) REFERENCES `store` (`STORE_ID`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `sales_fact_virtual_ibfk_5` FOREIGN KEY (`TIME_ID`) REFERENCES `time_by_day` (`TIME_ID`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of sales_fact_virtual
@@ -32854,15 +32853,15 @@ INSERT INTO `sanky_date` VALUES ('Working hours', 'Cane sugar (Organic)', 0.0009
 -- Table structure for siblings1
 -- ----------------------------
 -- DROP TABLE IF EXISTS `siblings1`;
-CREATE TABLE `siblings1`  (
-  `SUBJECT_NAME` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `SOURCELABEL` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `SOURCEWIDTH` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `OTHER_PARTY` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `TARGETLABEL` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `TARGETWIDTH` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `RELATION` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL
-) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+CREATE TABLE `siblings1` (
+  `SUBJECT_NAME` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `SOURCELABEL` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `SOURCEWIDTH` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `OTHER_PARTY` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `TARGETLABEL` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `TARGETWIDTH` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `RELATION` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of siblings1
@@ -32878,15 +32877,15 @@ INSERT INTO `siblings1` VALUES ('Ann', 'Ann', '45', 'Ochieng', 'Ochieng', '50', 
 -- Table structure for siblings2
 -- ----------------------------
 -- DROP TABLE IF EXISTS `siblings2`;
-CREATE TABLE `siblings2`  (
-  `SUBJECT_NAME` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `SOURCELABEL` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `SOURCEWIDTH` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `OTHER_PARTY` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `TARGETLABEL` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `TARGETWIDTH` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `RELATION` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL
-) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+CREATE TABLE `siblings2` (
+  `SUBJECT_NAME` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `SOURCELABEL` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `SOURCEWIDTH` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `OTHER_PARTY` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `TARGETLABEL` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `TARGETWIDTH` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `RELATION` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of siblings2
@@ -32908,40 +32907,40 @@ INSERT INTO `siblings2` VALUES ('Onyango', 'Onyango', '45', 'Ann', 'Ann', '50', 
 -- Table structure for store
 -- ----------------------------
 -- DROP TABLE IF EXISTS `store`;
-CREATE TABLE `store`  (
+CREATE TABLE `store` (
   `STORE_ID` int(11) NOT NULL,
-  `STORE_TYPE` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `REGION_ID` int(11) NULL DEFAULT NULL,
-  `STORE_NAME` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `STORE_NUMBER` int(11) NULL DEFAULT NULL,
-  `STORE_STREET_ADDRESS` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `STORE_CITY` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `STORE_STATE` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `STORE_POSTAL_CODE` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `STORE_COUNTRY` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `STORE_MANAGER` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `STORE_PHONE` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `STORE_FAX` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `FIRST_OPENED_DATE` timestamp(0) NULL DEFAULT NULL,
-  `LAST_REMODEL_DATE` timestamp(0) NULL DEFAULT NULL,
-  `STORE_SQFT` int(11) NULL DEFAULT NULL,
-  `GROCERY_SQFT` int(11) NULL DEFAULT NULL,
-  `FROZEN_SQFT` int(11) NULL DEFAULT NULL,
-  `MEAT_SQFT` int(11) NULL DEFAULT NULL,
-  `COFFEE_BAR` smallint(6) NULL DEFAULT NULL,
-  `VIDEO_STORE` smallint(6) NULL DEFAULT NULL,
-  `SALAD_BAR` smallint(6) NULL DEFAULT NULL,
-  `PREPARED_FOOD` smallint(6) NULL DEFAULT NULL,
-  `FLORIST` smallint(6) NULL DEFAULT NULL,
-  `SALES_REGION_ID` int(11) NULL DEFAULT NULL,
-  `SALES_STATE` longtext CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
-  `SALES_REGION` longtext CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
-  `SALES_SUBREGION` longtext CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
-  `SALES_AREA` longtext CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
+  `STORE_TYPE` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `REGION_ID` int(11) DEFAULT NULL,
+  `STORE_NAME` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `STORE_NUMBER` int(11) DEFAULT NULL,
+  `STORE_STREET_ADDRESS` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `STORE_CITY` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `STORE_STATE` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `STORE_POSTAL_CODE` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `STORE_COUNTRY` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `STORE_MANAGER` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `STORE_PHONE` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `STORE_FAX` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `FIRST_OPENED_DATE` timestamp NULL DEFAULT NULL,
+  `LAST_REMODEL_DATE` timestamp NULL DEFAULT NULL,
+  `STORE_SQFT` int(11) DEFAULT NULL,
+  `GROCERY_SQFT` int(11) DEFAULT NULL,
+  `FROZEN_SQFT` int(11) DEFAULT NULL,
+  `MEAT_SQFT` int(11) DEFAULT NULL,
+  `COFFEE_BAR` smallint(6) DEFAULT NULL,
+  `VIDEO_STORE` smallint(6) DEFAULT NULL,
+  `SALAD_BAR` smallint(6) DEFAULT NULL,
+  `PREPARED_FOOD` smallint(6) DEFAULT NULL,
+  `FLORIST` smallint(6) DEFAULT NULL,
+  `SALES_REGION_ID` int(11) DEFAULT NULL,
+  `SALES_STATE` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `SALES_REGION` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `SALES_SUBREGION` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `SALES_AREA` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
   PRIMARY KEY (`STORE_ID`) USING BTREE,
-  INDEX `REGION_ID`(`REGION_ID`) USING BTREE,
+  KEY `REGION_ID` (`REGION_ID`) USING BTREE,
   CONSTRAINT `store_ibfk_1` FOREIGN KEY (`REGION_ID`) REFERENCES `region` (`REGION_ID`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of store
@@ -32976,12 +32975,12 @@ INSERT INTO `store` VALUES (24, 'Supermarket', 7, 'Store 24', 24, '2342 Waltham 
 -- Table structure for store_city_key
 -- ----------------------------
 -- DROP TABLE IF EXISTS `store_city_key`;
-CREATE TABLE `store_city_key`  (
+CREATE TABLE `store_city_key` (
   `ID` int(11) NOT NULL,
-  `STORE_CITY` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `STORE_STATE` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `STORE_CITY` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `STORE_STATE` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`ID`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of store_city_key
@@ -33015,32 +33014,32 @@ INSERT INTO `store_city_key` VALUES (24, 'Yakima', 'WA');
 -- Table structure for store_ragged
 -- ----------------------------
 -- DROP TABLE IF EXISTS `store_ragged`;
-CREATE TABLE `store_ragged`  (
+CREATE TABLE `store_ragged` (
   `STORE_ID` int(11) NOT NULL,
-  `STORE_TYPE` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `REGION_ID` int(11) NULL DEFAULT NULL,
-  `STORE_NAME` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `STORE_NUMBER` int(11) NULL DEFAULT NULL,
-  `STORE_STREET_ADDRESS` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `STORE_CITY` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `STORE_STATE` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `STORE_POSTAL_CODE` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `STORE_COUNTRY` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `STORE_MANAGER` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `STORE_PHONE` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `STORE_FAX` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `FIRST_OPENED_DATE` timestamp(0) NULL DEFAULT NULL,
-  `LAST_REMODEL_DATE` timestamp(0) NULL DEFAULT NULL,
-  `STORE_SQFT` int(11) NULL DEFAULT NULL,
-  `GROCERY_SQFT` int(11) NULL DEFAULT NULL,
-  `FROZEN_SQFT` int(11) NULL DEFAULT NULL,
-  `MEAT_SQFT` int(11) NULL DEFAULT NULL,
-  `COFFEE_BAR` smallint(6) NULL DEFAULT NULL,
-  `VIDEO_STORE` smallint(6) NULL DEFAULT NULL,
-  `SALAD_BAR` smallint(6) NULL DEFAULT NULL,
-  `PREPARED_FOOD` smallint(6) NULL DEFAULT NULL,
-  `FLORIST` smallint(6) NULL DEFAULT NULL
-) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+  `STORE_TYPE` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `REGION_ID` int(11) DEFAULT NULL,
+  `STORE_NAME` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `STORE_NUMBER` int(11) DEFAULT NULL,
+  `STORE_STREET_ADDRESS` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `STORE_CITY` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `STORE_STATE` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `STORE_POSTAL_CODE` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `STORE_COUNTRY` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `STORE_MANAGER` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `STORE_PHONE` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `STORE_FAX` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `FIRST_OPENED_DATE` timestamp NULL DEFAULT NULL,
+  `LAST_REMODEL_DATE` timestamp NULL DEFAULT NULL,
+  `STORE_SQFT` int(11) DEFAULT NULL,
+  `GROCERY_SQFT` int(11) DEFAULT NULL,
+  `FROZEN_SQFT` int(11) DEFAULT NULL,
+  `MEAT_SQFT` int(11) DEFAULT NULL,
+  `COFFEE_BAR` smallint(6) DEFAULT NULL,
+  `VIDEO_STORE` smallint(6) DEFAULT NULL,
+  `SALAD_BAR` smallint(6) DEFAULT NULL,
+  `PREPARED_FOOD` smallint(6) DEFAULT NULL,
+  `FLORIST` smallint(6) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of store_ragged
@@ -33075,11 +33074,11 @@ INSERT INTO `store_ragged` VALUES (24, 'Supermarket', 7, 'Store 24', 24, '2342 W
 -- Table structure for store_state_key
 -- ----------------------------
 -- DROP TABLE IF EXISTS `store_state_key`;
-CREATE TABLE `store_state_key`  (
+CREATE TABLE `store_state_key` (
   `ID` int(11) NOT NULL,
-  `STORE_STATE` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `STORE_STATE` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`ID`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of store_state_key
@@ -33099,13 +33098,13 @@ INSERT INTO `store_state_key` VALUES (10, 'Zacatecas');
 -- Table structure for test_exp
 -- ----------------------------
 -- DROP TABLE IF EXISTS `test_exp`;
-CREATE TABLE `test_exp`  (
-  `year` smallint(6) NULL DEFAULT NULL,
-  `month` smallint(6) NULL DEFAULT NULL,
-  `store_country` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `store_state` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `store_sales` decimal(10, 4) NOT NULL
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+CREATE TABLE `test_exp` (
+  `year` smallint(6) DEFAULT NULL,
+  `month` smallint(6) DEFAULT NULL,
+  `store_country` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `store_state` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `store_sales` decimal(10,4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of test_exp
@@ -33182,19 +33181,19 @@ INSERT INTO `test_exp` VALUES (2012, 11, 'USA', 'CA', 8.7300);
 -- Table structure for time_by_day
 -- ----------------------------
 -- DROP TABLE IF EXISTS `time_by_day`;
-CREATE TABLE `time_by_day`  (
+CREATE TABLE `time_by_day` (
   `TIME_ID` int(11) NOT NULL,
-  `THE_DATE` timestamp(0) NULL DEFAULT NULL,
-  `THE_DAY` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `THE_MONTH` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `THE_YEAR` smallint(6) NULL DEFAULT NULL,
-  `DAY_OF_MONTH` smallint(6) NULL DEFAULT NULL,
-  `WEEK_OF_YEAR` int(11) NULL DEFAULT NULL,
-  `MONTH_OF_YEAR` smallint(6) NULL DEFAULT NULL,
-  `QUARTER` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `FISCAL_PERIOD` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `THE_DATE` timestamp NULL DEFAULT NULL,
+  `THE_DAY` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `THE_MONTH` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `THE_YEAR` smallint(6) DEFAULT NULL,
+  `DAY_OF_MONTH` smallint(6) DEFAULT NULL,
+  `WEEK_OF_YEAR` int(11) DEFAULT NULL,
+  `MONTH_OF_YEAR` smallint(6) DEFAULT NULL,
+  `QUARTER` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `FISCAL_PERIOD` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`TIME_ID`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of time_by_day
@@ -33216,12 +33215,12 @@ INSERT INTO `time_by_day` VALUES (378, '2011-01-12 05:00:00', 'Sunday', 'January
 -- Table structure for treemap_sum
 -- ----------------------------
 -- DROP TABLE IF EXISTS `treemap_sum`;
-CREATE TABLE `treemap_sum`  (
-  `IDTREE` int(11) NULL DEFAULT NULL,
-  `DTREE` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `IDTREERIC` int(11) NULL DEFAULT NULL,
-  `SALES` decimal(10, 4) NULL DEFAULT NULL
-) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+CREATE TABLE `treemap_sum` (
+  `IDTREE` int(11) DEFAULT NULL,
+  `DTREE` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `IDTREERIC` int(11) DEFAULT NULL,
+  `SALES` decimal(10,4) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of treemap_sum
@@ -33264,25 +33263,25 @@ INSERT INTO `treemap_sum` VALUES (7, 'Guadalajara', 5, 4328.8700);
 -- Table structure for warehouse
 -- ----------------------------
 -- DROP TABLE IF EXISTS `warehouse`;
-CREATE TABLE `warehouse`  (
+CREATE TABLE `warehouse` (
   `WAREHOUSE_ID` int(11) NOT NULL,
-  `WAREHOUSE_CLASS_ID` int(11) NULL DEFAULT NULL,
-  `STORES_ID` int(11) NULL DEFAULT NULL,
-  `WAREHOUSE_NAME` varchar(60) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `WA_ADDRESS1` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `WA_ADDRESS2` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `WA_ADDRESS3` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `WA_ADDRESS4` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `WAREHOUSE_CITY` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `WAREHOUSE_STATE_PROVINCE` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `WAREHOUSE_POSTAL_CODE` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `WAREHOUSE_COUNTRY` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `WAREHOUSE_OWNER_NAME` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `WAREHOUSE_PHONE` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `WAREHOUSE_FAX` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `CLASS_DESCRIPTION` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `WAREHOUSE_CLASS_ID` int(11) DEFAULT NULL,
+  `STORES_ID` int(11) DEFAULT NULL,
+  `WAREHOUSE_NAME` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `WA_ADDRESS1` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `WA_ADDRESS2` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `WA_ADDRESS3` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `WA_ADDRESS4` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `WAREHOUSE_CITY` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `WAREHOUSE_STATE_PROVINCE` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `WAREHOUSE_POSTAL_CODE` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `WAREHOUSE_COUNTRY` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `WAREHOUSE_OWNER_NAME` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `WAREHOUSE_PHONE` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `WAREHOUSE_FAX` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `CLASS_DESCRIPTION` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`WAREHOUSE_ID`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of warehouse
@@ -33329,7 +33328,7 @@ SET FOREIGN_KEY_CHECKS = 1;
 
  Date: 03/05/2022 12:07:48
 */
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ `alldata`` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+-- CREATE DATABASE /*!32312 IF NOT EXISTS*/ `alldata`` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 
 USE `alldata`;
 
@@ -33420,7 +33419,7 @@ SET FOREIGN_KEY_CHECKS = 1;
  Date: 03/05/2022 12:06:03
 */
 
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ `alldata`` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+-- CREATE DATABASE /*!32312 IF NOT EXISTS*/ `alldata`` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 
 USE `alldata`;
 
