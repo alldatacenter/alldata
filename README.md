@@ -9,7 +9,8 @@
 ## [AllData@杭州奥零数据科技公司-开源安装部署](https://github.com/alldatacenter/alldata/blob/master/install/install.md)
 
 ## 20260430-AllData数据中台年度技术直播分享与录屏
-<img width="1400" src="https://github.com/user-attachments/assets/7f22c0a2-7444-43a2-a2a5-8b9dde18a272" />
+
+<img width="1400" src="https://github.com/user-attachments/assets/fb6644ce-c8b0-45ee-975e-22d89ad7e2e1" />
 
 ## AllData数据中台产品详细介绍
 
