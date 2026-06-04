@@ -1,40 +1,31 @@
 # AllData数据中台
 
-## [AllData@杭州奥零数据科技公司-官方网站](http://www.aolingdata.com)
+### [AllData数据中台 & 杭州奥零数据科技 - 官方网站: http://www.aolingdata.com](http://www.aolingdata.com)
+### [AllData数据中台 & 杭州奥零数据科技 - 产品手册: https://www.yuque.com/aolingdata/product](https://www.yuque.com/aolingdata/product)
+### [AllData数据中台 & 杭州奥零数据科技 - 社区文档: https://docs.qq.com/doc/DVHlkSEtvVXVCdEFo](https://docs.qq.com/doc/DVHlkSEtvVXVCdEFo) 
+### [AllData数据中台 & 杭州奥零数据科技 - 社区交流: https://docs.qq.com/doc/DVnhVemtBTHdDVHps](https://docs.qq.com/doc/DVnhVemtBTHdDVHps) 
+### [AllData数据中台 & 杭州奥零数据科技 - 开源版安装部署: https://alldata-document.readthedocs.io](https://alldata-document.readthedocs.io/zh/latest/install_deploy/index.html) 
 
-## [AllData@杭州奥零数据科技公司-产品手册](https://www.yuque.com/aolingdata/product)
-
-## [AllData@杭州奥零数据科技公司-社群商务咨询](https://docs.qq.com/doc/DVHlkSEtvVXVCdEFo)
-
-## [AllData@杭州奥零数据科技公司-开源安装部署](https://github.com/alldatacenter/alldata/blob/master/install/install.md)
-
-## 20260430-AllData数据中台年度技术直播分享与录屏
-
-<img width="1400" src="https://github.com/user-attachments/assets/fb6644ce-c8b0-45ee-975e-22d89ad7e2e1" />
 
 ## AllData数据中台产品详细介绍
-
-<img width="1400" src="https://github.com/user-attachments/assets/db0b7886-c7bc-4206-8798-0c53b151fa21" />
+<img width="1400" src="https://github.com/user-attachments/assets/f31a1df6-37c7-4e4a-aa0e-56bf05caa86a" />
 
 ## AllData发展历程
-
-<img width="1400" src="https://github-readme-stats.vercel.app/api/pin/?username=alldatacenter&repo=alldata" />
-
 <img width="1400" src="https://starchart.cc/alldatacenter/alldata.svg" />
 
-## AllData操作流程图
-<img width="1400" alt="image" src="https://github.com/user-attachments/assets/c9bfa4e6-9196-4341-97e9-d3d652ac811e">
-
 ## AllData架构设计图
-<img width="1400" alt="image" src="https://github.com/user-attachments/assets/a13d2118-896a-4111-958c-3deb903c1f48">
+<img width="1400" alt="image" src="https://github.com/user-attachments/assets/3a9bf963-2d9e-44a3-b803-8ea2b340df22">
 
 ## AllData技术社区 
-
 <img width="1400" alt="image" src="https://github.com/user-attachments/assets/f91804db-9e45-4b22-958f-563bc6b9b578">
 
-## AllData正式环境(部分截图)
-## 首页
-<img width="4480" height="2292" alt="首页" src="https://github.com/user-attachments/assets/afbbc553-faa8-414d-b2b3-b1d2a44fb066" />
+## AllData数据中台正式线上环境（联系市场同事获取体验帐号）
+## 登录页
+<img width="3200" height="1572" alt="登录页" src="https://github.com/user-attachments/assets/afbbc553-faa8-414d-b2b3-b1d2a44fb066" />
+
+### 系统首页
+<img width="3200" height="1572" alt="首页" src="https://github.com/user-attachments/assets/4ccc8489-e3aa-47b9-9f6c-19929b04e0e7" />
+
 
 ## 数据源平台
 
