@@ -4,7 +4,7 @@
 ### [AllData数据中台 & 杭州奥零数据科技 - 产品手册](https://www.yuque.com/aolingdata/product)
 ### [AllData数据中台 & 杭州奥零数据科技 - 社区文档](https://docs.qq.com/doc/DVHlkSEtvVXVCdEFo) 
 ### [AllData数据中台 & 杭州奥零数据科技 - 社区交流](https://docs.qq.com/doc/DVnhVemtBTHdDVHps) 
-### [AllData数据中台 & 杭州奥零数据科技 - 开源版安装部署](https://alldata-document.readthedocs.io/zh/latest/install_deploy/index.html) 
+### [AllData数据中台 & 杭州奥零数据科技 - 开源版安装部署](https://alldata-document.readthedocs.io) 
 
 
 ## AllData数据中台产品详细介绍
