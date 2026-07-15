@@ -78,13 +78,6 @@ module.exports = {
           '^/codegen': 'codegen'
         }
       },
-      '/workflow': {
-        target: process.env.VUE_APP_BASE_API,
-        changeOrigin: true,
-        pathRewrite: {
-          '^/workflow': 'workflow'
-        }
-      }
     }
   },
   configureWebpack: {

@@ -20,7 +20,5 @@ public interface RedisConstant {
 
     String STANDARD_DICT_KEY = "data:standard:dicts";
 
-    String WORKFLOW_BUSINESS_KEY = "data:workflow:business";
-
     String VISUAL_SET_KEY = "data:visual:sets";
 }

@@ -7,7 +7,7 @@
   "scripts": {
     "bootstrap": "npm install",
     "start": "vue-cli-service serve --port 8013",
-    "build:prod": "vue-cli-service build",
+    "build": "vue-cli-service build",
     "build:stage": "vue-cli-service build --mode staging",
     "preview": "node build/index.js --preview",
     "lint": "eslint --ext .js,.vue src",

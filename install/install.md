@@ -14,19 +14,18 @@
 │   │   │   │   ├──alldata-0.x.x.sql
 │   │   ├── 16gsla 
 │   ├── studio（各模块目录）
-│   │   ├── codegen-service-parent（代码生成，可选启动）
-│   │   ├── data-market-service-parent（数据服务，可选启动）
-│   │   ├── data-masterdata-service-parent（数据模型，可选启动）
-│   │   ├── data-metadata-service-parent（元数据管理，可选启动）
-│   │   ├── data-quality-service-parent（数据质量，可选启动）
-│   │   ├── data-standard-service-parent（数据标准，可选启动）
-│   │   ├── data-system-service-parent（基础服务，必须启动）
-│   │   ├── data-visual-service-parent（数据可视化模块，可选启动）
-│   │   ├── email-service-parent（邮件管理模块，可选启动）
-│   │   ├── file-service-parent（文件管理模块，可选启动）
-│   │   ├── quartz-service-parent（定时任务模块，可选启动）
-│   │   ├── service-data-dts-parent（数据集成模块，可选启动）
-│   │   ├── system-service-parent（系统管理模块，必须启动）
+│   │   ├── data-market（数据服务，可选启动）
+│   │   ├── data-masterdata（数据模型，可选启动）
+│   │   ├── data-metadata（元数据管理，可选启动）
+│   │   ├── data-quality（数据质量，可选启动）
+│   │   ├── data-standard（数据标准，可选启动）
+│   │   ├── data-system（基础服务，必须启动）
+│   │   ├── data-visual（数据可视化模块，可选启动）
+│   │   ├── email（邮件管理模块，可选启动）
+│   │   ├── file（文件管理模块，可选启动）
+│   │   ├── quartz（定时任务模块，可选启动）
+│   │   ├── data-dts（数据集成模块，可选启动）
+│   │   ├── studio-system（系统管理模块，必须启动）
 │   ├── pom.xml
 
 ```
@@ -130,23 +129,22 @@ npm run build
 
 ### 8、启动SystemService项目，本地运行时eureka配置处，改成localhost。及其他项目同理。
 ```
-系统管理 - system-service-parent ~ system-service ~ SystemServiceApplication
-数据集成 - service-data-dts-parent ~ service-data-dts ~ DataDtsServiceApplication
-元数据管理 - data-metadata-service-parent ~ data-metadata-service ~ DataxMetadataApplication
-元数据管理 - data-metadata-service-parent ~ data-metadata-service-console ~ DataxConsoleApplication
-数据标准 - data-standard-service-parent ~ data-standard-service ~ DataxStandardApplication
-数据质量 - data-quality-service-parent ~ data-quality-service ~ DataxQualityApplication
-数据资产 - data-masterdata-service-parent ~ data-masterdata-service ~ DataxMasterdataApplication
-数据市场 - data-market-service-parent ~ data-market-service ~ DataxMarketApplication
-数据市场 - data-market-service-parent ~ data-market-service-integration ~ DataxIntegrationApplication
-数据市场 - data-market-service-parent ~ data-market-service-mapping ~ DataxMappingApplication
-数据对比 - data-compare-service-parent ~ data-compare-service ~ DataCompareApplication
-BI报表 - data-visual-service-parent ~ data-visual-service ~ DataxVisualApplication
-系统监控 - system-service-parent ~ system-service ~ SystemServiceApplication
-批量/定时任务 - quartz-service-parent ~ quartz-service ~ DataxQuartzApplication
-代码生成 - codegen-service-parent ~ codegen-service ~ DataxCodeGenApplication
-邮件服务 - email-service-parent ~ email-service ~ DataxMailApplication
-文件服务 - file-service-parent ~ file-service ~ DataxFileApplication
+系统管理 - studio-system ~ system-service ~ SystemServiceApplication
+数据集成 - data-dts ~ service-data-dts ~ DataDtsServiceApplication
+元数据管理 - data-metadata ~ data-metadata-service ~ DataxMetadataApplication
+元数据管理 - data-metadata ~ data-metadata-service-console ~ DataxConsoleApplication
+数据标准 - data-standard ~ data-standard-service ~ DataxStandardApplication
+数据质量 - data-quality ~ data-quality-service ~ DataxQualityApplication
+数据资产 - data-masterdata ~ data-masterdata-service ~ DataxMasterdataApplication
+数据市场 - data-market ~ data-market-service ~ DataxMarketApplication
+数据市场 - data-market ~ data-market-service-integration ~ DataxIntegrationApplication
+数据市场 - data-market ~ data-market-service-mapping ~ DataxMappingApplication
+数据对比 - data-compare ~ data-compare-service ~ DataCompareApplication
+BI报表 - data-visual ~ data-visual-service ~ DataxVisualApplication
+系统监控 - studio-system ~ system-service ~ SystemServiceApplication
+批量/定时任务 - quartz ~ quartz-service ~ DataxQuartzApplication
+邮件服务 - email ~ email-service ~ DataxMailApplication
+文件服务 - file ~ file-service ~ DataxFileApplication
 ```
 
 ### 9、服务器集群部署

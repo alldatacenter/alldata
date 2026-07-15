@@ -32,7 +32,7 @@ Module not found: Error: Can't resolvebabel-loader'in D: workspaceldatacenter wo
 
 原因 -
 1、教程
-https://github.com/alldatacenter/alldata/blob/master/studio/modules/service-data-dts-parent/DTS_QuickStart.md
+alldata/quickstart/quickstart_dts.md
 
 ```
 
@@ -46,7 +46,7 @@ https://github.com/alldatacenter/alldata/blob/master/studio/modules/service-data
 原因 -
 1、教程
 2、依赖datax,安装datax: https://blog.csdn.net/qq_18896247/article/details/123127487
-3、https://github.com/alldatacenter/alldata/blob/master/studio/modules/service-data-dts-parent/DTS_QuickStart.md
+3、alldata/quickstart/quickstart_dts.md
 
 ```
 
