@@ -10,14 +10,14 @@
 ## AllData数据中台产品详细介绍
 <img width="1400" src="https://github.com/user-attachments/assets/f31a1df6-37c7-4e4a-aa0e-56bf05caa86a" />
 
-## AllData发展历程
-<img width="1400" src="https://starchart.cc/alldatacenter/alldata.svg" />
-
 ## AllData架构设计图
 <img width="1400" alt="image" src="https://github.com/user-attachments/assets/3a9bf963-2d9e-44a3-b803-8ea2b340df22">
 
 ## AllData技术社区 
 <img width="1400" alt="image" src="https://github.com/user-attachments/assets/7e18ed98-1943-4e0c-9f6b-40b16a8f4fc9">
+
+## AllData发展历程
+<img width="1400" src="https://starchart.cc/alldatacenter/alldata.svg" />
 
 ## AllData数据中台产品演示与体验
 ## AllData登录页
