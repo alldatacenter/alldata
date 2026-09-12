@@ -25,7 +25,7 @@
 │   │   ├── file（文件管理模块，可选启动）
 │   │   ├── quartz（定时任务模块，可选启动）
 │   │   ├── data-dts（数据集成模块，可选启动）
-│   │   ├── studio-system（系统管理模块，必须启动）
+│   │   ├── data-backend（系统管理模块，必须启动）
 │   ├── pom.xml
 
 ```
@@ -129,7 +129,7 @@ npm run build
 
 ### 8、启动SystemService项目，本地运行时eureka配置处，改成localhost。及其他项目同理。
 ```
-系统管理 - studio-system ~ system-service ~ SystemServiceApplication
+系统管理 - data-backend ~ data-server ~ SystemServiceApplication
 数据集成 - data-dts ~ service-data-dts ~ DataDtsServiceApplication
 元数据管理 - data-metadata ~ data-metadata-service ~ DataxMetadataApplication
 元数据管理 - data-metadata ~ data-metadata-service-console ~ DataxConsoleApplication
@@ -141,7 +141,7 @@ npm run build
 数据市场 - data-market ~ data-market-service-mapping ~ DataxMappingApplication
 数据对比 - data-compare ~ data-compare-service ~ DataCompareApplication
 BI报表 - data-visual ~ data-visual-service ~ DataxVisualApplication
-系统监控 - studio-system ~ system-service ~ SystemServiceApplication
+系统监控 - data-backend ~ data-server ~ SystemServiceApplication
 批量/定时任务 - quartz ~ quartz-service ~ DataxQuartzApplication
 邮件服务 - email ~ email-service ~ DataxMailApplication
 文件服务 - file ~ file-service ~ DataxFileApplication
@@ -150,7 +150,7 @@ BI报表 - data-visual ~ data-visual-service ~ DataxVisualApplication
 ### 9、服务器集群部署
 | 16gmaster                | port | ip             |
 |--------------------------|------| -------------- |
-| system-service           | 8000 | 16gmaster  |
+| data-server           | 8000 | 16gmaster  |
 | data-market-service      | 8822 | 16gmaster  |
 | service-data-integration | 8824 | 16gmaster  |
 | data-metadata-service    | 8820 | 16gmaster  |

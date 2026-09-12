@@ -162,18 +162,18 @@
         </fileSet>
 
         <fileSet>
-            <directory>${project.parent.basedir}/studio/studio-system/system-service/target
+            <directory>${project.parent.basedir}/studio/data-backend/data-server/target
             </directory>
-            <outputDirectory>./16gmaster/system-service</outputDirectory>
+            <outputDirectory>./16gmaster/data-server</outputDirectory>
             <includes>
                 <include>*.jar</include>
             </includes>
         </fileSet>
 
         <fileSet>
-            <directory>${project.parent.basedir}/studio/studio-system/system-service/target/classes
+            <directory>${project.parent.basedir}/studio/data-backend/data-server/target/classes
             </directory>
-            <outputDirectory>./16gmaster/system-service</outputDirectory>
+            <outputDirectory>./16gmaster/data-server</outputDirectory>
             <includes>
                 <include>bootstrap.yml</include>
             </includes>

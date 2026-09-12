@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration scan="true" scanPeriod="60 seconds" debug="false">
     <springProperty scope="context" name="springAppName" source="spring.application.name"/>
-    <property name="log.path" value="logs/service-system"/>
+    <property name="log.path" value="logs/data-server"/>
     <property name="log.maxHistory" value="15"/>
     <property name="log.totalSizeCap" value="500MB"/>
     <property name="log.maxFileSize" value="10MB"/>

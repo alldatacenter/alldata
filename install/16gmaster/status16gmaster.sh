@@ -4,8 +4,8 @@ source /etc/profile
 pid=$(ps -ef | grep config.jar | grep -Ev 'color=auto' | awk '{print $2}')
 echo "已启动config:$pid"
 
-pid=$(ps -ef | grep service-system.jar | grep -Ev 'color=auto' | awk '{print $2}')
-echo "已启动service-system:$pid"
+pid=$(ps -ef | grep data-server.jar | grep -Ev 'color=auto' | awk '{print $2}')
+echo "已启动data-server:$pid"
 
 pid=$(ps -ef | grep data-market-service.jar | grep -Ev 'color=auto' | awk '{print $2}')
 echo "已启动data-market-service:$pid"

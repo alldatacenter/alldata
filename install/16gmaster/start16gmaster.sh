@@ -14,7 +14,7 @@ echo "即将启动任务service-data-dts"
 sh service-data-dts/service-data-dts.sh
 
 echo "即将启动任务system"
-sh system-service/system-service.sh
+sh data-server/data-server.sh
 
 echo "即将启动任务market"
 sh data-market-service/data-market-service.sh

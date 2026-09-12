@@ -16,8 +16,8 @@ spring:
           lower-case-service-id: true
       routes:
         # 系统基础设置中心
-        - id: service-system
-          uri: lb://service-system
+        - id: data-server
+          uri: lb://data-server
           predicates:
             - Path=/system/**
           filters:
@@ -28,8 +28,8 @@ spring:
                 name: systemHystrix
                 fallbackUri: forward:/fallback
         # 系统基础设置中心
-        - id: service-system
-          uri: lb:ws://service-system
+        - id: data-server
+          uri: lb:ws://data-server
           predicates:
             - Path=/ws/**
           filters:

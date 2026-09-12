@@ -1,11 +1,11 @@
 # 本地容器化部署
 ## 准备
-+ system-service部署包
++ data-server部署包
 + docker
 + docker-compose
 
 ### 上传服务器
-system-service-*.tar.gz
+data-server-*.tar.gz
 
 ## Dockerfile
 构建镜像需要使用到的配置文件，告诉docker如何构建镜像内容
@@ -21,17 +21,17 @@ vim Dockerfile
 ```dockerfile
 FROM openjdk:1.8.1
 
-COPY system-service-*.tar.gz /
+COPY data-server-*.tar.gz /
 
-RUN mkdir -p /opt/system-service && \
-    tar -zxvf system-service-*.tar.gz -C /opt/system-service --strip-components 1 && \
-    rm system-service-*.tar.gz && \
-    chmod 755 /opt/system-service/bin/*.sh && \
-    chmod 755 /opt/system-service/conf/*.sh
+RUN mkdir -p /opt/data-server && \
+    tar -zxvf data-server-*.tar.gz -C /opt/data-server --strip-components 1 && \
+    rm data-server-*.tar.gz && \
+    chmod 755 /opt/data-server/bin/*.sh && \
+    chmod 755 /opt/data-server/conf/*.sh
 
 EXPOSE 18585
 
-WORKDIR /opt/system-service
+WORKDIR /opt/data-server
 
 ENTRYPOINT ["/bin/bash","bin/startup-docker.sh"]
 
@@ -39,28 +39,28 @@ ENTRYPOINT ["/bin/bash","bin/startup-docker.sh"]
 
 + FROM openjdk:1.8.1
   - 设置基础镜像
-  - system-service的jdk运行环境为1.8，因此这里直接指定一个包含jdk1.8运行环境的基础镜像
+  - data-server的jdk运行环境为1.8，因此这里直接指定一个包含jdk1.8运行环境的基础镜像
   - 也可以指定其他基础镜像，再另行安装jdk环境
-+ COPY system-service-*.tar.gz /
++ COPY data-server-*.tar.gz /
   - 复制部署包到镜像内
-+ RUN mkdir -p /opt/system-service && \
++ RUN mkdir -p /opt/data-server && \
 
-  tar -zxvf system-service-*.tar.gz -C /opt/system-service --strip-components 1 && \
+  tar -zxvf data-server-*.tar.gz -C /opt/data-server --strip-components 1 && \
 
-  rm system-service-*.tar.gz && \
+  rm data-server-*.tar.gz && \
 
-  chmod 755 /opt/system-service/bin/*.sh && \
+  chmod 755 /opt/data-server/bin/*.sh && \
 
-  chmod 755 /opt/system-service/conf/*.sh
+  chmod 755 /opt/data-server/conf/*.sh
 
-  - mkdir -p /opt/system-service：创建部署包解压目录
-  - tar -zxvf system-service-*.tar.gz -C /opt/system-service --strip-components 1：解压部署包
-  - rm system-service-*.tar.gz：删除部署包
-  - chmod 755 /opt/system-service/bin/*.sh：修改文件权限
-  - chmod 755 /opt/system-service/conf/*.sh：修改文件权限
+  - mkdir -p /opt/data-server：创建部署包解压目录
+  - tar -zxvf data-server-*.tar.gz -C /opt/data-server --strip-components 1：解压部署包
+  - rm data-server-*.tar.gz：删除部署包
+  - chmod 755 /opt/data-server/bin/*.sh：修改文件权限
+  - chmod 755 /opt/data-server/conf/*.sh：修改文件权限
 + EXPOSE 18585
   - 暴露容器端口
-+ WORKDIR /opt/system-service
++ WORKDIR /opt/data-server
   - 设置容器工作目录，为镜像设置的指令都将在该目录下执行
 + ENTRYPOINT ["/bin/bash","bin/startup-docker.sh"]
   - 启动容器时执行的命令
@@ -71,13 +71,13 @@ ENTRYPOINT ["/bin/bash","bin/startup-docker.sh"]
 执行以下命令
 
 ```plain
-docker build -f Dockerfile -t system-service:0.6.x .
+docker build -f Dockerfile -t data-server:0.6.x .
 ```
 
 + docker build：构建镜像
 + -f：指定配置文件来构建镜像，如 Dockerfile
-+ -t：指定镜像标签，如 system-service:0.6.x
-  - system-service：镜像名称
++ -t：指定镜像标签，如 data-server:0.6.x
+  - data-server：镜像名称
   - 1.0.0：版本号
 
 执行完成后，执行以下命令查看镜像
@@ -99,15 +99,15 @@ vim docker-compose.yml
 version: '2' # docker-compose 版本号
 
 services: # 服务列表
-  system-service: # 服务名称
+  data-server: # 服务名称
     restart: always # 无论容器退出状态如何，总是重启容器
-    image: system-service:0.6.x # 镜像
-    container_name: system-service # 容器名称
+    image: data-server:0.6.x # 镜像
+    container_name: data-server # 容器名称
     ports:
       - 服务port:服务port # 宿主机端口以及容器端口
     extra_hosts:
       - "mysql_host_ip:43.138.156.44" # 数据库服务主机
-      - "服务ip:服务ip" # system-service 服务主机
+      - "服务ip:服务ip" # data-server 服务主机
 ```
 
 启动
@@ -134,13 +134,13 @@ sudo docker login ccr.ccs.tencentyun.com --username=100043854373
 基于本地构建好的镜像，创建私有云仓库标签引用，用于推送
 
 ```plain
-docker tag system-service:0.6.x ccr.ccs.tencentyun.com/aolingdata/system-service:0.6.x
+docker tag data-server:0.6.x ccr.ccs.tencentyun.com/aolingdata/data-server:0.6.x
 ```
 
 推送到私有仓库
 
 ```plain
-docker push ccr.ccs.tencentyun.com/aolingdata/system-service:0.6.x
+docker push ccr.ccs.tencentyun.com/aolingdata/data-server:0.6.x
 ```
 
 推送成功后，可以在我们的私有仓库云看到
@@ -163,10 +163,10 @@ vim docker-compose.yml
 version: '2' # docker-compose 版本号
 
 services: # 服务列表
-  system-service: # 服务名称
+  data-server: # 服务名称
     restart: always # 无论容器退出状态如何，总是重启容器
-    image: ccr.ccs.tencentyun.com/aolingdata/system-service:0.6.x # 镜像
-    container_name: system-service # 容器名称
+    image: ccr.ccs.tencentyun.com/aolingdata/data-server:0.6.x # 镜像
+    container_name: data-server # 容器名称
     ports:
       - 服务端口:服务端口
     extra_hosts:
