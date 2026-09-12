@@ -11,7 +11,10 @@
 <img width="1400" src="https://github.com/user-attachments/assets/f31a1df6-37c7-4e4a-aa0e-56bf05caa86a" />
 
 ## AllData架构设计图
-<img width="1400" alt="image" src="https://github.com/user-attachments/assets/87d7914d-baa5-4fc5-b648-3feddfb5ac28">
+<img width="3938" height="3891" alt="ff55dd25b65e3c892ae9492b4c6f705c" src="https://github.com/user-attachments/assets/5870a9a6-a548-4633-b5b9-da3a49e45fa7" />
+
+## AllData产品功能流程图
+<img width="2344" height="1020" alt="image" src="https://github.com/user-attachments/assets/139ceba0-001b-47b5-8f45-19b61a3ec4f7" />
 
 ## AllData技术社区 
 <img width="1400" alt="image" src="https://github.com/user-attachments/assets/7e18ed98-1943-4e0c-9f6b-40b16a8f4fc9">
