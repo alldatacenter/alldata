@@ -99,7 +99,7 @@ xxl:
   job:
     admin:
       # 修改为自己的data-dts服务地址
-      addresses: http://16gmaster:9536
+      addresses: http://bigdata001:9536
     executor:
       # 此执行器的名称
       appname: flinkx-executor

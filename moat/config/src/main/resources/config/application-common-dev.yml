@@ -1,38 +1,39 @@
 # Global Mysql、Redis and RabbitMQ connect configuration items
 common:
   rabbitmq:
-    host: localhost
+    host: bigdata001
     username: root
     password: 123456
     port: 5672
   redis:
-    host: localhost
+    host: bigdata001
     password: 123456
     port: 6379
+    database: 1
   mysql:
     primary:
       username: root
       password: 123456
-      url: jdbc:mysql://localhost:3306/studio?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=GMT%2B8
+      url: jdbc:mysql://bigdata001:3306/alldata?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=GMT%2B8
     master:
       driver: com.mysql.cj.jdbc.Driver
       username: root
       password: 123456
-      url: jdbc:mysql://localhost:3306/studio?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=GMT%2B8
+      url: jdbc:mysql://bigdata001:3306/alldata?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=GMT%2B8
     flowable:
       username: root
       password: 123456
-      url: jdbc:mysql://localhost:3306/studio?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=GMT%2B8&nullCatalogMeansCurrent=true
+      url: jdbc:mysql://bigdata001:3306/alldata?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=GMT%2B8&nullCatalogMeansCurrent=true
     quartz:
       username: root
       password: 123456
-      url: jdbc:mysql://localhost:3306/studio?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=GMT%2B8
+      url: jdbc:mysql://bigdata001:3306/alldata?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=GMT%2B8
     druid:
       username: root
       password: 123456
-      url: jdbc:mysql://localhost:3306/studio?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=GMT%2B8
+      url: jdbc:mysql://bigdata001:3306/alldata?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=GMT%2B8
     dts:
       driver-class-name: com.mysql.jdbc.Driver
       username: root
       password: 123456
-      url: jdbc:mysql://localhost:3306/studio?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=GMT%2B8
+      url: jdbc:mysql://bigdata001:3306/alldata?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=GMT%2B8

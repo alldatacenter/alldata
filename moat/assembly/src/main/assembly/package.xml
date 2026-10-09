@@ -12,11 +12,6 @@
         </fileSet>
 
         <fileSet>
-            <directory>${project.parent.basedir}/../install/sql</directory>
-            <outputDirectory>./sql</outputDirectory>
-        </fileSet>
-
-        <fileSet>
             <directory>${project.parent.basedir}/../install/16gslave</directory>
             <outputDirectory>./16gslave</outputDirectory>
         </fileSet>
@@ -27,7 +22,16 @@
 
 
         <fileSet>
-            <directory>${project.parent.basedir}/install</directory>
+            <directory>${project.parent.basedir}/../install</directory>
+            <outputDirectory>./</outputDirectory>
+            <includes>
+                <include>alldata.sh</include>
+            </includes>
+            <fileMode>0755</fileMode>
+        </fileSet>
+
+        <fileSet>
+            <directory>${project.parent.basedir}/..</directory>
             <outputDirectory>./</outputDirectory>
             <includes>
                 <include>README.md</include>
